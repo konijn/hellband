@@ -3,39 +3,21 @@
  * Copyright (c) 1997 Ben Harrison, and others
  *
  * This software may be copied and distributed for educational, research,
- * and not for profit purposes provided that this copyright and statement
+ * or profit purposes provided that this source, copyright, and statement
  * are included in all such copies.
  *
- * Ben Harrison and others have released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
- * or under the terms of the traditional Angband license.
+ * Ben Harrison and others have released all changes to the Angband code
+ * under the terms of the GNU General Public License (version 2), as well
+ * as under the traditional Angband license. It may be redistributed under
+ * the terms of the GPL (version 2 or any later version), or under the terms
+ * of the traditional Angband license.
  *
- * All changes in Hellband are Copyright (c) 2005-2007 Konijn
- * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
- * or under the terms of the traditional Angband license.
+ * All changes in Hellband are Copyright (c) 2005-2018 Tom J Demuyt aka Konijn
+ * I Tom J Demuyt release all changes to the Angband code under the same terms.
  */
 
-//Globals
-var ANGBAND_DIR,
-    ANGBAND_DIR_EDIT,
-    ANGBAND_DIR_FILE,
-    ANGBAND_DIR_HELP,
-    ANGBAND_DIR_INFO,
-    ANGBAND_DIR_PREF,
-    ANGBAND_DIR_USER,
-    ANGBAND_DIR_APEX,
-    ANGBAND_DIR_BONE,
-    ANGBAND_DIR_DATA,
-    ANGBAND_DIR_SAVE,
-    ANGBAND_DIR_DUMP,
-    ANGBAND_DIR_XTRA,
-    ANGBAND_SYS;
-    
-var arg_fiddle, arg_sound, arg_graphics, arg_force_roguelike, arg_force_original;
-
-//fc=>file content
-var fc_news;
+requirejs(['base', 'init2', 'log','os','files','globals','util','dungeon'],
+  function (base, init2, log, os, files, g, util, dungeon) {
 
 /*
  * Find the default paths to all of our important sub-directories.
@@ -55,38 +37,38 @@ function init_file_paths(path, attempt)
 
 	/*** Prepare the "path" ***/
 	/* Hack -- save the main directory */
-	ANGBAND_DIR = path;
+	g.ANGBAND_DIR = path;
 	
 	/*** Build the sub-directory names ***/
-	ANGBAND_DIR_EDIT = path + 'edit';
-	ANGBAND_DIR_FILE = path + 'file';
-	ANGBAND_DIR_HELP = path + 'help';
-	ANGBAND_DIR_INFO = path + 'info';
-	ANGBAND_DIR_PREF = path + 'pref';
-	ANGBAND_DIR_USER = path + 'user';
-	ANGBAND_DIR_APEX = path + 'apex';
-	ANGBAND_DIR_BONE = path + 'bone';
-	ANGBAND_DIR_DATA = path + 'data';
-	ANGBAND_DIR_SAVE = path + 'save';
-	ANGBAND_DIR_DUMP = path + 'dump';
-	ANGBAND_DIR_XTRA = path + 'xtra';
+	g.ANGBAND_DIR_EDIT = path + 'edit';
+	g.ANGBAND_DIR_FILE = path + 'file';
+	g.ANGBAND_DIR_HELP = path + 'help';
+	g.ANGBAND_DIR_INFO = path + 'info';
+	g.ANGBAND_DIR_PREF = path + 'pref';
+	g.ANGBAND_DIR_USER = path + 'user';
+	g.ANGBAND_DIR_APEX = path + 'apex';
+	g.ANGBAND_DIR_BONE = path + 'bone';
+	g.ANGBAND_DIR_DATA = path + 'data';
+	g.ANGBAND_DIR_SAVE = path + 'save';
+	g.ANGBAND_DIR_DUMP = path + 'dump';
+	g.ANGBAND_DIR_XTRA = path + 'xtra';
 	
-	log(DEBUG, "User dir: ", ANGBAND_DIR_USER);
+	log(log.DEBUG, "User dir: ", g.ANGBAND_DIR_USER);
 
 	/*** Verify the "news" file ***/
 
-  newsFile = ANGBAND_DIR_FILE + '/news.txt',
+  newsFile = g.ANGBAND_DIR_FILE + '/news.txt',
   client = new XMLHttpRequest();
       
   client.open('GET', newsFile);
   
   client.onreadystatechange = function() {
-    fc_news = client.responseText;
-    console.log(fc_news);
+    g.fc_news = client.responseText;
+    console.log(g.fc_news);
   };
   client.onError = function(){
-		log(ERROR, client.statusText, "Cannot access the news file at ", newsFile);
-		init_angband_aux(why);
+		log(log.ERROR, client.statusText, "Cannot access the news file at ", newsFile);
+		init2.init_angband_aux(client.statusText);
   };
   client.send();
   console.log('Testing Synchronicity');
@@ -99,9 +81,18 @@ function init_file_paths(path, attempt)
 function init_stuff()
 {
   /* Things are simpler in js land ;) */
-	let path = './';
+	let path = './lib/';
 	/* Initialize */
 	init_file_paths(path,1);
+}
+
+/*
+* A hook for "quit()".
+* No Closing down really in JS, we navigate to the quit page is all
+*/
+function quit_hook(s)
+{
+  os.quit(s);
 }
 
 
@@ -110,8 +101,9 @@ function init_stuff()
  * The passing of start parameters is kinda hard
  * TODO: acccept these parameters from the URL?
  */
-function main(argv){
-  argv = listify(argv);
+function main(argv)
+{
+  argv = base.listify(argv);
 	let i,
       done = false,
 	    new_game = false,
@@ -154,35 +146,37 @@ function main(argv){
 		console.log("  -r       Request rogue-like keyset");
 		console.log("  -s<num>  Show <num> high scores");
     /* Actually abort the process */
-		return quit('Hellband was started with the wrong parameters');
+		return os.quit('Hellband was started with the wrong parameters');
   }
   
 	/* Process the player name */
-	process_player_name();
+	files.process_player_name();
 
 	/* Install "quit" hook */
-	quit_aux = quit_hook;
+	g.quit_aux = quit_hook;
 
   /* GCU, baby!! */
-  ANGBAND_SYS = "gcu";
+  g.ANGBAND_SYS = "gcu";
   done = 1;
 
-	/* Hack -- If requested, display scores and quit */
+	/* Hack -- If requested, display scores and return, info would be gone if we quit */
 	if (show_score > 0){
-	  return display_scores(0, show_score);
+	  return files.display_scores(0, show_score);
 	}
 
 	/* Initialize */
-	init_angband();
+	init2.init_angband();
 
 	/* Wait for response */
-	pause_line(23);
+	util.pause_line(23);
 
 	/* Play the game */
-	play_game(new_game);
+	dungeon.play_game(new_game);
 
 	/* Exit */
 	return (0);
 }
 
 main();
+
+});

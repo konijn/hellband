@@ -1,10 +1,5 @@
 //UTF enforcer Ƨ
- "use strict";
-
-//Copy all Math functions to Window for readability
-//Object.getOwnPropertyNames(Math).forEach( function(property){
-//  this[property] = Math[property]
-//});
+"use strict";
 
 //Base prototype enhancements
 
@@ -19,9 +14,8 @@ Array.prototype.repeatPush = function ArrayRepeatPush(x, n){
   return this;
 };
 
-//Black.. is the new silver ;)
-String.prototype.replaceAll = function StringReplaceAll(silver, black) {
-  return this.split(silver).join(black);
+String.prototype.replaceAll = function StringReplaceAll(target, replacement) {
+  return this.split(target).join(replacement);
 };
 
 Array.prototype.set = function ArraySet(index, replacement){
@@ -66,11 +60,6 @@ Array.prototype.shuffle = function ArrayShuffle(){
   return this;
 };
 
-/* Ev1l rot.js also overrides this ;) Enabling this will break seeded corridors
-Array.prototype.random = function ArrayRandom(){
-  return this[Math.floor(Math.random() * this.length)];
-}*/
-
 String.prototype.set = function StringSet(index, replacement) {
   replacement = replacement || " ";
   return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
@@ -87,14 +76,6 @@ String.prototype.has = function StringHas(s){
 
 String.prototype.left = function StringLeft(n){
   return this.substring(0,n);
-}
-
-String.prototype.template = function StringTemplate(list){
-  return template(this,list);
-};
-
-String.prototype.isAnchor = function StringIsAnchor(){
-  return this.charCodeAt(0) >= 1<<8;
 };
 
 String.prototype.mid = String.prototype.substr;
@@ -155,24 +136,9 @@ Map.prototype.reverse = function MapReverse(){
   return new Map(list);
 };
 
-//Singleton or multi
-function $(query){
-  let selection =  document.querySelectorAll(query);
-  return selection.length === 0 ? undefined :
-         selection.length === 1 ? selection[0] : [...selection];
-}
-//Only multi
-function $$(query){
-  return [...document.querySelectorAll(query)];
-}
-
-function template(id, list){
-  let s = $(id).innerHTML;
-  listify(list).each((value, id) => s = s.replaceAll('$' + id , value));
-  return s;
-}
-
 function listify(o){
- return o === undefined ? [] :
-              Array.isArray(o) ? o : [o];
+  return o === undefined ? [] :
+        Array.isArray(o) ? o : [o];
 }
+
+define({listify});

@@ -1,22 +1,28 @@
 //Unicode trick Ƨ
- "use strict";
+"use strict";
 
-const
-  DEBUG = 0,
-  WARNING = 4,
-  ERROR = 8,
-  CATASTROPHE = 16;
-
-var logLevel = WARNING;
+//Current debug level
+//TODO: Allow for command switch to set log level
+const logLevel = 4; //WARNING
 
 function log(level, ...rest){
   //Bad caller, no log level.
   if(!rest){
     console.log(...level);
-  }else if(level === DEBUG || level === WARNING || level === ERROR || level === CATASTROPHE){
-    if(level >= logLevel)
+  }else if(level === 0 || level === 4 || level === 8 || level === 16){
+    if(level >= logLevel){
       console.log(...rest);
-  }else{
+    }
+  } else{
     console.log(level, ...rest);
   }
 }
+
+log.DEBUG = 0;
+log.WARNING = 4;
+log.ERROR = 8;
+log.CATASTROPHE = 16;
+
+log(log.DEBUG, 'Log is loaded', log);
+
+define(x=>log);

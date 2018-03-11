@@ -3,17 +3,27 @@
 /*
 * Explain a broken "lib" folder and quit (see below).
 */
-function init_angband_aux(why)
-{
-	/* Why */
-	console(why);
 
-	/* Explain */
-	console.log("The 'lib' directory is probably missing or broken.");
 
-	/* Explain */
-	console.log("See the 'README' file for more information.");
+define(['log'],function(log){
 
-	/* Quit with error */
-	quit("Fatal Error.");
-}
+  function init_angband_aux(why)
+  {
+	  /* Why */
+	  log(ERROR, why);
+	  /* Explain */
+	  log(ERROR, "The 'lib' directory is probably missing or broken.");
+	  /* Guide */
+	  log(ERROR, "See the 'README' file for more information.");
+	  /* Quit with error */
+	  quit("Fatal Error.");
+  }
+  
+  function init_angband()
+  {
+    //TODO
+    log(log.ERROR, "init.init_angband is not yet implemented");
+  }
+  
+  return {init_angband_aux, init_angband};
+});
