@@ -16,8 +16,8 @@
  * I Tom J Demuyt release all changes to the Angband code under the same terms.
  */
 
-requirejs(['base', 'init2', 'log','os','files','globals','util','dungeon'],
-  function (base, init2, log, os, files, g, util, dungeon) {
+requirejs(['base', 'init2', 'log','os','files','globals','util','dungeon','gcu'],
+  function (base, init2, log, os, files, g, util, dungeon,gcu) {
 
 /*
  * Find the default paths to all of our important sub-directories.
@@ -125,11 +125,11 @@ function main(argv)
       arg = arg.substring(1,2).toUpperCase();
     }
     new_game = new_game || arg == 'N';
-    arg_fiddle = arg_fiddle || arg == 'F';
-    arg_sound = arg_sound || arg == 'V';
-    arg_graphics = arg_graphics || arg == 'G';
-		arg_force_roguelike = arg_force_roguelike || arg == 'R';
-    arg_force_original = arg_force_original || arg == 'O';
+    g.arg_fiddle = g.arg_fiddle || arg == 'F';
+    g.arg_sound = g.arg_sound || arg == 'V';
+    g.arg_graphics = g.arg_graphics || arg == 'G';
+		g.arg_force_roguelike = g.arg_force_roguelike || arg == 'R';
+    g.arg_force_original = g.arg_force_original || arg == 'O';
     if(arg=='S')
       show_score = arg.substring(1);
   }
@@ -156,7 +156,8 @@ function main(argv)
 	g.quit_aux = quit_hook;
 
   /* GCU, baby!! */
-  g.ANGBAND_SYS = "gcu";
+  gcu.init_gcu(argc, argv);
+	g.ANGBAND_SYS = "gcu";
   done = 1;
 
 	/* Hack -- If requested, display scores and return, info would be gone if we quit */
@@ -177,6 +178,8 @@ function main(argv)
 	return (0);
 }
 
+//console.log('Are we ready yet?');
+//os.whenReady(main);
 main();
 
 });

@@ -5,5 +5,5 @@ const platform = 'web';
 
 
 define(['os-'+platform], function(os){
-  return {quit:os.quit};
+  return os;
 });
