@@ -78,6 +78,10 @@ String.prototype.left = function StringLeft(n){
   return this.substring(0,n);
 };
 
+String.prototype.right = function StringRight(n){
+  return this.substr(-n);
+}
+
 String.prototype.mid = String.prototype.substr;
 
 String.prototype.mod = function StringMod(i){
