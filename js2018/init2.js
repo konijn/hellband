@@ -174,11 +174,77 @@ define(['log','os','cmd4','globals','term'],function(log, os, cmd4, g, term){
     let path = g.ANGBAND_DIR_EDIT + '/k_info.txt',
      read_result = os.load_file(path),
      k_info = g.k_info,
-     lines, line, version_okay, parts, current_kind;
+     lines, line, version_okay, parts, current_kind, allocation, i;
     /* Did we read k_info correctly? */
     if(!read_result.ok)
       return false;
-
+    /*Split the file content into one-line strings*/
+    lines = read_result.content.split('\n');
+    /*Treat every line*/
+    for(line of lines){
+      /*We split the line by colon into a list*/
+      parts = line.split(':');
+      /* Hack -- Process 'V' for "Version" */
+      if(line.startsWith('V')){
+        version_okay = check_version(line);
+        if(!version_okay){
+          return false;
+        }
+      }
+      /* Process 'N' for "New/Number/Name" */
+      if(line.startsWith('N')){
+        current_kind = parts[1];
+        k_info[current_kind] = {name: parts[2], chance: []};
+      }
+      /* Process 'D' for "Description" */
+      if(line.startsWith('D')){
+        /* If already read some text, then append with a newline*/
+        if(k_info[current_kind].text){
+          k_info[current_kind].text += ('\n' + parts[1]);
+        }else{
+          k_info[current_kind].text = parts[1];
+        }
+      }
+      /* Process 'I' for "Info" (one line only) */
+      if(line.startsWith('I')){
+        k_info[current_kind].tval = parts[1];
+        k_info[current_kind].sval = parts[2];
+        k_info[current_kind].pval = parts[3];
+      }
+      /* Process 'W' for "More Info" (one line only) */
+      /* Save the values */
+      if(line.startsWith('W')){
+        k_info[current_kind].level = parts[1];
+        k_info[current_kind].extra = parts[2];
+        k_info[current_kind].weight = parts[3];
+        k_info[current_kind].cost = parts[4];
+      }
+      /* Process 'A' for "Allocation" (one line only) */
+      if(line.startsWith('A')){
+        /*Drop A*/
+        parts.shift();
+        /*Each part has a local and a chance*/
+        for(i = 0; i < parts.length; i++){
+          allocation = parts[i].split('/');
+          k_info[current_kind].chance.push({locale: allocation[0], chance:allocation[1]});
+        }
+      }
+      /* Hack -- Process 'P' for "power" and such */
+      if(line.startsWith('A')){
+        k_info[current_kind].ac = parts[1];
+        k_info[current_kind].dd = parts[2];
+        k_info[current_kind].ds = parts[3];
+        k_info[current_kind].to_h = parts[4];
+        k_info[current_kind].to_d = parts[5];
+        k_info[current_kind].to_a =  parts[6];
+      }
+      /* Process 'G' for "Graphics" (one line only) */
+      if(line.startsWith('G')){
+        k_info[current_kind].f_char = parts[1];
+        k_info[current_kind].f_attr = term.colour_char_to_attr(parts[2].trim());
+      }
+    }
+    return true;
   }
 
   /*
@@ -199,6 +265,8 @@ define(['log','os','cmd4','globals','term'],function(log, os, cmd4, g, term){
     lines = read_result.content.split('\n');
     /*Treat every line*/
     for(line of lines){
+      /*We split the line by colon into a list*/
+      parts = line.split(':');
       /* Hack -- Process 'V' for "Version" */
       if(line.startsWith('V')){
         version_okay = check_version(line);
@@ -208,23 +276,19 @@ define(['log','os','cmd4','globals','term'],function(log, os, cmd4, g, term){
       }
       /* Process 'N' for "New/Number/Name" */
       if(line.startsWith('N')){
-        parts = line.split(':');
         current_feature = parts[1];
         f_info[current_feature] = {name: parts[2]};
       }
       /* Process 'M' for "Mimic" (one line only) */
       if(line.startsWith('M')){
-        parts = line.split(':');
         f_info[current_feature].mimic = parts[1];
       }
       /* Process 'G' for "Graphics" (one line only) */
       if(line.startsWith('G')){
-        parts = line.split(':');
         f_info[current_feature].f_char = parts[1];
         f_info[current_feature].f_attr = term.colour_char_to_attr(parts[2].trim());
       }
     }
-    console.log(f_info);
     return true;
   }
 

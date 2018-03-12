@@ -58,9 +58,7 @@ requirejs(['base', 'init2', 'log', 'os', 'files', 'globals', 'util', 'dungeon', 
       /*** Verify the "news" file ***/
       news_file = g.ANGBAND_DIR_FILE + '/news.txt';
       read_result = os.load_file(news_file);
-      if (read_result.ok) {
-        console.log(read_result.content);
-      } else {
+      if (!read_result.ok){
         log(log.ERROR, read_result.err, "Cannot access the news file at ", news_file);
         init2.init_angband_aux(read_result.err);
       }

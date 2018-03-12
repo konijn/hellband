@@ -28,7 +28,6 @@ define(['log'], function(log) {
     green = Math.ceil(green * 255/ 1000);
     blue = Math.ceil(blue * 255/ 1000);
     colors[index] = '#' + ('000000' + ((red << 16) + (green << 8) + blue).toString(16)).right(6);
-    console.log(index,colors[index],red,green,blue);
   }
 
   function term_init(cols, rows, keys) {

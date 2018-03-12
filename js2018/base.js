@@ -39,6 +39,11 @@ Array.prototype.chainedPop = function ArrayChainedPop(...args){
   return this;
 };
 
+Array.prototype.chainedShift = function ArrayChainedShift(...args){
+  this.shift();
+  return this;
+};
+
 Array.prototype.unique = function ArrayUnique() {
   return this.sort().reduce( (accumulator, currentValue) => accumulator.has(currentValue)?accumulator:accumulator.chainedPush(currentValue) ,[]);
 };
