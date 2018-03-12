@@ -164,6 +164,22 @@ define(['log','os','cmd4','globals','term'],function(log, os, cmd4, g, term){
     term.note("[Initialization complete]");
   }
   
+  /*
+  * Initialize the "k_info" array, by parsing an ascii "template" file
+  * Note, we dont do raw binaries anymore, there is no point any more.
+  * So really, the below is more based on init_k_info_txt then init_k_info
+  */
+  /*BOOL*/ function init_k_info()
+  {
+    let path = g.ANGBAND_DIR_EDIT + '/k_info.txt',
+     read_result = os.load_file(path),
+     k_info = g.k_info,
+     lines, line, version_okay, parts, current_kind;
+    /* Did we read k_info correctly? */
+    if(!read_result.ok)
+      return false;
+
+  }
 
   /*
   * Initialize the "f_info" array, by parsing an ascii "template" file
