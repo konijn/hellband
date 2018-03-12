@@ -68,9 +68,9 @@ define(['log','globals','os'],function(log,g,os){
     B:14, /* TERM_L_BLUE*/
     U:15  /* TERM_L_UMBER*/
   }
-  function map_ch_color(ch){
+  function colour_char_to_attr(ch){
     return ch_color_map[ch];
   }
   
-  return {note,term_putstr,prt,c_prt,map_ch_color,term_draw};
+  return {note,term_putstr,prt,c_prt,colour_char_to_attr,term_draw};
 });

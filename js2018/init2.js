@@ -23,7 +23,7 @@ define(['log','os','cmd4','globals','term'],function(log, os, cmd4, g, term){
   * Main Angband initialization entry point
   *
   * Verify some files, display the "news.txt" file, create
-  * the high score file, initialize all internal arrays, and
+  * the high score 'file', initialize all internal arrays, and
   * load the basic "user pref files".
   *
   * No need to be careful to keep track of the order in which
@@ -31,21 +31,21 @@ define(['log','os','cmd4','globals','term'],function(log, os, cmd4, g, term){
   * is available when this function is called in the "z-term.c"
   * package.
   
-  * term.note that this function displays the "news" file.
+  * Note that this function displays the "news_color" file.
   * It was verified prior to this functional call that the file is there
   *
-  * term.note that this function attempts to verify (or create) the
+  * Note that this function attempts to verify (or create) the
   * "high score" file, and the game aborts (cleanly) on failure.
   * The JS version (or any version since a least a decade) prevents
   * failure to extract all sub-directories (even empty ones).
   *
-  * term.note that various things are initialized by this function,
+  * Note that various things are initialized by this function,
   * including everything that was once done by "init_some_arrays".
   *
   * This initialization involves the parsing of special files
   * in the "lib/data" and sometimes the "lib/edit" directories.
   *
-  * term.note that the "template" files are initialized first, since they
+  * Note that the "template" files are initialized first, since they
   * often contain errors.  This means that macros and message recall
   * and things like that are not available until after they are done.
   *
@@ -93,7 +93,7 @@ define(['log','os','cmd4','globals','term'],function(log, os, cmd4, g, term){
 
     /* Initialize feature info */
     term.note("[Initializing arrays... (features)]");
-    if (init_f_info()) quit("Cannot initialize features");
+    if (!init_f_info()) quit("Cannot initialize features");
 
     /* Initialize object info */
     term.note("[Initializing arrays... (objects)]");
@@ -164,6 +164,63 @@ define(['log','os','cmd4','globals','term'],function(log, os, cmd4, g, term){
     term.note("[Initialization complete]");
   }
   
-  
+
+  /*
+  * Initialize the "f_info" array, by parsing an ascii "template" file
+  * Note, we dont do raw binaries anymore, there is no point any more.
+  * So really, the below is more based on init_f_info_txt then init_f_info
+  */
+  /*BOOL*/ function init_f_info()
+  {
+    let path = g.ANGBAND_DIR_EDIT + '/f_info.txt',
+     read_result = os.load_file(path),
+     f_info = g.f_info,
+     lines, line, version_okay, parts, current_feature;
+    /* Did we read f_info correctly? */
+    if(!read_result.ok)
+      return false;
+    /*Split the file content into one-line strings*/
+    lines = read_result.content.split('\n');
+    /*Treat every line*/
+    for(line of lines){
+      /* Hack -- Process 'V' for "Version" */
+      if(line.startsWith('V')){
+        version_okay = check_version(line);
+        if(!version_okay){
+          return false;
+        }
+      }
+      /* Process 'N' for "New/Number/Name" */
+      if(line.startsWith('N')){
+        parts = line.split(':');
+        current_feature = parts[1];
+        f_info[current_feature] = {name: parts[2]};
+      }
+      /* Process 'M' for "Mimic" (one line only) */
+      if(line.startsWith('M')){
+        parts = line.split(':');
+        f_info[current_feature].mimic = parts[1];
+      }
+      /* Process 'G' for "Graphics" (one line only) */
+      if(line.startsWith('G')){
+        parts = line.split(':');
+        f_info[current_feature].f_char = parts[1];
+        f_info[current_feature].f_attr = term.colour_char_to_attr(parts[2].trim());
+      }
+    }
+    console.log(f_info);
+    return true;
+  }
+
+  /*This assume a string starting with V:*/
+  /*BOOL*/ function check_version(line)
+  {
+    return line.trim().mid(2) == g.VERSION;
+  }
+
   return {init_angband_aux, init_angband};
 });
+
+
+
+

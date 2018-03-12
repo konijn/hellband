@@ -40,7 +40,7 @@ function do_cmd_load_screen(path, file)
       if(lines[25+y][x]!= " "){
         x=x;
       }
-      term.term_draw(x, y, term.map_ch_color(lines[25+y][x]), lines[y][x]);
+      term.term_draw(x, y, term.colour_char_to_attr(lines[25+y][x]), lines[y][x]);
     }
   }
 }
