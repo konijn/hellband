@@ -1947,7 +1947,7 @@ N:237:Curing
 G:!:d
 I:75:61:100
 W:18:0:4:250
-A:18/1,40/1
+A:18/1:40/1
 P:0:1d1:0:0:0
 D:When quaffed, this potion will heal a lot and cure all your ailments.
 
