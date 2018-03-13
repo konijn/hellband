@@ -1,2 +1,4 @@
 hellband
 js
+*.o
+*.bak
