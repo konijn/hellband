@@ -11,18 +11,18 @@
  *
  *
  * James E. Wilson and Robert A. Koeneke released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
- * or under the terms of the traditional Angband license.
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
+ * or under the terms of the traditional Angband license. 
  *
  * Ben Harrison released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
- * or under the terms of the traditional Angband license.
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
+ * or under the terms of the traditional Angband license. 
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
- * or under the terms of the traditional Angband license.
- */
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
+ * or under the terms of the traditional Angband license. 
+ */ 
 
 /*
  * To use this file, you must define "USE_GCU" in the Makefile.
@@ -844,7 +844,7 @@ errr init_gcu(void)
 		for (i = 0; i < 16; i++)
 		{
 			/* Reset the color */
-			os.init_pair(i, i, i);
+			init_pair(i, i, i);
 
 			/* Reset the color data */
 			colortable[i] = (COLOR_PAIR(i) | A_NORMAL);
@@ -928,31 +928,37 @@ errr init_gcu(void)
 	/*** Now prepare the term ***/
 
 	/* Initialize the term */
-	t = os.term_init(80, 24, 256);
+	term_init(t, 80, 24, 256);
 
 	/* Avoid the bottom right corner */
-	t.icky_corner = TRUE;
+	t->icky_corner = TRUE;
 
 	/* Erase with "white space" */
-	t.attr_blank = TERM_WHITE;
-	t.char_blank = ' ';
+	t->attr_blank = TERM_WHITE;
+	t->char_blank = ' ';
 
 	/* Set some hooks */
-	t.init_hook = os.Term_init_gcu;
-	t.nuke_hook = os.Term_nuke_gcu;
+	t->init_hook = Term_init_gcu;
+	t->nuke_hook = Term_nuke_gcu;
 
 	/* Set some more hooks */
-	t.text_hook = Term_text_gcu;
-	t.wipe_hook = Term_wipe_gcu;
-	t.curs_hook = Term_curs_gcu;
-	t.xtra_hook = Term_xtra_gcu;
+	t->text_hook = Term_text_gcu;
+	t->wipe_hook = Term_wipe_gcu;
+	t->curs_hook = Term_curs_gcu;
+	t->xtra_hook = Term_xtra_gcu;
 
 	/* Save the term */
-	g.term_screen = t;
+	term_screen = t;
 
 	/* Activate it */
-	os.Term_activate(g.term_screen);
+	Term_activate(term_screen);
+
 
 	/* Success */
 	return (0);
 }
+
+
+#endif /* USE_GCU */
+
+

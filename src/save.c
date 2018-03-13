@@ -10,13 +10,13 @@
  * are included in all such copies.
  *
  * James E. Wilson and Robert A. Koeneke have released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
  */
 
 #include "angband.h"
@@ -521,7 +521,7 @@ static void wr_s16b(s16b v)
 
 static void wr_u32b(u32b v)
 {
-	sf_put((byte)(v & 0xFF)); 
+	sf_put((byte)(v & 0xFF));
 	sf_put((byte)((v >> 8) & 0xFF));
 	sf_put((byte)((v >> 16) & 0xFF));
 	sf_put((byte)((v >> 24) & 0xFF));
@@ -596,8 +596,8 @@ static void wr_item(object_type *o_ptr)
 	/* Dont pollute save games for nuthing */
 	if( o_ptr->art_flags3 & TR3_XP )
 	{
-		wr_byte(o_ptr->elevel);	
-		wr_s32b(o_ptr->exp);	
+		wr_byte(o_ptr->elevel);
+		wr_s32b(o_ptr->exp);
 	}
 
 	/* Held by monster index */
@@ -617,7 +617,7 @@ static void wr_item(object_type *o_ptr)
 		wr_string("");
 	}
 
-	/* If it is a "new" named artefact, save the name */        
+	/* If it is a "new" named artefact, save the name */
 	if (o_ptr->art_name)
 	{
 		wr_string(quark_str(o_ptr->art_name));
@@ -695,7 +695,7 @@ static void wr_lore(int r_idx)
 	wr_u32b(r_ptr->r_flags4);
 	wr_u32b(r_ptr->r_flags5);
 	wr_u32b(r_ptr->r_flags6);
-	wr_u32b(r_ptr->r_flags7);	
+	wr_u32b(r_ptr->r_flags7);
 
 
 	/* Monster limit per level */
@@ -982,7 +982,7 @@ static void wr_customs(void)
 	{
 		if( r_info[i].custom )
 		{
-			wr_u16b( i );		
+			wr_u16b( i );
 			wr_custom( i );
 		}
 			
@@ -1016,7 +1016,7 @@ static void wr_extra(void)
 
 	/* Race/Class/Gender/Spells */
 	wr_byte(p_ptr->prace);
-	wr_byte(p_ptr->psign);	
+	wr_byte(p_ptr->psign);
 	wr_byte(p_ptr->pclass);
 	wr_byte(p_ptr->psex);
 	wr_u16b(p_ptr->realm1);
@@ -1425,7 +1425,7 @@ static bool wr_savefile_new(void)
 		if (potion_alch[i].known1) tmp8u |= 0x01; /* because 1 binary is 0001 */
 		if (potion_alch[i].known2) tmp8u |= 0x02; /* because 2 binary is 0010 */
 		wr_byte(tmp8u);                           /* resulting in 11 ( both ) , 01 ( first only ) or 10 ( second only ) */
-	}	
+	}
 	
 	/* Hack -- Dump the quests */
 	tmp16u = MAX_Q_IDX;
@@ -1697,15 +1697,19 @@ bool load_player(void)
 	if (!savefile[0]) return (TRUE);
 
 
-#if !defined(MACINTOSH) && !defined(WINDOWS)
+#if !defined(MACINTOSH) && !defined(WINDOWS) && !defined(USE_CLANG)
 
 	/* XXX XXX XXX Fix this */
 
 	/* Verify the existance of the savefile */
-	if (access(savefile, 0) < 0)
+	int has_access = access(savefile, 0);
+	if ( has_access < 0)
 	{
+		msg_print(strerror(errno));
 		/* Give a message */
-		msg_print("Savefile does not exist.");
+		msg_print("Savefile");
+		msg_print(savefile);
+		msg_print("does not exist.");
 		msg_print(NULL);
 
 		/* Allow this */

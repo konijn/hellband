@@ -65,6 +65,8 @@ static void init_angband_aux(cptr why)
 {
 	/* Why */
 	plog(why);
+	/* On Ternux, plog does not cut it */
+	puts(why);
 
 	/* Explain */
 	plog("The 'lib' directory is probably missing or broken.");
@@ -76,7 +78,7 @@ static void init_angband_aux(cptr why)
 	plog("See the 'README' file for more information.");
 
 	/* Quit with error */
-	quit("Fatal Error.");
+	quit(why/*"Fatal Error."*/);
 }
 
 /*
@@ -355,14 +357,14 @@ void create_user_dirs(void)
 {
 	char dirpath[1024];
 	char subdirpath[1024];
-	
+	int status;
 	
 	/* Get an absolute path from the filename */
 	path_parse(dirpath, sizeof(dirpath), PRIVATE_USER_PATH);
 	
 	/* Create the ~/.angband/ directory */
-	mkdir(dirpath, 0700);
-	
+	status = mkdir(dirpath, 0700);
+
 	/* Build the path to the variant-specific sub-directory */
 	path_build(subdirpath, sizeof(subdirpath), dirpath, VERSION_NAME);
 	
@@ -396,10 +398,16 @@ void create_user_dirs(void)
 	
 	/* Build the path to the savefile sub-directory */
 	path_build(dirpath, sizeof(dirpath), subdirpath, "dump");
-	
+
 	/* Create the directory */
 	mkdir(dirpath, 0700);
-	
+
+	/* Build the path to the savefile sub-directory */
+	path_build(dirpath, sizeof(dirpath), subdirpath, "pref");
+
+	/* Create the directory */
+	mkdir(dirpath, 0700);
+
 #endif /* USE_PRIVATE_PATHS */
 }
 

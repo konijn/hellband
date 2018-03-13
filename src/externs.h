@@ -11,14 +11,14 @@
  *
  *
  * James E. Wilson and Robert A. Koeneke released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
- */ 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
+ */
 
 /*
 * Note that some files have their own header files
@@ -212,7 +212,7 @@ extern bool preserve_mode;
 extern bool use_autoroller;
 extern bool spend_points;
 extern bool ironman_shop;
-extern bool apply_k_storebought;	
+extern bool apply_k_storebought;
 extern bool apply_k_discover;
 extern bool sanity_store; /* Dont kill storebought items */
 extern bool sanity_speed; /* Dont kill items giving speed bonuses*/
@@ -618,6 +618,9 @@ extern errr init_e_info_txt(FILE *fp, char *buf);
 extern errr init_r_info_txt(FILE *fp, char *buf);
 
 /* init.c */
+#ifdef PRIVATE_USER_PATH
+  extern void create_user_dirs(void);
+#endif
 extern void init_file_paths( char *path ,  int attempt );
 extern void init_angband();
 extern cptr r_info_flags1[];
@@ -924,7 +927,7 @@ extern bool spell_basic_resistance(int duration);
 /* store.c */
 extern void do_cmd_store(void);
 extern void store_shuffle(int which);
-/*extern void store_maint(int which);*/ 
+/*extern void store_maint(int which);*/
 extern void store_maint_all( int times );
 extern void store_init(int which);
 extern void move_to_black_market(object_type * o_ptr);
@@ -1075,7 +1078,7 @@ extern int stricmp(cptr a, cptr b);
 #endif
 
 /* util.c */
-#ifndef HAS_USLEEP 
+#ifndef HAS_USLEEP
 #  ifndef MACH_O_CARBON
 extern int usleep(huge usecs);
 #  endif
@@ -1099,7 +1102,7 @@ extern void repeat_push_char(char what);
 extern bool repeat_pull_char(char *what);
 extern void repeat_check(void);
 
-extern char *script; 
+extern char *script;
 extern char variable_token[SCRIPT_MAX_LENGTH];
 extern char dice_mode;
 extern void eval_script(double *out);

@@ -366,6 +366,13 @@ int main(int argc, char *argv[])
 
 #endif /* SET_UID */
 
+#ifdef PRIVATE_USER_PATH
+
+  /* Create directories for the users files */
+  create_user_dirs();
+
+#endif
+
 
 	/* Process the command line arguments */
 	for (i = 1; args && (i < argc); i++)
@@ -667,7 +674,7 @@ usage:
 	pause_line(23);
 
 	/* Play the game */
-	dungeon.play_game(new_game);
+	play_game(new_game);
 
 	/* Quit */
 	quit(NULL);
