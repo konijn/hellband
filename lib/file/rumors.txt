@@ -1,0 +1,117 @@
+115
+******** BUFFER LINE *********************************** DO NOT REMOVE *******
+They say that you can't trust rumors.
+They say that smart guys hang around at 1600'.
+They say that tough guys hang around at 1500'.
+They say that handsome guys hang around at 1200'.
+They say that a visit to 3250' can be quite an experience.
+They say that a visit to 3250' will only get you killed.
+Throw a Potion of Blindness at a monster and it cannot cast any spells!
+MAKE MONEY FAST! Find a Treasure Pit!
+The greatest danger could be your stupidity
+The greatest danger could be your arrogance
+You are not illiterate
+A good item will not corrode.
+You will obtain your goal if you keep diving
+You will obtain your death if you keep diving
+They say the Sword of Saint Michael truly slaughters Fallen Angels
+They say the Sword of Furcifer truly slaighters Dragons
+Finding the Phial of Beatrice at 50' is nothing to be proud of.
+There are Black Market stores hidden deep in the dungeon, with COOL stuff!
+A Mithril mail will not rust.
+An Adamantite mail will not rust.
+A Rusty Chain Mail cannot rust any further.
+A Wand of Death is useless against monsters that are tougher than you.
+A Wand of Death is of little use against foes that are dead already.
+Try taking off your armor before fighting a Gelatinous Cube!
+Planar power may be useful in some circumstances: free teleport!
+If you can fall like a feather, you need not care about gravity.
+You don't always have to kill everything you meet!
+If you can't beat it, leave it alone!
+There *is* a good use for Potions of Detonations, Ruination and Death...
+It's a bad idea to throw away a Longsword (4d5).
+It's a bad idea to wield a Longsword (4d5).
+It's useless to bash monsters with bows - but there's one notable exception...
+Actually, Slime Mold Juice is not completely useless.
+It's true name is 591.
+The richer the victim the happier the thief.
+Dont worry about money. The best artefacts are free.
+Thanks for letting me out of the cookie!
+Dont kiss Lillith on the lips today.
+They say that Scrolls of *Curse Weapon* can create powerful cursed artifacts.
+Avoid taking unnecessary gambles.
+They say Hell has parties where weird customs prevail.
+They say that all Law weapons are deadly against Demons.
+They say neutral people burn in the hottest fires.
+Hell is paved with people that had good intentions.
+There is a way to turn a Ring of Speed (-20) into a Ring of Speed (+20).
+Cool guys can resist fire.
+They say that Death incarnate wears a fancy set of cesti.
+They say that the dungeon is deeper than Dis.
+When all else fails, read the instructions.
+They say Nadain holds the key to the final story line.
+They say that Hell has no bottom.
+They say that Hell has a bottom.
+No poison is immediately deadly, except in large quantities.
+Parting is all we know of heaven all we need of Hell.
+Telepathy works like a two-way door.
+Elvish waybread might negate the effects of poison.
+Once uncursed, Sitri's sword will become a deadly weapon.
+The torture of a bad conscience is hell for a living soul.
+Overeating can be bad for your health if there are others nearby.
+Cave dwellers are accustomed to darkness and rarely enjoy bright light.
+A creature made of stone can be slain by a spell that turns stone to mud.
+It is often a good idea to throw items that you don't want to eat or drink.
+The faster you run the more food you will burn.
+Invisible monsters will often expose themselves if you drop items around you.
+They say that the key to killing tougher monsters is called "hit&run".
+Amulets of DOOM have potential.
+They say the tortures of Hell beat the boredom of the Heavens.
+You can often wrest one last charge from an empty wand if you try hard enough.
+Wands may recharge themselves if you leave them on the floor long enough.
+There is more than one way to deal with a locked door.
+Afraid of your valuables getting stolen? Carry more junk!
+Afraid of your money getting stolen? Invest it!
+If you hear something smash into splinters, you had better watch out.
+Selling unidentified potions to shopkeepers might be safer than quaffing them.
+Always look out for trapdoors on "special" feeling levels!
+There is a way to max out your stats with Potions of Charisma & Nexus.
+Unique opponents will recover their health faster than other creatures.
+They say that only Furcifer's sword is the true sword of dragon slayers.
+They say that only Michael's sword is the bane of the fallen ones.
+A Potion of Iocaine is also known as a potion of death...
+A weapon of Undead Slaying has all you need to kill a ghost.
+A weapon of Dragon Slaying may give you resistance to a dragon's breath attack.
+They say that only a Warrior will want to wear the Terror Mask.
+Having troubles with summoners? Door Creation is your friend!
+Stairway Creation may be slower than Teleport Level, but safer...
+Wands of Heal Monster are useful! Hint: ball spell, @....moo(o)ooo
+Guaranteed heal self - scenario: p'@, type c4c4c4c4
+If it can't see you, it can't hurt you!
+If it can't see you, you might still be able to hurt it...
+Even you can beat Lucifer.
+No animal is interested in sex if it is mortally scared.
+There are often stairways in graveyards: bad people are carried to hell...
+When the day of Ragnarok comes, Surtur will set the world afire...
+Surtur's accursed sword, Twilight, burns with everlasting fire.
+Satan's dancing boots will make you more attractive.
+Satan's dancing boots will cause the monsters to drool on you.
+Weapons of Flame will light your way.
+Poison will kill you slowly.
+A greedy genocide can be a fatal mistake, especially if you are low on hits.
+Some undead opponents will come back if defeated, more powerful than before!
+Bashing a creature may sometimes stun it.
+Appearance is only the frosting, not the cake!
+I know whatever was; whatever is, whatever shall be.
+They say that alcohol is bad for your health.
+Beware of pits that fill the whole level!
+If you hear heavy steps - watch out!
+A visit to the Zoo is educational: you meet many strange animals.
+Hellfire will burn your soul...
+Never attempt to Call the Void in an enclosed space!
+Call the Void needs a lot of room to cast...
+Why doesn't Detect Monsters show invisible monsters? 'Cos you can't see 'em!
+They say a night at the Inn opens your options
+They say the Alchemist knows everything about magical properties.
+They say the Magic Shoppe allows you to escape death.
+They say the Pawnshop is like a Museum, except that you can get your stuff back.

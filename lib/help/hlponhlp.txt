@@ -1,0 +1,18 @@
+=== Using the Online Help ===
+
+The Online Help can be navigated with the keyboard :
+
+Action                    Keypress
+------                    --------
+Leave help                Press Escape
+Return to previous page   Press '?'
+Advance one page          Press Space
+Advance one line          Press Enter
+Back up one page          Press '-'
+Go to a specific line     Press '#'
+Read specific help file   Press '%'
+Highlight keywords        Press '='
+Search keyword            Press '/'
+
+Note:
+If you reach the end of the help file, you will wrap around to the start.
