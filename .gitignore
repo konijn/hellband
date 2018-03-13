@@ -3,3 +3,7 @@ js
 *.o
 *.bak
 *.exe
+hellband.ini
+lib/save/*
+*.ini
+src/angband.res
