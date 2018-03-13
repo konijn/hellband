@@ -10,13 +10,13 @@
  * are included in all such copies.
  *
  * James E. Wilson and Robert A. Koeneke have released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
  */
 
 #include "angband.h"
@@ -733,7 +733,7 @@ player_type *p_ptr = &p_body;
 
 /*
  * Static player info record
- * Hackery! 
+ * Hackery!
  */
 player_race p_race;
 player_race *rp_ptr = &p_race;
@@ -889,8 +889,16 @@ cptr ANGBAND_DIR_SAVE;
 /*
 * User "preference" files (ascii)
 * These files are rarely portable between platforms
+* THis might point to the standard lib/pref folder or the user home pref folder
 */
 cptr ANGBAND_DIR_PREF;
+
+/*
+* User "preference" files (ascii)
+* These files are rarely portable between platforms
+* This will always point to the standard lib/pref folder
+*/
+cptr ANGBAND_DIR_LIB_PREF;
 
 /*
 * Various extra files (binary)

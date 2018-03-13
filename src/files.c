@@ -11,14 +11,14 @@
  *
  *
  * James E. Wilson and Robert A. Koeneke released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
- */ 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
+ */
 
 
 #include "angband.h"
@@ -28,7 +28,7 @@ extern void do_cmd_knowledge_corruptions();
 
 /* Header for stats in character screen*/
 typedef struct header_struct header_struct;
-struct header_struct 
+struct header_struct
 {
 	cptr title;
 	byte colour;
@@ -55,7 +55,7 @@ struct weapon_flags_struct
 	int n;
 	u32b flag;
 	byte colour;
-	cptr s;	
+	cptr s;
 };
 
 /*
@@ -689,16 +689,24 @@ errr process_pref_file(cptr name)
 
 	bool bypass = FALSE;
 
-
 	/* Build the filename */
 	path_build(buf, 1024, ANGBAND_DIR_PREF, name);
 
 	/* Open the file */
 	fp = my_fopen(buf, "r");
 
+	/* Don't stop at non-existing file, maybe it's a pre-delivered */
+	if (!fp){
+		/* Build the filename */
+		path_build(buf, 1024, ANGBAND_DIR_LIB_PREF, name);
+		/* Open the file */
+		fp = my_fopen(buf, "r");
+	}
+	
 	/* No such file */
-	if (!fp) return (-1);
-
+	if (!fp){
+	  return (-1);
+	}
 
 	/* Process the file */
 	while (0 == my_fgets(fp, buf, 1024))
@@ -1057,20 +1065,20 @@ static void display_combat_info(void)
 	
 	/* Hack -- add in weapon info if known */
 	if (object_known_p(o_ptr)) show_tohit += o_ptr->to_h;
-	if (object_known_p(o_ptr)) show_todam += o_ptr->to_d;	
+	if (object_known_p(o_ptr)) show_todam += o_ptr->to_d;
 
 	/* Dump combat information */
 	prt_num("+ To Hit    ", show_tohit,      start_row++, start_col, TERM_L_BLUE);
 	prt_num("+ To Damage ", show_todam,      start_row++, start_col, TERM_L_BLUE);
 	prt_num("+ To AC     ", p_ptr->dis_to_a, start_row++, start_col, TERM_L_BLUE);
-	prt_num("  Base AC   ", p_ptr->dis_ac,   start_row++, start_col, TERM_L_BLUE);	
-	prt_num("  Turn      ", turn/10,         start_row++, start_col, TERM_L_BLUE);	
+	prt_num("  Base AC   ", p_ptr->dis_ac,   start_row++, start_col, TERM_L_BLUE);
+	prt_num("  Turn      ", turn/10,         start_row++, start_col, TERM_L_BLUE);
 }
 
 static void display_xp_info(void)
 {
 	int start_row = 8;
-	int start_col = 28;	
+	int start_col = 28;
 	
 	prt_num( "Level      ", (int)p_ptr->lev,	start_row++ , start_col, TERM_L_GREEN);
 	prt_lnum("Experience ", p_ptr->exp,			start_row++, start_col, (p_ptr->exp >= p_ptr->max_exp)?TERM_L_GREEN:TERM_YELLOW);
@@ -1093,14 +1101,14 @@ static void display_xp_info(void)
 static void display_health_info(void)
 {
 	int start_row = 8;
-	int start_col = 52;	
+	int start_col = 52;
 	
 	prt_num("Max Hit Points ", p_ptr->mhp, start_row++, start_col, TERM_L_GREEN);
 	prt_num("Cur Hit Points ", p_ptr->chp, start_row++, start_col,  health_colour( p_ptr->chp ,  p_ptr->mhp ) );
 	
 	if( p_ptr->pclass != CLASS_BLOOD_MAGE )
 	{
-		prt_num("Max SP (Mana)  ", p_ptr->msp, start_row++, start_col, TERM_L_GREEN);	
+		prt_num("Max SP (Mana)  ", p_ptr->msp, start_row++, start_col, TERM_L_GREEN);
 		prt_num("Cur SP (Mana)  ", p_ptr->csp, start_row++, start_col,  health_colour( p_ptr->csp ,  p_ptr->msp ) );
 	}
 
@@ -1219,7 +1227,7 @@ cptr describe_combat_damage(void)
 	dambonus = p_ptr->dis_to_d;
 	if (object_known_p(o_ptr)) dambonus += o_ptr->to_d;
 	damdice = o_ptr->dd;
-	damsides = o_ptr->ds;   
+	damsides = o_ptr->ds;
 	blows = p_ptr->num_blow;
 	
 	/*What are the different cases ?*/
@@ -1344,7 +1352,7 @@ void player_flags(u32b *f1, u32b *f2, u32b *f3)
 
 	/* Handle classes */
 	switch( p_ptr->pclass )
-	{	
+	{
 		case CLASS_WARRIOR: case CLASS_PALADIN: case CLASS_BLACK_KNIGHT:case CLASS_HELL_KNIGHT:
 			if (p_ptr->lev>39 )
 				(*f2) |= (TR2_RES_FEAR);
@@ -1386,7 +1394,7 @@ void player_flags(u32b *f1, u32b *f2, u32b *f3)
 		case SIGN_MORUI:
 			(*f2) |= (TR2_RES_CONF);
 			(*f2) |= (TR2_RES_ACID);
-			if (p_ptr->lev > 9) 
+			if (p_ptr->lev > 9)
 				(*f1) |= TR1_SPEED;
 			break;
 
@@ -1421,7 +1429,7 @@ void player_flags(u32b *f1, u32b *f2, u32b *f3)
 				(*f3) = (TR3_SLOW_DIGEST);
 			}
 			break;
-		case ATLANTIAN: 
+		case ATLANTIAN:
 			(*f2) |= (TR2_RES_DARK);
 			if (p_ptr->lev > 19)
 				(*f3) |= (TR3_SEE_INVIS);
@@ -1495,7 +1503,7 @@ void player_flags(u32b *f1, u32b *f2, u32b *f3)
 			break;
 		case DEVILSPAWN: case LILI: case SUCCUBUS:
 			(*f2) |= (TR2_RES_SOUND);
-			(*f2) |= (TR2_RES_CHAOS);	
+			(*f2) |= (TR2_RES_CHAOS);
 			(*f2) |= (TR2_RES_CONF);
 			break;
 	}
@@ -1577,7 +1585,7 @@ static void display_player_flags_aux(int row, int col, char *header, related_fla
 {
 	int element;
 	int i;
-	u32b f[3];	
+	u32b f[3];
 	
 	/*TODO msg_format("%d" , elements);*/
 	
@@ -1677,22 +1685,22 @@ static void display_player_flag_aux(int row, int col,
 }
 
 /*  Resistance <> Immunity related flags  */
-static related_flags_struct flags_fire[] = 
+static related_flags_struct flags_fire[] =
 {
 	{ 2 , TR2_RES_FIRE , TERM_WHITE , "+" },
 	{ 2 , TR2_IM_FIRE  , TERM_RED   , "*" }
 };
-static related_flags_struct flags_cold[] = 
+static related_flags_struct flags_cold[] =
 {
 	{ 2 , TR2_RES_COLD , TERM_WHITE , "+" },
 	{ 2 , TR2_IM_COLD  , TERM_BLUE   , "*" }
 };
-static related_flags_struct flags_elec[] = 
+static related_flags_struct flags_elec[] =
 {
 	{ 2 , TR2_RES_ELEC , TERM_WHITE		, "+" },
 	{ 2 , TR2_IM_ELEC  , TERM_YELLOW	, "*" }
 };
-static related_flags_struct flags_acid[] = 
+static related_flags_struct flags_acid[] =
 {
 	{ 2 , TR2_RES_ACID , TERM_WHITE		, "+" },
 	{ 2 , TR2_IM_ACID  , TERM_GREEN		, "*" }
@@ -1715,17 +1723,17 @@ static void display_player_flag_info(void)
 
 	c_put_str(TERM_WHITE, "abcdefghijkl@", row-1, col+7);
 
-	display_player_flags_aux(row+0 , col, "Fire :", flags_fire , N_ELEMENTS(flags_fire) );	
-	display_player_flags_aux(row+1 , col, "Cold :", flags_cold , N_ELEMENTS(flags_cold) );	
+	display_player_flags_aux(row+0 , col, "Fire :", flags_fire , N_ELEMENTS(flags_fire) );
+	display_player_flags_aux(row+1 , col, "Cold :", flags_cold , N_ELEMENTS(flags_cold) );
 	display_player_flag_aux(row+2 , col, "Light:", 2, TR2_RES_LITE);
 	display_player_flag_aux(row+3 , col, "Dark :", 2, TR2_RES_DARK);
 	display_player_flag_aux(row+4 , col, "Poisn:", 2, TR2_RES_POIS);
-	display_player_flags_aux(row+5 , col, "Elec :", flags_elec , N_ELEMENTS(flags_elec) );		
-	display_player_flags_aux(row+6 , col, "Acid :", flags_acid , N_ELEMENTS(flags_acid) );		
+	display_player_flags_aux(row+5 , col, "Elec :", flags_elec , N_ELEMENTS(flags_elec) );
+	display_player_flags_aux(row+6 , col, "Acid :", flags_acid , N_ELEMENTS(flags_acid) );
 	display_player_flag_aux(row+7 , col, "Blind:", 2, TR2_RES_BLIND);
 	display_player_flag_aux(row+8 , col, "Conf :", 2, TR2_RES_CONF);
 	display_player_flag_aux(row+9 , col, "Fear :", 2, TR2_RES_FEAR);
-	display_player_flag_aux(row+10, col, "Hold :", 2, TR2_FREE_ACT);	
+	display_player_flag_aux(row+10, col, "Hold :", 2, TR2_FREE_ACT);
 
 	/*** Set 2 ***/
 
@@ -1747,7 +1755,7 @@ static void display_player_flag_info(void)
 	display_player_flag_aux(row+7 , col, "Telepathy:", 3, TR3_TELEPATHY);
 	display_player_flag_aux(row+8 , col, "Speed    :", 1, TR1_SPEED);
 	display_player_flag_aux(row+9 , col, "Shots    :", 3, TR3_XTRA_SHOTS);
-	display_player_flag_aux(row+10, col, "Blows    :", 1, TR1_BLOWS);	
+	display_player_flag_aux(row+10, col, "Blows    :", 1, TR1_BLOWS);
 	
 	/*** Set 3 ***/
 
@@ -1759,15 +1767,15 @@ static void display_player_flag_info(void)
 	c_put_str(TERM_WHITE, "abcdefghijkl@", row-1, col+15);
 	display_player_flag_aux(row+0,  col, "Aura of Elec :", 3, TR3_SH_ELEC);
 	display_player_flag_aux(row+1,  col, "Aura of Fire :", 3, TR3_SH_FIRE);
-	display_player_flag_aux(row+2,  col, "Reflection   :", 2, TR2_REFLECT);	
+	display_player_flag_aux(row+2,  col, "Reflection   :", 2, TR2_REFLECT);
 	display_player_flag_aux(row+3,  col, "Hold Life    :", 2, TR2_HOLD_LIFE);
 	display_player_flag_aux(row+4,  col, "Slow Digest  :", 3, TR3_SLOW_DIGEST);
 	display_player_flag_aux(row+5,  col, "Regeneration :", 3, TR3_REGEN);
 	display_player_flag_aux(row+6,  col, "Levitation   :", 3, TR3_FEATHER);
 	display_player_flag_aux(row+7,  col, "Perm Lite    :", 3, TR3_LITE);
 	display_player_flag_aux(row+8,  col, "Stealth      :", 1, TR1_STEALTH);
-	display_player_flag_aux(row+9,  col, "Infra        :", 1, TR1_INFRA);	
-	display_player_flag_aux(row+10, col, "Search       :", 1, TR1_SEARCH);		
+	display_player_flag_aux(row+9,  col, "Infra        :", 1, TR1_INFRA);
+	display_player_flag_aux(row+10, col, "Search       :", 1, TR1_SEARCH);
 }
 
 int calc_equipment_stat_bonus(int stat)
@@ -1788,7 +1796,7 @@ int calc_equipment_stat_bonus(int stat)
 		if (f1 & 1<<stat)
             value = value + o_ptr->pval;
 	}
-    return value;    
+    return value;
 }
 
 int calc_freak_stat_bonus(int stat)
@@ -1836,7 +1844,7 @@ int calc_freak_stat_bonus(int stat)
 
 /*
 * Special display, part 2b
-* 
+*
 * How to print out the modifications and sustains.
 * Positive mods with no sustain will be light green.
 * Positive mods with a sustain will be dark green.
@@ -1944,7 +1952,7 @@ static void display_player_stat_info(void)
 			if (f1 & 1<<stat)
 			{
 				/* Positive values in light green, negatives in red*/
-				a = (o_ptr->pval > 0)?TERM_L_GREEN:TERM_RED; 
+				a = (o_ptr->pval > 0)?TERM_L_GREEN:TERM_RED;
 				/* Default we write the number, except if absolute value is larger than 9 aka takes more than 1 space to write*/
 				c = (abs(o_ptr->pval)>9)?'*':('0' + abs(o_ptr->pval));
 			}
@@ -1994,14 +2002,14 @@ static weapon_flags_struct weapon_flags[] =
 	{"Blessed           :" , 3 , TR3_BLESSED  , TERM_WHITE , "+" },
 	{"Chaotic           :" , 1 , TR1_CHAOTIC  , TERM_RED , "+" },
 	{"Vampiric          :" , 1 , TR1_VAMPIRIC  , TERM_L_DARK , "+" },
-	{"Vorpal            :" , 1 , TR1_VORPAL  , TERM_VIOLET , "+" },	
-	{"Impact            :" , 1 , TR1_IMPACT  , TERM_UMBER , "+" },		
+	{"Vorpal            :" , 1 , TR1_VORPAL  , TERM_VIOLET , "+" },
+	{"Impact            :" , 1 , TR1_IMPACT  , TERM_UMBER , "+" },
 	
-	{"Fire Branded      :" , 1 , TR1_BRAND_FIRE  , TERM_RED , "+" },			
-	{"Ice Branded       :" , 1 , TR1_BRAND_COLD  , TERM_WHITE , "+" },			
-	{"Lightning Branded :" , 1 , TR1_BRAND_ELEC  , TERM_YELLOW , "+" },			
-	{"Dripping Acid     :" , 1 , TR1_BRAND_ACID , TERM_BLUE , "+" },			
-	{"Dripping Poison   :" , 1 , TR1_BRAND_POIS , TERM_BLUE , "+" },				
+	{"Fire Branded      :" , 1 , TR1_BRAND_FIRE  , TERM_RED , "+" },
+	{"Ice Branded       :" , 1 , TR1_BRAND_COLD  , TERM_WHITE , "+" },
+	{"Lightning Branded :" , 1 , TR1_BRAND_ELEC  , TERM_YELLOW , "+" },
+	{"Dripping Acid     :" , 1 , TR1_BRAND_ACID , TERM_BLUE , "+" },
+	{"Dripping Poison   :" , 1 , TR1_BRAND_POIS , TERM_BLUE , "+" },
 };
 
 static void display_player_konijn(void)
@@ -2072,7 +2080,7 @@ static void display_temporary_aux( int col , int *row , int v , cptr message )
 }
 
 static void display_temporary(void)
-{                    
+{
 	int col = 25;
 	int row = 5;
     int none_row = row+1;
@@ -2085,7 +2093,7 @@ static void display_temporary(void)
 	{
 		 if( timed[timed_counter].good && *(timed[timed_counter].timer) )
 			 display_temporary_aux( col , &row , *(timed[timed_counter].timer) , timed[timed_counter].status );
-	}	
+	}
 
 	/*Let the player now if there are no temporary effects*/
     display_temporary_aux( col , &row , row==none_row , "None" );
@@ -2098,8 +2106,8 @@ static void display_nuisances(void)
 	int row = 5;
     int none_row = row+1;
     u32b b[3] = {0,0,0};
-    u32b tb[3];    
-	object_type *o_ptr;    
+    u32b tb[3];
+	object_type *o_ptr;
 	int timed_counter;
     
     /* Process equipment */
@@ -2121,19 +2129,19 @@ static void display_nuisances(void)
 	{
 		if( !timed[timed_counter].good && *(timed[timed_counter].timer) )
 		display_temporary_aux( col , &row , *(timed[timed_counter].timer) , timed[timed_counter].status );
-	}	
+	}
 
 	display_temporary_aux( col , &row , b[2] & TR3_NO_TELE ,           "No teleport." );
-    display_temporary_aux( col , &row , b[2] & TR3_NO_MAGIC ,          "No magic." );    
-    display_temporary_aux( col , &row , b[2] & TR3_TY_CURSE ,          "Evil curse." );     
-    display_temporary_aux( col , &row , b[2] & TR3_DRAIN_EXP ,         "Experience loss." );         
-    display_temporary_aux( col , &row , b[2] & TR3_AGGRAVATE ,         "Aggravation." );         
-    display_temporary_aux( col , &row , b[2] & TR3_CURSED ,            "Cursed equipment." );             
-    display_temporary_aux( col , &row , b[2] & TR3_HEAVY_CURSE ,       "Heavily cursed equipment." );              
-    display_temporary_aux( col , &row , b[2] & TR3_PERMA_CURSE ,       "Permanently cursed equipment." );               
-    display_temporary_aux( col , &row , b[2] & TR3_TELEPORT ,          "You teleport at random." );      
+    display_temporary_aux( col , &row , b[2] & TR3_NO_MAGIC ,          "No magic." );
+    display_temporary_aux( col , &row , b[2] & TR3_TY_CURSE ,          "Evil curse." );
+    display_temporary_aux( col , &row , b[2] & TR3_DRAIN_EXP ,         "Experience loss." );
+    display_temporary_aux( col , &row , b[2] & TR3_AGGRAVATE ,         "Aggravation." );
+    display_temporary_aux( col , &row , b[2] & TR3_CURSED ,            "Cursed equipment." );
+    display_temporary_aux( col , &row , b[2] & TR3_HEAVY_CURSE ,       "Heavily cursed equipment." );
+    display_temporary_aux( col , &row , b[2] & TR3_PERMA_CURSE ,       "Permanently cursed equipment." );
+    display_temporary_aux( col , &row , b[2] & TR3_TELEPORT ,          "You teleport at random." );
 	/*Let the player now if there are no nuisances*/
-    display_temporary_aux( col , &row , row==none_row , "None" );    
+    display_temporary_aux( col , &row , row==none_row , "None" );
 }
 
 
@@ -2143,9 +2151,9 @@ static void display_compact_stats()
 	
 	char buf[80];
 	int start_row = 1;
-	int start_col = 61;	
+	int start_col = 61;
 	int indent  = 5;
-	int indent2 = indent + 7; 
+	int indent2 = indent + 7;
 	bool injured;
 	int i;
 	
@@ -2167,7 +2175,7 @@ static void display_compact_stats()
 		if(injured)
 		{
 			/* Obtain the max stat (modified) */
-			cnv_stat(p_ptr->stat_top[i], buf);		
+			cnv_stat(p_ptr->stat_top[i], buf);
 			/* Display the max stat (modified) */
 			c_put_str(TERM_L_GREEN, buf, start_row + i, start_col+indent2 );
 		}
@@ -2180,7 +2188,7 @@ static void display_name_race_class()
 	char buf[80];
 	char realm_buff[20] = "\0";
 	int start_row = 1;
-	int start_col = 1;	
+	int start_col = 1;
 	int indent = 9;
 	sprintf(buf,"%s %s",sp_ptr->address,player_name);
 	
@@ -2217,7 +2225,7 @@ static void display_age_weight_social()
    put_str("Birthday",start_row,start_col);
    day_to_date(p_ptr->birthday,date_buff);
    c_put_str(TERM_L_BLUE,date_buff,start_row++, start_col + 14  );
-*/   
+*/
   /* Height, Weight, Social */
   prt_num("Age          ", (int)p_ptr->age, start_row++, start_col, TERM_L_BLUE);
   prt_num("Height       ", (int)p_ptr->ht,  start_row++, start_col, TERM_L_BLUE);
@@ -2279,7 +2287,7 @@ void display_player(int mode)
 		display_player_middle();
 		display_player_various();
 		for (i = 0; i < 4; i++)
-			put_str(history[i], i + 19, 5);      
+			put_str(history[i], i + 19, 5);
 	}
 }
 
@@ -2529,7 +2537,7 @@ errr file_character(cptr name, bool full)
 				fprintf(fff, "%c%s ",index_to_label(i), paren);
 				spoiler_print_analyze_art(fff, &inventory[i]);
 			}else{
-				fprintf(fff, "%c%s %s\n",index_to_label(i), paren, o_name);	
+				fprintf(fff, "%c%s %s\n",index_to_label(i), paren, o_name);
 			}
 		}
 		fprintf(fff, "\n\n");
@@ -2545,7 +2553,7 @@ errr file_character(cptr name, bool full)
 			fprintf(fff, "%c%s ",index_to_label(i), paren);
 			spoiler_print_analyze_art(fff, &inventory[i]);
 		}else{
-			fprintf(fff, "%c%s %s\n",index_to_label(i), paren, o_name);	
+			fprintf(fff, "%c%s %s\n",index_to_label(i), paren, o_name);
 		}
 	}
 	fprintf(fff, "\n\n");
@@ -2782,7 +2790,7 @@ static bool do_cmd_help_aux(cptr name, cptr what, int line)
 			for (uc_buf_ptr = uc_buf; *uc_buf_ptr != 0; uc_buf_ptr++)
 			{
 				uc_buf[uc_buf_ptr-uc_buf] = toupper(*uc_buf_ptr);
-			}		   
+			}
 
 			/* Hack -- keep searching */
 			if (find && !i && !strstr(uc_buf, find)) continue;
@@ -2865,7 +2873,7 @@ static bool do_cmd_help_aux(cptr name, cptr what, int line)
 
 			/* Make finder uppercase */
 			strcpy(uc_shower,shower);
-			for (cnt = 0; uc_shower[cnt] != 0; cnt++) 
+			for (cnt = 0; uc_shower[cnt] != 0; cnt++)
 			{
 				uc_shower[cnt] = toupper(uc_shower[cnt]);
 			}
@@ -2881,7 +2889,7 @@ static bool do_cmd_help_aux(cptr name, cptr what, int line)
 
 				/* Make finder uppercase */
 				strcpy(uc_finder,finder);
-				for (cnt = 0; uc_finder[cnt] != 0; cnt++) 
+				for (cnt = 0; uc_finder[cnt] != 0; cnt++)
 				{
 					uc_finder[cnt] = toupper(uc_finder[cnt]);
 				}
@@ -4051,7 +4059,7 @@ void show_highclass(int pclass,int psubclasscode)
 
 /*
 * Race Legends
-* -KMW- 
+* -KMW-
 */
 void race_score(int race_num)
 {
@@ -4101,7 +4109,7 @@ void race_score(int race_num)
 				class_info[pc].title, atoi(the_score.pts));
 			prt(out_val, (m + 7), 0);
 			m++;
-			lastlev = clev;  
+			lastlev = clev;
 		}
 		j++;
 	}
@@ -4354,11 +4362,11 @@ static errr predict_score(void)
 */
 static void kingly(void)
 {
-/*	
+/*
 	cptr	p;
 	char	tmp[160];
 	char    dummy[80];
-*/	
+*/
 	
 	char	buf[1024];
 
@@ -4981,7 +4989,7 @@ void html_screenshot(cptr name, int mode)
 		fprintf(fp, "<body style='color: #fff; background: #000;font-family:monospace;line-height: 100%%'><B>\n");
 		fprintf(fp, "<pre>\n");
 	}
-	else 
+	else
 	{
 		fprintf(fp, "[CODE][TT][BC=black][COLOR=white]\n");
 	}
@@ -5043,7 +5051,7 @@ void html_screenshot(cptr name, int mode)
 		fprintf(fp, "</body>\n");
 		fprintf(fp, "</html>\n");
 	}
-	else 
+	else
 	{
 		fprintf(fp, "[/COLOR][/BC][/TT][/CODE]\n");
 	}

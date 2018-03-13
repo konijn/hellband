@@ -11,14 +11,14 @@
  *
  *
  * James E. Wilson and Robert A. Koeneke released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
- */ 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
+ */
 
 #include "angband.h"
 
@@ -162,7 +162,7 @@ void do_cmd_change_name(void)
 		else if (c == 'h' || c == 'n' )
 		{
 			mode++;
-            /*Hack, because of how files are displayed, 
+            /*Hack, because of how files are displayed,
             I needed to show something straight after the corruptions,
             which is the first screen, so we jump after that to 2nd (0 base)*/
             if (mode == 4)
@@ -742,7 +742,7 @@ void do_cmd_options_aux(int page, cptr info)
 				sprintf(buf, "%-48s: %d gold (press $ to cycle)","Squelch treshold" , (int)sane_price );
 			else
 				sprintf(buf, "%-80s","");
-			c_prt(TERM_WHITE, buf, i + 2, 0);	
+			c_prt(TERM_WHITE, buf, i + 2, 0);
 		}
 		
 		/* Hilite current option */
@@ -819,24 +819,24 @@ static void do_cmd_options_squelcher_rules(void)
 		CH_SQUELCH_EXCELLENT,
 		CH_SQUELCH_GREAT,
 		CH_SQUELCH_ALL_ID,
-		CH_SQUELCH_TOWN_BOOKS,		
-		CH_SQUELCH_OPENED,		
-		CH_SQUELCH_ALL,				
+		CH_SQUELCH_TOWN_BOOKS,
+		CH_SQUELCH_OPENED,
+		CH_SQUELCH_ALL,
 		CH_SQUELCH_ARTIFACT,
 		0};
 	
 	byte squelch_possibilities[] = {
 		CH_SQUELCH_NO | CH_SQUELCH_GOOD | CH_SQUELCH_EXCELLENT | CH_SQUELCH_ARTIFACT,  /* Weapons */
 		CH_SQUELCH_NO | CH_SQUELCH_GOOD | CH_SQUELCH_EXCELLENT | CH_SQUELCH_ARTIFACT,  /* Armour  */
-		CH_SQUELCH_NO | CH_SQUELCH_GOOD | CH_SQUELCH_EXCELLENT | CH_SQUELCH_ALL,	   /* Ammo    */		
+		CH_SQUELCH_NO | CH_SQUELCH_GOOD | CH_SQUELCH_EXCELLENT | CH_SQUELCH_ALL,	   /* Ammo    */
 		CH_SQUELCH_NO | CH_SQUELCH_GREAT | CH_SQUELCH_ARTIFACT,  /* Jewelry */
 		CH_SQUELCH_NO | CH_SQUELCH_GREAT | CH_SQUELCH_ARTIFACT,  /* Lights */
 		CH_SQUELCH_NO | CH_SQUELCH_GREAT | CH_SQUELCH_ALL,  /* Wands */
-		CH_SQUELCH_NO | CH_SQUELCH_GREAT | CH_SQUELCH_ALL,  /* Staves */		
-		CH_SQUELCH_NO | CH_SQUELCH_GREAT | CH_SQUELCH_ALL,  /* Rods */		
+		CH_SQUELCH_NO | CH_SQUELCH_GREAT | CH_SQUELCH_ALL,  /* Staves */
+		CH_SQUELCH_NO | CH_SQUELCH_GREAT | CH_SQUELCH_ALL,  /* Rods */
 		CH_SQUELCH_NO | CH_SQUELCH_GREAT | CH_SQUELCH_ALL,  /* Scrolls */
 		CH_SQUELCH_NO | CH_SQUELCH_TOWN_BOOKS | CH_SQUELCH_ALL,  /* Books */
-		CH_SQUELCH_NO | CH_SQUELCH_ALL,  /* Misc */		
+		CH_SQUELCH_NO | CH_SQUELCH_ALL,  /* Misc */
 		CH_SQUELCH_NO | CH_SQUELCH_OPENED | CH_SQUELCH_ALL,  /* Chests */
 		0,
 	};
@@ -848,13 +848,13 @@ static void do_cmd_options_squelcher_rules(void)
 		"Lights",
 		"Wands",
 		"Staves",
-		"Rods",		
+		"Rods",
 		"Scrolls",
 		"Books",
-		"Misc",		
-		"Chests",		
+		"Misc",
+		"Chests",
 		NULL,
-	};	
+	};
 	
 	char	ch;
 	
@@ -907,7 +907,7 @@ static void do_cmd_options_squelcher_rules(void)
 				k = (n + k - 1) % n;
 				break;
 			}
-			case '+':				
+			case '+':
 			case '\n':
 			case '\r':
 			case '2':
@@ -922,7 +922,7 @@ static void do_cmd_options_squelcher_rules(void)
 			case 'n':
 			case 'N':
 			case '4':
-			case ' ':	
+			case ' ':
 			{
 				/*
 				 * Yeah, see this piece of code right here, checks what is the next option, since we
@@ -938,7 +938,7 @@ static void do_cmd_options_squelcher_rules(void)
 					{;}
 				}
 				else
-				 squelch_options[k] = SQUELCH_NO;	
+				 squelch_options[k] = SQUELCH_NO;
 				break;
 			}
 				
@@ -955,7 +955,7 @@ static void do_cmd_options_squelcher_rules(void)
 
 static void do_cmd_options_squelcher_sanity(void)
 {
-	do_cmd_options_aux(9, "Squelch Inscription Options");	
+	do_cmd_options_aux(9, "Squelch Inscription Options");
 }
 
 
@@ -985,7 +985,7 @@ static void do_cmd_options_squelcher(void)
 9			3 choices = 2bits Books ( all books, dungeon books, no books )							4
 10			2 choices = 1bits Spikes , Food, Flasks ( all , none )									5
 11			2 choices = 1bits Chests ( all , squelchh when opened , none )							6
-12	 
+12
 13	  Sanity Checks ( 2 bytes )
 14		- 1 Dont kill storebought items
 15		- 2 Dont kill items inscribed with !k
@@ -996,8 +996,8 @@ static void do_cmd_options_squelcher(void)
 19		- 6 Dont kill items with stat bonuses
 20		- 7 Inform player when a sanity check is used
 21		- 8 Dont kill books of the realm I use
-22		- u32b Dont kill items more expensive then	 
-23	 
+22		- u32b Dont kill items more expensive then
+23
 24	 Inscription Rules ( 1 byte )
 25		- Apply {!k} to storebought items ( off )
 26		- When discovering a new consumable with 'id', offer to apply {!k}
@@ -1508,8 +1508,10 @@ static errr macro_dump(cptr fname)
 	fff = my_fopen(buf, "a");
 
 	/* Failure */
-	if (!fff) return (-1);
-
+	if (!fff){
+	  msg_print(strerror(errno));
+    return (-1);
+	}
 
 	/* Skip space */
 	fprintf(fff, "\n\n");
@@ -2941,7 +2943,7 @@ void restore_screen(void)
 	Term_load();
 	
 	/* Leave "icky" mode */
-	character_icky = FALSE;	
+	character_icky = FALSE;
 }
 
 
@@ -3017,7 +3019,7 @@ void do_cmd_load_screen(cptr path, cptr file)
 			    a = TERM_WHITE;
 			}
 			else
-			{	
+			{
 			
 			    /* Look up the attr */
 			    for (i = 0; i < 16; i++)
@@ -3182,7 +3184,7 @@ static void do_cmd_save_screen_html(int mode)
 	/* Ask for a file */
 	if (!get_string("File: ", tmp_val, sizeof(tmp_val))) return;
 
-	/* Dump the screen with raw character attributes 
+	/* Dump the screen with raw character attributes
 	   Yes, there is probably a hell for people who repeatly call control R ;]
 	*/
 	if( use_graphics ){
@@ -3273,7 +3275,7 @@ void do_cmd_save_screen_old(void)
 		FILE *fff;
 
 		char buf[1024];
-		char tmp[1024];	
+		char tmp[1024];
 
 		/* Build the filename */
 		/* Holders for time information */

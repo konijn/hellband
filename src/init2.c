@@ -158,6 +158,10 @@ void init_file_paths(char *path , int attempt)
 	/* Build a path name */
 	strcpy(tail, "file");
 	ANGBAND_DIR_FILE = string_make(path);
+
+	/* Build a path name */
+	strcpy(tail, "pref");
+	ANGBAND_DIR_LIB_PREF = string_make(path);
 	
 	/* Build a path name */
 	strcpy(tail, "help");
@@ -220,7 +224,7 @@ void init_file_paths(char *path , int attempt)
 	path_build(buf, sizeof(buf), ANGBAND_DIR_USER, "pref");
 
 	/* Build a relative path name */
-	ANGBAND_DIR_PREF = string_make(path);
+	ANGBAND_DIR_PREF = string_make(buf);
 
 #else /* USE_PRIVATE_PATHS */
 
