@@ -11,18 +11,18 @@
  *
  *
  * James E. Wilson and Robert A. Koeneke released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * Ben Harrison released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
- */ 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
+ */
 
 #include "angband.h"
 
@@ -165,9 +165,6 @@ void init_file_paths(char *path , int attempt)
 	strcpy(tail, "info");
 	ANGBAND_DIR_INFO = string_make(path);
 	
-	/* Build a path name */
-	strcpy(tail, "pref");
-	ANGBAND_DIR_PREF = string_make(path);
 	
 #ifdef PRIVATE_USER_PATH
 	
@@ -215,10 +212,20 @@ void init_file_paths(char *path , int attempt)
 	path_build(buf, sizeof(buf), ANGBAND_DIR_USER, "dump");
 	
 	/* Build a relative path name */
-	ANGBAND_DIR_DUMP = string_make(buf);	
-	
+	ANGBAND_DIR_DUMP = string_make(buf);
+
+	/* Build the path to the user specific sub-directory */
+	path_build(buf, sizeof(buf), ANGBAND_DIR_USER, "pref");
+
+	/* Build a relative path name */
+	ANGBAND_DIR_PREF = string_make(path);
+
 #else /* USE_PRIVATE_PATHS */
-	
+
+	/* Build a path name */
+	strcpy(tail, "pref");
+	ANGBAND_DIR_PREF = string_make(path);
+
 	/* Build a path name */
 	strcpy(tail, "apex");
 	ANGBAND_DIR_APEX = string_make(path);
@@ -301,7 +308,7 @@ void init_file_paths(char *path , int attempt)
 		if( attempt == 1 )
 		{
 			/* This is the first time we are trying, lets see if we can h4x0r this */
-			char path[1024];			
+			char path[1024];
 			strcpy( path, argv0 );
 			path_separator = strrchr( path , '/' );
 
@@ -324,7 +331,7 @@ void init_file_paths(char *path , int attempt)
 		else
 		{
 			/* Message */
-			sprintf(why, "Cannot access the '%s' file!", buf);	
+			sprintf(why, "Cannot access the '%s' file!", buf);
 			/* Crash and burn */
 			init_angband_aux(why);
 		}
@@ -1900,7 +1907,7 @@ static errr init_v_info(void)
 
 	/* Fake the size of "v_name" and "v_text" */
 	fake_name_size = 70 * 1024L;
-	fake_text_size = 90 * 1024L; 
+	fake_text_size = 90 * 1024L;
 
 	/* Allocate the "k_info" array */
 	C_MAKE(v_info, v_head->info_num, vault_type);
@@ -1922,7 +1929,7 @@ static errr init_v_info(void)
 	if (!fp) quit("Cannot open 'v_info.txt' file.");
 
 	/* Parse the file */
-	err = init_v_info_txt(fp, buf); 
+	err = init_v_info_txt(fp, buf);
 
 	/* Close it */
 	my_fclose(fp);
@@ -2684,18 +2691,18 @@ static byte store_table[MAX_STORES][STORE_CHOICES][2] =
 			},
 	{
     /* 12 = Mage guild */
-    { TV_SORCERY_BOOK   , 2 }  , { TV_SORCERY_BOOK   , 2 }  , { TV_SORCERY_BOOK   , 3 }  , { TV_SORCERY_BOOK   , 3 }  , 
-    { TV_NATURE_BOOK    , 2 }  , { TV_NATURE_BOOK    , 2 }  , { TV_NATURE_BOOK    , 3 }  , { TV_NATURE_BOOK    , 3 }  , 
-    { TV_CHAOS_BOOK     , 2 }  , { TV_CHAOS_BOOK     , 2 }  , { TV_CHAOS_BOOK     , 3 }  , { TV_CHAOS_BOOK     , 3 }  , 
-    { TV_DEATH_BOOK     , 2 }  , { TV_DEATH_BOOK     , 2 }  , { TV_DEATH_BOOK     , 3 }  , { TV_DEATH_BOOK     , 3 }  , 
-    { TV_TAROT_BOOK     , 2 }  , { TV_TAROT_BOOK     , 2 }  , { TV_TAROT_BOOK     , 3 }  , { TV_TAROT_BOOK     , 3 }  , 
-    { TV_CHARMS_BOOK    , 2 }  , { TV_CHARMS_BOOK    , 2 }  , { TV_CHARMS_BOOK    , 3 }  , { TV_CHARMS_BOOK    , 3 }  , 
-    { TV_CHARMS_BOOK    , 2 }  , { TV_CHARMS_BOOK    , 2 }  , { TV_CHARMS_BOOK    , 3 }  , { TV_CHARMS_BOOK    , 3 }  , 
-    { TV_MIRACLES_BOOK  , 2 }  , { TV_MIRACLES_BOOK  , 2 }  , { TV_MIRACLES_BOOK  , 3 }  , { TV_MIRACLES_BOOK  , 3 }  , 
-    { TV_DEMONIC_BOOK   , 2 }  , { TV_DEMONIC_BOOK   , 2 }  , { TV_DEMONIC_BOOK   , 3 }  , { TV_DEMONIC_BOOK   , 3 }  , 
-    { TV_DEATH_BOOK     , 2 }  , { TV_DEATH_BOOK     , 2 }  , { TV_DEATH_BOOK     , 3 }  , { TV_DEATH_BOOK     , 3 }  , 
-    { TV_SOMATIC_BOOK   , 2 }  , { TV_SOMATIC_BOOK   , 2 }  , { TV_SOMATIC_BOOK   , 3 }  , { TV_SOMATIC_BOOK   , 3 }  , 
-    { TV_NATURE_BOOK    , 2 }  , { TV_NATURE_BOOK    , 2 }  , { TV_NATURE_BOOK    , 3 }  , { TV_NATURE_BOOK    , 3 }  , 
+    { TV_SORCERY_BOOK   , 2 }  , { TV_SORCERY_BOOK   , 2 }  , { TV_SORCERY_BOOK   , 3 }  , { TV_SORCERY_BOOK   , 3 }  ,
+    { TV_NATURE_BOOK    , 2 }  , { TV_NATURE_BOOK    , 2 }  , { TV_NATURE_BOOK    , 3 }  , { TV_NATURE_BOOK    , 3 }  ,
+    { TV_CHAOS_BOOK     , 2 }  , { TV_CHAOS_BOOK     , 2 }  , { TV_CHAOS_BOOK     , 3 }  , { TV_CHAOS_BOOK     , 3 }  ,
+    { TV_DEATH_BOOK     , 2 }  , { TV_DEATH_BOOK     , 2 }  , { TV_DEATH_BOOK     , 3 }  , { TV_DEATH_BOOK     , 3 }  ,
+    { TV_TAROT_BOOK     , 2 }  , { TV_TAROT_BOOK     , 2 }  , { TV_TAROT_BOOK     , 3 }  , { TV_TAROT_BOOK     , 3 }  ,
+    { TV_CHARMS_BOOK    , 2 }  , { TV_CHARMS_BOOK    , 2 }  , { TV_CHARMS_BOOK    , 3 }  , { TV_CHARMS_BOOK    , 3 }  ,
+    { TV_CHARMS_BOOK    , 2 }  , { TV_CHARMS_BOOK    , 2 }  , { TV_CHARMS_BOOK    , 3 }  , { TV_CHARMS_BOOK    , 3 }  ,
+    { TV_MIRACLES_BOOK  , 2 }  , { TV_MIRACLES_BOOK  , 2 }  , { TV_MIRACLES_BOOK  , 3 }  , { TV_MIRACLES_BOOK  , 3 }  ,
+    { TV_DEMONIC_BOOK   , 2 }  , { TV_DEMONIC_BOOK   , 2 }  , { TV_DEMONIC_BOOK   , 3 }  , { TV_DEMONIC_BOOK   , 3 }  ,
+    { TV_DEATH_BOOK     , 2 }  , { TV_DEATH_BOOK     , 2 }  , { TV_DEATH_BOOK     , 3 }  , { TV_DEATH_BOOK     , 3 }  ,
+    { TV_SOMATIC_BOOK   , 2 }  , { TV_SOMATIC_BOOK   , 2 }  , { TV_SOMATIC_BOOK   , 3 }  , { TV_SOMATIC_BOOK   , 3 }  ,
+    { TV_NATURE_BOOK    , 2 }  , { TV_NATURE_BOOK    , 2 }  , { TV_NATURE_BOOK    , 3 }  , { TV_NATURE_BOOK    , 3 }  ,
 	},
 };
 
@@ -3157,7 +3164,7 @@ void init_angband()
 
     /* Hack, now we cannot changes really news_color.txt, not drastically anyway */
     Term_putstr(61, 5, -1, TERM_RED, VERSION);
-    Term_fresh();    
+    Term_fresh();
 
 	/*** Verify (or create) the "high score" file ***/
 

@@ -165,11 +165,12 @@ endif
 
 
 ##
-## Options that were copied from Steamband's Makefile.std
+## Variation -- compfile for Ternux
 ##
 CFLAGS = -I~/../usr/include -Wall -g \
          -O2 -pedantic\
          -D"USE_GCU" -D"USE_NCURSES" -D"linux" -D"USE_CLANG" -std=c99
+         -DPRIVATE_USER_PATH=\"~/Library/hellband\" -DUSE_PRIVATE_PATHS
 LIBS = -L~/../usr/lib -lncurses
 
 
