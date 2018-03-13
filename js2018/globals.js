@@ -49,6 +49,7 @@ define(['log'],function(log){
     TERM_L_BLUE:  14,      /* 'B' */       /* 0,4,4 */
     TERM_L_UMBER: 15,      /* 'U' */       /* 3,2,1 */
     VERSION: '0.8.7',
-    f_info: []
+    f_info: [],
+    k_info: []
   };
 });

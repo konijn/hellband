@@ -93,35 +93,35 @@ define(['log','os','cmd4','globals','term'],function(log, os, cmd4, g, term){
 
     /* Initialize feature info */
     term.note("[Initializing arrays... (features)]");
-    if (!init_f_info()) quit("Cannot initialize features");
+    if (!init_f_info()) os.quit("Cannot initialize features");
 
     /* Initialize object info */
     term.note("[Initializing arrays... (objects)]");
-    if (init_k_info()) quit("Cannot initialize objects");
+    if (init_k_info()) os.quit("Cannot initialize objects");
 
     /* Initialize artefact info */
     term.note("[Initializing arrays... (artefacts)]");
-    if (init_a_info()) quit("Cannot initialize artefacts");
+    if (init_a_info()) os.quit("Cannot initialize artefacts");
 
     /* Initialize ego-item info */
     term.note("[Initializing arrays... (ego-items)]");
-    if (init_e_info()) quit("Cannot initialize ego-items");
+    if (init_e_info()) os.quit("Cannot initialize ego-items");
 
     /* Initialize monster info */
     term.note("[Initializing arrays... (monsters)]");
-    if (init_r_info()) quit("Cannot initialize monsters");
+    if (init_r_info()) os.quit("Cannot initialize monsters");
 
     /* Initialize feature info */
     term.note("[Initializing arrays... (vaults)]");
-    if (init_v_info()) quit("Cannot initialize vaults");
+    if (init_v_info()) os.quit("Cannot initialize vaults");
 
     /* Initialize some other arrays */
     term.note("[Initializing arrays... (other)]");
-    if (init_other()) quit("Cannot initialize other stuff");
+    if (init_other()) os.quit("Cannot initialize other stuff");
 
     /* Initialize some other arrays */
     term.note("[Initializing arrays... (alloc)]");
-    if (init_alloc()) quit("Cannot initialize alloc stuff");
+    if (init_alloc()) os.quit("Cannot initialize alloc stuff");
 
 
     /*** Load default user pref files ***/
