@@ -9,13 +9,13 @@
  * are included in all such copies.
  *
  * James E. Wilson and Robert A. Koeneke and Ben Harrison have released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
  */
 
 #include "angband.h"
@@ -268,7 +268,7 @@ static void instantiate_tmp_file(void)
 			memmove(tmp_file,tmp_file+1,L_tmpnam-1);
 			tmp_file[L_tmpnam-1] = '\0';
 			}
-#endif		
+#endif
 		}
 }
 
@@ -737,7 +737,7 @@ errr fd_seek(int fd, huge n)
 	if (p < 0) return (1);
 
 	/* Failure */
-	if (p != (long)n) return (1); 
+	if (p != (long)n) return (1);
 
 	/* Success */
 	return (0);
@@ -2125,7 +2125,7 @@ void message_add(cptr str)
 		}
 
 		/* Limit the multiplier to 1000 */
-		if (buf && streq(buf, str) && (j < 1000))
+		if (buf[0] != '\0' && streq(buf, str) && (j < 1000))
 		{
 			j++;
 
@@ -2468,8 +2468,8 @@ void msg_note(cptr msg)
 	msg_print(NULL);
 }
 
-/*  
- * Do 1 message print and beep. I find this less hackisch than 
+/*
+ * Do 1 message print and beep. I find this less hackisch than
  * overwriting the standardish 'bell()' function
  */
 void msg_bell(cptr msg)
@@ -2955,7 +2955,7 @@ bool get_com_rep(cptr prompt, char *command)
 
 	repeat_push_char(*command);
 	
-#endif /* ALLOW_REPEAT -- TNB */	
+#endif /* ALLOW_REPEAT -- TNB */
 	
 	/* Success */
 	return (TRUE);
@@ -3606,7 +3606,7 @@ char menu_key_help(void)
 			if (!menu_info[menu][i].cmd) break;
 			menu_name = menu_info[menu][i].name;
 			/* In the first menu we dont show shortcuts, it would be confusing */
-			/* This does not prevent you from creating menu_names with shortcuts in them */	
+			/* This does not prevent you from creating menu_names with shortcuts in them */
 			/* Like 'Documentation (?)' */
 			/*	On the 31 deal, because control character are anded with 1F , we basically only keep
 				the control character ( all characters less than 32 ), 65 -> 1 , so in order to restore
@@ -3617,7 +3617,7 @@ char menu_key_help(void)
 				else
 					put_str( format("%s (^%c)", menu_name, menu_info[menu][i].cmd + 64 ), basey + 1 + i / 2, basex + 4 + (i % 2) * 24);
 			else
-				put_str( menu_name, basey + 1 + i / 2, basex + 4 + (i % 2) * 24); 
+				put_str( menu_name, basey + 1 + i / 2, basex + 4 + (i % 2) * 24);
 			}
 
 			/* Remember how many real entries there are , is current spot odd and which row are we on ?*/
@@ -3673,7 +3673,7 @@ char menu_key_help(void)
 		{
 			if (odd)
 				cur_num = (cur_num + 2) % (max_num + (cur_col?-1:+1) );
-			else 
+			else
 				cur_num = (cur_num + 2) % max_num;
 		}
 		/* Are we going up, note support for roguelike key settings*/
@@ -3736,7 +3736,7 @@ char menu_key_help(void)
 /**BEGIN**/
 
 /* script to be analyzed */
-char *script; 
+char *script;
 /*Current token*/
 char token[SCRIPT_MAX_LENGTH];
 char peek_token[SCRIPT_MAX_LENGTH];
@@ -3778,7 +3778,7 @@ double find_var(char *s)
 	if( prefix(s , "PLEV" ) ) return (double)p_ptr->lev;
 	if( prefix(s , "CLEV" ) ) return (double)p_ptr->lev;
 	if( prefix(s , "ORB" ) )  return (double)(p_ptr->lev / ((p_ptr->pclass == CLASS_PRIEST || p_ptr->pclass == CLASS_HIGH_MAGE || p_ptr->pclass == CLASS_BLOOD_MAGE ) ? 2 : 4));
-	if( prefix(s , "DLEV" ) ) return (double)dun_level; 
+	if( prefix(s , "DLEV" ) ) return (double)dun_level;
 	if( prefix(s , "CHP" ) )  return (double)p_ptr->chp;
 	if( prefix(s , "MHP" ) )  return (double)p_ptr->mhp;
 	if( prefix(s , "CSP" ) )  return (double)p_ptr->csp;
@@ -3820,14 +3820,14 @@ void get_token(void)
 		token_type = DELIMITER;
 		*cur_token++ = *script++;
 	}
-	else if(isalpha(*script)) 
+	else if(isalpha(*script))
 	{
-		token_type = VARIABLE;		
+		token_type = VARIABLE;
 		while(!isdelim(*script)) *cur_token++ = *script++;
 	}
-	else if(isdigit(*script)) 
+	else if(isdigit(*script))
 	{
-		token_type = NUMBER;		
+		token_type = NUMBER;
 		while(!isdelim(*script)) *cur_token++ = *script++;
 	}
 	/*Properly delimit token*/
@@ -3866,7 +3866,7 @@ void get_peek(void)
 /* Process a parenthesized expression. */
 void eval_subexpression(double *out)
 {
-	if((*token == '(')) {
+	if(*token == '(') {
 		get_token();
 		eval_plusminus(out);
 		if(*token != ')')
@@ -3971,9 +3971,9 @@ void eval_assignment(double *out)
 		{
 			script_error(5);
 		}
-		else 
+		else
 		{	/*Find out what the new value will be*/
-			get_token(); 
+			get_token();
 			eval_plusminus(out);
 			/*vars[slot] = *out;*/
 		}

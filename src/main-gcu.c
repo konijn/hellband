@@ -11,18 +11,18 @@
  *
  *
  * James E. Wilson and Robert A. Koeneke released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * Ben Harrison released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
- */ 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
+ */
 
 /*
  * To use this file, you must define "USE_GCU" in the Makefile.
@@ -667,7 +667,7 @@ static errr Term_xtra_gcu_event(int v)
 
 static int scale_color(int i, int j, int scale)
 {
-    return (angband_color_table[i][j] * (scale - 1) + 127) / 255;
+    return (angband_colour_table[i][j] * (scale - 1) + 127) / 255;
 }
 
 static int create_color(int i, int scale)
