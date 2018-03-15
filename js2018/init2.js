@@ -627,7 +627,7 @@ define(['log','os','cmd4','globals','term'],function(log, os, cmd4, g, term){
       /* Process 'N' for "New/Number/Name" */
       if(line.startsWith('N')){
         current_kind = parts[1];
-        k_info[current_kind] = {name: parts[2], chance: []};
+        k_info[current_kind] = {name: parts[2], chance: [], flags1: 0, flags2: 0, flags3: 0};
       }
       /* Process 'D' for "Description" */
       if(line.startsWith('D')){
@@ -676,9 +676,29 @@ define(['log','os','cmd4','globals','term'],function(log, os, cmd4, g, term){
         k_info[current_kind].f_char = parts[1];
         k_info[current_kind].f_attr = term.colour_char_to_attr(parts[2].trim());
       }
+      if(line.startsWith('F')){
+        /* XXX XXX Chained Shenanigans */
+        let flags = parts.chainedShift().map(s => s.trim());
+        flags.each(flag => setFlags(k_info[current_kind], flag, [k_info_flags1,k_info_flags2,k_info_flags3]));
+      }
     }
+    console.log(k_info);
     return true;
   }
+
+  function setFlags(o, flag, flag_sets){
+    /* XXX XXX Chained & Ternary Shenanigans */
+    let i, set, idx;
+    for(i = 0; i < flag_sets.length; i++){
+      set = flag_sets[i];
+      idx = set.indexOf(flag);
+      if(!!~idx){
+        o['flags' + (i+1)] += (1<<idx);
+      }
+    }
+  }
+
+
 
   /*
   * Initialize the "f_info" array, by parsing an ascii "template" file
