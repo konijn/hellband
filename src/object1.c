@@ -1609,7 +1609,8 @@ legacy_break:
 		/* May be "disarmed" */
 		else if (o_ptr->pval < 0)
 		{
-			t = object_desc_str(t, chest_traps[o_ptr->pval]? " (disarmed)" : " (unlocked)" );
+			/* To prevent out of bounds array access, we binary AND with the size of chest_traps */
+			t = object_desc_str(t, chest_traps[o_ptr->pval & 64]? " (disarmed)" : " (unlocked)" );
 		}
 		/* Describe the traps, if any,  */
 		else /* o_ptr->tval > 0 */
@@ -5533,7 +5534,6 @@ void consider_squelch( object_type *o_ptr )
 /* Add a flags group */
 void gain_ego_realm(object_type *o_ptr, bool silent)
 {
-	int grp = 0;
 	int tries = 1000;
 	int i;
 	int points = 0;
@@ -5614,8 +5614,9 @@ void gain_ego_realm_flag(object_type *o_ptr, bool silent)
 		odds_count = 0;
 
 		if(k==1){ f = realm_flags[realm].flags1; of = &(o_ptr->art_flags1); }
-		if(k==2){ f = realm_flags[realm].flags2; of = &(o_ptr->art_flags2); }
-		if(k==3){ f = realm_flags[realm].flags3; of = &(o_ptr->art_flags3); }
+		else if(k==2){ f = realm_flags[realm].flags2; of = &(o_ptr->art_flags2); }
+		else if(k==3){ f = realm_flags[realm].flags3; of = &(o_ptr->art_flags3); }
+		else { msg_format("randint(3) returned %i.", k); return; }
 
 		/* Loop over all 32 bits */
 		for( i = 0 ; i < 32 ; i++ )
@@ -5716,11 +5717,6 @@ void object_gain_level(object_type *o_ptr)
  */
 void check_experience_obj(object_type *o_ptr)
 {
-	int i;
-
-	/* Note current level */
-	i = o_ptr->elevel;
-
 	/* Hack -- lower limit */
 	if (o_ptr->exp < 0) o_ptr->exp = 0;
 
