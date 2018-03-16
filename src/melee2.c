@@ -1108,6 +1108,21 @@ static void monst_bolt_monst(int m_idx, int y, int x, int typ, int dam_hp)
 	(void)project(m_idx, 0, y, x, dam_hp, typ, flg);
 }
 
+/*
+* Player notices a monster cast a spell at someone
+* The message depends on whether the monster is seen and whether the player is blind
+*/
+static void notice_spell(bool see_either, bool player_blind, cptr heard_msg, cptr blind_msg, cptr seen_msg, char *m_name, char *t_name)
+{
+	disturb(1, 0);
+	if (!see_either){
+		msg_print(heard_msg);
+	} else if (player_blind){
+		msg_format(blind_msg, m_name);
+	} else {
+		msg_format(seen_msg, m_name, t_name);
+	}
+}
 
 /*
 * Monster tries to 'cast a spell' (or breath, etc)
@@ -1290,97 +1305,60 @@ static bool monst_spell_monst(int m_idx)
 
 		   /* RF4_ARROW_1 */
 	   case 96+4:
-		   {
-			   disturb(1, 0);
-			   if (!see_either) msg_print("You hear a strange noise.");
-			   else if (blind) msg_format("%^s makes a strange noise.", m_name);
-			   else msg_format("%^s fires an arrow at %s.", m_name, t_name);
-			   monst_bolt_monst(m_idx, y, x, GF_ARROW, damroll(1, 6));
-			   break;
-		   }
-
-		   /* RF4_ARROW_2 */
-	   case 96+5:
-		   {
-			   disturb(1, 0);
-			   if (!see_either) msg_print("You hear a strange noise.");
-			   else if (blind) msg_format("%^s makes a strange noise.", m_name);
-			   else msg_format("%^s fires an arrow at %s.", m_name, t_name);
-			   monst_bolt_monst(m_idx, y, x, GF_ARROW, damroll(3, 6));
-			   break;
-		   }
-
-		   /* RF4_ARROW_3 */
-	   case 96+6:
-		   {
-			   disturb(1, 0);
-
-			   if (!see_either) msg_print("You hear a strange noise.");
-			   else if (blind) msg_format("%^s makes a strange noise.", m_name);
-			   else msg_format("%^s fires a missile at %s.", m_name, t_name);
-			   monst_bolt_monst(m_idx, y, x, GF_ARROW, damroll(5, 6));
-			   break;
-		   }
-
-		   /* RF4_ARROW_4 */
+		{
+			notice_spell(see_either, blind, "You hear a strange noise.", "%^s makes a strange noise.", "%^s fires an arrow at %s.", m_name, t_name);
+			monst_bolt_monst(m_idx, y, x, GF_ARROW, damroll(1, 6));
+			break;
+		}
+		/* RF4_ARROW_2 */
+		case 96+5:
+		{
+			notice_spell(see_either, blind, "You hear a strange noise.", "%^s makes a strange noise.", "%^s fires an arrow at %s.", m_name, t_name);
+			monst_bolt_monst(m_idx, y, x, GF_ARROW, damroll(3, 6));
+			break;
+		}
+		/* RF4_ARROW_3 */
+		case 96+6:
+		{
+			notice_spell(see_either, blind, "You hear a strange noise.", "%^s makes a strange noise.", "%^s fires a missile at %s.", m_name, t_name);
+			monst_bolt_monst(m_idx, y, x, GF_ARROW, damroll(5, 6));
+			break;
+		}
+		/* RF4_ARROW_4 */
 	   case 96+7:
-		   {
-			   if (!see_either) msg_print("You hear a strange noise.");
-			   else disturb(1, 0);
-			   if (blind) msg_format("%^s makes a strange noise.", m_name);
-			   else msg_format("%^s fires a missile at %s.", m_name, t_name);
-			   monst_bolt_monst(m_idx, y, x, GF_ARROW, damroll(7, 6));
-			   break;
-		   }
-
-		   /* RF4_BR_ACID */
+		{
+			notice_spell(see_either, blind, "You hear a strange noise.", "%^s makes a strange noise.", "%^s fires a missile at %s.", m_name, t_name);
+			monst_bolt_monst(m_idx, y, x, GF_ARROW, damroll(7, 6));
+			break;
+		}
+		/* RF4_BR_ACID */
 	   case 96+8:
-		   {
-			   disturb(1, 0);
-			   if (!see_either) msg_print("You hear breathing noise.");
-			   else if (blind) msg_format("%^s breathes.", m_name);
-			   else msg_format("%^s breathes acid at %s.", m_name, t_name);
-			   monst_breath_monst(m_idx, y, x, GF_ACID,
-				   ((m_ptr->hp / 3) > 1600 ? 1600 : (m_ptr->hp / 3)),0);
-			   break;
-		   }
-
-		   /* RF4_BR_ELEC */
-	   case 96+9:
-		   {
-			   disturb(1, 0);
-			   if (!see_either) msg_print("You hear breathing noise.");
-			   else if (blind) msg_format("%^s breathes.", m_name);
-			   else msg_format("%^s breathes lightning at %s.", m_name, t_name);
-			   monst_breath_monst(m_idx, y, x, GF_ELEC,
-				   ((m_ptr->hp / 3) > 1600 ? 1600 : (m_ptr->hp / 3)),0);
-			   break;
-		   }
-
-		   /* RF4_BR_FIRE */
-	   case 96+10:
-		   {
-			   disturb(1, 0);
-			   if (!see_either) msg_print("You hear breathing noise.");
-			   else if (blind) msg_format("%^s breathes.", m_name);
-			   else msg_format("%^s breathes fire at %s.", m_name, t_name);
-			   monst_breath_monst(m_idx, y, x, GF_FIRE,
-				   ((m_ptr->hp / 3) > 1600 ? 1600 : (m_ptr->hp / 3)),0);
-			   break;
-		   }
-
-		   /* RF4_BR_COLD */
-	   case 96+11:
-		   {
-			   disturb(1, 0);
-			   if (!see_either) msg_print("You hear breathing noise.");
-			   else if (blind) msg_format("%^s breathes.", m_name);
-			   else msg_format("%^s breathes frost at %s.", m_name, t_name);
-			   monst_breath_monst(m_idx, y, x, GF_COLD,
-				   ((m_ptr->hp / 3) > 1600 ? 1600 : (m_ptr->hp / 3)),0);
-			   break;
-		   }
-
+		{
+			notice_spell(see_either, blind, "You hear a breathing noise.", "%^s breathes.", "%^s breathes acid at %s.", m_name, t_name);
+			monst_breath_monst(m_idx, y, x, GF_ACID, ((m_ptr->hp / 3) > 1600 ? 1600 : (m_ptr->hp / 3)), 0);
+			break;
+		}
+		/* RF4_BR_ELEC */
+		case 96+9:
+		{
+			notice_spell(see_either, blind, "You hear a breathing noise.", "%^s breathes.", "%^s breathes lightning at %s.", m_name, t_name);
+			monst_breath_monst(m_idx, y, x, GF_ELEC, ((m_ptr->hp / 3) > 1600 ? 1600 : (m_ptr->hp / 3)), 0);
+			break;
+		}
+		/* RF4_BR_FIRE */
+		case 96+10:
+		{
+			notice_spell(see_either, blind, "You hear a breathing noise.", "%^s breathes.", "%^s breathes fire at %s.", m_name, t_name);
+			monst_breath_monst(m_idx, y, x, GF_FIRE, ((m_ptr->hp / 3) > 1600 ? 1600 : (m_ptr->hp / 3)), 0);
+			break;
+		}
+		/* RF4_BR_COLD */
+		case 96+11:
+		{
+			notice_spell(see_either, blind, "You hear a breathing noise.", "%^s breathes.", "%^s breathes frost at %s.", m_name, t_name);
+			monst_breath_monst(m_idx, y, x, GF_COLD, ((m_ptr->hp / 3) > 1600 ? 1600 : (m_ptr->hp / 3)), 0);
+			break;
+		}
 		   /* RF4_BR_POIS */
 	   case 96+12:
 		   {
@@ -1620,8 +1598,6 @@ static bool monst_spell_monst(int m_idx)
 				   ((m_ptr->hp / 3) > 300 ? 300 : (m_ptr->hp / 3)),0);
 			   break;
 		   }
-
-
 
 		   /* RF5_BA_ACID */
 	   case 128+0:
