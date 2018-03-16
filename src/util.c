@@ -249,48 +249,6 @@ errr path_parse(char *buf, size_t max, cptr file)
 #endif /* SET_UID */
 
 
-/*
- * Kenneth 'Bessarion' Boyd: next two from Zaiband; relicensed per Hellband license
- */
-
-static char tmp_file[L_tmpnam] = "";
-
-static void instantiate_tmp_file(void)
-{
-	/* instantiate tmp_file buffer, if it has not already been initialized */
-	if (!tmp_file[0])
-		{
-		tmpnam(tmp_file);
-#ifdef WINDOWS
-		/* defeat Vista's breakage of tmpnam/tmpfile for non-administrators */
-		if ('\\'==tmp_file[0])
-			{
-			memmove(tmp_file,tmp_file+1,L_tmpnam-1);
-			tmp_file[L_tmpnam-1] = '\0';
-			}
-#endif
-		}
-}
-
-
-/*
-* Hack -- acquire a "temporary" file name if possible
-*
-* This filename is always in "system-specific" form.
-*/
-errr path_temp(char *buf, int max)
-{
-	instantiate_tmp_file();
-
-	/* Oops */
-	if (!*tmp_file) return (-1);
-
-	/* Format to length */
-	strnfmt(buf, max, "%s", tmp_file);
-
-	/* Success */
-	return (0);
-}
 
 
 /*
@@ -3065,10 +3023,9 @@ s16b get_quantity(cptr prompt, int max,bool allbydefault)
 */
 void pause_line(int row)
 {
-	int i;
 	prt("", row, 0);
 	put_str("[Press any key to continue]", row, 23);
-	i = inkey();
+	inkey();
 	prt("", row, 0);
 }
 

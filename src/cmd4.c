@@ -3395,9 +3395,8 @@ void do_cmd_knowledge_artefacts(void)
 
 	bool okay[MAX_A_IDX];
 
-
 	/* Temporary file */
-	if (path_temp(file_name, 1024)) return;
+	path_build(file_name, 1024, ANGBAND_DIR_DUMP, "cmd_a.tmp");
 
 	/* Open a new file */
 	fff = my_fopen(file_name, "w");
@@ -3531,9 +3530,8 @@ static void do_cmd_knowledge_uniques(void)
 
 	char file_name[1024];
 
-
 	/* Temporary file */
-	if (path_temp(file_name, 1024)) return;
+	path_build(file_name, 1024, ANGBAND_DIR_DUMP, "cmd_u.tmp");
 
 	/* Open a new file */
 	fff = my_fopen(file_name, "w");
@@ -3658,7 +3656,7 @@ static void do_cmd_knowledge_alchemy(void)
 	char file_name[1024];
 	
 	/* Temporary file */
-	if (path_temp(file_name, 1024)) return;
+	path_build(file_name, 1024, ANGBAND_DIR_DUMP, "cmd_al.tmp");
 	
 	/* Open a new file */
 	fff = my_fopen(file_name, "w");
@@ -3711,7 +3709,7 @@ static void do_cmd_knowledge_pets(void)
 
 
 	/* Temporary file */
-	if (path_temp(file_name, 1024)) return;
+	path_build(file_name, 1024, ANGBAND_DIR_DUMP, "cmd_p.tmp");
 
 	/* Open a new file */
 	fff = my_fopen(file_name, "w");
@@ -3788,7 +3786,7 @@ static void do_cmd_knowledge_kill_count(void)
 
 
 	/* Temporary file */
-	if (path_temp(file_name, 1024)) return;
+	path_build(file_name, 1024, ANGBAND_DIR_DUMP, "cmd_kk.tmp");
 
 	/* Open a new file */
 	fff = my_fopen(file_name, "w");
@@ -3960,8 +3958,8 @@ void do_cmd_knowledge_corruptions(void)
 	char file_name[1024];
 
 
-	/* Temporary file */
-	if (path_temp(file_name, 1024)) return;
+	/* Temporary file for corruptions*/
+	path_build(file_name, 1024, ANGBAND_DIR_DUMP, "cmd_cc.tmp");
 
 	/* Open a new file */
 	fff = my_fopen(file_name, "w");
