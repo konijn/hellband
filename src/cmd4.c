@@ -3905,9 +3905,7 @@ static void do_cmd_knowledge_objects(void)
 
 	char file_name[1024];
 
-
-	/* Temporary file */
-	if (path_temp(file_name, 1024)) return;
+	path_build(file_name, 1024, ANGBAND_DIR_DUMP, "cmd_k.tmp");
 
 	/* Open a new file */
 	fff = my_fopen(file_name, "w");
