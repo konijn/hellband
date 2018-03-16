@@ -1572,7 +1572,7 @@ void display_roff(int r_idx)
  */
 void display_visible_items(void)
 {
-	int i, j, y, x, gap, len, count = 0;
+	int i, j, gap, len, count = 0;
 	int items = 0;
 
 	item_list_entry *what;
@@ -1592,9 +1592,10 @@ void display_visible_items(void)
 		/* Skip dead objects and held objects*/
 		if (!o_ptr->k_idx || o_ptr->held_m_idx) continue;
 
-		/* Location */
+		/* Location, which we don't us any more right now
 		y = o_ptr->iy;
 		x = o_ptr->ix;
+		*/
 
 		/* Detect "real" objects */
 		if (o_ptr->marked)
