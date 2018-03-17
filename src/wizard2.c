@@ -10,13 +10,13 @@
  * are included in all such copies.
  *
  * James E. Wilson and Robert A. Koeneke and Ben Harrison have released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
  */
 
 #include "angband.h"
@@ -155,7 +155,7 @@ static void do_cmd_summon_horde()
 	int attempts = 1000;
 	while (--attempts)
 	{
-		scatter(&wy, &wx, py, px, 3, 0);
+		scatter(&wy, &wx, py, px, 3);
 		if (cave_naked_bold(wy, wx)) break;
 	}
 	(void)alloc_horde(wy, wx);
@@ -1205,11 +1205,11 @@ static void do_cmd_wiz_supplies(void)
 		drop_item( 419 ); /* potion of *healing */
 		drop_item( 266 ); /* potion of restore mana */
 		drop_item( 249 ); /* potion of speed */
-		drop_item( 249 ); /* potion of speed */		
-		drop_item( 221 ); /* *destruction* */		
-	}	
-	drop_item( 79 ); /* seeker arrow */				
-	drop_item( 81 ); /* seeker bolt */				
+		drop_item( 249 ); /* potion of speed */
+		drop_item( 221 ); /* *destruction* */
+	}
+	drop_item( 79 ); /* seeker arrow */
+	drop_item( 81 ); /* seeker bolt */
 }
 
 
@@ -1220,8 +1220,8 @@ static void do_cmd_perma_prison_aux(int lx , int ly)
 	/* Access the grid */
 	c_ptr = &cave[ly][lx];
 
-	/*Delete monsters*/				
-	delete_monster(ly, lx); 
+	/*Delete monsters*/
+	delete_monster(ly, lx);
 		
 	/* Delete objects */
 	delete_object(ly, lx);
@@ -1253,10 +1253,10 @@ static void do_cmd_perma_prison(void)
 	do_cmd_perma_prison_aux( px+1,py+1 );
 	do_cmd_perma_prison_aux( px-1,py-1 );
 	do_cmd_perma_prison_aux( px+1,py-1 );
-	do_cmd_perma_prison_aux( px-1,py+1 );	
+	do_cmd_perma_prison_aux( px-1,py+1 );
 	
 	do_cmd_perma_prison_aux( px,py+1 );
-	do_cmd_perma_prison_aux( px,py-1 );	
+	do_cmd_perma_prison_aux( px,py-1 );
 	
 	/* Update stuff */
 	p_ptr->update |= (PU_VIEW | PU_LITE | PU_FLOW);
@@ -1268,7 +1268,7 @@ static void do_cmd_perma_prison(void)
 	p_ptr->redraw |= (PR_MAP);
 	
 	/* Window stuff */
-	p_ptr->window |= (PW_OVERHEAD);	
+	p_ptr->window |= (PW_OVERHEAD);
 	
 }
 
@@ -1280,7 +1280,7 @@ static void do_cmd_study_all(void)
 	int i;
 	/* And much was accomplished */
 	spell_learned1 = 0xFFFFFFFF;
-	spell_learned2 = 0xFFFFFFFF;		
+	spell_learned2 = 0xFFFFFFFF;
 
 	/* Make sure that forgetting/remembering works*/
 	for (i = 0; i < 64; i++)
@@ -1290,7 +1290,7 @@ static void do_cmd_study_all(void)
 static void do_cmd_parse(void)
 {
 	char		in[SCRIPT_MAX_LENGTH];
-	double		answer;	
+	double		answer;
 	
 	dice_mode = BEST_CASE;
 	
@@ -1304,26 +1304,26 @@ static void do_cmd_parse(void)
 		{
 			eval_script(&answer);
 			/*Show & Tell*/
-			msg_format("Answer for %s is: %.0f", variable_token, answer);	
+			msg_format("Answer for %s is: %.0f", variable_token, answer);
 			/*There might be more*/
 			if(*script==';')script++;
 		}
 	}
-}			
+}
 
 /**END**/
 
 /*
  * Set up an ultra debug character
- */ 
+ */
 static void do_cmd_wiz_michael(void)
 {
-	int			tmp_int;	
+	int			tmp_int;
 	int			i;
 	/* Set all stats to maximum */
 	tmp_int = 18+100;
 	for (i = 0; i < 6; i++)
-	{	   
+	{
 		p_ptr->stat_cur[i] = p_ptr->stat_max[i] = tmp_int;
    }
    wiz_create_named_art( 87 ); /*Longsword of Michael*/
@@ -1342,7 +1342,7 @@ static void do_cmd_wiz_michael(void)
    
    p_ptr->au = 12345678;
 
-} 
+}
 
 /* This is a hack apparently, I wouldnt know ;)  */
 extern void do_cmd_wiz_cure_all(void);
@@ -1507,14 +1507,14 @@ static void do_cmd_wiz_named(int r_idx, int slp)
 		int d = 1;
 
 		/* Pick a location */
-		scatter(&y, &x, py, px, d, 0);
+		scatter(&y, &x, py, px, d);
 
 		/* Require empty grids */
 		/*if (!cave_empty_bold(y, x) || (cave[y][x].feat == FEAT_WATER && !water_ok(r_idx) )) continue;*/
 		if(!can_place_monster(y,x,r_idx))continue;
 
 		/* Place it (allow groups) */
-		if (place_monster_aux(y, x, r_idx, (bool)slp, (bool)TRUE, (bool)FALSE)) break; 
+		if (place_monster_aux(y, x, r_idx, (bool)slp, (bool)TRUE, (bool)FALSE)) break;
 	}
 }
 
@@ -1540,7 +1540,7 @@ static void do_cmd_wiz_named_friendly(int r_idx, int slp)
 		int d = 1;
 
 		/* Pick a location */
-		scatter(&y, &x, py, px, d, 0);
+		scatter(&y, &x, py, px, d);
 
 		/* Require empty grids */
 		/*if (!cave_empty_bold(y, x) || (cave[y][x].feat == FEAT_WATER && !water_ok(r_idx))) continue;*/
@@ -1670,7 +1670,7 @@ void do_cmd_debug(void)
 		do_cmd_parse();
 		break;
 		/* Allow player to dress to kill, naming the character Michael */
-	case 'A':	
+	case 'A':
 		do_cmd_wiz_michael();
 		break;
 		/* Cure all maladies */
@@ -1879,7 +1879,7 @@ void do_cmd_wiz_help(void)
 	put_str("M = Gain Corruption",11,1);
 	put_str("r = Gain Level Reward",12,1);
 	put_str("x = Gain Experience",13,1);
-	put_str("- = Loose Corruption",14,1);	
+	put_str("- = Loose Corruption",14,1);
 
 	c_put_str(TERM_RED,"Movement",15,1);
 	c_put_str(TERM_RED,"========",16,1);
@@ -1905,7 +1905,7 @@ void do_cmd_wiz_help(void)
 	put_str("m = Map Area",19,26);
 	put_str("w = Wizard Light",20,26);
 	put_str("0 = Create Perm Prison",21,26);
-	put_str("1 = Learn All Spells",22,26);	
+	put_str("1 = Learn All Spells",22,26);
 
 	c_put_str(TERM_RED,"Object Commands",4,51);
 	c_put_str(TERM_RED,"===============",5,51);
@@ -1917,8 +1917,8 @@ void do_cmd_wiz_help(void)
 	put_str("l = Learn About Objects",12,51);
 	put_str("o = Object Editor",13,51);
 	put_str("v = Generate Very Good Object",14,51);
-	put_str("S = Drop Endgame supplies",15,51);	
-	put_str("A = Drop Ultimate Kit",16,51);		
+	put_str("S = Drop Endgame supplies",15,51);
+	put_str("A = Drop Ultimate Kit",16,51);
 
 	/* Wait for it */
 	put_str("Hit any key to continue", 23, 23);

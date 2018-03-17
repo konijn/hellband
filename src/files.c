@@ -3446,8 +3446,7 @@ static void print_tomb(void)
 
 		FILE        *fp;
 
-		time_t	ct = time((time_t)0);
-
+		time_t ct = time(NULL);
 
 		/* Clear screen */
 		Term_clear();
@@ -5017,7 +5016,7 @@ void html_screenshot(cptr name, int mode)
 				/* From another color to the default white */
 				else if (a == TERM_WHITE)
 				{
-					fprintf(fp, close_color_fmt);
+					fprintf(fp, "%s", close_color_fmt);
 				}
 
 				/* Change colors */
@@ -5043,7 +5042,7 @@ void html_screenshot(cptr name, int mode)
 	}
 
 	/* Close the last font-color tag if necessary */
-	if (oa != TERM_WHITE) fprintf(fp, close_color_fmt);
+	if (oa != TERM_WHITE) fprintf(fp, "%s", close_color_fmt);
 
 	if (mode == 0)
 	{

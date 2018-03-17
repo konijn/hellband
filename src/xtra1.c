@@ -10,13 +10,13 @@
  * are included in all such copies.
  *
  * James E. Wilson and Robert A. Koeneke and Ben Harrison have released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
  */
 
 #include "angband.h"
@@ -143,7 +143,7 @@ static void prt_level(void)
 	/* Prefix */
 	place_status_cptr( "LVL:" , TERM_WHITE , 0 );
 	/* Prepare */
-	sprintf(status_quark, "%d", p_ptr->lev);	
+	sprintf(status_quark, "%d", p_ptr->lev);
 	/* Dump */
 	place_status_quark( p_ptr->lev >= p_ptr->max_plv ? TERM_L_GREEN : TERM_YELLOW ,1 );
 }
@@ -366,11 +366,11 @@ static void prt_cut(void)
 	int c = p_ptr->cut;
 
 	if (c > 1000)     place_status_cptr("Mortal Wound" , TERM_L_RED  , 1 );
-	else if (c > 200) place_status_cptr("Deep gash"    , TERM_RED    , 1 );		
-	else if (c > 100) place_status_cptr("Severe cut"   , TERM_RED    , 1 );	
-	else if (c > 50)  place_status_cptr("Nasty cut"    , TERM_ORANGE , 1 );	
-	else if (c > 25)  place_status_cptr("Bad cut"      , TERM_ORANGE , 1 );	
-	else if (c > 10)  place_status_cptr("Light cut"    , TERM_YELLOW , 1 );	
+	else if (c > 200) place_status_cptr("Deep gash"    , TERM_RED    , 1 );
+	else if (c > 100) place_status_cptr("Severe cut"   , TERM_RED    , 1 );
+	else if (c > 50)  place_status_cptr("Nasty cut"    , TERM_ORANGE , 1 );
+	else if (c > 25)  place_status_cptr("Bad cut"      , TERM_ORANGE , 1 );
+	else if (c > 10)  place_status_cptr("Light cut"    , TERM_YELLOW , 1 );
 	else if (c)       place_status_cptr("Graze"        , TERM_YELLOW , 1 );
 }
 
@@ -426,7 +426,7 @@ static void health_redraw(void)
 	}
 
 	/* Tracking a dead monster (???) */
-	else if (!m_list[health_who].hp < 0)
+	else if (m_list[health_who].hp < 0)
 	{
 		/* Indicate that the monster health is "unknown" */
 		Term_putstr(COL_INFO, ROW_INFO, 12, TERM_WHITE, "[----------]");
@@ -463,13 +463,13 @@ static void health_redraw(void)
 		if (m_ptr->stunned) {
 			attr = TERM_VIOLET;
 			smb = "STUN******";
-		}       
+		}
         
 		/* confused */
 		if (m_ptr->confused) {
 			attr = TERM_VIOLET;
 			smb = "CONF******";
-		}       
+		}
         
 		/* Afraid */
 		if (m_ptr->monfear) {
@@ -590,7 +590,7 @@ static void fix_term_type( u32b term_type )
 		if( PW_OVERHEAD       == term_type ){	int cy, cx;	display_map(&cy, &cx); }
 		if( PW_MONSTER        == term_type ){	if (monster_race_idx) display_roff(monster_race_idx); }
 		if( PW_OBJECT         == term_type ){	if (term_k_idx || term_o_ptr != NULL ) display_koff(term_k_idx); }
-		if( PW_MESSAGE        == term_type ){	display_messages();	}	
+		if( PW_MESSAGE        == term_type ){	display_messages();	}
 
 		/* Fresh */
 		Term_fresh();
@@ -1263,7 +1263,7 @@ static void calc_object_flag_bonuses( u32b f1 , u32b f2 , u32b f3 , s16b pval, i
 	/* Hack -- cause earthquakes */
 	if (f1 & (TR1_IMPACT)) p_ptr->impact = TRUE;
 	/* Boost shots */
-	if (f3 & (TR3_XTRA_SHOTS)) *extra_shots++;
+	if (f3 & (TR3_XTRA_SHOTS)) *extra_shots += 1;
 	/* Various flags */
 	if (f3 & (TR3_AGGRAVATE)) p_ptr->aggravate = TRUE;
 	if (f3 & (TR3_TELEPORT)) p_ptr->teleport = TRUE;
@@ -1798,7 +1798,7 @@ static void calc_bonuses(void)
 	/* mystics if they dont wear too heavy armour */
 	if( ((p_ptr->pclass == CLASS_MYSTIC) && !(mystic_heavy_armour())) )
 	{
-		p_ptr->pspeed += (p_ptr->lev) / 10;	
+		p_ptr->pspeed += (p_ptr->lev) / 10;
 	}
 
 	/* Temporary telepathy */
@@ -2440,10 +2440,10 @@ void redraw_stuff(void)
 
 	/* New and improved */
 	if (
-		p_ptr->redraw & (PR_BASIC) || 
+		p_ptr->redraw & (PR_BASIC) ||
 		p_ptr->redraw & (PR_TITLE) ||
-		p_ptr->redraw & (PR_LEV) || 
-		p_ptr->redraw & (PR_EXP) || 
+		p_ptr->redraw & (PR_LEV) ||
+		p_ptr->redraw & (PR_EXP) ||
 		p_ptr->redraw & (PR_ARMOR) ||
 		p_ptr->redraw & (PR_HP) ||
 		p_ptr->redraw & (PR_MANA) ||
@@ -2459,7 +2459,7 @@ void redraw_stuff(void)
 		p_ptr->redraw & (PR_POISONED) ||
 		p_ptr->redraw & (PR_STATE) ||
 		p_ptr->redraw & (PR_SPEED) ||
-		p_ptr->redraw & (PR_STUDY) 
+		p_ptr->redraw & (PR_STUDY)
 	   )
 	{
 		p_ptr->redraw &= ~(PR_BASIC);
@@ -2472,7 +2472,7 @@ void redraw_stuff(void)
 		p_ptr->redraw &= ~(PR_HUNGER);
 		p_ptr->redraw &= ~(PR_BLIND | PR_CONFUSED);
 		p_ptr->redraw &= ~(PR_AFRAID | PR_POISONED);
-		p_ptr->redraw &= ~(PR_STATE | PR_SPEED | PR_STUDY);		
+		p_ptr->redraw &= ~(PR_STATE | PR_SPEED | PR_STUDY);
 		prt_status();
 		prt_depth();
 	}
@@ -2519,7 +2519,7 @@ void window_stuff(void)
 	*/
 	for( i = 0 ; i < PW_FLAG_COUNT ; i++ ){
 		if (p_ptr->window & (flag))
-		{	
+		{
 			p_ptr->window &= ~(flag);
 			fix_term_type( flag );
 		}

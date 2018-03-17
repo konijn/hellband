@@ -10,13 +10,13 @@
  * are included in all such copies.
  *
  * James E. Wilson and Robert A. Koeneke have released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
  */
 
 #include "angband.h"
@@ -93,7 +93,7 @@ static void set_ghost_aux_2(void)
 			if (grace == NEPHILIM) r_ptr->flags3 |= (RF3_FALLEN_ANGEL);
 			if (grace == TROLL) r_ptr->flags3 |= (RF3_TROLL);
 			if (grace == GIANT) r_ptr->flags3 |= (RF3_GIANT);
-			if (grace == DEVILSPAWN || grace == SUCCUBUS || grace == LILI) r_ptr->flags3 |= (RF3_DEVIL);	
+			if (grace == DEVILSPAWN || grace == SUCCUBUS || grace == LILI) r_ptr->flags3 |= (RF3_DEVIL);
 			r_ptr->ac = 26;
 			r_ptr->speed = 110;
 			r_ptr->num_blows=2;
@@ -114,7 +114,7 @@ static void set_ghost_aux_2(void)
 			if (grace == NEPHILIM) r_ptr->flags3 |= (RF3_FALLEN_ANGEL);
 			if (grace == TROLL) r_ptr->flags3 |= (RF3_TROLL);
 			if (grace == GIANT) r_ptr->flags3 |= (RF3_GIANT);
-			if (grace == DEVILSPAWN || grace == SUCCUBUS || grace == LILI) r_ptr->flags3 |= (RF3_DEVIL);	
+			if (grace == DEVILSPAWN || grace == SUCCUBUS || grace == LILI) r_ptr->flags3 |= (RF3_DEVIL);
 			r_ptr->ac = 30;
 			r_ptr->speed = 110;
 			r_ptr->hside *= 2;
@@ -136,7 +136,7 @@ static void set_ghost_aux_2(void)
 			if (grace == NEPHILIM) r_ptr->flags3 |= (RF3_FALLEN_ANGEL);
 			if (grace == TROLL) r_ptr->flags3 |= (RF3_TROLL);
 			if (grace == GIANT) r_ptr->flags3 |= (RF3_GIANT);
-			if (grace == DEVILSPAWN || grace == SUCCUBUS || grace == LILI) r_ptr->flags3 |= (RF3_DEVIL);	
+			if (grace == DEVILSPAWN || grace == SUCCUBUS || grace == LILI) r_ptr->flags3 |= (RF3_DEVIL);
 			r_ptr->ac = 35;
 			r_ptr->speed = 110;
 			r_ptr->hside *= 2;
@@ -369,7 +369,7 @@ static void set_ghost_aux_2(void)
 			break;
 		}
 	}
-}	
+}
 
 
 /*
@@ -488,7 +488,7 @@ static void set_custom_aux( int idx, char mrace, cptr pname )
 {
 	monster_race *r_ptr = &r_info[idx];
 
-	sprintf(r_name + r_ptr->name, pname );
+	sprintf(r_name + r_ptr->name, "%s", pname);
 	r_ptr->d_char = r_ptr->x_char = mrace;
 
 	/* Skeleton.. */
@@ -503,7 +503,7 @@ static void set_custom_aux( int idx, char mrace, cptr pname )
 		r_ptr->ac = 26;
 		r_ptr->speed = 110;
 		r_ptr->num_blows=2;
-		custom_blow( idx, 0, RBM_HIT, RBE_HURT, 2, 6);	
+		custom_blow( idx, 0, RBM_HIT, RBE_HURT, 2, 6);
 	}
 
 	/* Zombie.. */
@@ -511,7 +511,7 @@ static void set_custom_aux( int idx, char mrace, cptr pname )
 	{
 		r_ptr->d_attr = TERM_L_DARK;
 		/* OMG.. Mega-Hack use the current 'Zombified Human' graphic */
-		r_ptr->x_attr = r_info[175].x_attr; 
+		r_ptr->x_attr = r_info[175].x_attr;
 		r_ptr->x_char = r_info[175].x_char;
 		r_ptr->flags1 |= ( RF1_DROP_60 | RF1_DROP_90 );
 		r_ptr->flags2 |= ( RF2_OPEN_DOOR | RF2_BASH_DOOR | RF2_STUPID );
@@ -520,7 +520,7 @@ static void set_custom_aux( int idx, char mrace, cptr pname )
 		r_ptr->speed = 110;
 		r_ptr->hside *= 2;
 		r_ptr->num_blows=1;
-		custom_blow( idx, 0, RBM_HIT, RBE_HURT, 2, 9);	
+		custom_blow( idx, 0, RBM_HIT, RBE_HURT, 2, 9);
 	}
 
 	/* Mummy.. */
@@ -528,7 +528,7 @@ static void set_custom_aux( int idx, char mrace, cptr pname )
 	{
 		r_ptr->d_attr = TERM_YELLOW;
 		/* OMG Mega-Hack use the current 'Mummified Human' graphic */
-		r_ptr->x_attr = r_info[281].x_attr; 
+		r_ptr->x_attr = r_info[281].x_attr;
 		r_ptr->x_char = r_info[281].x_char;
 		r_ptr->flags1 |= ( RF1_DROP_1D2 );
 		r_ptr->flags2 |= ( RF2_OPEN_DOOR | RF2_BASH_DOOR );
@@ -565,7 +565,7 @@ static void set_custom_aux( int idx, char mrace, cptr pname )
 		{
 			r_ptr->d_attr = TERM_WHITE;
 			/* Mega-Hack use the current 'Moaning Spirit' graphic */
-			r_ptr->x_attr = r_info[177].x_attr; 
+			r_ptr->x_attr = r_info[177].x_attr;
 			r_ptr->x_char = r_info[177].x_char;
 			r_ptr->flags1 |= (RF1_DROP_1D2);
 			r_ptr->flags2 |= (RF2_INVISIBLE | RF2_PASS_WALL);
@@ -606,7 +606,7 @@ static void set_custom_aux( int idx, char mrace, cptr pname )
 		{
 			r_ptr->d_attr = TERM_WHITE;
 			/* Mega-Hack use the current 'Law Ghost' graphic */
-			r_ptr->x_attr = r_info[388].x_attr; 
+			r_ptr->x_attr = r_info[388].x_attr;
 			r_ptr->x_char = r_info[388].x_char;
 			r_ptr->flags1 |= (RF1_DROP_2D2 | RF1_DROP_GREAT);
 			r_ptr->flags2 |= (RF2_INVISIBLE | RF2_PASS_WALL);
@@ -627,7 +627,7 @@ static void set_custom_aux( int idx, char mrace, cptr pname )
 		{
 			r_ptr->d_attr = TERM_WHITE;
 			/* Mega-Hack use the current 'Chaos Ghost' graphic */
-			r_ptr->x_attr = r_info[358].x_attr; 
+			r_ptr->x_attr = r_info[358].x_attr;
 			r_ptr->x_char = r_info[358].x_char;
 			r_ptr->flags1 |= (RF1_DROP_1D2 | RF1_DROP_2D2 | RF1_DROP_GREAT);
 			r_ptr->flags2 |= (RF2_SMART | RF2_INVISIBLE | RF2_PASS_WALL);
@@ -645,7 +645,7 @@ static void set_custom_aux( int idx, char mrace, cptr pname )
 			custom_blow( idx, 0, RBM_WAIL, RBE_TERRIFY, 0, 0);
 			custom_blow( idx, 1, RBM_TOUCH, RBE_EXP_20, 0, 0);
 			custom_blow( idx, 2, RBM_CLAW, RBE_LOSE_INT, 2, 6);
-			custom_blow( idx, 3, RBM_CLAW, RBE_LOSE_WIS, 2, 6);		
+			custom_blow( idx, 3, RBM_CLAW, RBE_LOSE_WIS, 2, 6);
 		}
 	}
 
@@ -656,7 +656,7 @@ static void set_custom_aux( int idx, char mrace, cptr pname )
 		{
 			r_ptr->d_attr = TERM_VIOLET;
 			/* Mega-Hack use the current 'Master Vampire' graphic */
-			r_ptr->x_attr = r_info[370].x_attr; 
+			r_ptr->x_attr = r_info[370].x_attr;
 			r_ptr->x_char = r_info[370].x_char;
 			r_ptr->flags1 |= ( RF1_DROP_2D2 );
 			r_ptr->flags2 |= ( RF2_OPEN_DOOR | RF2_BASH_DOOR);
@@ -676,7 +676,7 @@ static void set_custom_aux( int idx, char mrace, cptr pname )
 		{
 			r_ptr->d_attr = TERM_BLUE;
 			/* Mega-Hack use the current 'Vampire Lord' graphic */
-			r_ptr->x_attr = r_info[439].x_attr; 
+			r_ptr->x_attr = r_info[439].x_attr;
 			r_ptr->x_char = r_info[439].x_char;
 			r_ptr->flags1 |= (RF1_DROP_1D2 | RF1_DROP_GREAT);
 			r_ptr->flags2 |= (RF2_OPEN_DOOR | RF2_BASH_DOOR);
@@ -700,7 +700,7 @@ static void set_custom_aux( int idx, char mrace, cptr pname )
 	{
 		r_ptr->d_attr = TERM_ORANGE;
 		/* Mega-Hack use the current 'Master Lich' graphic */
-		r_ptr->x_attr = r_info[461].x_attr; 
+		r_ptr->x_attr = r_info[461].x_attr;
 		r_ptr->x_char = r_info[461].x_char;
 		r_ptr->flags1 |= (RF1_DROP_2D2 | RF1_DROP_1D2 | RF1_DROP_GREAT);
 		r_ptr->flags2 |= (RF2_SMART | RF2_OPEN_DOOR | RF2_BASH_DOOR);
@@ -727,7 +727,7 @@ static void set_custom_aux( int idx, char mrace, cptr pname )
 		/* Mega-Hack use the current 'Black Wraith' graphic */
 		r_ptr->d_attr = r_ptr->x_attr = TERM_WHITE;
 		/*
-		r_ptr->x_attr = r_info[429].x_attr; 
+		r_ptr->x_attr = r_info[429].x_attr;
 		r_ptr->x_char = r_info[429].x_char;
 		*/
 		r_ptr->flags1 |= (RF1_DROP_2D2 | RF1_DROP_4D2);
@@ -750,7 +750,7 @@ static void set_custom_aux( int idx, char mrace, cptr pname )
 		/* Mega-Hack use the current 'Black Wraith' graphic */
 		r_ptr->d_attr = r_ptr->x_attr = TERM_VIOLET;
 		/*
-		r_ptr->x_attr = r_info[429].x_attr; 
+		r_ptr->x_attr = r_info[429].x_attr;
 		r_ptr->x_char = r_info[429].x_char;
 		*/
 		r_ptr->flags1 |= (RF1_DROP_2D2 | RF1_DROP_4D2);
@@ -773,7 +773,7 @@ static void set_custom_aux( int idx, char mrace, cptr pname )
 		/* Mega-Hack use the current 'Black Wraith' graphic */
 		r_ptr->d_attr = r_ptr->x_attr = TERM_SLATE;
 		/*
-		r_ptr->x_attr = r_info[429].x_attr; 
+		r_ptr->x_attr = r_info[429].x_attr;
 		r_ptr->x_char = r_info[429].x_char;
 		*/
 		r_ptr->flags1 |= (RF1_DROP_2D2 | RF1_DROP_4D2);
@@ -790,7 +790,7 @@ static void set_custom_aux( int idx, char mrace, cptr pname )
 		custom_blow( idx, 0, RBM_HIT  , RBE_HURT, 6, 8);
 		custom_blow( idx, 1, RBM_TOUCH, RBE_HURT, 6, 8);
 	}
-}	
+}
 
 void init_custom_race( int idx )
 {
@@ -837,7 +837,7 @@ void init_custom_race( int idx )
 * int  dlevel    -> a dungeon level that will determein many of the r_ptr flags
 * int  alignment -> friend or foe
 *
-* We will store the custom races in the save file, since 
+* We will store the custom races in the save file, since
 * they are different from game to game
 *
 * Eventually we should probably save the custom ghost in such a way as
@@ -897,7 +897,7 @@ static void set_custom_race_slot(int idx, cptr pname, int hp, int mrace, int dle
 	}
 	else
 	{
-		r_ptr->flags1 |= (RF1_ONLY_ITEM | RF1_DROP_GOOD | RF1_DROP_GREAT);	
+		r_ptr->flags1 |= (RF1_ONLY_ITEM | RF1_DROP_GOOD | RF1_DROP_GREAT);
 	}
 
 	/* Currently this flag is unused */
@@ -909,7 +909,7 @@ static void set_custom_race_slot(int idx, cptr pname, int hp, int mrace, int dle
 }
 
 /*
- * Find a slot for a custom race 
+ * Find a slot for a custom race
  * custom races are an extension to player ghosts
  * except that at the time of writing they will be used
  * for patron reward servants & opponents
@@ -944,11 +944,11 @@ int find_summon_player_spot( int *x , int *y )
 		int d = (i / 15) + 1;
 
 		/* Pick a location */
-		scatter( y, x, py, px, d, 0);
+		scatter( y, x, py, px, d);
 
 		/* Require "empty" floor grid with some exceptions ( water ) */
 		/* For now we dont place servants on water */
-		if(!can_place_monster_type(*y,*x,0 ))continue;		
+		if(!can_place_monster_type(*y,*x,0 ))continue;
 
 		/* Minor shortcut */
 		c = cave[*y][*x];
@@ -1407,7 +1407,7 @@ void remove_non_pets(void)
 * Delete/Remove all the monsters when the player leaves the level
 *
 * This code has now been replaced by "remove_non_pets()"
-* 
+*
 * This is an efficient method of simulating multiple calls to the
 * "delete_monster()" function, with no visual effects.
 */
@@ -1576,7 +1576,7 @@ s16b get_mon_num(int level)
 
 	alloc_entry		*table = alloc_race_table;
 
-	/* Shielded levels only contain monsters of that depth */	
+	/* Shielded levels only contain monsters of that depth */
 	bool       shielded_level;
 	
 	/* Shielded levels only contain monsters of that depth */
@@ -1657,7 +1657,7 @@ s16b get_mon_num(int level)
 		if( shielded_level == FALSE && ( table[i].level > DIS_START && table[i].level < DIS_END /*&& *monster_filter_hook== NULL*/ ) )
 		{
 			continue;
-		}		
+		}
 		/*Hack levels after Dis, should have no monsters from before Dis*/
 		if( dun_level >= DIS_END && table[i].level < DIS_END )
 		{
@@ -1943,7 +1943,7 @@ void lore_do_probe(int m_idx)
 
 	monster_race *r_ptr = &r_info[m_ptr->r_idx];
 
-	/* Hack -- Memorize some flags 
+	/* Hack -- Memorize some flags
 	           Konijn has decided that all flags become known now
 	*/
 	r_ptr->r_flags1 = r_ptr->flags1;
@@ -2185,7 +2185,7 @@ void update_mon(int m_idx, bool full)
 			if (health_who == m_idx) p_ptr->redraw |= (PR_HEALTH);
             
 			/* Update monster list window */
-			p_ptr->window |= (PW_VISIBLE);            
+			p_ptr->window |= (PW_VISIBLE);
 
 			/* Hack -- Count "fresh" sightings */
 			if (r_ptr->r_sights < MAX_SHORT) r_ptr->r_sights++;
@@ -2225,7 +2225,7 @@ void update_mon(int m_idx, bool full)
 			lite_spot(fy, fx);
             
 			/* Update monster list window */
-			p_ptr->window |= (PW_VISIBLE);                 
+			p_ptr->window |= (PW_VISIBLE);
 
 			/* Update health bar as needed */
 			if (health_who == m_idx) p_ptr->redraw |= (PR_HEALTH);
@@ -2331,7 +2331,7 @@ int can_place_monster( int y , int x , int r_idx)
 	/* Verify location */
 	if (!in_bounds(y, x)) return (FALSE);
 	/* No walls */
-	if(!cave_empty_bold(y, x)) return (FALSE); 
+	if(!cave_empty_bold(y, x)) return (FALSE);
 	/* Only on water in some cases */
 	if( cave[y][x].feat == FEAT_WATER  && !water_ok(r_idx) )return (FALSE);
 	return (TRUE);
@@ -2346,7 +2346,7 @@ int can_go_monster( int y , int x , int r_idx)
 	/* Verify location */
 	if (!in_bounds(y, x)) return (FALSE);
 	/* No walls , but doors etc. are allowed! */
-	if(!cave_floor_bold(y, x)) return (FALSE); 
+	if(!cave_floor_bold(y, x)) return (FALSE);
 	/* Only on water in some cases */
 	if( cave[y][x].feat == FEAT_WATER  && !water_ok(r_idx) )return (FALSE);
 	return (TRUE);
@@ -2361,10 +2361,10 @@ int can_place_monster_type( int y , int x , int summon_type)
 	/* Verify location */
 	if (!in_bounds(y, x)) return (FALSE);
 	/* No walls */
-	if(!cave_empty_bold(y, x)) return (FALSE); 
+	if(!cave_empty_bold(y, x)) return (FALSE);
 	/* Only on water in some cases */
 	if( cave[y][x].feat == FEAT_WATER  && !water_ok_type(summon_type) )return (FALSE);
-	return (TRUE);	
+	return (TRUE);
 }
 
 
@@ -2650,8 +2650,8 @@ bool place_monster_one(int y, int x, int r_idx, bool slp, bool charm)
 				c_ptr->info &= ~(CAVE_MARK | CAVE_GLOW);
 			}/* End of fixing cave*/
 		}/* End of x */
-	}/* End of y */ 
-	}/* End of Satan code */	
+	}/* End of y */
+	}/* End of Satan code */
 
 	/* Success */
 	return (TRUE);
@@ -2823,7 +2823,7 @@ byte place_monster_aux(int y, int x, int r_idx, bool slp, bool grp, bool charm)
 			int nx, ny, z, d = 3;
 
 			/* Pick a location */
-			scatter(&ny, &nx, y, x, d, 0);
+			scatter(&ny, &nx, y, x, d);
 
 			if( r_ptr->r_escort > 0 )
 			{
@@ -2831,7 +2831,7 @@ byte place_monster_aux(int y, int x, int r_idx, bool slp, bool grp, bool charm)
 				z = r_ptr->r_escort;
 			}
 			else
-			{	
+			{
 				/* Set the escort index */
 				place_monster_idx = r_idx;
 				
@@ -3078,7 +3078,7 @@ bool monster_filter_okay(int r_idx)
 	
 	/*From here on only regular monsters are allowed to be summoned*/
 	if( r_ptr->flags7 & (RF7_NO_SPAWN) )
-		return FALSE;	
+		return FALSE;
 
 	/* Check our requirements */
 	switch (monster_filter_type)
@@ -3160,7 +3160,7 @@ bool monster_filter_okay(int r_idx)
 
 	case FILTER_FALLEN_ANGELS:
 		{
-			okay = (bool)(r_ptr->flags3 & (RF3_FALLEN_ANGEL)); 
+			okay = (bool)(r_ptr->flags3 & (RF3_FALLEN_ANGEL));
 			break;
 		}
 
@@ -3267,7 +3267,7 @@ bool monster_filter_okay(int r_idx)
     case FILTER_SPIRITS:
     {
         okay = ((r_ptr->d_char == 'G') && !(r_ptr->flags1 &(RF1_UNIQUE)));
-        break;            
+        break;
     }
 	case FILTER_NO_UNIQUES:
 		{
@@ -3332,7 +3332,7 @@ byte summon_specific(int y1, int x1, int lev, int type)
 		int d = (i / 15) + 1;
 
 		/* Pick a location */
-		scatter(&y, &x, y1, x1, d, 0);
+		scatter(&y, &x, y1, x1, d);
 
 		/* Require "empty" floor grid */
 		/*if (!cave_empty_bold(y, x) || (cave[y][x].feat == FEAT_WATER)) continue;*/
@@ -3382,7 +3382,7 @@ byte summon_specific(int y1, int x1, int lev, int type)
 	{
 		Group_ok = FALSE;
 	}
-*/ 
+*/
 	/* Reset it since we abuse it somewhere else */
     monster_filter_type = 0;
 	
@@ -3407,7 +3407,7 @@ bool summon_skulls(int y1, int x1)
 		int d = (i / 15) + 1;
 		
 		/* Pick a location */
-		scatter(&y, &x, y1, x1, d, 0);
+		scatter(&y, &x, y1, x1, d);
 		
 		/* Require "empty" floor grid */
 		if (!cave_empty_bold(y, x) ) continue;
@@ -3438,7 +3438,7 @@ bool summon_skulls(int y1, int x1)
 				/* Attempt to place the monster (awake, allow groups) */
 				if (!place_monster_aux(y, x, r_idx, FALSE, Group_ok, FALSE)) return (FALSE);
 				/* Success */
-				return (TRUE);				
+				return (TRUE);
 			}
 		}
 		return(FALSE);
@@ -3458,11 +3458,11 @@ bool summon_specific_friendly(int y1, int x1, int lev, int type, bool Group_ok)
 		int d = (i / 15) + 1;
 
 		/* Pick a location */
-		scatter(&y, &x, y1, x1, d, 0);
+		scatter(&y, &x, y1, x1, d);
 
 		/* Require "empty" floor grid */
 		/*if (!cave_empty_bold(y, x) || (cave[y][x].feat == FEAT_WATER)) continue;*/
-		if(!can_place_monster_type(y,x,type))continue;		
+		if(!can_place_monster_type(y,x,type))continue;
 
 		/* Hack -- no summon on glyph of warding */
 		if (cave[y][x].feat == FEAT_GLYPH) continue;
@@ -3531,11 +3531,11 @@ bool multiply_monster(int m_idx, bool charm, bool clone)
 
 
 		/* Pick a location */
-		scatter(&y, &x, m_ptr->fy, m_ptr->fx, d, 0);
+		scatter(&y, &x, m_ptr->fy, m_ptr->fx, d);
 
 		/* Require an "empty" floor grid */
 		/*if (!cave_empty_bold(y, x) || (cave[y][x].feat == FEAT_WATER)) continue;*/
-		if(!can_place_monster(y,x,m_ptr->r_idx))continue;		
+		if(!can_place_monster(y,x,m_ptr->r_idx))continue;
 
 		/* Create a new monster (awake, no groups) */
 		result = place_monster_aux(y, x, m_ptr->r_idx, FALSE, FALSE, charm);
@@ -3690,7 +3690,7 @@ bool is_player_killer( monster_type *m_ptr )
 void set_hate_player( monster_type *m_ptr )
 {
 	m_ptr->ally &=  ~ALLY_PLAYER;
-	m_ptr->ally &=  ~ALLY_SELF;	
+	m_ptr->ally &=  ~ALLY_SELF;
 }
 
 /* Remove all ally flags, just set allied or super allied status */
@@ -3715,8 +3715,8 @@ bool is_monster_killer( monster_type *beholder , monster_type *m_ptr )
 		return TRUE;
 	/* If both are allies of the player, they shouldnt attack each other */
 	if( is_ally( beholder ) )
-		return FALSE;	
-	/* So they are not allied, but in a different ( aggresive ) faction, 
+		return FALSE;
+	/* So they are not allied, but in a different ( aggresive ) faction,
 	   this should happen only on very rare occasions !!, so let them have it ;)
 	*/
 	return TRUE;

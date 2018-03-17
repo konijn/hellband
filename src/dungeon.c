@@ -11,14 +11,14 @@
  *
  *
  * James E. Wilson and Robert A. Koeneke released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
- */ 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
+ */
 
 
 #include "angband.h"
@@ -296,7 +296,7 @@ static void sense_inventory(void)
 			default:
 			{
 				if( !object_aware_p(o_ptr) && heavy )
-					okay = TRUE;				
+					okay = TRUE;
 			}
 		}
 
@@ -444,7 +444,7 @@ static void wreck_the_pattern(void)
 	to_ruin = randint(45) + 35;
 	while (to_ruin--)
 	{
-		scatter(&r_y, &r_x, py, px, 4, 0);
+		scatter(&r_y, &r_x, py, px, 4);
 		if ((cave[r_y][r_x].feat >= FEAT_PATTERN_START)
 			&& (cave[r_y][r_x].feat < FEAT_PATTERN_XTRA2))
 		{
@@ -676,7 +676,7 @@ static void regen_monsters(void)
 }
 
 /*
- * Centralized Recall effect 
+ * Centralized Recall effect
  */
 void do_recall( cptr activation )
 {
@@ -706,7 +706,7 @@ void do_recall( cptr activation )
 /*
 * Forcibly pseudo-identify an object in the inventory
 * (or on the floor)
-* 
+*
 * note: currently this function allows pseudo-id of any object,
 * including silly ones like potions & scrolls, which always
 * get '{average}'. This should be changed, either to stop such
@@ -901,13 +901,13 @@ static void process_world(void)
 			msg_print("Happy Konijn Day!");
 			acquirement(py,px,randint(2)+1,FALSE);
 			break;
-		}			
+		}
 		case 152: /* Dante's birthday 1 july*/
 		{
 			msg_print("When Dis celebrates, the devils come out to play...");
 			summon_specific(py,px,dun_level,FILTER_DEVIL);
 			break;
-		}						
+		}
 		case 303: /* November 1st (Night of October 31st) */
 			{
 				msg_print("All Hallows Eve and the ghouls come out to play...");
@@ -1332,7 +1332,7 @@ static void process_world(void)
 	{
 		 if( *(timed[timed_counter].timer) )
 			(void)set_timed_effect( timed_counter , *(timed[timed_counter].timer) - 1);
-	}	
+	}
 
 	/*** Poison and Stun and Cut ***/
 
@@ -2097,7 +2097,7 @@ extern void do_cmd_borg(void);
 
 #endif
 
-/*  
+/*
  * Deal with unified commands or specific command, based on unify_commands
  * This prevented much copy pasting..
  */
@@ -2213,7 +2213,7 @@ static void process_command(void)
 	/* Jam a door with spikes      */ case 'j' : { do_cmd_spike();              break; }
 	/* Bash a door                 */ case 'B' : { do_cmd_bash();               break; }
 	/* Disarm a trap or chest      */ case 'D' : { do_cmd_disarm();             break; }
-	/* Gain new spells/prayers     */ case 'G' : { do_cmd_gain_spell();         break; }  
+	/* Gain new spells/prayers     */ case 'G' : { do_cmd_gain_spell();         break; }
 	/* Cast a spell                */ case 'm' : { do_cmd_magic_spell();        break; }
 	/* Do alchemy                  */ case 'p' : { do_cmd_mix();                break; }
 	/* Inscribe an object          */ case '{' : { do_cmd_inscribe();           break; }
@@ -2239,7 +2239,7 @@ static void process_command(void)
 	/* Check knowledge             */ case '~' : { do_cmd_knowledge();          break; }
     /* Check knowledge             */ case '|' : { do_cmd_knowledge();          break; }
 	/* Load "screen dump"          */ case '(' : { do_cmd_screen_dump();        break; }
-	/* Save "screen dump"          */ case ')' : { do_cmd_save_screen();        break; } 
+	/* Save "screen dump"          */ case ')' : { do_cmd_save_screen();        break; }
 	/* Browse a book               */ case 'b' : {do_cmd_considering_unified( do_cmd_browse );       break; }
 	/* Activate an artefact        */ case 'A' : {do_cmd_considering_unified( do_cmd_activate );     break; }
 	/* Eat some food               */ case 'E' : {do_cmd_considering_unified( do_cmd_eat_food );     break; }
@@ -2283,7 +2283,7 @@ static void process_player(void)
 	}
 
 	/* Give the player some energy */
-	p_ptr->energy += 10; 
+	p_ptr->energy += 10;
 
 	/* No turn yet */
 	if (p_ptr->energy < 1000) return;
@@ -2931,8 +2931,10 @@ static void load_all_pref_files(void)
 	process_pref_file(buf);
 
 	/* Access the "realm 1" pref file */
-	if (realm_names[p_ptr->realm1].name != "no magic")
-		if (realm_names[p_ptr->realm1].name != "unknown")
+	/* But only if the realm name is NOT set to 'no magic' */
+	if (strcmp(realm_names[p_ptr->realm1].name, "no magic") != 0)
+		/* And the realm name is NOT set to 'unknown' */
+		if (strcmp(realm_names[p_ptr->realm1].name, "unknown") != 0)
 		{
 			sprintf(buf, "%s.prf",realm_names[p_ptr->realm1].name);
 
@@ -2940,9 +2942,11 @@ static void load_all_pref_files(void)
 			process_pref_file(buf);
 		}
 
-		/* Access the "realm 2" pref file */
-		if (realm_names[p_ptr->realm2].name!="no magic")
-			if (realm_names[p_ptr->realm2].name!="unknown")
+	/* Access the "realm 2" pref file */
+	/* But only if the realm name is NOT set to 'no magic' */
+	if (strcmp(realm_names[p_ptr->realm2].name, "no magic") != 0)
+		/* And the realm name is NOT set to 'unknown' */
+		if (strcmp(realm_names[p_ptr->realm2].name, "unknown") != 0)
 			{
 				sprintf(buf, "%s.prf",realm_names[p_ptr->realm2].name);
 
@@ -2961,7 +2965,7 @@ static void load_all_pref_files(void)
 void play_game(bool new_game)
 {
 	/*,j,x,y; removed for some compiler warning */
-	int i; 
+	int i;
 
 	hack_corruption = FALSE;
 
@@ -3102,7 +3106,7 @@ void play_game(bool new_game)
 		msg_print("You travel to Volterra in Italy.");
 		msg_print(NULL);
 		msg_print("You mutter 'Lasciate ogne esperanza, voi chi intrate'.");
-		msg_print(NULL);		
+		msg_print(NULL);
 	}
 
 
@@ -3170,19 +3174,19 @@ void play_game(bool new_game)
 		dungeon();
 		
 		/* Notice stuff */
-		if(arg_fiddle)msg_note( "Notice stuff" );		
+		if(arg_fiddle)msg_note( "Notice stuff" );
 		if (p_ptr->notice) notice_stuff();
 
 		/* Update stuff */
-		if(arg_fiddle)msg_note( " Update stuff" );				
+		if(arg_fiddle)msg_note( " Update stuff" );
 		if (p_ptr->update) update_stuff();
 
 		/* Redraw stuff */
-		if(arg_fiddle)msg_note( "Redraw stuff" );				
+		if(arg_fiddle)msg_note( "Redraw stuff" );
 		if (p_ptr->redraw) redraw_stuff();
 
 		/* Window stuff */
-		if(arg_fiddle)msg_note( "Window stuff" );				
+		if(arg_fiddle)msg_note( "Window stuff" );
 		if (p_ptr->window) window_stuff();
 
 

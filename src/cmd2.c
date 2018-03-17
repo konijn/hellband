@@ -11,14 +11,14 @@
  *
  *
  * James E. Wilson and Robert A. Koeneke released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
- */ 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
+ */
 
 #include "angband.h"
 
@@ -179,7 +179,7 @@ void do_cmd_go_up(void)
 				is_autosave = FALSE;
 			}
 			dun_level--;
-			if(dun_level<0)dun_level=0;				
+			if(dun_level<0)dun_level=0;
 			/* Check for leaving dungeon */
 			if(dun_level == 0)
 			{
@@ -269,7 +269,7 @@ void do_cmd_go_down(void)
 						msg_print(NULL);
 
 						/* Show the appropriate file */
-						do_cmd_load_screen(ANGBAND_DIR_FILE, 
+						do_cmd_load_screen(ANGBAND_DIR_FILE,
 						            format("level%d.txt", dun_level + 1));
 
 						(void)msg_flush_wait();
@@ -454,7 +454,7 @@ static void chest_death(int y, int x, s16b o_idx)
 		{
 			/* Make some gold , square it to insure some serious coin */
 			if (!make_gold(q_ptr)) continue;
-			q_ptr->pval = (q_ptr->pval * q_ptr->pval > 287337 ) ? 287337 : q_ptr->pval * q_ptr->pval;
+			q_ptr->pval = (q_ptr->pval * q_ptr->pval > 25193 ) ? 25193 : q_ptr->pval * q_ptr->pval;
 		}
 
 		/* Otherwise drop an item */
@@ -1436,26 +1436,26 @@ static bool do_cmd_disarm_chest(int y, int x, s16b o_idx)
 	/* Already disarmed/unlocked */
 	else if (o_ptr->pval <= 0)
 	{
-		/* Message */	
+		/* Message */
 		object_desc(o_name, o_ptr, TRUE, 3);
-		sprintf(out_val, "There are no traps on %s.", o_name);						
+		sprintf(out_val, "There are no traps on %s.", o_name);
 		msg_print(out_val);	}
 
 	/* No traps to find. */
 	else if (!chest_traps[o_ptr->pval])
 	{
-		/* Message */	
+		/* Message */
 		object_desc(o_name, o_ptr, TRUE, 3);
-		sprintf(out_val, "There are no traps on %s.", o_name);						
+		sprintf(out_val, "There are no traps on %s.", o_name);
 		msg_print(out_val);
 	}
 
 	/* Success (get a lot of experience) */
 	else if (rand_int(100) < j)
 	{
-		/* Message */	
+		/* Message */
 		object_desc(o_name, o_ptr, TRUE, 3);
-		sprintf(out_val, "You have disarmed %s.", o_name);						
+		sprintf(out_val, "You have disarmed %s.", o_name);
 		msg_print(out_val);
 		gain_exp(o_ptr->pval);
 		o_ptr->pval = (0 - o_ptr->pval);
@@ -1467,9 +1467,9 @@ static bool do_cmd_disarm_chest(int y, int x, s16b o_idx)
 		/* We may keep trying */
 		more = TRUE;
 		if (flush_failure) flush();
-		/* Message */	
+		/* Message */
 		object_desc(o_name, o_ptr, TRUE, 3);
-		sprintf(out_val, "You failed to disarm %s.", o_name);						
+		sprintf(out_val, "You failed to disarm %s.", o_name);
 		msg_print(out_val);
 	}
 
@@ -2115,7 +2115,7 @@ void do_cmd_walk(int pickup)
 	if (get_rep_dir(&dir))
 	{
 		/* Take a turn */
-		energy_use = extract_energy[p_ptr->pspeed]; 
+		energy_use = extract_energy[p_ptr->pspeed];
 
 		/* Actually move the character */
 		move_player(dir, pickup);
@@ -2650,7 +2650,7 @@ void do_cmd_fire(void)
 				/* Deviation of standard code because we need to know if we're healing or damaging  */
 				/* And also the mutiplier is now in percent*/
 				mult = tot_dam_aux(q_ptr, tdam, m_ptr);
-				tdam = (int)(tdam * mult / 100 );				
+				tdam = (int)(tdam * mult / 100 );
 				tdam = critical_shot(q_ptr->weight, q_ptr->to_h, tdam);
 
 				/* No negative damage */
@@ -2662,7 +2662,7 @@ void do_cmd_fire(void)
 				if (debug_mode)
 				{
 						msg_format("You do %d (hp: %d) damage.", tdam, m_ptr->hp);
-				}				
+				}
 			
 
 				/* Hit the monster, check for death */
@@ -2945,12 +2945,12 @@ void do_cmd_throw(void)
 
 				/* Apply special damage XXX XXX XXX */
 				mult = tot_dam_aux(q_ptr, tdam, m_ptr);
-				tdam = (int)(tdam * mult / 100 );				
+				tdam = (int)(tdam * mult / 100 );
 				tdam = critical_shot(q_ptr->weight, q_ptr->to_h, tdam);
 
 				/* No negative damage */
 				/*Lets face it, even if an element heals you, an arrow in your eye has gotta hurt */
-				/*So no healing here, not that immunity and resistance still work*/				
+				/*So no healing here, not that immunity and resistance still work*/
 				if (tdam < 0) tdam = 0;
 
 				/* Complex message */
@@ -3014,8 +3014,8 @@ void do_cmd_throw(void)
 			msg_format("The %s shatters!", o_name);
 			if (potion_smash_effect(1, y, x, q_ptr))
 			{
-				if ( cave[y][x].m_idx && 
-					 is_potential_hater( &(m_list[cave[y][x].m_idx]) ) 
+				if ( cave[y][x].m_idx &&
+					 is_potential_hater( &(m_list[cave[y][x].m_idx]) )
 				   )
 				{
 					char m_name[80];
@@ -3257,7 +3257,7 @@ static void cmd_racial_power_aux (void)
 			(void)fear_monster(dir, plev);
 		}
 		break;
-*/		
+*/
 
 	case KOBOLD:
 		if (racial_aux(12, 8, A_DEX, 14))
@@ -3650,7 +3650,7 @@ void do_cmd_racial_power(void)
 	if (redraw) Term_load();
 
 	/* Abort if needed */
-	if (!flag) 
+	if (!flag)
 	{
 		energy_use = 0;
 		return;
@@ -3853,7 +3853,7 @@ void do_cmd_racial_power(void)
 				(void)detect_doors();
 				(void)detect_stairs();
 			}
-			break;	
+			break;
 		case COR1_SPIT_ACID:
 			if (racial_aux(9, 9, A_DEX, 15))
 			{

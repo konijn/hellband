@@ -10,13 +10,13 @@
  * are included in all such copies.
  *
  * James E. Wilson and Robert A. Koeneke and Ben Harrison have released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
  */
 
 #include "angband.h"
@@ -341,7 +341,7 @@ bool set_cut(int v)
 		notice = TRUE;
 		
 		if (randint(1000)<v || randint(16)==1)
-		{ 
+		{
 			if(!p_ptr->sustain_cha)
 			{
 				msg_print("You have been horribly scarred.");
@@ -396,7 +396,7 @@ bool set_timed_effect( byte effect , int v )
 	/* Is there a noticable change ( nothing is noticed only if duration is increased */
 	bool notice = FALSE;
 	/* Access data of the timed effect */
-	timed_type *te_ptr = &timed[effect];	
+	timed_type *te_ptr = &timed[effect];
 	
 	/*Some timed effects are not that easy*/
 	if( effect == TIMED_CUT )
@@ -458,7 +458,7 @@ bool set_timed_effect( byte effect , int v )
 	
     /* Window stuff, hack if we need to update monsters, we better update the visible monsters window*/
     if( te_ptr->update & PU_MONSTERS )
-		p_ptr->window |= (PW_VISIBLE);    
+		p_ptr->window |= (PW_VISIBLE);
     
 	/* Handle stuff */
 	handle_stuff();
@@ -1174,7 +1174,7 @@ void monster_death(int m_idx)
 
 			/* Unique only golds should give loads of gold, make sure there is no overflow */
 			if( ( r_ptr->flags1 & (RF1_UNIQUE) ) && (r_ptr->flags1 & (RF1_ONLY_GOLD)) )
-				q_ptr->pval = (q_ptr->pval * q_ptr->pval > 287337 ) ? 287337 : q_ptr->pval * q_ptr->pval;
+				q_ptr->pval = (q_ptr->pval * q_ptr->pval > 25193 ) ? 25193 : q_ptr->pval * q_ptr->pval;
 
 			/* XXX XXX XXX */
 			dump_gold++;
@@ -1240,7 +1240,7 @@ void monster_death(int m_idx)
 			int d = 1;
 
 			/* Pick a location */
-			scatter(&ny, &nx, y, x, d, 0);
+			scatter(&ny, &nx, y, x, d);
 
 			/* Stagger */
 			y = ny; x = nx;
@@ -1354,7 +1354,7 @@ bool mon_take_hit(int m_idx, int dam, bool *fear, cptr note)
 				}
 				else
 				/* Oops, I feel bad for monks.. */
-				{				
+				{
 					curse_equipment(100, 50);
 					do { activate_ty_curse(); } while (--curses);\
 				}
@@ -1454,7 +1454,7 @@ bool mon_take_hit(int m_idx, int dam, bool *fear, cptr note)
 		delete_monster_idx(m_idx,TRUE);
         
         /* Update monster list window */
-        p_ptr->window |= (PW_VISIBLE);        
+        p_ptr->window |= (PW_VISIBLE);
 		/* Dead monster, update potential xp decreases and stuff */
 		p_ptr->window |= (PW_MONSTER);
 		/* I hate sprinkling handle_stuffs until it works..*/
@@ -2220,7 +2220,7 @@ static int target_set_aux(int y, int x, int mode, cptr info)
 							s1, s2, s3, m_name, look_mon_desc(c_ptr->m_idx),
 							(m_ptr->smart & SM_CLONED ? " (clone)": ""),
 							(is_ally( m_ptr ) ? " (allied) " : " "),
-							(m_ptr->ally & ALLY_SELF ? " (neutral) " : " "),								
+							(m_ptr->ally & ALLY_SELF ? " (neutral) " : " "),
 							info);
 
 						prt(out_val, 0, 0);
@@ -3008,7 +3008,7 @@ static int patron_chaos_weapon()
 		case 28: case 29:          dummy2 = SV_GLADIUS;            break;
 		case 30: case 31:          dummy2 = SV_TWO_HANDED_SWORD;   break;
 		case 32:                   dummy2 = SV_EXECUTIONERS_SWORD; break;
-		default:                   dummy2 = SV_BLADE_OF_CHAOS;		
+		default:                   dummy2 = SV_BLADE_OF_CHAOS;
 	}
 	object_prep(q_ptr, lookup_kind(dummy, dummy2));
 	q_ptr->to_h = 3 + (randint(dun_level))%10;
@@ -3137,13 +3137,13 @@ int patron_raise_stats()
 	return total;
 }
 
-int patron_loose_stats() 
-{ 	int dummy; 	
-	msg_format("The voice of %s thunders: 'Patience and humility!'", patrons[p_ptr->evil_patron].short_name); 	
-	for (dummy = 0; dummy < 6; dummy++) 		
-		dec_stat(dummy, 10 + randint(15), TRUE); 	
-	return 1; 
-} 
+int patron_loose_stats()
+{ 	int dummy;
+	msg_format("The voice of %s thunders: 'Patience and humility!'", patrons[p_ptr->evil_patron].short_name);
+	for (dummy = 0; dummy < 6; dummy++)
+		dec_stat(dummy, 10 + randint(15), TRUE);
+	return 1;
+}
 
 int patron_mass_gen()
 {
@@ -3236,10 +3236,10 @@ reward_type patron_rewards[] =
 	{ REWARD_GOOD   , patron_mass_gen        , "Mass Genocide" },
 	{ REWARD_FICKLE , patron_ignore          , "Ignore" },
 	{ REWARD_GOOD   , patron_undead_servant  , "Undead Servant" },
-	{ REWARD_GOOD   , patron_demon_servant   , "Demon Servant" }, 
+	{ REWARD_GOOD   , patron_demon_servant   , "Demon Servant" },
 	{ REWARD_GOOD   , patron_angel_servant   , "Angel Servant" },
 	{ REWARD_BAD    , patron_undead_foe      , "Undead Foe" },
-	{ REWARD_BAD    , patron_demon_foe       , "Demon Foe" }, 
+	{ REWARD_BAD    , patron_demon_foe       , "Demon Foe" },
 	{ REWARD_BAD    , patron_angel_foe       , "Angel Foe" },
 	{ REWARD_FICKLE , patron_permanent_walls , "Permanent Level" },
 	{ REWARD_FICKLE , patron_mutation        , "Gain Mutation" },
@@ -3281,7 +3281,7 @@ void gain_level_reward(int chosen_reward)
 		reward_idx = rand_int( reward_count );
 		if( //Not nasty and good reward
 			( !nasty_ok && patron_rewards[reward_idx].nasty == REWARD_GOOD ) ||
-			//Not nasty and fickle reward with type 0 which means abyssal patron 
+			//Not nasty and fickle reward with type 0 which means abyssal patron
 			( !nasty_ok && patron_rewards[reward_idx].nasty == REWARD_FICKLE && patrons[p_ptr->evil_patron].type == 0 ) ||
 			//With nasty, anything goes
 			( nasty_ok ) )
@@ -3350,7 +3350,7 @@ int count_corruption_options()
 	int count = 0;
 	for( i = 0 ; i < COUNT_CORRUPTIONS ; i++ )
 		count = count + corruptions[i].odds;
-	return count;	
+	return count;
 }
 
 /*Converts a dice throw for a corruption into the actual corruption*/
@@ -3360,7 +3360,7 @@ int get_corruption( int option)
 	int count = 0;
 	for( i = 0 ; i < COUNT_CORRUPTIONS ; i++ )
 	{
-		count = count + corruptions[i].odds;	
+		count = count + corruptions[i].odds;
 		if(count>=option)
 			return i;
 	}
@@ -3378,11 +3378,11 @@ u32b *corruption_idx_to_u32b( byte b )
 		case 2:
 			return &(p_ptr->muta2);
 		case 3:
-			return &(p_ptr->muta3);			
+			return &(p_ptr->muta3);
 	}
 	msg_format("Getting corruption idx (%d) failed.", b );msg_print(NULL);
 	/*Need to return a valid memory address anyway to avoid panick*/
-	return &(p_ptr->muta1);	
+	return &(p_ptr->muta1);
 }
 
 
@@ -3392,9 +3392,9 @@ bool gain_corruption(int choose_mut)
 	cptr muta_desc = "";
 	bool muta_chosen = FALSE;
 	u32b muta_which = 0;
-	int opposed_muta_which = 0;	
+	int opposed_muta_which = 0;
 	u32b *muta_class = 0;
-	u32b *opposed_muta_class = 0;	
+	u32b *opposed_muta_class = 0;
 	int options = count_corruption_options();
 	int die;
 	int idx;
@@ -3680,14 +3680,14 @@ void dump_corruptions(FILE * OutFile)
 	
 	for( i = 0 ; i < COUNT_CORRUPTIONS ; i++ )
 	{
-		muta_class = corruption_idx_to_u32b( corruptions[i].idx );	
+		muta_class = corruption_idx_to_u32b( corruptions[i].idx );
 		if (*(muta_class) & corruptions[i].bitflag )
 		{
 			/*Dump the description*/
-			fprintf(OutFile, corruptions[i].description);
+			fprintf(OutFile, "%s", corruptions[i].description);
 			/*And a new line*/
-			fprintf(OutFile, "\n");			
+			fprintf(OutFile, "\n");
 		}
-	}			
+	}
 }
 

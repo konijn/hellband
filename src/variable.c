@@ -255,7 +255,7 @@ bool sanity_verbose; /* Inform player when a sanity check is used */
 bool sanity_realm; /* Dont kill books of the realm I use */
 bool sanity_price;	/* Dont kill items more expensive then this */
 bool reverse_xp; /* Diplay xp till next level */
-s32b sane_price; /* Limit price over which items will not be squelched */
+u32b sane_price; /* Limit price over which items will not be squelched */
 bool sanity_id; /* Dont kill unknown consumables */
 
 bool use_bigtile = FALSE; /* We aint not using bigtile yet */

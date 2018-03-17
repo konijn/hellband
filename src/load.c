@@ -11,18 +11,18 @@
  *
  *
  * James E. Wilson and Robert A. Koeneke released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * Ben Harrison released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
- */ 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
+ */
 
 #include "angband.h"
 
@@ -179,36 +179,37 @@ static byte sf_get(void)
 	return (v);
 }
 
-/* HACK^3 Changing this means changing sf_get !!!! */
+/* HACK^3 Changing this means changing sf_get !!!!
+We will only need this on the day we starting write and reading chars
 static char sf_get_char(void)
 {
 	char cc;
 	byte c, v;
 	
-	/* Get a character, decode the value */
+	Get a character, decode the value
 	cc = getc(fff);
 	c = cc & 0xFF;
 	v = c ^ xor_byte;
 	xor_byte = c;
 	
-	/* Maintain the checksum info */
+	Maintain the checksum info
 	v_check += v;
 	x_check += xor_byte;
 	
-	/* Return the value */
+	Return the value
 	return (cc);
 }
-
+*/
 static void rd_byte(byte *ip)
 {
 	*ip = sf_get();
 }
-
+/* One day we might need this, we would need to write an equivalent wr_char
 static void rd_char(char *ip)
 {
 	*ip = sf_get_char();
 }
-
+*/
 static void rd_byte_char( char *ip)
 {
 	byte b = 0;
@@ -353,8 +354,8 @@ static void rd_item(object_type *o_ptr)
 	/* Conditional read, elevel and exp can stay 0 otherwise */
 	if( o_ptr->art_flags3 & TR3_XP )
 	{
-		rd_byte(&o_ptr->elevel);	
-		rd_s32b(&o_ptr->exp);	
+		rd_byte(&o_ptr->elevel);
+		rd_s32b(&o_ptr->exp);
 	}
 	else
 	{
@@ -452,7 +453,8 @@ static void rd_item(object_type *o_ptr)
 	o_ptr->weight = k_ptr->weight;
 
 	/* Hack -- extract the "broken" flag */
-	if (!o_ptr->pval < 0) o_ptr->ident |= (IDENT_BROKEN);
+	/*This used to be (!o_ptr->pval < 0) which cant be right*/
+	if (o_ptr->pval < 0) o_ptr->ident |= (IDENT_BROKEN);
 
 	/* Artifacts */
 	if (o_ptr->name1)
@@ -594,7 +596,7 @@ static void rd_lore(int r_idx)
 	r_ptr->r_flags4 &= r_ptr->flags4;
 	r_ptr->r_flags5 &= r_ptr->flags5;
 	r_ptr->r_flags6 &= r_ptr->flags6;
-	r_ptr->r_flags7 &= r_ptr->flags7;	
+	r_ptr->r_flags7 &= r_ptr->flags7;
 }
 
 
@@ -779,7 +781,7 @@ static void rd_options(void)
 						/* Clear */
 						option_flag[n] &= ~(1L << i);
 					}
-				}                           
+				}
 			}
 		}
 	}
@@ -826,7 +828,7 @@ static void rd_options(void)
 						/* Clear */
 						window_flag[n] &= ~(1L << i);
 					}
-				}                           
+				}
 			}
 		}
 	}
@@ -933,7 +935,7 @@ static void rd_customs(void)
 
 	for( i = 0 ; i < custom_count ; i++ )
 	{
-		rd_u16b( &idx );	
+		rd_u16b( &idx );
 		rd_custom( idx );
 		r_info[idx].custom = 1;
 	}
@@ -960,7 +962,7 @@ static void rd_extra(void)
 
 	/* Class/Race/Gender/Spells */
 	rd_byte(&p_ptr->prace);
-	rd_byte(&p_ptr->psign);	
+	rd_byte(&p_ptr->psign);
 	rd_byte(&p_ptr->pclass);
 	rd_byte(&p_ptr->psex);
 	rd_u16b(&p_ptr->realm1);
@@ -1631,7 +1633,7 @@ static errr rd_savefile_new_aux(void)
 		return (23);
 	}
 	/*  Load the known formulas*/
-	for (i = 0; i < tmp16u; i++) 
+	for (i = 0; i < tmp16u; i++)
 	{
 		rd_byte(&tmp8u);
 		potion_alch[i].known1 = (tmp8u & 0x01) ? TRUE: FALSE;

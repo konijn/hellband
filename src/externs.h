@@ -225,7 +225,7 @@ extern bool sanity_realm; /* Dont kill books of the realm I use */
 extern bool sanity_price;	/* Dont kill items more expensive then this */
 extern bool sanity_id; /* Dont kill unknown consumables */
 extern bool reverse_xp;
-extern s32b sane_price;	/* Dont kill items more expensive then this */
+extern u32b sane_price;	/* Dont kill items more expensive then this, cant go negative */
 extern bool use_bigtile;
 extern byte squelch_options[SQ_HL_COUNT];
 extern bool unify_commands;
@@ -457,7 +457,7 @@ extern void wiz_dark(void);
 extern void cave_set_feat(int y, int x, int feat);
 extern void mmove2(int *y, int *x, int y1, int x1, int y2, int x2);
 extern bool projectable(int y1, int x1, int y2, int x2);
-extern void scatter(int *yp, int *xp, int y, int x, int d, int m);
+extern void scatter(int *yp, int *xp, int y, int x, int d /*int m*/);
 extern void health_track(int m_idx);
 extern void monster_race_track(int r_idx);
 extern void object_track( object_type *o_ptr  , cptr activity );

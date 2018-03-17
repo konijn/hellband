@@ -10,13 +10,13 @@
  * are included in all such copies.
  *
  * James E. Wilson and Robert A. Koeneke have released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
  */
 
 #include "angband.h"
@@ -52,13 +52,13 @@
 static cptr ring_adj[MAX_ROCKS] =
 {
 		/* Scary material 3*/
-	    "Skull", "Bone" , "Bloodstone" , 
+	    "Skull", "Bone" , "Bloodstone" ,
 	    /* Utility Ring 4 */
 		"Chevron", "Reeve's", "Signet" , "Poisoning" ,
 	    /* Black materials 7*/
-		"Onyx", "Obsidian", "Black Marble", "Black Pearl" , "Swarovski", "Jasper" , "Bixbyite" , 
-		/* Symbolic/wish ring 2 */	
-	    "Prosperity", "Sun", 
+		"Onyx", "Obsidian", "Black Marble", "Black Pearl" , "Swarovski", "Jasper" , "Bixbyite" ,
+		/* Symbolic/wish ring 2 */
+	    "Prosperity", "Sun",
 	    /* Organizations 3*/
 	    "Crusader" , "Inquisitor" , "Imperial" ,
 	    /*Cultural references 6*/
@@ -68,13 +68,13 @@ static cptr ring_adj[MAX_ROCKS] =
 	    /* Metals 7*/
 		"Iron", "Steel", "Copper","White Gold", "Bronze" , "Gold", "Silver",
 	    /* Coupling 4*/
-		"Regards", "Posie", "Chastity", "Claddaigh" , 
+		"Regards", "Posie", "Chastity", "Claddaigh" ,
 	    /* Magical Positions 4*/
 		"Mage's", "Wizard's", "Witches'", "Grandmaster's",
 	    /*Various 4*/
-		"Spikard", "Serpentine",  "Double", "Dragon's" , 
+		"Spikard", "Serpentine",  "Double", "Dragon's" ,
 	    /* Metal states 6*/
-		"Plain",  "Rusted", "Tarnished", "Dull" , "Blotted" , "Stained" , 
+		"Plain",  "Rusted", "Tarnished", "Dull" , "Blotted" , "Stained" ,
 		/* Church Ranks 3*/
 	    "Bishop's",  "Cardinal's", "Papal"
 
@@ -83,11 +83,11 @@ static cptr ring_adj[MAX_ROCKS] =
 static byte ring_col[MAX_ROCKS] =
 {
    /* Scary material 3*/
-   TERM_WHITE, TERM_L_WHITE, TERM_RED, 
+   TERM_WHITE, TERM_L_WHITE, TERM_RED,
    /* Utility Ring 4*/
-   TERM_L_BLUE, TERM_L_GREEN, TERM_RED, TERM_VIOLET, 
+   TERM_L_BLUE, TERM_L_GREEN, TERM_RED, TERM_VIOLET,
    /* Black materials 7*/
-   TERM_L_DARK,TERM_L_DARK,TERM_L_DARK,TERM_L_DARK,TERM_L_DARK,TERM_L_DARK,TERM_L_DARK,	
+   TERM_L_DARK,TERM_L_DARK,TERM_L_DARK,TERM_L_DARK,TERM_L_DARK,TERM_L_DARK,TERM_L_DARK,
    /* Symbolic/wish ring 2 */
    TERM_YELLOW , TERM_YELLOW ,
     /* Organizations 3*/
@@ -120,7 +120,7 @@ static cptr amulet_adj[MAX_AMULETS] =
 	"Amber", "Driftwood", "Coral", "Agate", "Ivory",
 	"Obsidian", "Bone", "Brass", "Bronze", "Pewter",
 	"Tortoise Shell", "Golden", "Azure", "Crystal", "Silver",
-	"Copper", "Swastika", "Dragon Tooth" , "Dragon Claw" , 
+	"Copper", "Swastika", "Dragon Tooth" , "Dragon Claw" ,
 };
 
 static byte amulet_col[MAX_AMULETS] =
@@ -143,7 +143,7 @@ static byte amulet_col[MAX_AMULETS] =
  Myrtle , (Neh.8.15, Is.41.19, 55.13).
  Fig Tree , According to some traditions, the fig was the forbidden fruit..
  Tamarisk , (Ps.92.14, 1King.6.29,32,35,7.36, Lev.23.40, Jn.12.31, Neh.8.15, Jn.12.13)
- Juniper 
+ Juniper
  Wormwood, Deut.29.18, Prov.5.4, Rev.8.11.
  
 */
@@ -320,7 +320,7 @@ static byte scroll_col[MAX_TITLES];
 #define EASY TRUE
 #define HARD FALSE
 
-static tv_describer_type tv_describers[] = 
+static tv_describer_type tv_describers[] =
 {  /* tval            describing actions   flavors         no flavor      with flavor*/
 	{ TV_SKELETON     , EASY , TERM_WHITE   , ACT_NOTHING		, NO_FLAVORS	, NO_FLAVORS	, NO_FLAVORS						},
 	{ TV_BOTTLE       , EASY , TERM_WHITE   , ACT_NOTHING		, NO_FLAVORS	, NO_FLAVORS	, NO_FLAVORS						},
@@ -392,7 +392,7 @@ static bool object_has_flavor(int i)
 	tv_describer_type describer;
 
 	/* The hard-coded mushroom exception */
-	if( k_ptr->tval == TV_FOOD ) 
+	if( k_ptr->tval == TV_FOOD )
 	{
 		if (k_ptr->sval < SV_FOOD_MIN_FOOD) return (TRUE);
 		return (FALSE);
@@ -440,7 +440,7 @@ static byte default_tval_to_attr(int tval)
 	/* Get describer */
 	describer = read_tval_description( tval );
 	/* Return color */
-	return describer.attribute;	
+	return describer.attribute;
 }
 
 
@@ -1253,9 +1253,9 @@ void object_desc(char *buf, object_type *o_ptr, int pref, int mode)
 	bool            ego_prefix = FALSE;
 	bool            ego_prefix_done = FALSE;
 
-	/* All takes for artefact name overrides , we start 
+	/* All takes for artefact name overrides , we start
 	   with the conviction that the a_info name does not override the k_info name */
-	bool            artefact_overrides = FALSE; 
+	bool            artefact_overrides = FALSE;
 
 	bool            tval_found = FALSE;
 
@@ -1301,7 +1301,7 @@ void object_desc(char *buf, object_type *o_ptr, int pref, int mode)
 			basenm++; /* This will prevent the exclamation mark in the artifact name to show up */
 		}else{
 			basenm = (k_name + k_ptr->name); /* False alert, let the the old logic run */
-		}	
+		}
 	}
 
 	/* Assume no "modifier" string */
@@ -1340,7 +1340,7 @@ void object_desc(char *buf, object_type *o_ptr, int pref, int mode)
 
 		/* Make sure you found it */
 		if( describer.tval == o_ptr->tval )
-		{	
+		{
 			tval_found = TRUE;
 			if( describer.action == ACT_SHOW_WEAPON )
 				show_weapon = TRUE;
@@ -1349,7 +1349,7 @@ void object_desc(char *buf, object_type *o_ptr, int pref, int mode)
 			if( describer.action == ACT_FULL_MONTY )
 			{
 				/* The hard-coded mushroom exception */
-				if( o_ptr->tval == TV_FOOD && o_ptr->sval >= SV_FOOD_MIN_FOOD ) 
+				if( o_ptr->tval == TV_FOOD && o_ptr->sval >= SV_FOOD_MIN_FOOD )
 					goto legacy_break;
 				
 				/* Known artefacts */
@@ -1360,7 +1360,7 @@ void object_desc(char *buf, object_type *o_ptr, int pref, int mode)
 				if( describer.adj != NULL )
 					modstr = describer.adj[indexx];
 				else
-				/* Only scrolls are known to be a hack^2 */	
+				/* Only scrolls are known to be a hack^2 */
 					modstr = scroll_adj[indexx];
 				if (aware) append_name = TRUE;
 				if (((plain_descriptions) && (aware))  || o_ptr->ident & IDENT_STOREB)
@@ -1382,7 +1382,7 @@ legacy_break:
 	/* Calm down compiler, waste a few bytes */
 	egostr = "";
 
-	/* If we know the object, and the object is an ego item and the description 
+	/* If we know the object, and the object is an ego item and the description
 	 * starts with &, then we are dealing with an ego that has a prefixed name
 	 * this allows for 'Vampiric Dagger' instead of 'Dagger (Vampiric) */
 	if( known && o_ptr->name2 && suffix( e_name + e_info[o_ptr->name2].name , "&" ) )
@@ -1509,14 +1509,14 @@ legacy_break:
 				*t++ = 's';
 			}
 		}
-		/* Ego prefix, as documented before, 
+		/* Ego prefix, as documented before,
 		   prefixes cannot display & as it is the anchor,
 		   plus it would look silly */
 		else if( ego_prefix && !ego_prefix_done )
 		{
 			for (u = egostr; *u; u++)
 			{
-				if(*u != '&')			
+				if(*u != '&')
 					*t++ = *u;
 			}
 			ego_prefix_done = TRUE;
@@ -2333,7 +2333,7 @@ cptr item_activation(object_type *o_ptr)
 	case ART_BOOTS_GABRIEL:
 	{
 		return "haste self (50 turns) every 200 turns";
-	}		
+	}
 	case ART_ELIGOR:
 		{
 			return "drain life (120) every 400 turns";
@@ -2393,7 +2393,7 @@ cptr item_activation(object_type *o_ptr)
 	case ART_AMAYMON:
 	{
 		return "poisonous nether breath(700) every 888 turns";
-	}		
+	}
 	case ART_ROBE_MICHAEL:
 		{
 			return ("heal (777), curing and heroism every 300 turns");
@@ -2402,12 +2402,12 @@ cptr item_activation(object_type *o_ptr)
 	    {
 		return ("storm of the Dark Waters every 500 turns");
     	}
-/*		
+/*
 	case ART_ORCS:
 		{
 			return "genocide every 500 turns";
 		}
-*/		
+*/
 	case ART_LIFE:
 		{
 			return "restore life levels every 450 turns";
@@ -2475,7 +2475,7 @@ cptr item_activation(object_type *o_ptr)
 	case ART_BAPHOMET:
 	{
 		return "star ball (150) every 1000 turns";
-	}		
+	}
 	case ART_SAMAEL:
 	{
 		return "breathe elements (300), berserk rage, bless, and resistance";
@@ -2487,7 +2487,7 @@ cptr item_activation(object_type *o_ptr)
 	case ART_BLOOD_MICHAEL:
 	{
 		return "breathe elements (300), berserk rage, bless, and resistance";
-	}		
+	}
 	case ART_BEATRICE:
 		{
 			return "illumination every 10+d10 turns";
@@ -2643,10 +2643,10 @@ int identify_fully_strings( object_type *o_ptr )
 	/* Get the kind info */
 	k_ptr = &k_info[ o_ptr->k_idx ];
 
-	/* Extract the kind description, calculate string_size and 
+	/* Extract the kind description, calculate string_size and
 	   make a copy of the buffer pointer */
 	strcpy(buf, k_text + k_ptr->text);
-	string_size = strlen( buf ); 
+	string_size = strlen( buf );
 	string_ptr = buf;
 
 	if( k_info[o_ptr->k_idx].aware)
@@ -2677,8 +2677,8 @@ int identify_fully_strings( object_type *o_ptr )
 	}
 	info[i++] = "";
 
-	sprintf(weight_buf, "%s %d.%1d lb", o_ptr->number==1?"It weights":"They weigh" , 
-	                                         o_ptr->weight * o_ptr->number / 10 , 
+	sprintf(weight_buf, "%s %d.%1d lb", o_ptr->number==1?"It weights":"They weigh" ,
+	                                         o_ptr->weight * o_ptr->number / 10 ,
 	                                         o_ptr->weight * o_ptr->number % 10 );
 	info[i++] = weight_buf;
 
@@ -3052,12 +3052,12 @@ s16b wield_slot(object_type *o_ptr)
 		}
 
 	case TV_RING:
-		{			
+		{
 			/* TODO: clean me up at some point we should just return 1 value
 			   Use the right hand first */
-			 if (!inventory[INVEN_RIGHT].k_idx) return (INVEN_RIGHT); 
+			 if (!inventory[INVEN_RIGHT].k_idx) return (INVEN_RIGHT);
 			/* Use the left hand for swapping (by default) */
-			 return (INVEN_LEFT); 
+			 return (INVEN_LEFT);
 		}
 
 	case TV_AMULET:
@@ -3378,7 +3378,7 @@ void display_inven(void)
 		if (item_tester_okay(o_ptr))
 		{
 			/* Prepare an "index" */
-			tmp_val[0] = (byte)(index_to_label(i)); 
+			tmp_val[0] = (byte)(index_to_label(i));
 
 			/* Bracket the "index" --(-- */
 			tmp_val[1] = ')';
@@ -4551,7 +4551,7 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 					if (floor_num == 1)
 					{
 						/* Hack -- Auto-Select */
-						if ((p_ptr->command_wrk == (USE_FLOOR)))
+						if (p_ptr->command_wrk == (USE_FLOOR))
 						{
 							/* Special index */
 							k = 0 - floor_list[0];
@@ -4841,7 +4841,7 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 	return (item);
 }
 
-#if 0  
+#if 0
 static byte dragon_colour (object_type * o_ptr)
 {
 	u32b fl = o_ptr->art_flags2;
@@ -4865,7 +4865,7 @@ static byte dragon_colour (object_type * o_ptr)
 }
 #endif
 
-#if 0  
+#if 0
 byte object_attr(object_type *  o_ptr)
 {
 	/* rr9: Changed to display unidentified objects */
@@ -4928,8 +4928,8 @@ byte object_attr(object_type *  o_ptr)
 #endif
 
 
-/* 
-* Create Alchemy lists 
+/*
+* Create Alchemy lists
  */
 void alchemy_init(void)
 {
@@ -4943,7 +4943,7 @@ void alchemy_init(void)
 	
 	s16b target_pval = 0;
 	s16b pval1 = 0;
-	s16b pval2 = 0;	
+	s16b pval2 = 0;
 		
 	/* Hack -- Use the "simple" RNG */
 	Rand_quick = TRUE;
@@ -4990,7 +4990,7 @@ void alchemy_init(void)
 				
 				/*Must be potions that fill the stomach */
 				/*For now this excludes really crappy potions (death etc.) and invulnerability*/
-				if ((k_info[k1].pval < 0) || (k_info[k2].pval < 0)) continue;	
+				if ((k_info[k1].pval < 0) || (k_info[k2].pval < 0)) continue;
 				
 				/* Same combination mustn't exist */
 				exists = FALSE;
@@ -4998,8 +4998,8 @@ void alchemy_init(void)
 				for (j = 0; j < i; j++)
 				{
 					if (((sv1 == potion_alch[j].sval1) && (sv2 == potion_alch[j].sval2)) ||
-						((sv1 == potion_alch[j].sval2) && (sv2 == potion_alch[j].sval1))) 
-						exists = TRUE; 
+						((sv1 == potion_alch[j].sval2) && (sv2 == potion_alch[j].sval1)))
+						exists = TRUE;
 				}
 				
 				if (exists) continue;
@@ -5037,7 +5037,7 @@ void alchemy_init(void)
 			potion_alch[i].sval2 = sv2;
 		}
 		else
-		{	
+		{
 			potion_alch[i].sval1 = i;
 			potion_alch[i].sval2 = i;
 		}
@@ -5072,7 +5072,7 @@ byte tval_to_sql_hl( byte tval )
 		case TV_DIGGING:
 		case TV_HAFTED:
 		case TV_POLEARM:
-		case TV_SWORD:			
+		case TV_SWORD:
 			return SQ_HL_WEAPONS;
 		case TV_SHOT :
 		case TV_ARROW :
@@ -5094,11 +5094,11 @@ byte tval_to_sql_hl( byte tval )
 		case TV_STAFF:
 			return SQ_HL_STAVES;
 		case TV_WAND:
-			return SQ_HL_WANDS;			
+			return SQ_HL_WANDS;
 		case TV_ROD:
 			return SQ_HL_RODS;
 		case TV_SCROLL:
-			return SQ_HL_SCROLLS;			
+			return SQ_HL_SCROLLS;
 		case TV_MIRACLES_BOOK:
 		case TV_SORCERY_BOOK:
 		case TV_NATURE_BOOK:
@@ -5146,7 +5146,7 @@ void mark_squelch( object_type *o_ptr  )
 void do_squelch( void )
 {
 	object_type		*o_ptr;
-	object_type		*prev_o_ptr=NULL;	
+	object_type		*prev_o_ptr=NULL;
 	char o_name[80];
 	cave_type *c_ptr;
 	s16b this_o_idx, next_o_idx = 0;
@@ -5163,8 +5163,8 @@ void do_squelch( void )
 		if( o_ptr->squelch )
 		{
 			/* Describe the object */
-			object_desc(o_name, o_ptr, TRUE, 3);			
-			msg_format("You stomp %s." , o_name);msg_print(NULL);			
+			object_desc(o_name, o_ptr, TRUE, 3);
+			msg_format("You stomp %s." , o_name);msg_print(NULL);
 			inven_item_increase(i, -o_ptr->number);
 			inven_item_describe(i);
 			inven_item_optimize(i);
@@ -5197,7 +5197,7 @@ void do_squelch( void )
 			msg_format("You stomp %s on the floor." , o_name);
 			object_wipe(o_ptr);
 			/* Count objects */
-			o_cnt--;			
+			o_cnt--;
 			if(prev_o_ptr==NULL)
 				c_ptr->o_idx = next_o_idx;
 			else
@@ -5268,7 +5268,7 @@ void consider_squelch( object_type *o_ptr )
 	
 	/* If we dont know about the TVAL ( eg ) potions, we get out*/
 	if(sq_hl == SQ_HL_OTHERS)
-		return;	
+		return;
 	
 	/* Get the squelching option */
 	sq_option = squelch_options[sq_hl];
@@ -5288,8 +5288,8 @@ void consider_squelch( object_type *o_ptr )
 	heavy       = has_heavy_pseudo_id();
 	/* Check for feelings */
 	feel       = (heavy ? value_check_aux1(o_ptr) : value_check_aux2(o_ptr));
-	if(!feel)  
-		feel="";	
+	if(!feel)
+		feel="";
 	feel_heavy = value_check_aux1(o_ptr);
 	/* Assume we wont squelch */
 	go_squelch = FALSE;
@@ -5300,17 +5300,17 @@ void consider_squelch( object_type *o_ptr )
 	if (arg_fiddle)
 	{
 		msg_format("Squelch %s ?" , o_name);
-		msg_format("SVAL %d ?" , o_ptr->sval);	
-		msg_format("Option for that :(%s)" , squelch_strings[sq_option] ); 
+		msg_format("SVAL %d ?" , o_ptr->sval);
+		msg_format("Option for that :(%s)" , squelch_strings[sq_option] );
 		if(sense || id)
 		{
 			msg_format("Feel:%s" , feel );
 			if(heavy || id)
-				msg_format("Feel_heavy : %s." , feel_heavy );		
+				msg_format("Feel_heavy : %s." , feel_heavy );
 		}else{
-			msg_format("No feeling or id." , feel_heavy );		
+			msg_format("No feeling or id." , feel_heavy );
 		}
-	}	
+	}
 	
 	if( sq_hl == SQ_HL_ARMOURS || sq_hl == SQ_HL_WEAPONS || sq_hl == SQ_HL_AMMO )
 	{
@@ -5319,27 +5319,27 @@ void consider_squelch( object_type *o_ptr )
 			go_squelch = TRUE;
 		/*If we want excellent and artefacts, we need to have id or powerfull sense that it is excellent or have it id'd*/
 		if( sq_option == SQUELCH_EXCELLENT )
-		{ 
+		{
 			/*If we have heavy pseudo-id or we id'd it, we can deleted up to good*/
-			if( ( (sense && heavy) || id ) && 
-				( 
-				  streq(feel_heavy, "cursed") ||  
-				  streq(feel_heavy, "broken")  || 
-				  streq(feel_heavy, "average") || 
-				  streq(feel_heavy, "good") 
-				  ) 
+			if( ( (sense && heavy) || id ) &&
+				(
+				  streq(feel_heavy, "cursed") ||
+				  streq(feel_heavy, "broken")  ||
+				  streq(feel_heavy, "average") ||
+				  streq(feel_heavy, "good")
+				  )
 				)
 				go_squelch = TRUE;
 			/*If we have weak pseudo-id and not id'd it,we can delete up to average*/
 			if( sense && !heavy && ( streq(feel, "cursed") ||  streq(feel, "broken")  || streq(feel, "") ) )
-				go_squelch = TRUE;				
+				go_squelch = TRUE;
 		}
 		
 		if( sq_option == SQUELCH_GOOD )
 		{
 			/*If we have pseudo id (weak or not) or id, we can delete cursed and average*/
 			if( ( sense || id ) && ( streq(feel_heavy, "cursed") ||  streq(feel_heavy, "average") ||  streq(feel_heavy, "broken") || streq(feel_heavy, "") ) )
-				go_squelch = TRUE;							
+				go_squelch = TRUE;
 		}
 	}
 	
@@ -5356,14 +5356,14 @@ void consider_squelch( object_type *o_ptr )
 				go_squelch = TRUE;
 			/*If we have heavy pseudo-id or we id'd it, we can deleted up to average*/
 			if( ( (sense && !heavy)  ) && ( streq(feel, "cursed") || streq(feel, "broken")  || streq(feel, "") ) )
-				go_squelch = TRUE;			
+				go_squelch = TRUE;
 			/* These can never be excellent or great, the day they can, this will be a bug ;) */
 			if( o_ptr->sval == SV_LITE_LANTERN || o_ptr->sval == SV_LITE_TORCH )
-				go_squelch = TRUE;				
+				go_squelch = TRUE;
 		}
 	}
 	
-	if( sq_hl == SQ_HL_SCROLLS || sq_hl == SQ_HL_WANDS || sq_hl == SQ_HL_RODS || SQ_HL_STAVES )
+	if( sq_hl == SQ_HL_SCROLLS || sq_hl == SQ_HL_WANDS || sq_hl == SQ_HL_RODS || sq_hl == SQ_HL_STAVES )
 	{
 		/* We want it all gone, assumed is that sanity checks are configured on tval-sval level */
 		if( sq_option == SQUELCH_ALL )
@@ -5376,7 +5376,7 @@ void consider_squelch( object_type *o_ptr )
 			if( ( (sense && heavy) || id ) && ( streq(feel_heavy, "cursed") || streq(feel_heavy, "broken") || streq(feel_heavy, "average") || streq(feel_heavy, "good") ) )
 				go_squelch = TRUE;
 		}
-	}	
+	}
 	
 	if( sq_hl == SQ_HL_BOOKS )
 	{
@@ -5386,22 +5386,22 @@ void consider_squelch( object_type *o_ptr )
 		/* We want it all gone,but for unknown stuff we wait for it to be id'd, assumed is that sanity checks are configured on tval-sval level */
 		if( sq_option == SQUELCH_TOWN_BOOKS && o_ptr->sval < 2 )
 			go_squelch = TRUE;
-	}	
+	}
 	
 	if( sq_hl == SQ_HL_MISC )
 	{
 		/* We want it all gone, assumed is that we are playing a warrior or that all books have been found and marked {!k}  */
 		if( sq_option == SQUELCH_ALL )
 			go_squelch = TRUE;
-	}	
+	}
 	
 	if( sq_hl == SQ_HL_CHESTS )
 	{
 		/* We want it all gone, assumed is that we is so tuff that we no need no crummy chests ;)  */
 		if( sq_option == SQUELCH_ALL )
-			go_squelch = TRUE;	
+			go_squelch = TRUE;
 		if( sq_option == SQUELCH_OPENED && o_ptr->pval == 0 )
-			go_squelch = TRUE;	
+			go_squelch = TRUE;
 	}
 	
 	/*If we dont squelch then getoutahere */
@@ -5409,10 +5409,10 @@ void consider_squelch( object_type *o_ptr )
 		return;
 	
 	if (arg_fiddle)
-		msg_print("go_squelch=TRUE"); 
+		msg_print("go_squelch=TRUE");
 	
 	if (arg_fiddle)
-		msg_print("Artefact ?"); 
+		msg_print("Artefact ?");
 	/* Now we check for aretefacts */
 	/* Artifacts cannot be destroyed */
 	if (artefact_p(o_ptr) || o_ptr->art_name)
@@ -5434,32 +5434,32 @@ void consider_squelch( object_type *o_ptr )
 		return;
 	}
 	if (arg_fiddle)
-		msg_print("No."); 
+		msg_print("No.");
 	
 	if (arg_fiddle)
-		msg_print("Sane & Storebought ?"); 
+		msg_print("Sane & Storebought ?");
 	/* Check for storebought only now ;) */
 	if( sanity_store && storebought )
 		return;
 	
 	if (arg_fiddle)
-		msg_print("No."); 
+		msg_print("No.");
 	
-	if (arg_fiddle)	
-		msg_print("Sane & Unknown?"); 
+	if (arg_fiddle)
+		msg_print("Sane & Unknown?");
 	/*Check for the known status of consumables*/
 	if( sanity_id && !( id || k_info[o_ptr->k_idx].aware ) )
 		return;
-	if (arg_fiddle)	
-		msg_print("No."); 
+	if (arg_fiddle)
+		msg_print("No.");
 	
-	if (arg_fiddle)	
-		msg_print("Sane & High Price?"); 
+	if (arg_fiddle)
+		msg_print("Sane & High Price?");
 	/*Check for sanity check on price*/
 	if( sanity_price && id && object_value(o_ptr) > 0 && object_value(o_ptr) > sane_price )
 		return;
-	if (arg_fiddle)	
-		msg_print("No."); 
+	if (arg_fiddle)
+		msg_print("No.");
 	
 	/* There are other sanity checks for misc stuff and chests */
 	if( sq_hl == SQ_HL_CHESTS || sq_hl == SQ_HL_MISC )
@@ -5483,18 +5483,18 @@ void consider_squelch( object_type *o_ptr )
 	{
 		go_squelch = FALSE;
 		/*If we have heavy pseudo-id or we id'd it, we can deleted up to good*/
-		if( ( (sense && heavy) || id ) && 
-			( 
-			  streq(feel_heavy, "cursed") ||  
-			  streq(feel_heavy, "broken")  || 
-			  streq(feel_heavy, "average") || 
-			  streq(feel_heavy, "good") 
-			  ) 
+		if( ( (sense && heavy) || id ) &&
+			(
+			  streq(feel_heavy, "cursed") ||
+			  streq(feel_heavy, "broken")  ||
+			  streq(feel_heavy, "average") ||
+			  streq(feel_heavy, "good")
+			  )
 			)
 		go_squelch = TRUE;
 		/*If we have weak pseudo-id and not id'd it,we can delete up to average*/
 		if( sense && !heavy && ( streq(feel, "cursed") ||  streq(feel, "broken")  || streq(feel, "") ) )
-			go_squelch = TRUE;				
+			go_squelch = TRUE;
 		/*If we dont squelch then getoutahere */
 		if(!go_squelch)
 			return;
@@ -5519,11 +5519,11 @@ void consider_squelch( object_type *o_ptr )
 	
 	/* By know we know it is not cursed , so we assumed the player put it on to try it */
 	if( sanity_telepathy && ( TR3_TELEPATHY & f3 ) )
-		return;	
+		return;
 	
 	/* High resists are not as obvious , so we need *id* or obvious stuff */
 	if( fullid  && sanity_immune && ( f2 & ( TR2_RES_CHAOS | TR2_RES_DISEN | TR2_RES_NETHER | TR2_RES_NEXUS ) ) )
-		return;	
+		return;
 	
 	/*Sanity didnt save us, and now the thingy must die*/
 	mark_squelch(o_ptr);
@@ -5686,7 +5686,7 @@ void object_gain_level(object_type *o_ptr)
 		{
 			o_ptr->to_h += 1;
 
-			if (magik(40)) /* 40 percent chance of access to new group, 1/3rd of the time */ 
+			if (magik(40)) /* 40 percent chance of access to new group, 1/3rd of the time */
 				gain_ego_realm(o_ptr, FALSE);
 
 			if (magik(40) && o_ptr->to_a < 12 ) /* 40 percent chance of higher armor defense value */

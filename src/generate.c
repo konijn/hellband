@@ -11,14 +11,14 @@
  *
  *
  * James E. Wilson and Robert A. Koeneke released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
- */ 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
+ */
 
 #include "angband.h"
 #define SAFE_MAX_ATTEMPTS 5000
@@ -355,7 +355,7 @@ void replace_friend(int m_idx)
 		min = min / 2;
 	}
 
-	if (attempts < 1) 
+	if (attempts < 1)
 	{
 		char m_name[80];
 		monster_desc(m_name,m_ptr,0x80);
@@ -454,9 +454,9 @@ static bool new_player_spot(void)
 		/*Refuse to place the player in the center of Satan's level*/
 		if( dun_level == DIS_END - 1 )
 		{
-			if( x > (cur_wid>>3) && 
-				x < cur_wid - (cur_wid>>3) && 
-				y > (cur_hgt>>3) && 
+			if( x > (cur_wid>>3) &&
+				x < cur_wid - (cur_wid>>3) &&
+				y > (cur_hgt>>3) &&
 				y < cur_hgt - (cur_hgt>>3) )
 				continue;
 		}
@@ -1130,7 +1130,7 @@ static void vault_monsters(int y1, int x1, int num)
 			int d = 1;
 
 			/* Pick a nearby location */
-			scatter(&y, &x, y1, x1, d, 0);
+			scatter(&y, &x, y1, x1, d);
 
 			/* Require "empty" floor grids */
 			if (!cave_empty_bold(y, x)) continue;
@@ -3641,17 +3641,17 @@ static bool cave_gen(void)
 	if (!(max_panel_rows)) max_vault_ok--;
 	if (!(max_panel_cols)) max_vault_ok--;
 	
-	/* These are the rules of Dis : 
+	/* These are the rules of Dis :
 	   There shall be no vaults in Dis
 	   There shall be no quests in Dis
 	   There shall be no empty levels in Dis
 	   There shall be no destroyed levels in Dis
-	*/	
+	*/
 	
 	if ( dun_level > DIS_START && dun_level < DIS_END )
 	{
 		shielded_level = TRUE;
-		max_vault_ok = 0; 
+		max_vault_ok = 0;
 	}else{
 		shielded_level = FALSE;
 	}
@@ -3669,7 +3669,7 @@ static bool cave_gen(void)
 		base_feat = FEAT_FLOOR;
 	else
 		/* Create granite wall */
-		base_feat = FEAT_WALL_EXTRA;	
+		base_feat = FEAT_WALL_EXTRA;
 
 	/* Hack -- Start with basic granite or floor */
 	for (y = 0; y < cur_hgt; y++)
@@ -3957,10 +3957,10 @@ static bool cave_gen(void)
 
 	i += randint(8);
 
-	/* 
-	   Put some monsters in the dungeon 
-	   Used to be i = i + k  
-	   Then, because sometimes no monster might be found and we wanted to decrease for sure 
+	/*
+	   Put some monsters in the dungeon
+	   Used to be i = i + k
+	   Then, because sometimes no monster might be found and we wanted to decrease for sure
 	   it became i = (i + k)*2
 	   but because of previous shenanigans, the dungeon starts to look empty or sparse
 	   so I upped it just a tad ;)
