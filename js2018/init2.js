@@ -110,7 +110,7 @@ const r_info_flags1 = [
 const r_info_flags2 = [
   "STUPID",
   "SMART",
-  "CAN_SPEAK", 
+  "CAN_SPEAK",
   "REFLECTING",
   "INVISIBLE",
   "COLD_BLOOD",
@@ -118,8 +118,8 @@ const r_info_flags2 = [
   "WEIRD_MIND",
   "MULTIPLY",
   "REGENERATE",
-  "SHAPECHANGER", 
-  "ATTR_ANY",  
+  "SHAPECHANGER",
+  "ATTR_ANY",
   "POWERFUL",
   "ELDRITCH_HORROR",
   "AURA_FIRE",
@@ -154,10 +154,10 @@ const r_info_flags3 = [
   "UNDEAD",
   "EVIL",
   "ANIMAL",
-  "FALLEN_ANGEL", 
+  "FALLEN_ANGEL",
   "GOOD",
   "XXXX", /* RF3_PLAYER_GHOST */
-  "NONLIVING", 
+  "NONLIVING",
   "HURT_LITE",
   "HURT_ROCK",
   "HURT_FIRE",
@@ -187,7 +187,7 @@ const r_info_flags4 = [
   "SHRIEK",
   "XXX2X4",
   "XXX3X4",
-  "BA_SHARD",  
+  "BA_SHARD",
   "ARROW_1",
   "ARROW_2",
   "ARROW_3",
@@ -212,9 +212,9 @@ const r_info_flags4 = [
   "BR_PLAS",
   "BR_WALL",
   "BR_MANA",
-  "BA_SLIM", 
-  "BR_SLIM", 
-  "BA_CHAO", 
+  "BA_SLIM",
+  "BR_SLIM",
+  "BA_CHAO",
   "BR_DISI",
 ];
 
@@ -306,9 +306,9 @@ const r_info_flags7 = [
   "HEAL_COLD",
   "RES_FIRE",
   "HEAL_FIRE",
-  "RES_ACID",  
+  "RES_ACID",
   "RES_ELEC",
-  "HEAL_ELEC",  
+  "HEAL_ELEC",
   "HEAL_NETH",
   "RES_POIS",
   "AQUATIC",
@@ -665,11 +665,11 @@ define(['log','os','cmd4','globals','term'],function(log, os, cmd4, g, term){
       /* Hack -- Process 'P' for "power" and such */
       if(line.startsWith('P')){
         k_info[current_kind].ac = parts[1];
-        k_info[current_kind].dd = parts[2];
-        k_info[current_kind].ds = parts[3];
-        k_info[current_kind].to_h = parts[4];
-        k_info[current_kind].to_d = parts[5];
-        k_info[current_kind].to_a =  parts[6] || 0;
+        k_info[current_kind].dd = parts[2].split('0')[0];
+        k_info[current_kind].ds = parts[2].split('0')[1];
+        k_info[current_kind].to_h = parts[3];
+        k_info[current_kind].to_d = parts[4];
+        k_info[current_kind].to_a =  parts[5];
       }
       /* Process 'G' for "Graphics" (one line only) */
       if(line.startsWith('G')){
@@ -685,6 +685,82 @@ define(['log','os','cmd4','globals','term'],function(log, os, cmd4, g, term){
     console.log(k_info);
     return true;
   }
+
+  /*
+  * Initialize the "a_info" array, by parsing an ascii "template" file
+  * Note, we dont do raw binaries anymore, there is no point any more.
+  * So really, the below is more based on init_a_info_txt then init_a_info
+  */
+  /*BOOL*/ function init_a_info()
+  {
+    let path = g.ANGBAND_DIR_EDIT + '/a_info.txt',
+     read_result = os.load_file(path),
+     a_info = g.a_info,
+     lines, line, version_okay, parts, current_artifact, allocation, i;
+    /* Did we read a_info correctly? */
+    if(!read_result.ok)
+      return false;
+    /*Split the file content into one-line strings*/
+    lines = read_result.content.split('\n');
+    /*Treat every line*/
+    for(line of lines){
+      /*We split the line by colon into a list*/
+      parts = line.split(':');
+      /* Hack -- Process 'V' for "Version" */
+      if(line.startsWith('V')){
+        version_okay = check_version(line);
+        if(!version_okay){
+          return false;
+        }
+      }
+      /* Process 'N' for "New/Number/Name" */
+      if(line.startsWith('N')){
+        current_artifact = parts[1];
+        a_info[current_artifact] = {name: parts[2], chance: [], flags1: 0, flags2: 0, flags3: 0};
+        a_info[current_artifact].flags3 = g.TR3_IGNORE_ACID + g.TR3_IGNORE_ELEC + g.TR3_IGNORE_FIRE + g.TR3_IGNORE_COLD;
+      }
+      /* Process 'D' for "Description" */
+      if(line.startsWith('D')){
+        /* If already read some text, then append with a newline*/
+        if(a_info[current_artifact].text){
+          a_info[current_artifact].text += ('\n' + parts[1]);
+        }else{
+          a_info[current_artifact].text = parts[1];
+        }
+      }
+      /* Process 'I' for "Info" (one line only) */
+      if(line.startsWith('I')){
+        a_info[current_artifact].tval = parts[1];
+        a_info[current_artifact].sval = parts[2];
+        a_info[current_artifact].pval = parts[3];
+      }
+      /* Process 'W' for "More Info" (one line only) */
+      /* Save the values */
+      if(line.startsWith('W')){
+        a_info[current_artifact].level = parts[1];
+        a_info[current_artifact].extra = parts[2];
+        a_info[current_artifact].weight = parts[3];
+        a_info[current_artifact].cost = parts[4];
+      }
+      /* Hack -- Process 'P' for "power" and such */
+      if(line.startsWith('P')){
+        a_info[current_artifact].ac = parts[1];
+        a_info[current_artifact].dd = parts[2].split('0')[0];
+        a_info[current_artifact].ds = parts[2].split('0')[1];
+        a_info[current_artifact].to_h = parts[3];
+        a_info[current_artifact].to_d = parts[4];
+        a_info[current_artifact].to_a =  parts[5];
+      }
+      if(line.startsWith('F')){
+        /* XXX XXX Chained Shenanigans */
+        let flags = parts.chainedShift().map(s => s.trim());
+        flags.each(flag => setFlags(a_info[current_artifact], flag, [k_info_flags1,k_info_flags2,k_info_flags3]));
+      }
+    }
+    console.log(a_info);
+    return true;
+  }
+
 
   function setFlags(o, flag, flag_sets){
     /* XXX XXX Chained & Ternary Shenanigans */
