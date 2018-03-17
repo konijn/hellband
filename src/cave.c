@@ -18,14 +18,14 @@
  *
  *
  * Robert Ruehlmann and Ben Harrison released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
- */ 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
+ */
 
 /*
 * Approximate Distance between two points.
@@ -57,8 +57,8 @@ int distance(int y1, int x1, int y2, int x2)
  *
  * ADDENDUM : Robert Hall placed this code in public domain. I Konijn have taken
  * the code and hereby release it and all changes under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
  *
  * Returns TRUE if a line of sight can be traced from (x1,y1) to (x2,y2).
  *
@@ -445,8 +445,9 @@ bool cave_valid_bold(int y, int x)
 static cptr image_monster_hack = \
 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+/*This used to be encoded with the actual bytes, check initial commit if you require those*/
 static cptr image_monster_hack_ibm = \
-"ƒ„…†‡ˆ‰ŠŽ‘’•–™š›œžŸ¡¥¨©ª¯°²³´µ¶·¸¾ÇÌÑÔÕ×ÙÝÞßàáâãåèéæêëìíîïðñòóôõö÷øùúûüýþ";
+"\006\026\037\311\321\326\334\341\340\342\344\347\351\350\352\353\355\357\361\364\366\365\372\371\373\374\260\200\256\251\201\330\203\276\204\245\265\217\205\275\346\253\303\213\214\271\327\215\360\336\376\375\267\222\223\302\313\310\312\315\316\317\314\323\324\225\322\332\333\331\236\226\227\257\230\231\232\270\233\234";
 
 
 /*
@@ -491,7 +492,7 @@ static cptr image_object_hack = \
 "?/|\\\"!$()_-=[]{},~";
 
 static cptr image_object_hack_ibm = \
-"€“”—¤¦«­®º»¼½ÀÁÂÃÄÈÉÊËÍÎÓÚç";
+"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 
 /*
 * Mega-Hack -- Hallucinatory object
@@ -829,19 +830,19 @@ void map_info(int y, int x, byte *ap, char *cp)
 			a = f_ptr->z_attr;
 
 			/* Special lighting effects */
-			if (	view_granite_lite && 
+			if (	view_granite_lite &&
 					((a == TERM_WHITE) || (use_graphics)) &&
-					( 
+					(
 						(
-							(feat >= FEAT_SECRET) && 
+							(feat >= FEAT_SECRET) &&
 							(
 								(feat <= FEAT_PERM_BUILDING && !use_graphics ) ||
 								(feat <= FEAT_PERM_SOLID    &&  use_graphics )
 							) &&
-							(feat !=FEAT_MAGMA_K) && 
+							(feat !=FEAT_MAGMA_K) &&
 							(feat !=FEAT_QUARTZ_K) &&
 							(feat !=FEAT_RUBBLE)
-						) 
+						)
 						|| ((feat == FEAT_TREE) || (feat == FEAT_BUSH) || (feat == FEAT_WATER))
 					)
 			   )
@@ -1115,7 +1116,7 @@ void map_info(int y, int x, byte *ap, char *cp)
 					case 7:
 						(*ap)=TERM_GREEN;
 						break;
-					}		
+					}
 				}
 				else
 				{  /* We are cycling between 2 colors, half of the time */
@@ -1127,7 +1128,7 @@ void map_info(int y, int x, byte *ap, char *cp)
 					}
 					else{
 						switch (r_ptr->x_attr)
-						{  
+						{
 						case TERM_RED:
 							(*ap)=TERM_L_RED;
 							break;
@@ -1136,7 +1137,7 @@ void map_info(int y, int x, byte *ap, char *cp)
 							break;
 						case TERM_VIOLET:
 							(*ap)=TERM_L_BLUE;
-							break;							
+							break;
 						case TERM_YELLOW:
 							(*ap)=TERM_WHITE;
 							break;
@@ -1151,10 +1152,10 @@ void map_info(int y, int x, byte *ap, char *cp)
 							break;
 						case TERM_WHITE:
 							(*ap)=TERM_L_WHITE;
-							break;	
+							break;
 						case TERM_UMBER:
 							(*ap)=TERM_L_UMBER;
-							break;						
+							break;
 						default:
 							(*ap) = r_ptr->x_attr;
 						}
@@ -1254,7 +1255,7 @@ void print_rel(char c, byte a, int y, int x)
 	if (panel_contains(y, x))
 	{
 		/* Hack -- fake monochrome */
-		/* Konijn has declared this is ridiculous.. 
+		/* Konijn has declared this is ridiculous..
 		   TODO : maybe just do the outer square..
 		if ((!use_graphics || streq(ANGBAND_SYS, "ibm"))
 			&& (p_ptr->invuln || !use_colour )) a = TERM_WHITE;
@@ -1416,8 +1417,8 @@ void lite_spot(int y, int x)
 		/* Examine the grid */
 		map_info(y, x, &a, &c, &ta, &tc);
 
-		/* Hack -- fake monochrome 
-		   Konijn has declared this is ridiculous.. 
+		/* Hack -- fake monochrome
+		   Konijn has declared this is ridiculous..
 		   TODO : maybe just do the outer square..
 		if ((!use_graphics || streq(ANGBAND_SYS, "ibm"))
 			&& (p_ptr->invuln || !use_colour)) a = TERM_WHITE;
@@ -1468,7 +1469,7 @@ void prt_map(void)
 			map_info(y, x, &a, &c, &ta, &tc);
 
 			/* Hack -- fake monochrome */
-			/* Konijn has declared this is ridiculous.. 
+			/* Konijn has declared this is ridiculous..
 			   TODO : maybe just do the outer square..
 			if ((!use_graphics || streq(ANGBAND_SYS, "ibm"))
 				&& (p_ptr->invuln || !use_colour)) a = TERM_WHITE;
@@ -1706,7 +1707,7 @@ void display_map(int *cy, int *cx)
 			tc = mc[y][x];
 
 			/* Hack -- fake monochrome */
-			/* Konijn has declared this is ridiculous.. 
+			/* Konijn has declared this is ridiculous..
 			   TODO : maybe just do the outer square..
 				if ((!use_graphics || streq(ANGBAND_SYS, "ibm"))
 					&& (p_ptr->invuln || !use_colour)) ta = TERM_WHITE;
@@ -3527,14 +3528,10 @@ bool projectable(int y1, int x1, int y2, int x2)
 *
 * Currently the "m" parameter is unused.
 */
-void scatter(int *yp, int *xp, int y, int x, int d, int m)
+void scatter(int *yp, int *xp, int y, int x, int d /* int m*/)
 {
 	int nx, ny;
 	int attempts_left = 5000;
-
-	/* Unused */
-	m = m;
-
 
 	/* Pick a location */
 	while (--attempts_left)
@@ -3632,8 +3629,10 @@ void object_track( object_type *o_ptr  , cptr activity )
 */
 void disturb(int stop_stealth, int unused_flag)
 {
-	/* Unused */
-	unused_flag = unused_flag;
+	/* Unused, but it better be zero ;) */
+	if(unused_flag != 0){
+		return;
+	}
 
 	/* Cancel auto-commands */
 	/* command_new = 0; */
