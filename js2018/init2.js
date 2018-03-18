@@ -598,6 +598,197 @@ define(['log','os','cmd4','globals','term'],function(log, os, cmd4, g, term){
   }
   
   /*
+  * Initialize the "e_info" array, by parsing an ascii "template" file
+  * Note, we dont do raw binaries anymore, there is no point any more.
+  * So really, the below is more based on init_e_info_txt then init_e_info
+  */
+  /*BOOL*/ function init_r_info()
+  {
+    let path = g.ANGBAND_DIR_EDIT + '/r_info.txt',
+     read_result = os.load_file(path),
+     r_info = g.r_info,
+     lines, line, version_okay, parts, current_race, r_ptr, allocation, i;
+    /* Did we read k_info correctly? */
+    if(!read_result.ok)
+      return false;
+    /*Split the file content into one-line strings*/
+    lines = read_result.content.split('\n');
+    
+    /* This function needs the locals context, and can only take flag from the each call*/
+    function handle_r_flag(flag){
+      setFlags(r_ptr, flag, [r_info_flags1, r_info_flags2, r_info_flags3, r_info_flags7]);
+      /*Allow the race to determine who escorts*/
+      if(flag.startsWith("ESCORT_")){
+        r_ptr.r_escort = flag.mid(7);
+      }
+      /*DROP_GREAT is pointless without DROP_GOOD*/
+      if(flag == 'DROP_GREAT'){
+        handle_r_flag('DROP_GOOD');
+      }
+      /*All uniques have max hitpoints*/
+      if(flag == 'UNIQUE'){
+        handle_r_flag('FORCE_MAXHP');
+      }
+      /*Storm is in essence blink with a different message*/
+      if(flag == 'STORM'){
+        handle_r_flag('BLINK');
+      }
+    }
+    
+    function handle_r_spell_flag(flag){
+      setFlags(r_ptr, flag, [r_info_flags1, r_info_flags2, r_info_flags3, r_info_flags7]);
+      if(flag.startsWith("1_IN_")){
+        r_ptr.freq_spell = r_ptr.freq_inate = 100 / (flag.mid(5)+0);
+      }
+    }
+
+    /*Treat every line*/
+    for(line of lines){
+      /*We split the line by colon into a list*/
+      parts = line.split(':');
+      /* Hack -- Process 'V' for "Version" */
+      if(line.startsWith('V')){
+        version_okay = check_version(line);
+        if(!version_okay){
+          return false;
+        }
+      }
+      /* Process 'N' for "New/Number/Name" */
+      if(line.startsWith('N')){
+        current_race = parts[1];
+        r_info[current_race] = {name: parts[2], blows: [],flags1: 0, flags2: 0, flags3: 0};
+        r_ptr = r_info[current_race];
+      }
+      /* Process 'G' for "Graphics" (one line only) */
+      if(line.startsWith('G')){
+        r_ptr.f_char = parts[1];
+        r_ptr.f_attr = term.colour_char_to_attr(parts[2].trim());
+        /*Humans have open_door and bash_door, hardcoded for efficiency */
+        if(parts[1]=='p'){
+          r_ptr.flags2 = g.RF2_OPEN_DOOR + g.RF2_BASH_DOOR;
+        }
+        if(['A','D','d'].has(parts[1]=='p')){
+          r_ptr.flags7 = g.RF7_FLIGHT;
+        }
+      }
+      /* Process 'I' for "Info" (one line only) */
+      if(line.startsWith('I')){
+        r_ptr.speed = parts[1];
+        r_ptr.num_blows = parts[2];
+        r_ptr.hdice = parts[3].split('d')[0];
+        r_ptr.hside = parts[3].split('d')[1];
+        r_ptr.aaf = parts[4];
+        r_ptr.ac = parts[5];
+        r_ptr.sleep = parts[6];
+      }
+      /* Process 'W' for "More Info" (one line only) */
+      if(line.startsWith('W')){
+        r_ptr.level = parts[1];
+        r_ptr.rarity = parts[2];
+        r_ptr.extra = parts[3];
+        r_ptr.mexp = parts[4];
+      }
+      /* Process 'D' for "Description" */
+      if(line.startsWith('D')){
+        /* If already read some text, then append with a newline*/
+        if(r_ptr.text){
+          r_ptr.text += ('\n' + parts[1]);
+        }else{
+          r_ptr.text = parts[1];
+        }
+      }
+      /* Process 'B' for "Blows" (a number of lines) */
+      if(line.startsWith('B')){
+        let blow = {};
+        blow.method = r_info_blow_method.indexOf(parts[1]);
+        blow.effect = r_info_blow_effect.indexOf(parts[2]);
+        if(parts[3]){
+          blow.d_dice = parts[3].split('d')[0];
+          blow.d_side = parts[3].split('d')[1];
+        }
+        r_ptr.blows.push(blow);
+      }
+      /* Process 'F' for "Flags" (any number of lines) */
+      if(line.startsWith('F')){
+        /* XXX XXX Chained Shenanigans */
+        let flags = parts[1].split('|').map(s => s.trim());
+        flags.each(handle_r_flag);
+      }
+      /* Process 'S' for "Spells" (any number of lines) */
+      if(line.startsWith('S')){
+        /* XXX XXX Chained Shenanigans */
+        let flags = parts[1].split('|').map(s => s.trim());
+        flags.each(handle_r_spell_flag);
+      }
+    }
+    console.log(r_info);
+    return true;
+  }
+  
+
+  /*
+  * Initialize the "e_info" array, by parsing an ascii "template" file
+  * Note, we dont do raw binaries anymore, there is no point any more.
+  * So really, the below is more based on init_e_info_txt then init_e_info
+  */
+  /*BOOL*/ function init_e_info()
+  {
+    let path = g.ANGBAND_DIR_EDIT + '/e_info.txt',
+     read_result = os.load_file(path),
+     e_info = g.e_info,
+     lines, line, version_okay, parts, current_ego, allocation, i;
+    /* Did we read k_info correctly? */
+    if(!read_result.ok)
+      return false;
+    /*Split the file content into one-line strings*/
+    lines = read_result.content.split('\n');
+    /*Treat every line*/
+    for(line of lines){
+      /*We split the line by colon into a list*/
+      parts = line.split(':');
+      /* Hack -- Process 'V' for "Version" */
+      if(line.startsWith('V')){
+        version_okay = check_version(line);
+        if(!version_okay){
+          return false;
+        }
+      }
+      /* Process 'N' for "New/Number/Name" */
+      if(line.startsWith('N')){
+        current_ego = parts[1];
+        e_info[current_ego] = {name: parts[2], flags1: 0, flags2: 0, flags3: 0};
+      }
+      /* Process 'X' for "Info" (one line only) */
+      if(line.startsWith('X')){
+        e_info[current_ego].slot = parts[1];
+        e_info[current_ego].rating = parts[2];
+      }
+      /* Process 'W' for "More Info" (one line only) */
+      if(line.startsWith('W')){
+        e_info[current_ego].level = parts[1];
+        e_info[current_ego].extra = parts[2];
+        e_info[current_ego].weight = parts[3];
+        e_info[current_ego].cost = parts[4];
+      }
+      /* Hack -- Process 'C' for "creation" */
+      if(line.startsWith('C')){
+        e_info[current_ego].max_to_h = parts[1];
+        e_info[current_ego].max_to_d = parts[2];
+        e_info[current_ego].max_to_a = parts[3];
+        e_info[current_ego].max_pval = parts[4];
+      }
+      if(line.startsWith('F')){
+        /* XXX XXX Chained Shenanigans */
+        let flags = parts[1].split('|').map(s => s.trim());
+        flags.each(flag => setFlags(e_info[current_ego], flag, [k_info_flags1,k_info_flags2,k_info_flags3]));
+      }
+    }
+    console.log(e_info);
+    return true;
+  }
+
+
+  /*
   * Initialize the "k_info" array, by parsing an ascii "template" file
   * Note, we dont do raw binaries anymore, there is no point any more.
   * So really, the below is more based on init_k_info_txt then init_k_info
@@ -678,7 +869,7 @@ define(['log','os','cmd4','globals','term'],function(log, os, cmd4, g, term){
       }
       if(line.startsWith('F')){
         /* XXX XXX Chained Shenanigans */
-        let flags = parts.chainedShift().map(s => s.trim());
+        let flags = parts[1].split('|').map(s => s.trim());
         flags.each(flag => setFlags(k_info[current_kind], flag, [k_info_flags1,k_info_flags2,k_info_flags3]));
       }
     }
@@ -719,15 +910,6 @@ define(['log','os','cmd4','globals','term'],function(log, os, cmd4, g, term){
         a_info[current_artifact] = {name: parts[2], chance: [], flags1: 0, flags2: 0, flags3: 0};
         a_info[current_artifact].flags3 = g.TR3_IGNORE_ACID + g.TR3_IGNORE_ELEC + g.TR3_IGNORE_FIRE + g.TR3_IGNORE_COLD;
       }
-      /* Process 'D' for "Description" */
-      if(line.startsWith('D')){
-        /* If already read some text, then append with a newline*/
-        if(a_info[current_artifact].text){
-          a_info[current_artifact].text += ('\n' + parts[1]);
-        }else{
-          a_info[current_artifact].text = parts[1];
-        }
-      }
       /* Process 'I' for "Info" (one line only) */
       if(line.startsWith('I')){
         a_info[current_artifact].tval = parts[1];
@@ -753,7 +935,7 @@ define(['log','os','cmd4','globals','term'],function(log, os, cmd4, g, term){
       }
       if(line.startsWith('F')){
         /* XXX XXX Chained Shenanigans */
-        let flags = parts.chainedShift().map(s => s.trim());
+        let flags = parts[1].split('|').map(s => s.trim());
         flags.each(flag => setFlags(a_info[current_artifact], flag, [k_info_flags1,k_info_flags2,k_info_flags3]));
       }
     }
