@@ -1377,7 +1377,8 @@ bool make_attack_normal(int m_idx)
 		case RBM_CLAW:
 		case RBM_BITE:
 		case RBM_STING:
-		case RBM_XXX1:
+		case RBM_SLASH:
+		case RBM_SWIPE:
 		case RBM_BUTT:
 		case RBM_CRUSH:
 		case RBM_ENGULF:
