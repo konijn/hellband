@@ -372,9 +372,9 @@ bool make_attack_normal(int m_idx)
 				break;
 			}
 
-		case RBM_XXX1:
+		case RBM_SLASH:
 			{
-				act = "XXX1's you.";
+				act = "slashes into you.";
 				break;
 			}
 
@@ -448,6 +448,12 @@ bool make_attack_normal(int m_idx)
 		case RBM_SPORE:
 			{
 				act = "releases spores at you.";
+				break;
+			}
+
+		case RBM_SWIPE:
+			{
+				act = "swipes at you.";
 				break;
 			}
 

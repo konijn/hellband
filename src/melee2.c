@@ -5310,9 +5310,15 @@ static bool monst_attack_monst(int m_idx,int t_idx)
 					break;
 				}
 
-			case RBM_XXX1:
+			case RBM_SLASH:
 				{
-					act = "XXX1's %s.";
+					act = "slashes into %s.";
+					break;
+				}
+
+			case RBM_SWIPE:
+				{
+					act = "swipes at %s.";
 					break;
 				}
 

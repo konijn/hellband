@@ -1268,7 +1268,7 @@ static void roff_aux(int r_idx)
 		case RBM_CLAW:	p = "claw"; break;
 		case RBM_BITE:	p = "bite"; break;
 		case RBM_STING:	p = "sting"; break;
-		case RBM_XXX1:	break;
+		case RBM_SLASH:	p = "slash"; break;
 		case RBM_BUTT:	p = "butt"; break;
 		case RBM_CRUSH:	p = "crush"; break;
 		case RBM_ENGULF:	p = "engulf"; break;
@@ -1285,6 +1285,7 @@ static void roff_aux(int r_idx)
 		case RBM_INSULT:	p = "insult"; break;
 		case RBM_MOAN:	p = "moan"; break;
 		case RBM_SHOW:  p = "sing"; break;
+		case RBM_SWIPE: p = "swipe"; break;
 		}
 
 

@@ -2523,7 +2523,7 @@ ART_THOTH -> ART_KINSLAYER
 #define RBM_CLAW                    5
 #define RBM_BITE                    6
 #define RBM_STING                   7
-#define RBM_XXX1                    8
+#define RBM_SLASH                   8 /* Inferno */
 #define RBM_BUTT                    9
 #define RBM_CRUSH                   10
 #define RBM_ENGULF                  11
@@ -2540,7 +2540,7 @@ ART_THOTH -> ART_KINSLAYER
 #define RBM_INSULT                  22
 #define RBM_MOAN                    23
 #define RBM_SHOW                    24 /* TY */
-
+#define RBM_SWIPE                   25 /* Inferno */
 
 /*
 * New monster blow effects
