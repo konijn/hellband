@@ -101,7 +101,7 @@ static void init_angband_aux(cptr why)
  *
  * In general, the initial path should end in the appropriate "PATH_SEP"
  * string.  All of the "sub-directory" paths (created below or supplied
-											  * by the user) will NOT end in the "PATH_SEP" string, see the special
+ * by the user) will NOT end in the "PATH_SEP" string, see the special
  * "path_build()" function in "util.c" for more information.
  *
  * Mega-Hack -- support fat raw files under NEXTSTEP, using special
@@ -465,16 +465,24 @@ static errr check_modification_date(int fd, cptr template_file)
 	/* Build the filename */
 	path_build(buf, 1024, ANGBAND_DIR_EDIT, template_file);
 
+	int fd_text = fd_open(buf, O_RDONLY);
+
 	/* Access stats on text file */
-	if (stat(buf, &txt_stat))
+	if (fstat(fd_text, &txt_stat))
 	{
 		/* Error */
+		msg_format("Oh dear, something went wrong with stat()! %s", strerror(errno));
+		msg_format("Could not retrieve stats on the text file at {%s}", buf);
+		(void)fd_close(fd_text);
 		return (-1);
 	}
+	(void)fd_close(fd_text);
+
 
 	/* Access stats on raw file */
 	if (fstat(fd, &raw_stat))
 	{
+		msg_print("Could not call fstat() on the raw file");
 		/* Error */
 		return (-1);
 	}
@@ -610,6 +618,9 @@ static errr init_f_info(void)
 #ifdef CHECK_MODIFICATION_TIME
 
 		err = check_modification_date(fd, "f_info.txt");
+		if(err){
+			msg_print("The 'f_info.raw' file is obsolete.");
+		}
 
 #endif /* CHECK_MODIFICATION_TIME */
 		/* Attempt to parse the "raw" file */
@@ -622,7 +633,11 @@ static errr init_f_info(void)
 		if (!err) return (0);
 
 		/* Information */
+#ifdef live
+		msg_format("Ignoring obsolete/defective 'f_info.raw' file at %s." , buf);
+#else
 		msg_print("Ignoring obsolete/defective 'f_info.raw' file.");
+#endif
 		msg_print(NULL);
 	}
 
