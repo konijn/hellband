@@ -10,3 +10,4 @@ src/angband.res
 *.raw
 go
 *.pre
+lib/edit/tmp
