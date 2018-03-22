@@ -4112,7 +4112,7 @@ static int get_tag(int *cp, char tag)
  * and there are any acceptable items in that location.
  *
  * The equipment or inventory are displayed (even if no acceptable
-                                             * items are in that location) if the proper flag was given.
+ * items are in that location) if the proper flag was given.
  *
  * If there are no acceptable items available anywhere, and "str" is
  * not NULL, then it will be used as the text of a warning message
@@ -4171,7 +4171,8 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 	bool use_inven = ((mode & (USE_INVEN)) ? TRUE : FALSE);
 	bool use_equip = ((mode & (USE_EQUIP)) ? TRUE : FALSE);
 	bool use_floor = ((mode & (USE_FLOOR)) ? TRUE : FALSE);
-    
+	bool mode_pick = ((mode & (MODE_PICK)) ? TRUE : FALSE);
+
 	bool allow_inven = FALSE;
 	bool allow_equip = FALSE;
 	bool allow_floor = FALSE;
@@ -4183,8 +4184,10 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
     
 	int floor_list[MAX_FLOOR_STACK];
 	int floor_num;
-    
-    
+
+	/* per MITZE, always start with the list */
+	p_ptr->command_see = TRUE;
+
 #ifdef ALLOW_REPEAT
     
 	/* Get the item index */
@@ -4362,7 +4365,7 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 			/* Redraw windows */
 			window_stuff();
 		}
-        
+
 		/* Viewing inventory */
 		if (p_ptr->command_wrk == (USE_INVEN))
 		{

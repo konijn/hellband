@@ -253,11 +253,11 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr)
 				
 				mult = tot_dam_aux_helper(&f1 , TR1_SLAY_ANIMAL	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_ANIMAL		, mult , 200		, m_ptr->ml );					
 
-				mult = tot_dam_aux_normal(f1 , TR1_BRAND_FIRE , mult , 300 );						
-				mult = tot_dam_aux_normal(f1 , TR1_BRAND_COLD , mult , 300 );										
-				mult = tot_dam_aux_normal(f1 , TR1_BRAND_POIS , mult , 300 );	
-				mult = tot_dam_aux_normal(f1 , TR1_BRAND_ELEC , mult , 300 );					
-				mult = tot_dam_aux_normal(f1 , TR1_BRAND_ACID , mult , 300 );				
+				mult = tot_dam_aux_normal(f1 , TR1_BRAND_FIRE , mult , 300 );
+				mult = tot_dam_aux_normal(f1 , TR1_BRAND_COLD , mult , 300 );
+				mult = tot_dam_aux_normal(f1 , TR1_BRAND_POIS , mult , 300 );
+				mult = tot_dam_aux_normal(f1 , TR1_BRAND_ELEC , mult , 300 );
+				mult = tot_dam_aux_normal(f1 , TR1_BRAND_ACID , mult , 300 );
 
 				mult = tot_dam_aux_helper(&f1 , TR1_SLAY_EVIL	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_EVIL		 , mult , 300		, m_ptr->ml );				
 				mult = tot_dam_aux_helper(&f1 , TR1_SLAY_UNDEAD	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_UNDEAD		 , mult , 300		, m_ptr->ml );
@@ -463,7 +463,7 @@ void carry(int pickup)
                 {
                     /* Identify it fully */
                     object_full_id( o_ptr );
-                    object_desc(o_name, o_ptr, TRUE, 3);                                        
+                    object_desc(o_name, o_ptr, TRUE, 3);
                 }
                 else if( p_ptr->lev >= 15 )
                 {
@@ -471,7 +471,7 @@ void carry(int pickup)
                     object_aware(o_ptr);
                     object_known(o_ptr,TRUE);
                     /* Describe the object again with our new knowledge */
-                    object_desc(o_name, o_ptr, TRUE, 3);                                                            
+                    object_desc(o_name, o_ptr, TRUE, 3);
                 }
                 else
                 {
@@ -486,7 +486,7 @@ void carry(int pickup)
 						/*Should we be squelchin' ?*/
 						consider_squelch( o_ptr );
                         /* Describe the object again with the added quark */
-                        object_desc(o_name, o_ptr, TRUE, 3);                    
+                        object_desc(o_name, o_ptr, TRUE, 3);
                     }
                 }
             }

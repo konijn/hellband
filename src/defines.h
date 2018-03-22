@@ -3255,7 +3255,7 @@ ART_THOTH -> ART_KINSLAYER
 #define USE_EQUIP		0x01	/* Allow equip items */
 #define USE_INVEN		0x02	/* Allow inven items */
 #define USE_FLOOR		0x04	/* Allow floor items */
-
+#define MODE_PICK		0x08	/* We are picking up stuff */
 
 /*
 * Return the "attr" for a given item.

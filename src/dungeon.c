@@ -2200,7 +2200,7 @@ static void process_command(void)
 	/* Move (pick up things)       */ case ';' : { do_cmd_walk(FALSE);          break; }
 	/* Move (do not pick up)       */ case '-' : { do_cmd_walk(TRUE);           break; }
 	/* Begin Running               */ case '.' : { do_cmd_run();                break; }
-	/* Stay still , pick up        */ case ',' : { do_cmd_stay(1);              break; }
+	/* Stay still , pick up        */ case ',' : { do_cmd_stay(0);              break; }
 	/* Stay still , no pick up     */ case 'g' : { do_cmd_stay(1);              break; }
 	/* Rest -- Arg is time         */ case 'R' : { do_cmd_rest();               break; }
 	/* Search for traps/doors      */ case 's' : { do_cmd_search();             break; }

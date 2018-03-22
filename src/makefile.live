@@ -87,12 +87,15 @@ endif
 ##Choose -O2 for distributed builds
 ##Choose -O0 for debug buils
 ##Remove -g -ggdb3 -v for distributed build, this is meant to debug
+##Add -v for verbose builds, not sure when you would need this
 ##Raspbian should always use -lncurses, -lcurses is ancient
 ##Other ancient options for references: -ltermcap -linet -lcposix
+##You need -D"linux" for proper header including 'sys/time.h'
 ##
 CFLAGS = -I/usr/include -Wall \
          -O0 -pedantic \
-         -D"USE_GCU" -std=c99 -DDEFAULT_PATH=\"~/git/hellband/lib/\" -Dlive
+         -g -ggdb3 \
+         -D"USE_GCU" -D"linux" -std=c99 -DDEFAULT_PATH=\"~/git/hellband/lib/\" -Dlive
 LIBS = -L/usr/lib -lncurses
 
 #

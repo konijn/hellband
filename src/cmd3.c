@@ -540,22 +540,18 @@ void do_cmd_destroy_all()
 */
 void do_cmd_destroy(void)
 {
-	int			item, amt = 1;
-	int			old_number;
-	s16b        old_charges;
-
-	bool		force = FALSE;
+	int  item, amt = 1;
+	int  old_number;
+	s16b old_charges;
+	bool force = FALSE;
 
 	object_type		*o_ptr;
 
-	char		o_name[80];
-
-	char		out_val[160];
-
+	char o_name[80];
+	char out_val[160];
 
 	/* Hack -- force destruction */
 	if (command_arg > 0) force = TRUE;
-
 
 	/* Get an item (from inven or floor) */
 	if (!get_item(&item, "Destroy which item? ", "You have nothing to destroy." , USE_INVEN | USE_FLOOR))

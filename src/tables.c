@@ -1548,22 +1548,22 @@ option_type option_info[] =
 {
 /*** User-Interface ***/
 
-{ &rogue_like_commands, FALSE,	1,      0, 0,			"rogue_like_commands",          "Rogue-like commands" },
-{ &quick_messages,		TRUE,	1,      0, 1,			"quick_messages",               "Activate quick messages" },
-{ &other_query_flag,    FALSE,  1,      0, 2,			"other_query_flag",             "Prompt for item confirmation" },
-{ &carry_query_flag,    FALSE,  4,      0, 3,			"carry_query_flag",             "Prompt before picking things up" },
-{ &use_old_target,      FALSE,  3,      0, 4,			"use_old_target",               "Use old target by default" },
-{ &always_pickup,       TRUE,   4,      0, 5,			"always_pickup",                "Pick things up by default" },
-{ &always_repeat,       TRUE,   1,      0, 6,			"always_repeat",                "Repeat obvious commands" },
-{ &depth_in_feet,       FALSE,  1,      0, 7,			"depth_in_feet",                "Show dungeon level in feet" },
-{ &stack_force_notes,   TRUE,	4,      0, 8,			"stack_force_notes",			"Merge inscriptions when stacking" },
-{ &stack_force_costs,   TRUE,	4,      0, 9,			"stack_force_costs",			"Merge discounts when stacking" },
-{ &show_labels,         TRUE,   4,      0, 10,			"show_labels",                  "Show labels in object listings" },
-{ &show_weights,        TRUE,	4,      0, 11,			"show_weights",                 "Show weights in object listings" },
-{ &show_choices,        TRUE,	1,      0, 12,			"show_choices",                 "Show choices in certain sub-windows" },
-{ &show_details,        TRUE,	1,      0, 13,			"show_details",                 "Show description in monster details" },
-{ &ring_bell,           FALSE,  1,      0, 14,			"ring_bell",                    "Audible bell (on errors, etc)" },
-{ &use_colour,          TRUE,   1,      0, 15,			"use_colour",                   "Use colour if possible" },
+{ &rogue_like_commands, FALSE, 1,      0, 0,			"rogue_like_commands",          "Rogue-like commands" },
+{ &quick_messages,      TRUE,  1,      0, 1,			"quick_messages",               "Activate quick messages" },
+{ &other_query_flag,    FALSE, 1,      0, 2,			"other_query_flag",             "Prompt for item confirmation" },
+{ &carry_query_flag,    FALSE, 4,      0, 3,			"carry_query_flag",             "Prompt before picking things up" },
+{ &use_old_target,      FALSE, 3,      0, 4,			"use_old_target",               "Use old target by default" },
+{ &always_pickup,       TRUE,  4,      0, 5,			"always_pickup",                "Pick things up by default" },
+{ &always_repeat,       TRUE,  1,      0, 6,			"always_repeat",                "Repeat obvious commands" },
+{ &depth_in_feet,       FALSE, 1,      0, 7,			"depth_in_feet",                "Show dungeon level in feet" },
+{ &stack_force_notes,   TRUE,  4,      0, 8,			"stack_force_notes",			"Merge inscriptions when stacking" },
+{ &stack_force_costs,   TRUE,  4,      0, 9,			"stack_force_costs",			"Merge discounts when stacking" },
+{ &show_labels,         TRUE,  4,      0, 10,			"show_labels",                  "Show labels in object listings" },
+{ &show_weights,        TRUE,  4,      0, 11,			"show_weights",                 "Show weights in object listings" },
+{ &show_choices,        TRUE,  1,      0, 12,			"show_choices",                 "Show choices in certain sub-windows" },
+{ &show_details,        TRUE,  1,      0, 13,			"show_details",                 "Show description in monster details" },
+{ &ring_bell,           FALSE, 1,      0, 14,			"ring_bell",                    "Audible bell (on errors, etc)" },
+{ &use_colour,          TRUE,  1,      0, 15,			"use_colour",                   "Use colour if possible" },
 
 /*** Disturbance ***/
 
