@@ -670,14 +670,8 @@ bool set_food(int v)
 */
 void check_experience(void)
 {
-	int		i;
 	bool level_reward = FALSE;
 	bool level_corruption = FALSE;
-
-
-	/* Note current level */
-	i = p_ptr->lev;
-
 
 	/* Hack -- lower limit */
 	if (p_ptr->exp < 0) p_ptr->exp = 0;
