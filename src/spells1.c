@@ -2227,7 +2227,7 @@ static bool project_o(int who, int r, int y, int x, int dam, int typ)
 
 	char o_name[80];
 
-	int o_sval = 0;
+	/*int o_sval = 0; UNUSED*/
 	bool is_potion = FALSE;
 
 
@@ -2472,7 +2472,7 @@ static bool project_o(int who, int r, int y, int x, int dam, int typ)
 					msg_format("The %s%s", o_name, note_kill);
 				}
 
-				o_sval = o_ptr->sval;
+				/*o_sval = o_ptr->sval; UNUSED*/
 				is_potion = (k_info[o_ptr->k_idx].tval == TV_POTION);
 
 				/* Potions produce effects when 'shattered' */
@@ -4659,8 +4659,10 @@ static bool project_p(int who, int r, int y, int x, int dam, int typ, int a_rad)
 			if (fuzzy) msg_print("You are hit by nether forces!");
 			if (p_ptr->resist_neth)
 			{
-				if (!(p_ptr->prace == SPECTRE))
+				if (p_ptr->prace != SPECTRE)
+				{
 					dam *= 6; dam /= (randint(6) + 6);
+				}
 			}
 			else
 			{
@@ -5322,7 +5324,7 @@ bool project(int who, int rad, int y, int x, int dam, int typ, int flg)
 {
 	int i, t, dist;
 	int y1, x1, y2, x2;
-	int y0, x0, y9, x9;
+	int /*y0, x0, UNUSED*/ y9, x9;
 	int dist_hack = 0;
 	int y_saver, x_saver; /* For reflecting monsters */
 
@@ -5360,9 +5362,7 @@ bool project(int who, int rad, int y, int x, int dam, int typ, int flg)
 
 
 	/* Location of player */
-	y0 = py;
-	x0 = px;
-
+	/* y0 = py; x0 = px; UNUSED */
 
 	/* Hack -- Jump to target */
 	if (flg & (PROJECT_JUMP))
@@ -6545,7 +6545,7 @@ bool summon_specific_potential_ally( int type , int treshold_friendly , int dice
 void fetch(int dir, int wgt, bool require_los)
 {
 	int ty, tx, i;
-	bool flag;
+	/*bool flag; UNUSED*/
 	cave_type *c_ptr;
 	object_type *o_ptr;
 
@@ -6579,7 +6579,7 @@ void fetch(int dir, int wgt, bool require_los)
 		/* Use a direction */
 		ty = py; /* Where to drop the item */
 		tx = px;
-		flag = FALSE;
+		/*flag = FALSE; UNUSED*/
 		do
 		{
 			ty += ddy[dir];

@@ -1946,11 +1946,13 @@ bool enchant(object_type *o_ptr, int n, int eflag)
 				msg_print("The curse is broken!");
 				o_ptr->ident &= ~(IDENT_CURSED);
 				o_ptr->ident |= (IDENT_SENSE);
-					if (o_ptr->art_flags3 & (TR3_CURSED))
+				if (o_ptr->art_flags3 & (TR3_CURSED)){
 					o_ptr->art_flags3 &= ~(TR3_CURSED);
-				if (o_ptr->art_flags3 & (TR3_HEAVY_CURSE))
+				}
+				if (o_ptr->art_flags3 & (TR3_HEAVY_CURSE)){
 					o_ptr->art_flags3 &= ~(TR3_HEAVY_CURSE);
-					o_ptr->note = quark_add("uncursed");
+				}
+				o_ptr->note = quark_add("uncursed");
 			}
 		}
 	}
