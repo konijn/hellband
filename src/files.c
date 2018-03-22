@@ -80,7 +80,7 @@ void safe_setuid_drop(void)
 
 	if (setresgid(-1, getgid(), -1) != 0)
 		quit("setegid(): cannot drop permissions correctly!");
-# else
+# elif defined(HAVE_SETEGID)
 		if (setegid(getgid()) != 0)
 		quit("setegid(): cannot drop permissions correctly!");
 # endif
@@ -1861,7 +1861,7 @@ static void display_player_stat_info(void)
 
 	object_type *o_ptr;
 	u32b f1, f2, f3;
-	s16b k_idx;
+	/*s16b k_idx; UNUSED*/
 
 	byte a;
 	char c;
@@ -1936,7 +1936,7 @@ static void display_player_stat_info(void)
 		o_ptr = &inventory[i];
 
 		/* Object kind */
-		k_idx = o_ptr->k_idx;
+		/*k_idx = o_ptr->k_idx; UNUSED*/
 
 		/* Acquire "known" flags */
 		object_flags_known(o_ptr, &f1, &f2, &f3);
@@ -4063,11 +4063,11 @@ void show_highclass(int pclass,int psubclasscode)
 void race_score(int race_num)
 {
 	register int i = 0, j, m = 0;
-	int pr, pc, clev, lastlev,psc;
+	int pr, pc, clev, psc; /*lastlev*/
 	high_score the_score;
 	char buf[1024], out_val[256], tmp_str[80];
 
-	lastlev = 0;
+	/*lastlev = 0;*/
 	(void) sprintf(tmp_str,"The %s Heroes of Note",race_info[race_num].title);
 	prt(tmp_str, 5, 15);
 
@@ -4108,7 +4108,7 @@ void race_score(int race_num)
 				class_info[pc].title, atoi(the_score.pts));
 			prt(out_val, (m + 7), 0);
 			m++;
-			lastlev = clev;
+			/*lastlev = clev; UNUSED*/
 		}
 		j++;
 	}
@@ -4605,7 +4605,6 @@ errr get_rnd_line(char * file_name, char * output)
 
 #include <signal.h>
 
-
 /*
 * Handle signals -- suspend
 *
@@ -4625,7 +4624,7 @@ static void handle_signal_suspend(int sig)
 	Term_xtra(TERM_XTRA_ALIVE, 0);
 
 	/* Suspend ourself */
-	(void)kill(0, SIGSTOP);
+	(void)kill((pid_t)0, (int)SIGSTOP);
 
 	/* Resume the "Term" */
 	Term_xtra(TERM_XTRA_ALIVE, 1);
