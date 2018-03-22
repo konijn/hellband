@@ -11,18 +11,18 @@
  *
  *
  * James E. Wilson and Robert A. Koeneke released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * Ben Harrison released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
- */ 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
+ */
 
 #include "angband.h"
 
@@ -192,7 +192,7 @@ cptr r_info_flags2[] =
 {
 	"STUPID",
 		"SMART",
-		"CAN_SPEAK", 
+		"CAN_SPEAK",
 		"REFLECTING",
 		"INVISIBLE",
 		"COLD_BLOOD",
@@ -200,8 +200,8 @@ cptr r_info_flags2[] =
 		"WEIRD_MIND",
 		"MULTIPLY",
 		"REGENERATE",
-		"SHAPECHANGER", 
-		"ATTR_ANY",  
+		"SHAPECHANGER",
+		"ATTR_ANY",
 		"POWERFUL",
 		"ELDRITCH_HORROR",
 		"AURA_FIRE",
@@ -237,10 +237,10 @@ cptr r_info_flags3[] =
 		"UNDEAD",
 		"EVIL",
 		"ANIMAL",
-		"FALLEN_ANGEL", 
+		"FALLEN_ANGEL",
 		"GOOD",
 		"XXXX", /* RF3_PLAYER_GHOST */
-		"NONLIVING", 
+		"NONLIVING",
 		"HURT_LITE",
 		"HURT_ROCK",
 		"HURT_FIRE",
@@ -271,7 +271,7 @@ cptr r_info_flags4[] =
 	"SHRIEK",
 		"XXX2X4",
 		"XXX3X4",
-		"BA_SHARD",  
+		"BA_SHARD",
 		"ARROW_1",
 		"ARROW_2",
 		"ARROW_3",
@@ -296,9 +296,9 @@ cptr r_info_flags4[] =
 		"BR_PLAS",
 		"BR_WALL",
 		"BR_MANA",
-		"BA_SLIM", 
-		"BR_SLIM", 
-		"BA_CHAO", 
+		"BA_SLIM",
+		"BR_SLIM",
+		"BA_CHAO",
 		"BR_DISI",
 };
 
@@ -400,9 +400,9 @@ cptr r_info_flags7[] =
 	"HEAL_COLD",
 	"RES_FIRE",
 	"HEAL_FIRE",
-	"RES_ACID",	
+	"RES_ACID",
 	"RES_ELEC",
-	"HEAL_ELEC",	
+	"HEAL_ELEC",
 	"HEAL_NETH",
 	"RES_POIS",
 	"AQUATIC",
@@ -672,7 +672,7 @@ errr init_v_info_txt(FILE *fp, char *buf)
 			v_ptr = &v_info[i];
 
 			/* Hack -- Verify space */
-			if (v_head->name_size + strlen(s) + 8 > fake_name_size) 
+			if (v_head->name_size + strlen(s) + 8 > fake_name_size)
 			{
 				return (7);
 			}
@@ -701,7 +701,7 @@ errr init_v_info_txt(FILE *fp, char *buf)
 			s = buf+2;
 
 			/* Hack -- Verify space */
-			if (v_head->text_size + strlen(s) + 8 > fake_text_size) 
+			if (v_head->text_size + strlen(s) + 8 > fake_text_size)
 			{
 				return (7);
 			}
@@ -1842,7 +1842,7 @@ static errr grab_one_basic_flag(monster_race *r_ptr, cptr what)
 		}
 	}
 
-	/* Scan flags1 */
+	/* Scan flags3 */
 	for (i = 0; i < 32; i++)
 	{
 		if (streq(what, r_info_flags3[i]))
@@ -1860,7 +1860,7 @@ static errr grab_one_basic_flag(monster_race *r_ptr, cptr what)
 			r_ptr->flags7 |= (1L << i);
 			return (0);
 		}
-	}	
+	}
 	/* INFERNO : scan for specific monster escort  */
 	/* FLAG : ESCORT_???? */
 	if( prefix( what , "ESCORT_" )  )
@@ -2092,7 +2092,7 @@ errr init_r_info_txt(FILE *fp, char *buf)
 			if( r_ptr->d_char == 'p' )
 			{
 				r_ptr->flags2 |= RF2_OPEN_DOOR;
-				r_ptr->flags2 |= RF2_BASH_DOOR;				
+				r_ptr->flags2 |= RF2_BASH_DOOR;
 			}
 			
 			/*Fallen Angels and Dragons have flight, hardcoded for efficiency */
@@ -2230,8 +2230,6 @@ errr init_r_info_txt(FILE *fp, char *buf)
 				/* Start the next entry */
 				s = t;
 			}
-
-
             /* Minor hack, DROP_GREAT is useless without DROP_GOOD */
             /* Instead of modifying the whole codebase, I will just force the */
             /* DROP_GOOD flag if I encounter the DROP_GREAT flag */
