@@ -3386,7 +3386,7 @@ void do_cmd_racial_power(void)
 {
 	int                     i = 0;
 
-	int                     Power = -1;
+	/*int                     Power = -1; UNUSED*/
 	int                     num = 0, dir = 0;
 
 	int             powers[36];
@@ -3627,7 +3627,7 @@ void do_cmd_racial_power(void)
 		}
 
 		/* Save the spell index */
-		Power = powers[i];
+		/*Power = powers[i]; UNUSED*/
 
 		/* Verify it */
 		if (ask)

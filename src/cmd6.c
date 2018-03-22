@@ -4778,14 +4778,14 @@ void do_cmd_mix(void)
 	
 	bool found = FALSE;
 	
-	cptr q, s, r;
+	cptr q, r; /*s UNUSED*/
 	object_kind *k_ptr;
 	object_type object_type_body;
 	object_type *o_ptr1, *o_ptr2, *to_ptr;
 	
 	/* Get an item */
 	q = "Mix which potion? ";
-	s = "You don't have enough potions to mix.";
+	/*s = "You don't have enough potions to mix."; UNUSED TODO*/
 	r = "With which potion? ";
 	item_tester_tval = TV_POTION;
 

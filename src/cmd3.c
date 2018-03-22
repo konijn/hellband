@@ -738,7 +738,7 @@ void do_cmd_observe(void)
 
 	char		o_name[80];
     
-    object_kind *k_ptr;
+    /*object_kind *k_ptr; UNUSED*/
 
 	/* Get an item (from equip or inven or floor) */
 	if (!get_item(&item, "Examine which item? ", "You have nothing to examine.", USE_EQUIP | USE_INVEN | USE_FLOOR))
@@ -758,7 +758,7 @@ void do_cmd_observe(void)
 		o_ptr = &o_list[0 - item];
 	}
 
-    k_ptr = &k_info[ o_ptr->k_idx ];
+    /*k_ptr = &k_info[ o_ptr->k_idx ]; UNUSED*/
     
 	/* Require full knowledge, konijn
 	if (  !(o_ptr->ident & (IDENT_MENTAL) || k_ptr->flags3 & (TR3_EASY_KNOW) )  )
@@ -1930,12 +1930,13 @@ void do_cmd_time(void)
 	int  minute  = ((turn % ((10L * TOWN_DAWN)/2) * 720) / ((10L * TOWN_DAWN)/2)) % 60;
 	int  hour    = ((12 * dummy) / 100) - 6;    /* -6 to +6 */
 	int  hour12  = 0;
-	int  day     = 0;
-
+	/*int  day     = 0
 	if (turn <= (10L * TOWN_DAWN)/4)
 		day = 1;
 	else
 		day = (turn - (10L * TOWN_DAWN / 4)) / (10L * TOWN_DAWN) + 1;
+	UNUSED
+	*/
 
 	/* night: 6pm -- 6am */
 	if ((turn / ((10L * TOWN_DAWN)/2)) % 2)

@@ -1115,14 +1115,14 @@ static void natural_attack(s16b m_idx, int attack, bool *fear, bool *mdeath)
 */
 void py_attack(int y, int x)
 {
-	int                     num = 0, k, bonus, chance, mult=100;
+	int             k, bonus, chance, mult=100; /*num = 0 UNUSED*/
 
-	cave_type               *c_ptr = &cave[y][x];
+	cave_type       *c_ptr = &cave[y][x];
 
 	monster_type    *m_ptr = &m_list[c_ptr->m_idx];
 	monster_race    *r_ptr = &r_info[m_ptr->r_idx];
 
-	object_type             *o_ptr;
+	object_type     *o_ptr;
 
 	char            m_name[80];
 
@@ -1138,8 +1138,6 @@ void py_attack(int y, int x)
 	int         drain_left = MAX_VAMPIRIC_DRAIN;
 	u32b        f1, f2, f3; /* A massive hack -- life-draining weapons */
 	bool        no_extra = FALSE;
-
-
 
 	/* Disturb the player */
 	disturb(0, 0);
@@ -1545,7 +1543,7 @@ void py_attack(int y, int x)
 			chaos_effect = FALSE;
 			msg_format("%^s disappears!", m_name);
 			teleport_away(c_ptr->m_idx, 50);
-			num = p_ptr->num_blow + 1; /* Can't hit it anymore! */
+			/*num = p_ptr->num_blow + 1; UNUSED TODO Can't hit it anymore! */
 			no_extra = TRUE;
 
 		}
@@ -1765,7 +1763,7 @@ int can_move_player( int y , int x )
 {
 	cave_type *c_ptr;
 	bool p_can_pass_walls = FALSE;
-	bool wall_is_perma = FALSE;
+	/*bool wall_is_perma = FALSE; UNUSED */
 	
 	/* Examine the destination */
 	c_ptr = &cave[y][x];	
@@ -1777,7 +1775,7 @@ int can_move_player( int y , int x )
 		p_can_pass_walls = TRUE;
 		if ((cave[y][x].feat >= FEAT_PERM_BUILDING) && (cave[y][x].feat <= FEAT_PERM_SOLID))
 		{
-			wall_is_perma = TRUE;
+			/*wall_is_perma = TRUE; UNUSED*/
 			p_can_pass_walls = FALSE;
 		}
 	}
@@ -1804,7 +1802,7 @@ void move_player(int dir, int do_pickup)
 	monster_type *m_ptr;
 	char m_name[80];
 	bool p_can_pass_walls = FALSE;
-	bool wall_is_perma = FALSE;
+	/*bool wall_is_perma = FALSE; UNUSED*/
 	bool stormbringer = FALSE;
 	/* Find the result of moving */
 	y = py + ddy[dir];
@@ -1832,7 +1830,7 @@ void move_player(int dir, int do_pickup)
 		p_can_pass_walls = TRUE;
 		if ((cave[y][x].feat >= FEAT_PERM_BUILDING) && (cave[y][x].feat <= FEAT_PERM_SOLID))
 		{
-			wall_is_perma = TRUE;
+			/*wall_is_perma = TRUE; UNUSED*/
 			p_can_pass_walls = FALSE;
 		}
 	}
