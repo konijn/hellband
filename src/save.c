@@ -1697,7 +1697,7 @@ bool load_player(void)
 	if (!savefile[0]) return (TRUE);
 
 
-#if !defined(MACINTOSH) && !defined(WINDOWS) && !defined(USE_CLANG)
+#if !defined(MACINTOSH) && !defined(WINDOWS) && !defined(USE_CLANG)  && !defined(live)
 
 	/* XXX XXX XXX Fix this */
 

@@ -5310,9 +5310,15 @@ static bool monst_attack_monst(int m_idx,int t_idx)
 					break;
 				}
 
-			case RBM_XXX1:
+			case RBM_SLASH:
 				{
-					act = "XXX1's %s.";
+					act = "slashes into %s.";
+					break;
+				}
+
+			case RBM_SWIPE:
+				{
+					act = "swipes at %s.";
 					break;
 				}
 
@@ -5627,7 +5633,8 @@ static bool monst_attack_monst(int m_idx,int t_idx)
 			case RBM_CLAW:
 			case RBM_BITE:
 			case RBM_STING:
-			case RBM_XXX1:
+			case RBM_SWIPE:
+			case RBM_SLASH:
 			case RBM_BUTT:
 			case RBM_CRUSH:
 			case RBM_ENGULF:

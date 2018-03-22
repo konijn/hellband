@@ -8,3 +8,4 @@ lib/save/*
 *.ini
 src/angband.res
 *.raw
+go
