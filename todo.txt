@@ -6,3 +6,9 @@
 * Icy Lantern Holder should hold a Icy Lantern
 
 	
+The MITZE list
+
+MITZE: Make the list auto-display
+MITZE: Also, let the map cover the screen
+MITZE: [ to show all visible monsters, ] for objects
+MITZE: Show the player when an object is fully identified
