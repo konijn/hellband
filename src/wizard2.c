@@ -28,7 +28,7 @@ void do_cmd_wiz_help(void);
 */
 void do_cmd_rerate(void)
 {
-	int i, percent;
+	int i;/* percent */;
 	int lastroll,j;
 
 	/* Pre-calculate level 1 hitdice */
@@ -58,8 +58,7 @@ void do_cmd_rerate(void)
 		player_hp[i] = player_hp[i-1] +player_hp[i];
 	}
 
-	percent = (int)(((long)player_hp[PY_MAX_LEVEL - 1] * 200L) /
-		(p_ptr->hitdie + ((PY_MAX_LEVEL - 1) * p_ptr->hitdie)));
+	/*percent = (int)(((long)player_hp[PY_MAX_LEVEL - 1] * 200L) / (p_ptr->hitdie + ((PY_MAX_LEVEL - 1) * p_ptr->hitdie)));*/
 
 	/* Update and redraw hitpoints */
 	p_ptr->update |= (PU_HP);
@@ -544,16 +543,16 @@ static void drop_item( int k_idx )
 */
 static int wiz_create_itemtype(bool all_of_them)
 {
-	int                  i, num, max_num;
-	int                  col, row;
-	int			 tval;
+	int  i, num, max_num;
+	int  col, row;
+	int  tval;
 
-	cptr                 tval_desc;
-	char                 ch;
+	cptr tval_desc;
+	char ch;
 
-	int			 choice[60];
+	int  choice[60];
 
-	char		buf[160];
+	char buf[160];
 
 
 	/* Clear screen */
@@ -632,18 +631,21 @@ static int wiz_create_itemtype(bool all_of_them)
 	
 	/* Analyze choice */
 	num = -1;
-	if ((ch >= head[0]) && (ch < head[0] + 20)) num = ch - head[0];
-	else if ((ch >= head[1]) && (ch < head[1] + 20)) num = ch - head[1] + 20;
-	else if ((ch >= head[2]) && (ch < head[2] + 20)) num = ch - head[2] + 40;
-
-    /*If we want it all, press * */
-    if( ch == '*' )
-        wiz_create_itemtype(TRUE);
-    
+	if ((ch >= head[0]) && (ch < head[0] + 20)){
+		num = ch - head[0];
+	} else if ((ch >= head[1]) && (ch < head[1] + 20)){
+		num = ch - head[1] + 20;
+	} else if ((ch >= head[2]) && (ch < head[2] + 20)){
+		num = ch - head[2] + 40;
+	} else if( ch == '*' ){
+		/*If we want it all, press * */
+		wiz_create_itemtype(TRUE);
+	}
 	/* Bail out if choice is "illegal" */
-	if ((num < 0) || (num >= max_num)) return (0);
+	if ((num < 0) || (num >= max_num))
+		return (0);
 
-	/* And return successful */
+	/* Otherwise return successful */
 	return (choice[num]);
 }
 
