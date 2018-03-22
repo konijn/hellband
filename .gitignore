@@ -9,3 +9,4 @@ lib/save/*
 src/angband.res
 *.raw
 go
+*.pre
