@@ -1584,13 +1584,13 @@ static errr rd_savefile_new_aux(void)
 	/* Read the available records */
 	for (i = 0; i < tmp16u; i++)
 	{
-		monster_race *r_ptr;
+		/*monster_race *r_ptr; UNUSED*/
 
 		/* Read the lore */
 		rd_lore(i);
 
 		/* Access that monster */
-		r_ptr = &r_info[i];
+		/*r_ptr = &r_info[i]; UNUSED*/
 	}
 	if (arg_fiddle) note("Loaded Monster Memory");
 
