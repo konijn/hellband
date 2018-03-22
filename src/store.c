@@ -1320,7 +1320,7 @@ static void store_delete(void)
 */
 static void store_create(void)
 {
-	int i, tries, level, bm_dice, tries_count;
+	int i, tries, level, tries_count; /*bm_dice UNUSED*/
 
 	object_type forge;
 	object_type *q_ptr;
@@ -1341,7 +1341,7 @@ static void store_create(void)
 		/* Black Market */
 		if (cur_store_num == STORE_BLACK)
 		{
-			bm_dice = p_ptr->lev>25?p_ptr->lev:25; 
+			/*bm_dice = p_ptr->lev>25?p_ptr->lev:25; UNUSED*/
 			
 			/* Pick a level for object/magic */
 			level = 25 + rand_int(25);
