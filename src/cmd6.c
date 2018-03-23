@@ -1255,9 +1255,9 @@ bool curse_weapon(void)
 */
 void do_cmd_read_scroll(int item)
 {
-	int			k, used_up, ident, lev;
+	int k, used_up, ident, lev;
 
-	object_type		*o_ptr;
+	object_type *o_ptr;
 
 	char  Rumor[80] ;
 
@@ -1368,7 +1368,8 @@ void do_cmd_read_scroll(int item)
 			for (k = 0; k < randint(3); k++)
 			{
 				/* The first shot of summoning has a 1 in 3 chance to summon a unique */
-				if(k == 0 && randint(3) == 1)
+				/* But only we use it knowingly */
+				if(k == 0 && randint(3) == 1 && object_aware_p(o_ptr))
 				{
 					if (summon_specific(py, px, dun_level, FILTER_UNIQUE))
 					{
@@ -1872,7 +1873,8 @@ void do_cmd_use_staff(int item)
 			for (k = 0; k < randint(4); k++)
 			{
 				/* The first shot of summoning has a 1 in 3 chance to summon a unique */
-				if(k == 0 && randint(3) == 1)
+				/* But only we use it knowingly */
+				if(k == 0 && randint(3) == 1 && object_aware_p(o_ptr))
 				{
 					if (summon_specific(py, px, dun_level, FILTER_UNIQUE))
 					{
