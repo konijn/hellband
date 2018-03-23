@@ -40,14 +40,11 @@ void do_cmd_redraw(void)
 
 	term *old = Term;
 
-
 	/* Hack -- react to changes */
 	Term_xtra(TERM_XTRA_REACT, 0);
 
-
 	/* Combine and Reorder the pack (later) */
 	p_ptr->notice |= (PN_COMBINE | PN_REORDER);
-
 
 	/* Update torch */
 	p_ptr->update |= (PU_TORCH);

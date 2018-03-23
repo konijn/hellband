@@ -807,7 +807,7 @@ static errr Term_wipe_gcu(int x, int y, int n)
 	move(y, x);
 
 	/* Clear to end of line */
-	if (x + n >= 80)
+	if (x + n >= SCREEN_WID)
 	{
 		clrtoeol();
 	}
@@ -885,10 +885,15 @@ errr init_gcu(void)
 	if (initscr() == (WINDOW*)ERR) return (-1);
 #endif
 
-
 	/* Hack -- Require large screen, or Quit with message */
 	i = ((LINES < 24) || (COLS < 80));
 	if (i) quit("Angband needs an 80x24 'curses' screen");
+
+	/*
+	* flexible term width & heigh
+	*/
+	session_width = COLS;
+	session_height = LINES-2;
 
 #ifdef A_COLOR
 
@@ -995,7 +1000,7 @@ errr init_gcu(void)
 	/*** Now prepare the term ***/
 
 	/* Initialize the term */
-	term_init(t, 80, 24, 256);
+	term_init(t, SCREEN_WID, SCREEN_HGT+2, 256);
 
 	/* Avoid the bottom right corner */
 	t->icky_corner = TRUE;

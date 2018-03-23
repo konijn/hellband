@@ -66,20 +66,36 @@
 #define VERSION_EXTRA   0
 
 /*
-* Number of grids used to display the dungeon (vertically).
+* The below is no longer true, comments are kept solely for
+* historical purposes.
+* SCREEN_HGT Number of grids used to display the dungeon (vertically).
 * Must be a multiple of 11, probably hard-coded to 22.
-*/
-#define SCREEN_HGT      22
-
-/*
+*
 * Number of grids used to display the dungeon (horizontally).
 * Must be a multiple of 33, probably hard-coded to 66.
+*
+* flexible term width & heigh
+* let your main-xxx.c file set these variables
+* for now this is only supported by main-gcu.c
+* From variables.c:
+* int session_width = 0;
+* int session_height = 0;
 */
-#define SCREEN_WID     80
+#define SCREEN_HGT     (session_width == 0 ? 22 : session_height)
+#define SCREEN_WID     (session_height == 0 ? 80 : session_width)
 
 
 #define DUNGEON_HGT    22
 #define DUNGEON_WID    66
+
+#define ROW_STATUS              (SCREEN_HGT+1)
+
+#define ROW_INFO                (SCREEN_HGT+0)
+#define COL_INFO                0       /* "Monster Health Bar" */
+
+#define ROW_EQUIPPY             7
+#define COL_EQUIPPY             0       /* equippy chars */
+
 
 /*
 * Maximum dungeon height in grids, must be a multiple of SCREEN_HGT,
@@ -665,10 +681,6 @@ and tables.c --TY */
 #define SEX_FEMALE              0
 #define SEX_MALE                1
 
-/*
-* Maximum number of player "class" types (see "table.c", etc)
-*/
-#define MAX_CLASS            16
 
 /*
 * Player class constants (hard-coded by save-files, arrays, etc)
@@ -689,6 +701,11 @@ and tables.c --TY */
 #define CLASS_MYSTIC       13
 #define CLASS_ORPHIC       14
 #define CLASS_DRUID        15
+
+/*
+* Maximum number of player "class" types (see "table.c", etc)
+*/
+#define MAX_CLASS            16
 
 
 #define COUNT_LINES  14
@@ -778,22 +795,6 @@ and tables.c --TY */
 #define SIGN_SERPENS 2
 #define SIGN_PLUTUS  3
 #define SIGN_MORUI   4
-
-/*** Screen Locations ***/
-
-/*
-* Some screen locations for various display routines
-* Currently, row 8 and 15 are the only "blank" rows.
-* That leaves a "border" around the "stat" values.
-*/
-
-#define ROW_STATUS              23
-
-#define ROW_INFO                22
-#define COL_INFO                0       /* "Monster Health Bar" */
-
-#define ROW_EQUIPPY             7
-#define COL_EQUIPPY             0       /* equippy chars */
 
 /*** Terrain Feature Indexes (see "lib/edit/f_info.txt") ***/
 

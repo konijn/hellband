@@ -2690,8 +2690,6 @@ void clear_from(int row)
 }
 
 
-
-
 /*
 * Get some input at the cursor location.
 * Assume the buffer is initialized to a default string.

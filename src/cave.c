@@ -1681,8 +1681,8 @@ void display_map(int *cy, int *cx)
 	y = maxy+1;
 
 	/* Offsets to centre map */
-	x_offset=(80-x)/2;
-	y_offset=(24-y)/2;
+	x_offset=(SCREEN_HGT-x)/2;
+	y_offset=(SCREEN_WID-y)/2;
 
 	/* Draw the corners */
 	mc[0][0] = mc[0][x] = mc[y][0] = mc[y][x] = '+';
@@ -1986,12 +1986,6 @@ void do_cmd_view_map(void)
 */
 
 
-
-
-
-
-
-
 /*
 * Actually erase the entire "lite" array, redrawing every grid
 */
@@ -2033,8 +2027,6 @@ void forget_lite(void)
 	lite_y[lite_n] = (Y); \
 	lite_x[lite_n] = (X); \
 	lite_n++
-
-
 
 /*
 * Update the set of grids "illuminated" by the player's lite.

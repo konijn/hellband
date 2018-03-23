@@ -4196,7 +4196,7 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 	bool use_inven = ((mode & (USE_INVEN)) ? TRUE : FALSE);
 	bool use_equip = ((mode & (USE_EQUIP)) ? TRUE : FALSE);
 	bool use_floor = ((mode & (USE_FLOOR)) ? TRUE : FALSE);
-	bool mode_pick = ((mode & (MODE_PICK)) ? TRUE : FALSE);
+	/*bool mode_pick = ((mode & (MODE_PICK)) ? TRUE : FALSE); UNUSED TODO*/
 
 	bool allow_inven = FALSE;
 	bool allow_equip = FALSE;

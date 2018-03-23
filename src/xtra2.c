@@ -1519,6 +1519,9 @@ bool mon_take_hit(int m_idx, int dam, bool *fear, cptr note)
 }
 
 
+#define PANEL_SIZE 11
+#define PANEL_SCROLL_WIDTH PANEL_SIZE *3
+#define PANEL_SCROLL_HEIGHT PANEL_SIZE *2
 
 /*
 * Calculates current boundaries
@@ -1529,7 +1532,9 @@ void panel_bounds(void)
 	panel_row_min = panel_row * (SCREEN_HGT / 2);
 	panel_row_max = panel_row_min + SCREEN_HGT - 1;
 	panel_row_prt = panel_row_min - 1;
-	panel_col_min = panel_col * (SCREEN_WID / 2);
+
+/* min used to be SCREEN_WID / 2, since SCREEN_WID used to be 66..  */
+	panel_col_min = panel_col * (SCREEN_WID /2);
 	panel_col_max = panel_col_min + SCREEN_WID - 1;
 	panel_col_prt = panel_col_min /*- 13*/;
 }
@@ -1539,6 +1544,7 @@ void panel_bounds_center(void)
 	panel_row = panel_row_min / (SCREEN_HGT / 2);
 	panel_row_max = panel_row_min + SCREEN_HGT - 1;
 	panel_row_prt = panel_row_min - 1;
+
 	panel_col = panel_col_min / (SCREEN_WID / 2);
 	panel_col_max = panel_col_min + SCREEN_WID - 1;
 	panel_col_prt = panel_col_min /*- 13*/;
@@ -1591,10 +1597,21 @@ void verify_panel(void)
 	{
 
 		int prow = panel_row;
-		int pcol = panel_col;
+		int pcol = panel_col;;
+
+		/*
+		* In the olden days, a 25 line screen used to scroll 2 spaces of the horizontal edges, 
+		* and a 80 column screen used to scroll 4 spaces of the vertical edges
+		* These numbers seem stupid now, so why not use the player view distance?
+		* Though that actually does not really work for the original size screen..
+		* So we just scale the original values
+		*/
+
+		int row_trigger = SCREEN_HGT * 2 / 25;
+		int col_trigger = SCREEN_WID * 4 / 80;
 
 		/* Scroll screen when 2 grids from top/bottom edge */
-		if ((y < panel_row_min + 2) || (y > panel_row_max - 2))
+		if ((y < panel_row_min + row_trigger) || (y > panel_row_max - row_trigger))
 		{
 			prow = ((y - SCREEN_HGT / 4) / (SCREEN_HGT / 2));
 			if (prow > max_panel_rows) prow = max_panel_rows;
@@ -1602,7 +1619,7 @@ void verify_panel(void)
 		}
 
 		/* Scroll screen when 4 grids from left/right edge */
-		if ((x < panel_col_min + 4) || (x > panel_col_max - 4))
+		if ((x < panel_col_min + col_trigger) || (x > panel_col_max - col_trigger))
 		{
 			pcol = ((x - SCREEN_WID / 4) / (SCREEN_WID / 2));
 			if (pcol > max_panel_cols) pcol = max_panel_cols;

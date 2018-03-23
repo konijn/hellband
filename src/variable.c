@@ -553,7 +553,7 @@ term *angband_term[8];
 */
 char angband_term_name[8][16] =
 {
-	    "Hellband",
+		"Hellband",
 		"Mirror",
 		"Recall",
 		"Choice",
@@ -563,6 +563,13 @@ char angband_term_name[8][16] =
 		"Xtra-4"
 };
 
+/*
+* flexible term width & heigh
+* let your main-xxx.c file set these variables
+* for now this is only supported by main-gcu.c
+*/
+int session_width = 0;
+int session_height = 0;
 
 /*
 * Global table of colour definitions
@@ -719,8 +726,6 @@ char tval_to_char[128];
 * Keymaps for each "mode" associated with each keypress.
 */
 cptr keymap_act[KEYMAP_MODES][256];
-
-
 
 /*** Player information ***/
 
