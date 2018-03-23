@@ -305,6 +305,16 @@ static void prt_confused(void)
 	if (p_ptr->confused) place_status_cptr( "Confused" , TERM_ORANGE, 1);
 }
 
+/*Print Invulernable status*/
+static void prt_invuln(void)
+{
+	if(p_ptr->invuln) place_status_cptr("IN", TERM_BLUE,   0);
+	if(p_ptr->invuln) place_status_cptr("VU", TERM_RED,    0);
+	if(p_ptr->invuln) place_status_cptr("LN", TERM_ORANGE, 0);
+	if(p_ptr->invuln) place_status_cptr("ER", TERM_BLUE,   0);
+	if(p_ptr->invuln) place_status_cptr("AB", TERM_GREEN,  0);
+	if(p_ptr->invuln) place_status_cptr("LE", TERM_RED,    0);
+}
 
 /* Prints Fear status */
 static void prt_afraid(void)
@@ -521,6 +531,7 @@ static void prt_status(void)
 	/* Study */ prt_study();
 	/* State */ prt_state(); /* Paralyzed, Resting, Searching, Repeating.. */
 
+	prt_invuln();
 	prt_confused();
 	prt_blind();
 	prt_hunger_bad();
