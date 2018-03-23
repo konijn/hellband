@@ -2624,6 +2624,27 @@ cptr item_activation(object_type *o_ptr)
 	return NULL;
 }
 
+/* It is silly for wants, staves, rods, and scrolls to have 'secrets'*/
+bool has_no_secrets_ever(object_type *o_ptr)
+{
+  if( o_ptr->tval == TV_SKELETON ||
+      o_ptr->tval == TV_BOTTLE ||
+      o_ptr->tval == TV_JUNK ||
+      o_ptr->tval == TV_SPIKE ||
+      o_ptr->tval == TV_STAFF ||
+      o_ptr->tval == TV_WAND ||
+      o_ptr->tval == TV_ROD ||
+      o_ptr->tval == TV_SCROLL ||
+      o_ptr->tval == TV_POTION ||
+      o_ptr->tval == TV_FOOD ||
+      o_ptr->tval == TV_GOLD )
+  {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
 /*
  * Return the "fully identified" item description in an array of strings
  */
@@ -2821,6 +2842,10 @@ int identify_fully_strings( object_type *o_ptr )
 		if (f3 & (TR3_IGNORE_ELEC))	info[i++] = "It cannot be harmed by electricity.";
 		if (f3 & (TR3_IGNORE_FIRE))	info[i++] = "It cannot be harmed by fire.";
 		if (f3 & (TR3_IGNORE_COLD))	info[i++] = "It cannot be harmed by cold.";
+		if( has_no_secrets_ever(o_ptr) == FALSE)
+		{
+		  info[i++] = "It holds no secrets for you.";
+		}
 	}
 	return i;
 }
