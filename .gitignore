@@ -1,15 +1,14 @@
-hellband
 js
+go
+hellband
 *.o
 *.bak
 *.exe
-hellband.ini
-lib/save/*
 *.ini
-src/angband.res
+*.res
 *.raw
-go
 *.pre
 lib/edit/tmp
 lib/edit/killme
-lib/dump/4 lib/dump/delete.me lib/dump/Elvelelith_1180323_dead_clevel1_dlevel0.txt lib/dump/konijn_1180322_dead_clevel1_dlevel0.txt lib/dump/konijn_1180323_dead_clevel50_dlevel0.txt
+lib/dump/*
+lib/save/*
