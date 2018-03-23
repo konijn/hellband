@@ -94,15 +94,16 @@
   - 0.8.5 X11 preference file location is now dumped to console in fiddle mode
 
 *Equipment
-  - Scrolls of *enchantment* are much more usefull now..
-  - Staff of detect invisible now also gives temporary detect invisible
-  - Rods and Staves of Enlightment are now called rods and staves of Mapping as to remove any confusion
-  - Warriors can now find artefacts with NO_MAGIC flag
-  - Probing reveals all monster flags and finally becomes useful
-  - *curse* armor now will also mess up to hit to dam
-  - *curse* armor now might give imm. cold, res dark, res disenchantment, res col, res poison, res dark, res nether, hold life, slow digestion, heavy cursed, drain exp, aggravation and finally potentially wraith form (!)
-  - Resistance to disenchantment gives 50% extra chance of resisting *curse armor*
-  - Scrolls of Artifact Creation now work on ego items, keeping the properties of the ego item and improving it
+  - 0.8.8 Scrolls of *enchantment* are much more usefull now..
+  - 0.8.8 Staff of detect invisible now also gives temporary detect invisible
+  - 0.8.8 Rods and Staves of Enlightment are now called rods and staves of Mapping as to remove any confusion
+  - 0.8.8 Warriors can now find artefacts with NO_MAGIC flag
+  - 0.8.8 Probing reveals all monster flags and finally becomes useful
+  - 0.8.8* curse* armor now will also mess up to hit to dam
+  - 0.8.8 *curse* armor now might give imm. cold, res dark, res disenchantment, res col, res poison, res dark, res nether, hold life, slow digestion, heavy cursed, drain exp, aggravation and finally potentially wraith form (!)
+  - 0.8.8 Resistance to disenchantment gives 50% extra chance of resisting *curse armor*
+  - 0.8.8 Scrolls of Artifact Creation now work on ego items, keeping the properties of the ego item and improving it
+
   - 0.8.8 Mushrooms of cure blindness prevent blindness for a while.
   - 0.8.8 Katana's are gone, especially the one Homerus had :)
   - 0.8.8 Bastard Swords are now Gladii, single Gladius, Hellband can now properly convert from ius to ii
@@ -221,6 +222,7 @@
   - 0.8.6 Alchemist will now *ID* potions and tell you the alchemical formula
   
 *UI
+  - 0.8.8 Make the list auto-display --MITZE--
   - 0.8.8 Permanent walls in ASCII mode no longer show up as yellow under torch light
   - 0.8.8 'C'haracter now shows maxed out stats
   - 0.8.8 Wraith mode and god mode no longer turn the screen in mono colour
@@ -446,10 +448,19 @@
 
 - TODO :
 
+* Somehow books are targets for identification??
+* Summoning staves and scrolls should have 1 in 3 chance to summon unique if there is a unique keyed to dlevel
+* Icy Lantern Holder should hold a Icy Lantern
+* Do something with flasks
+* Terror mask should be for Hell Knights and Chaos Knights
+* Review r_info for MALE and FEMALE flag, fed up with 'it'
 
-Terror mask should be for Hell Knights and Chaos Knights
-Check out what taking notes does
+- TODO MITZE :
 
+* MITZE: Also, let the map cover the screen
+* MITZE: [ to show all visible monsters, ] for objects
+* MITZE: Show the player when an object is fully identified
+* MITZE Get allies, have them fight, dismiss them, walk around, see monsters that are there/not there
 
 - ONE DAY
 
