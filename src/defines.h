@@ -106,9 +106,9 @@
 /*
 * Road Directions
 */
-#define ROAD_LEFT 0x01
-#define ROAD_UP 0x02
-#define ROAD_DOWN 0x04
+#define ROAD_LEFT  0x01
+#define ROAD_UP    0x02
+#define ROAD_DOWN  0x04
 #define ROAD_RIGHT 0x08
 
 /*
@@ -440,16 +440,16 @@
 /*
 * Misc constants
 */
-#define TOWN_DAWN               10000   /* Number of turns from dawn to dawn XXX */
-#define BREAK_GLYPH             550             /* Rune of protection resistance */
-#define BREAK_MINOR_GLYPH       99             /* For explosive runes */
-#define BTH_PLUS_ADJ    3       /* Adjust BTH per plus-to-hit */
-#define MON_MULT_ADJ    8               /* High value slows multiplication */
-#define MON_SUMMON_ADJ  2               /* Adjust level of summoned creatures */
-#define MON_DRAIN_LIFE  2               /* Percent of player exp drained per hit */
-#define USE_DEVICE      3               /* x> Harder devices x< Easier devices     */
+#define TOWN_DAWN          10000  /* Number of turns from dawn to dawn XXX */
+#define BREAK_GLYPH        550    /* Rune of protection resistance */
+#define BREAK_MINOR_GLYPH  99     /* For explosive runes */
+#define BTH_PLUS_ADJ       3      /* Adjust BTH per plus-to-hit */
+#define MON_MULT_ADJ       8      /* High value slows multiplication */
+#define MON_SUMMON_ADJ     2      /* Adjust level of summoned creatures */
+#define MON_DRAIN_LIFE     2      /* Percent of player exp drained per hit */
+#define USE_DEVICE         3      /* x> Harder devices x< Easier devices     */
 
-#define BIAS_ELEC 1                     /* "Biases" for random artefact gen */
+#define BIAS_ELEC 1               /* "Biases" for random artefact gen */
 #define BIAS_POIS 2
 #define BIAS_FIRE 3
 #define BIAS_COLD 4
@@ -529,7 +529,6 @@
 */
 #define MAX_REPRO       100
 
-
 /*
 * Player constants
 */
@@ -540,33 +539,33 @@
 /*
 * Player "food" crucial values
 */
-#define PY_FOOD_MAX             15000   /* Food value (Bloated) */
+#define PY_FOOD_MAX     15000   /* Food value (Bloated) */
 #define PY_FOOD_FULL    10000   /* Food value (Normal) */
 #define PY_FOOD_ALERT   2000    /* Food value (Hungry) */
 #define PY_FOOD_WEAK    1000    /* Food value (Weak) */
-#define PY_FOOD_FAINT   500             /* Food value (Fainting) */
-#define PY_FOOD_STARVE  100             /* Food value (Starving) */
+#define PY_FOOD_FAINT   500     /* Food value (Fainting) */
+#define PY_FOOD_STARVE  100     /* Food value (Starving) */
 
 /*
 * Player regeneration constants
 */
-#define PY_REGEN_NORMAL         197             /* Regen factor*2^16 when full */
-#define PY_REGEN_WEAK           98              /* Regen factor*2^16 when weak */
-#define PY_REGEN_FAINT          33              /* Regen factor*2^16 when fainting */
+#define PY_REGEN_NORMAL         197     /* Regen factor*2^16 when full */
+#define PY_REGEN_WEAK           98      /* Regen factor*2^16 when weak */
+#define PY_REGEN_FAINT          33      /* Regen factor*2^16 when fainting */
 #define PY_REGEN_HPBASE         1442    /* Min amount hp regen*2^16 */
-#define PY_REGEN_MNBASE         524             /* Min amount mana regen*2^16 */
+#define PY_REGEN_MNBASE         524     /* Min amount mana regen*2^16 */
 
 /* Possible realms that can be chosen; currently used only by birth.c
 and tables.c --TY */
-#define CH_NONE         0x00
-#define CH_MIRACLES     0x01
-#define CH_SORCERY      0x02
-#define CH_NATURE       0x04
-#define CH_CHAOS        0x08
-#define CH_DEATH        0x10
-#define CH_TAROT        0x20
-#define CH_CHARMS       0x40
-#define CH_SOMATIC      0x80
+#define CH_NONE         0x000
+#define CH_MIRACLES     0x001
+#define CH_SORCERY      0x002
+#define CH_NATURE       0x004
+#define CH_CHAOS        0x008
+#define CH_DEATH        0x010
+#define CH_TAROT        0x020
+#define CH_CHARMS       0x040
+#define CH_SOMATIC      0x080
 #define CH_DEMONIC      0x100
 
 #define CH_ALL          0x1FF
