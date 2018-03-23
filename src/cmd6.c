@@ -1367,7 +1367,15 @@ void do_cmd_read_scroll(int item)
 		{
 			for (k = 0; k < randint(3); k++)
 			{
-				if (summon_specific(py, px, dun_level, 0))
+				/* The first shot of summoning has a 1 in 3 chance to summon a unique */
+				if(k == 0 && randint(3) == 1)
+				{
+					if (summon_specific(py, px, dun_level, FILTER_UNIQUE))
+					{
+						ident = TRUE;
+					}
+				}
+				else if (summon_specific(py, px, dun_level, 0))
 				{
 					ident = TRUE;
 				}
@@ -1863,7 +1871,15 @@ void do_cmd_use_staff(int item)
 		{
 			for (k = 0; k < randint(4); k++)
 			{
-				if (summon_specific(py, px, dun_level, 0))
+				/* The first shot of summoning has a 1 in 3 chance to summon a unique */
+				if(k == 0 && randint(3) == 1)
+				{
+					if (summon_specific(py, px, dun_level, FILTER_UNIQUE))
+					{
+						ident = TRUE;
+					}
+				} 
+				else if (summon_specific(py, px, dun_level, 0))
 				{
 					ident = TRUE;
 				}
