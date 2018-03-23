@@ -1320,7 +1320,7 @@ static void store_delete(void)
 */
 static void store_create(void)
 {
-	int i, tries, level, tries_count; /*bm_dice UNUSED*/
+	int i, tries, level, tries_count, bm_dice;
 
 	object_type forge;
 	object_type *q_ptr;
@@ -1341,10 +1341,16 @@ static void store_create(void)
 		/* Black Market */
 		if (cur_store_num == STORE_BLACK)
 		{
-			/*bm_dice = p_ptr->lev>25?p_ptr->lev:25; UNUSED*/
+			/* 
+			  Konijn decided to potentially mess this up
+			  In that this might make stat potions less frequent in the BM
+			  And we all know that that is really the only reason the BM exists ;)
+			  To restore the old logic, just go for `level = 25 + rand_int(bm_dice);`
+			*/
+			bm_dice = (p_ptr->lev >> 1) + (p_ptr->max_dun_level >> 2);
 			
 			/* Pick a level for object/magic */
-			level = 25 + rand_int(25);
+			level = 25 + rand_int(bm_dice);
 
 			/* Random item (usually of given level) */
 			i = get_obj_num(level);
