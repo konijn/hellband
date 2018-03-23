@@ -1333,52 +1333,50 @@ ART_THOTH -> ART_KINSLAYER
 * only armour and weapons and a few other items use any of these flags.
 */
 
-#define TV_SKELETON      1      /* Skeletons ('s') */
-#define TV_BOTTLE                2      /* Empty bottles ('!') */
-#define TV_JUNK          3      /* Sticks, Pottery, etc ('~') */
-#define TV_SPIKE         5      /* Spikes ('~') */
-#define TV_CHEST         7      /* Chests ('~') */
-#define TV_SHOT         16      /* Ammo for slings */
-#define TV_ARROW        17      /* Ammo for bows */
-#define TV_BOLT         18      /* Ammo for x-bows */
-#define TV_BOW          19      /* Slings/Bows/Xbows */
-#define TV_DIGGING      20      /* Shovels/Picks */
-#define TV_HAFTED       21      /* Priest Weapons */
-#define TV_POLEARM      22      /* Axes and Pikes */
-#define TV_SWORD        23      /* Edged Weapons */
-#define TV_BOOTS        30      /* Boots */
-#define TV_GLOVES       31      /* Gloves */
-#define TV_HELM         32      /* Helms */
-#define TV_CROWN        33      /* Crowns */
-#define TV_SHIELD       34      /* Shields */
-#define TV_CLOAK        35      /* Cloaks */
-#define TV_SOFT_ARMOR   36      /* Soft Armor */
-#define TV_HARD_ARMOR   37      /* Hard Armor */
-#define TV_DRAG_ARMOR   38      /* Dragon Scale Mail */
-#define TV_LITE         39      /* Lites (including Specials) */
-#define TV_AMULET       40      /* Amulets (including Specials) */
-#define TV_RING         45      /* Rings (including Specials) */
-#define TV_STAFF        55
-#define TV_WAND         65
-#define TV_ROD          66
-#define TV_SCROLL       70
-#define TV_POTION       75
-#define TV_FLASK        77
-#define TV_FOOD         80
-#define TV_MIRACLES_BOOK 90
-#define TV_SORCERY_BOOK  91
-#define TV_BOOK_REALM1	 91  
-#define TV_NATURE_BOOK   92
-#define TV_CHAOS_BOOK    93
-#define TV_DEATH_BOOK    94
-#define TV_BOOK_REALM2	 94
-#define TV_TAROT_BOOK    95
-#define TV_CHARMS_BOOK   96
-#define TV_SOMATIC_BOOK  97
-#define TV_DEMONIC_BOOK  98
-#define TV_GOLD         100     /* Gold can only be picked up by players */
-
-
+#define TV_SKELETON       1      /* Skeletons ('s') */
+#define TV_BOTTLE         2      /* Empty bottles ('!') */
+#define TV_JUNK           3      /* Sticks, Pottery, etc ('~') */
+#define TV_SPIKE          5      /* Spikes ('~') */
+#define TV_CHEST          7      /* Chests ('~') */
+#define TV_SHOT          16      /* Ammo for slings */
+#define TV_ARROW         17      /* Ammo for bows */
+#define TV_BOLT          18      /* Ammo for x-bows */
+#define TV_BOW           19      /* Slings/Bows/Xbows */
+#define TV_DIGGING       20      /* Shovels/Picks */
+#define TV_HAFTED        21      /* Priest Weapons */
+#define TV_POLEARM       22      /* Axes and Pikes */
+#define TV_SWORD         23      /* Edged Weapons */
+#define TV_BOOTS         30      /* Boots */
+#define TV_GLOVES        31      /* Gloves */
+#define TV_HELM          32      /* Helms */
+#define TV_CROWN         33      /* Crowns */
+#define TV_SHIELD        34      /* Shields */
+#define TV_CLOAK         35      /* Cloaks */
+#define TV_SOFT_ARMOR    36      /* Soft Armor */
+#define TV_HARD_ARMOR    37      /* Hard Armor */
+#define TV_DRAG_ARMOR    38      /* Dragon Scale Mail */
+#define TV_LITE          39      /* Lites (including Specials) */
+#define TV_AMULET        40      /* Amulets (including Specials) */
+#define TV_RING          45      /* Rings (including Specials) */
+#define TV_STAFF         55      /* Staves, can be used blind, burn easily, quick to use */
+#define TV_WAND          65      /* Wands, need sight, destroyed by electricity, faster to use */
+#define TV_ROD           66      /* Rods, need sight, rarely destroyed by electricity, slowest to use */
+#define TV_SCROLL        70      /* Scrolls, need sight, burn easily, faster to use */
+#define TV_POTION        75      /* Potion, can be used bllind, rarely destroyed by electricity, fastest to use */
+#define TV_FLASK         77      /* Just for Flask of oil, for now ;) TODO */
+#define TV_FOOD          80      /* ALl kinds of food, regular, ambrosia, and mushrooms */ 
+#define TV_MIRACLES_BOOK 90      /* White/Clerical magic books */
+#define TV_SORCERY_BOOK  91      /* Arcane magic books */
+#define TV_BOOK_REALM1	 91      /* XXX Hack */
+#define TV_NATURE_BOOK   92      /* Nature magic books */
+#define TV_CHAOS_BOOK    93      /* Chaos magic books */
+#define TV_DEATH_BOOK    94      /* Death magic books */
+#define TV_BOOK_REALM2	 94      /* XXX Hack */
+#define TV_TAROT_BOOK    95      /* Tarot magic books */
+#define TV_CHARMS_BOOK   96      /* Charms magic books */
+#define TV_SOMATIC_BOOK  97      /* Somatic magic books */
+#define TV_DEMONIC_BOOK  98      /* Demonic magic books */
+#define TV_GOLD          100     /* Gold can only be picked up by players */
 
 /* The "sval" codes for TV_SHOT/TV_ARROW/TV_BOLT */
 #define SV_AMMO_LIGHT           0       /* pebbles */
