@@ -270,8 +270,8 @@ static void prt_depth(void)
 	else if (dun_level==25)	(void)strcpy(depths, "9th Circle: Betrayal");
 	else if (dun_level==26)	(void)strcpy(depths, "9th Circle: Judecca");
 	else if (depth_in_feet)	(void)sprintf(depths, "Hell (%d feet)",dun_level * 50);
-	else					(void)sprintf(depths, "Hell (Level %d)", dun_level);
-	
+	else (void)sprintf(depths, "Hell (Level %d)", dun_level);
+
 	depth_length = strlen( depths );
 	prt( depths, ROW_STATUS-1, SCREEN_WID - depth_length);
 	//We want to keep a space before the depth, and depth_length will be used elsewhere
@@ -313,7 +313,23 @@ static void prt_invuln(void)
 	if(p_ptr->invuln) place_status_cptr("LN", TERM_ORANGE, 0);
 	if(p_ptr->invuln) place_status_cptr("ER", TERM_BLUE,   0);
 	if(p_ptr->invuln) place_status_cptr("AB", TERM_GREEN,  0);
-	if(p_ptr->invuln) place_status_cptr("LE", TERM_RED,    0);
+	if(p_ptr->invuln) place_status_cptr("LE", TERM_RED,    1);
+}
+
+static void prt_lowered_stats(void){
+	int i;
+	for(i=0;i<STAT_COUNT;i++)
+	{
+		if( p_ptr->stat_cur[i] < p_ptr->stat_max[i])
+		{
+		    place_status_cptr(desc_stat_neg[i], TERM_YELLOW, 1);
+		}
+	}
+}
+
+static void prt_wraith_form(void)
+{
+	if(p_ptr->wraith_form) place_status_cptr("Wraith Form", TERM_WHITE, 1);
 }
 
 /* Prints Fear status */
@@ -532,6 +548,7 @@ static void prt_status(void)
 	/* State */ prt_state(); /* Paralyzed, Resting, Searching, Repeating.. */
 
 	prt_invuln();
+	prt_wraith_form();
 	prt_confused();
 	prt_blind();
 	prt_hunger_bad();
@@ -540,6 +557,7 @@ static void prt_status(void)
 	prt_afraid();
 	prt_cut();
 	prt_hunger_ok();
+	prt_lowered_stats();
 
 	/* Current depth */	prt_depth();
 }

@@ -221,21 +221,6 @@ static cptr desc_stat_pos[] =
 		"cute"
 };
 
-
-/*
-* Array of stat "descriptions"
-*/
-static cptr desc_stat_neg[] =
-{
-		"weak",
-		"stupid",
-		"naive",
-		"clumsy",
-		"sickly",
-		"ugly"
-};
-
-
 /*
 * Lose a "point"
 */
