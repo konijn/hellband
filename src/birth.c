@@ -1999,7 +1999,7 @@ static void get_extra(void)
 */
 static void get_history(void)
 {
-	int		i, n;
+    int     i, n;
 
     /* 15 lines for 1 history part should be more than enough */
     int     odds[15];
@@ -2011,14 +2011,14 @@ static void get_history(void)
     int     odd_current = 0;
     bool    odd_found  = FALSE;
 
-	char	*s, *t;
-	char	buf[240];
-    
+    char    *s, *t;
+    char    buf[240];
+
     /* Hack^2 , bitflag will determine if background entry is valid or not for the player's race */
     u32b    race_bitflag = (1<<(p_ptr->prace+1));
 
-	/* Clear the previous history strings */
-	for (i = 0; i < 4; i++) history[i][0] = '\0';
+    /* Clear the previous history strings */
+    for (i = 0; i < 4; i++) history[i][0] = '\0';
 
 	/* Clear the history text */
 	buf[0] = '\0';
@@ -2371,42 +2371,42 @@ static void player_wipe(void)
 
 birth_item birth_items[] =
 {
-{ ANY, CLASS_WARRIOR      ,&reallyTRUE          ,TV_RING       ,SV_RING_RES_FEAR               ,WORN    ,1 ,1 },
-{ ANY, CLASS_WARRIOR      ,&reallyTRUE          ,TV_SWORD      ,SV_BROAD_SWORD                 ,WORN    ,1 ,1 },
-{ ANY, CLASS_WARRIOR      ,&reallyTRUE          ,TV_HARD_ARMOR ,SV_CHAIN_MAIL                  ,WORN    ,1 ,1 },
-{ ANY, CLASS_MAGE         ,&reallyTRUE          ,TV_SWORD      ,SV_DAGGER                      ,WORN    ,1 ,1 },
-{ ANY, CLASS_PRIEST       ,&reallyTRUE          ,TV_HAFTED     ,SV_MACE                        ,WORN    ,1 ,1 },
-{ ANY, CLASS_ROGUE        ,&reallyTRUE          ,TV_SWORD      ,SV_DAGGER                      ,WORN    ,1 ,1 },
-{ ANY, CLASS_ROGUE        ,&reallyTRUE          ,TV_SOFT_ARMOR ,SV_SOFT_LEATHER_ARMOR          ,WORN    ,1 ,1 },
-{ ANY, CLASS_RANGER       ,&reallyTRUE          ,TV_SWORD      ,SV_BROAD_SWORD                 ,WORN    ,1 ,1 },
-{ ANY, CLASS_PALADIN      ,&reallyTRUE          ,TV_SWORD      ,SV_BROAD_SWORD                 ,WORN    ,1 ,1 },
-{ ANY, CLASS_PALADIN      ,&reallyTRUE          ,TV_SCROLL     ,SV_SCROLL_PROTECTION_FROM_EVIL ,CARRIED ,1 ,1 },
-{ ANY, CLASS_WARRIOR_MAGE ,&reallyTRUE          ,TV_SWORD      ,SV_SHORT_SWORD                 ,WORN    ,1 ,1 },
+{ ANY, CLASS_WARRIOR       ,&reallyTRUE          ,TV_RING       ,SV_RING_RES_FEAR               ,WORN    ,1 ,1 },
+{ ANY, CLASS_WARRIOR       ,&reallyTRUE          ,TV_SWORD      ,SV_BROAD_SWORD                 ,WORN    ,1 ,1 },
+{ ANY, CLASS_WARRIOR       ,&reallyTRUE          ,TV_HARD_ARMOR ,SV_CHAIN_MAIL                  ,WORN    ,1 ,1 },
+{ ANY, CLASS_MAGE          ,&reallyTRUE          ,TV_SWORD      ,SV_DAGGER                      ,WORN    ,1 ,1 },
+{ ANY, CLASS_PRIEST        ,&reallyTRUE          ,TV_HAFTED     ,SV_MACE                        ,WORN    ,1 ,1 },
+{ ANY, CLASS_ROGUE         ,&reallyTRUE          ,TV_SWORD      ,SV_DAGGER                      ,WORN    ,1 ,1 },
+{ ANY, CLASS_ROGUE         ,&reallyTRUE          ,TV_SOFT_ARMOR ,SV_SOFT_LEATHER_ARMOR          ,WORN    ,1 ,1 },
+{ ANY, CLASS_RANGER        ,&reallyTRUE          ,TV_SWORD      ,SV_BROAD_SWORD                 ,WORN    ,1 ,1 },
+{ ANY, CLASS_PALADIN       ,&reallyTRUE          ,TV_SWORD      ,SV_BROAD_SWORD                 ,WORN    ,1 ,1 },
+{ ANY, CLASS_PALADIN       ,&reallyTRUE          ,TV_SCROLL     ,SV_SCROLL_PROTECTION_FROM_EVIL ,CARRIED ,1 ,1 },
+{ ANY, CLASS_WARRIOR_MAGE  ,&reallyTRUE          ,TV_SWORD      ,SV_SHORT_SWORD                 ,WORN    ,1 ,1 },
 { ANY, CLASS_BLACK_KNIGHT  ,&reallyTRUE          ,TV_SWORD      ,SV_BROAD_SWORD                 ,WORN    ,1 ,1 },
 { ANY, CLASS_BLACK_KNIGHT  ,&reallyTRUE          ,TV_HARD_ARMOR ,SV_METAL_SCALE_MAIL            ,WORN    ,1 ,1 },
 { ANY, CLASS_CHAOS_KNIGHT  ,&reallyTRUE          ,TV_SWORD      ,SV_BROAD_SWORD                 ,WORN    ,1 ,1 },
 { ANY, CLASS_CHAOS_KNIGHT  ,&reallyTRUE          ,TV_HARD_ARMOR ,SV_METAL_SCALE_MAIL            ,WORN    ,1 ,1 },
-{ ANY, CLASS_HELL_KNIGHT  ,&reallyTRUE          ,TV_SWORD      ,SV_BROAD_SWORD                 ,WORN    ,1 ,1 },
-{ ANY, CLASS_HELL_KNIGHT  ,&reallyTRUE          ,TV_HARD_ARMOR ,SV_METAL_SCALE_MAIL            ,WORN    ,1 ,1 },
-{ ANY, CLASS_MYSTIC       ,&reallyTRUE          ,TV_POTION     ,SV_POTION_HEALING              ,CARRIED ,1 ,1 },
-{ ANY, CLASS_MYSTIC       ,&reallyTRUE          ,TV_SOFT_ARMOR ,SV_ROBE                        ,WORN    ,1 ,1 },
-{ ANY, CLASS_ORPHIC  ,&reallyTRUE          ,TV_SWORD      ,SV_SMALL_SWORD                 ,WORN    ,1 ,1 },
-{ ANY, CLASS_ORPHIC  ,&reallyTRUE          ,TV_POTION     ,SV_POTION_RESTORE_MANA         ,CARRIED ,1 ,1 },
-{ ANY, CLASS_ORPHIC  ,&reallyTRUE          ,TV_SOFT_ARMOR, SV_SOFT_LEATHER_ARMOR          ,WORN    ,1 ,1 },
-{ ANY, CLASS_WARLOCK      ,&reallyTRUE          ,TV_SWORD      ,SV_GLADIUS                     ,WORN    ,1 ,1 },
-{ ANY, CLASS_HIGH_MAGE    ,&reallyTRUE          ,TV_SWORD      ,SV_DAGGER                      ,WORN    ,1 ,1 },
-{ ANY, CLASS_HIGH_MAGE    ,&reallyTRUE          ,TV_BOOK_REALM1,1                              ,WORN    ,1 ,1 },
-{ ANY, CLASS_BLOOD_MAGE   ,&reallyTRUE          ,TV_SWORD      ,SV_DAGGER                      ,WORN    ,1 ,1 },
-{ ANY, CLASS_DRUID        ,&reallyTRUE          ,TV_HAFTED     ,SV_QUARTERSTAFF                ,WORN    ,1 ,1 },
-{ ANY, CLASS_DRUID        ,&reallyTRUE          ,TV_AMULET     ,SV_AMULET_BRILLIANCE           ,WORN    ,1 ,1 },
-{ ANY, CLASS_DRUID        ,&reallyTRUE          ,TV_RING       ,SV_RING_SUSTAIN_MIND           ,WORN    ,1 ,1 },
-{ ANY, ANY                ,&reallyTRUE          ,TV_SCROLL     ,SV_SCROLL_WORD_OF_RECALL       ,CARRIED ,1 ,1 },
-{ ANY, ANY                ,&reallyTRUE          ,TV_SCROLL     ,SV_SCROLL_TELEPORT             ,CARRIED ,2 ,3 },
-{ ANY, ANY_BOOL_TRUE      ,&(p_race.rations)    ,TV_FOOD       ,SV_FOOD_RATION                 ,CARRIED ,3 ,7 },
-{ ANY, ANY_BOOL_FALSE     ,&(p_race.rations)    ,TV_SCROLL     ,SV_SCROLL_SATISFY_HUNGER       ,CARRIED ,2 ,5 },
-{ ANY, ANY_BOOL_TRUE      ,&(p_race.hates_light),TV_SCROLL     ,SV_SCROLL_DARKNESS             ,CARRIED ,2 ,5 },
-{ ANY, ANY_BOOL_TRUE      ,&(p_race.hates_light),TV_SCROLL     ,SV_SCROLL_LIGHT                ,CARRIED ,3 ,7 },
-{ ANY, ANY_BOOL_FALSE     ,&(p_race.hates_light),TV_LITE       ,SV_LITE_LANTERN                ,WORN    ,1 ,1 },
+{ ANY, CLASS_HELL_KNIGHT   ,&reallyTRUE          ,TV_SWORD      ,SV_BROAD_SWORD                 ,WORN    ,1 ,1 },
+{ ANY, CLASS_HELL_KNIGHT   ,&reallyTRUE          ,TV_HARD_ARMOR ,SV_METAL_SCALE_MAIL            ,WORN    ,1 ,1 },
+{ ANY, CLASS_MYSTIC        ,&reallyTRUE          ,TV_POTION     ,SV_POTION_HEALING              ,CARRIED ,1 ,1 },
+{ ANY, CLASS_MYSTIC        ,&reallyTRUE          ,TV_SOFT_ARMOR ,SV_ROBE                        ,WORN    ,1 ,1 },
+{ ANY, CLASS_ORPHIC        ,&reallyTRUE          ,TV_SWORD      ,SV_SMALL_SWORD                 ,WORN    ,1 ,1 },
+{ ANY, CLASS_ORPHIC        ,&reallyTRUE          ,TV_POTION     ,SV_POTION_RESTORE_MANA         ,CARRIED ,1 ,1 },
+{ ANY, CLASS_ORPHIC        ,&reallyTRUE          ,TV_SOFT_ARMOR, SV_SOFT_LEATHER_ARMOR          ,WORN    ,1 ,1 },
+{ ANY, CLASS_WARLOCK       ,&reallyTRUE          ,TV_SWORD      ,SV_GLADIUS                     ,WORN    ,1 ,1 },
+{ ANY, CLASS_HIGH_MAGE     ,&reallyTRUE          ,TV_SWORD      ,SV_DAGGER                      ,WORN    ,1 ,1 },
+{ ANY, CLASS_HIGH_MAGE     ,&reallyTRUE          ,TV_BOOK_REALM1,1                              ,WORN    ,1 ,1 },
+{ ANY, CLASS_BLOOD_MAGE    ,&reallyTRUE          ,TV_SWORD      ,SV_DAGGER                      ,WORN    ,1 ,1 },
+{ ANY, CLASS_DRUID         ,&reallyTRUE          ,TV_HAFTED     ,SV_QUARTERSTAFF                ,WORN    ,1 ,1 },
+{ ANY, CLASS_DRUID         ,&reallyTRUE          ,TV_AMULET     ,SV_AMULET_BRILLIANCE           ,WORN    ,1 ,1 },
+{ ANY, CLASS_DRUID         ,&reallyTRUE          ,TV_RING       ,SV_RING_SUSTAIN_MIND           ,WORN    ,1 ,1 },
+{ ANY, ANY                 ,&reallyTRUE          ,TV_SCROLL     ,SV_SCROLL_WORD_OF_RECALL       ,CARRIED ,1 ,1 },
+{ ANY, ANY                 ,&reallyTRUE          ,TV_SCROLL     ,SV_SCROLL_TELEPORT             ,CARRIED ,2 ,3 },
+{ ANY, ANY_BOOL_TRUE       ,&(p_race.rations)    ,TV_FOOD       ,SV_FOOD_RATION                 ,CARRIED ,3 ,7 },
+{ ANY, ANY_BOOL_FALSE      ,&(p_race.rations)    ,TV_SCROLL     ,SV_SCROLL_SATISFY_HUNGER       ,CARRIED ,2 ,5 },
+{ ANY, ANY_BOOL_TRUE       ,&(p_race.hates_light),TV_SCROLL     ,SV_SCROLL_DARKNESS             ,CARRIED ,2 ,5 },
+{ ANY, ANY_BOOL_TRUE       ,&(p_race.hates_light),TV_SCROLL     ,SV_SCROLL_LIGHT                ,CARRIED ,3 ,7 },
+{ ANY, ANY_BOOL_FALSE      ,&(p_race.hates_light),TV_LITE       ,SV_LITE_LANTERN                ,WORN    ,1 ,1 },
 };
 
 static void player_outfit_helper( byte tval , byte sval, byte number , byte action )

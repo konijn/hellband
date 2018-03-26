@@ -406,7 +406,7 @@ owner_type owners[MAX_STORES][MAX_OWNERS] =
 	},
 	{
 		/* Store 12 (Mage Guild) , is run by the book owner for now */
-		{ " ",                                   0,      100, 100,  0, 99, 99},
+		{ " ",                          0,      100, 100,  0, 99, 99},
 		{ " ",                          0,      100, 100,  0, 99, 99},
 		{ " ",                          0,      100, 100,  0, 99, 99},
 		{ " ",                          0,      100, 100,  0, 99, 99},
@@ -1489,6 +1489,7 @@ cptr colour_names[16] =
 cptr stat_names[STAT_COUNT]         = {"STR: ", "INT: ", "WIS: ", "DEX: ", "CON: ", "CHA: " }; /* Abbreviations of healthy stats */
 cptr stats_short[STAT_COUNT]        = {"STR"  , "INT"  , "WIS"  , "DEX"  , "CON"  , "CHA"   }; /* Yes, this is braindead, one day I will fix it */
 cptr stat_names_reduced[STAT_COUNT] = {"str: ", "int: ", "wis: ", "dex: ", "con: ", "cha: " }; /* Abbreviations of damaged stats */
+cptr desc_stat_neg[STAT_COUNT]      = {"weak", "stupid", "naive","clumsy","sickly","ugly"   }; /* Array of stat "descriptions */
 
 /*
 * Certain "screens" always use the main screen, including News, Birth,
@@ -1920,6 +1921,7 @@ cptr squelch_strings[] = {
 	"Keep none",				
 	"Keep only artefacts",
 	 NULL,};
+
 
 /*
  * Flag groups used for art creation, level gaining weapons, ...

@@ -3065,6 +3065,12 @@ void play_game(bool new_game)
 			}
 		}
 	}
+#ifdef live
+	/* On live, we should save every 50 turns, it can crash after all */
+	autosave_l = TRUE;
+	autosave_t = TRUE;
+	autosave_freq = 50;
+#endif
 
 	/* Roll new character */
 	if (new_game)
