@@ -522,12 +522,7 @@ static bool pattern_effect(void)
 	}
 
 	return TRUE;
-
-
 }
-
-
-
 
 
 /*
@@ -2240,6 +2235,8 @@ static void process_command(void)
     /* Check knowledge             */ case '|' : { do_cmd_knowledge();          break; }
 	/* Load "screen dump"          */ case '(' : { do_cmd_screen_dump();        break; }
 	/* Save "screen dump"          */ case ')' : { do_cmd_save_screen();        break; }
+	/* Show visible monsters       */ case '[' : { do_cmd_monsters();           break; }
+	/* Show visible objects        */ case ']' : { do_cmd_objects();            break; }
 	/* Browse a book               */ case 'b' : {do_cmd_considering_unified( do_cmd_browse );       break; }
 	/* Activate an artefact        */ case 'A' : {do_cmd_considering_unified( do_cmd_activate );     break; }
 	/* Eat some food               */ case 'E' : {do_cmd_considering_unified( do_cmd_eat_food );     break; }

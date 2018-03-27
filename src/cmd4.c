@@ -199,6 +199,55 @@ void do_cmd_message_one(void)
 	prt(format("> %s", message_str(0)), 0, 0);
 }
 
+/*
+* Show objects to the user, leveraging the objects window code
+*
+*/
+void do_cmd_objects(void)
+{
+	/* Enter "icky" mode */
+	character_icky = TRUE;
+
+	/* Save the screen */
+	Term_save();
+
+	/* Show the objects*/
+	display_visible_items();
+
+	/* Get a command */
+	inkey();
+
+	/* Restore the screen */
+	Term_load();
+
+	/* Leave "icky" mode */
+	character_icky = FALSE;
+}
+
+/*
+* Show visible monsters to the user, leveraging the monsters window code
+*
+*/
+void do_cmd_monsters(void)
+{
+	/* Enter "icky" mode */
+	character_icky = TRUE;
+
+	/* Save the screen */
+	Term_save();
+
+	/* Show the objects*/
+	display_visible();
+
+	/* Get a command */
+	inkey();
+
+	/* Restore the screen */
+	Term_load();
+
+	/* Leave "icky" mode */
+	character_icky = FALSE;
+}
 
 /*
 * Show previous messages to the user	-BEN-
