@@ -530,6 +530,8 @@ extern void do_cmd_redraw(void);
 extern void do_cmd_change_name(void);
 extern void do_cmd_message_one(void);
 extern void do_cmd_messages(void);
+extern void do_cmd_objects(void);
+extern void do_cmd_monsters(void);
 extern void do_cmd_options(void);
 extern void do_cmd_pref(void);
 extern void do_cmd_macros(void);
