@@ -12,3 +12,6 @@ lib/edit/tmp
 lib/edit/killme
 lib/dump/*
 lib/save/*
+bone.*
+doxy
+Doxyfile
