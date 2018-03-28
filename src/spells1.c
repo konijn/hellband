@@ -1199,7 +1199,7 @@ static int inven_damage(inven_func typ, int perc)
 
 				/* Potions smash open */
 				if (k_info[o_ptr->k_idx].tval == TV_POTION) {
-					(void)potion_smash_effect(0, py, px, o_ptr);
+					(void)potion_smash_effect(0, py, px, o_ptr, NULL);
 				}
 
 
@@ -2441,7 +2441,6 @@ static bool project_o(int who, int r, int y, int x, int dam, int typ)
 			}
 		}
 
-
 		/* Attempt to destroy the object */
 		if (do_kill)
 		{
@@ -2477,7 +2476,7 @@ static bool project_o(int who, int r, int y, int x, int dam, int typ)
 
 				/* Potions produce effects when 'shattered' */
 				if (is_potion) {
-					(void)potion_smash_effect(who, y, x, o_ptr);
+					(void)potion_smash_effect(who, y, x, o_ptr, NULL);
 				}
 
 				/* Delete the object */
@@ -2762,7 +2761,7 @@ static bool project_m(int who, int r, int y, int x, int dam, int typ)
 	case GF_COLD:
 		{
 			project_m_helper( seen , r_ptr->flags7 , &r_ptr->r_flags7 , RF7_RES_COLD  , &dam , dam /2 , &note , " resists.");
-			project_m_helper( seen ,  r_ptr->flags3 , &r_ptr->r_flags3 , RF3_IM_COLD	 , &dam , dam /9 , &note , " resists a lot.");
+			project_m_helper( seen , r_ptr->flags3 , &r_ptr->r_flags3 , RF3_IM_COLD  , &dam , dam /9 , &note , " resists a lot.");
 			project_m_helper( seen , r_ptr->flags3 , &r_ptr->r_flags3 , RF3_HURT_COLD , &dam , dam *3 , &note , " freezes up.");
 			project_m_helper( seen , r_ptr->flags7 , &r_ptr->r_flags7 , RF7_HEAL_COLD , &dam , -dam   , &note , " heals up.");
 			break;
@@ -4120,11 +4119,7 @@ static bool project_m(int who, int r, int y, int x, int dam, int typ)
 	/* "Unique" monsters cannot be polymorphed */
 	if (r_ptr->flags1 & (RF1_UNIQUE)) do_poly = FALSE;
 
-
-	/*
-	* "Quest" monsters cannot be polymorphed
-	* Heino Vander Sanden
-	*/
+	/* "Quest" monsters cannot be polymorphed */
 	if (r_ptr->flags1 & (RF1_GUARDIAN)) do_poly = FALSE;
 
 
@@ -4135,15 +4130,11 @@ static bool project_m(int who, int r, int y, int x, int dam, int typ)
 		if (who && (dam > m_ptr->hp)) dam = m_ptr->hp;
 	}
 
-	/*
-	* "Quest" monsters can only be "killed" by the player
-	* Heino Vander Sanden
-	*/
+	/* "Quest" monsters can only be "killed" by the player */
 	if ((r_ptr->flags1 & RF1_GUARDIAN) || (r_ptr->flags1 & RF1_ALWAYS_GUARD))
 	{
 		if ((who > 0) && (dam > m_ptr->hp)) dam = m_ptr->hp;
 	}
-
 
 	/* Check for death */
 	if ( dam > m_ptr->hp)
@@ -5917,164 +5908,200 @@ bool project(int who, int rad, int y, int x, int dam, int typ, int flg)
 *
 * Arguments:
 *    who   ---  who caused the potion to shatter (0=player)
-*          potions that smash on the floor are assumed to
-*          be caused by no-one (who = 1), as are those that
-*          shatter inside the player inventory.
-*          (Not anymore -- I changed this; TY)
+*               potions that smash on the floor are assumed to
+*               be caused by no-one (who = 1), as are those that
+*               shatter inside the player inventory.
+*              (Not anymore -- I changed this; TY)
 *    y, x  --- coordinates of the potion (or player if
 *          the potion was in her inventory);
 *    o_ptr --- pointer to the potion object.
 */
-bool potion_smash_effect(int who, int y, int x, object_type *o_ptr)
+bool potion_smash_effect(int who, int y, int x, object_type *o_ptr, monster_type *m_ptr)
 {
-	int       radius = 2;
-	int       dt = 0;
-	int       dam = 0;
-	bool  ident = FALSE;
+	int radius = 2;
+	int     dt = 0;
+	int    dam = 0;
+	bool ident = FALSE;
 	bool angry = FALSE;
+	char m_name[80];
+	monster_race *r_ptr;
+
+	if(m_ptr!=NULL)
+	{
+		/* Get the monster name (or "it") */
+		r_ptr = &r_info[m_ptr->r_idx];
+		monster_desc(m_name, m_ptr, 0);
+	}
 
 	int o_sval = o_ptr->sval;
 
-	switch(o_sval) {
-	/* These do upset monsters , without actually damaging them */
-	  case SV_POTION_SALT_WATER:
-	  case SV_POTION_LOSE_MEMORIES:
-	  case SV_POTION_DEC_STR:
-	  case SV_POTION_DEC_INT:
-	  case SV_POTION_DEC_WIS:
-	  case SV_POTION_DEC_DEX:
-	  case SV_POTION_DEC_CON:
-	  case SV_POTION_DEC_CHA:
-		  return TRUE;
-	  /* Slime mold, water and apple juice used to upset allies ?? */
-	  case SV_POTION_SLIME_MOLD:
-	  case SV_POTION_WATER:   /* perhaps a 'water' attack? */
-	  case SV_POTION_APPLE_JUICE:
-	  /* These do not upset monsters ever */
-	  case SV_POTION_INFRAVISION:
-	  case SV_POTION_DETECT_INVIS:
-	  case SV_POTION_SLOW_POISON:
-	  case SV_POTION_CURE_POISON:
-	  case SV_POTION_BOLDNESS:
-	  case SV_POTION_RESIST_HEAT:
-	  case SV_POTION_RESIST_COLD:
-	  case SV_POTION_HEROISM:
-	  case SV_POTION_BESERK_STRENGTH:
-	  case SV_POTION_RESTORE_EXP:
-	  case SV_POTION_RES_STR:
-	  case SV_POTION_RES_INT:
-	  case SV_POTION_RES_WIS:
-	  case SV_POTION_RES_DEX:
-	  case SV_POTION_RES_CON:
-	  case SV_POTION_RES_CHA:
-	  case SV_POTION_INC_STR:
-	  case SV_POTION_INC_INT:
-	  case SV_POTION_INC_WIS:
-	  case SV_POTION_INC_DEX:
-	  case SV_POTION_INC_CON:
-	  case SV_POTION_INC_CHA:
-	  case SV_POTION_AUGMENTATION:
-	  case SV_POTION_ENLIGHTENMENT:
-	  case SV_POTION_STAR_ENLIGHTENMENT:
-	  case SV_POTION_SELF_KNOWLEDGE:
-	  case SV_POTION_RESISTANCE:
-	  case SV_POTION_INVULNERABILITY:
-	  case SV_POTION_NEW_LIFE:
-		  /* All of the above potions have no effect when shattered */
-		  return FALSE;
-	  case SV_POTION_SLOWNESS:
-		  dt = GF_OLD_SLOW;
-		  dam = 5;
-		  ident = TRUE;
-		  angry = TRUE;
-		  break;
-	  case SV_POTION_POISON:
-		  dt = GF_POIS;
-		  dam = 3;
-		  ident = TRUE;
-		  angry = TRUE;
-		  break;
-	  case SV_POTION_BLINDNESS:
-		  dt = GF_DARK;
-		  ident = TRUE;
-		  angry = TRUE;
-		  break;
-	  case SV_POTION_CONFUSION: /* Booze */
-		  dt = GF_OLD_CONF;
-		  ident = TRUE;
-		  angry = TRUE;
-		  break;
-	  case SV_POTION_SLEEP:
-		  dt = GF_OLD_SLEEP;
-		  angry = TRUE;
-		  ident = TRUE;
-		  break;
-	  case SV_POTION_RUINATION:
-	  case SV_POTION_DETONATIONS:
-		  dt = GF_SHARDS;
-		  dam = damroll(25, 25);
-		  angry = TRUE;
-		  ident = TRUE;
-		  break;
-	  case SV_POTION_IOCAINE:
-		  dt = GF_DEATH_RAY;    /* !! */
-		  angry = TRUE;
-		  radius = 1;
-		  ident = TRUE;
-		  break;
-	  case SV_POTION_SPEED:
-		  dt = GF_OLD_SPEED;
-		  ident = TRUE;
-		  break;
-	  case SV_POTION_CURE_LIGHT:
-		  dt = GF_OLD_HEAL;
-		  dam = damroll(2,3);
-		  ident = TRUE;
-		  break;
-	  case SV_POTION_CURE_SERIOUS:
-		  dt = GF_OLD_HEAL;
-		  dam = damroll(4,3);
-		  ident = TRUE;
-		  break;
-	  case SV_POTION_CURE_CRITICAL:
-	  case SV_POTION_CURING:
-		  dt = GF_OLD_HEAL;
-		  dam = damroll(6,3);
-		  ident = TRUE;
-		  break;
-	  case SV_POTION_HEALING:
-		  dt = GF_OLD_HEAL;
-		  dam = damroll(10,10);
-		  ident = TRUE;
-		  break;
-	  case SV_POTION_EXPERIENCE:
-		dt = GF_EXP;
-		dam = 1;
-		radius = 1;
-		ident = TRUE;
-		break;
-	  case SV_POTION_STAR_HEALING:
-	  case SV_POTION_LIFE:
-		  dt = GF_OLD_HEAL;
-		  dam = damroll(50,50);
-		  radius = 1;
-		  ident = TRUE;
-		  break;
-	  case SV_POTION_RESTORE_MANA:   /* MANA */
-		  dt = GF_MANA;
-		  dam = damroll(10,10);
-		  radius = 1;
-		  ident = TRUE;
-		  break;
-	  default:
-		  /* Do nothing */  ;
+	/* Check for the human applicable ones up front */
+	if(m_ptr!=NULL && r_ptr->d_char == 'p' && o_sval >= SV_POTION_DEC_STR && o_sval <= SV_POTION_DEC_CHA)
+	{
+		if (o_sval == SV_POTION_DEC_STR)
+		{
+			msg_format("%^s weakens in front of you!", m_name);
+		}else if (o_sval == SV_POTION_DEC_CON)
+		{
+			msg_format("%^s shrivels in front of you!", m_name);
+		}else if (o_sval == SV_POTION_DEC_DEX)
+		{
+			msg_format("%^s slows in front of you!", m_name);
+		}else if (o_sval == SV_POTION_DEC_INT)
+		{
+			msg_format("%^s drools in front of you!", m_name);
+		}else if (o_sval == SV_POTION_DEC_WIS)
+		{
+			msg_format("%^s slobbers in front of you!", m_name);
+		}else if (o_sval == SV_POTION_DEC_CHA)
+		{
+			msg_format("%^s becomes uglier in front of you!", m_name);
+		}else if (o_sval == SV_POTION_LOSE_MEMORIES)
+		{
+			msg_format("%^s becomes lesser in front of you!", m_name);
+		}
+		/*Do 12 percent damage to current hitpoints*/
+		project(who, 0, y, x, m_ptr->hp >> 3, GF_ARROW, (PROJECT_JUMP | PROJECT_ITEM | PROJECT_KILL));
+		/*User becomes aware*/
+		object_aware(o_ptr);
+		object_known(o_ptr, FALSE);
+		return TRUE;
 	}
 
-	(void) project(who, radius, y, x, dam, dt,
-		(PROJECT_JUMP | PROJECT_ITEM | PROJECT_KILL));
-	/* XXX  those potions that explode need to become "known" */
+	switch(o_sval) {
+	/* These do upset monsters , without actually damaging them */
+		/*This is in case the monster is not a human*/
+		case SV_POTION_LOSE_MEMORIES:
+		case SV_POTION_DEC_STR:
+		case SV_POTION_DEC_INT:
+		case SV_POTION_DEC_WIS:
+		case SV_POTION_DEC_DEX:
+		case SV_POTION_DEC_CON:
+		case SV_POTION_DEC_CHA:
+			return TRUE; 
+		/*I cant help it.. Getting salty, lol!*/
+		case SV_POTION_SALT_WATER:
+			if(m_ptr!=NULL) msg_format("%^s gets salty!", m_name);
+		case SV_POTION_WATER: /* perhaps a 'water' attack? */
+			if(m_ptr!=NULL) msg_format("%^s gets wet!", m_name);
+			object_aware(o_ptr);
+			object_known(o_ptr, FALSE);
+			return FALSE;
+		/* Slime mold, water and apple juice used to upset allies ?? */
+		case SV_POTION_SLIME_MOLD:
+		case SV_POTION_APPLE_JUICE:
+		/* These do not upset monsters ever */
+		case SV_POTION_INFRAVISION:
+		case SV_POTION_DETECT_INVIS:
+		case SV_POTION_SLOW_POISON:
+		case SV_POTION_CURE_POISON:
+		case SV_POTION_BOLDNESS:
+		case SV_POTION_RESIST_HEAT:
+		case SV_POTION_RESIST_COLD:
+		case SV_POTION_HEROISM:
+		case SV_POTION_BESERK_STRENGTH:
+		case SV_POTION_RESTORE_EXP:
+		case SV_POTION_RES_STR:
+		case SV_POTION_RES_INT:
+		case SV_POTION_RES_WIS:
+		case SV_POTION_RES_DEX:
+		case SV_POTION_RES_CON:
+		case SV_POTION_RES_CHA:
+		case SV_POTION_INC_STR:
+		case SV_POTION_INC_INT:
+		case SV_POTION_INC_WIS:
+		case SV_POTION_INC_DEX:
+		case SV_POTION_INC_CON:
+		case SV_POTION_INC_CHA:
+		case SV_POTION_AUGMENTATION:
+		case SV_POTION_ENLIGHTENMENT:
+		case SV_POTION_STAR_ENLIGHTENMENT:
+		case SV_POTION_SELF_KNOWLEDGE:
+		case SV_POTION_RESISTANCE:
+		case SV_POTION_INVULNERABILITY:
+		case SV_POTION_NEW_LIFE:
+		/* All of the above potions have no effect when shattered */
+			return FALSE;
+		case SV_POTION_SLOWNESS:
+			dt = GF_OLD_SLOW;
+			dam = 5;
+			angry = TRUE;
+			break;
+		case SV_POTION_POISON:
+			dt = GF_POIS;
+			dam = 3;
+			angry = TRUE;
+			break;
+		case SV_POTION_BLINDNESS:
+			dt = GF_DARK;
+			angry = TRUE;
+			break;
+		case SV_POTION_CONFUSION: /* Booze */
+			dt = GF_OLD_CONF;
+			angry = TRUE;
+			break;
+		case SV_POTION_SLEEP:
+			dt = GF_OLD_SLEEP;
+			angry = TRUE;
+			break;
+		case SV_POTION_RUINATION:
+		case SV_POTION_DETONATIONS:
+			dt = GF_SHARDS;
+			dam = damroll(25, 25);
+			angry = TRUE;
+			break;
+		case SV_POTION_IOCAINE:
+			dt = GF_DEATH_RAY; /* !! */
+			angry = TRUE;
+			radius = 1;
+			break;
+		case SV_POTION_SPEED:
+			dt = GF_OLD_SPEED;
+			break;
+		case SV_POTION_CURE_LIGHT:
+			dt = GF_OLD_HEAL;
+			dam = damroll(2,3);
+			break;
+		case SV_POTION_CURE_SERIOUS:
+			dt = GF_OLD_HEAL;
+			dam = damroll(4,3);
+			break;
+		case SV_POTION_CURE_CRITICAL:
+		case SV_POTION_CURING:
+			dt = GF_OLD_HEAL;
+			dam = damroll(6,3);
+			break;
+		case SV_POTION_HEALING:
+			dt = GF_OLD_HEAL;
+			dam = damroll(10,10);
+			break;
+		case SV_POTION_EXPERIENCE:
+			dt = GF_EXP;
+			dam = 1;
+			radius = 1;
+			break;
+		case SV_POTION_STAR_HEALING:
+		case SV_POTION_LIFE:
+			dt = GF_OLD_HEAL;
+			dam = damroll(50,50);
+			radius = 1;
+			break;
+		case SV_POTION_RESTORE_MANA: /* MANA */
+			dt = GF_MANA;
+			dam = damroll(10,10);
+			radius = 1;
+			break;
+	default:
+			/* Do nothing */	;
+	}
 
-	if( ident )
+	if(dt)
+	{
+		project(who, radius, y, x, dam, dt, (PROJECT_JUMP | PROJECT_ITEM | PROJECT_KILL));
+		ident = TRUE;
+	}
+
+	if(ident)
 	{
 		object_aware(o_ptr);
 		object_known(o_ptr,FALSE);
