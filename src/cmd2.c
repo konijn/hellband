@@ -2742,7 +2742,6 @@ void do_cmd_throw(void)
 
 	int msec = delay_factor * delay_factor * delay_factor;
 
-
 	/* Get an item (from inven or floor) */
 	if (!get_item(&item, "Throw which item? ", "You have nothing to throw." , USE_INVEN|USE_FLOOR))
 	{
@@ -2782,14 +2781,13 @@ void do_cmd_throw(void)
 	{
 		inven_item_increase(item, -1);
 		inven_item_describe(item);
-		inven_item_optimize(item);
+		/*Dangerous, inven_item_optimize is at the exit, in case a potion gets identified*/
 	}
-
 	/* Reduce and describe floor item */
 	else
 	{
 		floor_item_increase(0 - item, -1);
-		floor_item_optimize(0 - item);
+		/*Dangerous, inven_item_optimize */
 	}
 
 	/* Description */
@@ -2837,10 +2835,8 @@ void do_cmd_throw(void)
 		ty = target_row;
 	}
 
-
 	/* Hack -- Handle stuff */
 	handle_stuff();
-
 
 	/* Travel until stopped */
 	for (cur_dis = 0; cur_dis <= tdis; )
@@ -2950,7 +2946,7 @@ void do_cmd_throw(void)
 
 				/* No negative damage */
 				/*Lets face it, even if an element heals you, an arrow in your eye has gotta hurt */
-				/*So no healing here, not that immunity and resistance still work*/
+				/*So no healing here, note that immunity and resistance still work*/
 				if (tdam < 0) tdam = 0;
 
 				/* Complex message */
@@ -3012,7 +3008,7 @@ void do_cmd_throw(void)
 		if ((hit_body) || (!cave_floor_bold(ny, nx)) || (cave[ny][nx].feat == FEAT_WATER) || (randint(100) < j)) {
 			/* Message */
 			msg_format("The %s shatters!", o_name);
-			if (potion_smash_effect(1, y, x, q_ptr))
+			if (potion_smash_effect(1, y, x, q_ptr, &m_list[cave[y][x].m_idx]))
 			{
 				if ( cave[y][x].m_idx &&
 					 is_potential_hater( &(m_list[cave[y][x].m_idx]) )
@@ -3025,14 +3021,33 @@ void do_cmd_throw(void)
 					set_hate_player( &(m_list[cave[y][x].m_idx]) );
 				}
 			}
-
+			/* Reduce and describe inventory */
+			if (item >= 0)
+			{
+				inven_item_optimize(item);
+			}
+			/* Reduce and describe floor item */
+			else
+			{
+				floor_item_optimize(0 - item);
+			}
 			return;
 		} else {
 			j = 0;
 		}
 	}
 
-
+	/* Reduce and describe inventory */
+	if (item >= 0)
+	{
+		inven_item_optimize(item);
+	}
+	/* Reduce and describe floor item */
+	else
+	{
+		floor_item_optimize(0 - item);
+	}
+	
 	/* Drop (or break) near that location */
 	drop_near(q_ptr, j, y, x);
 }
