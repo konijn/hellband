@@ -805,7 +805,7 @@ extern bool dec_stat(int stat, int amount, int permanent);
 extern bool res_stat(int stat);
 extern bool apply_disenchant(int mode);
 extern bool project(int who, int rad, int y, int x, int dam, int typ, int flg);
-extern bool potion_smash_effect(int who, int y, int x, object_type *o_ptr);
+extern bool potion_smash_effect(int who, int y, int x, object_type *o_ptr, monster_type *m_ptr);
 extern void get_extended_spell_info( u16b realm  , int spell , magic_type *s_ptr );
 
 /* spells2.c */
