@@ -625,8 +625,6 @@ struct monster_type
 };
 
 
-
-
 /*
 * An entry for the object/monster allocation functions
 *
