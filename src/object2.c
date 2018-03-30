@@ -3851,7 +3851,7 @@ static void a_m_aux_5(object_type *o_ptr, int level, int power)
 	else if (power == 2) /* Great */
 	{
 		o_ptr->name2 = EGO_ORB_POWER;
-		for (i=0; i<3; i++)
+		for (i=0; i<7; i++)
 		{
 			switch(randint(30))
 			{
@@ -4370,8 +4370,18 @@ static bool kind_is_good(int k_idx)
 		{
 			return (TRUE);
 		}
-
-		/* Books -- High level books are good (except Books of Charms) */
+	case TV_POTION:
+		{
+			if (k_ptr->sval >= SV_POTION_INC_STR && k_ptr->sval <= SV_POTION_INC_CHA)
+			{
+				return TRUE;
+			}
+			if( k_ptr->sval == SV_POTION_EXPERIENCE) return TRUE;
+			if( k_ptr->sval == SV_POTION_INVULNERABILITY) return TRUE;
+			if( k_ptr->sval == SV_POTION_AUGMENTATION) return TRUE;
+			return FALSE;
+		}
+	/* Books -- High level books are good (except Books of Charms) */
 	case TV_MIRACLES_BOOK:
 	case TV_SORCERY_BOOK:
 	case TV_NATURE_BOOK:
