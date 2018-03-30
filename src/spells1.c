@@ -5968,6 +5968,34 @@ bool potion_smash_effect(int who, int y, int x, object_type *o_ptr, monster_type
 		return TRUE;
 	}
 
+	/* Check for the human applicable ones up front */
+	if(m_ptr!=NULL && o_sval >= SV_POTION_INC_STR && o_sval <= SV_POTION_INC_CHA)
+	{
+		if (o_sval == SV_POTION_INC_STR || o_sval == SV_POTION_INC_CON)
+		{
+			msg_format("%^s bulks up in front of you!", m_name);
+		}else if (o_sval == SV_POTION_INC_DEX)
+		{
+			msg_format("%^s speeds up in front of you!", m_name);
+		}else if (o_sval == SV_POTION_INC_INT || o_sval == SV_POTION_INC_WIS)
+		{
+			msg_format("%^s glares at you with new understanding!", m_name);
+		}else if (o_sval == SV_POTION_INC_CHA)
+		{
+			msg_format("%^s becomes more beautiful by the second!", m_name);
+		}
+		/*Add 12 percent damage to current hitpoints*/
+		m_ptr->maxhp = m_ptr->maxhp + (m_ptr->maxhp >> 3);
+		project(who, 0, y, x, m_ptr->hp >> 3, GF_OLD_HEAL, (PROJECT_JUMP | PROJECT_ITEM | PROJECT_KILL));
+		/*Gives some extra speed ;]*/
+		m_ptr->mspeed = 150;
+		/*User becomes aware*/
+		object_aware(o_ptr);
+		object_known(o_ptr, FALSE);
+		return TRUE;
+	}
+
+
 	switch(o_sval) {
 	/* These do upset monsters , without actually damaging them */
 		/*This is in case the monster is not a human*/
@@ -6013,7 +6041,6 @@ bool potion_smash_effect(int who, int y, int x, object_type *o_ptr, monster_type
 		case SV_POTION_INC_DEX:
 		case SV_POTION_INC_CON:
 		case SV_POTION_INC_CHA:
-		case SV_POTION_AUGMENTATION:
 		case SV_POTION_ENLIGHTENMENT:
 		case SV_POTION_STAR_ENLIGHTENMENT:
 		case SV_POTION_SELF_KNOWLEDGE:
@@ -6076,6 +6103,7 @@ bool potion_smash_effect(int who, int y, int x, object_type *o_ptr, monster_type
 			dam = damroll(10,10);
 			break;
 		case SV_POTION_EXPERIENCE:
+		case SV_POTION_AUGMENTATION:
 			dt = GF_EXP;
 			dam = 1;
 			radius = 1;
