@@ -1232,6 +1232,7 @@ ART_THOTH -> ART_KINSLAYER
 #define EGO_ORB_POWER			157
 #define EGO_ORB_IRRITATION		158
 #define EGO_ORB_INSTABILITY		159
+
 #define EGO_ELEMENTS_MINCHIATE  160
 
 /* Activation effects for random artefacts */
@@ -1755,73 +1756,73 @@ ART_THOTH -> ART_KINSLAYER
 #define SV_SCROLL_ARTIFACT                      52
 
 /* The "sval" codes for TV_POTION */
-#define SV_POTION_WATER                         0
+#define SV_POTION_WATER                 0
 #define SV_POTION_APPLE_JUICE           1
 #define SV_POTION_SLIME_MOLD            2
 /* xxx (fixed colour) */
-#define SV_POTION_SLOWNESS                      4
+#define SV_POTION_SLOWNESS              4
 #define SV_POTION_SALT_WATER            5
-#define SV_POTION_POISON                        6
-#define SV_POTION_BLINDNESS                     7
+#define SV_POTION_POISON                6
+#define SV_POTION_BLINDNESS             7
 /* xxx */
-#define SV_POTION_CONFUSION                     9
+#define SV_POTION_CONFUSION             9
 /* xxx */
-#define SV_POTION_SLEEP                         11
+#define SV_POTION_SLEEP                 11
 /* xxx */
 #define SV_POTION_LOSE_MEMORIES         13
 /* xxx */
-#define SV_POTION_RUINATION                     15
-#define SV_POTION_DEC_STR                       16
-#define SV_POTION_DEC_INT                       17
-#define SV_POTION_DEC_WIS                       18
-#define SV_POTION_DEC_DEX                       19
-#define SV_POTION_DEC_CON                       20
-#define SV_POTION_DEC_CHA                       21
+#define SV_POTION_RUINATION             15
+#define SV_POTION_DEC_STR               16
+#define SV_POTION_DEC_INT               17
+#define SV_POTION_DEC_WIS               18
+#define SV_POTION_DEC_DEX               19
+#define SV_POTION_DEC_CON               20
+#define SV_POTION_DEC_CHA               21
 #define SV_POTION_DETONATIONS           22
-#define SV_POTION_IOCAINE                         23
+#define SV_POTION_IOCAINE               23
 #define SV_POTION_INFRAVISION           24
 #define SV_POTION_DETECT_INVIS          25
 #define SV_POTION_SLOW_POISON           26
 #define SV_POTION_CURE_POISON           27
-#define SV_POTION_BOLDNESS                      28
-#define SV_POTION_SPEED                         29
+#define SV_POTION_BOLDNESS              28
+#define SV_POTION_SPEED                 29
 #define SV_POTION_RESIST_HEAT           30
 #define SV_POTION_RESIST_COLD           31
-#define SV_POTION_HEROISM                       32
+#define SV_POTION_HEROISM               32
 #define SV_POTION_BESERK_STRENGTH       33
 #define SV_POTION_CURE_LIGHT            34
 #define SV_POTION_CURE_SERIOUS          35
 #define SV_POTION_CURE_CRITICAL         36
-#define SV_POTION_HEALING                       37
+#define SV_POTION_HEALING               37
 #define SV_POTION_STAR_HEALING          38
-#define SV_POTION_LIFE                          39
+#define SV_POTION_LIFE                  39
 #define SV_POTION_RESTORE_MANA          40
 #define SV_POTION_RESTORE_EXP           41
-#define SV_POTION_RES_STR                       42
-#define SV_POTION_RES_INT                       43
-#define SV_POTION_RES_WIS                       44
-#define SV_POTION_RES_DEX                       45
-#define SV_POTION_RES_CON                       46
-#define SV_POTION_RES_CHA                       47
-#define SV_POTION_INC_STR                       48
-#define SV_POTION_INC_INT                       49
-#define SV_POTION_INC_WIS                       50
-#define SV_POTION_INC_DEX                       51
-#define SV_POTION_INC_CON                       52
-#define SV_POTION_INC_CHA                       53
+#define SV_POTION_RES_STR               42
+#define SV_POTION_RES_INT               43
+#define SV_POTION_RES_WIS               44
+#define SV_POTION_RES_DEX               45
+#define SV_POTION_RES_CON               46
+#define SV_POTION_RES_CHA               47
+#define SV_POTION_INC_STR               48
+#define SV_POTION_INC_INT               49
+#define SV_POTION_INC_WIS               50
+#define SV_POTION_INC_DEX               51
+#define SV_POTION_INC_CON               52
+#define SV_POTION_INC_CHA               53
 /* xxx */
-#define SV_POTION_AUGMENTATION                  55
-#define SV_POTION_ENLIGHTENMENT                 56
+#define SV_POTION_AUGMENTATION          55
+#define SV_POTION_ENLIGHTENMENT         56
 #define SV_POTION_STAR_ENLIGHTENMENT    57
-#define SV_POTION_SELF_KNOWLEDGE                58
-#define SV_POTION_EXPERIENCE                    59
-#define SV_POTION_RESISTANCE                    60
-#define SV_POTION_CURING                        61
-#define SV_POTION_INVULNERABILITY               62
-#define SV_POTION_NEW_LIFE                      63
+#define SV_POTION_SELF_KNOWLEDGE        58
+#define SV_POTION_EXPERIENCE            59
+#define SV_POTION_RESISTANCE            60
+#define SV_POTION_CURING                61
+#define SV_POTION_INVULNERABILITY       62
+#define SV_POTION_NEW_LIFE              63
 
 /* "Sval" limit -- maximum amount of potions */
-#define SV_POTION_MAX							64
+#define SV_POTION_MAX                   64
 
 /* The "sval" codes for TV_FOOD */
 #define SV_FOOD_POISON                  0
@@ -2543,7 +2544,7 @@ ART_THOTH -> ART_KINSLAYER
 */
 #define RF2_STUPID                  0x00000001      /* Monster is stupid */
 #define RF2_SMART                   0x00000002      /* Monster is smart */
-#define RF2_CAN_SPEAK               0x00000004  /* TY: can speak */
+#define RF2_CAN_SPEAK               0x00000004		 /* TY: can speak */
 #define RF2_REFLECTING              0x00000008      /* Reflects bolts */
 #define RF2_INVISIBLE               0x00000010      /* Monster avoids vision */
 #define RF2_COLD_BLOOD              0x00000020      /* Monster avoids infra */

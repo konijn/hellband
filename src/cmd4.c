@@ -790,7 +790,7 @@ void do_cmd_options_aux(int page, cptr info)
 				sprintf(buf, "%-80s","");
 			c_prt(TERM_WHITE, buf, i + 2, 0);
 		}
-		
+
 		/* Hilite current option */
 		move_cursor(k + 2, 50);
 
@@ -870,7 +870,7 @@ static void do_cmd_options_squelcher_rules(void)
 		CH_SQUELCH_ALL,
 		CH_SQUELCH_ARTIFACT,
 		0};
-	
+
 	byte squelch_possibilities[] = {
 		CH_SQUELCH_NO | CH_SQUELCH_GOOD | CH_SQUELCH_EXCELLENT | CH_SQUELCH_ARTIFACT,  /* Weapons */
 		CH_SQUELCH_NO | CH_SQUELCH_GOOD | CH_SQUELCH_EXCELLENT | CH_SQUELCH_ARTIFACT,  /* Armour  */
@@ -901,31 +901,31 @@ static void do_cmd_options_squelcher_rules(void)
 		"Chests",
 		NULL,
 	};
-	
+
 	char	ch;
-	
+
 	int	i, k = 0, n = SQ_HL_COUNT;
-	
+
 	char	buf[80];
-	
+
 	/* Clear screen */
 	Term_clear();
-	
+
 	/* Interact with the player */
 	while (TRUE)
 	{
 		/* Prompt XXX XXX XXX */
 		sprintf(buf, "%s (RET to advance, SPACE to cycle, ESC to accept) ", "High Level Squelch Rules");
 		prt(buf, 0, 0);
-		
+
 		/* Display the options */
 		for (i = 0; i < SQ_HL_COUNT; i++)
 		{
 			byte a = TERM_WHITE;
-			
+
 			/* Color current option */
 			if (i == k) a = TERM_L_BLUE;
-			
+
 			/* Display the option text */
 			sprintf(buf, "%-20s: %-28s  (%s)",
 					squelch_option_strings[i],
@@ -933,13 +933,13 @@ static void do_cmd_options_squelcher_rules(void)
 					"SPACE to cycle");
 			c_prt(a, buf, i + 2, 0);
 		}
-		
+
 		/* Hilite current option */
 		move_cursor(k + 2, 50);
-		
+
 		/* Get a key */
 		ch = inkey();
-		
+
 		/* Analyze */
 		switch (ch)
 		{
@@ -961,7 +961,7 @@ static void do_cmd_options_squelcher_rules(void)
 				k = (k + 1) % n;
 				break;
 			}
-				
+
 			case 'y':
 			case 'Y':
 			case '6':
@@ -987,7 +987,7 @@ static void do_cmd_options_squelcher_rules(void)
 				 squelch_options[k] = SQUELCH_NO;
 				break;
 			}
-				
+
 			default:
 			{
 				bell();
@@ -995,8 +995,8 @@ static void do_cmd_options_squelcher_rules(void)
 			}
 		}
 	}
-	
-	
+
+
 }
 
 static void do_cmd_options_squelcher_sanity(void)
@@ -1017,7 +1017,7 @@ static void do_cmd_options_squelcher_inscribe(void)
  */
 static void do_cmd_options_squelcher(void)
 {
-	
+
 	/*
 	  Squelch Rules are cumulative
 1		- Very High Level 16 bits -> u32b
@@ -1047,42 +1047,42 @@ static void do_cmd_options_squelcher(void)
 24	 Inscription Rules ( 1 byte )
 25		- Apply {!k} to storebought items ( off )
 26		- When discovering a new consumable with 'id', offer to apply {!k}
-	 
+
 	*/
-	
+
 	int k;
-	
-	
+
+
 	/* Enter "icky" mode */
 	character_icky = TRUE;
-	
+
 	/* Save the screen */
 	Term_save();
-	
-	
+
+
 	/* Interact */
 	while (1)
 	{
 		/* Clear screen */
 		Term_clear();
-		
+
 		/* Why are we here */
 		prt("Hellband Squelcher Options", 2, 0);
-		
+
 		/* Give some choices */
 		prt("(1) Squelch Rules", 4, 5);
 		prt("(2) Sanity Checks", 5, 5);
 		prt("(3) Incription Options", 6, 5);
-		
+
 		/* Prompt */
 		prt("Command: ", 17, 0);
-		
+
 		/* Get command */
 		k = inkey();
-		
+
 		/* Exit */
 		if (k == ESCAPE) break;
-		
+
 		/* Analyze */
 		switch (k)
 		{
@@ -1099,7 +1099,7 @@ static void do_cmd_options_squelcher(void)
 				do_cmd_options_squelcher_sanity();
 				break;
 			}
-				
+
 				/* Inscription options */
 			case '3':
 			{
@@ -1107,7 +1107,7 @@ static void do_cmd_options_squelcher(void)
 				do_cmd_options_squelcher_inscribe();
 				break;
 			}
-				
+
 				/* Unknown option */
 			default:
 			{
@@ -1116,15 +1116,15 @@ static void do_cmd_options_squelcher(void)
 				break;
 			}
 		}
-		
+
 		/* Flush messages */
 		msg_print(NULL);
 	}
-	
-	
+
+
 	/* Restore the screen */
 	Term_load();
-	
+
 	/* Leave "icky" mode */
 	character_icky = FALSE;
 
@@ -1347,7 +1347,7 @@ void do_cmd_options(void)
 
 		/* Window flags */
 		prt("(W) Window Flags", 14, 5);
-		
+
 		/* Da squelcher */
 		prt("(S) Squelcher",15, 5);
 
@@ -2987,7 +2987,7 @@ void restore_screen(void)
 {
 	/* Restore the screen */
 	Term_load();
-	
+
 	/* Leave "icky" mode */
 	character_icky = FALSE;
 }
@@ -3059,14 +3059,14 @@ void do_cmd_load_screen(cptr path, cptr file)
 		{
 			/* Get the attr/char */
 			(void)(Term_what(x, y, &a, &c));
-			
+
 			if( buf[x] == ' ' )
 			{
 			    a = TERM_WHITE;
 			}
 			else
 			{
-			
+
 			    /* Look up the attr */
 			    for (i = 0; i < 16; i++)
 			    {
@@ -3096,7 +3096,7 @@ void do_cmd_load_screen(cptr path, cptr file)
 
 
 	/* Hack Message , Not usefull for general purpose*/
-	
+
 	/*msg_print(NULL);*/
 
 }
@@ -3128,16 +3128,16 @@ static void do_cmd_save_screen_text(void)
 	/* Holders for time information */
 	time_t          c_time;
 	struct tm		*tp;
-		
+
 	/* Check for time violation */
 	c_time = time((time_t *)0);
 	tp = localtime(&c_time);
-		
+
 	sprintf(tmp, "%s_%d%02d%02d_%02d%02d_screen.txt", player_base , tp->tm_year+1900 , tp->tm_mon+1 , tp->tm_mday , tp->tm_hour , tp->tm_min );
-	
+
 	/* Ask for a file */
 	if (!get_string("File: ", tmp, sizeof(tmp))) return;
-		
+
 	/* Build the filename */
 	path_build(buf, 1024, ANGBAND_DIR_DUMP, tmp );
 	fff = my_fopen(buf, "w");
@@ -3220,13 +3220,13 @@ static void do_cmd_save_screen_html(int mode)
 	/* Holders for time information */
 	time_t          c_time;
 	struct tm		*tp;
-		
+
 	/* Check for time violation */
 	c_time = time((time_t *)0);
 	tp = localtime(&c_time);
-		
+
 	sprintf(tmp_val, "%s_%d%02d%02d_%02d%02d_screen.%s", player_base , tp->tm_year+1900 , tp->tm_mon+1 , tp->tm_mday , tp->tm_hour , tp->tm_min , mode==0?"html":"forum.txt" );
-		
+
 	/* Ask for a file */
 	if (!get_string("File: ", tmp_val, sizeof(tmp_val))) return;
 
@@ -3237,21 +3237,21 @@ static void do_cmd_save_screen_html(int mode)
 		/* Go ASCII */
 		use_graphics = !use_graphics;
 		arg_graphics = !arg_graphics;
-		
+
 		Term_key_push(KTRL('R'));
 		reset_visuals();
 		Term_key_push(KTRL('R'));
 		reset_visuals();
 		Term_key_push(KTRL('R'));
 		do_cmd_redraw();
-		
+
 		/* Go ASCII */
 		html_screenshot(tmp_val, mode);
 
 		/* Go gfx */
 		use_graphics = !use_graphics;
 		arg_graphics = !arg_graphics;
-		
+
 		Term_key_push(KTRL('R'));
 		reset_visuals();
 		Term_key_push(KTRL('R'));
@@ -3327,14 +3327,14 @@ void do_cmd_save_screen_old(void)
 		/* Holders for time information */
 		time_t          c_time;
 		struct tm		*tp;
-		
+
 		/* Check for time violation */
 		c_time = time((time_t *)0);
 		tp = localtime(&c_time);
-		
+
 		sprintf(tmp, "%s_%d%02d%02d_%02d%02d_screen.txt", player_base , tp->tm_year+1900 , tp->tm_mon+1 , tp->tm_mday , tp->tm_hour , tp->tm_min );
-		
-		
+
+
 		path_build(buf, 1024, ANGBAND_DIR_DUMP, tmp);
 
 		/* File type is "TEXT" */
@@ -3695,21 +3695,27 @@ void plural_aux(char * Name)
 static void do_cmd_knowledge_alchemy(void)
 {
 	int i;
-	
+	int idx;
+
 	FILE *fff;
-	
+
 	char line[80];
+	object_type *o_ptr;
+	object_kind *k_ptr;
 	char file_name[1024];
-	
+	/* The last item must be NULL, to indicate the end of the array*/
+	char carried_potions[SV_POTION_MAX+1][80];
+	char stored_potions[SV_POTION_MAX+1][80];
+
 	/* Temporary file */
 	path_build(file_name, 1024, ANGBAND_DIR_DUMP, "cmd_al.tmp");
-	
+
 	/* Open a new file */
 	fff = my_fopen(file_name, "w");
-	
+
 	/* Failure */
 	if (!fff) return;
-	
+
 	/* Scan the alchemy info, wizards know it all ;) */
 	for (i = 0; i < SV_POTION_MAX; i++)
 	{
@@ -3717,18 +3723,40 @@ static void do_cmd_knowledge_alchemy(void)
 		if ( ( (potion_alch[i].known1) || (potion_alch[i].known2) || debug_mode == TRUE)  && potion_alch[i].sval1 != i )
 		{
 			alchemy_describe(line, sizeof(line), i);
-			
+
 			/* Print a message */
 			fprintf(fff, " %s\n", line);
 		}
 	}
-	
+
+	/* Find the carried potions */
+	for (i = 0, idx = 0; i < INVEN_PACK; i++)
+	{
+		/* Get the item from inventory */
+		o_ptr = &inventory[i];
+		/* Only continue if we deal with a potion */
+		if (!o_ptr->k_idx || o_ptr->tval != TV_POTION ) continue;
+		/* Get the kind info*/
+		k_ptr = &k_info[o_ptr->k_idx];
+		/* Describe */
+		if (k_ptr->aware || debug_mode == TRUE)
+			strcpy(carried_potions[idx],(k_name + k_ptr->name));
+		else
+			object_desc(carried_potions[idx], o_ptr, FALSE, 0);
+
+
+		/* Move on */
+		idx++;
+	}
+	carried_potions[idx][0] = '\0';
+	stored_potions[idx][0] = '\0';
+
 	/* Close the file */
 	my_fclose(fff);
-	
+
 	/* Display the file contents */
-	show_file(file_name, "Known Alchemical Combinations" );
-	
+	show_highlighted_file(file_name, "Known Alchemical Combinations", carried_potions, stored_potions);
+
 	/* Remove the file */
 	fd_kill(file_name);
 }
@@ -4111,7 +4139,7 @@ void do_cmd_knowledge(void)
 		{
 			do_cmd_knowledge_pets();
 		}
-		
+
 		/*Alchemic formulas*/
 		else if( i == '7' )
 		{

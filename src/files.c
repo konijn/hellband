@@ -96,15 +96,15 @@ void safe_setuid_grab(void)
 {
 #ifdef SET_UID
 # if defined(HAVE_SETRESGID)
-	
+
 	if (setresgid(-1, player_egid, -1) != 0)
 		quit("setegid(): cannot grab permissions correctly!");
-	
+
 # elif defined(HAVE_SETEGID)
 
 	if (setegid(player_egid) != 0)
 		quit("setegid(): cannot grab permissions correctly!");
-	
+
 # endif
 #endif /* SET_UID */
 }
@@ -702,7 +702,7 @@ errr process_pref_file(cptr name)
 		/* Open the file */
 		fp = my_fopen(buf, "r");
 	}
-	
+
 	/* No such file */
 	if (!fp){
 	  return (-1);
@@ -1062,7 +1062,7 @@ static void display_combat_info(void)
 	int show_tohit = p_ptr->dis_to_h;
 	int show_todam = p_ptr->dis_to_d;
 	object_type *o_ptr = &inventory[INVEN_WIELD];
-	
+
 	/* Hack -- add in weapon info if known */
 	if (object_known_p(o_ptr)) show_tohit += o_ptr->to_h;
 	if (object_known_p(o_ptr)) show_todam += o_ptr->to_d;
@@ -1079,11 +1079,11 @@ static void display_xp_info(void)
 {
 	int start_row = 8;
 	int start_col = 28;
-	
+
 	prt_num( "Level      ", (int)p_ptr->lev,	start_row++ , start_col, TERM_L_GREEN);
 	prt_lnum("Experience ", p_ptr->exp,			start_row++, start_col, (p_ptr->exp >= p_ptr->max_exp)?TERM_L_GREEN:TERM_YELLOW);
 	prt_lnum("Max Exp    ", p_ptr->max_exp,		start_row++, start_col, TERM_L_GREEN);
-	
+
 	if (p_ptr->lev >= PY_MAX_LEVEL)
 	{
 		put_str("Exp to Adv.", start_row, start_col);
@@ -1095,17 +1095,17 @@ static void display_xp_info(void)
 				 (s32b)(player_exp[p_ptr->lev - 1] * p_ptr->expfact / 100L), start_row++, start_col, TERM_L_GREEN);
 	}
 	prt_lnum("Exp Factor ", p_ptr->expfact, start_row++, start_col, TERM_L_GREEN);
-	
+
 }
 
 static void display_health_info(void)
 {
 	int start_row = 8;
 	int start_col = 52;
-	
+
 	prt_num("Max Hit Points ", p_ptr->mhp, start_row++, start_col, TERM_L_GREEN);
 	prt_num("Cur Hit Points ", p_ptr->chp, start_row++, start_col,  health_colour( p_ptr->chp ,  p_ptr->mhp ) );
-	
+
 	if( p_ptr->pclass != CLASS_BLOOD_MAGE )
 	{
 		prt_num("Max SP (Mana)  ", p_ptr->msp, start_row++, start_col, TERM_L_GREEN);
@@ -1221,7 +1221,7 @@ cptr describe_combat_damage(void)
 	/* From PsiAngband */
 	int         damdice, damsides, dambonus, blows;
 	object_type		*o_ptr;
-	
+
 	/* Average damage per round */
 	o_ptr = &inventory[INVEN_WIELD];
 	dambonus = p_ptr->dis_to_d;
@@ -1229,7 +1229,7 @@ cptr describe_combat_damage(void)
 	damdice = o_ptr->dd;
 	damsides = o_ptr->ds;
 	blows = p_ptr->num_blow;
-	
+
 	/*What are the different cases ?*/
 	if ((damdice == 0) || (damsides == 0)) {
 		if (dambonus <= 0)
@@ -1264,19 +1264,19 @@ int count_freak_attacks(void)
 */
 static void display_player_various(void)
 {
-	
+
 	int col0 = 1;
 	int col1 = col0+14;
-	
+
 	int col2 = 28;
 	int col3 = col2+14;
-	
+
 	int col4 = 55;
 	int col5 = col4+14;
-	
+
 	int row = 14;
 	int crow = row;
-	
+
 	int         tmp;
 	int			xthn, xthb, xfos, xsrh;
 	int			xdis, xdev, xsav, xstl;
@@ -1399,7 +1399,7 @@ void player_flags(u32b *f1, u32b *f2, u32b *f3)
 			break;
 
 	}
-	
+
 	/* Handle all the races */
    	switch (p_ptr->prace)
 	{
@@ -1586,54 +1586,54 @@ static void display_player_flags_aux(int row, int col, char *header, related_fla
 	int element;
 	int i;
 	u32b f[3];
-	
+
 	/*TODO msg_format("%d" , elements);*/
-	
+
 	/* Header */
 	c_put_str(TERM_WHITE, header, row, col);
-	
-	
+
+
 	/* Advance */
 	col = col + strlen(header) + 1;
-	
+
 	/* Check equipment */
 	for (i=INVEN_WIELD; i<INVEN_POUCH_1; i++)
 	{
 		object_type *o_ptr;
-		
+
 		/* Object */
 		o_ptr = &inventory[i];
-		
+
 		/* Known flags */
 		object_flags_known(o_ptr, &f[0], &f[1], &f[2]);
-		
+
 		/* Default */
 		c_put_str(TERM_SLATE, ".", row, col);
-		
+
 		for( element = 0 ; element < elements ; element++)
 		{
-			
+
 			/* Check flags */
 			if (f[flags_array[element].n-1] & flags_array[element].flag) c_put_str(flags_array[element].colour, flags_array[element].s , row, col);
-			
+
 		}
 		/* Advance */
 		col++;
 	}
-	
+
 	/* Player flags */
 	player_flags(&f[0], &f[1], &f[2]);
-	
+
 	/* Default */
 	c_put_str(TERM_SLATE, ".", row, col);
-	
+
 	for( element = 0 ; element < elements ; element++)
 	{
 		/* Check flags */
 		if (f[flags_array[element].n-1] & flags_array[element].flag) c_put_str(flags_array[element].colour, flags_array[element].s , row, col);
 	}
 }
- 
+
 
 /*
 * Helper function, see below
@@ -1713,7 +1713,7 @@ static void display_player_flag_info(void)
 {
 	int row;
 	int col;
-	
+
 	/*** Set 1 ***/
 
 	row = 12;
@@ -1750,13 +1750,13 @@ static void display_player_flag_info(void)
 	display_player_flag_aux(row+3 , col, "Nexus    :", 2, TR2_RES_NEXUS);
 	display_player_flag_aux(row+4 , col, "Chaos    :", 2, TR2_RES_CHAOS);
 	display_player_flag_aux(row+5 , col, "Disnch   :", 2, TR2_RES_DISEN);
-	
+
 	display_player_flag_aux(row+6 , col, "See Invis:", 3, TR3_SEE_INVIS);
 	display_player_flag_aux(row+7 , col, "Telepathy:", 3, TR3_TELEPATHY);
 	display_player_flag_aux(row+8 , col, "Speed    :", 1, TR1_SPEED);
 	display_player_flag_aux(row+9 , col, "Shots    :", 3, TR3_XTRA_SHOTS);
 	display_player_flag_aux(row+10, col, "Blows    :", 1, TR1_BLOWS);
-	
+
 	/*** Set 3 ***/
 
 	row = 12;
@@ -1784,7 +1784,7 @@ int calc_equipment_stat_bonus(int stat)
    	object_type *o_ptr;
     int i;
     u32b f1, f2, f3;
-    
+
 	/* Process equipment */
 	for (i=INVEN_WIELD; i<INVEN_POUCH_1; i++)
 	{
@@ -1867,9 +1867,9 @@ static void display_player_stat_info(void)
 	char c;
 
 	char buf[80];
-	
+
 	#define STATS_HEADER_COUNT 10
-	
+
 	header_struct header[STATS_HEADER_COUNT] =
 	{
 		{	"Stat", TERM_WHITE,0 }, /*0*/
@@ -1883,15 +1883,15 @@ static void display_player_stat_info(void)
 		{	"Current",TERM_YELLOW,0 },/*8*/
 		{	"abcdefghijkl@",TERM_WHITE,0 },/*9*/
 	};
-	
+
 	/*Calculate all the starting positions*/
 	header[0].position = 1;
 	for(i=1;i<STATS_HEADER_COUNT;i++)
 		header[i].position = header[i-1].position + strlen(header[i-1].title) + 1;
-	
+
 	/* Row for headers */
 	row = 1;
-	
+
 	/* Print all the headers*/
 	for(i=0;i<STATS_HEADER_COUNT;i++)
 		c_put_str( header[i].colour , header[i].title , row, header[i].position );
@@ -1998,13 +1998,13 @@ static weapon_flags_struct weapon_flags[] =
 	{"Slay Undead       :" , 1 , TR1_SLAY_UNDEAD , TERM_WHITE , "+" },
 	{"Execute Angel     :" , 1 , TR1_KILL_ANGEL , TERM_VIOLET , "*" },
 	{"Execute Dragon    :" , 1 , TR1_KILL_DRAGON , TERM_VIOLET , "*" },
-	
+
 	{"Blessed           :" , 3 , TR3_BLESSED  , TERM_WHITE , "+" },
 	{"Chaotic           :" , 1 , TR1_CHAOTIC  , TERM_RED , "+" },
 	{"Vampiric          :" , 1 , TR1_VAMPIRIC  , TERM_L_DARK , "+" },
 	{"Vorpal            :" , 1 , TR1_VORPAL  , TERM_VIOLET , "+" },
 	{"Impact            :" , 1 , TR1_IMPACT  , TERM_UMBER , "+" },
-	
+
 	{"Fire Branded      :" , 1 , TR1_BRAND_FIRE  , TERM_RED , "+" },
 	{"Ice Branded       :" , 1 , TR1_BRAND_COLD  , TERM_WHITE , "+" },
 	{"Lightning Branded :" , 1 , TR1_BRAND_ELEC  , TERM_YELLOW , "+" },
@@ -2021,16 +2021,16 @@ static void display_player_konijn(void)
 	char c;
 	u32b b[3];
 	char o_name[80];
-	
+
 	start_col = 2;
 	start_row = 3;
 	indent = strlen(weapon_flags[0].name);
-	
+
 	/*Get wielded weapon*/
 	o_ptr = &inventory[INVEN_WIELD];
 	/* Known object flags */
 	object_flags_known(o_ptr, &b[0], &b[1], &b[2]);
-	
+
 	/* Get object attributes for the equippy weapon */
 	a = object_attr(o_ptr);
 	c = object_char(o_ptr);
@@ -2042,25 +2042,25 @@ static void display_player_konijn(void)
 	object_desc(o_name, &inventory[INVEN_WIELD], TRUE, 3);
 	/*Dump name*/
 	put_str( o_name , start_row -1 , start_col+2 );
-		
+
 	for( i = 0 ; i < N_ELEMENTS(weapon_flags); i++ )
 	{
 		cptr s = ".";
 		a = TERM_SLATE;
-		
+
 		/* Dump name */
 		put_str( weapon_flags[i].name , start_row + i , start_col );
-		
+
 		/* Check flag */
 		if( b[weapon_flags[i].n-1] & weapon_flags[i].flag )
 		{
 			a = weapon_flags[i].colour;
 			s = weapon_flags[i].s;
 		}
-		
+
 		/* Monochrome */
 		if (!use_colour) a = TERM_WHITE;
-		
+
 		/* Dump flag */
 		Term_putstr(start_col+indent ,start_row+i,-1, a , s);
 	}
@@ -2086,7 +2086,7 @@ static void display_temporary(void)
     int none_row = row+1;
 	int timed_counter;
     display_temporary_aux( col , &row , 1 , "Temporary effects:" );
-	
+
 
 	/* Count down all timed effects */
 	for( timed_counter = 0 ; timed_counter < TIMED_COUNT ; timed_counter++ )
@@ -2109,7 +2109,7 @@ static void display_nuisances(void)
     u32b tb[3];
 	object_type *o_ptr;
 	int timed_counter;
-    
+
     /* Process equipment */
 	for (i=INVEN_WIELD; i<INVEN_POUCH_1; i++)
 	{
@@ -2121,7 +2121,7 @@ static void display_nuisances(void)
         for(bc=0;bc<3;bc++)
             b[bc] = b[bc] | tb[bc];
     }
-    
+
     display_temporary_aux( col , &row , 1 , "Nuisances :" );
 
 	/* Count down all timed effects */
@@ -2148,7 +2148,7 @@ static void display_nuisances(void)
 
 static void display_compact_stats()
 {
-	
+
 	char buf[80];
 	int start_row = 1;
 	int start_col = 61;
@@ -2156,7 +2156,7 @@ static void display_compact_stats()
 	int indent2 = indent + 7;
 	bool injured;
 	int i;
-	
+
 	/* Display the stats */
 	for (i = 0; i < 6; i++)
 	{
@@ -2191,7 +2191,7 @@ static void display_name_race_class()
 	int start_col = 1;
 	int indent = 9;
 	sprintf(buf,"%s %s",sp_ptr->address,player_name);
-	
+
 	/* Name, Sex, Race, Class */
 	put_str("Name   :", start_row, start_col); c_put_str(TERM_L_BLUE, buf                             , start_row++, start_col+indent);
 	put_str("Race   :", start_row, start_col); c_put_str(TERM_L_BLUE, rp_ptr->title                   , start_row++, start_col+indent);
@@ -2216,7 +2216,7 @@ static void display_name_race_class()
 
 static void display_age_weight_social()
 {
-  
+
   int start_row = 2;
   int start_col = 32;
 
@@ -2329,7 +2329,7 @@ errr file_character(cptr name, bool full)
 	char		o_name[80];
 
 	char		buf[1024];
-	
+
 	(void)full;/*Trick compiler into thinking this variable is used*/
 
 	/* Drop priv's */
@@ -2337,7 +2337,7 @@ errr file_character(cptr name, bool full)
 
 	/* Build the filename */
 	path_build(buf, 1024, ANGBAND_DIR_DUMP, name);
-	
+
 	/* File type is "TEXT" */
 	FILE_TYPE(FILE_TYPE_TEXT);
 
@@ -2408,7 +2408,7 @@ errr file_character(cptr name, bool full)
 
     /*Have a new line to separate content*/
     fprintf(fff, "\n");
-    
+
 	/* Interesting resists */
 	display_player(1);
 
@@ -2468,7 +2468,7 @@ errr file_character(cptr name, bool full)
 		fprintf(fff, "\n Arena Levels:       ON");
 	else
 		fprintf(fff, "\n Arena Levels:       OFF");
-	
+
 	fprintf(fff, "\n Recall Depth:       Level %d (%d')\n", p_ptr->max_dun_level,
 		50 * p_ptr->max_dun_level);
 
@@ -2580,7 +2580,7 @@ errr file_character(cptr name, bool full)
 *
 * XXX XXX XXX Consider using a temporary file.
 */
-static bool do_cmd_help_aux(cptr name, cptr what, int line)
+static bool do_cmd_help_aux(cptr name, cptr what, int line, char blue_highlights[][80], char green_highlights[][80])
 {
 	int		i, k;
 
@@ -2801,7 +2801,7 @@ static bool do_cmd_help_aux(cptr name, cptr what, int line)
 			/* Dump the line */
 			Term_putstr(0, i+2, -1, TERM_WHITE, buf);
 
-			/* Hilite "shower" */
+			/* Hilite "shower" in yellow*/
 			if (uc_shower[0])
 			{
 				cptr str = uc_buf;
@@ -2816,6 +2816,28 @@ static bool do_cmd_help_aux(cptr name, cptr what, int line)
 
 					/* Advance */
 					str += len;
+				}
+			}
+
+			int idx = 0;
+			if(blue_highlights != NULL)
+			{
+				while(blue_highlights[idx][0] != '\0' )
+				{
+					cptr str = buf;
+
+					/* Display matches */
+					while ((str = strstr(str, blue_highlights[idx])) != NULL)
+					{
+						int len = strlen(blue_highlights[idx]);
+
+						/* Display the match */
+						Term_putstr(str-buf, i+2, len, TERM_BLUE, blue_highlights[idx]);
+
+						/* Advance */
+						str += len;
+					}
+					idx++;
 				}
 			}
 
@@ -2925,7 +2947,7 @@ static bool do_cmd_help_aux(cptr name, cptr what, int line)
 			strcpy(tmp, syshelpfile);
 			if (askfor_aux(tmp, 80))
 			{
-				if (!do_cmd_help_aux(tmp, NULL, 0)) k = ESCAPE;
+				if (!do_cmd_help_aux(tmp, NULL, 0, NULL, NULL)) k = ESCAPE;
 			}
 		}
 
@@ -2952,7 +2974,7 @@ static bool do_cmd_help_aux(cptr name, cptr what, int line)
 		if (menu && islower(k) && hook[k-'a'][0])
 		{
 			/* Recurse on that file */
-			if (!do_cmd_help_aux(hook[k-'a'], NULL, 0)) k = ESCAPE;
+			if (!do_cmd_help_aux(hook[k-'a'], NULL, 0, NULL, NULL)) k = ESCAPE;
 		}
 
 		/* Hack, dump to file */
@@ -3046,7 +3068,7 @@ void do_cmd_help(cptr name)
 	Term_save();
 
 	/* Peruse the main help file */
-	(void)do_cmd_help_aux(name, NULL, 0);
+	(void)do_cmd_help_aux(name, NULL, 0, NULL, NULL);
 
 	/* Restore the screen */
 	Term_load();
@@ -3072,7 +3094,34 @@ errr show_file(cptr name, cptr what)
 	Term_save();
 
 	/* Peruse the requested file */
-	(void)do_cmd_help_aux(name, what, 0);
+	(void)do_cmd_help_aux(name, what, 0, NULL, NULL);
+
+	/* Restore the screen */
+	Term_load();
+
+	/* Leave "icky" mode */
+	character_icky = FALSE;
+
+	/* Success */
+	return (0);
+}
+
+/*
+* Hack -- display the contents of a file on the screen
+*
+* XXX XXX XXX Use this function for commands such as the
+* "examine object" command.
+*/
+errr show_highlighted_file(cptr name, cptr what, char blue_highlights[][80], char green_highlights[][80])
+{
+	/* Enter "icky" mode */
+	character_icky = TRUE;
+
+	/* Save the screen */
+	Term_save();
+
+	/* Peruse the requested file */
+	(void)do_cmd_help_aux(name, what, 0, blue_highlights, green_highlights);
 
 	/* Restore the screen */
 	Term_load();
@@ -3186,10 +3235,10 @@ void get_name(void)
 	{
 		/* Put name in temp var */
 		strcpy(tmp,  player_name);
-		
+
 		/* Zero out existing location , 45 spaces */
 		c_put_str(TERM_L_BLUE, "                                         ", 1, 10);
-		
+
 		/* Go to the "name" field */
 		move_cursor(1, 10);
 
@@ -4366,7 +4415,7 @@ static void kingly(void)
 	char	tmp[160];
 	char    dummy[80];
 */
-	
+
 	char	buf[1024];
 
 

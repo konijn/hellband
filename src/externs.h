@@ -591,6 +591,7 @@ extern errr check_time(void);
 extern errr check_load(void);
 extern void read_times(void);
 extern errr show_file(cptr name, cptr what);
+extern errr show_highlighted_file(cptr name, cptr what, char blue_highlights[][80], char green_highlights[][80]);
 extern void do_cmd_help(cptr name);
 extern void process_player_name(void);
 extern void get_name(void);
