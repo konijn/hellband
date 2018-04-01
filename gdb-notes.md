@@ -18,7 +18,8 @@ Load the binary with
 * `info variables` to list "All global and static variable names".
 * `info locals` to list "Local variables of current stack frame" (names and values)
 * `info args` to list "Arguments of the current stack frame" (names and values).
-* `p <variable> to show a variable `variable`
+* `p <variable>` to show a variable `variable`
+* `explore <variable>` to inspect a variable `variable`
 
 **Call stack**
 
