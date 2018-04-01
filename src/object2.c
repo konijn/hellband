@@ -10,13 +10,13 @@
  * are included in all such copies.
  *
  * James E. Wilson and Robert A. Koeneke have released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
  */
 
 #include "angband.h"
@@ -295,7 +295,7 @@ static void compact_objects_aux(int i1, int i2)
 	{
 		int y, x;
 
-		/* Acquire location */  
+		/* Acquire location */
 		y = o_ptr->iy;
 		x = o_ptr->ix;
 
@@ -429,7 +429,7 @@ void compact_objects(int size)
 			/* Apply the saving throw */
 			if (rand_int(100) < chance) continue;
 
-			/* Count it, not sure this is a great idea ;) 
+			/* Count it, not sure this is a great idea ;)
 			   I, konijn, will take the blame on this one
 			*/
 			num = num + o_ptr->number;
@@ -777,7 +777,7 @@ void object_known(object_type *o_ptr , bool squelch )
 		if ((streq(q, "cursed")) ||
 			(streq(q, "broken")) ||
 			(streq(q, "good")) ||
-			(streq(q, "great")) ||			
+			(streq(q, "great")) ||
 			(streq(q, "average")) ||
 			(streq(q, "excellent")) ||
 			(streq(q, "worthless")) ||
@@ -797,7 +797,7 @@ void object_known(object_type *o_ptr , bool squelch )
 
 	/* Now we know about the item */
 	o_ptr->ident |= (IDENT_KNOWN);
-	
+
 	if(squelch)
 		consider_squelch( o_ptr );
 }
@@ -808,8 +808,8 @@ void object_known(object_type *o_ptr , bool squelch )
 void object_storebought(object_type *o_ptr)
 {
 	/* We have "felt" it in every way */
-	o_ptr->ident |= (IDENT_STOREB);    
-	object_aware(o_ptr);	
+	o_ptr->ident |= (IDENT_STOREB);
+	object_aware(o_ptr);
 	object_known(o_ptr,FALSE);
 }
 
@@ -829,10 +829,10 @@ void object_aware(object_type *o_ptr)
 void object_full_id(object_type *o_ptr)
 {
 	char line[80];
-	
+
 	/* We have "felt" it in every way */
 	o_ptr->ident |= (IDENT_MENTAL);
-	object_aware(o_ptr);	
+	object_aware(o_ptr);
 	object_known(o_ptr,TRUE);
 	/* *ID* gives the formula away */
 	if(o_ptr->tval==TV_POTION)
@@ -1424,7 +1424,7 @@ bool object_similar(object_type *o_ptr, object_type *j_ptr)
 		/* Require identical charges */
 		/*StackingWIP*/
 		if (object_known_p(o_ptr) && !object_known_p(j_ptr)) return (0);
-		if (!object_known_p(o_ptr) && object_known_p(j_ptr)) return (0);		
+		if (!object_known_p(o_ptr) && object_known_p(j_ptr)) return (0);
 		if (o_ptr->pval != j_ptr->pval) return (0);
 	    break;
 	case TV_WAND:
@@ -1433,8 +1433,8 @@ bool object_similar(object_type *o_ptr, object_type *j_ptr)
 			/* Require knowledge of both or knowledge of none */
 			/* if (!object_known_p(o_ptr) || !object_known_p(j_ptr)) return (0); */
 			if (object_known_p(o_ptr) && !object_known_p(j_ptr)) return (0);
-			if (!object_known_p(o_ptr) && object_known_p(j_ptr)) return (0);			
-			
+			if (!object_known_p(o_ptr) && object_known_p(j_ptr)) return (0);
+
 			/*StackingWIP screw falling through*/
 			/* Fall through */
 			break;
@@ -1447,7 +1447,7 @@ bool object_similar(object_type *o_ptr, object_type *j_ptr)
 			/* Require permission, screw permission*/
 			/* if (!stack_allow_wands) return (0); */
 			if (object_known_p(o_ptr) && !object_known_p(j_ptr)) return (0);
-			if (!object_known_p(o_ptr) && object_known_p(j_ptr)) return (0);						
+			if (!object_known_p(o_ptr) && object_known_p(j_ptr)) return (0);
             if (o_ptr->pval != j_ptr->pval) return (0);
 			/* Probably okay */
 			break;
@@ -1580,7 +1580,7 @@ void object_absorb(object_type *o_ptr, object_type *j_ptr)
 
 	/* Add together the item counts */
 	o_ptr->number = ((total < MAX_STACK_SIZE) ? total : (MAX_STACK_SIZE - 1));
-	
+
 	if(o_ptr->tval==TV_WAND)o_ptr->pval=o_ptr->pval+j_ptr->pval;
 
 	/* Hack -- blend "known" status */
@@ -1890,7 +1890,7 @@ void random_artefact_resistance(object_type * o_ptr)
 	if (give_resistance)
 	{
 		random_resistance(o_ptr, FALSE, ((randint(22))+16));
-	}   
+	}
 }
 
 
@@ -2116,7 +2116,7 @@ static void a_m_aux_1(object_type *o_ptr, int level, int power)
 
 	int tohit2 = m_bonus(10, level);
 	int todam2 = m_bonus(10, level);
-	
+
 	byte temp_byte = 0;
 
 	artefact_bias = 0;
@@ -2375,7 +2375,7 @@ static void a_m_aux_1(object_type *o_ptr, int level, int power)
 						if (randint(3)==1) /* double damage */
 							o_ptr->dd *= 2;
 						else
-						{ 
+						{
 							do { o_ptr->dd++; } while (randint(o_ptr->dd)==1);
 							do { o_ptr->ds++; } while (randint(o_ptr->ds)==1);
 						}
@@ -2558,15 +2558,15 @@ static void a_m_aux_1(object_type *o_ptr, int level, int power)
 				case 13: case 14:
 				{
 					o_ptr->name2 = EGO_HOLY_FLAME;
-					o_ptr->dd++;					
+					o_ptr->dd++;
 					break;
-				}					
+				}
 				case 15: case 16:
 				{
 					o_ptr->name2 = EGO_ANGEL_BANE;
-					o_ptr->dd++;					
+					o_ptr->dd++;
 					break;
-				}						
+				}
 				}
 
 				/* Hack -- super-charge the damage dice */
@@ -3590,13 +3590,13 @@ static void a_m_aux_4(object_type *o_ptr, int level, int power)
 	/*
 	level = (0, level);
 	power = (0, power);
-	*/	
+	*/
 
 	/* Apply magic (good or bad) according to type */
-	
+
 	(void)level;/*Not used??*/
 	(void)power;/*Not used??*/
-	
+
 	switch (o_ptr->tval)
 	{
 
@@ -3625,7 +3625,7 @@ static void a_m_aux_4(object_type *o_ptr, int level, int power)
 			o_ptr->pval = rand_s16b(k_info[o_ptr->k_idx].level);
 
 			/* Never exceed "difficulty" of 55 to 59 */
-			if (o_ptr->pval > 55) o_ptr->pval = (short)(55 + rand_int(5)); 
+			if (o_ptr->pval > 55) o_ptr->pval = (short)(55 + rand_int(5));
 
 			break;
 		}
@@ -3640,7 +3640,7 @@ static void a_m_aux_4(object_type *o_ptr, int level, int power)
 static void a_m_aux_5(object_type *o_ptr, int level, int power)
 {
 	int i;
-	
+
 	(void)level;/*Not used??*/
 
 	/* Hack -- Torches -- random fuel */
@@ -3686,7 +3686,7 @@ static void a_m_aux_5(object_type *o_ptr, int level, int power)
 			{
 				break;
 			}
-		} 
+		}
 	}
 	else if (power == 1) /* Good */
 	{
@@ -5210,12 +5210,12 @@ void inven_item_increase(int item, int num)
 	/* Change the number and weight and charges*/
 	if (num)
 	{
-		/* Change charges if we are removing some wands*/		
+		/* Change charges if we are removing some wands*/
 		if(num<0 && num!=-o_ptr->number && o_ptr->tval==TV_WAND)
 		{
 			o_ptr->pval = o_ptr->pval + ( o_ptr->pval / o_ptr->number * num );
 		}
-		
+
 		/* Add the number */
 		o_ptr->number += num;
 
@@ -5730,11 +5730,11 @@ void inven_drop(int item, int amt)
 
 	/* Modify quantity */
 	q_ptr->number = amt;
-	
+
 	/* Modify charges for wands */
 	if(o_ptr->tval==TV_WAND)
 	{
-		q_ptr->pval = o_ptr->pval / o_ptr->number * q_ptr->number;		
+		q_ptr->pval = o_ptr->pval / o_ptr->number * q_ptr->number;
 	}
 
 	/* Describe local object */
@@ -5954,7 +5954,7 @@ void spoil_spells( object_type *o_ptr )
 	int		spell = -1;
 	magic_type	s_magic;
 	magic_type	*s_ptr = &s_magic;
-	
+
 	/* Wait for key */
 	while (1)
 	{
@@ -5969,19 +5969,19 @@ void spoil_spells( object_type *o_ptr )
 		{
 			break;
 		}
-		
+
 		/* Clear lines, position cursor (really should use strlen here) */
 		Term_erase(13, 11 , 255);
 		Term_erase(13, 12 , 255);
 		Term_erase(13, 13 , 255);
-		
+
 		/*msg_format( "Spell : %d" , spell );msg_print(NULL);*/
 		/* Access the spell */
 		get_extended_spell_info(  (o_ptr->tval-TV_MIRACLES_BOOK) ,  o_ptr->sval*8+spell , s_ptr );
 		/*msg_format( "Spell : %s" , s_ptr->spoiler );msg_print(NULL);		*/
 		/* Display that spell's information. */
 		c_roff(TERM_L_BLUE, s_ptr->spoiler,13,11,13);
-	}		
+	}
 
 	/* Restore the screen */
 	Term_load();
@@ -6007,16 +6007,16 @@ void display_spell_list(void)
 	int             w,h,n;
     magic_type   s_magic;
     magic_type  *s_ptr = &s_magic;
-	
+
 	/* Get size of terminal*/
 	Term_get_size(&w,&h);
-	
+
 	/* Erase window */
 	clear_from(0);
-	
+
 	/* Warriors are illiterate */
 	if (!mp_ptr->spell_book) return;
-	
+
 	/* Orphic spell-list */
 	if (p_ptr->pclass == CLASS_ORPHIC)
 	{
@@ -6029,53 +6029,53 @@ void display_spell_list(void)
 		mindcraft_power spell;
 		char            comment[80];
 		char            psi_desc[80];
-		
+
 		/* Display a list of spells */
 		prt("", y, x);
 		put_str("Name", y, x + 5);
 		put_str("Lv Mana Fail Info", y, x + 35);
-		
+
 		/* Dump the spells */
 		for (i = 0; i < MAX_MINDCRAFT_POWERS; i++)
 		{
 			byte a  = TERM_WHITE;
-			
+
 			/* Access the available spell */
 			spell = mindcraft_powers[i];
 			if (spell.min_lev > plev) break;
-			
+
 			/* Get the failure rate */
 			chance = spell.fail;
-			
+
 			/* Reduce failure rate by "effective" level adjustment */
 			chance -= 3 * (p_ptr->lev - spell.min_lev);
-			
+
 			/* Reduce failure rate by INT/WIS adjustment */
 			chance -= 3 * (adj_stat[p_ptr->stat_ind[mp_ptr->spell_stat]][ADJ_INTWIS] - 1);
-			
+
 			/* Not enough mana to cast */
 			if (spell.mana_cost > p_ptr->csp)
 			{
 				chance += 5 * (spell.mana_cost - p_ptr->csp);
 				a = TERM_ORANGE;
 			}
-			
+
 			/* Extract the minimum failure rate */
 			minfail = adj_stat[p_ptr->stat_ind[mp_ptr->spell_stat]][ADJ_FAILURE];
-			
+
 			/* Minimum failure rate */
 			if (chance < minfail) chance = minfail;
-			
+
 			/* Stunning makes spells harder */
 			if (p_ptr->stun > 50) chance += 25;
 			else if (p_ptr->stun) chance += 15;
-			
+
 			/* Always a 5 percent chance of working */
 			if (chance > 95) chance = 95;
-			
+
 			/* Get info */
 			mindcraft_info(comment, i);
-			
+
 			/* Dump the spell */
 			sprintf(psi_desc, "  %c) %-30s%2d %4d %3d%%%s",
 					I2A(i), spell.name,
@@ -6084,16 +6084,16 @@ void display_spell_list(void)
 		}
 		return;
 	}
-	
+
 	/* Normal spellcaster with books */
-	
+
 	y = 0;
 	x = 0;
     n = 0;
 	for (j = 0; j < (use_realm2>-1?2:1); j++)
 	{
 		/*Get the realm, instead of trinary overload */
-		u16b realm = (j<1?use_realm1:use_realm2);	
+		u16b realm = (j<1?use_realm1:use_realm2);
 		/*Get the color of the realm, used to print the realm and the prefix "book/spell) "*/
 		byte a_prefix = tval_to_attr[ TV_MIRACLES_BOOK + realm ];
 		/*Get the realm with square brackets in out_val*/
@@ -6102,37 +6102,37 @@ void display_spell_list(void)
 		Term_putstr(x,   y + n, -1, a_prefix, out_val);
 		/* Next */
 		n++;
-		
+
 		/* Scan spells */
 		for (i = 0; i < 32; i++)
 		{
 			/* Use the realm color initially, this can be overwritten by the status of the spell */
 			byte a =a_prefix;
-			
+
 			/*Tabulate spell list if needed ( most likely will always be neede ) */
 			if( (y + n) == h )
-			{  
+			{
 				x = x + 27;
 				n = 0;
 			}
 
 			/* Access the spell */
 			/*get_extended_spell_info( j<1?use_realm1:use_realm2, i%32 , s_ptr );*/
-			get_extended_spell_info( realm, i%32 , s_ptr ); 
+			get_extended_spell_info( realm, i%32 , s_ptr );
 			/* Write out the spell name */
 			strcpy(name, s_ptr->name);
 			/* Get the attribute of the info*/
-			a = s_ptr->attr_info;				
-			
+			a = s_ptr->attr_info;
+
 			/* Dump the spell --(-- */
-			
+
 			sprintf(out_val, "%c/%c) ",	I2A(i/8), I2A(i%8) );
 			sprintf(out_val2, "%-20.20s", name);
-			
+
 			/* Dump onto the window */
 			Term_putstr(x,   y + n, -1, a_prefix, out_val);
-			Term_putstr(x+5, y + n, -1, a,        out_val2);				
-			
+			Term_putstr(x+5, y + n, -1, a,        out_val2);
+
 			/* Next */
 			n++;
 		}
@@ -6221,11 +6221,11 @@ bool spell_okay(int spell, bool known, int realm)
 	/*
 	msg_format("TODO : Checking for %s , forgotten %d , learned %d" , s_ptr->name , s_ptr->forgotten , s_ptr->learned);
 	msg_format( "Learned hardcore : %d" ,spell_learned( realm , spell ) );
-	msg_format( "realm 1:%d realm2: %d realm:%d, spell:%d , shifted:%d : check %d" , p_ptr->realm1 , p_ptr->realm2 , realm , spell, 1L<<spell , (spell_learned1 & (1L << spell)) );	
+	msg_format( "realm 1:%d realm2: %d realm:%d, spell:%d , shifted:%d : check %d" , p_ptr->realm1 , p_ptr->realm2 , realm , spell, 1L<<spell , (spell_learned1 & (1L << spell)) );
 	*/
 
 	/* Spell is illegal */
-	if (s_ptr->slevel > p_ptr->lev) 
+	if (s_ptr->slevel > p_ptr->lev)
 		return (FALSE);
 
 	/* Spell is forgotten */
@@ -6247,18 +6247,18 @@ bool spell_okay(int spell, bool known, int realm)
 */
 void spell_info_short(char *p, int spell, int realm)
 {
-	char *previous; 
+	char *previous;
 	double worstcase;
 	double bestcase;
 	char macro[80];
-	
+
 	/* Default */
 	strcpy(p, "");
 	/* If no macro is defined, then dont try to get info */
 	if( spells[realm][spell].macro == NULL  )
 		return;
 	/* A macro is defined , so we need to parse it twice to get upper and lower values*/
-	/* Copy the const char over to something local to prevent warnings */	
+	/* Copy the const char over to something local to prevent warnings */
 	my_strcpy(macro, spells[realm][spell].macro, 80);
 	/*Point at the local script*/
 	script = macro;
@@ -6283,7 +6283,7 @@ void spell_info_short(char *p, int spell, int realm)
 			sprintf (p, "%s%s %.0f ", p , variable_token ,worstcase);
 		/*There might be more*/
 		if(*script==';')script++;
-	}		
+	}
 }
 
 /*
@@ -6312,7 +6312,7 @@ void print_spells(byte *spells, int num, int y, int x, int realm)
 
 		/* Access the spell */
 		get_extended_spell_info( realm, spell , s_ptr );
-	
+
 		/* Skip illegible spells */
 		if (s_ptr->slevel >= 99)
 		{
@@ -6323,7 +6323,7 @@ void print_spells(byte *spells, int num, int y, int x, int realm)
 
         /* Print index, name, level, mana cost, odds to cast well and info */
         sprintf(out_val, "  %c) %-30s%2d %4d %3d%% %s",	I2A(i), s_ptr->name, s_ptr->slevel, s_ptr->smana, spell_chance(spell,realm), s_ptr->info );
-        
+
 		prt(out_val, y + i + 1, x);
 	}
 
@@ -6340,35 +6340,35 @@ void alchemy_describe(char *buf, size_t max, int sval)
 	char o_name1[80];
 	char o_name2[80];
 	char o_name3[80];
-	
+
 	object_kind *k_ptr;
 	object_type *i_ptr;
 	object_type object_type_body;
-	
+
 	/* Look for it */
 	for (k = 1; k < MAX_K_IDX; k++)
 	{
 		k_ptr = &k_info[k];
-		
+
 		/* Found a match */
 		if ((k_ptr->tval == TV_POTION) && (k_ptr->sval == sval)) break;
 	}
-	
+
 	/* Paranoia */
 	if (k == MAX_K_IDX) return;
-	
+
 	/* Get local object */
 	i_ptr = &object_type_body;
-	
+
 	/* Create fake object */
 	object_prep(i_ptr, k);
-	
+
 	/* Describe the object */
-	if (k_ptr->aware  || debug_mode == TRUE) 
+	if (k_ptr->aware  || debug_mode == TRUE)
 	  strcpy(o_name1, (k_name + k_ptr->name));
-	else 
+	else
 	  object_desc(o_name1, i_ptr, FALSE, 0);
-	
+
 	/* Look for first component */
 	if (potion_alch[sval].known1 || debug_mode == TRUE)
 	{
@@ -6378,24 +6378,24 @@ void alchemy_describe(char *buf, size_t max, int sval)
 			/* Found a match */
 			if ((k_ptr->tval == TV_POTION) && (k_ptr->sval == potion_alch[sval].sval1)) break;
 		}
-		
+
 		/* Get local object */
 		i_ptr = &object_type_body;
-		
+
 		/* Create fake object */
 		object_prep(i_ptr, k);
-		
+
 		/* Describe the object */
 		if (k_ptr->aware || debug_mode == TRUE)
 		  strcpy(o_name2,(k_name + k_ptr->name));
-		else 
+		else
 		  object_desc(o_name2, i_ptr, FALSE, 0);
 	}
 	else
 	{
 		strcpy (o_name2,"????");
 	}
-	
+
 	/* Look for first component */
 	if (potion_alch[sval].known2 || debug_mode == TRUE)
 	{
@@ -6403,29 +6403,28 @@ void alchemy_describe(char *buf, size_t max, int sval)
 		for (k = 1; k < MAX_K_IDX; k++)
 		{
 			k_ptr = &k_info[k];
-			
+
 			/* Found a match */
 			if ((k_ptr->tval == TV_POTION) && (k_ptr->sval == potion_alch[sval].sval2)) break;
 		}
-		
+
 		/* Get local object */
 		i_ptr = &object_type_body;
-		
+
 		/* Create fake object */
 		object_prep(i_ptr, k);
-		
+
 		/* Describe the object */
-		if (k_ptr->aware || debug_mode == TRUE) 
+		if (k_ptr->aware || debug_mode == TRUE)
 		  strcpy(o_name3,(k_name + k_ptr->name));
-		else 
+		else
 		  object_desc(o_name3, i_ptr, FALSE, 0);
 	}
 	else
 	{
 		strcpy (o_name3, "????");
 	}
-	
-	/* Print a message */
-	strnfmt(buf, max, "%s = %s + %s  (odds: %d percent)", o_name1, o_name2, o_name3 , (int)(25 + (/*p_ptr->skill[SK_ALC]*/ 60) - ( k_ptr->pval /  5)) );
-}
 
+	/* Print a message */
+	strnfmt(buf, max, "  %s =  %s +  %s (odds: %d%%)", o_name1, o_name2, o_name3 , (int)(25 + (/*p_ptr->skill[SK_ALC]*/ 60) - ( k_ptr->pval /  5)) );
+}

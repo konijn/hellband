@@ -591,7 +591,7 @@ extern errr check_time(void);
 extern errr check_load(void);
 extern void read_times(void);
 extern errr show_file(cptr name, cptr what);
-extern errr show_highlighted_file(cptr name, cptr what, char blue_highlights[][80], char green_highlights[][80]);
+extern errr show_highlighted_file(cptr name, cptr what, cptr *blue_highlights, cptr *green_highlights);
 extern void do_cmd_help(cptr name);
 extern void process_player_name(void);
 extern void get_name(void);
@@ -1134,4 +1134,3 @@ extern cptr term_activity;
 /* cmd2.c */
 extern bool easy_open_door(int y, int x);
 bool do_cmd_disarm_aux(int y, int x, int dir);
-

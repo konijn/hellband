@@ -2580,7 +2580,7 @@ errr file_character(cptr name, bool full)
 *
 * XXX XXX XXX Consider using a temporary file.
 */
-static bool do_cmd_help_aux(cptr name, cptr what, int line, char blue_highlights[][80], char green_highlights[][80])
+static bool do_cmd_help_aux(cptr name, cptr what, int line, cptr *blue_highlights, cptr *green_highlights)
 {
 	int		i, k;
 
@@ -2822,7 +2822,7 @@ static bool do_cmd_help_aux(cptr name, cptr what, int line, char blue_highlights
 			int idx = 0;
 			if(blue_highlights != NULL)
 			{
-				while(blue_highlights[idx][0] != '\0' )
+				while(blue_highlights[idx] != NULL )
 				{
 					cptr str = buf;
 
@@ -3112,7 +3112,7 @@ errr show_file(cptr name, cptr what)
 * XXX XXX XXX Use this function for commands such as the
 * "examine object" command.
 */
-errr show_highlighted_file(cptr name, cptr what, char blue_highlights[][80], char green_highlights[][80])
+errr show_highlighted_file(cptr name, cptr what, cptr* blue_highlights, cptr* green_highlights)
 {
 	/* Enter "icky" mode */
 	character_icky = TRUE;
@@ -5106,4 +5106,3 @@ void html_screenshot(cptr name, int mode)
 	/* Close it */
 	my_fclose(fp);
 }
-

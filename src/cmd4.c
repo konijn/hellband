@@ -3700,12 +3700,18 @@ static void do_cmd_knowledge_alchemy(void)
 	FILE *fff;
 
 	char line[80];
+	char buf[80];
+	char potion_description[80];
 	object_type *o_ptr;
 	object_kind *k_ptr;
 	char file_name[1024];
 	/* The last item must be NULL, to indicate the end of the array*/
-	char carried_potions[SV_POTION_MAX+1][80];
-	char stored_potions[SV_POTION_MAX+1][80];
+  /* Based on comments of Silk and the use of */
+  cptr *carried_potions;
+	cptr *stored_potions;
+  /* Allocate memorie*/
+	C_MAKE(carried_potions, INVEN_TOTAL*3+1, cptr);
+	C_MAKE(stored_potions, SV_POTION_MAX*3+1, cptr);
 
 	/* Temporary file */
 	path_build(file_name, 1024, ANGBAND_DIR_DUMP, "cmd_al.tmp");
@@ -3740,22 +3746,42 @@ static void do_cmd_knowledge_alchemy(void)
 		k_ptr = &k_info[o_ptr->k_idx];
 		/* Describe */
 		if (k_ptr->aware || debug_mode == TRUE)
-			strcpy(carried_potions[idx],(k_name + k_ptr->name));
+			strcpy(potion_description,(k_name + k_ptr->name));
 		else
-			object_desc(carried_potions[idx], o_ptr, FALSE, 0);
+			object_desc(potion_description, o_ptr, FALSE, 0);
+		/* We want o keep the highlighting feature generic ,
+     * but we have a number of potion names that are part of another
+		 * Water is part of Salt Water, Wisdom is part of Restore wisdom
+		 * So we need to encode surrounding markers
+		 */
+		strnfmt(buf, sizeof(line), "  %s", potion_description);
+		carried_potions[idx++] = string_make(buf);
 
-
-		/* Move on */
-		idx++;
 	}
-	carried_potions[idx][0] = '\0';
-	stored_potions[idx][0] = '\0';
+	carried_potions[idx] = NULL;
+	stored_potions[0] = NULL;
 
 	/* Close the file */
 	my_fclose(fff);
 
 	/* Display the file contents */
 	show_highlighted_file(file_name, "Known Alchemical Combinations", carried_potions, stored_potions);
+
+  /*Free the strings*/
+  idx = 0;
+	while(carried_potions[idx]!=NULL){
+    string_free(carried_potions[idx]);
+		idx++;
+	}
+	idx = 0;
+	while(stored_potions[idx]!=NULL){
+    string_free(stored_potions[idx]);
+		idx++;
+	}
+	/*Free the string pointer array*/
+	FREE(carried_potions);
+	FREE(stored_potions);
+
 
 	/* Remove the file */
 	fd_kill(file_name);
@@ -4169,4 +4195,3 @@ void do_cmd_knowledge(void)
 	/* Leave "icky" mode */
 	character_icky = FALSE;
 }
-
