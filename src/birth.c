@@ -75,27 +75,27 @@ static background_type background[] =
 {
     {"You are the descendant of a Dwarven ",                                       UNLIKELY,            0,    BG_DWARF},
     {"You are the last descendant of a Dwarven ",                                  COMMON,              10,   END_GROUP},
-    
+
     {"Miner. ",                                                                    COMMON,              0,    BG_DWARF},
     {"Warrior. ",                                                                  COMMON,              0,    0},
     {"Shaman. ",                                                                   UNLIKELY,            15,   0},
     {"Lord. ",                                                                     RARE,                25,   0},
     {"King. ",                                                                     RARE,                25,   END_GROUP},
-    
+
     {"You are the illegitimate and unacknowledged child ",                         RARE,                -20,  BG_FLORENTIAN | BG_NORDIC | BG_GIPSY | BG_DWARF | BG_ELF},
     {"You are the illegitimate but acknowledged child ",                           UNLIKELY,            -10,  0},
     {"You are one of several children ",                                           COMMON,              0,    0},
     {"You are the first child ",                                                   UNLIKELY,            15,   END_GROUP},
-    
+
     {"You are the adopted child ",                                                 COMMON,              5,    BG_GIANT|BG_OGRE|1|BG_TROLL|BG_WEREWOLF},
     {"You are the only child ",                                                    UNLIKELY,            0,    0},
     {"You are one of several children of ",                                        RARE,                0,    END_GROUP},
-    
+
     {"of a guildsman. ",                                                           RARE,                25,   BG_GIANT|BG_OGRE|1|BG_TROLL|BG_WEREWOLF},
     {"of a hunter. ",                                                              COMMON,              25,   0},
     {"of a fisherman. ",                                                           COMMON,              25,   0},
     {"of a Shaman. ",                                                              RARE,                90,   END_GROUP},
-    
+
     {"of a Duke. ",                                                                RARE,                85,   BG_NORDIC| BG_DWARF | BG_ELF},
     {"of a Count. ",                                                               UNLIKELY,            65,   0},
     {"of a guildsman. ",                                                           COMMON,              25,   0},
@@ -104,12 +104,12 @@ static background_type background[] =
     {"of a Shaman. ",                                                              RARE,                90,   0},
     {"of a bard. ",                                                                UNLIKELY,            25,   0},
     {"of the Royal bloodline. ",                                                   RARE,                90,   END_GROUP},
-    
+
     {"of a clan leader. ",                                                         RARE,                60,   BG_GIPSY},
     {"of a craftsman. ",                                                           RARE,                10,   0},
     {"of a fortune-teller. ",                                                      RARE,                15,   0},
     {"of a thief. ",                                                               RARE,                0,    END_GROUP},
-    
+
     {"of a serf. ",                                                                LIKELY,              0,    BG_FLORENTIAN},
     {"of a yeoman. ",                                                              LIKELY,              10,   0},
     {"of a townsman. ",                                                            COMMON,              20,   0},
@@ -122,45 +122,45 @@ static background_type background[] =
     {"of a Seigneur. ",                                                            UNLIKELY,            50,   0},
     {"of a Patrician. ",                                                           UNLIKELY,            50,   0},
     {"of the Royal bloodLine. ",                                                   RARE,                90,   END_GROUP},
-    
+
     { "Your father has elven blood.",                                              UNLIKELY,            35,   BG_ELF},
     { "Your mother has elven blood.",                                              UNLIKELY,            35,   0},
     { "Your grandfather has elven blood.",                                         UNLIKELY,            35,   0},
     { "Your grandmother has elven blood.",                                         UNLIKELY,            35,   END_GROUP},
-    
+
     {"You are one of several children of ",                                        COMMON,              0,    BG_GNOME|BG_LEPRECHAUN|BG_KOBOLD|BG_ATLANTIAN},
     {"You are the only child of ",                                                 UNLIKELY,            15,   END_GROUP},
-    
+
     {"an Atlantian scholar. ",                                                     COMMON,              70,   BG_ATLANTIAN},
     {"an Atlantian researcher. ",                                                  COMMON,              70,   0 },
     {"an Atlantian guardian. ",                                                    COMMON,              80,   END_GROUP },
-    
+
     {"a gnome beggar. ",                                                           RARE,                10,   BG_GNOME},
     {"a gnome braggart. ",                                                         COMMON,              15,   0},
     {"a gnome prankster. ",                                                        COMMON,              15,   0},
     {"a gnome scout. ",                                                            UNLIKELY,            60,   0},
     {"a gnome illusionist. ",                                                      UNLIKELY,            30,   END_GROUP},
-    
+
     {"a shoemaker. ",                                                              COMMON,              15,   BG_LEPRECHAUN},
     {"a storyteller. ",                                                            UNLIKELY,            30,   END_GROUP},
-    
+
     {"a kobold thief. ",                                                           COMMON,              -15,  BG_KOBOLD},
     {"a kobold scout. ",                                                           LIKELY,              0,    0},
     {"a kobold assassin. ",                                                        UNLIKELY,            -30,  END_GROUP},
-    
+
     {"Your real father is a descendant of a troll ",                               COMMON,              0,    BG_TROLL},
     {"Your mother is a descendant of a troll ",                                    UNLIKELY,            0,    END_GROUP},
-    
+
     {"warrior. ",                                                                  COMMON,              0,    BG_TROLL},
     {"Shaman. ",                                                                   UNLIKELY,            15,   0},
     {"chief. ",                                                                    RARE,                1523, END_GROUP},
-    
+
     {"You have Ogre blood from your mothers' side, your father is unaware. ",      UNLIKELY,            0,    BG_OGRE},
     {"You have Ogre blood from your fathers' side, your mother is unaware. ",      UNLIKELY,            0,    END_GROUP},
-    
+
     {"One of your forefathers on your mother's side mother was a Giant. ",         UNLIKELY,            0,    BG_GIANT},
     {"One of your forefathers on your father's side mother was a Giant. ",         UNLIKELY,            0,    END_GROUP},
-    
+
     {"You are the the distant offspring of an unknown Titan. ",                    COMMON,              25,   BG_TITAN },
     {"You are the the distant offspring of Themis. ",                              COMMON,              50,   0},
     {"You are the the distant offspring of Mnemosyne. ",                           UNLIKELY,            40,   0 },
@@ -168,10 +168,10 @@ static background_type background[] =
     {"You are the the distant offspring of Crius. ",                               RARE,                25,   0 },
     {"You are the the distant offspring of Hyperion. ",                            LIKELY,              35,   0 },
     {"You are the the distant offspring of Kronos. ",                              LIKELY,              35,   END_GROUP },
-    
+
     {"You are a rebel child of ",                                                  COMMON,              75,   BG_NEPHILIM},
     {"You are a long lost child of ",                                              UNLIKELY,            35,   END_GROUP},
-    
+
     {"someone with angel blood. ",                                                 UNLIKELY,            15,   BG_NEPHILIM},
     {"an unknown child of an angel. ",                                             UNLIKELY,            15,   0},
     {"an unknown angel. ",                                                         UNLIKELY,            15,   0},
@@ -186,53 +186,53 @@ static background_type background[] =
     {"Sariel. ",                                                                   COMMON,              -20,  0},
     {"one of the Grigori leaders. ",                                               COMMON,              -40,  0},
     {"one of the Grigori. ",                                                       COMMON,              -20,  END_GROUP},
-    
+
     {"You are the black sheep of the family. ",                                    UNLIKELY,            -15,  BG_FLORENTIAN | BG_NORDIC | BG_LEPRECHAUN | BG_GNOME | BG_ELF | BG_DWARF | BG_GIANT | BG_OGRE | BG_TITAN |BG_WEREWOLF},
     {"You are a credit to the family. ",                                           UNLIKELY,            10,   0},
     {"You are a well liked child. ",                                               LIKELY,              5,    END_GROUP},
-    
+
     {"You have left your family the moment you became a werewolf. ",               UNLIKELY,            30,   BG_WEREWOLF},
     {"After some family members went missing, you left the family. ",              LIKELY,              10,   0},
     {"You have slain most of your village and went hiding. ",                      LIKELY,              -5,   END_GROUP},
 
     {"You have been captured by the League, forced now to do their bidding.",      UNLIKELY,            -5,   BG_WEREWOLF},
     {"You have joined the League, hoping to find a cure.",                         LIKELY,              10,   END_GROUP},
-    
+
     {"You have awakened 1 millenium ago, and yearn to retreat soon. ",             LIKELY,              35,   BG_ELDER},
     {"You have studied demonic magics for 700 years, and seek some adventure. ",   UNLIKELY,            20,   0},
     {"You are on a quest to find your Maker since the world is born. ",            RARE,                70,   END_GROUP},
-    
+
     {"You were born in Ireland. ",                                                 UNLIKELY,            15,   BG_FAE|BG_LEPRECHAUN|BG_GNOME },
     {"You were born in Scotland. ",                                                UNLIKELY,            15,   0 },
     {"You were born in Wales. ",                                                  UNLIKELY,            15,   0 },
     {"You were born under a full moon. ",                                          UNLIKELY,            15,   END_GROUP},
-    
+
     {"You have a great sense of humour, ",                                         UNLIKELY,            15,   BG_FAE|BG_LEPRECHAUN|BG_GNOME},
     {"You have the reputation of a prankster, ",                                   UNLIKELY,            -15,  0},
     {"You have an insatiable wanderlust, ",                                        UNLIKELY,            15,   END_GROUP},
-    
+
     {"curly red hair, ",                                                           UNLIKELY,            0,    BG_FAE|BG_LEPRECHAUN|BG_GNOME},
     {"spiked red hair, ",                                                          UNLIKELY,            0,    END_GROUP},
-    
+
     {"blue eyes, and a very fair complexion.",                                     UNLIKELY,            0,    BG_FAE|BG_LEPRECHAUN|BG_GNOME},
     {"green eyes, and a fair complexion.",                                           UNLIKELY,            0,    END_GROUP},
-    
+
     {"You have a green complexion, ",                                              UNLIKELY,            0,    BG_KOBOLD},
     {"You have a dark green complexion, ",                                         UNLIKELY,            0,    0},
     {"You have a yellow complexion, ",                                             UNLIKELY,            0,    0},
     {"You have a green complexion with red markings, ",                            UNLIKELY,            0,    END_GROUP},
-    
+
     {"bright eyes, ",                                                              UNLIKELY,            0,    BG_KOBOLD},
     {"yellow eyes, ",                                                              UNLIKELY,            0,    0},
     {"red eyes, ",                                                                 UNLIKELY,            0,    0},
     {"snake-like eyes, ",                                                          UNLIKELY,            0,    END_GROUP },
-    
+
     {"and a long sinuous tail.",                                                   UNLIKELY,            0,    BG_KOBOLD},
     {"and a short tail.",                                                          UNLIKELY,            0,    0},
     {"and a muscular tail.",                                                       UNLIKELY,            0,    0},
     {"and a long tail.",                                                           UNLIKELY,            0,    0},
     {"and a sinuous tail.",                                                        UNLIKELY,            0,    END_GROUP },
-    
+
     /* Nordic eyes */
     {"You have dark brown eyes, ",                                                 RARE,                0,    BG_NORDIC| BG_DWARF | BG_ELF },
     {"You have brown eyes, ",                                                      RARE,                0,    0},
@@ -242,7 +242,7 @@ static background_type background[] =
     {"You have amber eyes, ",                                                      UNLIKELY,            5,    0},
     {"You have grey eyes, ",                                                       LIKELY,              0,    0},
     {"You have violet eyes, ",                                                     RARE,                5,    END_GROUP},
-    
+
     /* South Europe / Middle East eyes */
     {"You have dark brown eyes, ",                                                 LIKELY,              0,    BG_GIPSY|BG_FLORENTIAN|BG_TITAN|BG_GIANT|BG_OGRE},
     {"You have brown eyes, ",                                                      COMMON,              0,    0},
@@ -251,7 +251,7 @@ static background_type background[] =
     {"You have blue eyes, ",                                                       UNLIKELY,            0,    0},
     {"You have amber eyes, ",                                                      UNLIKELY,            0,    0},
     {"You have grey eyes, ",                                                       UNLIKELY,            0,    END_GROUP},
-    
+
     /* World citizen */
     {"You have dark brown eyes, ",                                                 UNLIKELY,            0,    BG_NEPHILIM|BG_ATLANTIAN|BG_ELDER},
     {"You have brown eyes, ",                                                      UNLIKELY,            0,    0},
@@ -261,87 +261,87 @@ static background_type background[] =
     {"You have amber eyes, ",                                                      UNLIKELY,            0,    0},
     {"You have violet eyes, ",                                                     RARE,                5,    0},
     {"You have grey eyes, ",                                                       UNLIKELY,            0,    END_GROUP},
-    
+
     {"straight ",                                                                  UNLIKELY,            0,    BG_NEPHILIM|BG_ATLANTIAN|BG_ELDER|BG_GIPSY|BG_FLORENTIAN|BG_TITAN|BG_GIANT|BG_OGRE|BG_NORDIC| BG_DWARF | BG_ELF},
     {"wavy ",                                                                      UNLIKELY,            0,    0},
     {"curly ",                                                                     UNLIKELY,            0,    END_GROUP},
-    
+
     /*Nordic hairs manga glasses ;}, */
     {"flaming red hair, ",                                                         UNLIKELY,            0,    BG_NORDIC| BG_DWARF | BG_ELF},
     {"arctic blond hair, ",                                                        COMMON,              0,    0},
     {"jet black hair, ",                                                           UNLIKELY,            0,    0},
     {"brown hair, ",                                                               LIKELY,              0,    END_GROUP},
-    
+
     /*South Europe / Middle East eyes manga glasses ;}, */
     {"jet black hair, ",                                                           UNLIKELY,            0,    BG_GIPSY|BG_FLORENTIAN|BG_TITAN|BG_GIANT|BG_OGRE},
     {"brown hair, ",                                                               UNLIKELY,            0,    0},
     {"dark brown hair, ",                                                          UNLIKELY,            0,    END_GROUP},
-    
+
     /* World citizen hair */
     {"flaming red hair, ",                                                         UNLIKELY,            0,    BG_NEPHILIM|BG_ATLANTIAN|BG_ELDER},
     {"arctic blond hair, ",                                                        UNLIKELY,            0,    0},
     {"jet black hair, ",                                                           UNLIKELY,            0,    0},
     {"brown hair, ",                                                               UNLIKELY,            0,    END_GROUP},
-    
+
     /*Nordic Complexions */
     {"and a dark complexion.",                                                     RARE,                0,    BG_NORDIC| BG_DWARF | BG_ELF},
     {"and an average complexion.",                                                 RARE,                0,    0},
     {"and a fair complexion.",                                                     COMMON,              0,    0},
     {"and a very fair complexion.",                                                LIKELY,              0,    END_GROUP},
-    
+
     /*South Europe / Middle East complexions */
     {"and a very dark complexion.",                                                COMMON,              0,    BG_GIPSY|BG_FLORENTIAN|BG_TITAN|BG_GIANT|BG_OGRE},
     {"and a dark complexion.",                                                     COMMON,              0,    0},
     {"and an average complexion.",                                                 UNLIKELY,            0,    0},
     {"and a fair complexion.",                                                     RARE,                0,    END_GROUP},
-    
+
     /*World citizen complexions */
     {"and a very dark complexion.",                                                UNLIKELY,            0,    BG_NEPHILIM|BG_ATLANTIAN|BG_ELDER},
     {"and a dark complexion.",                                                     UNLIKELY,            0,    0},
     {"and an average complexion.",                                                 UNLIKELY,            0,    0},
     {"and a fair complexion.",                                                     UNLIKELY,            0,    0},
     {"and a very fair complexion.",                                                UNLIKELY,            0,    END_GROUP},
-    
+
     {"You have become corrupted in the last century. ",                             LIKELY,              0,    BG_HORROR},
     {"You have become corrupted a millenium ago. ",                                 UNLIKELY,            0,    0},
     {"You have become corrupted during the Great Flood. ",                          RARE,                10,   END_GROUP},
-    
+
     {"You have slimy skin, empty glowing eyes, and ",                              UNLIKELY,            15,   BG_HORROR},
     {"You have slimy scales, a set of eyestalks, and ",                            UNLIKELY,            15,   END_GROUP},
-    
+
     {"three tentacles around your mouth.",                                         UNLIKELY,            0,    BG_HORROR},
     {"four tentacles around your mouth.",                                          UNLIKELY,            0,    0},
     {"five tentacles around your mouth.",                                          RARE,                -5,   END_GROUP},
-    
+
     {"You sire was a mindless demonic spawn.",                                     COMMON,              15,   BG_IMP},
     {"You sire was a minor demon.",                                                LIKELY,              20,   0},
     {"You sire was a major demon.",                                                UNLIKELY,            25,   0},
     {"You sire was a demon lord.",                                                 RARE,                30,   END_GROUP},
-    
+
     {"You have a dark red skin, ",                                                 COMMON,              0,    BG_IMP},
     {"You have a slimy green skin, ",                                              LIKELY,              -5,   0},
     {"You have a jet black skin, ",                                                UNLIKELY,            5,    END_GROUP},
-    
+
     {"claws, fangs, spikes, and glowing red eyes.",                                UNLIKELY,            -10,  BG_IMP},
     {"claws, fangs, and glowing red eyes.",                                        LIKELY,              -5,   0},
     {"claws, and glowing red eyes.",                                               LIKELY,              -5,   END_GROUP},
-    
+
     {"You were created to guard ",                                                 UNLIKELY,            45,   BG_GUARDIAN},
     {"You were created to protect ",                                               UNLIKELY,            45,   0},
     {"You were created to preserve ",                                              UNLIKELY,            45,   0},
     {"You were created to oversee ",                                               UNLIKELY,            45,   END_GROUP},
-    
+
     {"a lost Elder",                                                               UNLIKELY,            0,    BG_GUARDIAN},
     {"the sarcophagus of an Elder",                                                UNLIKELY,            -10,  0},
     {"the stasis chamber of an Elder",                                             UNLIKELY,            -10,  0},
     {"the first Elder",                                                            RARE,                15,   END_GROUP},
-    
+
     {" Horror.",                                                                   RARE,                -5,   BG_GUARDIAN},
     {".",                                                                          LIKELY,              0,    END_GROUP},
-    
+
     {"You were cursed because ",                                                   UNLIKELY,            0,    BG_SKELETON},
     {"You were hexed because ",                                                    UNLIKELY,            0,    END_GROUP},
-    
+
     {"you slept with a medicine man's daughter. ",                                 UNLIKELY,            7,    BG_SKELETON},
     {"sold fake magical amulets to a medicine man. ",                              UNLIKELY,            7,    0},
     {"pretended to be more powerful than the local medicin man. ",                 UNLIKELY,            7,    0},
@@ -349,38 +349,38 @@ static background_type background[] =
     {"you asked a medicine man for immortality. ",                                 UNLIKELY,            7,    0},
     {"were in the wrong place at the wrong time. ",                                UNLIKELY,            7,    0},
     {"you thought it would get you a role with Johny Depp. ",                      UNLIKELY,            7,    END_GROUP},
-    
+
     {"You have dirty, dry bones, ",                                                UNLIKELY,            0,    BG_SKELETON},
     {"You have rotten black bones, ",                                              UNLIKELY,            0,    0},
     {"You have filthy, brown bones, ",                                             UNLIKELY,            0,    0},
     {"You have shining white bones, ",                                             UNLIKELY,            0,    END_GROUP},
-    
+
     {"and a blackened skull.",                                                     UNLIKELY,            0,    BG_SKELETON},
     {"and a fractured skull.",                                                     UNLIKELY,            0,    0},
     {"and empty eyesockets.",                                                      UNLIKELY,            0,    END_GROUP},
-    
+
     {"You have slime green eyes, ",                                                UNLIKELY,            5,    BG_MUMMY|BG_TROLL},
     {"You have puke yellow eyes, ",                                                UNLIKELY,            5,    0},
     {"You have blue-bloodshot eyes, ",                                             UNLIKELY,            5,    0},
     {"You have glowing red eyes, ",                                                UNLIKELY,            5,    END_GROUP},
-    
+
     {"dirty ",                                                                     UNLIKELY,            0,    BG_MUMMY|BG_TROLL},
     {"mangy ",                                                                     UNLIKELY,            0,    0},
     {"oily ",                                                                      UNLIKELY,            0,    END_GROUP},
-    
+
     {"sea-weed green hair, ",                                                      UNLIKELY,            0,    BG_MUMMY|BG_TROLL},
     {"bright red hair, ",                                                          UNLIKELY,            0,    0},
     {"dark purple hair, ",                                                         UNLIKELY,            0,    END_GROUP},
-    
+
     {"and green ",                                                                 UNLIKELY,            0,    BG_MUMMY|BG_TROLL},
     {"and blue ",                                                                  UNLIKELY,            0,    0},
     {"and white ",                                                                 UNLIKELY,            0,    0},
     {"and black ",                                                                 UNLIKELY,            0,    END_GROUP},
-    
+
     {"ulcerous skin.",                                                             UNLIKELY,            0,    BG_MUMMY|BG_TROLL},
     {"scabby skin.",                                                               UNLIKELY,            0,    0},
     {"leprous skin.",                                                              UNLIKELY,            0,    END_GROUP},
-    
+
     {"You were created by the local dabbler in the dark arts. ",                   UNLIKELY,            0,    BG_MUMMY},
     {"You were created by a priest of Mazghuna. ",                                 UNLIKELY,            0,    0},
     {"You were created by a dark priest in Saqqara. ",                             UNLIKELY,            0,    0},
@@ -388,19 +388,19 @@ static background_type background[] =
     {"You were created by a pact with Egyptian Sand Demons. ",                     UNLIKELY,            -5,   0},
     {"You were created by the high priests of Gizeh. ",                            UNLIKELY,            5,    0},
     {"You were created by a Pharaoh. ",                                            UNLIKELY,            15,   END_GROUP},
-    
+
     {"You arose from an unmarked grave. ",                                         LIKELY,              15,   BG_VAMPIRE},
     {"In life you were a simple peasant, the victim of a powerful Vampire Lord. ", UNLIKELY,            25,   0},
     {"In life you were a Vampire Hunter, but they got you. ",                      UNLIKELY,            60,   0},
     {"In life you were a Necromancer. ",                                           RARE,                30,   0},
     {"In life you were a powerful noble. ",                                        UNLIKELY,            25,   0},
     {"In life you were a powerful and cruel tyrant. ",                             RARE,                55,   END_GROUP},
-    
+
     {"You have jet-black hair, ",                                                  UNLIKELY,            0,    BG_VAMPIRE},
     {"You have matted brown hair, ",                                               UNLIKELY,            0,    0},
     {"You have white hair, ",                                                      UNLIKELY,            0,    0},
     {"You have a bald head, ",                                                     UNLIKELY,            0,    END_GROUP},
-    
+
     {"eyes like red coals and a deathly pale complexion. ",                        UNLIKELY,            0,    BG_VAMPIRE},
     {"blank white eyes and an alabaster complexion. ",                             UNLIKELY,            0,    0},
     {"feral yellow eyes and glistening fangs. ",                                   UNLIKELY,            0,    0},
@@ -427,10 +427,10 @@ static background_type background[] =
     {"Your mother was Lilith, the first Woman. ",                                   LIKELY,              80,   0},
     {"You are created from raw Chaos itself. ",                                    LIKELY,              90,   0},
     {"You are a descendant of a Devil Prince. ",                                   LIKELY,              70,   END_GROUP},
-        
+
     {"Your mother was Lilith, the first Woman. ",                                   LIKELY,              80,   BG_LILI},
     {"Your grandmother was Lilith, the first Woman. ",                               UNLIKELY,            65,   END_GROUP},
-    
+
     {"You have coal black eyes, ",                                                 LIKELY,              0,    BG_DEVILSPAWN|BG_SUCCUBUS|BG_IMP|BG_LILI},
     {"You have pale pink eyes, ",                                                  LIKELY,              0,    0},
     {"You have eyes like red embers, ",                                            LIKELY,              0,    0},
@@ -448,12 +448,12 @@ static background_type background[] =
     {"and a slight sulphurous smell about you.",                                   LIKELY,              3,    0},
     {"and a bright red skin.",                                                     LIKELY,              0,    0},
     {"and a forked tongue.",                                                       LIKELY,              3,    END_GROUP},
-    
+
     {"and a pitch black skin.",                                                    LIKELY,              0,    BG_SUCCUBUS},
     {"and a fiery red skin.",                                                       LIKELY,              0,    0},
     {"and an emerald green skin.",                                                 LIKELY,              0,    0},
     {"and a frosty blue skin.",                                                    LIKELY,              0,    END_GROUP},
-    
+
     { NULL,                                                                        0,                   0,    END_GROUP}, /* Ye famous null record */
 };
 
@@ -852,7 +852,7 @@ static cptr subraces_descriptions[COUNT_SUBRACES][COUNT_LINES] =
 		"for magic. They resists chaos and confusion naturally. ",
 		NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL},
 	/*Lili*/
-	{   "Born from Lilith and Asmodeus they know that Lillith   ",
+	{   "Born from Lilith and Asmodeus they know that Lilith   ",
 		"will come one day after them. They join the League for ",
 		"power, power they will use when the Day comes. Lili are",
 		"beautiful and rebellious like their mother and sensual ",
@@ -1228,7 +1228,7 @@ static bool point_mod_player(void)
 	char modpts[4] = "none";
 	int x = 0;
 	int i, points;
-	
+
 	/* Check first if the player already decided once, if so, retrieve those values */
 	if( points_decided == TRUE )
 	{
@@ -1425,7 +1425,7 @@ static bool point_mod_player(void)
 			continue;
 		}
 	}
-	
+
 		/* Store values into cache */
 		for( i = 0 ; i < 6 ; i++ )
 		{
@@ -1434,7 +1434,7 @@ static bool point_mod_player(void)
 		}
 		/*Indicate the cache can be used*/
 		points_decided = TRUE;
-	
+
 	return TRUE;
 }
 
@@ -1563,12 +1563,12 @@ u16b choose_realm(u16b choices)
 	int k;	char p2 = ')';
 	*/
 	char buf[80];
-	
+
 	cptr str;
-	
+
 	/* Yah, do me own centering logic, bad konijn! */
 	int screen_width = 80;
-	
+
 	/*Collect all chooseable realms, store them in array*/
 	/*Note that n contains how many realms can be chosen*/
 	n = 0;
@@ -1581,31 +1581,31 @@ u16b choose_realm(u16b choices)
 		}
 		byteflag=byteflag*2;
 	}
-	
+
 	/* Load new birth screen with restart option ( yah, a waste of bytes, but also it guarantees a clean screen */
 	do_cmd_load_screen( ANGBAND_DIR_FILE ,  "birth2.txt" );
-	
+
 	/* Get Vocation for da question*/
 	cp_ptr = &class_info[p_ptr->pclass];
 	str = cp_ptr->title;
-	
+
 	/* Choose a realm ?*/
 	choice = 0;
 	while (1)
 	{
-		
+
 		sprintf(buf,"What realm will you master, %s?", str);
 		c_put_str(TERM_YELLOW, buf, 5, ((screen_width-(int)strlen(buf))>>1) );
-		
+
 		for(i=0;i<n;i++)
 			c_put_str(TERM_L_BLUE, i==choice?">":" " , 8+i , 2 );
-				
+
 		for(i=0;i<n;i++)
 			c_put_str(i==choice?TERM_L_BLUE:TERM_L_WHITE, realm_names[picks[i]].name , 8+i, 3);
-		
+
 		for(i=0;i<COUNT_LINES;i++)
 			put_str( realm_strings[picks[choice]][i]==NULL?"                                                       ":realm_strings[picks[choice]][i] , 8+i , 23 );
-		
+
 		c = inkey();
 		if (c == 'Q') quit(NULL);
 		if (c == 'S' || c == 's') return (0);
@@ -1630,7 +1630,7 @@ u16b choose_realm(u16b choices)
 		else bell();
 	}
 	return picks[choice];
-	
+
 }
 
 u16b choose_realm_randomly(u16b choices)
@@ -1639,10 +1639,10 @@ u16b choose_realm_randomly(u16b choices)
 	int k, n;
 	u16b  bitflag;
 	byte realm;
-	
+
 	bitflag = 1;
 	n = 0;
-	
+
 	for( realm = 1 ; realm <= MAX_REALM ; realm++ )
 	{
 		if( ( choices & bitflag ) && p_ptr->realm1 != realm )
@@ -1652,7 +1652,7 @@ u16b choose_realm_randomly(u16b choices)
 		}
 		bitflag = bitflag * 2;
 	}
-	
+
 	/* Get a realm */
 	k=rand_range(0,n-1);
 	return (picks[k]);
@@ -2257,7 +2257,7 @@ static void player_wipe(void)
 
     /* Evil patron is not set yet */
     p_ptr->evil_patron = -1;
-    
+
 	/* Wipe the history */
 	for (i = 0; i < 4; i++)
 	{
@@ -2307,7 +2307,7 @@ static void player_wipe(void)
 	{
 		potion_alch[i].known1 = potion_alch[i].known2 =FALSE;
 	}
-	
+
 	/* Reset the "monsters" */
 	for (i = 1; i < MAX_R_IDX; i++)
 	{
@@ -2347,7 +2347,7 @@ static void player_wipe(void)
 	debug_live = FALSE;
 	debug_wild = FALSE;
 	debug_mode = FALSE;
-	
+
 	/* Assume no winning game */
 	total_winner = FALSE;
 
@@ -2413,21 +2413,21 @@ static void player_outfit_helper( byte tval , byte sval, byte number , byte acti
 {
 	object_type	forge;
 	object_type	*q_ptr;
-	
+
 	/* Get local object */
 	q_ptr = &forge;
-	
+
 	/* Hack to initialize non-first spellbook of realm 1*/
 	if (tval == TV_BOOK_REALM1 && sval > 0 )
 		tval = TV_MIRACLES_BOOK + p_ptr->realm1 - 1;
-	
+
 	/*Prep the object with type and subtype*/
 	object_prep(q_ptr, lookup_kind(tval, sval));
-	
+
 	/* Hack for poison dagger */
 	if (tval == TV_SWORD && p_ptr->pclass == CLASS_ROGUE && p_ptr->realm1 == REALM_DEATH)
 		q_ptr->name2 = EGO_BRAND_POIS;
-	
+
 	/* Hack for the demonic blade */
 	if(tval == TV_SWORD && ( p_ptr->pclass == CLASS_WARLOCK || p_ptr->pclass == CLASS_HELL_KNIGHT ) )
 		q_ptr->name2 = EGO_DEMONIC;
@@ -2540,7 +2540,7 @@ static bool navigate_birth_screen( int *choice, int min, int max, bool *done )
 {
 	char c;
 	int dir;
-			
+
 	c = inkey();
 	if (c == 'Q') quit(NULL);
 	if (c == 'S' || c == 's') return (FALSE);
@@ -2561,7 +2561,7 @@ static bool navigate_birth_screen( int *choice, int min, int max, bool *done )
 	dir = get_keymap_dir(c);
 	if(dir==2 || c=='2')*choice=*choice+1==max?min:*choice+1;
 	if(dir==8 || c=='8')*choice=*choice==min?max-1:*choice-1;
-			
+
 	return TRUE;
 }
 
@@ -2578,7 +2578,7 @@ static void fill_birth_screen( char *title , int start , int end , int choice , 
 
 	/* Put title such as 'What's yer genus?" */
 	c_put_str(TERM_YELLOW, title, 5, ((screen_width-strlen(title))>>1) );
-	
+
 	/* Put the > for the chosen option, remove phantom >'s at the same time */
 	for(i=start;i<=end;i++)
 		c_put_str(TERM_L_BLUE, i==choice?">":" " , first_choice_row+i , 2 );
@@ -2589,11 +2589,11 @@ static void fill_birth_screen( char *title , int start , int end , int choice , 
 	if(!nolist)
 	for(i=start;i<=end;i++)
 		c_put_str(i==choice?TERM_L_BLUE:TERM_L_WHITE, choices[i+offset], first_choice_row+i, 3);
-	
+
 	/* Blank out description space to remove phantom text */
 	for(i=0;i<COUNT_LINES;i++)
 		put_str( descriptions[i]==NULL?"                                                       ":descriptions[i] , 8+i , 23 );
-	
+
 	/* Put Hit Dice if they are known*/
 	if( mhp != 0 )
 	{
@@ -2607,7 +2607,7 @@ static void fill_birth_screen( char *title , int start , int end , int choice , 
 		sprintf(buf,doplus?"Experience Factor: +%d":"Experience Factor: %d", exp );
 		put_str( buf , 7+COUNT_LINES , 55);
 	}
-	
+
 	/* Put stat mods */
 	sprintf(buf,"%s"," ");
 	for( i=0; i < STAT_COUNT ; i++ )
@@ -2621,7 +2621,7 @@ static void fill_birth_screen( char *title , int start , int end , int choice , 
 		}
 	}
 	put_str( buf , 6+COUNT_LINES , 23);
-	
+
 	/*Put the cursor next to the current choice for UI niceness*/
 	/* Except of course if this routine isnt putting the choices */
 	if(!nolist)
@@ -2660,7 +2660,7 @@ static void fix_stat_limit( int mval[STAT_COUNT], byte stat1 , byte stat2 , byte
  */
 
 static bool player_birth_aux_aux( bool autoroll , bool point_mod){
-	
+
 	int stat_counter;
 	int i;
 	bool flag = FALSE;
@@ -2681,7 +2681,7 @@ static bool player_birth_aux_aux( bool autoroll , bool point_mod){
 			/* Feedback */
 			if (autoroll)
 			{
-				
+
 				Term_clear();
 
 				put_str("Name        :", 2, 1);
@@ -2809,7 +2809,7 @@ static bool player_birth_aux_aux( bool autoroll , bool point_mod){
 
 			/* Hack -- get a chaos patron even if you are not a Hell Knight, evil patron  */
 			p_ptr->evil_patron = (s16b)(randint(MAX_PATRON)) - 1;
-			
+
 			/*Clear all mutations*/
 			p_ptr->muta1 = 0;
 			p_ptr->muta2 = 0;
@@ -2951,10 +2951,10 @@ static bool player_birth_aux()
 	bool done = FALSE;
 
 	cptr str;
-	
+
 	char c;
 	//int stat_counter;
-	
+
 	/* These vars were used for a) , one day they  might come back
 		int n;	char p2 = ')';
 	*/
@@ -2968,35 +2968,35 @@ static bool player_birth_aux()
 	bool point_mod = TRUE;
 
 	char inp[80];
-	
+
 	/* Yah, do me own centering logic, bad konijn! */
 	int screen_width = 80;
 	s16b zero_stats[] = {0,0,0,0,0,0};
 
 	/*** Intro ***/
-	
+
 	/* Clear screen */
 	Term_clear();
-	
+
 	choice = 0;
-	
+
 	do_cmd_load_screen( ANGBAND_DIR_FILE ,  "birth.txt" );
-	
+
 	/* Choose a sex*/
 	while (1)
 	{
-		
+
 		c_put_str(TERM_YELLOW, "Will you be a Lady or a Gentleman ?", 5, 22);
 
 		for(i=0;i<COUNT_SEXES;i++)
 			c_put_str(TERM_L_BLUE, i==choice?">":" " , 8+i , 2 );
-		
+
 		for(i=0;i<COUNT_SEXES;i++)
 			c_put_str(i==choice?TERM_L_BLUE:TERM_L_WHITE, sexes_strings[i], 8+i, 3);
-		
+
 		for(i=0;i<COUNT_LINES;i++)
 			put_str( sexes_descriptions[choice][i]==NULL?"":sexes_descriptions[choice][i] , 8+i , 23 );
-		
+
 		c = inkey();
 		if (c == 'Q') quit(NULL);
 		if (c == 'S' || c == 's')
@@ -3132,11 +3132,11 @@ static bool player_birth_aux()
 		str = sp_ptr->address;
 		/* Load new birth screen with restart option ( yah, a waste of bytes, but also it guarantees a clean screen */
 		do_cmd_load_screen( ANGBAND_DIR_FILE ,  "birth2.txt" );
-		
+
 		/* Choose a genus, set initial choice to 0, set up loop flag*/
 		choice = 0;
 		done = FALSE;
-		
+
 		while (!done)
 		{
 			/*Set up title*/
@@ -3146,21 +3146,21 @@ static bool player_birth_aux()
 			/*Allow user to navigate/cancel/quit/read help*/
 			if( navigate_birth_screen( &choice, 0, COUNT_RACES , &done ) == FALSE ) return FALSE;
 		}
-		
+
 		/* Set temporary race until player has drilled down */
 		p_ptr->prace = choice;
-		
+
 		/* Load new birth screen with restart option ( yah, a waste of bytes, but also it guarantees a clean screen */
 		do_cmd_load_screen( ANGBAND_DIR_FILE ,  "birth2.txt" );
-		
+
 		/*Set some helper variables*/
 		a_offset = subraces[p_ptr->prace][0];
 		a_end = subraces[p_ptr->prace][1] - subraces[p_ptr->prace][0];
-		
+
 		/* Choose specific genus, set initial choice to 0, set up loop flag*/
 		choice = 0;
 		done   = FALSE;
-		
+
 		while (!done)
 		{
 			/*Set up title*/
@@ -3170,10 +3170,10 @@ static bool player_birth_aux()
 			/*Allow user to navigate/cancel/quit/read help*/
 			if( navigate_birth_screen( &choice, 0 , a_end+1 , &done ) == FALSE ) return FALSE;
 		}
-		
+
 		/* Choice was just for UI, choice+a_offset has what we really want, which is now the new role of choice */
 		choice = choice+a_offset;
-		
+
 		if( ( choice==SUCCUBUS || choice == LILI ) && p_ptr->psex == GENTLEMAN )
 		{
 			/*No cross dressing in my game ;)*/
@@ -3184,7 +3184,7 @@ static bool player_birth_aux()
 			sp_ptr = &sex_info[p_ptr->psex];
 			str = sp_ptr->address;
 		}
-		
+
 		if( ( choice==LEPRECHAUN || choice==LEPRECHAUN || choice==TITAN ) && p_ptr->psex == LADY )
 		{
 			/*No cross dressing in my game ;)*/
@@ -3195,7 +3195,7 @@ static bool player_birth_aux()
 			sp_ptr = &sex_info[p_ptr->psex];
 			str = sp_ptr->address;
 		}
-		
+
 		/*Unless we are afflicated we get the right to be born under a constellation*/
 		if( p_ptr->prace == R_HUMAN && choice!= AFFLICTED )
 		{
@@ -3205,7 +3205,7 @@ static bool player_birth_aux()
 			done   = FALSE;
 			/* Load new birth screen with restart option ( yah, a waste of bytes, but also it guarantees a clean screen */
 			do_cmd_load_screen( ANGBAND_DIR_FILE ,  "birth2.txt" );
-			
+
 			while (!done)
 			{
 				/*Set up title*/
@@ -3225,7 +3225,7 @@ static bool player_birth_aux()
 			done = FALSE;
 			/* Load new birth screen with restart option ( yah, a waste of bytes, but also it guarantees a clean screen */
 			do_cmd_load_screen( ANGBAND_DIR_FILE ,  "birth2.txt" );
-			
+
 			while (!done)
 			{
 				/*Set up title*/
@@ -3250,7 +3250,7 @@ static bool player_birth_aux()
 		}
 		/* Set sign */
 		bsp_ptr = &sign_info[p_ptr->psign];
-		
+
 		/* Assume no corruptions */
 		hack_corruption = FALSE;
 
@@ -3259,10 +3259,10 @@ static bool player_birth_aux()
 		/* rp_ptr = &race_info[p_ptr->prace]; */
 		p_race = race_info[p_ptr->prace];
 		if (p_ptr->prace==DEVILSPAWN) hack_corruption= TRUE;
-		
+
 		/* Get a random name now we have a race and a genus*/
 		create_random_name(p_ptr->prace , p_ptr->psex , player_name);
-		
+
 		/* Roll for age/height/weight now that we have a race and a genus*/
 		get_ahw();
 
@@ -3305,11 +3305,11 @@ static bool player_birth_aux()
 				sprintf(buf, "%s", cp_ptr->title);
 			}
 			c_put_str(TERM_L_BLUE, buf, 6+choice, 3);
-			
+
 			/*Allow user to navigate/cancel/quit/read help*/
 			if( navigate_birth_screen( &choice, 0 ,MAX_CLASS , &done ) == FALSE ) return FALSE;
 		}
-		
+
 		p_ptr->pclass = choice;
 		cp_ptr = &class_info[p_ptr->pclass];
 		mp_ptr = &realms_info[p_ptr->pclass];
@@ -3324,7 +3324,7 @@ static bool player_birth_aux()
 
 		if(!get_realms())
 			return FALSE;
-		
+
 		if(p_ptr->realm1)
 		{
 			if(p_ptr->realm2)
@@ -3355,7 +3355,7 @@ static bool player_birth_aux()
 		if (autoroll)
 		{
 			int mval[STAT_COUNT];
-			
+
 			do_cmd_load_screen( ANGBAND_DIR_FILE ,  "birth2.txt" );
 			sprintf(buf,"Enter minimum values for these stats");
 			c_put_str(TERM_YELLOW, buf, 5, ((screen_width-strlen(buf))>>1) );
@@ -3475,9 +3475,6 @@ void player_birth(void)
 		/* Initialize */
 		store_init(n);
 	}
-	
+
 	store_maint_all(10);
 }
-
-
-
