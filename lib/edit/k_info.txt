@@ -1,4 +1,4 @@
-# File: k_info.txt
+arounddispelarmour# File: k_info.txt
 
 
 # This file is used to initialize the "lib/raw/k_info.raw" file, which is
@@ -51,7 +51,7 @@ G:,:d
 I:80:1:500
 W:5:0:1:1
 A:5/1
-D:Eating this mushroom will cause your eyes to go blind, inducing some confusion for a short while, 
+D:Eating this mushroom will cause your eyes to go blind, inducing some confusion for a short while,
 D:however you will also gain access to a new level of awareness.
 
 N:2:Fright
@@ -59,7 +59,7 @@ G:,:d
 I:80:2:500
 W:5:0:1:1
 A:5/1
-D:Without precaution, eating this mushroom will cause your body to panic. 
+D:Without precaution, eating this mushroom will cause your body to panic.
 D:You will be unable to attack in close combat but you will be able to outrun most enemies.
 
 N:3:Confusion
@@ -67,7 +67,7 @@ G:,:d
 I:80:3:500
 W:5:0:1:0
 A:5/1
-D:Without precaution this mushroom will confuse you, causing you to fumble with your weapon 
+D:Without precaution this mushroom will confuse you, causing you to fumble with your weapon
 D:and wander around aimlessly.
 
 N:4:Hallucination
@@ -92,7 +92,7 @@ G:,:d
 I:80:13:500
 W:10:0:1:50
 A:10/1
-D:Eating this mushroom will cure you blindness and heal you a little. 
+D:Eating this mushroom will cure you blindness and heal you a little.
 D:It will also protect you from blindness for some time.
 
 N:7:Cure Paranoia
@@ -100,7 +100,7 @@ G:,:d
 I:80:14:500
 W:10:0:1:25
 A:10/1
-D:Eating this mushroom will cure your paranoia and heal you a little. 
+D:Eating this mushroom will cure your paranoia and heal you a little.
 D:It will also protect you from fear for some time.
 
 N:8:Cure Confusion
@@ -108,7 +108,7 @@ G:,:d
 I:80:15:500
 W:10:0:1:50
 A:10/1
-D:Eating this mushroom will cure your confusion and heal you a little. 
+D:Eating this mushroom will cure your confusion and heal you a little.
 D:It will also protect you from confusion for some time.
 
 N:9:Weakness
@@ -207,23 +207,25 @@ G:,:U
 I:80:35:5000
 W:0:0:10:3
 A:0/1:5/1:10/1
-D:Gaius Plinius Secundus of the Roman Empire boasted that these biscuits would be edible for centuries. 
-D:Such nonperishable food was particularly useful during journeys and wars, and twice baked biscuits 
+D:Gaius Plinius Secundus of the Roman Empire boasted that these biscuits would be edible for centuries.
+D:Such non-perishable food was particularly useful during journeys and wars, and twice baked biscuits
 D:were a staple food of the Roman Legions.
 
 N:22:& Hard Biscuit~
 G:,:U
 I:80:32:5000
 W:0:0:2:1
-D:Gaius Plinius Secundus of the Roman Empire boasted that these biscuits would be edible for centuries. 
-D:Such nonperishable food was particularly useful during journeys and wars, and twice baked biscuits 
+A:20/1:40/1
+D:Gaius Plinius Secundus of the Roman Empire boasted that these biscuits would be edible for centuries.
+D:Such non-perishable food was particularly useful during journeys and wars, and twice baked biscuits
 D:were a staple food of the Roman Legions.
 
 N:23:& Black Summer Truffle~
 G:,:u
 I:80:33:1500
 W:0:0:2:500
-D:The black summer truffle thrives in northern Italy, summer truffles do not have as strong an aroma 
+A:20/1
+D:The black summer truffle thrives in northern Italy, summer truffles do not have as strong an aroma
 D:or taste as winter truffles do. They are mainly harvested in June and usually sell for a good price.
 
 N:24:& White Truffle~
@@ -231,9 +233,9 @@ G:,:w
 I:80:36:3000
 W:1:0:5:2000
 A:1/1
-D:The White truffle or Alba Truffle comes from the Langhe area of the Piedmont region in northern Italy and, 
-D:most famously, in the countryside around the city of Alba. Growing symbiotically with oak, hazel, poplar 
-D:and beech and fruiting in autumn, they can reach 12 cm diameter and 500 g, though are usually much smaller. 
+D:The White truffle or Alba Truffle comes from the Langhe area of the Piedmont region in northern Italy and,
+D:most famously, in the countryside around the city of Alba. Growing symbiotically with oak, hazel, poplar
+D:and beech and fruiting in autumn, they can reach 12 cm diameter and 500 g, though are usually much smaller.
 D:The flesh is pale cream or brown with white marbling, they usually sell for a good price.
 
 N:25:& Piece~ of Ambrosia
@@ -241,22 +243,24 @@ G:,:B
 I:80:37:7500
 W:5:0:3:10
 A:5/1:10/1:20/1
-D:Food of the gods! In Homer's poem Hera "cleansed all defilement from her lovely flesh" (Iliad xiv.170). 
+D:Food of the gods! In Homer's poem Hera "cleansed all defilement from her lovely flesh" (Iliad xiv.170).
 D:When eaten by you it will cure poison, heal damage and restore your charisma.
 
 N:26:& Bottle~ of Brunello
 G:,:y
 I:80:38:500
 W:0:0:5:1
-D:Brunello di Montalcino is a wine made from grapes grown in vineyards surrounding the hilltop town of Montalcino 
+A:10/1:20/1
+D:Brunello di Montalcino is a wine made from grapes grown in vineyards surrounding the hilltop town of Montalcino
 D:(about 5 miles south of Sienna) in Tuscany.
 
 N:27:& Bottle~ of Chianti
 G:,:r
 I:80:39:1000
 W:0:0:10:2
-D:Chianti is a very dry red wine, with very concentrated fruit character, most often made entirely from the sangiovese grape. 
-D:Sangioves or Sanguis Jovis, the Latin origin for the varietal name, literally means "blood of Jove" and it is likely that 
+A:0/1:5/1:10/1
+D:Chianti is a very dry red wine, with very concentrated fruit character, most often made entirely from the Sangiovese grape.
+D:Sangiovese or Sanguis Jovis, the Latin origin for the varietal name, literally means "blood of Jove" and it is likely that
 D:Sangiovese (a.k.a. Sangioveto or San Gioveto) was known by Etruscan winemakers.
 
 ## XXX 28 XXX ##
@@ -272,8 +276,8 @@ I:23:1:0
 W:0:0:5:1
 A:0/1
 P:0:1d1:-2:-4:0
-F:SHOW_MODS | 
-D:A dagger is essentially a special form of knife, where the tang is placed along the center line of the blade. 
+F:SHOW_MODS |
+D:A dagger is essentially a special form of knife, where the tang is placed along the center line of the blade.
 D:This one is broken.
 
 #KONIJN 31 was bastard sword
@@ -284,7 +288,7 @@ W:15:0:30:350
 A:15/1
 P:0:2d4:0:0:0
 F:SHOW_MODS
-D:This blade was common in the Roman Empire, long and slender it's considered good for cutting, chopping and thrusting. 
+D:This blade was common in the Roman Empire, long and slender it's considered good for cutting, chopping and thrusting.
 D:It can inflict a surprising amount of damage given it's weight.
 
 N:32:& Scimitar~
@@ -294,7 +298,7 @@ W:10:0:130:250
 A:10/1
 P:0:2d5:0:0:0
 F:SHOW_MODS
-D:This sword is common in the Middle East, it has a curved blade with a ridge near the end. It's considered good for slashing 
+D:This sword is common in the Middle East, it has a curved blade with a ridge near the end. It's considered good for slashing
 D:and is the preferred weapon for many heroes. It is the forefather of the sabre.
 
 N:33:& Tulwar~
@@ -314,9 +318,9 @@ W:10:0:150:255
 A:10/1:15/1
 P:0:2d5:0:0:0
 F:SHOW_MODS
-D:This sword is also called a knight's or knighly sword. It looks different due to the flat bar used as a guard. The overall 
-D:shape of the sword when held point down is that of a cross. It is believed this shape was encouraged by the church to remind 
-D:Knights of their religion. It was however very popular due to the protection it offered to the hand and certain attacks that 
+D:This sword is also called a knight's or knightly sword. It looks different due to the flat bar used as a guard. The overall
+D:shape of the sword when held point down is that of a cross. It is believed this shape was encouraged by the church to remind
+D:Knights of their religion. It was however very popular due to the protection it offered to the hand and certain attacks that
 D:rely on the cross to trap the blade of the enemy.
 
 N:35:& Short Sword~
@@ -326,7 +330,7 @@ W:5:0:80:90
 A:5/1
 P:0:1d7:0:0:0
 F:SHOW_MODS
-D:This common sword is the sword of rogues and brawlers. Easy to hide, fairly lethal and sporting a large eight-shaped guard it 
+D:This common sword is the sword of rogues and brawlers. Easy to hide, fairly lethal and sporting a large eight-shaped guard it
 D:is considered to be good for cutting and stabbing.
 
 N:36:& Blade~ of the Abyss
@@ -336,8 +340,8 @@ W:70:0:180:4000
 A:70/8
 P:0:6d5:0:0:0
 F:RES_CHAOS | SHOW_MODS
-D:This blade twists and turns as you look at it, shifting shape and size constantly. It was forged in the Abyss below Hell before the 
-D:war of Angels took place. While it is a symbol of chaos and can inflict dislocation, confusion, draining and tranformations on its 
+D:This blade twists and turns as you look at it, shifting shape and size constantly. It was forged in the Abyss below Hell before the
+D:war of Angels took place. While it is a symbol of chaos and can inflict dislocation, confusion, draining and tranformations on its
 D:victims, it will shield you from Chaos.
 
 N:37:& Two-Handed Sword~
@@ -347,7 +351,7 @@ W:30:0:200:775
 A:30/1:40/1
 P:0:3d6:0:0:0
 F:SHOW_MODS
-D:This sword is really a longsword with a longer grip providing room for two hands. It's commonly held in combat with both hands, 
+D:This sword is really a longsword with a longer grip providing room for two hands. It's commonly held in combat with both hands,
 D:though sometimes may be used single-handed. This sword is used for striking, cutting, and thrusting.
 
 #KONIJN 38 was main gauche
@@ -358,8 +362,8 @@ W:3:0:30:25
 A:3/1
 P:0:1d5:0:0:0
 F:SHOW_MODS
-D:Designed to be used together with a rapier, this dagger is fitted with a side ring, recurved quillons, 
-D:and a depression at the base of one side of the blade to accommodate the thumb and facilitate a firmer grip. 
+D:Designed to be used together with a rapier, this dagger is fitted with a side ring, recurved quillons,
+D:and a depression at the base of one side of the blade to accommodate the thumb and facilitate a firmer grip.
 D:The waves in the blade are intended to act like "speed bumps" in breaking the impact of a blow from an opponent's blade.
 
 N:39:& Cutlass~
@@ -369,9 +373,9 @@ W:5:0:110:85
 A:5/1
 P:0:1d7:0:0:0
 F:SHOW_MODS
-D:This blade is a short, slashing sword, with a slightly curved blade sharpened on the cutting edge, 
-D:and a hilt featuring a solid cupped guard. It's best known as a sailor's weapon of choice, because 
-D:it's robust enough to hack through heavy ropes, canvas, and wood. It's also short enough to use 
+D:This blade is a short, slashing sword, with a slightly curved blade sharpened on the cutting edge,
+D:and a hilt featuring a solid cupped guard. It's best known as a sailor's weapon of choice, because
+D:it's robust enough to hack through heavy ropes, canvas, and wood. It's also short enough to use
 D:in relatively close quarters, such as during boarding actions, in the rigging, or below decks.
 
 N:40:& Executioner's Sword~
@@ -381,7 +385,7 @@ W:40:0:260:850
 A:40/1
 P:0:4d5:0:0:0
 F:SHOW_MODS
-D:This sword was designed specifically for decapitation of condemned criminals. It is intended for two-handed use, but lacks a point, 
+D:This sword was designed specifically for decapitation of condemned criminals. It is intended for two-handed use, but lacks a point,
 D:so that its' overall length is that of a long sword. The quillions are quite short and straight with a faceted pommel.
 
 #KONIJN 41 was katana
@@ -395,8 +399,8 @@ W:10:0:130:300
 A:10/1:20/1
 P:0:2d5:0:0:0
 F:SHOW_MODS
-D:This sword is commonly found all over Europe, it's long and has a cruciform hilt. All parts of the sword are used for offensive purposes, 
-D:including the pommel and crossguard. 
+D:This sword is commonly found all over Europe, it's long and has a cruciform hilt. All parts of the sword are used for offensive purposes,
+D:including the pommel and crossguard.
 
 N:43:& Dagger~
 G:|:W
@@ -415,7 +419,7 @@ A:5/1
 P:0:1d6:0:0:0
 F:SHOW_MODS
 D:This blade is common in Europe, it's a relatively slender, sharply pointed sword, used mainly for thrusting attacks.
-D:It has a complex hilt which is constructed to provide protection for the hand wielding it. While the blade might be broad 
+D:It has a complex hilt which is constructed to provide protection for the hand wielding it. While the blade might be broad
 D:enough to cut to some degree, the strength of the rapier is its ability as a thrusting weapon.
 
 N:45:& Sabre~
@@ -425,8 +429,8 @@ W:5:0:50:50
 A:5/1
 P:0:1d7:0:0:0
 F:SHOW_MODS
-D:This blade is a backsword with a curved, single-edged blade and a rather large hand guard, covering the 
-D:knuckles of the hand as well as the thumb and forefinger. 
+D:This blade is a backsword with a curved, single-edged blade and a rather large hand guard, covering the
+D:knuckles of the hand as well as the thumb and forefinger.
 
 N:46:& Small Sword~
 G:|:W
@@ -455,7 +459,7 @@ W:20:0:150:200
 A:20/1
 P:0:2d4:0:0:0
 F:SHOW_MODS
-D:It's a heavy metal ball linked by a chain and metal ring, 
+D:It's a heavy metal ball linked by a chain and metal ring,
 D:designed for maximum impact damage.
 
 N:49:& Whip~
@@ -474,8 +478,8 @@ W:10:0:150:353
 A:10/1
 P:0:2d6:0:0:0
 F:SHOW_MODS
-D:This flail is made from two metal sticks attached by a short chain; one stick is held, the other one connects. 
-D:Its considered a weapon of the peasants and the poor. 
+D:This flail is made from two metal sticks attached by a short chain; one stick is held, the other one connects.
+D:Its considered a weapon of the peasants and the poor.
 
 N:51:& Two-Handed Flail~
 G:\:y
@@ -484,8 +488,8 @@ W:45:0:280:590
 A:45/1
 P:0:3d6:0:0:0
 F:SHOW_MODS
-D:This flail is made from a half dozen of metal sticks attached by a short chain; one stick is held, the other five connect. 
-D:Its considered a weapon of the peasants and the poor. 
+D:This flail is made from a half dozen of metal sticks attached by a short chain; one stick is held, the other five connect.
+D:Its considered a weapon of the peasants and the poor.
 
 N:52:& Morning Star~
 G:\:D
@@ -530,7 +534,7 @@ W:15:0:180:502
 A:15/1
 P:0:3d4:0:0:0
 F:SHOW_MODS
-D:This is a heavier version of the regular mace. The added weight allows for a much greater impact. 
+D:This is a heavier version of the regular mace. The added weight allows for a much greater impact.
 
 N:57:& Mace~ of Disruption
 G:\:v
@@ -540,7 +544,7 @@ A:80/8
 P:0:5d8:0:0:0
 F:SLAY_UNDEAD | SHOW_MODS
 
-#Konijn removed the lucerne hammer, its really a war hammer
+#Konijn removed the Lucerne hammer, its really a war hammer
 #N:58:& Lucerne Hammer~
 #I:21:10:0
 
@@ -553,7 +557,7 @@ W:15:0:180:408
 A:15/1
 P:0:2d6:0:0:0
 F:SHOW_MODS
-D:This double bladed weapon has an axe blade on one end and a mean looking spike 
+D:This double bladed weapon has an axe blade on one end and a mean looking spike
 D:on the other end. The axe blade itself tapers off into a spike as well.
 
 N:60:& Glaive~
@@ -563,7 +567,7 @@ W:20:0:190:363
 A:20/1
 P:0:2d6:0:0:0
 F:SHOW_MODS
-D:This single bladed weapon has a single edged bladed fixed onto the socket of a long shaft like an axe. 
+D:This single bladed weapon has a single edged bladed fixed onto the socket of a long shaft like an axe.
 D:It is used in mostly the same manner as a quarterstaff.
 
 N:61:& Halberd~
@@ -573,7 +577,7 @@ W:25:0:190:430
 A:25/1
 P:0:3d5:0:0:0
 F:SHOW_MODS
-D:This two-handed pole weapon consists of an axe blade topped with a spike mounted on a long shaft. 
+D:This two-handed pole weapon consists of an axe blade topped with a spike mounted on a long shaft.
 D:The shaft of this weapon has been reinforced with metal rims to block swords more effectively.
 
 N:62:& Awl-Pike~
@@ -583,8 +587,8 @@ W:10:0:160:340
 A:10/1
 P:0:1d8:0:0:0
 F:SHOW_MODS
-D:This weapon is a thrusting spear, it consists of a long thin spike of square cross section measuring 
-D:a meter or more in lenght, mounted to a round wooden shaft and secured with a pair of langets extending from the socket. 
+D:This weapon is a thrusting spear, it consists of a long thin spike of square cross section measuring
+D:a meter or more, mounted to a round wooden shaft and secured with a pair of langets extending from the socket.
 
 N:63:& Pike~
 G:/:s
@@ -593,8 +597,8 @@ W:15:0:160:358
 A:15/1
 P:0:2d5:0:0:0
 F:SHOW_MODS
-D:This weapon is a pole weapon, a very long thrusting spear used two-handed and used extensively by infantry 
-D:both for attacks on enemy foot soldiers and as a counter-measure against cavalry assaults. 
+D:This weapon is a pole weapon, a very long thrusting spear used two-handed and used extensively by infantry
+D:both for attacks on enemy foot soldiers and as a counter-measure against cavalry assaults.
 
 N:64:& Spear~
 G:/:s
@@ -603,7 +607,7 @@ W:5:0:50:36
 A:5/1
 P:0:1d6:0:0:0
 F:SHOW_MODS
-D:This weapon is a pole weapon consisting of a wooden shaft with a sharpened leaf-shaped metal head. 
+D:This weapon is a pole weapon consisting of a wooden shaft with a sharpened leaf-shaped metal head.
 D:This spear is used primarily for thrusting with one hand and is heavier and sturdier than those intended exclusively for throwing.
 
 N:65:& Trident~
@@ -613,7 +617,7 @@ W:5:0:70:120
 A:5/1
 P:0:1d8:0:0:0
 F:SHOW_MODS
-D:This weapon is a three-pronged spear. It is known for its long reach and ability to trap other long-weapons 
+D:This weapon is a three-pronged spear. It is known for its long reach and ability to trap other long-weapons
 D:between prongs to disarm their wielder.
 
 N:66:& Contus~
@@ -632,7 +636,7 @@ W:40:0:230:500
 A:40/1
 P:0:4d4:0:0:0
 F:SHOW_MODS
-D:A huge and heavy two-headed axe it is used by only the strongest of warriors. Its crushing blow usually 
+D:A huge and heavy two-headed axe it is used by only the strongest of warriors. Its crushing blow usually
 D:disables any enemy with the first blow.
 
 N:68:& Battle Axe~
@@ -642,7 +646,7 @@ W:15:0:170:334
 A:15/1
 P:0:2d8:0:0:0
 F:SHOW_MODS
-D:This weapon is the Nordic version of the halberd. The pole arm of choice for most Nordics it is ideally 
+D:This weapon is the Nordic version of the halberd. The pole arm of choice for most Nordics it is ideally
 D:suited for slashing and thrusting.
 
 N:69:& Lochaber Axe~
@@ -652,10 +656,10 @@ W:45:0:250:750
 A:45/1
 P:0:3d8:0:0:0
 F:SHOW_MODS
-D:This heavy war weapon consists of parts: shaft and blade.The shaft is about two meters long and mounted with blade of about 
-D:half a meter. The blade is attached in two places and has a sharp point coming off the top. In addition a hook is attached 
-D:to the back of the blade. A butt spike is included as a counterweight to the heavy axe head. Langlets are incorporated down 
-D:each side of the shaft to prevent the head from being cut off. 
+D:This heavy war weapon consists of parts: shaft and blade. The shaft is about two meters long and mounted with blade of about
+D:half a meter. The blade is attached in two places and has a sharp point coming off the top. In addition a hook is attached
+D:to the back of the blade. A butt spike is included as a counterweight to the heavy axe head. Langlets are incorporated down
+D:each side of the shaft to prevent the head from being cut off.
 
 N:70:& Broad Axe~
 G:/:s
@@ -674,7 +678,7 @@ A:45/1
 P:0:5d3:0:0:0
 F:SHOW_MODS
 D:This scythe has had its blade transformed so that it extends upright from the staff, and is used much like a halberd.
-D:It consists of a wooden shaft of 170 centimeters with 2 handles and one long curved blade mounted at the lower end. 
+D:It consists of a wooden shaft of 170 centimetres with 2 handles and one long curved blade mounted at the lower end.
 
 N:72:& Scythe~ of Slicing
 G:/:r
@@ -1058,7 +1062,6 @@ W:30:0:250:850
 A:30/1
 P:16:1d4:-2:0:0
 
-
 # This shield does not belong here
 
 N:122:& Shield~ of Deflection
@@ -1068,7 +1071,6 @@ W:70:0:100:10000
 A:70/8
 P:10:1d1:0:0:10
 F:IGNORE_ACID
-
 
 ### The Cloaks ###
 
@@ -1086,7 +1088,6 @@ W:60:0:5:7500
 A:75/5
 P:6:0d0:0:0:4
 F:RES_DARK | RES_LITE
-
 
 ### The Gloves ###
 
@@ -1110,7 +1111,6 @@ I:31:5:0
 W:50:0:40:100
 A:50/1
 P:5:1d1:0:0:0
-
 
 ### The shields ###
 
@@ -1247,7 +1247,7 @@ I:45:21:0
 W:20:0:2:1500
 A:20/1
 F:FREE_ACT | EASY_KNOW
-D:This ring is covered with the alchemical symbol of mercury, providing restistance to paralysing effects.
+D:This ring is covered with the alchemical symbol of mercury, providing resistance to paralysing effects.
 
 N:145:Weakness
 G:=:y
@@ -1255,7 +1255,7 @@ I:45:2:-5
 W:5:0:2:0
 A:5/1
 F:CURSED | STR | HIDE_TYPE
-D:This is a splendid looking ring, only because you know it's a ring of Weakness 
+D:This is a splendid looking ring, only because you know it's a ring of Weakness
 D:can you make out a depiction of Rath the Lion-bearer on the inside of the ring.
 
 N:146:Flames
@@ -1300,7 +1300,7 @@ I:45:3:-5
 W:5:0:2:0
 A:5/1
 F:CURSED | INT | HIDE_TYPE
-D:This is a splendid looking ring, only because you know it's a ring of Stupidity 
+D:This is a splendid looking ring, only because you know it's a ring of Stupidity
 D:can you make out a depiction of Deception, the first element of the dark ruler, on the inside of the ring.
 
 N:151:Damage
@@ -1340,7 +1340,7 @@ A:30/1
 F:SEE_INVIS | EASY_KNOW
 D:This ring has dozens of eyes engraved all over it, obviously granting the Second Sight when worn.
 
-#I have always hated the sustain rings with a passion 
+#I have always hated the sustain rings with a passion
 #I have never ever worn one...
 #These are sustain rings I might wear
 N:156:Sustain Body
@@ -1366,7 +1366,7 @@ W:30:0:2:600
 P:0:0d0:5:5:0
 A:30/1
 F:AGGRAVATE | EASY_KNOW
-D:This ring has hair fine lines all over the surface with blood flowing through them, 
+D:This ring has hair fine lines all over the surface with blood flowing through them,
 D:when worn this ring will enhance your combat skills but aggravate all monsters around you.
 
 N:159:Elevation
@@ -1501,14 +1501,14 @@ G:?:d
 I:70:16:0
 W:15:0:5:125
 A:15/1
-D:When read, this scroll will enchant a piece of armor trying to improve its armor bonus.
+D:When read, this scroll will enchant a piece of armour trying to improve its armour bonus.
 
 N:176:Identify
 G:?:d
 I:70:12:0
 W:1:0:5:50
 A:1/1:5/1:10/1:30/1
-D:When read, this scroll will identify an item of your choice, revealing bonuses to combat and armor and obvious powers. 
+D:When read, this scroll will identify an item of your choice, revealing bonuses to combat and armour and obvious powers.
 D:You need a scroll of *identify* or have the town Alchemist research an item to know all powers, resistances and brands.
 
 N:177:*Identify*
@@ -1522,7 +1522,7 @@ N:178:Rumour
 G:?:d
 I:70:51:0
 W:1:0:5:10
-A:1/1
+A:1/1:5/1
 D:It reads, 'Help, I have been kidnapped and forced to work as a prisoner in the fortune cookie factory!'.
 
 N:179:Chaos
@@ -1596,7 +1596,7 @@ G:?:d
 I:70:36:0
 W:5:0:5:30
 A:5/1
-D:When read, an aura of confusion will surround you. This aura will trigger the first time you hit a monster, 
+D:When read, an aura of confusion will surround you. This aura will trigger the first time you hit a monster,
 D:it will coalesce into a single touch of confusion which might or might not confuse the monster you touch.
 
 N:189:Magic Mapping
@@ -1706,7 +1706,7 @@ G:?:d
 I:70:52:0
 W:70:0:5:200000
 A:70/16
-D:When read, this valuable, rare and fickle scroll will try to turn a basic or ego item into an artifact. 
+D:When read, this valuable, rare and fickle scroll will try to turn a basic or ego item into an artifact.
 
 N:206:Recharging
 G:?:d
@@ -1769,7 +1769,7 @@ G:?:d
 I:70:20:0
 W:50:0:5:500
 A:50/1:50/1
-D:When read, this scroll will enchant your armor beyond the limits of regular enchant armor scrolls.
+D:When read, this scroll will enchant your armour beyond the limits of regular enchant armor scrolls.
 
 N:215:Curse Armor
 G:?:d
@@ -1811,7 +1811,7 @@ G:?:d
 I:70:11:0
 W:5:0:5:150
 A:5/1
-D:When read in the dungeon, this scroll will with some delay teleport you into the town. 
+D:When read in the dungeon, this scroll will with some delay teleport you into the town.
 D:When read in the town, this scroll will will with some delay  teleport you back into Hell.
 
 N:221:*Destruction*
@@ -2526,7 +2526,7 @@ I:55:29:0
 W:50:0:50:2500
 A:50/1:70/1
 P:0:1d2:0:0:0
-D:When used, this staff will attempt to destroy everything arround you.
+D:When used, this staff will attempt to destroy everything around you.
 
 N:308:Starlight
 G:_:d
@@ -2630,7 +2630,7 @@ I:55:24:0
 W:50:0:50:1200
 A:50/1
 P:0:1d2:0:0:0
-D:When used, this staff will damage or dispell all evil monsters in sight.
+D:When used, this staff will damage or dispel all evil monsters in sight.
 
 N:321:Probing
 G:_:d
@@ -2638,7 +2638,7 @@ I:55:23:0
 W:30:0:50:2000
 A:30/1
 P:0:1d2:0:0:0
-D:When used, this staff will inform the player about hitpoints, resistances and abilities of all monsters surrounding him.
+D:When used, this staff will inform the player about hit points, resistances and abilities of all monsters surrounding him.
 
 N:322:Darkness
 G:_:d
@@ -2662,7 +2662,7 @@ I:55:25:0
 W:70:0:50:4000
 A:70/2
 P:0:1d2:0:0:0
-D:When used, this staff will damage or dispell all monsters in sight.
+D:When used, this staff will damage or dispel all monsters in sight.
 
 N:325:the Magi
 G:_:d
@@ -2782,7 +2782,7 @@ I:7:1:0
 W:5:0:250:20
 A:5/1
 P:0:2d3:0:0:0
-D:This crude wooden chest contains no runes nor jewerly, its probably not worth opening.
+D:This crude wooden chest contains no runes nor jewellery, its probably not worth opening.
 
 N:339:& Large wooden chest~
 G:~:s
@@ -2790,7 +2790,7 @@ I:7:5:0
 W:15:0:500:60
 A:15/1
 P:0:2d5:0:0:0
-D:This crude wooden chest contains no runes nor jewerly, you doubt the loot will be exciting.
+D:This crude wooden chest contains no runes nor jewellery, you doubt the loot will be exciting.
 
 N:340:& Small iron chest~
 G:~:s
@@ -2798,7 +2798,7 @@ I:7:2:0
 W:25:0:300:100
 A:25/1
 P:0:2d4:0:0:0
-D:This small iron chest has some some runes, there might be something interesting in it.
+D:This small iron chest has some runes, there might be something interesting in it.
 
 N:341:& Large iron chest~
 G:~:s
@@ -2806,7 +2806,7 @@ I:7:6:0
 W:35:0:1000:150
 A:35/1
 P:0:2d6:0:0:0
-D:This sturdy iron chest has some runes and jewelry, there might be something interesting in it.
+D:This sturdy iron chest has some runes and jewellery, there might be something interesting in it.
 
 N:342:& Small steel chest~
 G:~:s
@@ -2822,7 +2822,7 @@ I:7:7:0
 W:55:0:1000:250
 A:55/1
 P:0:2d6:0:0:0
-D:This sturdy steel chest is adorned with so many runes and jewelry, it must be important!
+D:This sturdy steel chest is adorned with so many runes and jewellery, it must be important!
 
 N:344:& Ruined chest~
 G:~:s
@@ -2849,7 +2849,7 @@ W:1:0:30:2
 A:1/1
 P:0:1d1:0:0:0
 F:EASY_KNOW
-D:It's an incredible wooden torch, designed for adventurerers that need to carry a weapon, a shield, a dungeon map, a spell book and a light source. 
+D:It's an incredible wooden torch, designed for adventurers that need to carry a weapon, a shield, a dungeon map, a spell book and a light source.
 
 N:347:& Brass Lantern~
 G:~:U
@@ -2858,7 +2858,7 @@ W:3:0:50:35
 A:3/1
 P:0:1d1:0:0:0
 F:EASY_KNOW | IGNORE_FIRE
-D:It's an incredible brass lantern, designed for adventurerers that need to carry a weapon, a shield, a dungeon map, a spell book and a light source. 
+D:It's an incredible brass lantern, designed for adventurers that need to carry a weapon, a shield, a dungeon map, a spell book and a light source.
 
 N:348:& Flask~ of oil
 G:!:y
@@ -2866,7 +2866,7 @@ I:77:0:7500
 W:1:0:10:3
 A:1/1
 P:0:2d6:0:0:0
-D:It's a flask made of camel leather, its been closed with a cork stopper and tightly wound rope. 
+D:It's a flask made of camel leather, its been closed with a cork stopper and tightly wound rope.
 D:Inside it is a foul smelling liquid found in the sands of Persia. You should handle it with care.
 
 N:349:& Empty Bottle~
@@ -2910,7 +2910,7 @@ I:66:7:0
 W:40:0:15:4000
 A:40/4
 P:0:1d1:0:0:0
-D:When zapped, this rod will inform you about hitpoints, resistances and abilities of all monsters surrounding him.
+D:When zapped, this rod will inform you about hit points, resistances and abilities of all monsters surrounding him.
 
 N:354:Recall
 G:-:d
@@ -2918,8 +2918,8 @@ I:66:3:0
 W:30:0:15:4000
 A:30/4
 P:0:1d1:0:0:0
-D:When zapped in the dungeon, this rod will with some delay teleport you into the town. 
-D:When zapped in the town, this rod will will with some delay  teleport you back into Hell.
+D:When zapped in the dungeon, this rod will with some delay teleport you into the town.
+D:When zapped in the town, this rod will with some delay teleport you back into Hell.
 
 N:355:Illumination
 G:-:d
@@ -3112,7 +3112,7 @@ D:When zapped, this rod will give you a speed boost for a short while.
 N:379:[Call of the Wild]
 G:?:G
 I:92:0:0
-W:10:0:30:100 
+W:10:0:30:100
 A:10/1
 P:0:1d1:0:0:0
 D:This is the first book of Nature magic, containing spells of detection, healing, charming and enhancement.
@@ -3120,7 +3120,7 @@ D:This is the first book of Nature magic, containing spells of detection, healin
 N:380:[Nature Mastery]
 G:?:G
 I:92:1:0
-W:20:0:30:1000 
+W:20:0:30:1000
 A:20/1
 P:0:1d1:0:0:0
 D:This is the second book of Nature magic, containing spells of dungeon alteration, destruction, detection, charming and healing.
@@ -3414,7 +3414,7 @@ I:38:30:0
 W:110:0:250:350000
 A:110/64
 P:40:2d4:-3:0:15
-F:RES_ACID | RES_FIRE | RES_COLD | RES_ELEC | RES_POIS | 
+F:RES_ACID | RES_FIRE | RES_COLD | RES_ELEC | RES_POIS |
 F:RES_NETHER | RES_NEXUS | RES_CHAOS | RES_LITE | RES_DARK |
 F:RES_SHARDS | RES_SOUND | RES_DISEN | RES_CONF |
 F:ACTIVATE | IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
@@ -3423,16 +3423,16 @@ D:can be activated for massive damage and provides a lot of protection.
 
 ## PDSM has been restored to (almost) its former glory in Zangband
 
-N:413:& Helmet~ of the Shedu 
+N:413:& Helmet~ of the Shedu
 G:]:G
 I:32:7:0
 W:45:0:50:10000
 A:80/4
 P:8:1d3:0:0:10
 F:IGNORE_ACID | IGNORE_FIRE | IGNORE_ELEC | IGNORE_COLD
-D:The Shedu are celestial beings from Mesopotamian mythology, they are 
-D:depicted as bulls below the waist and human above the waist. They also 
-D:have the ears and horns of a bull. Their helments are known to be exceptionally 
+D:The Shedu are celestial beings from Mesopotamian mythology, they are
+D:depicted as bulls below the waist and human above the waist. They also
+D:have the ears and horns of a bull. Their helmets are known to be exceptionally
 D:hardy with multiple enchantments protecting the bearer from various elements.
 
 N:414:& Shield~ of the Shedu
@@ -3442,8 +3442,8 @@ W:70:0:100:10000
 A:80/4
 P:8:1d3:0:0:10
 F:IGNORE_ACID | IGNORE_FIRE | IGNORE_ELEC | IGNORE_COLD
-D:The Shedu are celestial beings from Mesopotamian mythology, they are 
-D:depicted as bulls below the waist and human above the waist. They also 
+D:The Shedu are celestial beings from Mesopotamian mythology, they are
+D:depicted as bulls below the waist and human above the waist. They also
 D:have the ears and horns of a bull. Their shields are known to be exceptionally
 D:hardy with multiple enchantments protecting the bearer from various elements.
 
@@ -3455,7 +3455,7 @@ I:75:23:-1
 W:55:0:4:0
 A:55/4
 P:0:20d20:0:0:0
-D:This vial will damage you (5000 hp).
+D:This vial will damage you (5000 HP).
 
 N:416:Ruination
 G:!:d
@@ -3463,7 +3463,7 @@ I:75:15:-1
 W:40:0:4:0
 A:40/8
 P:0:20d20:0:0:0
-D:This vial will damage you (10d10 hp), and damage your strength, constitution, dexterity, 
+D:This vial will damage you (10d10 HP), and damage your strength, constitution, dexterity,
 D:intelligence, wisdom and charisma.
 
 N:417:Detonations
@@ -3472,7 +3472,7 @@ I:75:22:-1
 W:60:0:4:10000
 A:60/8
 P:0:25d25:0:0:0
-D:This vial will damage you severely (50d20 hp), it will also stun and cut you.
+D:This vial will damage you severely (50d20 HP), it will also stun and cut you.
 
 N:418:Augmentation
 G:!:d
@@ -3480,7 +3480,7 @@ I:75:55:100
 W:40:0:4:60000
 A:40/16
 P:0:1d1:0:0:0
-D:This potion will raise your strength, constitution, dexterity, intelligence, wisdom and charisma.
+D:This potion will raise your strength, constitution, dexterity, intelligence, wisdom, and charisma.
 
 N:419:*Healing*
 G:!:d
@@ -3488,8 +3488,8 @@ I:75:38:200
 W:40:0:4:1500
 A:40/4:60/2:80/1
 P:0:1d1:0:0:0
-D:This potion will heal you (1200 hp) and 
-D:cure poison, blindness, confusion, stunning and cuts.
+D:This potion will heal 1200 hit points and
+D:cure poison, blindness, confusion, stunning, and cuts.
 
 N:420:Life
 G:!:d
@@ -3497,9 +3497,9 @@ I:75:39:200
 W:60:0:4:5000
 A:60/4:100/2
 P:0:1d1:0:0:0
-D:This potion will restore all drained experience, heal you (5000 hp), 
-D:cure poison, blindness, confusion, hallucination, stunning and cuts. 
-D:It will restore you strength, constitution, dexterity, intelligence, wisdom and charisma.
+D:This potion will restore all drained experience, heal 5000 hit points,
+D:cure poison, blindness, confusion, hallucination, stunning and cuts.
+D:It will restore you strength, constitution, dexterity, intelligence, wisdom, and charisma.
 
 N:421:Self Knowledge
 G:!:d
@@ -3515,8 +3515,8 @@ I:75:57:50
 W:70:0:4:80000
 A:70/4
 P:0:1d1:0:0:0
-D:This potion will light up the entire level, increase your intelligence and wisdom, 
-D:detect traps, doors, stairs, treasure and objects, identify everything in your pack, 
+D:This potion will light up the entire level, increase your intelligence and wisdom,
+D:detect traps, doors, stairs, treasure and objects, identify everything in your pack,
 D:and provide a complete analysis of your strengths and weaknesses.
 
 N:423:[Black Channels]
@@ -3540,10 +3540,10 @@ D:This is the final book of Death magic, containing the most powerful spells of 
 N:425:Fear Resistance
 G:=:y
 I:45:38:0
-W:10:0:2:300 
+W:10:0:2:300
 A:10/2
 F:RES_FEAR | EASY_KNOW
-D:You cannot become affraid when wearing this ring.
+D:You cannot become afraid when wearing this ring.
 
 N:426:Playful Shadows
 G:=:d
@@ -3567,7 +3567,7 @@ I:45:41:0
 W:24:0:2:3000
 A:24/2
 F:RES_NEXUS | EASY_KNOW
-D:This ring provides resistance to the effects ofnexus when worn, you will not be displaced by nexus, your stats can no
+D:This ring provides resistance to the effects of nexus when worn, you will not be displaced by nexus, your stats can no
 D:longer become scrambled and storms of nexus will do less damage.
 
 N:429:Sound Resistance
@@ -3640,7 +3640,7 @@ I:75:34:50
 W:0:0:4:15
 A:0/1:1/1:3/1
 P:0:1d1:0:0:0
-D:This potion will heal some hitpoints when drunk.
+D:This potion will heal some hit points when quaffed.
 
 N:438:Clumsiness
 G:!:d
@@ -3648,7 +3648,7 @@ I:75:19:0
 W:5:0:4:0
 A:5/1
 P:0:1d1:0:0:0
-D:This potion will damage your dexterity when drunk.
+D:This potion will damage your dexterity when quaffed.
 
 N:439:Sickliness
 G:!:d
@@ -3747,7 +3747,7 @@ N:491:opals
 G:$:W
 I:100:12:0
 W:1:0:0:18
-D:These are bits and pieces of topaz, they have all colors of the rainbow.
+D:These are bits and pieces of topaz, they have all colours of the rainbow.
 
 N:492:sapphires
 G:$:b
@@ -3777,7 +3777,7 @@ N:496:topaz
 G:$:B
 I:100:17:0
 W:1:0:0:40
-D:These are bits and pieces of topaz, they have all colors of the rainbow.
+D:These are bits and pieces of topaz, they have all colours of the rainbow.
 
 N:497:adamantite
 G:$:G
@@ -3818,7 +3818,7 @@ D:You can only stare at it in shock and awe.
 # is "aware" (always true for lites)
 #
 # The Lites specify "physical colors", which
-# over-ride the "flavor" colors, if any.  
+# over-ride the "flavor" colors, if any.
 #
 # Note that ALL artefacts are given "IGNORE_ACID/ELEC/FIRE/COLD",
 # so we do not need to specify that here.
@@ -3885,7 +3885,7 @@ W:70:0:3:75000
 F:INSTA_ART
 D:It appears to be just a plain golden necklace.
 
-# The Ring of of Gabriel, the Messenger - see artefact list
+# The Ring of Gabriel, the Messenger - see artefact list
 N:506:& Ring~
 G:=:g
 I:45:32:0
@@ -3936,7 +3936,7 @@ D:It appears to be just a plain golden ring.
 
 ### Room for new objects added after 511 (Zangband 2.1.0): 512-575
 
-# Tarot Spellbooks
+# Tarot Spell books
 
 N:512:[Initiations]
 G:?:U
@@ -4035,7 +4035,7 @@ W:30:0:3:15000
 A:30/4
 F:NO_TELE
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
-D:This magical amulet prevents you from teleporting, 
+D:This magical amulet prevents you from teleporting,
 D:it can help you finish off demons that keep teleporting you away.
 
 #523 cannot have EASY_KNOW because it can get random resistances
@@ -4049,7 +4049,7 @@ F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 D:This magical amulet protects you from the four basic elements.
 
-# Somatic Spellbooks
+# Somatic Spell books
 
 N:524:[Basic Chi Flow]
 G:?:U
@@ -4095,17 +4095,17 @@ W:10:0:5:1000
 A:10/1
 P:0:1d1:0:0:0
 F:EASY_KNOW
-D:This orb lights up if you let it float around you. It does not 
+D:This orb lights up if you let it float around you. It does not
 D:require oil and will light for ever.
 
-N:529:Golden corslet~
+N:529:Golden Corslet~
 G:[:y
 I:37:35:0
 W:40:0:340:75000
 A:40/3
 P:40:2d4:-6:0:15
 F:IGNORE_ACID
-D:This item is much too heavy to be useful in combat without heavy enchantment. 
+D:This item is much too heavy to be useful in combat without heavy enchantment.
 D:It should still fetch a handsome price.
 
 #TODO : make this stuff useful, until then it is just a rare find
@@ -4123,7 +4123,7 @@ I:100:19:0
 W:1:0:0:10
 D:These are bronze coins with the faces of rules past and present.
 
-# Demonic Spellbooks
+# Demonic Spell books
 N:532:[Lesser Pacts]
 G:?:U
 I:98:0:0
