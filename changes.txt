@@ -98,6 +98,7 @@
   - 0.8.5 X11 preference file location is now dumped to console in fiddle mode
 
 *Equipment
+  - 0.8.8 Terror masks are awesome now for Black Knights, Hell Knights, and Chaos Knights as well
   - 0.8.8 Made Orbs of Powers greater (7 random flags instead of 3)
   - 0.8.8 Stat potions, experience potions, and invulnerability potions are now considered good
   - 0.8.8 Players are now told that an object has been *identified* when 'I'nspecting it -MITZE-
@@ -233,6 +234,7 @@
   - 0.8.6 Alchemist will now *ID* potions and tell you the alchemical formula
 
 *UI
+  - 0.8.8 Alchemy knowledge overview will now highlight carried potions
   - 0.8.8 Pressing ']' now shows all visible objects --MITZE--
   - 0.8.8 Pressing '[' now shows all visible monsters --MITZE--
   - 0.8.8 Also, let the map cover the screen --MITZE--
@@ -298,6 +300,7 @@
   - 0.8.7 Weapons of KILL_ANGEL now protect the player from Lucifer's curse
 
 *Combat & Magic
+  - 0.8.8 Abaddon's Rage stops time fear now
   - 0.8.8 Call Chaos no longer asks for directions any more, a random direction is chosen for the player.
   - 0.8.6 Spell spoilers are now available inside stores as well, so you can check out what those spells mean
   - 0.8.6 Angelic weapons are blessed now
@@ -409,6 +412,8 @@
   - 0.8.7 Black Markets have deeper items once you start to get over character level 25
 
 *Internals
+  - 0.8.8 Vaults referring to patterns will now show water instead of the pattern
+  - 0.8.8 Zelazny patterns are completely ripped out of the code base now
   - 0.8.8 When compiling for 'live' mode, turn on auto save on every 50 levels
   - 0.8.8 Player and screen dumps are now in a dump sub folder
   - 0.8.8 For some reason dungeon.c only now uses fully the timed[] array, another 100 lines of code goners
@@ -467,10 +472,13 @@
 * Somehow books are targets for identification??
 * Icy Lantern Holder should hold a Icy Lantern
 * Do something with flasks
-* Terror mask should be for Hell Knights and Chaos Knights
-* Review r_info for MALE and FEMALE flag, fed up with 'it'
+
+
 
 * MITZE Get allies, have them fight, dismiss them, walk around, see monsters that are there/not there
+
+* Dont auto kill wands of TO
+* Berserk spell should clear fear
 
 - ONE DAY
 
@@ -480,13 +488,11 @@
 * Ideally, the potion shop should rent it's space for 30K as well
 * When finding a new item that fits what you wear with !k, don't kill it
 
-
 Make sure that arte 5 and 6 can get generated..
 
 - DREAMS
 
 
-- Remove Pattern Walking, its an integrated, undocumented, unholy mess..
 - Level 5 should have Minos' palace placed, with the only exit that points downstairs covering all other downstairs conveniently with rubble ( go calamarain ;)
 - Allow Hell Knights to control the powers of Demonic Weapons ( basically : todo demonic weapons )
 - allow clean_shot to use is_monster_killer(enemy, m_ptr)
