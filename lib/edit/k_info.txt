@@ -1,4 +1,4 @@
-arounddispelarmour# File: k_info.txt
+# File: k_info.txt
 
 
 # This file is used to initialize the "lib/raw/k_info.raw" file, which is
@@ -35,7 +35,7 @@ arounddispelarmour# File: k_info.txt
 
 # Version stamp (required)
 
-V:0.8.7
+V:0.8.8
 
 
 ##### Something special #####

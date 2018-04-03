@@ -239,7 +239,7 @@
 #Nicomedian
 #
 
-V:0.8.7
+V:0.8.8
 
 
 ##### The Player #####
@@ -1444,8 +1444,7 @@ F:FRIENDS | DROP_60 | DROP_90 | ONLY_GOLD |
 F:OPEN_DOOR | FEMALE |  
 S:1_IN_12 | 
 S:HEAL | SCARE | CAUSE_1
-D:Hierodules are Greek temple prostitutes, 
-D:these ones seem to have magical powers. 
+D:Hierodules are Greek temple prostitutes, these ones seem to have magical powers. 
 
 N:104:Anahita
 G:U:v
@@ -1482,8 +1481,7 @@ W:6:2:0:16
 B:HIT:HURT:1d8
 F:FEMALE | DROP_60 | DROP_90 | ONLY_GOLD | 
 F:OPEN_DOOR | BASH_DOOR | FEMALE | 
-D:This is not a common temple prostitute, 
-D:it is best not to sollicit her attention. 
+D:This is not a common temple prostitute, it is best not to sollicit her attention. 
 
 N:107:Canaanite Prostitute
 G:p:R
@@ -1494,8 +1492,7 @@ F:MALE | DROP_60 | DROP_90 | ONLY_GOLD |
 F:OPEN_DOOR | BASH_DOOR | 
 F:STORM
 S:1_IN_3
-D:This male prostitute offered services to men 
-D:in his home country. 
+D:This male prostitute offered services to men in his home country. 
 
 N:108:Qedeshim
 G:p:R
@@ -1503,7 +1500,7 @@ I:110:1:8d8:20:32:30
 W:6:2:0:16
 B:HIT:HURT:1d8
 F:MALE | DROP_60 | DROP_90 | 
-F:OPEN_DOOR | BASH_DOOR | 
+F:OPEN_DOOR | BASH_DOOR | MALE
 D:These pagan priests regularly engaged in homosexual acts. 
 
 N:109:Solon
@@ -1594,7 +1591,7 @@ F:MALE | DROP_60 | DROP_90 |
 F:OPEN_DOOR | BASH_DOOR | 
 F:STORM
 S:1_IN_3
-D:These poor devil visited a prostitute and now pays a heavy price for it. 
+D:This poor devil visited a prostitute and now pays a heavy price for it. 
 
 N:117:Jade
 G:p:R
@@ -1606,27 +1603,7 @@ F:STORM
 S:1_IN_3
 D:She has committed adultery, which bars her from the Heavens. 
 
-N:118:Citizen of Sodom
-G:p:r
-I:110:1:8d8:20:32:30
-W:6:2:0:16
-B:HIT:HURT:1d8
-F:DROP_60 | DROP_90 | 
-F:OPEN_DOOR | BASH_DOOR | MALE | 
-D:Afer the destruction of Sodom, all citizens were placed 
-D:in the second circle of Inferno. 
-
-N:119:Citizen of Gomorrah
-G:p:r
-I:110:1:8d8:20:32:30
-W:6:2:0:16
-B:HIT:HURT:1d8
-F:DROP_60 | DROP_90 | 
-F:OPEN_DOOR | BASH_DOOR | MALE | 
-D:Afer the destruction of Gomorrah, all citizens were placed 
-D:in the second circle of Inferno. 
-
-N:120:Scarred beauty
+N:118:Scarred beauty
 G:p:v
 I:110:1:15d8:2:12:99
 W:6:1:0:20
@@ -1651,7 +1628,7 @@ D:your sanity.
 #Folke the Fat of Bj.lbo -> Dante did not care for Nordics really , so it does not really fit
 #Stenkil , a great archer-> Dante did not care for Nordics really , so it does not really fit
 
-N:121:Rat
+N:119:Rat
 G:r:b
 I:120:1:8d8:30:25:10
 W:7:2:0:35
@@ -1663,7 +1640,7 @@ D:Legend has it that the gluttons can only feed
 D:on rats, toads and snakes. However, since most 
 D:gluttons barely move, these rats have taken an attitude. 
 
-N:122:Snake
+N:120:Snake
 G:J:D
 I:120:2:10d8:10:32:1
 W:7:2:0:40
@@ -1671,7 +1648,7 @@ B:BITE:POISON:4d4
 F:RAND_50 | ANIMAL | RES_POIS | FRIENDS
 D:It has glistening black skin, a sleek body and highly venomous fangs. 
 
-N:123:Frog
+N:121:Frog
 G:F:G
 I:100:2:10d8:10:32:1
 W:7:2:0:20
@@ -1680,7 +1657,7 @@ B:BITE:POISON:1d3
 F:RAND_50 | ANIMAL | FRIENDS
 D:It has glistening green skin, its' mouth is sporting a barbed tongue ready to have lunch. 
 
-N:124:Glutton Shade
+N:122:Glutton Shade
 G:p:u
 I:100:2:8d8:1:20:250
 W:7:1:0:15
@@ -1693,7 +1670,7 @@ D:They have almost faded out of existence, only a shade of their former selves.
 D:Legend has it that they feed themselves with the feces that drop out of the sky 
 D:and the rats, snakes and frogs that run around. 
 
-N:125:Failed Poet
+N:123:Failed Poet
 G:p:o
 I:110:2:8d8:20:20:20
 W:7:4:0:20 
@@ -1702,7 +1679,7 @@ B:HIT:HURT:1d3
 F:DROP_60 | DROP_90 | MALE
 D:He fails to see why Minos chose the Second Circle as a proper punishment. 
 
-N:126:Cannibal
+N:124:Cannibal
 G:p:R
 I:120:1:8d8:30:25:10
 W:7:3:0:35
@@ -1714,7 +1691,7 @@ D:Little known is it that cannibals are also in the second circle,
 D:frustrated by the Glutton shades they hunt each other and the odd 
 D:adventurer. 
 
-N:127:Maenad
+N:125:Maenad
 G:p:v
 I:120:1:8d8:30:25:10
 W:7:3:0:35
@@ -1728,7 +1705,7 @@ D:The mysteries of Dionysus inspired the women to ecstatic frenzy; they indulged
 D:sex and self-intoxication and mutilation. They usually are crowned with vine leaves, clothed in fawnskins and carrying the thyrsus. 
 D:They dance with the wild abandonment of complete union with primeval nature. 
 
-N:128:Agave
+N:126:Agave
 G:p:v
 I:120:4:19d10:20:32:30
 W:7:3:0:120
@@ -1739,7 +1716,7 @@ F:NO_FEAR | DROP_60 | FEMALE | DROP_90 | ESCORT | UNIQUE
 F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | FORCE_MAXHP
 D:A female Maenad, she was the queen of Thebes in Greek mythology, mother of Pentheus and daughter of Harmonia and Cadmus. 
 
-N:129:Red swollen ectoplasma
+N:127:Red swollen ectoplasma
 G:e:r
 I:110:1:5d8:2:6:10
 W:7:2:0:15
@@ -1749,7 +1726,7 @@ F:RAND_50 | RAND_25 |
 F:STUPID | EMPTY_MIND | 
 D:This ectoplasma is swollen, full of blood. 
 
-N:130:Ciacco
+N:128:Ciacco
 G:p:y
 I:110:4:19d10:20:32:30
 W:7:2:0:80
@@ -1759,7 +1736,7 @@ F:ONLY_ITEM | DROP_1D2 | DROP_GOOD |
 D:A good of friend of Dante, he is obsessed with his prophecy 
 D:that Florence will fall in the hands of the Neri. 
 
-N:131:Charles le Gros
+N:129:Charles le Gros
 G:p:y
 I:110:4:19d10:20:32:30
 W:7:2:0:80
@@ -1769,7 +1746,7 @@ F:ONLY_ITEM | DROP_1D2 | DROP_GREAT |
 D:Charles the Fat (in French: Charles le Gros) (c. 832 - January 13, 888) was a king of East Franks, 
 D:king of Italy, a King of France and, as Charles III, Holy Roman Emperor. He was the son of Louis the German. 
 
-N:132:William VI of Aquitaine
+N:130:William VI of Aquitaine
 G:p:y
 I:110:4:19d10:20:32:30
 W:7:2:0:80
@@ -1780,7 +1757,7 @@ D:William VI of Aquitaine (1004-1038), nicknamed the Fat, was Duke of Aquitaine 
 D:William IV of Poitou between 1030 and 1038. William was the eldest son of William V of Aquitaine by his 
 D:first wife Almodis of Gevaudun. 
 
-N:133:Peter II of Cyprus
+N:131:Peter II of Cyprus
 G:p:y
 I:110:4:19d10:20:32:30
 W:7:2:0:80
@@ -1790,7 +1767,7 @@ F:ONLY_ITEM | DROP_1D2 | DROP_GREAT |
 D:Peter II of Cyprus (c. 1357 - October 13, 1382), called The Fat, was king of Cyprus from January 17, 
 D:1369 until his death. He was the son of Peter I of Cyprus and his second wife Eleanor of Aragon. 
 
-N:134:Henry I of Cyprus
+N:132:Henry I of Cyprus
 G:p:y
 I:110:4:19d10:20:32:30
 W:7:2:0:80
@@ -1800,7 +1777,7 @@ F:ONLY_ITEM | DROP_1D2 | DROP_GREAT |
 D:Henry I of Cyprus, nicknamed the Fat, aka Henry of Lusignan, Henri de Lusignan (1217-1253) was King 
 D:of Cyprus January 10, 1218-1253. He was the son of Hugh I of Cyprus and Alice of Champagne of Jerusalem. 
 
-N:135:Cerberus
+N:133:Cerberus
 G:C:R
 I:110:4:24d10:20:60:20
 W:7:3:0:230
@@ -1822,7 +1799,7 @@ D:If you dont know how to handle him, you really better just run away from him.
 ########################################
 ########################################
 
-N:136:Pluto
+N:134:Pluto
 G:U:y
 I:120:4:24d10:20:60:20
 W:8:3:0:300
@@ -1834,7 +1811,7 @@ D:Pluto is meant to symbolize riches, as he is the god of wealth that
 D:springs from soil in ancient mythology. This is appropriate because he 
 D:guards those who hoarded money and those who spent it foolishly. 
 
-N:137:Biting gold coins
+N:135:Biting gold coins
 G:$:y
 I:100:1:18d8:5:36:10
 W:8:2:0:32
@@ -1848,7 +1825,7 @@ F:IM_POIS | NO_CONF | NO_SLEEP
 D:It is a pile of coins, crawling forward on thousands of tiny legs. 
 D:It seems to focus on the hoarders. 
 
-N:138:Hoarder
+N:136:Hoarder
 G:p:y
 I:110:2:6d8:20:6:5
 W:8:1:0:18
@@ -1861,7 +1838,7 @@ S:ARROW_2
 D:They have no interest in rolling boulders, preferring 
 D:to collect riches for eternity. 
 
-N:139:Banker
+N:137:Banker
 G:p:y
 I:110:2:6d8:20:6:5
 W:8:1:0:18
@@ -1874,7 +1851,7 @@ S:ARROW_2
 D:Hunted down, this banker does not trust anybody, 
 D:he looks wearily at you while he cocks another arrow. 
 
-N:140:Usurer
+N:138:Usurer
 G:p:y
 I:110:2:6d8:20:6:5
 W:8:1:0:18
@@ -1889,7 +1866,7 @@ D:have decided to band together and settle the strife
 D:once and for all. 
 
 #D:Ezekiel 22:12 There are hired murderers, loan racketeers, and extortioners everywhere! They never even think of me and my commands, says the Sovereign LORD.
-N:141:Extortioner
+N:139:Extortioner
 G:p:y
 I:110:2:6d8:20:6:5
 W:8:1:0:18
@@ -1903,7 +1880,7 @@ D:Hunted down by the squanderers, the extortioners
 D:have decided to band together and settle the strife 
 D:once and for all. 
 
-N:142:Squanderer
+N:140:Squanderer
 G:p:y
 I:110:2:6d8:20:6:5
 W:8:1:0:18
@@ -1917,7 +1894,7 @@ D:He has lost interest in rolling boulders, he has
 D:decided to hunt down the hoarders once and for all. 
 D:He seems to ignore his wounds that should be mortal. 
 
-N:143:Prodigal
+N:141:Prodigal
 G:p:y
 I:110:2:6d8:20:6:5
 W:8:1:0:18
@@ -1931,7 +1908,7 @@ D:He has lost interest in rolling boulders, he has
 D:decided to hunt down the hoarders once and for all. 
 D:He seems to ignore his wounds that should be mortal. 
 
-N:144:Profligate
+N:142:Profligate
 G:p:y
 I:110:2:6d8:20:6:5
 W:8:1:0:18
@@ -1945,7 +1922,7 @@ D:He has lost interest in rolling boulders, he has
 D:decided to hunt down the hoarders once and for all. 
 D:He seems to ignore his wounds that should be mortal. 
 
-N:145:Wastrel
+N:143:Wastrel
 G:p:y
 I:110:2:6d8:20:6:5
 W:8:1:0:18
@@ -1959,7 +1936,7 @@ D:He has lost interest in rolling boulders, he has
 D:decided to hunt down the hoarders once and for all. 
 D:He seems to ignore his wounds that should be mortal. 
 
-N:146:Lemure
+N:144:Lemure
 G:u:o
 I:110:1:13d9:20:32:30
 W:8:1:0:16
@@ -1970,7 +1947,7 @@ F:EVIL | DEMON | RES_FIRE | NO_FEAR | RES_COLD
 D:It is the larval form of a major demon. 
 
 #Azza---Mentioned in Rabbinic lore, Solomonic lore. In the Talmud, Azza and Azael are said to have fathered the Sedim upon Naamah, before the Flood.
-N:147:Shedim of the Coin
+N:145:Shedim of the Coin
 G:u:s
 I:110:1:13d9:20:32:30
 W:8:1:0:25
@@ -1983,7 +1960,7 @@ D:Shedim are the incarnations of the pagan idols.
 D:They have lured many away from the heavens with 
 D:false promesses of beauty, power and wealth. 
 
-N:148:Olivier
+N:146:Olivier
 G:U:v
 I:110:4:25d10:20:30:20
 W:8:2:0:150
@@ -1999,7 +1976,7 @@ S:HEAL | SLOW | TRAPS | BO_COLD | BA_POIS
 D:This demon of the Third Hierarchy incarnates fierceness, greediness and envy. 
 D:These days he dwells in the Fourth circle. 
 
-N:149:Corrupted pope
+N:147:Corrupted pope
 G:p:w
 I:110:2:6d10:20:16:5
 W:8:4:0:20
@@ -2014,7 +1991,7 @@ S:1_IN_9 |
 S:SCARE | CAUSE_1
 D:He thinks you will steal his money, the punishment he underwent rendered him unrecognizable. 
 
-N:150:Corrupted cardinal
+N:148:Corrupted cardinal
 G:p:w
 I:110:2:6d8:20:16:5
 W:8:2:0:20
@@ -2038,7 +2015,7 @@ D:He thinks you will steal his money, the punishment he underwent rendered him u
 ########################################
 
 
-N:151:Sulfurous ectoplasma
+N:149:Sulfurous ectoplasma
 G:e:y
 I:110:2:7d8:14:18:20
 W:9:3:0:24
@@ -2051,7 +2028,7 @@ F:EMPTY_MIND | COLD_BLOOD | TAKE_ITEM | IM_ACID
 F:KILL_BODY | POWERFUL 
 D:This ectoplasma is very corrosive and smelly. 
 
-N:152:Berserker
+N:150:Berserker
 G:p:U
 I:110:3:11d9:20:24:10
 W:9:3:0:60
@@ -2065,7 +2042,7 @@ F:ATTR_MULTI | ATTR_ANY | IM_POIS
 D:The ultimate giving in to the wrath that inhabits every soul, 
 D:they inflict punishment on any one they see. 
 
-N:153:Swamp Fly
+N:151:Swamp Fly
 G:F:g
 I:110:3:2d10:2:30:70
 W:9:2:0:20
@@ -2075,7 +2052,7 @@ F:FORCE_MAXHP | FORCE_SLEEP | FRIENDS | ANIMAL | RES_POIS
 D:You wonder if these flies try to poison 
 D:you with their bites or just rip of the skin. 
 
-N:154:Stinger bee
+N:152:Stinger bee
 G:I:y
 I:120:2:2d4:12:34:10
 W:9:2:0:22
@@ -2085,7 +2062,7 @@ F:WEIRD_MIND | FRIENDS |ANIMAL | RES_POIS
 D:Attracted by the swamps' inhabitants, they find plenty of victims 
 D:for their poisonous bites. 
 
-N:155:Warlock
+N:153:Warlock
 G:p:b
 I:110:2:9d8:20:15:20
 W:9:2:0:30
@@ -2099,7 +2076,7 @@ S:BLINK | CAUSE_1 | MISSILE
 D:Minos has rewarded his bloodlust with an 
 D:eternal bloodbath. 
 
-N:156:Filippo Argenti
+N:154:Filippo Argenti
 G:p:o
 I:110:4:21d10:100:25:0
 W:9:2:0:100
@@ -2112,7 +2089,7 @@ D:This hot-headed character, a member of the Florentine
 D:black faction is known for his violent temper. 
 D:He throttled a man who had crossed him once. 
 
-N:157:King Edward I of England
+N:155:King Edward I of England
 G:p:o
 I:110:4:21d10:100:25:0
 W:9:2:0:100
@@ -2123,7 +2100,7 @@ F:ONLY_ITEM | DROP_1D2 | DROP_GREAT |
 F:OPEN_DOOR | BASH_DOOR
 D:Edward I (June 17, 1239-July 7, 1307), popularly known as "Longshanks" because of his 6 foot 2 inch frame and the "Hammer of the Scots". 
 
-N:158:Sir William Wallace
+N:156:Sir William Wallace
 G:p:o
 I:110:4:21d10:100:25:0
 W:9:2:0:100
@@ -2135,7 +2112,7 @@ F:OPEN_DOOR | BASH_DOOR
 D:Sir William Wallace (circa. 1270 - August 22, 1305), sometimes called The Wallace, was a Scottish knight who led his countrymen in 
 D:resistance to English domination in the reign of King Edward I, during significant periods of the Wars of Scottish Independence. 
 
-N:159:Philip IV of France
+N:157:Philip IV of France
 G:p:o
 I:110:4:21d10:100:25:0
 W:9:2:0:100
@@ -2149,7 +2126,7 @@ D:Philip arrested Jews so he could seize their assets to accommodate the inflate
 D:personally defeated the Flemings at Mons in 1304, forcing a harsh peace treaty with humiliating penalties. 
 D:He had all the Knights Templar in France simultaneously arrested by his agents. To be later tortured into admitting heresy in the Order. 
 
-N:160:Edward, the Black Prince
+N:158:Edward, the Black Prince
 G:p:o
 I:110:4:21d10:100:25:0
 W:9:2:0:100
@@ -2163,7 +2140,7 @@ D:was the eldest son of King Edward III of England and Philippa of Hainault.
 D:It is likely that his title was first coined by French chroniclers in reference to the ruinous 
 D:military defeats he had inflicted on France or his cruelty in these. 
 
-N:161:Bertran du Guesclin
+N:159:Bertran du Guesclin
 G:p:o
 I:110:4:21d10:100:25:0
 W:9:2:0:100
@@ -2175,7 +2152,7 @@ F:OPEN_DOOR | BASH_DOOR
 D:A French military commander that modernized the French 
 D:style of warfare, introducing guerilla and "small war" tactics of fighting. 
 
-N:162:Ivo Taillefer
+N:160:Ivo Taillefer
 G:p:o
 I:110:4:21d10:100:25:0
 W:9:2:0:100
@@ -2188,7 +2165,7 @@ D:William of Normandy 's minstrel and knight, Ivo Taillefer, begged his master f
 D:Permission was granted, and Taillefer rode before the English alone, tossing his sword and lance in the air and catching them while he sang an early version of The Song of Roland. 
 D:An English champion came from the ranks, and Taillefer quickly slew him, taking his head as a trophy to show that God favored the invaders. 
 
-N:163:Memnon of Rhodes
+N:161:Memnon of Rhodes
 G:p:o
 I:110:4:21d10:100:25:0
 W:9:2:0:100
@@ -2200,7 +2177,7 @@ F:OPEN_DOOR | BASH_DOOR
 D:Memnon of Rhodes (380 - 333 BC) was the commander of the Greek mercenaries working for the Persian 
 D:king Darius III when Alexander the Great of Macedonia invaded Persia in 334 BC. 
 
-N:164:Harald Hardrada
+N:162:Harald Hardrada
 G:p:o
 I:110:4:21d10:100:25:0
 W:9:2:0:100
@@ -2214,7 +2191,7 @@ D:He participated in eighteen battles and became Akolythos, the commander, of th
 D:home in 1043. He was killed at the Battle of Stamford Bridge in 1066 when his army was defeated by an 
 D:English army commanded by King Harold Godwinson. 
 
-N:165:El Cid
+N:163:El Cid
 G:p:o
 I:110:4:21d10:100:25:0
 W:9:2:0:100
@@ -2227,7 +2204,7 @@ D:Rodrigo Diaz de Vivar (c. 1044 - July 1099), nicknamed El Cid Campeador, was a
 D:He was a man who had fought and beaten the select fighting-man of the opposite side in the presence of the two armies. Exiled by his king 
 D:he became a man for hire. 
 
-N:166:Owain of the Red Hand
+N:164:Owain of the Red Hand
 G:p:o
 I:110:4:21d10:100:25:0
 W:9:2:0:100
@@ -2240,7 +2217,7 @@ D:Owain Lawgoch was a claimant to the title of Prince of Gwynedd and of Wales.
 D:Owain was a soldier who served in Spain, France, Alsace and Switzerland. 
 D:He led a Free Company fighting for the French against the English in the Hundred Years' War. 
 
-N:167:Myrmidon
+N:165:Myrmidon
 G:p:W
 I:110:3:10d10:100:35:0
 W:9:1:0:25
@@ -2249,7 +2226,7 @@ B:HIT:HURT:1d6
 F:OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_60 | DROP_90 | MALE
 D:The Myrmidons of Greek myth were known for their blind and remorseless loyalty to their leaders. 
 
-N:168:Hoplite of 'The Ten Thousand'
+N:166:Hoplite of 'The Ten Thousand'
 G:p:W
 I:110:3:10d10:10:35:10
 W:9:1:0:25
@@ -2258,7 +2235,7 @@ B:HIT:HURT:1d6
 F:OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_60 | DROP_90 | MALE
 D:The Ten Thousand were a group of mercenary units, mainly Greek, drawn up by Cyrus the Younger to attempt to wrest the throne of the Persian Empire from his brother, Artaxerxes II. 
 
-N:169:Bessi Warrior
+N:167:Bessi Warrior
 G:p:W
 I:110:3:10d10:10:35:10
 W:9:1:0:25
@@ -2267,7 +2244,7 @@ B:HIT:HURT:1d6
 F:OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_60 | DROP_90 | MALE
 D:The Bessi warriors are described as the fiercest of the independent Thracian tribes. 
 
-N:170:Dii swordman
+N:168:Dii swordman
 G:p:W
 I:110:3:10d10:10:35:10
 W:9:1:0:25
@@ -2276,7 +2253,7 @@ B:HIT:HURT:1d6
 F:OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_60 | DROP_90 | MALE
 D:The Dii warriors are described as the most warlike infantry troops of the Thracians. 
 
-N:171:Son of Mars
+N:169:Son of Mars
 G:p:r
 I:120:3:10d10:10:35:10
 W:9:3:0:75
@@ -2286,7 +2263,7 @@ F:OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_60 | DROP_90 | MALE | FORCE_MAXHP
 D:The Mamertines (Mamertini "sons of Mars") were mercenaries of Italian origin who had 
 D:been hired from their home in Campania by Agathocles, the king of Syracuse. 
 
-N:172:Varangian
+N:170:Varangian
 G:p:W
 I:110:3:10d10:10:35:10
 W:9:1:0:25
@@ -2296,7 +2273,7 @@ F:OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_60 | DROP_90 | MALE
 D:Promoting trade, piracy and mercenary militarism, they roamed the river systems and 
 D:portages of what later became Russia, reaching the Caspian Sea and Constantinople. 
 
-N:173:Condottiero
+N:171:Condottiero
 G:p:W
 I:110:3:10d10:10:35:10
 W:9:1:0:25
@@ -2306,7 +2283,7 @@ F:OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_60 | DROP_90 | MALE
 D:Condottieri (singular condottiero) were mercenary leaders employed by Italian 
 D:city-states from the late Middle Ages until the mid-sixteenth century. 
 
-N:174:Landsknecht
+N:172:Landsknecht
 G:p:W
 I:110:3:10d10:10:35:10
 W:9:1:0:25
@@ -2318,7 +2295,7 @@ D:in English publications) were European, most often German, mercenary pikemen
 D:and foot soldiers from the late 15th to the early 17th century, with the 
 D:formidable reputation for being the most effective fighting troops during the European Renaissance. 
 
-N:175:Swiss mercenary
+N:173:Swiss mercenary
 G:p:W
 I:110:3:10d10:10:35:10
 W:9:1:0:25
@@ -2338,7 +2315,7 @@ D:became vulnerable to arquebuses and artillery being developed at about that pe
 ########################################
 ########################################
 
-N:176:Flaming Tomb
+N:174:Flaming Tomb
 G:#:r
 I:100:4:6d6:20:40:0
 W:10:1:0:30
@@ -2351,7 +2328,7 @@ F:IM_FIRE | FORCE_MAXHP | IM_POIS | ANNOYED | NEVER_BLOW
 D:These tombs contain heretical souls for eternity. 
 D:Better not mess with these. 
 
-N:177:The Flaming Tomb of Farinata degli Uberti
+N:175:The Flaming Tomb of Farinata degli Uberti
 G:#:R
 I:100:4:6d6:20:40:0
 W:10:1:0:30
@@ -2364,7 +2341,7 @@ F:IM_FIRE | FORCE_MAXHP | IM_POIS | ANNOYED | NEVER_BLOW
 D:"Behold Farinata who hath uprisen; thou shalt see him all from the girdle up. 
 D:I had already fixed my face on his, and he straightened himself up with breast and front as though he had Hell in great scorn." 
 
-N:178:The Flaming Tomb of Cavalcante de' Cavalcanti
+N:176:The Flaming Tomb of Cavalcante de' Cavalcanti
 G:#:R
 I:100:4:6d6:20:40:0
 W:10:1:0:30
@@ -2376,7 +2353,7 @@ F:STUPID | EMPTY_MIND | NO_CONF | NO_SLEEP
 F:IM_FIRE | FORCE_MAXHP | IM_POIS | ANNOYED | NEVER_BLOW
 D:"To view uncovered down to the chin, a shade ... risen on its knees." 
 
-N:179:The Flaming Tomb of Epicurus
+N:177:The Flaming Tomb of Epicurus
 G:#:R
 I:100:4:6d6:20:40:0
 W:10:1:0:30
@@ -2389,7 +2366,7 @@ F:IM_FIRE | FORCE_MAXHP | IM_POIS | ANNOYED | NEVER_BLOW
 D:Suffering the burning heat of his coffin, 
 D:Epicurus has come to realize that the soul is not mortal after all. 
 
-N:180:The Flaming Tomb of Frederick II 
+N:178:The Flaming Tomb of Frederick II 
 G:#:R
 I:100:4:6d6:20:40:0
 W:10:1:0:30
@@ -2404,7 +2381,7 @@ D:in the Kingdom of Sicily, Frederick was crowned emperor in Rome in 1220.
 D:A central figure in the conflicting claims of the empire and the papacy, 
 D:he was twice excommunicated--in 1227 and 1245-- before his death in 1250. 
 
-N:181:The Flaming Tomb of the Cardinal of the Ubaldini
+N:179:The Flaming Tomb of the Cardinal of the Ubaldini
 G:#:R
 I:100:4:6d6:20:40:0
 W:10:1:0:30
@@ -2415,7 +2392,7 @@ F:NEVER_MOVE | NONLIVING | NO_FEAR | UNIQUE | MALE | IM_LITE
 F:STUPID | EMPTY_MIND | NO_CONF | NO_SLEEP
 F:IM_FIRE | FORCE_MAXHP | IM_POIS | ANNOYED | NEVER_BLOW
 
-N:182:The Flaming Tomb of Pope Anastasius II
+N:180:The Flaming Tomb of Pope Anastasius II
 G:#:R
 I:100:4:6d6:20:40:0
 W:10:1:0:30
@@ -2427,7 +2404,7 @@ F:STUPID | EMPTY_MIND | NO_CONF | NO_SLEEP
 F:IM_FIRE | FORCE_MAXHP | IM_POIS | ANNOYED | NEVER_BLOW
 D:He is said to have allowed the fifth-century heretic Photinus to communion. 
 
-N:183:Bickering Hell Spawn
+N:181:Bickering Hell Spawn
 G:u:g
 I:120:2:1d1:4:1:0
 W:10:3:0:3
@@ -2443,7 +2420,7 @@ D:interrupting their dispute to shoot arrows into the burning residents
 D:of Inferno. Their confused shouting seems to be a summoning 
 D:spell in itself, generating more and more demons 
 
-N:184:Bickering Hell Spawn
+N:182:Bickering Hell Spawn
 G:u:w
 I:120:2:1d1:4:1:0
 W:10:3:0:3
@@ -2461,7 +2438,7 @@ D:spell in itself, generating more and more demons
 
 #The use of it's name is hardcoded in monster2.c in summon_specific_okay
 #under SUMMON_SKULL
-N:185:Screaming skull of Vengeance 
+N:183:Screaming skull of Vengeance 
 G:s:b
 I:145:10:99d111:100:165:0
 W:10:1:0:65000
@@ -2478,7 +2455,7 @@ D:and it is screaming for you blood.
 
 #The use of it's name is hardcoded in monster2.c in summon_specific_okay
 #under SUMMON_SKULL
-N:186:Screaming skull of Fury 
+N:184:Screaming skull of Fury 
 G:s:r
 I:145:10:99d111:100:165:0
 W:10:1:0:65000
@@ -2493,7 +2470,7 @@ S:TELE_TO | FORGET |
 D:Fury has sent it's emmisary, 
 D:and it is screaming for you blood. 
 
-N:187:Megaera
+N:185:Megaera
 G:h:u
 I:110:4:24d10:20:60:20
 W:10:3:0:230
@@ -2507,7 +2484,7 @@ D:One of the three sister furies,
 D:Daughters of Night, bloodstained with snakes in their hair and about their waists. 
 D:She is about to exact divine vengeance on your soul. 
 
-N:188:Tisiphone
+N:186:Tisiphone
 G:h:u
 I:110:4:24d10:20:60:20
 W:10:3:0:230
@@ -2521,7 +2498,7 @@ D:One of the three sister furies,
 D:Daughters of Night, bloodstained with snakes in their hair and about their waists. 
 D:She is about to exact divine vengeance on your soul. 
 
-N:189:Allecto
+N:187:Allecto
 G:h:u
 I:110:4:24d10:20:60:20
 W:10:3:0:230
@@ -2535,7 +2512,7 @@ D:One of the three sister furies,
 D:Daughters of Night, bloodstained with snakes in their hair and about their waists. 
 D:She is about to exact divine vengeance on your soul. 
 
-N:190:Hecate
+N:188:Hecate
 G:U:b
 I:110:4:24d10:20:60:20
 W:10:4:0:230
@@ -2561,7 +2538,7 @@ D:She said to Solomon : "I am the worst, and I make thee worse off than thou was
 
 ##### Level 11 #####
 
-N:191:Minotaur
+N:189:Minotaur
 G:h:U
 I:110:1:20d9:12:14:10
 W:11:1:0:30
@@ -2572,7 +2549,7 @@ D:It is a cross between a human and a bull. They are the symbol
 D:of man with animal behavior, since they are part men, part beasts. 
 D:They guard those that would be violent against their neighbours. 
 
-N:192:Centaur
+N:190:Centaur
 G:h:u
 I:110:2:20d9:12:14:10
 W:11:1:0:30
@@ -2588,7 +2565,7 @@ D:They guard those that would be violent against their neighbours.
 #Golfimbul was an inspiration to us all;)
 #Max damage remains, but minimum and average damage is way higher
 #But then again, no resists at all ;)
-N:193:Chiron
+N:191:Chiron
 G:h:r
 I:110:4:24d10:20:60:20
 W:11:1:0:230
@@ -2602,7 +2579,7 @@ S:1_IN_5
 S:ARROW_1
 D:He is the leader of the Centaurs. 
 
-N:194:Nessus
+N:192:Nessus
 G:h:r
 I:110:4:24d10:20:60:20
 W:11:1:0:230
@@ -2617,7 +2594,7 @@ S:ARROW_1
 D:"That is Nessus, Who died for the lovely Dejanira 
 D:By taking his own revenge upon himself;" 
 
-N:195:Pholus
+N:193:Pholus
 G:h:r
 I:110:4:24d10:20:60:20
 W:11:1:0:230
@@ -2631,7 +2608,7 @@ S:1_IN_5
 S:ARROW_1
 D:"The last is Pholus, who was so full of frenzy." 
 
-N:196:Boiling Soul
+N:194:Boiling Soul
 G:p:r
 I:120:1:7d7:30:30:20
 W:11:1:0:30
@@ -2644,7 +2621,7 @@ D:Above the blood more than its guilt allows.'
 
 #TODO : add res_shards for these guys ?
 
-N:197:Tyrant
+N:195:Tyrant
 G:p:R
 I:120:2:7d7:30:30:20
 W:11:1:0:30
@@ -2654,7 +2631,7 @@ D:'There I saw people buried to their eyebrows,
 D:And the strong centaur said, "These are tyrants 
 D:Who wallowed in bloodshed and plundering."' 
 
-N:198:Alexander the Great of Pherae
+N:196:Alexander the Great of Pherae
 G:p:R
 I:110:4:24d10:20:60:20
 W:11:1:0:230
@@ -2665,7 +2642,7 @@ D:'Here they bewail their heartless crimes: here lie
 D:Both Alexander and fierce Dionysius 
 D:Who brought long years of woe to Sicily;' 
 
-N:199:Dionysius of Syracuse
+N:197:Dionysius of Syracuse
 G:p:R
 I:110:4:24d10:20:60:20
 W:11:1:0:230
@@ -2677,7 +2654,7 @@ D:Both Alexander and fierce Dionysius
 D:Who brought long years of woe to Sicily;' 
 D:Dionysius of Syracuse was a fifth-century tyrant. 
 
-N:200:Azzolino da Romano
+N:198:Azzolino da Romano
 G:p:R
 I:110:4:24d10:20:60:20
 W:11:1:0:230
@@ -2690,7 +2667,7 @@ D:Is Opizzo d'Este, who in the world
 D:Actually was slain by his own stepson.' 
 D:Azzolino da Romano (1194-1259) was a brutal Italian tyrant. 
 
-N:201:Opizzo d'Este
+N:199:Opizzo d'Este
 G:p:R
 I:110:4:24d10:20:60:20
 W:11:1:0:230
@@ -2703,7 +2680,7 @@ D:Is Opizzo d'Este, who in the world
 D:Actually was slain by his own stepson.' 
 D:Opizzo II d'Este (d. 1293) was a brutal Italian tyrant. 
 
-N:202:Guy de Montfort
+N:200:Guy de Montfort
 G:p:R
 I:110:4:24d10:20:60:20
 W:11:1:0:230
@@ -2715,7 +2692,7 @@ D:And said, "In God's own bosom, this one stabbed
 D:The heart that still drips blood upon the Thames."' 
 D:Guy de Montfort, to avenge his father's death, murdered Henry, nephew of Henry III of England, in 1271. 
 
-N:203:Attila the Hun
+N:201:Attila the Hun
 G:p:R
 I:140:4:24d10:20:60:20
 W:11:1:0:550
@@ -2732,7 +2709,7 @@ D:Rinier of Corneto and Rinier Pazzo
 D:Who waged such open warfare on the highways.' 
 D:Attila the Hun, who ruled from 433 to 453, was called the Scourge of God. 
 
-N:204:Pyrrhus, son of Achilles
+N:202:Pyrrhus, son of Achilles
 G:p:R
 I:110:4:24d10:20:60:20
 W:11:1:0:230
@@ -2747,7 +2724,7 @@ D:Rinier of Corneto and Rinier Pazzo
 D:Who waged such open warfare on the highways.' 
 D:Pyrrhus, son of Achilles was a fighter in the Trojan war. 
 
-N:205:Sextus, son of Pompey the Great
+N:203:Sextus, son of Pompey the Great
 G:p:R
 I:110:4:24d10:20:60:20
 W:11:1:0:230
@@ -2762,7 +2739,7 @@ D:Rinier of Corneto and Rinier Pazzo
 D:Who waged such open warfare on the highways.' 
 D:Sextus, son of Pompey the Great was a pirate of fame. 
 
-N:206:Rinier of Corneto
+N:204:Rinier of Corneto
 G:p:R
 I:110:4:24d10:20:60:20
 W:11:1:0:230
@@ -2777,7 +2754,7 @@ D:Rinier of Corneto and Rinier Pazzo
 D:Who waged such open warfare on the highways.' 
 D:Rinier of Cometo was a notorious highwayman. 
 
-N:207:Rinier Pazzo
+N:205:Rinier Pazzo
 G:p:R
 I:110:4:24d10:20:60:20
 W:11:1:0:230
@@ -2804,7 +2781,7 @@ D:Rinier Pazzo was a notorious highwayman.
 
 ##### Level 12 #####
 
-N:208:Thorny black tree
+N:206:Thorny black tree
 G:#:v
 I:110:2:52d8:2:1:99
 W:12:1:0:60
@@ -2820,7 +2797,7 @@ S:DRAIN_MANA
 D:Suicides, because they alienated themselves from their own bodies spend 
 D:eternity in the body of a tree, their own corpses hanging from the limbs. 
 
-N:209:Pier delle Vigne
+N:207:Pier delle Vigne
 G:#:o
 I:110:2:52d8:2:1:99
 W:12:1:0:60
@@ -2836,7 +2813,7 @@ D:eternity in the body of a tree, their own corpses hanging from the limbs.
 D:This particular one was a minister of Emperor Frederick II. He escaped 
 D:the disdain of his peers with suicide. 
 
-N:210:Ferocious Dog
+N:208:Ferocious Dog
 G:C:R
 I:120:5:9d8:20:30:30
 W:12:1:0:40
@@ -2847,7 +2824,7 @@ D:"In the crouching shade they gripped their teeth.
 D:And piece by piece they ripped him open-wide. 
 D:And then they carried off his wretched limbs." 
 
-N:211:Lano da Siena
+N:209:Lano da Siena
 G:p:y
 I:110:1:13d9:20:33:30
 W:12:2:0:50
@@ -2858,7 +2835,7 @@ F:OPEN_DOOR | BASH_DOOR |
 D:Lano da Siena, a well-known spendthrift, died fighting the Aretines in 1287. 
 D:He is eternally being chased by the ferocious dogs. 
 
-N:212:Jacopo da Sant' Andrea of Padua
+N:210:Jacopo da Sant' Andrea of Padua
 G:p:y
 I:110:1:13d9:20:33:30
 W:12:2:0:50
@@ -2868,7 +2845,7 @@ F:DROP_60 | DROP_90 | DROP_1D2 | DROP_GREAT
 F:OPEN_DOOR | BASH_DOOR | 
 D:Jacopo da Sant' Andrea of Padua, another squanderer, was murdered in 1239. 
 
-N:213:Squanderer
+N:211:Squanderer
 G:p:y
 I:110:1:13d9:20:33:30
 W:12:1:0:30
@@ -2878,7 +2855,7 @@ F:OPEN_DOOR | BASH_DOOR |
 D:This squanderer ( or profligate ) is only a shade of his former self, 
 D:he is continually hunted by the ferocious dogs. 
 
-N:214:Hellbat
+N:212:Hellbat
 G:b:r
 I:110:3:12d12:20:80:8
 W:12:3:0:65
@@ -2888,7 +2865,7 @@ F:ANIMAL | EVIL |
 F:IM_COLD | IM_ELEC | IM_POIS | WEIRD_MIND
 D:Devil-bats, notoriously difficult to kill. 
 
-N:215:Moaning spirit
+N:213:Moaning spirit
 G:G:W
 I:120:2:5d8:14:20:10
 W:12:2:0:54
@@ -2902,7 +2879,7 @@ S:1_IN_10 |
 S:TPORT | SCARE | SHRIEK
 D:A ghostly apparition that shrieks horribly. 
 
-N:216:Harpy
+N:214:Harpy
 G:h:b
 I:120:4:13d8:12:30:30
 W:12:2:0:40
@@ -2924,7 +2901,7 @@ D:Cause pain and then an outlet for the pain."
 ########################################
 ########################################
 
-N:217:Zoophile
+N:215:Zoophile
 G:p:R
 I:110:1:8d8:20:32:30
 W:13:1:0:16
@@ -2934,7 +2911,7 @@ F:OPEN_DOOR | BASH_DOOR | MALE |
 D:This man wasted his seed on beasts, violating one 
 D:of man's oldest rules. 
 
-N:218:Blasphemer
+N:216:Blasphemer
 G:p:v
 I:110:1:8d8:20:32:30
 W:13:1:0:16
@@ -2943,7 +2920,7 @@ F:MALE | DROP_60 | DROP_90 | FRIENDS
 F:OPEN_DOOR | BASH_DOOR | MALE |  
 D:He cursed the name of God and is not about to stop. 
 
-N:219:Moneylender
+N:217:Moneylender
 G:p:y
 I:110:1:8d8:20:32:30
 W:13:1:0:16
@@ -2953,16 +2930,43 @@ F:OPEN_DOOR | BASH_DOOR | MALE |
 D:A large money pouch  around his neck he is batting 
 D:away the flaming debris. 
 
-N:220:Sodomite
+N:218:Citizen of Sodom
 G:p:R
 I:110:1:8d8:20:32:30
 W:13:1:0:16
 B:HIT:HURT:1d8
-F:MALE | DROP_60 | DROP_90 | FRIENDS
+F:MALE | DROP_60 | DROP_90
 F:OPEN_DOOR | BASH_DOOR | MALE |  
-D:He will burn. 
+D:A minority of them was placed here after the destruction of Sodom.
 
-N:221:Revenant Nephilim
+N:219:Citizen of Gomorrah
+G:p:R
+I:110:1:8d8:20:32:30
+W:13:1:0:16
+B:HIT:HURT:1d8
+F:MALE | DROP_60 | DROP_90
+F:OPEN_DOOR | BASH_DOOR | MALE |  
+D:A minority of them was placed here after the destruction of Gomorrah.
+
+N:220:Citizen of Admah
+G:p:R
+I:110:1:8d8:20:32:30
+W:13:1:0:16
+B:HIT:HURT:1d8
+F:MALE | DROP_60 | DROP_90
+F:OPEN_DOOR | BASH_DOOR | MALE |  
+D:A minority of them was placed here after the destruction of Admah.
+
+N:221:Citizen of Zeboiim
+G:p:R
+I:110:1:8d8:20:32:30
+W:13:1:0:16
+B:HIT:HURT:1d8
+F:MALE | DROP_60 | DROP_90
+F:OPEN_DOOR | BASH_DOOR | MALE |  
+D:A minority of them was placed here after the destruction of Zeboiim.
+
+N:222:Revenant Nephilim
 G:P:U
 I:110:1:13d9:20:33:30
 W:13:2:0:50
@@ -2971,7 +2975,7 @@ F:OPEN_DOOR | BASH_DOOR |
 F:EVIL | GIANT | RES_DARK | RES_LITE | RES_FIRE
 D:A lascivious spirit, engendered of a giant man who dies in the massacre in the time of the giants. 
 
-N:222:Capaneus
+N:223:Capaneus
 G:P:U
 I:110:1:13d9:20:33:30
 W:13:2:0:50
@@ -2983,7 +2987,7 @@ D:"That was one of the seven kings
 D:who laid siege to Thebes; he held and seems 
 D:to hold God in disdain and prize him little." 
 
-N:223:Eteoclus
+N:224:Eteoclus
 G:P:U
 I:110:1:13d9:20:33:30
 W:13:2:0:50
@@ -2993,7 +2997,7 @@ F:EVIL | GIANT | UNIQUE
 D:One of the seven kings that laid siege to Thebes, 
 D:his afterlife is linked with Capaneus. 
 
-N:224:Hippomedon
+N:225:Hippomedon
 G:P:U
 I:110:1:13d9:20:33:30
 W:13:2:0:50
@@ -3003,7 +3007,7 @@ F:EVIL | GIANT | UNIQUE
 D:One of the seven kings that laid siege to Thebes, 
 D:his afterlife is linked with Capaneus. 
 
-N:225:Parthenopaeus
+N:226:Parthenopaeus
 G:P:U
 I:110:1:13d9:20:33:30
 W:13:2:0:50
@@ -3013,7 +3017,7 @@ F:EVIL | GIANT | UNIQUE
 D:One of the seven kings that laid siege to Thebes, 
 D:his afterlife is linked with Capaneus. 
 
-N:226:Polynices
+N:227:Polynices
 G:P:U
 I:110:1:13d9:20:33:30
 W:13:2:0:50
@@ -3023,7 +3027,7 @@ F:EVIL | GIANT | UNIQUE
 D:One of the seven kings that laid siege to Thebes, 
 D:his afterlife is linked with Capaneus. 
 
-N:227:Tydeus
+N:228:Tydeus
 G:P:U
 I:110:1:13d9:20:33:30
 W:13:2:0:50
@@ -3033,7 +3037,7 @@ F:EVIL | GIANT | UNIQUE
 D:One of the seven kings that laid siege to Thebes, 
 D:his afterlife is linked with Capaneus. 
 
-N:228:Blasphemer
+N:229:Blasphemer
 G:p:g
 I:110:2:12d10:20:36:20
 W:13:2:0:45
@@ -3044,7 +3048,7 @@ D:"More numerous were those who roamed around;
 D:Fewer were those stretched out for the torture, 
 D:But looser were their tongues to tell their hurt." 
 
-N:229:Brunetto Latini
+N:230:Brunetto Latini
 G:p:g
 I:110:2:12d10:20:36:20
 W:13:2:0:45
@@ -3056,7 +3060,7 @@ D:So fixed my eyes upon his burnt-out features
 D:Even his crusted face did not prevent me 
 D:From apprehending him in my mind's eye" 
 
-N:230:Priscian
+N:231:Priscian
 G:p:g
 I:110:2:12d10:20:36:20
 W:13:2:0:45
@@ -3068,7 +3072,7 @@ D:And Francesco d'Accorso too, and you may see,
 D:if you have any appetite for such scurf." 
 D:Priscian was a law professor of Bologna of the thirteenth century. 
 
-N:231:Francesco d'Accorso
+N:232:Francesco d'Accorso
 G:p:g
 I:110:2:12d10:20:36:20
 W:13:2:0:45
@@ -3080,7 +3084,7 @@ D:And Francesco d'Accorso too, and you may see,
 D:if you have any appetite for such scurf." 
 D:Francesco d'Accorso (1125-1294) taught law at Bologna and Oxford. 
 
-N:232:Andrea de' Mozzi
+N:233:Andrea de' Mozzi
 G:p:w
 I:110:2:12d10:20:36:20
 W:13:2:0:45
@@ -3091,7 +3095,7 @@ D:"The one the Servant of Servants transferred
 D:From the Arno to the Bacchiglione river 
 D:Where he left his organs stretched by sin." 
 
-N:233:Guido Guerra
+N:234:Guido Guerra
 G:p:o
 I:110:2:12d10:20:36:20
 W:13:2:0:45
@@ -3102,7 +3106,7 @@ D:"He was the grandson of the good Gualdrada;
 D:His name was Guido Guerra, in his life 
 D:Much he achieved by counsel and his sword." 
 
-N:234:Tegghiaio Aldobrandi
+N:235:Tegghiaio Aldobrandi
 G:p:o
 I:110:2:12d10:20:36:20
 W:13:2:0:45
@@ -3113,7 +3117,7 @@ D:"The other who thrashes the sand behind me
 D:Is Tegghiaio Aldobrandi, whose voice 
 D:In the world above ought to have won favor." 
 
-N:235:Jacopo Rusticucci
+N:236:Jacopo Rusticucci
 G:p:o
 I:110:2:12d10:20:36:20
 W:13:2:0:45
@@ -3124,7 +3128,7 @@ D:"And I who am placed with them in this torment
 D:Was Jacopo Rusticucci, and surely 
 D:My hell-cat wife, more than anyone, ruined me!" 
 
-N:236:Guglielmo Borsiere
+N:237:Guglielmo Borsiere
 G:p:o
 I:110:2:12d10:20:36:20
 W:13:2:0:45
@@ -3133,7 +3137,7 @@ F:MALE | DROP_60 | UNIQUE
 F:OPEN_DOOR | BASH_DOOR | 
 D:"Cavaliere di corte, uomo costumato molto e di laudevol maniera," a well-mannered knight of the court. 
 
-N:237:Gianfigliazzi of Florence
+N:238:Gianfigliazzi of Florence
 G:p:y
 I:110:2:12d10:20:36:20
 W:13:2:0:75
@@ -3147,7 +3151,7 @@ D:I glimpsed a purse of yellow upon azure
 D:Which bore the face and figure of a lion." 
 D:This usurer is rich, rich and very dangerous. 
 
-N:238:Ubriachi of Florence
+N:239:Ubriachi of Florence
 G:p:y
 I:110:2:12d10:20:36:20
 W:13:2:0:75
@@ -3161,7 +3165,7 @@ D:I saw another purse as red as blood
 D:Displaying a goose whiter than butter." 
 D:This usurer is rich, rich and very dangerous. 
 
-N:239:Scrovegni of Padua
+N:240:Scrovegni of Padua
 G:p:y
 I:110:2:12d10:20:36:20
 W:13:2:0:75
@@ -3174,7 +3178,7 @@ D:"And one who had an azure pregnant sow
 D:Represented on his small white pouch" 
 D:This usurer is rich, rich and very dangerous. 
 
-N:240:Vitaliano of Padua
+N:241:Vitaliano of Padua
 G:p:y
 I:110:2:12d10:20:36:20
 W:13:2:0:75
@@ -3185,7 +3189,7 @@ F:RES_ACID | RES_FIRE | RES_COLD | RES_ELEC | RES_POIS |
 F:NO_CONF | NO_SLEEP | NO_FEAR | 
 D:This usurer is rich, rich and very dangerous. 
 
-N:241:Giovanni Buiamonte of Florence
+N:242:Giovanni Buiamonte of Florence
 G:p:y
 I:110:2:12d10:20:36:20
 W:13:2:0:75
@@ -3198,7 +3202,7 @@ D:"Bring on the royal knight
 D:Who bears on him his pouch with the three goats!" 
 D:This usurer is rich, rich and very dangerous. 
 
-N:242:Rescinderer
+N:243:Rescinderer
 G:y:y
 I:120:4:13d8:12:18:1
 W:13:4:0:40
@@ -3219,7 +3223,7 @@ D:and throws them into an iron burning vat that is strapped to it's back.
 ########################################
 ########################################
 
-N:243:Geryon
+N:244:Geryon
 G:P:B
 I:130:4:34d10:20:40:40
 W:14:4:0:200
@@ -3240,7 +3244,7 @@ D:Tartars or Turks never wove a cloth
 D:With more colors in background and design, 
 D:Nor did Arachne ever loom such webs." 
 
-N:244:Pimp
+N:245:Pimp
 G:p:R
 I:120:2:8d8:20:20:40
 W:14:2:0:40
@@ -3249,7 +3253,7 @@ F:FRIENDS | BASH_DOOR | OPEN_DOOR | MALE
 D:He is supposed to walk single file, 
 D:your arrival seems to have broken his routine. 
 
-N:245:Seducer
+N:246:Seducer
 G:p:R
 I:120:2:8d8:20:20:40
 W:14:2:0:40
@@ -3258,7 +3262,7 @@ F:FRIENDS | BASH_DOOR | OPEN_DOOR | MALE
 D:He is supposed to walk single file, 
 D:your arrival seems to have broken his routine. 
 
-N:246:Whipping Devil
+N:247:Whipping Devil
 G:u:D
 I:110:2:20d9:20:33:30
 W:14:2:0:75
@@ -3271,7 +3275,7 @@ D:Ah how they forced them to lift up their heels
 D:At the first strokes! There was nobody there 
 D:Who waited for the second or the third!" 
 
-N:247:Venedico Caccianemico	
+N:248:Venedico Caccianemico	
 G:p:R
 I:120:2:8d8:20:20:40
 W:14:2:0:40
@@ -3280,7 +3284,7 @@ F:BASH_DOOR | OPEN_DOOR | MALE | UNIQUE
 D:Venedico Caccianemico, a noble Bolognese Guelph, was said to have been a 
 D:procurer of his sister Ghisolabella to gain the favor of Obizzo II of Este. 
 
-N:248:Jason
+N:249:Jason
 G:p:v
 I:110:4:34d10:20:40:40
 W:14:3:0:200
@@ -3302,7 +3306,7 @@ D:in revenge, she murdered their two sons.
 ########################################
 ########################################
 
-N:249:Flatterer
+N:250:Flatterer
 G:p:u
 I:120:2:8d8:2:20:40
 W:15:1:0:40
@@ -3312,7 +3316,7 @@ D:"And as I searched below there with my eyes
 D:I saw one with his head so smeared with shit 
 D:You could not tell if he were lay or cleric." 
 
-N:250:Alessio Interminei of Lucca
+N:251:Alessio Interminei of Lucca
 G:p:u
 I:120:2:8d8:20:20:40
 W:15:2:0:40
@@ -3321,7 +3325,7 @@ F:UNIQUE | BASH_DOOR | OPEN_DOOR | MALE
 D:"Down here I am sunk by the flatteries 
 D:That my tongue never tired of repeating." 
 
-N:251:Thais the Whore
+N:252:Thais the Whore
 G:p:o
 I:120:2:8d8:20:20:40
 W:15:2:0:40
@@ -3345,7 +3349,7 @@ D:She is Thais the whore..."
 
 ##### Level 16 #####
 
-N:252:Simoniac
+N:253:Simoniac
 G:p:o
 I:110:4:20d10:20:50:10
 W:16:1:0:75
@@ -3359,7 +3363,7 @@ D:Adulterate them into gold and silver!
 D:Now the trumpet blast must sound for you 
 D:Since you are stashed here into the third pocket." 
 
-N:253:Fire giant
+N:254:Fire giant
 G:P:r
 I:110:2:20d8:20:60:50
 W:16:2:0:54
@@ -3370,7 +3374,7 @@ F:OPEN_DOOR | BASH_DOOR | AURA_FIRE
 F:EVIL | GIANT | MALE | IM_FIRE
 D:A glowing fourteen foot tall giant. Flames drip from its red skin. 
 
-N:254:Simon Magus
+N:255:Simon Magus
 G:p:o
 I:110:4:34d10:20:40:40
 W:16:3:0:400
@@ -3386,7 +3390,7 @@ S:BR_FIRE
 D:Simon Magus attempted to buy the miraculous power of the apostles 
 D:(Acts 8:9-24) and is here as the father of the simoniacs of the third bolgia. 
 
-N:255:Nicholas III
+N:256:Nicholas III
 G:p:o
 I:110:4:20d10:20:50:10
 W:16:1:0:75
@@ -3399,7 +3403,7 @@ D:Writhing more than any of his comrades,
 D:I asked, the one the redder flame licks dry?" 
 D:Pope from 1277 to 1280, who as a member of the Orsini family handed out benefices to his relatives. 
 
-N:256:Boniface VIII
+N:257:Boniface VIII
 G:p:o
 I:110:4:20d10:20:50:10
 W:16:1:0:75
@@ -3409,7 +3413,7 @@ F:NO_CONF | NO_SLEEP | UNIQUE | FORCE_MAXHP
 F:ONLY_ITEM | DROP_4D2 | DROP_3D2 | DROP_GREAT
 D:Boniface VIII (d. 1303) is here because of his misuse of the papacy and "the lovely lady," the church. 
 
-N:257:Fire Quasit
+N:258:Fire Quasit
 G:u:r
 I:110:2:6d8:20:30:20
 W:16:3:0:50
@@ -3424,7 +3428,7 @@ S:1_IN_10 |
 S:BLINK | TPORT | TELE_TO | TELE_LEVEL | BLIND | CONF | SCARE
 D:The chaotic evil master's favourite pet. 
 
-N:258:Flaming adamantite coins
+N:259:Flaming adamantite coins
 G:$:r
 I:120:3:20d25:5:50:10
 W:16:4:0:45
@@ -3450,7 +3454,7 @@ D:It is a pile of coins, slithering forward on thousands of tiny legs.
 
 ##### Level 17 #####
 
-N:259:Grand master mystic
+N:260:Grand master mystic
 G:p:o
 I:120:3:35d10:30:50:5
 W:17:3:0:80
@@ -3470,7 +3474,7 @@ D:An adept at unarmed combat, the mystic strikes with stunning power.  He
 D:can summon help from nature and is able to focus his power to ease any 
 D:pain. 
 
-N:260:Imp
+N:261:Imp
 G:u:r
 I:110:2:6d8:20:30:20
 W:17:2:0:75
@@ -3484,7 +3488,7 @@ S:1_IN_5 |
 S:BLINK | TPORT | TELE_TO | TELE_LEVEL | BLIND | CONF | BO_FIRE
 D:A favourite pet of wizards, this imp feels it is payback time. 
 
-N:261:Illusionist
+N:262:Illusionist
 G:p:y
 I:110:1:12d8:20:10:10
 W:17:1:0:50
@@ -3498,7 +3502,7 @@ S:1_IN_3 |
 S:HASTE | BLINK | TPORT | BLIND | HOLD | SLOW | CONF | DARKNESS
 D:A deceptive spell caster. 
 
-N:262:Cultist
+N:263:Cultist
 G:p:B
 I:110:2:12d8:20:22:40
 W:17:1:0:36
@@ -3510,7 +3514,7 @@ S:1_IN_3 |
 S:HEAL | SCARE | CAUSE_2 |S_MONSTER
 D:A robed spirit dedicated to his heathen god. 
 
-N:263:Amphiaraus
+N:264:Amphiaraus
 G:P:v
 I:120:5:50d10:20:50:20
 W:17:4:0:800
@@ -3521,7 +3525,7 @@ F:OPEN_DOOR | BASH_DOOR | RES_POIS | REFLECTING | REGENERATE
 D:Amphiaraus was another of the seven kings who fought in the siege of Thebes. 
 D:He was a seer who foresaw his own death; he is damned to the fourth bolgia. 
 
-N:264:Tiresias
+N:265:Tiresias
 G:p:v
 I:120:5:50d10:20:50:20
 W:17:4:0:800
@@ -3536,7 +3540,7 @@ D:Until, a second time, he had to strike
 D:The two lovemaking serpents with his staff 
 D:Before he donned again his manly down." 
 
-N:265:Aruns
+N:266:Aruns
 G:p:v
 I:120:5:50d10:20:50:20
 W:17:4:0:800
@@ -3546,7 +3550,7 @@ F:ONLY_ITEM | DROP_2D2 | DROP_GOOD |
 F:OPEN_DOOR | BASH_DOOR | RES_POIS | REFLECTING | REGENERATE
 D:Aruns was an Etruscan diviner who prophesied the Roman civil war. 
 
-N:266:Manto
+N:267:Manto
 G:p:v
 I:120:5:50d10:20:50:20
 W:17:4:0:800
@@ -3561,7 +3565,7 @@ D:Covers up her breasts so you can't see them
 D:And keeps all of her hairy parts to that side 
 D:Was Manto, who had searched through many lands" 
 
-N:267:Eurypylus
+N:268:Eurypylus
 G:p:v
 I:120:5:50d10:20:50:20
 W:17:4:0:800
@@ -3573,7 +3577,7 @@ D:"That one whose beard
 D:Streams down from his cheeks to his brown shoulders" 
 D:Eurypylus was a greek augur involved in choosing the sailing day for Troy. 
 
-N:268:Calchas
+N:269:Calchas
 G:p:v
 I:120:5:50d10:20:50:20
 W:17:4:0:800
@@ -3583,7 +3587,7 @@ F:ONLY_ITEM | DROP_2D2 | DROP_GOOD |
 F:OPEN_DOOR | BASH_DOOR | RES_POIS | REFLECTING | REGENERATE
 D:Calchas was a greek augur involved in choosing the sailing day for Troy. 
 
-N:269:Michael Scot
+N:270:Michael Scot
 G:p:v
 I:120:5:50d10:20:50:20
 W:17:4:0:800
@@ -3595,7 +3599,7 @@ D:"That other one, so thinned-out in the shanks,
 D:Was Michael Scot, who certainly perceived 
 D:How to play the game of magic fraud." 
 
-N:270:Asdente
+N:271:Asdente
 G:p:v
 I:120:5:50d10:20:50:20
 W:17:4:0:800
@@ -3607,7 +3611,7 @@ D:"See Asdente,
 D:Who wishes now he had kept to his thread 
 D:And shoe-leather, but he repents too late." 
 
-N:271:Soothsayer
+N:272:Soothsayer
 G:p:s
 I:110:2:24d8:20:75:50
 W:17:1:0:90
@@ -3619,7 +3623,7 @@ D:""Look how he's made a chest of his own shoulders:
 D:Because he wished to see too far ahead 
 D:He stares behind and takes a backward path." 
 
-N:272:Witch
+N:273:Witch
 G:p:s
 I:110:2:24d8:20:75:50
 W:17:1:0:90
@@ -3631,7 +3635,7 @@ D:"See those wretched women who left needle,
 D:Spool, and spindle for their fortune-telling; 
 D:They cast their spells with herbs and image-dolls." 
 
-N:273:Sorcerer
+N:274:Sorcerer
 G:p:o
 I:110:1:52d10:20:60:10
 W:17:3:0:150
@@ -3658,7 +3662,7 @@ D:hands are ablur with spell casting.
 
 ##### Level 18 #####
 
-N:274:Fire spirit
+N:275:Fire spirit
 G:E:R
 I:120:3:10d9:16:30:20
 W:18:2:0:75
@@ -3669,7 +3673,7 @@ F:EVIL | HEAL_FIRE | IM_POIS | HURT_COLD
 F:NO_CONF | NO_SLEEP | NO_FEAR | AURA_FIRE
 D:A whirlwind of sentient flame. 
 
-N:275:Fire hound
+N:276:Fire hound
 G:Z:r
 I:110:3:10d6:30:30:0
 W:18:4:0:70
@@ -3683,7 +3687,7 @@ S:BR_FIRE
 D:Flames lick at its feet and its tongue is a blade of fire. You can feel a 
 D:furnace heat radiating from the creature. 
 
-N:276:Firefly
+N:277:Firefly
 G:F:r
 I:120:1:3d8:12:20:50
 W:18:2:0:68
@@ -3694,7 +3698,7 @@ S:1_IN_9 |
 S:BR_FIRE
 D:The size of a large bird, this fly is surrounded by crackling fire. 
 
-N:277:Corrupt politician
+N:278:Corrupt politician
 G:p:s
 I:110:2:24d8:20:75:50
 W:18:1:0:90
@@ -3704,7 +3708,7 @@ F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | EVIL | RES_FIRE
 D:He is avoiding the Malebranches. He seems to think 
 D:you are one of their agents. 
 
-N:278:Friar Gomita
+N:279:Friar Gomita
 G:p:y
 I:110:2:24d8:20:75:50
 W:18:1:0:90
@@ -3722,7 +3726,7 @@ D:He took their cash and let them off scot free,
 D:As he admits, and in his other dealings 
 D:He was no petty thief but a royal one." 
 
-N:279:Michel Zanche
+N:280:Michel Zanche
 G:p:y
 I:110:2:24d8:20:75:50
 W:18:1:0:90
@@ -3735,7 +3739,7 @@ F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | EVIL
 D:Michel Zanche (d. 1290) administered another Sardinian district, Logodoro. 
 D:He is usually seen in the neighbourhood of Friar Gomita. 
 
-N:280:Malebranche
+N:281:Malebranche
 G:U:r
 I:110:3:35d10:10:68:90
 W:18:2:0:550
@@ -3751,7 +3755,7 @@ S:BO_FIRE | S_DEMON
 D:The Malebranche are the squadron leaders of the devils who torment 
 D:the grafters of the fifth pocket of the eighth circle. The name means "Evil-Claws." 
 
-N:281:Malacoda
+N:282:Malacoda
 G:U:v
 I:110:3:35d10:10:68:90
 W:18:2:0:850
@@ -3766,7 +3770,7 @@ S:1_IN_5 |
 S:BO_FIRE | S_DEMON | BR_FIRE
 D:A leader of the Malebranche, he has the power to summon them. 
 
-N:282:Scarmiglione
+N:283:Scarmiglione
 G:U:v
 I:110:3:30d10:10:68:90
 W:18:2:0:750
@@ -3781,7 +3785,7 @@ S:1_IN_7 |
 S:BO_FIRE | S_DEMON
 D:It is a member of Malacoda's squad. 
 
-N:283:Calcabrina
+N:284:Calcabrina
 G:U:v
 I:110:3:30d10:10:68:90
 W:18:2:0:750
@@ -3796,7 +3800,7 @@ S:1_IN_7 |
 S:BO_FIRE | S_DEMON
 D:It is a member of Malacoda's squad. 
 
-N:284:Cagnazzo
+N:285:Cagnazzo
 G:U:v
 I:110:3:30d10:10:68:90
 W:18:2:0:750
@@ -3809,7 +3813,7 @@ S:1_IN_7 |
 S:BO_FIRE | S_DEMON
 D:It is a member of Malacoda's squad. 
 
-N:285:Alichino
+N:286:Alichino
 G:U:v
 I:110:3:30d10:10:68:90
 W:18:2:0:750
@@ -3822,7 +3826,7 @@ S:1_IN_7 |
 S:BO_FIRE | S_DEMON
 D:It is a member of Malacoda's squad. 
 
-N:286:Barbariccia
+N:287:Barbariccia
 G:U:v
 I:110:3:30d10:10:68:90
 W:18:2:0:750
@@ -3835,7 +3839,7 @@ S:1_IN_7 |
 S:BO_FIRE | S_DEMON
 D:It is a member of Malacoda's squad. 
 
-N:287:Libicocco
+N:288:Libicocco
 G:U:v
 I:110:3:30d10:10:68:90
 W:18:2:0:750
@@ -3848,7 +3852,7 @@ S:1_IN_7 |
 S:BO_FIRE | S_DEMON
 D:It is a member of Malacoda's squad. 
 
-N:288:Draghignazzo
+N:289:Draghignazzo
 G:U:v
 I:110:3:30d10:10:68:90
 W:18:2:0:750
@@ -3861,7 +3865,7 @@ S:1_IN_7 |
 S:BO_FIRE | S_DEMON
 D:It is a member of Malacoda's squad. 
 
-N:289:Ciriatto
+N:290:Ciriatto
 G:U:v
 I:110:3:30d10:10:68:90
 W:18:2:0:750
@@ -3874,7 +3878,7 @@ S:1_IN_7 |
 S:BO_FIRE | S_DEMON
 D:It is a member of Malacoda's squad. 
 
-N:290:Graffiacane
+N:291:Graffiacane
 G:U:v
 I:110:3:30d10:10:68:90
 W:18:2:0:750
@@ -3887,7 +3891,7 @@ S:1_IN_7 |
 S:BO_FIRE | S_DEMON
 D:It is a member of Malacoda's squad. 
 
-N:291:Farfarello
+N:292:Farfarello
 G:U:v
 I:110:3:30d10:10:68:90
 W:18:2:0:750
@@ -3900,7 +3904,7 @@ S:1_IN_7 |
 S:BO_FIRE | S_DEMON
 D:It is a member of Malacoda's squad. 
 
-N:292:Rubicante
+N:293:Rubicante
 G:U:v
 I:110:3:30d10:10:68:90
 W:18:2:0:750
@@ -3927,7 +3931,7 @@ D:It is a member of Malacoda's squad.
 ##### Level 19 #####
 
 ###He might be too powerfull ###
-N:293:Caiaphas the High Priest
+N:294:Caiaphas the High Priest
 G:p:o
 I:70:1:50d10:20:50:20
 W:19:4:0:1600
@@ -3946,7 +3950,7 @@ D:As you yourself see, and is made to feel
 D:The full weight of every passer-by." 
 D:It seems Caiaphas got rid of his cross. 
 
-N:294:Annas
+N:295:Annas
 G:p:o
 I:120:5:50d10:20:50:20
 W:19:4:0:800
@@ -3957,7 +3961,7 @@ F:OPEN_DOOR | BASH_DOOR | EVIL |
 D:Annas, the father-in-law of Caiaphas took part in sentencing Jesus to death. 
 D:It seems he got rid of his cross. 
 
-N:295:Doomed Council Member
+N:296:Doomed Council Member
 G:#:R
 I:120:5:50d10:20:50:20
 W:19:4:0:80
@@ -3967,7 +3971,7 @@ F:ONLY_ITEM | EVIL | NEVER_MOVE
 D:This member of the council took part in sentencing Jesus to death. 
 D:Now, he must spend eternity on a wooden cross. 
 
-N:296:Catalano de' Catalani
+N:297:Catalano de' Catalani
 G:p:y
 I:70:1:80d12:12:80:10
 W:19:1:0:160
@@ -3975,7 +3979,7 @@ B:HIT:HURT:1d12
 F:BASH_DOOR | UNIQUE | 
 D:A chief magistrates over Florence in 1266 to preserve peace, he failed. 
 
-N:297:Loderingo degli Andalo
+N:298:Loderingo degli Andalo
 G:p:y
 I:70:1:80d12:12:80:10
 W:19:1:0:160
@@ -3983,7 +3987,7 @@ B:HIT:HURT:1d12
 F:BASH_DOOR | UNIQUE | 
 D:A chief magistrates over Florence in 1266 to preserve peace, he failed. 
 
-N:298:Hypocrite
+N:299:Hypocrite
 G:p:w
 I:70:1:80d12:12:80:10
 W:19:1:0:160
@@ -4005,7 +4009,7 @@ D:This hypocrite is sealed into a brightly painted leaden cloak.
 
 ##### Level 20 #####
 
-N:299:Guild Thief
+N:300:Guild Thief
 G:p:b
 I:120:4:10d8:15:25:80
 W:20:3:0:95
@@ -4019,7 +4023,7 @@ S:BLINK | TELE_TO
 D:A thief that never seems quite there. Everywhere you look he is just 
 D:half-seen in the corner of one eye. 
 
-N:300:Klepht
+N:301:Klepht
 G:p:D
 I:120:4:10d8:15:25:80
 W:20:3:0:95
@@ -4030,7 +4034,7 @@ B:BITE:POISON:6d1
 F:FRIENDS | MALE
 D:Klephts were bandits who lived in the Greek countryside when that country was a part of the Ottoman Empire. 
 
-N:301:Master rogue
+N:302:Master rogue
 G:p:D
 I:120:5:15d9:20:30:40
 W:20:1:0:110
@@ -4043,7 +4047,7 @@ F:EVIL
 D:A thief of great power and shifty speed. 
 
 #Ever so slightly out of depth ( original depth is 34 )
-N:302:Master thief
+N:303:Master thief
 G:p:D
 I:130:6:18d10:20:30:40
 W:20:2:0:350
@@ -4059,7 +4063,7 @@ D:Cool and confident, fast and lithe; protect your possessions quickly!
 #Claude Duval	(1643 - January 21, 1670) 
 #Here lies DuVall: Reder, if male thou art,
 #Look to thy purse; if female, to thy heart.
-N:303:Francois Villon
+N:304:Francois Villon
 G:p:D
 I:130:6:18d10:20:30:40
 W:20:2:0:350
@@ -4073,7 +4077,7 @@ F:EVIL | ATTR_MULTI
 D:Francois Villon (ca. 1431 - ca. 1474) was a French poet, thief, and general vagabond. 
 
 #Ever so slightly out of depth ( original depth is 52 )
-N:304:Grand master thief
+N:305:Grand master thief
 G:p:D
 I:140:7:25d100:40:90:0
 W:20:3:0:20000
@@ -4089,7 +4093,7 @@ S:TRAPS
 D:A furtive figure who makes you want to hide all your valuables. 
 D:He still thinks that Inferno is one big treasure vault. 
 
-N:305:Valefar, Duke of Hell
+N:306:Valefar, Duke of Hell
 G:U:u
 I:110:3:150d10:10:130:40
 W:20:3:0:900
@@ -4101,7 +4105,7 @@ S:BO_PLAS | S_MONSTERS
 D:Shaped like a lion with the head of a man, he tempts people to steal and 
 D:is in charge of a good relationship among thieves, but later he brings them to the gallows. 
 
-N:306:Andromalius, Great Earl of Hell
+N:307:Andromalius, Great Earl of Hell
 G:U:u
 I:110:3:150d10:10:130:40
 W:20:3:0:900
@@ -4116,7 +4120,7 @@ D:and all dishonest dealing.
 
 #This guy is not supposed to die ;)
 #Can you tell ? ;)
-N:307:Hermes, God of Thieves
+N:308:Hermes, God of Thieves
 G:U:w
 I:155:10:250d10:10:130:40
 W:20:4:0:2500
@@ -4133,7 +4137,7 @@ D:"One of many shifts, blandly cunning, a robber, a cattle driver, a bringer of 
 D:a watcher by night, a thief at the gates, one who was soon to show forth wonderful deeds among the deathless gods."" 
 
 #Probably someone assumed that Hades is a dark place and that, having been there for a while, he became sensitive?
-N:308:Tantalus
+N:309:Tantalus
 G:p:D
 I:120:3:18d15:20:40:30
 W:20:2:0:500
@@ -4150,7 +4154,7 @@ D:Tantalus is known for having been welcomed to Zeus' table in Olympus.
 D:There he stole nectar and ambrosia, brought them back to his people, 
 D:and revealed the secrets of the gods. 
 
-N:309:Wyvern
+N:310:Wyvern
 G:d:G
 I:120:6:100d5:20:65:20
 W:20:1:0:360
@@ -4163,7 +4167,7 @@ F:OPEN_DOOR | BASH_DOOR | MOVE_BODY | DRAGON |
 F:ANIMAL | EVIL
 D:A fast-moving and deadly dragonian animal. Beware its poisonous sting! 
 
-N:310:Shadow drake
+N:311:Shadow drake
 G:d:D
 I:110:3:20d10:25:50:30
 W:20:2:0:700
@@ -4177,7 +4181,7 @@ S:HASTE | SLOW | CONF | SCARE | DARKNESS
 D:It is a dragon-like form wrapped in shadow. Glowing red eyes shine out in 
 D:the dark. 
 
-N:311:Vanni Fucci
+N:312:Vanni Fucci
 G:p:b
 I:135:6:90d10:20:80:20
 W:20:2:0:1111
@@ -4193,7 +4197,7 @@ F:OPEN_DOOR | BASH_DOOR | ATTR_MULTI
 F:EVIL | RES_POIS
 D:Vanni Fucci, bastard son of Fuccio de Lazzeri, a Black Guelph in Pistoia, robbed the cathedral there in 1293. 
 
-N:312:Cacus
+N:313:Cacus
 G:h:s
 I:120:6:90d10:20:80:20
 W:20:2:0:1111
@@ -4208,7 +4212,7 @@ F:EVIL | IM_POIS
 D:A mythological monster, son of Hephaestus. He was killed by Heracles for stealing part of the cattle the hero had taken from Geryon. 
 D:As a guardian of the thieves he punishes Vanni Fucci. 
 
-N:313:Cianfa Donati
+N:314:Cianfa Donati
 G:p:b
 I:135:6:90d10:20:80:20
 W:20:2:0:1500
@@ -4226,7 +4230,7 @@ S:1_IN_3
 S:TELE_TO | ARROW_4
 D:Cianfa belonged to the Donati family of Florence. 
 
-N:314:Agnello Brunelleschi
+N:315:Agnello Brunelleschi
 G:p:b
 I:135:6:90d10:20:80:20
 W:20:2:0:1500
@@ -4244,7 +4248,7 @@ S:1_IN_3
 S:TELE_TO | ARROW_4
 D:Cianfa belonged to the Donati family of Florence. 
 
-N:315:Buoso Abati
+N:316:Buoso Abati
 G:p:b
 I:135:6:90d10:20:80:20
 W:20:2:0:1500
@@ -4262,7 +4266,7 @@ S:1_IN_3
 S:TELE_TO | ARROW_4
 D:Cianfa belonged to the Donati family of Florence. 
 
-N:316:Puccio Sciancato
+N:317:Puccio Sciancato
 G:p:b
 I:135:6:90d10:20:80:20
 W:20:2:0:1500
@@ -4290,7 +4294,7 @@ D:A brother in crime with the other Florentine thieves.
 ########################################
 ########################################
 
-N:317:Evil Counselor
+N:318:Evil Counselor
 G:p:R
 I:110:2:23d10:20:40:50
 W:21:1:0:85
@@ -4299,7 +4303,7 @@ B:BITE:HURT:3d4
 F:MALE | DROP_60 | OPEN_DOOR | BASH_DOOR | EVIL | AURA_FIRE | DROP_90
 D:His words have clouded judgement and caused ruin. 
 
-N:318:Counselor of Haman
+N:319:Counselor of Haman
 G:p:R
 I:110:2:23d10:20:40:50
 W:21:1:0:85
@@ -4308,7 +4312,7 @@ B:BITE:HURT:3d4
 F:MALE | DROP_60 | OPEN_DOOR | BASH_DOOR | EVIL | AURA_FIRE
 D:Haman had 365 counselors, but none of their advice was good. 
 
-N:319:Eteocles
+N:320:Eteocles
 G:p:o
 I:110:2:22d10:14:60:30
 W:21:2:0:200
@@ -4316,7 +4320,7 @@ B:BITE:HURT:5d8
 F:WEIRD_MIND | BASH_DOOR | ATTR_MULTI | MALE | UNIQUE | AURA_FIRE
 D:Eteocles and Polynices, twin sons of Oedipus, quarreled over the Theban throne and provoked the war of the seven kings against Thebes. 
 
-N:320:Polynices
+N:321:Polynices
 G:p:o
 I:110:2:22d10:14:60:30
 W:21:2:0:200
@@ -4324,7 +4328,7 @@ B:BITE:HURT:5d8
 F:WEIRD_MIND | BASH_DOOR | ATTR_MULTI | MALE | UNIQUE | AURA_FIRE
 D:Eteocles and Polynices, twin sons of Oedipus, quarreled over the Theban throne and provoked the war of the seven kings against Thebes. 
 
-N:321:Ulysses
+N:322:Ulysses
 G:p:o
 I:110:2:22d10:14:60:30
 W:21:2:0:200
@@ -4334,7 +4338,7 @@ D:Ulysses and Diomede, the Greek heroes, are punished in the eighth pocket for e
 D:because of their plot to deceive the Trojans with the wooden horse in which they hid until, 
 D:within the city, they opened the gates to their army which destroyed the city. 
 
-N:322:Diomede
+N:323:Diomede
 G:p:o
 I:110:2:22d10:14:60:30
 W:21:2:0:200
@@ -4344,7 +4348,7 @@ D:Ulysses and Diomede, the Greek heroes, are punished in the eighth pocket for e
 D:because of their plot to deceive the Trojans with the wooden horse in which they hid until, 
 D:within the city, they opened the gates to their army which destroyed the city. 
 
-N:323:Guido da Montefeltro
+N:324:Guido da Montefeltro
 G:p:o
 I:110:2:22d10:14:60:30
 W:21:2:0:200
@@ -4353,7 +4357,7 @@ F:WEIRD_MIND | BASH_DOOR | ATTR_MULTI | MALE | UNIQUE | AURA_FIRE
 D:Guido entered the Franciscan order in 1296 and became an adviser to Boniface VIII 
 D:who under the pretense of amnesty for the Colonna family razed their stronghold of Penestrino 
 
-N:324:Boniface VIII
+N:325:Boniface VIII
 G:p:o
 I:110:2:22d10:14:60:30
 W:21:2:0:200
@@ -4363,7 +4367,7 @@ D:"Had not that high priest (evil overtake him!)
 D:Caused me to backslide into earlier crimes:" 
 D:Boniface VIII, under the pretense of amnesty for the Colonna family razed their stronghold of Penestrino in 1298. 
 
-N:325:Edmund Beaufort
+N:326:Edmund Beaufort
 G:p:o
 I:110:2:22d10:14:60:30
 W:21:2:0:200
@@ -4373,7 +4377,7 @@ D:Edmund Beaufort, 1st Duke of Somerset (1406 - May 22, 1455) was the counselor 
 D:His romance with Katherine of France, his failures on Hundred Years' War and his involvement 
 D:in the Wars of the Roses have earned him a warm spot in the Malebolge. 
 
-N:326:Haman the Agatite
+N:327:Haman the Agatite
 G:p:o
 I:110:2:22d10:14:60:30
 W:21:2:0:200
@@ -4384,7 +4388,7 @@ D:Haman attempted to convince Ahasuerus to order the killing of all the Jews of 
 D:The plot was foiled by Queen Esther, the king's recent wife, who is herself a Jew. 
 D:Haman and his 10 sons were hung from the gallows destined for the Jews. 
 
-N:327:Zeresh
+N:328:Zeresh
 G:p:o
 I:110:2:22d10:14:60:30
 W:21:2:0:200
@@ -4393,7 +4397,7 @@ F:WEIRD_MIND | BASH_DOOR | ATTR_MULTI | MALE | UNIQUE | AURA_FIRE
 D:The wife of Haman, she induced Haman to build gallows for the Jews, 
 D:assuring him that this was the only way in which he would be able to prevail over his enemy. 
 
-N:328:Guido Guidi
+N:329:Guido Guidi
 G:p:o
 I:110:2:22d10:14:60:30
 W:21:2:0:200
@@ -4402,7 +4406,7 @@ F:WEIRD_MIND | BASH_DOOR | ATTR_MULTI | MALE | UNIQUE | AURA_FIRE
 D:Guido convinced Master Adam to counterfeit florins for their house, 
 D:condemning him to an eternity shaped as a lute, lusting for water. 
 
-N:329:Alexander Guidi
+N:330:Alexander Guidi
 G:p:o
 I:110:2:22d10:14:60:30
 W:21:2:0:200
@@ -4412,7 +4416,7 @@ D:Guido convinced Master Adam to counterfeit florins for their house,
 D:condemning him to an eternity shaped as a lute, lusting for water. 
 
 #aka Achitophel
-N:330:Ahitophel, Brother of Impiety
+N:331:Ahitophel, Brother of Impiety
 G:p:o
 I:110:2:22d10:14:60:30
 W:21:2:0:200
@@ -4421,7 +4425,7 @@ F:WEIRD_MIND | BASH_DOOR | ATTR_MULTI | MALE | UNIQUE | AURA_FIRE
 D:Ahitophel was greatly renowned for his sagacity, and a counselor of King David. 
 D:But at the time of Absalom's revolt he deserted David and supported Absalom. 
 
-N:331:Fire vortex
+N:332:Fire vortex
 G:v:r
 I:110:1:9d9:100:30:0
 W:21:1:0:100
@@ -4433,7 +4437,7 @@ S:1_IN_6 |
 S:BR_FIRE
 D:A whirling maelstrom of fire. 
 
-N:332:Flame vortex
+N:333:Flame vortex
 G:v:R
 I:120:2:32d10:100:40:0
 W:21:3:0:800
@@ -4456,7 +4460,7 @@ D:A whirlpool of intense flame, charring the stones at your feet.
 ########################################
 ########################################
 
-N:333:Fra Dolcino
+N:334:Fra Dolcino
 G:p:B
 I:110:2:25d12:16:60:30
 W:22:3:0:270
@@ -4466,7 +4470,7 @@ F:WEIRD_MIND | BASH_DOOR | UNIQUE | REBORN
 D:Fra Dolcino in 1300 headed the Apostolic Brothers, an outlawed religious sect 
 D:that was forcibly suppressed; he was burned at the stake in 1307. 
 
-N:334:Pier da Medicina
+N:335:Pier da Medicina
 G:p:B
 I:110:2:25d12:16:60:30
 W:22:3:0:270
@@ -4476,7 +4480,7 @@ F:WEIRD_MIND | BASH_DOOR | UNIQUE | REBORN
 D:Pier da Medicina, driven from Romagna in 1287, intrigued among its rulers 
 D:to turn them against themselves. 
 
-N:335:Malatestino of Rimini
+N:336:Malatestino of Rimini
 G:p:B
 I:110:2:25d12:16:60:30
 W:22:3:0:270
@@ -4487,7 +4491,7 @@ D:To acquire Fano for himself, invited Angiolello da Carignano and Guido del Cas
 D:two of the town's leaders, to meet him at La Cattolica, a cape between the two towns, 
 D:and had them drowned. 
 
-N:336:Curio
+N:337:Curio
 G:p:B
 I:110:2:25d12:16:60:30
 W:22:3:0:270
@@ -4497,7 +4501,7 @@ F:WEIRD_MIND | BASH_DOOR | UNIQUE | REBORN
 D:Curio is said by the Roman poet Lucan to have urged Caesar to cross the Rubicon, 
 D:declaring war on the Republic in 49 B.C. 
 
-N:337:Mosca dei Lambert
+N:338:Mosca dei Lambert
 G:p:B
 I:110:2:25d12:16:60:30
 W:22:3:0:270
@@ -4507,7 +4511,7 @@ F:WEIRD_MIND | BASH_DOOR | UNIQUE | REBORN
 D:Mosca dei Lamberti suggested that one of the Buondelmonti be murdered rather than 
 D:beaten; the act resulted in the strife between Ghibellines and Guelphs. 
 
-N:338:Bertran de Born
+N:339:Bertran de Born
 G:p:B
 I:110:2:25d12:16:60:30
 W:22:3:0:270
@@ -4518,7 +4522,7 @@ D:Bertran de Born (1140-1215), a knight and troubadour, who was believed to have
 D:instigated a quarrel between Henry II of England and his son. He now walks around 
 D:carrying his head in his hands. 
 
-N:339:Geri del Bello
+N:340:Geri del Bello
 G:p:B
 I:110:2:25d12:16:60:30
 W:22:3:0:270
@@ -4528,7 +4532,7 @@ F:WEIRD_MIND | BASH_DOOR | UNIQUE | REBORN
 D:Geri del Bello was a first cousin of Dante's father. Since he was slain in a feud, 
 D:the family is called to revenge his death.. 
 
-N:340:Sower of Discord
+N:341:Sower of Discord
 G:p:v
 I:155:5:15d11:20:40:40
 W:22:1:0:60
@@ -4546,7 +4550,7 @@ D:means bad news for you.
 ########################################
 ########################################
 
-N:341:Alchemist
+N:342:Alchemist
 G:p:B
 I:120:2:7d10:20:16:20
 W:23:1:0:75
@@ -4559,7 +4563,7 @@ S:CONF | MISSILE | BO_MANA
 D:His skin is marked with pocks, if he's not trying to kill you, 
 D:he's scratching his skin. 
 
-N:342:Perjurer
+N:343:Perjurer
 G:p:b
 I:120:2:7d10:20:16:20
 W:23:1:0:35
@@ -4572,7 +4576,7 @@ F:ONLY_ITEM | DROP_1D2 |
 F:OPEN_DOOR | BASH_DOOR | EVIL | 
 D:Punished for his grave lies he must remain immobile with burning fever. 
 
-N:343:Counterfeiter
+N:344:Counterfeiter
 G:p:y
 I:120:2:7d10:20:16:20
 W:23:1:0:35
@@ -4582,7 +4586,7 @@ F:ONLY_ITEM | DROP_1D2 |
 F:OPEN_DOOR | BASH_DOOR | EVIL | 
 D:Punsihed for his sins, he must remain immobile in the shape of a broken musical instrument. 
 
-N:344:Impersonator
+N:345:Impersonator
 G:@:w
 I:120:2:7d10:20:16:20
 W:23:3:0:75
@@ -4595,7 +4599,7 @@ S:CONF | MISSILE | BO_MANA
 D:Barely a shade, he seems to resemble someone you know. 
 
 #And a such the pukelman lives on ;')
-N:345:Griffolino da Arezzo
+N:346:Griffolino da Arezzo
 G:p:o
 I:110:2:80d12:12:80:10
 W:23:3:0:600
@@ -4609,7 +4613,7 @@ S:SLOW | CONF | BO_ACID
 D:Griffolino da Arezzo was said to have duped Alberto da Siena into paying him for flying lessons. 
 D:The bishop had Griffolino burned at the stake for black magic. 
 
-N:346:Master Adam
+N:347:Master Adam
 G:p:o
 I:110:2:80d12:12:80:10
 W:23:3:0:600
@@ -4623,7 +4627,7 @@ S:SLOW | CONF | BO_ACID
 D: Master Adam was in the employ of the Conti Guidi of Romena, and coined debased florins for them. 
 D:He was burned at Florence in 1281. 
 
-N:347:Capocchio
+N:348:Capocchio
 G:p:b
 I:110:2:80d12:12:80:10
 W:23:3:0:600
@@ -4636,7 +4640,7 @@ S:1_IN_4 |
 S:SLOW | CONF | BO_ACID
 D:Capocchio, who was burned at Siena in 1293 for practicing alchemy. 
 
-N:348:Gianni Schicchi
+N:349:Gianni Schicchi
 G:@:g
 I:110:2:80d12:12:80:10
 W:23:3:0:600
@@ -4651,7 +4655,7 @@ D:Gianni Schicchi, a mimic and member of the Cavalcanti clan, posed
 D:as the dying Buoso Donati, who was already dead, and made a new 
 D:last will to benefit the heir and himself 
 
-N:349:Myrrha
+N:350:Myrrha
 G:@:v
 I:110:2:80d12:12:80:10
 W:23:3:0:600
@@ -4664,7 +4668,7 @@ S:1_IN_4 |
 S:SLOW | CONF | BO_ACID
 D:Myrrha is with the falsifiers of the tenth pocket for tricking her father, King Cinyras of Cyprus, into sleeping with her 
 
-N:350:Zuleika
+N:351:Zuleika
 G:p:G
 I:110:2:80d12:12:80:10
 W:23:3:0:600
@@ -4677,7 +4681,7 @@ S:1_IN_4 |
 S:SLOW | CONF | BO_ACID
 D:"She is the wife who falsely accused Joseph" (Genesis 39:6-23) 
 
-N:351:Sinon
+N:352:Sinon
 G:p:G
 I:110:2:80d12:12:80:10
 W:23:3:0:600
@@ -4699,7 +4703,7 @@ D:Sinon, a Greek, convinced the Trojans to accept the horse as a gift (Aeneid II
 ########################################
 ########################################
 
-N:352:Nimrod
+N:353:Nimrod
 G:P:u
 I:140:5:11d100:20:70:50
 W:24:2:0:2000
@@ -4714,7 +4718,7 @@ S:1_IN_2 |
 S:TELE_TO | BO_ICEE | BA_CHAO
 D:Nimrod is commonly credited with building the Tower of Babel (Genesis 10: 8-10, 11:1-9), which is the cause for the different languages among people. 
 
-N:353:Otus
+N:354:Otus
 G:P:u
 I:140:5:11d100:20:70:50
 W:24:2:0:2000
@@ -4729,7 +4733,7 @@ S:1_IN_8 |
 S:TELE_TO | BO_ICEE | BA_CHAO
 D:Otus, with his brother Ephialtes, attempted to overthrow the gods on Mount Olympus; he piled up mountains to ascend there. 
 
-N:354:Ephialtes
+N:355:Ephialtes
 G:P:u
 I:140:5:11d100:20:70:50
 W:24:2:0:2000
@@ -4743,21 +4747,6 @@ F:EVIL | GIANT | RES_POIS | SMART | RES_FIRE | RES_COLD | RES_DARK | RES_LITE
 S:1_IN_2 | 
 S:TELE_TO | BO_ICEE | BA_CHAO
 D:Ephialtes, with his brother Otus, attempted to overthrow the gods on Mount Olympus; he piled up mountains to ascend there. 
-
-N:355:Briareus
-G:P:u
-I:140:5:11d100:20:70:50
-W:24:2:0:2000
-B:HIT:HURT:5d5
-B:BITE:HURT:2d10
-B:HIT:ELEC:5d5
-B:BITE:ELEC:2d10
-F:UNIQUE | MALE | NEVER_MOVE | NEUTRAL | REBORN
-F:ONLY_ITEM | DROP_2D2 | DROP_GREAT | ATTR_MULTI
-F:EVIL | GIANT | RES_POIS | SMART | RES_FIRE | RES_COLD | RES_DARK | RES_LITE
-S:1_IN_2 | 
-S:TELE_TO | BO_ICEE | BA_CHAO
-D:Briareus and Antaeus were sons of Tellus (the Earth). 
 
 N:356:Briareus
 G:P:u
@@ -4774,7 +4763,22 @@ S:1_IN_2 |
 S:TELE_TO | BO_ICEE | BA_CHAO
 D:Briareus and Antaeus were sons of Tellus (the Earth). 
 
-N:357:Tityus
+N:357:Briareus
+G:P:u
+I:140:5:11d100:20:70:50
+W:24:2:0:2000
+B:HIT:HURT:5d5
+B:BITE:HURT:2d10
+B:HIT:ELEC:5d5
+B:BITE:ELEC:2d10
+F:UNIQUE | MALE | NEVER_MOVE | NEUTRAL | REBORN
+F:ONLY_ITEM | DROP_2D2 | DROP_GREAT | ATTR_MULTI
+F:EVIL | GIANT | RES_POIS | SMART | RES_FIRE | RES_COLD | RES_DARK | RES_LITE
+S:1_IN_2 | 
+S:TELE_TO | BO_ICEE | BA_CHAO
+D:Briareus and Antaeus were sons of Tellus (the Earth). 
+
+N:358:Tityus
 G:P:u
 I:140:5:11d100:20:70:50
 W:24:2:0:2000
@@ -4789,7 +4793,7 @@ S:1_IN_2 |
 S:TELE_TO | BO_ICEE | BA_CHAO
 D:Tityas attempted to rape Leto and was slain by Apollo and Artemis. 
 
-N:358:Typhon
+N:359:Typhon
 G:P:u
 I:140:5:11d100:20:70:50
 W:24:2:0:2000
@@ -4804,7 +4808,7 @@ S:1_IN_2 |
 S:TELE_TO | BO_ICEE | BA_CHAO
 D:Typhon lead the Titans when they attacked and killed Dionysus. 
 
-N:359:Babylonian
+N:360:Babylonian
 G:p:w
 I:110:3:40d10:20:65:70
 W:24:1:0:1000
@@ -4829,7 +4833,7 @@ D:his king into this desolate section of Hell.
 ##########################  Caina  #############################
 ################################################################
 
-N:360:Kinslayer
+N:361:Kinslayer
 G:p:w
 I:110:3:40d10:20:65:70
 W:25:1:0:1000
@@ -4842,7 +4846,7 @@ S:1_IN_10 |
 S:BR_COLD
 D:Escaped from the Cocytus, he has gained some fearsome powers. 
 
-N:361:Alessandro degli Alberti
+N:362:Alessandro degli Alberti
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:2:0:1000
@@ -4855,7 +4859,7 @@ S:1_IN_10 |
 S:BR_COLD
 D:Alessandro and Napoleone degli Alberti, sons of Alberto of Mangona, quarreled over their patrimony, including castles in the Val di Bisenzio, and killed each other. 
 
-N:362:Giovanni Malatesta
+N:363:Giovanni Malatesta
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:2:0:1000
@@ -4869,7 +4873,7 @@ S:BR_COLD
 D:"Love led the two of us unto one death.\Caina waits for him who took our life."
 D:Giovanni killed Francesca Rimini and his own brother in a fit of rage upon discovering their forbidden love.
 
-N:363:Napoleone degli Alberti
+N:364:Napoleone degli Alberti
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:2:0:1000
@@ -4882,7 +4886,7 @@ S:1_IN_10 |
 S:BR_COLD
 D:Alessandro and Napoleone degli Alberti, sons of Alberto of Mangona, quarreled over their patrimony, including castles in the Val di Bisenzio, and killed each other. 
 
-N:364:Mordred
+N:365:Mordred
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:2:0:1000
@@ -4895,7 +4899,7 @@ S:1_IN_10 |
 S:BR_COLD
 D:Modred betrayed his uncle King Arthur who lanced him through so that sunlight shone from the hole. 
 
-N:365:Focaccia de' Cancellieri 
+N:366:Focaccia de' Cancellieri 
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:2:0:1000
@@ -4908,7 +4912,7 @@ S:1_IN_10 |
 S:BR_COLD
 D:Focaccia de' Cancellieri of Pistoia is a Tuscan kinslayer that met Dante 300 years ago. 
 
-N:366:Sassol Mascheroni
+N:367:Sassol Mascheroni
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:2:0:1000
@@ -4921,7 +4925,7 @@ S:1_IN_10 |
 S:BR_COLD
 D:Sassol Mascheroni is a Tuscan kinslayer that met Dante 300 years ago. 
 
-N:367:Camiscion de' Pazzi
+N:368:Camiscion de' Pazzi
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:2:0:1000
@@ -4934,7 +4938,7 @@ S:1_IN_10 |
 S:BR_COLD
 D:Camiscion de' Pazzis a Tuscan kinslayer that met Dante 300 years ago. 
 
-N:368:Bocca degli Abbati
+N:369:Bocca degli Abbati
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:2:0:1000
@@ -4953,7 +4957,7 @@ D:1260 and helped cause that party's defeat.
 ##########################  Antenora  ##########################
 ################################################################
 
-N:369:Betrayer of the Crown
+N:370:Betrayer of the Crown
 G:p:w
 I:110:3:40d10:20:65:70
 W:25:1:0:1000
@@ -4966,7 +4970,7 @@ S:1_IN_10 |
 S:BR_COLD
 D:Escaped from the Cocytus, he has gained some fearsome powers. 
 
-N:370:Betrayer of the Faith
+N:371:Betrayer of the Faith
 G:p:w
 I:110:3:40d10:20:65:70
 W:25:1:0:1000
@@ -4979,7 +4983,7 @@ S:1_IN_10 |
 S:BR_COLD
 D:Escaped from the Cocytus, he has gained some fearsome powers. 
 
-N:371:Betrayer of the Clan
+N:372:Betrayer of the Clan
 G:p:w
 I:110:3:40d10:20:65:70
 W:25:1:0:1000
@@ -4992,7 +4996,7 @@ S:1_IN_10 |
 S:BR_COLD
 D:Escaped from the Cocytus, he has gained some fearsome powers. 
 
-N:372:Antenor of Troy
+N:373:Antenor of Troy
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:2:0:1000
@@ -5005,7 +5009,7 @@ S:1_IN_10 |
 S:BR_COLD
 D:Antenor of Troy betrayed his city to the Greeks. 
 
-N:373:Pope Clement V
+N:374:Pope Clement V
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:2:0:1000
@@ -5019,7 +5023,7 @@ S:BR_COLD
 D:Pope Clement V issued an edict officially dissolving the Templars Order giving way to 
 D:King Philip IV to brutally put an end to the Templars. 
 
-N:374:Philip IV
+N:375:Philip IV
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:2:0:1000
@@ -5032,7 +5036,7 @@ S:1_IN_10 |
 S:BR_COLD
 D:King Philip IV has betrayed the Templars in order to support his wars. 
 
-N:375:Buoso da Duera
+N:376:Buoso da Duera
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:2:0:1000
@@ -5045,7 +5049,7 @@ S:1_IN_10 |
 S:BR_COLD
 D:Buoso da Duera, a Ghibelline leader, was bribed by the French to betray his side. 
 
-N:376:Tesauro dei Beccheria
+N:377:Tesauro dei Beccheria
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:2:0:1000
@@ -5058,7 +5062,7 @@ S:1_IN_10 |
 S:BR_COLD
 D:Tesauro dei Beccheria of Pavia, a papal legate in Tuscany, secretly worked for the Ghibellines; he was beheaded in 1258. 
 
-N:377:Gianni de' Soldanier
+N:378:Gianni de' Soldanier
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:2:0:1000
@@ -5071,7 +5075,7 @@ S:1_IN_10 |
 S:BR_COLD
 D:Gianni de' Soldanier, a Florentine Ghibelline, joined up with the Guelphs. 
 
-N:378:Ganelon
+N:379:Ganelon
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:2:0:1000
@@ -5084,7 +5088,7 @@ S:1_IN_10 |
 S:BR_COLD
 D:Ganelon betrayed Roland and the rear-guard to the Moors. 
 
-N:379:Tebaldello de' Zambrasi
+N:380:Tebaldello de' Zambrasi
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:1:0:1000
@@ -5097,7 +5101,7 @@ S:1_IN_10 |
 S:BR_COLD
 D:Tebaldello de' Zambrasi of Faenza turned over his city to the Guelphs of Bologna in 1280. 
 
-N:380:Count Ugolino
+N:381:Count Ugolino
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:1:0:1000
@@ -5112,7 +5116,7 @@ D:Ugolino della Gherardesca, Count of Donoratico and a Pisan Guelph, plotted wit
 D:Ruggieri degli Ubaldini, a Ghibelline chief, against his own party in 1288. Then Ruggieri 
 D:treacherously imprisoned him, his sons and grandsons. 
 
-N:381:Archbishop Ruggieri
+N:382:Archbishop Ruggieri
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:1:0:1000
@@ -5131,7 +5135,7 @@ D:treacherously imprisoned him, his sons and grandsons.
 ##########################  Ptolomea  ##########################
 ################################################################
 
-N:382:Captain Ptolemy
+N:383:Captain Ptolemy
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:1:0:1000
@@ -5144,7 +5148,7 @@ S:1_IN_10 |
 S:BR_COLD
 D:He invited Simon Maccabaeus and his sons to a banquet and there killed them. 
 
-N:383:Ptolemy XII
+N:384:Ptolemy XII
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:1:0:1000
@@ -5159,7 +5163,7 @@ D:After his defeat in the Battle of Pharsalus Pompey sought asylum in Egypt. Ini
 D:to have accepted his request but on September 29, 48 BC, Pothinus had the general beheaded hoping to win 
 D:favor with Julius Caesar, who had defeated Pompey. 
 
-N:384:Brother Alberigo
+N:385:Brother Alberigo
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:1:0:1000
@@ -5173,7 +5177,7 @@ S:BR_COLD
 D:Brother Alberigo, a Jovial Friar, murdered his brother Manfred and his nephews in 1285 at a banquet to 
 D:which he invited them in Faenza. The signal for the murder was the call, "Bring in the fruit." 
 
-N:385:Branca d'Oria
+N:386:Branca d'Oria
 G:p:B
 I:110:3:40d10:20:65:70
 W:25:1:0:1000
@@ -5189,7 +5193,7 @@ D:his father-in-law Michel Zanche, in 1275, to have him butchered.
 
 ##### Level 26 #####
 
-N:386:Satan
+N:387:Satan
 G:U:B
 I:155:10:200d150:111:175:0
 W:26:1:0:95
@@ -5216,7 +5220,7 @@ D:in addition to every other sin imaginable. Satan was overthrown by the archang
 
 ##### Level 27 #####
 
-N:387:Arch-vile
+N:388:Arch-vile
 G:u:W
 I:130:3:11d11:100:30:0
 W:21:1:100:300
@@ -5230,7 +5234,7 @@ S:BA_FIRE |
 D:A pale, corpse-like lesser demon, who moves very fast and spawns evil 
 D:everywhere. 
 
-N:388:Ghoul
+N:389:Ghoul
 G:z:U
 I:110:3:15d9:30:30:20
 W:27:1:0:95
@@ -5244,7 +5248,7 @@ S:SCARE | HOLD
 D:He has been taken here by a demon with promises of power, 
 D:now flesh is falling off in chunks from this decaying abomination. 
 
-N:389:Ephippas
+N:390:Ephippas
 G:U:u
 I:110:5:85d11:20:40:40
 W:27:4:0:500
@@ -5261,7 +5265,7 @@ S:TRAPS | CAUSE_3 | DARKNESS | S_DEMON | S_DEVIL | SCARE | SLOW
 S:S_KIN
 D:Demon of the Arabian Wind, he can summon the son of Beelzebub from the depths of the sea. 
 
-N:390:White wraith
+N:391:White wraith
 G:W:w
 I:110:4:15d8:20:40:10
 W:27:1:0:175
@@ -5275,7 +5279,7 @@ S:1_IN_8 |
 S:SCARE | CAUSE_2 | DARKNESS
 D:It is a tangible but ghostly form made of white fog. 
 
-N:391:Lilitu
+N:392:Lilitu
 G:h:v
 I:110:3:30d10:30:60:255
 W:27:6:0:220
@@ -5288,7 +5292,7 @@ S:1_IN_3 |
 S:BLIND | CONF | SCARE | FORGET | MISSILE
 D:A daughter of Lilith, she'll blow your mind. 
 
-N:392:Ornias
+N:393:Ornias
 G:U:y
 I:120:6:80d11:20:80:20
 W:27:4:0:1000
@@ -5307,7 +5311,7 @@ D:While he goes in a trance he undergoes three transformations. Sometimes he is 
 D:who craves the bodies of effeminate boys and when he touches them, they suffer great pain. 
 D:Sometimes he becomes a creature with wings (flying) up to the heavenly regions. Finally, he can assume the appearance of a lion. 
 
-N:393:Hellblade
+N:394:Hellblade
 G:|:v
 I:120:2:13d13:20:40:20
 W:27:2:0:130
@@ -5318,7 +5322,7 @@ F:COLD_BLOOD | BASH_DOOR | NONLIVING |
 F:NO_CONF | NO_SLEEP | NO_FEAR
 D:A deadly blade of chaos, moving of its own volition. 
 
-N:394:Bursting beetle
+N:395:Bursting beetle
 G:K:r
 I:140:2:13d8:14:45:30
 W:27:7:0:300
@@ -5330,7 +5334,7 @@ F:WEIRD_MIND | BASH_DOOR | FRIENDS
 F:ANIMAL | IM_FIRE | AURA_FIRE | MULTIPLY
 D:It is a giant beetle wreathed in flames. 
 
-N:395:Headless
+N:396:Headless
 G:H:u
 I:110:2:21d12:20:50:40
 W:27:1:0:175
@@ -5341,7 +5345,7 @@ S:1_IN_6
 S:SCARE
 D:Headless humanoid abominations created by a magical mutation. 
 
-N:396:Ogre mage
+N:397:Ogre mage
 G:O:o
 I:110:5:30d12:20:40:30
 W:27:2:0:300
@@ -5368,7 +5372,7 @@ D:A hideous ogre wrapped in black sorcerous robes.
 #F:EVIL | GIANT | IM_POIS
 #D:An ogre renowned for acts of surpassing cruelty. 
 
-N:397:Vampire
+N:398:Vampire
 G:V:W
 I:110:4:25d12:20:45:10
 W:27:1:0:175
@@ -5383,7 +5387,7 @@ S:TELE_TO | HOLD | SCARE | CAUSE_2 | MIND_BLAST | FORGET | DARKNESS
 D:It is a humanoid with an aura of power. You notice a sharp set of front 
 D:teeth. 
 
-N:398:Gorgimera
+N:399:Gorgimera
 G:h:D
 I:110:4:25d20:12:55:10
 W:27:2:0:200
@@ -5399,7 +5403,7 @@ S:BR_FIRE
 D:It has 3 heads - gorgon, goat and dragon - all attached to a 
 D:lion's body. 
 
-N:399:Pit Vulture
+N:400:Pit Vulture
 G:B:D
 I:120:4:25d20:12:85:10
 W:27:2:0:280
@@ -5413,7 +5417,7 @@ D:it from most blows.
 
 ##### Level 28 #####
 
-N:400:Spirit succubus
+N:401:Spirit succubus
 G:u:B
 I:110:4:30d15:20:75:120
 W:28:2:0:60
@@ -5429,7 +5433,7 @@ S:HEAL | BLIND | MIND_BLAST | DARKNESS
 D:A wraithly beautiful demon, she is the 
 D:most powerful of her kind. 
 
-N:401:Osnokelis
+N:402:Osnokelis
 G:U:g
 I:120:4:25d100:20:100:20
 W:28:2:0:1500
@@ -5443,7 +5447,7 @@ F:EVIL | DEMON | IM_POIS
 D:A very pretty demon, she seems to lack magical powers but makes it up with 
 D:a set of spiked gauntlets and escorts. 
 
-N:402:Black knight
+N:403:Black knight
 G:p:D
 I:120:4:30d10:20:70:10
 W:28:1:0:240
@@ -5457,7 +5461,7 @@ S:BLIND | SCARE | CAUSE_3 | DARKNESS
 D:He is a figure encased in deep black plate armour; he looks at you 
 D:menacingly. 
 
-N:403:Elder Horror
+N:404:Elder Horror
 G:H:v
 I:110:2:15d10:20:60:10
 W:28:1:0:200
@@ -5473,7 +5477,7 @@ D:This Elder has sworn allegiance to Lucifer himself, it has a
 D:gruesome head, tentacular mouth, and piercing 
 D:eyes. Claws reach out for you and you feel a presence invade your mind. 
 
-N:404:Thammuz
+N:405:Thammuz
 G:U:d
 I:120:6:70d12:10:80:12
 W:28:2:0:555
@@ -5485,7 +5489,7 @@ D:Thammuz is a demon of low category, considered inventor of the Inquisition, fi
 D:and the one that stimulates men to torture other people. Some treatises on demonology say that he 
 D:is the ambassador of Hell to Spain. 
 
-N:405:Dispater
+N:406:Dispater
 G:A:g
 I:120:4:40d12:20:50:20
 W:28:5:0:750
@@ -5502,7 +5506,7 @@ S:BLINK | TPORT | TELE_TO | TELE_AWAY | TELE_LEVEL | BLIND |
 S:CONF | SCARE | S_DEVIL
 D:The least of the fallen angels, Dispater is still a formiddable opponent. 
 
-N:406:Basilisk
+N:407:Basilisk
 G:R:D
 I:120:4:20d30:15:90:30
 W:28:3:0:350
@@ -5518,7 +5522,7 @@ D:your soul starts to wilt!
 
 ##### Level 29 #####
 
-N:407:Erebus
+N:408:Erebus
 G:v:s
 I:110:2:65d8:14:64:25
 W:29:4:0:500
@@ -5531,7 +5535,7 @@ S:1_IN_9
 S:BR_ACID
 D:A whirling devil spewing chaos about it. 
 
-N:408:Tephras
+N:409:Tephras
 G:U:o
 I:110:6:40d10:30:68:255
 W:29:6:0:400
@@ -5547,7 +5551,7 @@ D:And I said to him: "What is thy pursuit?"
 D:And he said: "I bring darkness on men, and set fire to fields; and I bring homesteads to naught. But most busy am I in summer". 
 D:However, when I get an opportunity, I creep into corners of the wall, by night and day. 
 
-N:409:Ring mimic
+N:410:Ring mimic
 G:=:w
 I:120:4:10d35:30:60:100
 W:29:4:0:200
@@ -5567,7 +5571,7 @@ D:unsuspecting adventurers within reach of its venomous claws.
 
 ### The grigori ####
 
-N:410:Grigori
+N:411:Grigori
 G:A:B
 I:110:6:40d10:30:68:255
 W:30:6:0:400
@@ -5585,7 +5589,7 @@ D:the beginnings of civilization; however, many became fallen angels
 D:after they descended to earth to teach man forbidden sciences and 
 D:started cohabiting with mortal man. 
 
-N:411:Samyaza
+N:412:Samyaza
 G:A:o
 I:110:3:15d100:20:70:50
 W:33:7:0:3500
@@ -5601,7 +5605,7 @@ S:BR_ELEC | BA_ELEC | BO_ELEC
 D:Samyaza is the first of the fallen Grigori leaders. 
 D:His name means 'infamous rebellion'. 
 
-N:412:Araqiel
+N:413:Araqiel
 G:A:U
 I:110:3:11d100:20:150:50
 W:33:7:0:2000
@@ -5620,7 +5624,7 @@ D:His name means 'Earth of god'.
 D:He is known to teach geomancy when he is in a better mood. 
 D:Araqiel is also called Aretstikapha meaning "world of distortion". 
 
-N:413:Kokabiel
+N:414:Kokabiel
 G:A:w
 I:110:3:12d100:8:80:80
 W:32:3:0:1200
@@ -5642,7 +5646,7 @@ D:He is known to teach about the constellations when he is in a better mood.
 D:Kokabiel is also called Penemue meaning "instructor of language". 
 D:He commands 365,000 surrogate spirits to do his bidding. 
 
-N:414:Ramiel
+N:415:Ramiel
 G:A:y
 I:110:3:11d100:20:70:50
 W:33:7:0:2000
@@ -5659,7 +5663,7 @@ S:BR_ELEC | BA_ELEC | BO_ELEC
 D:Ramiel was the sixth of the fallen Grigori leaders. 
 D:His name means 'Thunder of God'. 
 
-N:415:Daniel
+N:416:Daniel
 G:A:u
 I:110:3:15d100:20:70:50
 W:33:7:0:3500
@@ -5676,7 +5680,7 @@ D:Daniel is the seventh of the fallen Grigori leaders.
 D:His name means 'Divine Judgement'. 
 D:He is known to the signs of the sun when he is in a better mood. 
 
-N:416:Chazaqiel
+N:417:Chazaqiel
 G:A:B
 I:110:3:11d100:20:70:50
 W:33:7:0:3500
@@ -5694,7 +5698,7 @@ D:Chazaqiel is the eight of the fallen Grigori leaders.
 D:His name means 'Cloud of God' 
 D:He is known to teach meteorology when he is in a better mood. 
 
-N:417:Baraqiel
+N:418:Baraqiel
 G:A:y
 I:110:3:11d100:20:70:50
 W:33:7:0:3500
@@ -5713,7 +5717,7 @@ D:His name means 'Lightning of God'
 D:He is known to teach astronomy when he is in a better mood. 
 
 #Also known as Armaros
-N:418:Amaros
+N:419:Amaros
 G:A:d
 I:110:3:11d100:20:70:50
 W:33:7:0:2000
@@ -5732,7 +5736,7 @@ D:His name means 'Cursed one'.
 D:He is known to teach the resolving of enchantments when he is in a better mood. 
 
 #Also known as Sataniel
-N:419:Satariel
+N:420:Satariel
 G:A:d
 I:110:3:11d100:20:70:50
 W:33:7:0:2000
@@ -5749,7 +5753,7 @@ D:Amaros is the seventeenth of the fallen Grigori leaders.
 D:His name means 'Side of God'. 
 
 #The angelic she-version of the Mystic
-N:420:Sariel
+N:421:Sariel
 G:A:w
 I:110:3:15d100:20:70:50
 W:33:7:0:3500
@@ -5769,7 +5773,7 @@ D:She has an immense knowledge of magic, magical rituals, and magical power
 D:and impressive warrior abilities 
 
 #He is escorted by the Se'irim
-N:421:Azazel, chief of the Se'irim
+N:422:Azazel, chief of the Se'irim
 G:D:o
 I:130:6:35d100:30:120:30
 W:33:6:0:18000
@@ -5789,7 +5793,7 @@ D:teaching women how to make and wear cosmetics. Eventually, Azazel's teachings 
 D:such iniquity that God decided to destroy all life on Earth with Noah's Flood. 
 D:He looks like a dragon with hands and feet like a man, on his back six wings on the right and six on the left. 
 
-N:422:Ghast
+N:423:Ghast
 G:z:u
 I:120:3:30d10:30:50:20
 W:30:3:0:130
@@ -5805,7 +5809,7 @@ S:SCARE | HOLD
 D:This vile abomination is a relative of ghouls, and often leads packs 
 D:of them. It smells foul, and its bite carries a rotting disease. 
 
-N:423:Manticore
+N:424:Manticore
 G:h:o
 I:120:6:25d10:12:15:10
 W:30:2:0:300
@@ -5820,7 +5824,7 @@ D:vicious spikes.
 
 ##### Level 31 #####
 
-N:424:Ghost
+N:425:Ghost
 G:G:w
 I:120:5:13d8:20:30:10
 W:31:1:0:350
@@ -5837,7 +5841,7 @@ D:You don't believe in them.
 
 ##### Level 32 #####
 
-N:425:Ogre shaman
+N:426:Ogre shaman
 G:O:b
 I:110:3:14d10:20:55:30
 W:32:2:0:250
@@ -5851,7 +5855,7 @@ S:TPORT | HOLD | SCARE | CAUSE_2 | TRAPS | BO_FIRE |
 S:S_MONSTER
 D:It is an ogre wrapped in furs and covered in grotesque body paints. 
 
-N:426:The Mother Spider
+N:427:The Mother Spider
 G:S:D
 I:110:3:12d100:8:80:80
 W:32:3:0:1200
@@ -5872,7 +5876,7 @@ S:S_SPIDER
 D:One of the 'incomplete creatures', she has found refuge here and keeps 
 D:spawning more and more offspring. 
 
-N:427:The Mother Worm
+N:428:The Mother Worm
 G:w:D
 I:110:3:12d100:8:80:80
 W:32:3:0:1200
@@ -5895,7 +5899,7 @@ D:spawning more and more offspring.
 
 ##### Level 33 #####
 
-N:428:Cave troll
+N:429:Cave troll
 G:T:u
 I:110:4:24d12:20:50:50
 W:33:3:0:350
@@ -5906,7 +5910,7 @@ F:OPEN_DOOR | BASH_DOOR |
 F:EVIL | TROLL | IM_POIS | HURT_LITE
 D:He is a vicious monster, feared for his ferocity. 
 
-N:429:Barrow wight
+N:430:Barrow wight
 G:W:W
 I:110:3:15d10:20:40:10
 W:33:3:0:375
@@ -5919,7 +5923,7 @@ S:1_IN_8 |
 S:HOLD | SCARE | CAUSE_2 | DARKNESS
 D:It is a ghostly nightmare of a entity. 
 
-N:430:Giant skeleton troll
+N:431:Giant skeleton troll
 G:s:b
 I:110:4:45d10:20:50:20
 W:33:3:0:325
@@ -5946,7 +5950,7 @@ D:It is the animated form of a massive troll.
 #D:He who laughs at Groo's brains will find there is nothing to laugh 
 #D:about... erm, nobody laughs at Groo and lives. 
 
-N:431:Spectre
+N:432:Spectre
 G:G:G
 I:120:4:14d20:20:30:10
 W:33:3:0:350
@@ -5963,7 +5967,7 @@ S:BLIND | HOLD | DRAIN_MANA | FORGET
 D:A phantasmal shrieking spirit. Its wail drives the intense cold of pure 
 D:evil deep within your body. 
 
-N:432:Pit Spider
+N:433:Pit Spider
 G:S:v
 I:120:6:45d10:30:68:255
 W:33:6:0:400
@@ -5980,7 +5984,7 @@ D:Only in the pits of hell could a spider grow so big.
 
 ##### Level 34 #####
 
-N:433:Night stalker
+N:434:Night stalker
 G:H:w
 I:130:4:20d13:20:46:20
 W:34:3:0:310
@@ -5992,7 +5996,7 @@ F:EVIL | IM_COLD | IM_POIS | UNDEAD | IM_ELEC
 F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
 D:It is impossible to define its form but its violence is legendary. 
 
-N:434:Carrion crawler
+N:435:Carrion crawler
 G:c:g
 I:110:3:20d12:15:40:10
 W:34:2:0:100
@@ -6003,7 +6007,7 @@ F:ANIMAL | IM_POIS
 D:A hideous centipede covered in slime and with glowing tentacles around its 
 D:head. 
 
-N:435:Lich
+N:436:Lich
 G:L:w
 I:110:4:30d10:20:60:60
 W:34:3:0:800
@@ -6020,7 +6024,7 @@ S:BLINK | TELE_TO | TELE_AWAY | BLIND | HOLD | SLOW | SCARE |
 S:CAUSE_3 | DRAIN_MANA | BRAIN_SMASH
 D:It is a skeletal form dressed in robes. It radiates vastly evil power. 
 
-N:436:Master vampire
+N:437:Master vampire
 G:V:s
 I:110:4:34d10:20:60:10
 W:34:3:0:750
@@ -6036,7 +6040,7 @@ S:DARKNESS | BO_NETH
 D:It is a humanoid form dressed in robes. Power emanates from its chilling 
 D:frame. 
 
-N:437:Oriental vampire
+N:438:Oriental vampire
 G:V:g
 I:110:3:28d12:20:60:10
 W:34:3:0:750
@@ -6051,7 +6055,7 @@ S:TELE_TO | HOLD | CONF | SCARE | CAUSE_3 | MIND_BLAST | FORGET |
 S:DARKNESS | BO_NETH
 D:The oriental vampire is a mist-like creature. 
 
-N:438:Demon locust
+N:439:Demon locust
 G:F:s
 I:120:2:18d20:12:50:40
 W:34:4:0:275
@@ -6065,7 +6069,7 @@ D:Abbadon's locusts, that have the faces of humans, tails of scorpions, and bodi
 
 ### The five satans ###
 
-N:439:Asb'el
+N:440:Asb'el
 G:A:d
 I:120:7:18d100:25:100:10
 W:36:2:0:1200
@@ -6082,7 +6086,7 @@ D:Each of these five has been cast into exile for different reasons.
 D:Their sins were also among the infractions that incited God to inflict the Great Flood upon the Earth. 
 D:Asb'el's sins included marrying human women, and teaching humanity the secrets of the natural universe, which God did not intend for human knowledge. 
 
-N:440:Gader'el
+N:441:Gader'el
 G:A:d
 I:120:7:18d100:25:100:10
 W:36:2:0:1200
@@ -6103,7 +6107,7 @@ D:who showed the children of the people how to make the instruments of death suc
 D:the breastplate, and the sword for warfare, and all the other instruments of death to the children of the people. 
 
 #Yes , this one is alrady in Hell under another name, a cookie if you find 'em
-N:441:Pinem'e
+N:442:Pinem'e
 G:A:d
 I:120:7:18d100:25:100:10
 W:36:2:0:1200
@@ -6121,7 +6125,7 @@ D:Their sins were also among the infractions that incited God to inflict the Gre
 D:He demonstrated to the children of the people the bitter and the sweet and revealed to them all the 
 D:secrets of their wisdom. Furthermore he caused the people to penetrate the secret of writing and the use of ink and paper. 
 
-N:442:Kasadya
+N:443:Kasadya
 G:A:d
 I:120:7:18d100:25:100:10
 W:36:2:0:1200
@@ -6140,7 +6144,7 @@ D:He is the one who revealed to the children of the people the various flagellat
 D:flagellations of the souls and the demons, the smashing of the embryo in the womb so that it may be 
 D:crushed, the flagellation of the soul, snake bites, sunstrokes, the son of the serpent, whose name is Taba'ta. 
 
-N:443:Yeqon
+N:444:Yeqon
 G:A:d
 I:120:7:18d100:25:100:10
 W:36:2:0:1200
@@ -6158,7 +6162,7 @@ D:Their sins were also among the infractions that incited God to inflict the Gre
 D:He is the one who misled all the children of the angels, brought them down upon the earth, 
 D:and perverted them by the daughters of the people. 
 
-N:444:Headless ghost
+N:445:Headless ghost
 G:g:u
 I:120:3:22d10:20:30:10
 W:35:2:0:1200
@@ -6174,7 +6178,7 @@ D:A phantasmal apparition with no head
 
 ##### Level 36 #####
 
-N:445:Grey wraith
+N:446:Grey wraith
 G:W:s
 I:110:3:19d10:20:50:10
 W:36:1:0:700
@@ -6189,7 +6193,7 @@ S:HOLD | SCARE | CAUSE_3 | DARKNESS
 D:A tangible but ghostly form, made of grey fog. The air around it feels 
 D:deathly cold. 
 
-N:446:Raal's Tome of Destruction
+N:447:Raal's Tome of Destruction
 G:?:r
 I:120:1:50d15:20:150:15
 W:36:4:0:1500
@@ -6202,7 +6206,7 @@ S:BO_ACID | BR_FIRE | BO_MANA | BR_COLD | BR_POIS |
 S:BO_WATE | BA_POIS | BR_NETH
 D:A sentient arcane tome casting spells with malevolent intent. 
 
-N:447:Colossus
+N:448:Colossus
 G:g:y
 I:100:5:30d100:15:150:10
 W:36:4:0:900
@@ -6218,7 +6222,7 @@ D:An enormous construct resembling a titan made from stone. It strides
 D:purposefully towards you, swinging its slow fists with earth-shattering 
 D:power. 
 
-N:448:Tunnel Dragon
+N:449:Tunnel Dragon
 G:d:U
 I:110:3:30d10:20:63:150
 W:36:2:0:950
@@ -6234,7 +6238,7 @@ S:BR_DISI
 D:Tunnel Dragons have briefly appeared in Alpine Mythology, 
 D:they destroy anything that blocks their path. 
 
-N:449:Balaur
+N:450:Balaur
 G:d:g
 I:110:3:40d10:20:70:70
 W:36:1:0:1100
@@ -6264,7 +6268,7 @@ D:A balaur is quite large, has fins, feet, and multiple serpent heads (usually t
 #F:EVIL | NO_CONF | NO_SLEEP
 #D:A dark elf so stealthy that he is almost impossible to see. 
 
-N:450:Bodak
+N:451:Bodak
 G:u:D
 I:110:3:35d10:10:68:90
 W:36:2:0:750
@@ -6278,7 +6282,7 @@ S:BO_FIRE | BA_FIRE |
 S:S_DEMON
 D:It is a humanoid form composed of flames and hatred. 
 
-N:451:Alu'u
+N:452:Alu'u
 G:G:G
 I:110:4:35d10:10:70:50
 W:36:3:0:800
@@ -6292,7 +6296,7 @@ S:SCARE | TELE_AWAY | BA_SLIM | CAUSE_4 | BA_POIS |
 S:CONF | S_DEVIL | S_UNDEAD
 D:A ghostly human, turned into a devil by the whim of Belial 
 
-N:452:Ipsissimus
+N:453:Ipsissimus
 G:p:D
 I:110:2:28d10:20:50:10
 W:36:2:0:666
@@ -6308,7 +6312,7 @@ S:BO_NETH | MIND_BLAST | FORGET |
 S:S_UNDEAD | S_DEMON
 D:A gaunt figure, clothed in black robes, he has reached the highest state under the guidance of Lucifer himself. 
 
-N:453:The Insane Crusader
+N:454:The Insane Crusader
 G:p:v
 I:120:7:18d100:25:100:10
 W:36:2:0:1200
@@ -6330,7 +6334,7 @@ D:out at the world which caused his condition.
 ##### Level 37 #####
 
 #DEMON D&D
-N:454:Vrock
+N:455:Vrock
 G:U:s
 I:110:3:280d1:20:50:80
 W:37:2:0:1000
@@ -6342,7 +6346,7 @@ F:OPEN_DOOR | NO_CONF | IM_FIRE
 S:1_IN_8 | BLIND | CONF
 D:It is a demon with a long neck and raking claws. 
 
-N:455:Wiltering Horror
+N:456:Wiltering Horror
 G:H:G
 I:120:8:35d10:90:70:10
 W:37:2:0:1000
@@ -6370,7 +6374,7 @@ D:This horror is bent on undoing you.
 #S:S_ANT
 #D:She's upset because you hurt her children. 
 
-N:456:Will o' the wisp
+N:457:Will o' the wisp
 G:u:y
 I:130:7:20d10:30:150:0
 W:37:4:0:500
@@ -6389,7 +6393,7 @@ D:strange dancing motion.
 ##### Level 38 #####
 
 #DEMON D&D
-N:457:Hezrou
+N:458:Hezrou
 G:U:v
 I:110:4:380d1:20:40:80
 W:38:3:0:1111
@@ -6400,7 +6404,7 @@ F:OPEN_DOOR | NO_CONF | IM_FIRE
 S:1_IN_9 | BO_FIRE | S_DEMON
 D:It is a demon of lizard form with cruel-looking jaws. 
 
-N:458:Death knight
+N:459:Death knight
 G:p:s
 I:120:6:60d10:20:100:10
 W:38:1:0:1111
@@ -6417,7 +6421,7 @@ D:It is a humanoid form dressed in armour of an ancient form. From beneath
 D:its helmet, eyes glow a baleful red and seem to pierce you like lances of 
 D:fire. 
 
-N:459:Mandor, Master of Chaos
+N:460:Mandor, Master of Chaos
 G:p:v
 I:120:5:88d11:20:90:40
 W:38:5:0:1600
@@ -6434,7 +6438,7 @@ S:BO_FIRE | BO_COLD | HOLD | BO_MANA | S_MONSTER
 S:TRAPS | BO_ICEE | HEAL | BO_PLAS | BA_CHAO
 D:Mandor is one of the greatest chaos Masters, a formidable magician. 
 
-N:460:Emperor wight
+N:461:Emperor wight
 G:W:y
 I:120:4:38d10:20:40:10
 W:38:2:0:1600
@@ -6449,7 +6453,7 @@ S:HOLD | SCARE | CAUSE_3 | BO_NETH
 D:Your life force is torn from your body as this powerful unearthly being 
 D:approaches. 
 
-N:461:Yaksha
+N:462:Yaksha
 G:O:w
 I:120:6:50d10:30:68:255
 W:38:6:0:1800
@@ -6464,7 +6468,7 @@ S:HEAL | HASTE | TELE_AWAY | CONF | BO_MANA | BO_PLAS |
 S:S_MONSTERS | 
 D:A cannibal devil of gluttony, eating anything and everything. 
 
-N:462:Karakal, Spirit of Fire
+N:463:Karakal, Spirit of Fire
 G:E:R
 I:120:6:15d100:12:50:50
 W:38:3:0:3000
@@ -6479,7 +6483,7 @@ S:1_IN_4 |
 S:BO_PLAS | BA_FIRE
 D:A towering fire elemental, Karakal burns everything beyond recognition. 
 
-N:463:Black wraith
+N:464:Black wraith
 G:W:D
 I:120:4:50d10:20:55:10
 W:38:2:0:1700
@@ -6494,7 +6498,7 @@ S:BLIND | HOLD | SCARE | CAUSE_3 | BO_NETH
 D:A figure that seems made of void, its strangely human shape is cloaked in 
 D:shadow. It reaches out at you. 
 
-N:464:Nightgaunt
+N:465:Nightgaunt
 G:U:D
 I:110:3:24d10:20:50:80
 W:38:2:0:1000
@@ -6509,7 +6513,7 @@ S:1_IN_7 |
 S:BLIND | CONF | BO_FIRE
 D:It is a black, horned humanoid with wings. 
 
-N:465:Baron of hell
+N:466:Baron of hell
 G:U:U
 I:110:3:150d10:10:130:40
 W:38:3:0:900
@@ -6522,7 +6526,7 @@ D:A minor demon lord with a goat's head, tough to kill.
 
 ##### Level 39 #####
 
-N:466:Nether wraith
+N:467:Nether wraith
 G:W:R
 I:120:4:48d10:20:55:10
 W:39:2:0:1700
@@ -6538,7 +6542,7 @@ S:BLIND | SCARE | CAUSE_3 | MIND_BLAST | DARKNESS | BO_NETH
 D:A form that hurts the eye, death permeates the air around it. As it nears 
 D:you, a coldness saps your soul. 
 
-N:467:Lasha, Mistress of Water
+N:468:Lasha, Mistress of Water
 G:h:B
 I:120:5:20d100:12:40:50
 W:39:3:0:3250
@@ -6554,7 +6558,7 @@ S:BO_ICEE | BO_WATE | BA_COLD | BA_WATE
 D:With the body of a beautiful mermaid, she hides her cruel 
 D:nature well, until it is too late. 
 
-N:468:Abezithibod
+N:469:Abezithibod
 G:d:v
 I:120:7:13d100:20:85:30
 W:39:3:0:3000
@@ -6570,7 +6574,7 @@ S:BR_ACID | BR_FIRE | BR_COLD | BR_ELEC | BR_SOUN | BR_CONF |
 S:BR_SHAR | BR_GRAV | BR_NEXU
 D:A fierce spirit and winged, and with a single wing, plotting against every spirit under heaven. 
 
-N:469:Pit Leech
+N:470:Pit Leech
 G:w:D
 I:120:4:100d10:20:90:20
 W:39:2:0:2300
@@ -6586,7 +6590,7 @@ D:A huge leech, blood dripping from it's infernal maw.
 D:It has been feeding on other devils, acquiring some 
 D:of their magical skills. 
 
-N:470:Night mare
+N:471:Night mare
 G:q:v
 I:120:5:15d100:30:85:0
 W:39:3:0:2900
@@ -6600,7 +6604,7 @@ F:EVIL | UNDEAD | IM_COLD | IM_POIS | NO_CONF | NO_SLEEP
 D:A fearsome skeletal horse with glowing eyes, that watch you with little 
 D:more than a hatred of all that lives. 
 
-N:471:Vampire lord
+N:472:Vampire lord
 G:V:b
 I:120:5:16d100:20:70:10
 W:39:3:0:1800
@@ -6619,7 +6623,7 @@ D:A foul wind chills your bones as this ghastly figure approaches.
 ##### Level 40 #####
 
 #DEMON D&D
-N:472:Glabrezu
+N:473:Glabrezu
 G:U:U
 I:120:4:500d1:20:40:80
 W:40:2:0:1800
@@ -6630,7 +6634,7 @@ F:NO_CONF | IM_FIRE
 S:1_IN_9 | BO_FIRE | S_DEMON
 D:It is demon with arms and pincers, its form a true mockery of life. 
 
-N:473:War troll
+N:474:War troll
 G:T:g
 I:120:4:50d10:20:100:50
 W:40:3:0:800
@@ -6641,7 +6645,7 @@ F:OPEN_DOOR | BASH_DOOR |
 F:EVIL | TROLL | IM_POIS | NO_CONF | NO_SLEEP | NO_FEAR
 D:A massive troll, equipped with a scimitar and heavy armour. 
 
-N:474:Lesser titan
+N:475:Lesser titan
 G:P:y
 I:120:5:10d100:30:80:15
 W:40:3:0:3500
@@ -6656,7 +6660,7 @@ S:S_MONSTERS
 D:It is a humanoid figure thirty feet tall that gives off an aura of power 
 D:and hate. 
 
-N:475:Cult leader
+N:476:Cult leader
 G:p:b
 I:120:4:52d10:20:60:10
 W:40:2:0:1800
@@ -6673,7 +6677,7 @@ D:An evil priest, dressed all in black. Deadly spells hit you at an
 D:alarming rate as his black spiked mace rains down blow after blow on your 
 D:pitiful frame. 
 
-N:476:Sorcerer
+N:477:Sorcerer
 G:p:o
 I:130:5:52d10:20:60:10
 W:40:2:0:2150
@@ -6691,7 +6695,7 @@ D:A human figure in robes, he moves with magically improved speed, and his
 D:hands are ablur with spell casting. 
 
 #Obizuth , Medusa ;) , " I have no work other than the destruction of children, and the making their ears to be deaf, and the working of evil to their eyes, 
-N:477:Medusa, the Gorgon
+N:478:Medusa, the Gorgon
 G:n:v
 I:120:6:24d100:30:100:5
 W:40:3:0:9000
@@ -6708,7 +6712,7 @@ S:HOLD | SCARE | CAUSE_3 | BO_FIRE | BO_PLAS | BA_POIS |
 S:S_HYDRA
 D:Her face could sink a thousand ships. 
 
-N:478:Death drake
+N:479:Death drake
 G:D:u
 I:120:4:10d100:25:100:30
 W:40:2:0:3500
@@ -6725,7 +6729,7 @@ S:BR_NETH
 D:It is a dragon-like form wrapped in darkness. You cannot make out its 
 D:true form but you sense its evil. 
 
-N:479:Clubber demon
+N:480:Clubber demon
 G:U:s
 I:110:3:40d10:20:50:80
 W:40:2:0:1000
@@ -6739,7 +6743,7 @@ S:1_IN_8 |
 S:BLIND | CONF
 D:It is a demon swinging wildly with two clubs. Not even remotely subtle. 
 
-N:480:Death quasit
+N:481:Death quasit
 G:u:w
 I:130:6:44d10:20:80:0
 W:40:3:0:1000
@@ -6758,7 +6762,7 @@ D:lightning speed and its powers make it a tornado of death and destruction.
 
 ##### Level 41 #####
 
-N:481:Nalfeshnee
+N:482:Nalfeshnee
 G:U:r
 I:110:4:450d1:20:50:80
 W:41:1:0:5000
@@ -6771,7 +6775,7 @@ S:1_IN_9 | BLIND | BR_FIRE | CONF | S_DEMON
 D:It is a large demon with the head of a giant boar.  Flames run up and down 
 D:its length. 
 
-N:482:Glaryssa, Succubus Queen
+N:483:Glaryssa, Succubus Queen
 G:U:W
 I:120:5:12d100:90:60:10
 W:41:3:0:8000
@@ -6788,7 +6792,7 @@ S:CAUSE_3 | HOLD | BLIND | BO_ACID | S_DEMON |
 S:FORGET | BO_NETH | MIND_BLAST | DARKNESS
 D:Drop dead gorgeous - literally. 
 
-N:483:Master lich
+N:484:Master lich
 G:L:W
 I:120:4:18d100:20:80:50
 W:41:2:0:10000
@@ -6806,7 +6810,7 @@ S:S_UNDEAD
 D:A skeletal form wrapped in robes. Powerful magic crackles along its bony 
 D:fingers. 
 
-N:484:Pit Feline
+N:485:Pit Feline
 G:f:D
 I:110:2:40d10:20:40:80
 W:41:3:0:2500
@@ -6823,7 +6827,7 @@ D:together with the rest of her litter.
 
 #According to the Grimoire of Pope Honorius, a demon named Lucifuge Rofocale is in charge of Hell's government by order of Lucifer.
 
-N:485:Lucifuge
+N:486:Lucifuge
 G:j:D
 I:140:8:50d20:20:80:20
 W:41:2:0:2500
@@ -6836,7 +6840,7 @@ F:IM_ACID | IM_FIRE | RES_PLAS | IM_POIS | IM_COLD | IM_ELEC | RES_TELE
 D:A creature of living darkness, this devil wants nothing more than to 
 D:snuff you out. 
 
-N:486:Ahhazu
+N:487:Ahhazu
 G:U:y
 I:130:6:100d35:30:140:255
 W:41:6:0:15000
@@ -6853,7 +6857,7 @@ S:S_DEVIL | S_UNDEAD
 D:A sickly looking devil. Don't be fooled by its appearance - it's healthier 
 D:than it looks. 
 
-N:487:Pit Hound
+N:488:Pit Hound
 G:Z:D
 I:110:4:22d20:20:40:80
 W:41:2:0:1850
@@ -6871,7 +6875,7 @@ D:teeth and claws.
 
 ##### Level 42 #####
 
-N:488:Rahab
+N:489:Rahab
 G:D:D
 I:110:3:30d17:20:90:80
 W:42:2:0:2300
@@ -6887,7 +6891,7 @@ S:1_IN_9 |
 S:BLIND | CONF | S_DEVIL | BR_DARK | BR_COLD
 D:An infernal dragon, cold and baleful. 
 
-N:489:Shadow demon
+N:490:Shadow demon
 G:G:v
 I:120:5:10d20:30:30:20
 W:42:3:0:425
@@ -6905,7 +6909,7 @@ D:A mighty spirit of darkness of vaguely humanoid form. Razor-edged claws
 D:reach out to end your life as it glides towards you, seeking to suck the 
 D:energy from your soul to feed its power. 
 
-N:490:Iron lich
+N:491:Iron lich
 G:L:s
 I:120:5:28d100:30:100:10
 W:42:4:0:4000
@@ -6927,7 +6931,7 @@ D:burn with hatred towards all who live.
 
 ##### Level 43 #####
 
-N:491:Marilith
+N:492:Marilith
 G:U:y
 I:120:4:730d1:20:75:80
 W:43:1:0:16000
@@ -6940,7 +6944,7 @@ F:OPEN_DOOR | NO_CONF | IM_FIRE
 S:1_IN_9 | BLIND | CAUSE_2 | S_DEMON
 D:A demon of female form with many arms, each bearing deadly weapons. 
 
-N:492:Elder Tunnel Dragon
+N:493:Elder Tunnel Dragon
 G:D:U
 I:120:4:21d100:20:100:70
 W:43:1:0:13000
@@ -6959,7 +6963,7 @@ S:BR_DISI
 D:Tunnel Dragons have briefly appeared in Alpine Mythology, 
 D:they destroy anything that blocks their path. 
 
-N:493:Elder Balaur
+N:494:Elder Balaur
 G:D:g
 I:120:4:21d100:20:100:70
 W:43:1:0:13000
@@ -6978,7 +6982,7 @@ S:BR_POIS
 D:Balaurs are creatures similar to a dragons. 
 D:They are quite large, has fins, feet, and multiple serpent heads (usually three, sometimes seven, or even twelve). 
 
-N:494:Ethereal dragon
+N:495:Ethereal dragon
 G:D:o
 I:120:5:21d100:25:100:15
 W:43:2:0:11000
@@ -6996,7 +7000,7 @@ D:A huge dragon emanating from the elemental plains, the ethereal dragon is
 D:a master of light and dark. Its form disappears from sight as it cloaks 
 D:itself in unearthly shadows. 
 
-N:495:Greater Lucifuge
+N:496:Greater Lucifuge
 G:j:d
 I:120:4:12d100:20:75:80
 W:43:2:0:5000
@@ -7017,7 +7021,7 @@ D:Darkness incarnate, sucking light and life from the room.
 
 
 
-N:496:Cult high priest
+N:497:Cult high priest
 G:p:w
 I:120:5:80d10:20:60:10
 W:44:2:0:5000
@@ -7033,7 +7037,7 @@ S:S_MONSTERS | S_UNDEAD | S_DEVIL
 D:A dark priest of the highest order. Powerful and evil, beware his many 
 D:spells. 
 
-N:497:Dreadmaster
+N:498:Dreadmaster
 G:G:o
 I:120:6:12d100:20:100:10
 W:44:2:0:8000
@@ -7050,7 +7054,7 @@ D:It is an unlife of power almost unequaled. An affront to existence, its
 D:very touch abuses and disrupts the flow of life, and its unearthly limbs, 
 D:of purest black, crush rock and flesh with ease. 
 
-N:498:The Crest of Dragons
+N:499:The Crest of Dragons
 G:D:w
 I:120:6:20d100:20:130:70
 W:44:2:0:17000
@@ -7071,7 +7075,7 @@ D:them to fall down, and foam, and grind their teeth."
 
 ##### Level 45 #####
 
-N:499:Cambion
+N:500:Cambion
 G:p:R
 I:120:3:25d25:20:70:20
 W:45:2:0:500
@@ -7082,7 +7086,7 @@ F:MALE | OPEN_DOOR | BASH_DOOR | DEVIL
 D:Most offspring of Lilitu and mortal die in the pits. This one was strong 
 D:enough to fight his way out. 
 
-N:500:Ekimmu
+N:501:Ekimmu
 G:W:d
 I:120:6:50d40:90:60:10
 W:45:3:0:9500
@@ -7099,7 +7103,7 @@ D:This ghost belongs to someone that has not been properly buried,
 D:he is vengeful towards the living, and that means you. 
 D:They cause disease and inspire criminal behavior in the living. 
 
-N:501:Neqa'el
+N:502:Neqa'el
 G:f:y
 I:120:6:50d40:90:60:10
 W:45:3:0:9500
@@ -7115,7 +7119,7 @@ S:SCARE | HOLD | DRAIN_MANA | BR_NETH
 D:These cat demons are ferocious, but fight only when necessary. 
 D:When in human form it has long canine teeth, and a fierce and quick tongue. 
 
-N:502:The Winged Dragon
+N:503:The Winged Dragon
 G:D:R
 I:120:6:20d100:20:100:70
 W:45:2:0:19000
@@ -7133,7 +7137,7 @@ D:"In appearance like to a dragon, but having the face and hands of a man.
 D:And all its limbs, except the feet, were those of a dragon; and it had wings on its back. 
 D:He is a spirit made into a god among men." 
 
-N:503:The Stormbringer
+N:504:The Stormbringer
 G:|:D
 I:120:6:13d123:20:99:20
 W:45:2:0:13333
@@ -7163,7 +7167,7 @@ D:your soul.
 
 ##### Level 46 #####
 
-N:504:Dracolich
+N:505:Dracolich
 G:D:B
 I:120:6:35d100:25:120:30
 W:46:2:0:18000
@@ -7182,7 +7186,7 @@ D:The skeletal form of a once-great dragon, enchanted by magic most
 D:perilous. Its animated form strikes with speed and drains life from its 
 D:prey to satisfy its hunger. 
 
-N:505:Greater titan
+N:506:Greater titan
 G:P:v
 I:120:5:38d100:30:125:15
 W:46:3:0:13500
@@ -7200,7 +7204,7 @@ D:defiance.
 
 ##### Level 47 #####
 
-N:506:Barbazu
+N:507:Barbazu
 G:U:G
 I:120:4:530d1:25:60:80
 W:47:2:0:9500
@@ -7216,7 +7220,7 @@ D: and a disgusting, wiry, snaky beard. They are the elite shock troops
 D: of the hells, capable of a terrifying berserk fury. 
 
 #Everybody lovers th3 death mold
-N:507:Death mold
+N:508:Death mold
 G:m:D
 I:140:7:100d20:200:60:0
 W:47:1:0:1000
@@ -7229,7 +7233,7 @@ D:It is the epitome of all that is evil, in a mold. Its lifeless form draws
 D:power from sucking the souls of those that approach it, a nimbus of pure 
 D:evil surrounds it. Luckily for you, it can't move. 
 
-N:508:Rahab, Dragon of the Waters
+N:509:Rahab, Dragon of the Waters
 G:D:B
 I:120:6:25d110:20:100:70
 W:47:4:0:25000
@@ -7246,7 +7250,7 @@ S:CONF | CAUSE_3 |
 S:BR_ELEC | BR_POIS | SCARE | CAUSE_3 | CONF | BA_WATE
 D:# Rahab is the name of a sea-demon, a dragon of the waters, the "ruler of the sea". 
 
-N:509:Tannin
+N:510:Tannin
 G:D:r
 I:120:6:28d100:20:120:70
 W:47:2:0:25000
@@ -7271,7 +7275,7 @@ D:Sometimes he is compared with Rahab, and also considered a dragon of the sea, 
 D:twenty-six legions of demons. He sets cities, castles and great places on fire, makes men 
 D:witty in all ways, and gives true answers concerning private matters. 
 
-N:510:Aym
+N:511:Aym
 G:U:r
 I:120:5:70d100:20:80:80
 W:50:2:0:10000
@@ -7286,7 +7290,7 @@ S:BR_FIRE | BO_PLAS | S_DEMON
 D:A minion of Haborym, he sets cities, castles and great places on fire. 
 
 #He is escorted by the Aym
-N:511:Haborym, master of fire
+N:512:Haborym, master of fire
 G:U:o
 I:130:6:35d100:30:120:30
 W:50:4:0:18000
@@ -7304,7 +7308,7 @@ D:Haborym is a very strong Duke of Hell, and rules over twenty-six legions of de
 D:castles and great places on fire, makes men witty in all ways, and gives true answers concerning private matters. 
 D:He is a handsome man with three heads : serpent, man and cat. 
 
-N:512:Se'irim
+N:513:Se'irim
 G:q:D
 I:120:6:18d111:30:66:40
 W:50:1:0:6666
@@ -7323,7 +7327,7 @@ S:S_DEMON | CAUSE_4 | BA_COLD
 D:It is a demonic creature from the lowest hell, vaguely resembling a 
 D:large black he-goat. 
 
-N:513:Nightwing
+N:514:Nightwing
 G:W:D
 I:120:5:60d30:20:120:10
 W:50:4:0:6000
@@ -7343,7 +7347,7 @@ D:as the nightwing reaches out to draw you into oblivion. Your muscles sag
 D:and your mind loses all will to fight as you stand in awe of this mighty 
 D:being. 
 
-N:514:Maulotaur
+N:515:Maulotaur
 G:h:u
 I:130:5:250d10:13:50:10
 W:50:2:0:4500
@@ -7359,7 +7363,7 @@ D:with a hammer.
 
 ##### Level 51 #####
 
-N:515:Nether Fiend
+N:516:Nether Fiend
 G:U:d
 I:120:5:60d10:30:100:0
 W:51:2:0:5000
@@ -7374,7 +7378,7 @@ S:BR_NETH
 D:You feel a soul-tearing chill upon viewing this beast, a ghostly form of 
 D:darkness in the shape of a large dog. 
 
-N:516:Demon Marquis
+N:517:Demon Marquis
 G:U:b
 I:120:6:30d100:30:150:80
 W:51:2:0:17000
@@ -7390,7 +7394,7 @@ D:This marquis has conquered his title with force over the elder demons,
 D:your corpse will be just another of his trophies. He is extremely skillful in 
 D:all forms of unarmed combat. 
 
-N:517:Baphomet, master of blood
+N:518:Baphomet, master of blood
 G:U:D
 I:130:6:35d100:30:120:30
 W:51:4:0:18000
@@ -7409,7 +7413,7 @@ D:all that defy him.
 
 ##### Level 52 #####
 
-N:518:Purson, Demon King
+N:519:Purson, Demon King
 G:U:r
 I:150:7:25d100:90:100:10
 W:52:3:0:45000
@@ -7434,10 +7438,10 @@ D:and riding a bear. Before him you hear many trumpets sounding.
 
 ##### Level 53 #####
 
-N:519:Revenant
+N:520:Revenant
 G:W:u
 I:125:3:830d4:30:35:5
-W:53:1:0:23000
+W:53:1:0:2300
 B:HIT:HURT:2d10
 B:HIT:HURT:2d10
 F:FORCE_SLEEP | FORCE_MAXHP | REGENERATE |
@@ -7449,7 +7453,7 @@ S:BO_FIRE
 D:Back from the grave, to wreak vengeance upon the living. A gaunt, tall, 
 D:skeletal figure wearing a ruined plate mail. 
 
-N:520:Demon Prince
+N:521:Demon Prince
 G:U:v
 I:130:5:45d55:30:80:5
 W:53:3:0:17500
@@ -7470,7 +7474,7 @@ D:all forms of unarmed combat and controls the nether forces with disdainful eas
 # King Beleth, ruler over 85 legions
 #  One of the governors in Hell, Beleth presides over 85 legions of demons. He rides a pale horse and is announced by a blare of trumpets.
 
-N:521:Beleth, Demon King
+N:522:Beleth, Demon King
 G:U:D
 I:120:6:35d100:90:100:10
 W:53:3:0:50000
@@ -7490,7 +7494,7 @@ D:One of the governors in Hell, Beleth presides over 85 legions of demons. He ri
 
 ##### Level 54 #####
 
-N:522:Elder Pit Hound
+N:523:Elder Pit Hound
 G:Z:s
 I:120:5:60d15:30:100:0
 W:54:3:0:8000
@@ -7503,7 +7507,7 @@ S:1_IN_5 | BLINK | TELE_TO |
 S:BR_NETH | BR_TIME
 D:Larger than a regular pit hound, and much more dangerous. 
 
-N:523:Great ice wyrm
+N:524:Great ice wyrm
 G:D:w
 I:120:6:30d100:30:170:80
 W:54:2:0:20000
@@ -7520,7 +7524,7 @@ D:An immense dragon capable of awesome destruction. You have never felt
 D:such extreme cold, or witnessed such an icy stare. Begone quickly or feel 
 D:its wrath! 
 
-N:524:Celaeno, Elder Harpy
+N:525:Celaeno, Elder Harpy
 G:B:r
 I:120:5:36d100:60:130:0
 W:54:3:0:40000
@@ -7535,7 +7539,7 @@ S:1_IN_3 |
 S:SCARE | CONF | BA_POIS | 
 D:A harpy with the gift of prophecy, she's sees great peril in your future. 
 
-N:525:Nightcrawler
+N:526:Nightcrawler
 G:W:D
 I:120:5:80d60:20:160:10
 W:54:4:0:8100
@@ -7558,7 +7562,7 @@ D:down your spine as you face it.
 
 ##### Level 55 #####
 
-N:526:Hand druj
+N:527:Hand druj
 G:s:D
 I:130:1:60d10:20:110:10
 W:55:4:0:12000
@@ -7571,7 +7575,7 @@ S:TELE_AWAY | BLIND | CONF | SCARE | CAUSE_3 | FORGET | DARKNESS
 D:A skeletal hand floating in the air, motionless except for its flexing 
 D:fingers. 
 
-N:527:Eye druj
+N:528:Eye druj
 G:s:D
 I:130:1:10d100:20:90:10
 W:55:4:0:24000
@@ -7588,7 +7592,7 @@ S:S_UNDEAD
 D:A bloodshot eyeball floating in the air, you'd be forgiven for assuming it 
 D:harmless. 
 
-N:528:Skull druj
+N:529:Skull druj
 G:s:D
 I:130:3:14d100:20:120:10
 W:55:4:0:25000
@@ -7608,7 +7612,7 @@ S:S_UNDEAD
 D:A glowing skull possessed by sorcerous power. It need not move, but 
 D:merely blast you with mighty magic. 
 
-N:529:Fallen Archon
+N:530:Fallen Archon
 G:A:v
 I:140:3:32d20:100:80:0
 W:55:1:0:4000
@@ -7623,7 +7627,7 @@ D:with humans. They have not turned to evil.
 
 #Yah, these might need reconsideration
 
-N:530:Lernean offspring
+N:531:Lernean offspring
 G:M:B
 I:120:10:45d100:20:140:20
 W:55:1:0:5000
@@ -7638,7 +7642,7 @@ S:SCARE | BR_FIRE | BR_POIS | S_HYDRA
 D:Offspring of the Lernean legend, you realize you really dont 
 D:want to fight it's twelve headed primogenitor. 
 
-N:531:The Lernean Hydra
+N:532:The Lernean Hydra
 G:M:G
 I:120:10:45d100:20:140:20
 W:55:2:0:20000
@@ -7659,7 +7663,7 @@ D:A massive legendary hydra. It has twelve powerful heads. Its many eyes
 D:stare at you as clouds of smoke and poisonous vapour rise from its 
 D:seething form. It has retreated from the mortal realm into Inferno. 
 
-N:532:Nahemah
+N:533:Nahemah
 G:V:D
 I:130:6:40d100:20:145:10
 W:55:1:0:23000
@@ -7677,7 +7681,7 @@ S:BLIND | HOLD | SCARE | CAUSE_3 | CAUSE_4 | DRAIN_MANA |
 S:BRAIN_SMASH | BA_NETH | S_KIN
 D:She is a succubus and a fallen angel, she is said to have engaged, like Lilith, in intercourse with Adam. 
 
-N:533:Hell wyrm
+N:534:Hell wyrm
 G:D:r
 I:120:6:54d100:40:170:40
 W:55:2:0:23000
@@ -7695,7 +7699,7 @@ D:form. The air around it scalds you. Its slightest glance burns you, and
 D:you truly realize how insignificant you are. 
 
 #Astaroth (also Ashtaroth, Astarot, and Asteroth) is a Grand Duke of Hell; his main assistants are four demons called Aamon, Pruslas, Barbatos and Rashaverak.
-N:534:Asteroth
+N:535:Asteroth
 G:A:b
 I:120:5:55d95:20:150:10
 W:55:1:0:23000
@@ -7717,7 +7721,7 @@ D:and spurring them on to greater evil. He inspires sloth and idleness.
 
 ##### Level 56 #####
 
-N:535:Nergal
+N:536:Nergal
 G:A:D
 I:130:6:55d99:20:120:20
 W:56:2:0:20000
@@ -7738,7 +7742,7 @@ S:BR_DARK | BR_SLIM | BR_ACID | BR_POIS
 D:He's in charge of hell's inquisition - destroying any devils who get out 
 D:of line. 
 
-N:536:Vinea
+N:537:Vinea
 G:A:D
 I:120:5:100d10:20:90:20
 W:56:2:0:2300
@@ -7755,7 +7759,7 @@ D:Vinea is an Earl and also a King of Hell, commanding 36 legions of demons. He 
 D:discover witches and hidden things, create storms and make the water rough by means of them, bring down walls and build towers. 
 D:This demon is portrayed as a lion holding a snake in his hand and riding a black horse. 
 
-N:537:Hauras
+N:538:Hauras
 G:A:R
 I:130:8:55d100:40:160:10
 W:56:2:0:25000
@@ -7773,7 +7777,7 @@ D:Formerly an angel of fire, he's lost his grace but not his heat.
 
 ##### Level 57 #####
 
-N:538:Baal
+N:539:Baal
 G:A:G
 I:130:8:60d100:40:170:10
 W:57:2:0:30000
@@ -7795,7 +7799,7 @@ D:He seems to have a large aresenal of spells at his disposal...
 
 ##### Level 58 #####
 
-N:539:Samael
+N:540:Samael
 G:A:W
 I:120:7:75d100:20:125:70
 W:58:2:0:30000
@@ -7814,7 +7818,7 @@ D:His name stands for Venom of God.
 
 ##### Level 59 #####
 
-N:540:Nightwalker
+N:541:Nightwalker
 G:W:D
 I:130:6:50d65:20:175:10
 W:59:4:0:15000
@@ -7835,7 +7839,7 @@ D:leaving you defenseless against its evil wrath. It can smell your fear,
 D:and you in turn smell the awful stench of death as this ghastly figure 
 D:strides towards you menacingly. 
 
-N:541:Belphegor
+N:542:Belphegor
 G:A:v
 I:130:8:75d100:40:180:10
 W:59:2:0:35000
@@ -7857,7 +7861,7 @@ D:She's a temptress who lures men to their doom.
 
 #TODO : This used to be a drop chosen, should find another one
 
-N:542:Paimon, Demon King
+N:543:Paimon, Demon King
 G:U:v
 I:120:5:50d100:100:100:0
 W:60:1:0:35000
@@ -7879,7 +7883,7 @@ D:legions of fiends. He supplants mortal thoughts with his own.
 
 ##### Level 62 #####
 
-N:543:Shadowlord
+N:544:Shadowlord
 G:G:b
 I:120:5:30d100:20:150:10
 W:62:3:0:22500
@@ -7900,7 +7904,7 @@ D:cloaked figure floats towards you.
 
 ##### Level 64 #####
 
-N:544:Osyluth
+N:545:Osyluth
 G:U:W
 I:130:6:1750d1:20:75:80
 W:64:2:0:16000
@@ -7917,7 +7921,7 @@ D: a large tail similar to that of a giant scorpion, and emits a foul smell
 D: of decay and rot. They are despised even in the hells. 
 
 #The mistress of the Neqa'el is accompanied by the ... Neqa'el
-N:545:Mistress of the Neqa'el 
+N:546:Mistress of the Neqa'el 
 G:f:o
 I:130:8:48d100:100:200:0
 W:64:2:0:30500
@@ -7937,7 +7941,7 @@ D:She resembles a large black cat with a white spot on her breast.
 
 ##### Level 65 #####
 
-N:546:Demonic Horror
+N:547:Demonic Horror
 G:H:v
 I:120:5:60d30:30:100:0
 W:65:1:0:10000
@@ -7956,7 +7960,7 @@ D:relish for combat. You suspect all may not be as it seems.
 
 ##### Level 67 #####
 
-N:547:Allu
+N:548:Allu
 G:U:v
 I:120:6:45d100:40:170:20
 W:67:1:0:29000
@@ -7972,7 +7976,7 @@ D:Allu were a race of monstrous and faceless demons that destroyed
 D:all what they could capture. They were engendered during a man's 
 D:sleep with Lilith or one of her demon servants. 
 
-N:548:Fallen Ophanim
+N:549:Fallen Ophanim
 G:A:W
 I:120:6:45d100:40:170:255
 W:67:1:0:29000
@@ -7989,7 +7993,7 @@ D:it used to be a guardian of God's throne.
 
 #This might be the last wyrm, balancing frost & fire, light & darkness,
 #or should I say alternating  ;] ( That is my evil grin )
-N:549:Divine Wyrm of Balance
+N:550:Divine Wyrm of Balance
 G:D:s
 I:120:6:49d100:40:170:255
 W:67:4:0:31000
@@ -8008,7 +8012,7 @@ D:A massive dragon, it is thousands of years old and seeks to maintain the Divin
 D:It fears you will set in motion the Eschaton. 
 
 #Go Quake ;)
-N:550:Demonic Shambler
+N:551:Demonic Shambler
 G:G:v
 I:130:5:50d100:40:150:50
 W:67:3:0:22500
@@ -8026,7 +8030,7 @@ D:following its every move.
 
 ##### Level 68 #####
 
-N:551:Sulphurous Great Wyrm
+N:552:Sulphurous Great Wyrm
 G:D:y
 I:120:6:52d100:40:170:255
 W:68:4:0:34500
@@ -8064,7 +8068,7 @@ D:A huge dragon whose scales shimmer in myriad hues.
 
 ##### Level 69 #####
 
-N:552:Fallen Cherub
+N:553:Fallen Cherub
 G:A:B
 I:130:7:60d100:40:200:255
 W:69:1:0:31000
@@ -8106,7 +8110,7 @@ D:flaming sword.
 
 ##### Level 71 #####
 
-N:553:Bone golem
+N:554:Bone golem
 G:g:D
 I:120:6:35d100:20:170:50
 W:71:2:0:23000
@@ -8126,7 +8130,7 @@ D:previous victims and inhabited by the soul of a lich of great power.
 
 ##### Level 72 #####
 
-N:554:Vecna
+N:555:Vecna
 G:L:y
 I:130:6:50d100:20:85:50
 W:72:2:0:30000
@@ -8150,7 +8154,7 @@ D:This ancient shadow of death wilts any living thing it passes.
 
 ##### Level 73 #####
 
-N:555:Eye of Cain
+N:556:Eye of Cain
 G:e:y
 I:130:8:65d100:30:80:10
 W:73:2:0:16000
@@ -8172,7 +8176,7 @@ D:in forgotten evils, his atrocities numerous and sickening.
 
 ##### Level 75 #####
 
-N:556:Dommiel
+N:557:Dommiel
 G:A:d
 I:120:7:130d100:8:160:80
 W:75:1:0:35000
@@ -8190,7 +8194,7 @@ S:SCARE | BLIND | CONF | HOLD | BR_POIS |
 S:DARKNESS | BA_DARK | BR_DARK | S_DEMON | S_DEVIL
 D:The patron demon of terror and trembling, Dommiel is the adversary to Saint Peter and guards the gates of Hell. 
 
-N:557:Nether wight
+N:558:Nether wight
 G:W:B
 I:120:6:60d30:30:100:0
 W:75:4:0:10000
@@ -8211,7 +8215,7 @@ D:A dark, swirling form. It seems to be all hues and sizes and
 D:shapes, though the dominant form is that of a gigantic man. You feel very 
 D:uncertain all of a sudden. 
 
-N:558:Deception
+N:559:Deception
 G:G:g
 I:120:6:60d30:30:100:0
 W:75:2:0:10000
@@ -8230,7 +8234,7 @@ S:BR_NETH | BR_DISE | BR_WALL | BR_INER | BR_TIME |
 S:BR_GRAV | BR_PLAS | BR_NEXU
 D:"I am Deception, I deceive and weave snares here and there. I whet and excite heresies." 
 
-N:559:Strife
+N:560:Strife
 G:G:g
 I:120:6:60d30:30:100:0
 W:75:2:0:10000
@@ -8249,7 +8253,7 @@ S:BR_NETH | BR_DISE | BR_WALL | BR_INER | BR_TIME |
 S:BR_GRAV | BR_PLAS | BR_NEXU
 D:"I am Strife, strife of strifes. I bring timbers, stones, hangers, my weapons on the spot." 
 
-N:560:Battle
+N:561:Battle
 G:G:g
 I:120:6:60d30:30:100:0
 W:75:2:0:10000
@@ -8268,7 +8272,7 @@ S:BR_NETH | BR_DISE | BR_WALL | BR_INER | BR_TIME |
 S:BR_GRAV | BR_PLAS | BR_NEXU
 D:"I am called Klothod, which is Battle, and I cause the well-behaved to scatter and fall foul one of the other." 
 
-N:561:Jealousy
+N:562:Jealousy
 G:G:g
 I:120:6:60d30:30:100:0
 W:75:2:0:10000
@@ -8287,7 +8291,7 @@ S:BR_NETH | BR_DISE | BR_WALL | BR_INER | BR_TIME |
 S:BR_GRAV | BR_PLAS | BR_NEXU
 D:"I am Jealousy, I cause men to forget their sobriety and moderation. I part them and split them into parties; for Strife follows me hand in hand." 
 
-N:562:Power
+N:563:Power
 G:G:g
 I:120:6:60d30:30:100:0
 W:75:2:0:10000
@@ -8306,7 +8310,7 @@ S:BR_NETH | BR_DISE | BR_WALL | BR_INER | BR_TIME |
 S:BR_GRAV | BR_PLAS | BR_NEXU
 D:"I am Power. By power I raise up tyrants and tear down kings. To all rebels I furnish power." 
 
-N:563:Error
+N:564:Error
 G:G:g
 I:120:6:60d30:30:100:0
 W:75:2:0:10000
@@ -8325,7 +8329,7 @@ S:BR_NETH | BR_DISE | BR_WALL | BR_INER | BR_TIME |
 S:BR_GRAV | BR_PLAS | BR_NEXU
 D:"I am Error, O King Solomon. And I will make thee to err, as I have before made thee to err." 
 
-N:564:Envy
+N:565:Envy
 G:U:g
 I:120:6:60d30:30:100:0
 W:75:2:0:10000
@@ -8346,7 +8350,7 @@ D:"I am called Envy. For I delight to devour heads, being desirous to secure for
 
 ##### Level 76 ###############
 
-N:565:Pit Fiend
+N:566:Pit Fiend
 G:U:o
 I:130:7:2770d1:30:120:75
 W:76:2:0:18000
@@ -8363,7 +8367,7 @@ D:and massive fangs dripping a foul green liquid, the Pit Fiend is a
 D:dreadful enemy from the lowest depths of the hells. They are often the 
 D:commanders of vast demon armies. 
 
-N:566:Hell knight
+N:567:Hell knight
 G:p:s
 I:120:3:15d70:20:65:10
 W:76:1:0:9000
@@ -8381,7 +8385,7 @@ D:its helmet, eyes glow with hellfire.
 
 ##### Level 77 #####
 
-N:567:Fallen Seraphim
+N:568:Fallen Seraphim
 G:A:v
 I:120:3:10d100:60:50:60
 W:77:1:0:10000
@@ -8395,7 +8399,7 @@ S:1_IN_5 |
 S:BR_CHAO
 D:Mightiest of the Angles, these ones direct their wrath towards you. 
 
-N:568:Black reaver
+N:569:Black reaver
 G:U:u
 I:120:8:70d101:90:90:90
 W:77:4:0:30000
@@ -8409,7 +8413,7 @@ D:unstoppable.
 
 ##### Level 78 #####
 
-N:569:Klingsor, Evil Master of Magic
+N:570:Klingsor, Evil Master of Magic
 G:p:y
 I:130:6:70d100:60:100:10
 W:78:3:0:40000
@@ -8429,7 +8433,7 @@ S:BA_MANA | BA_DARK | S_HI_UNDEAD | BA_CHAO | CAIN
 D:Klingsor, whose hopeless effort to join the Knights of the Grail 
 D:was thwarted, turned to black magic and became a deadly necromancer. 
 
-N:570:Sargatanas
+N:571:Sargatanas
 G:A:r
 I:130:6:59d100:100:100:15
 W:78:1:0:35500
@@ -8452,7 +8456,7 @@ D:get through any locked door.
 
 ##### Level 80 #####
 
-N:571:Kunopaston
+N:572:Kunopaston
 G:A:W
 I:130:7:69d100:100:100:15
 W:80:1:0:38500
@@ -8468,7 +8472,7 @@ S:TELE_AWAY | CAUSE_4 | S_MONSTERS | S_HI_DRAGON |
 S:S_DEMON | S_DEVIL | TELE_LEVEL | FORGET | HEAL
 D:Kunopaston , a fierce spirit of the sea, greedy of gold and silver. 
 
-N:572:The Witch-King
+N:573:The Witch-King
 G:W:D
 I:130:7:60d100:90:120:10
 W:80:3:0:42000
@@ -8490,7 +8494,7 @@ D:speed, and commands legions of evil to do his bidding.
 
 ##### Level 82 #####
 
-N:573:Balaam
+N:574:Balaam
 G:A:B
 I:140:10:55d100:40:125:10
 W:82:2:0:32500
@@ -8510,7 +8514,7 @@ D:take it.
 
 ##### Level 83 #####
 
-N:574:Snake of Yig
+N:575:Snake of Yig
 G:J:r
 I:120:3:48d10:25:80:30
 W:83:4:0:600
@@ -8525,7 +8529,7 @@ D:It is a giant snake that drips with poison.
 
 ##### Level 84 #####
 
-N:575:Charon
+N:576:Charon
 G:s:B
 I:140:7:75d100:20:120:80
 W:84:2:0:45000
@@ -8542,7 +8546,7 @@ S:TELE_TO | SLOW | SCARE | CAUSE_4 | BRAIN_SMASH |
 S:BA_WATE | BA_NETH | S_HI_UNDEAD
 D:He seems to have exchanged the ferrying job with a wish to see you dead. 
 
-N:576:Mephistopheles
+N:577:Mephistopheles
 G:A:r
 I:140:7:30d222:20:150:50
 W:84:2:0:42500
@@ -8564,7 +8568,7 @@ D:The patron prince of deceit, Mephistopheles is a smooth character with an enga
 D:he is, on occasion, allowed an audience with God. Because of his dashing ways, he is often sent by the Devil to tempt modern humans to sell their souls. 
 D:Mephistopheles is also the patron devil of trolls. 
 
-N:577:Abaddon
+N:578:Abaddon
 G:A:g
 I:130:7:85d100:50:185:20
 W:84:2:0:35000
@@ -8583,7 +8587,7 @@ D:He commands one of hell's armies - that of pestilence and locusts.
 
 ##### Level 86 #####
 
-N:578:Erebus 
+N:579:Erebus 
 G:v:G
 I:130:6:75d100:90:90:90
 W:86:2:0:44000
@@ -8605,7 +8609,7 @@ D:With Nyx, he fathered Thanatos, Hypnos, Hemera, Moros, Charon, and the Keres.
 
 ##### Level 90 #####
 
-N:579:Kaschei the Immortal
+N:580:Kaschei the Immortal
 G:L:v
 I:130:7:60d100:100:100:0
 W:90:3:0:45000
@@ -8627,7 +8631,7 @@ S:S_MONSTERS | S_DEMON | S_HI_UNDEAD | CAIN
 D:A stench of corruption and decay surrounds this sorcerer, who has clearly 
 D:risen from the grave to continue his foul plots and schemes. 
 
-N:580:Bifrons
+N:581:Bifrons
 G:A:v
 I:130:7:66d99:100:100:20
 W:90:3:0:45000
@@ -8643,7 +8647,7 @@ S:BO_MANA | BRAIN_SMASH | BA_MANA | S_MONSTERS | S_REAVER |
 S:BA_CHAO | S_DEVIL | S_HI_UNDEAD | S_HOUND | BR_MANA | BR_DISI
 D:The lord of unholy sorcery is a master of the art of summoning. 
 
-N:581:Great Hell Wyrm
+N:582:Great Hell Wyrm
 G:D:y
 I:130:8:111d111:20:111:70
 W:90:4:0:47500
@@ -8670,7 +8674,7 @@ D:The mightiest of all Infernal dragons, it has sworn allegiance to Lucifer Monr
 
 #KOBAL: The Dramatist and Manager of the Infernal Theater, Kobal tempts men with pretense and fraud.
 
-N:582:Kobal
+N:583:Kobal
 G:A:D
 I:130:7:65d99:100:100:20
 W:91:3:0:47500
@@ -8692,7 +8696,7 @@ D:He's sure to put up a spectacular fight.
 
 ##### Level 92 #####
 
-N:583:Staff
+N:584:Staff
 G:Z:d
 I:130:7:75d100:80:110:10
 W:92:2:0:40000
@@ -8711,7 +8715,7 @@ D:This hound is so large and so powerful it can hold the stars of heaven back.
 
 ##### Level 93 #####
 
-N:584:Choronzon
+N:585:Choronzon
 G:A:s
 I:130:8:90d99:100:100:20
 W:93:3:0:49000
@@ -8732,7 +8736,7 @@ S:CAUSE_4 | HASTE | S_HI_UNDEAD | S_HI_DRAGON |
 S:S_DEVIL | S_DEMON | HEAL | S_SPIDER | S_HOUND | S_REAVER | CAIN
 D:Deeper than Dommiel, he is the gatekeeper of hell, with the hordes at his command. 
 
-N:585:Berith
+N:586:Berith
 G:A:s
 I:130:8:90d99:100:100:20
 W:93:3:0:49000
@@ -8764,7 +8768,7 @@ D:blasphemous. He also inspires them to commit murder. Berith is the patron devi
 #a ram, and a man. He also sports the feet of a rooster. He cavorts around on the back of a dragon wielding a spear. He is credited with having 
 #invented carousels, music, dancing, drama, and, one may assume, recreational drug use. Asmodeus' adversary in Heaven is John the Baptist.
 #Asmodai
-N:586:Asmodeus
+N:587:Asmodeus
 G:A:B
 I:130:5:99d99:100:150:100
 W:93:3:0:50000
@@ -8782,7 +8786,7 @@ S:S_DEVIL | BR_CHAO | BR_DISE | BR_MANA | BA_WATE | BR_DISI
 D:Prince of lust, he follows his baser instincts. 
 
 #Moloch in December
-N:587:Moloch
+N:588:Moloch
 G:U:B
 I:130:5:99d99:100:150:100
 W:93:3:0:50000
@@ -8804,7 +8808,7 @@ D:with the blood of murdered children and the tears shed by their grieving mothe
 ##### Level 95 #####
 
 #Leviathan in February
-N:588:Leviathan, Admiral of the Devil's Navy
+N:589:Leviathan, Admiral of the Devil's Navy
 G:U:B
 I:130:8:80d100:100:140:0
 W:95:1:0:43000
@@ -8827,7 +8831,7 @@ D:Created with Behemoth on the fifth day, these two gargantuan devils devour dam
 D:Leviathan has hordes of water demons, sprites, and nymphs to do his bidding. 
 D:On Judgement Day, this sea monster will swallow all but the saved. 
 
-N:589:Behemoth, the Cupbearer
+N:590:Behemoth, the Cupbearer
 G:U:B
 I:130:8:80d100:100:140:0
 W:95:1:0:43000
@@ -8855,7 +8859,7 @@ D:awake all night. Unsurprisingly, he creates chaos and havoc in the lives of me
 
 ##### Level 96 #####
 
-N:590:Belial
+N:591:Belial
 G:A:g
 I:130:6:100d100:100:140:100
 W:96:2:0:62500
@@ -8881,7 +8885,7 @@ D:and indulge their children.
 
 ##### Level 98 #####
 
-N:591:Beelzebub
+N:592:Beelzebub
 G:A:o
 I:130:8:105d100:100:160:0
 W:98:1:0:50000
@@ -8908,7 +8912,7 @@ D:last of the Fallen Angels, lord of Tartarus, adjured by Elezth.
 
 ##### Level 99 ##### N:575:Lilith
 
-N:592:Lilith
+N:593:Lilith
 G:p:v
 I:145:8:99d111:100:165:0
 W:99:1:0:65000
@@ -8935,7 +8939,7 @@ D:She has it all and she's not about to let you take it from her.
 
 ##### Level 100 ##### N:576:Lucifer Morningstar
 
-N:593:Lucifer Morningstar
+N:594:Lucifer Morningstar
 G:A:d
 I:155:8:200d150:111:175:0
 W:100:1:0:66666
@@ -8957,5 +8961,6 @@ S:BR_NETH | HASTE | BR_MANA | S_HI_UNDEAD | S_HI_DRAGON | S_UNIQUE |
 S:S_FALLEN | BR_SLIM | BR_POIS | BR_DISI | CAIN | S_DEVIL
 D:The lord of hell himself. Most beautiful of the angels, he is 
 D:devillishly handsome. His power is second only to God Himself. 
+
 
 
