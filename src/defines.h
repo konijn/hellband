@@ -52,13 +52,13 @@
 /*
 * Current version number of Hellband: 0.8.7
 */
-#define VERSION_NAME	"Hellband087"
-#define VERSION     	"0.8.7"
+#define VERSION_NAME	"Hellband088"
+#define VERSION     	"0.8.8"
 
 /* <<VERSION STAMP>> */
 #define VERSION_MAJOR   0
 #define VERSION_MINOR   8
-#define VERSION_PATCH   7
+#define VERSION_PATCH   8
 
 /*
 * This value is not currently used
