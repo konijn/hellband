@@ -2,7 +2,7 @@
 
 # Purpose: Makefile support for "main-win.c" compiling with Cygwin.
 # This got updated in 2018
-# Run in cygwin with 
+# Run in cygwin with
 #make -fmakefile.cyg install
 
 #
@@ -36,7 +36,7 @@ INCS = \
 	z-virt.h $(HDRS)
 
 # Compiler
-# So... I dislike needing to install mingw separately, 
+# So... I dislike needing to install mingw separately,
 # So I am using x86_64-w64-mingw32-gcc which uses a separate
 # Cygwin package (make sure to install it), on older 32 bit systems
 # you could just use gcc
@@ -44,7 +44,8 @@ INCS = \
 CC=x86_64-w64-mingw32-gcc
 
 # Compiler flags, you are allowed to remove -ggdb3 which adds a ton of debug info
-CFLAGS = -Wall -O0 -fno-strength-reduce -DWINDOWS -ggdb3
+# Also set Optimizer to 3 for a release
+CFLAGS = -Wall -O3 -fno-strength-reduce -DWINDOWS 
 
 # Libraries
 LIBS = -s -mwindows  -lwinmm
@@ -75,7 +76,7 @@ clean:  cleanobjs cleanbin
 #
 
 hellband: $(EXOBJS)
-	$(CC) -o hellband $(EXOBJS) $(INCDIRS) $(LIBDIRS) $(LIBS) 
+	$(CC) -o hellband $(EXOBJS) $(INCDIRS) $(LIBDIRS) $(LIBS)
 
 #
 # Compile source files
