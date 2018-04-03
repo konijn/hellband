@@ -553,11 +553,6 @@ void teleport_player_level(void)
 	sound(SOUND_TPLEVEL);
 }
 
-
-
-
-
-
 /*
 * Get a legal "multi-hued" colour for drawing "spells"
 */
@@ -673,7 +668,7 @@ static byte bolt_graf_attr(int type)
 	case GF_TIME:           return (144);
 	case GF_LITE_WEAK:      return (143);
 	case GF_LITE:           return (143);
-    case GF_HECATE:         return (143);
+	case GF_HECATE:         return (143);
 	case GF_DARK_WEAK:      return (143);
 	case GF_DARK:           return (143);
 	case GF_PLASMA:         return (144);
@@ -734,7 +729,7 @@ static byte ball_graf_char(int type)
 	case GF_TIME:           return (145);
 	case GF_LITE_WEAK:      return (142);
 	case GF_LITE:           return (142);
-   	case GF_HECATE:         return (142);
+	case GF_HECATE:         return (142);
 	case GF_DARK_WEAK:      return (143);
 	case GF_DARK:           return (143);
 	case GF_PLASMA:         return (147);
@@ -8501,89 +8496,90 @@ void do_cmd_cast(void)
 		case REALM_DEMONIC-1: /* * DEMONIC * */
 			switch (spell)
 			{
-                case 0: /* Unholy strength */
-                    (void)set_timed_effect( TIMED_HERO, p_ptr->hero + randint(25) + 25);
-                    (void)take_hit( (p_ptr->lev/10)*5+5 , "Strain of Unholy Strength");
-                    break;
-                case 1: /* Sense Evil */
-                    (void)detect_monsters_evil();
-                    break;
-                case 2: /* Scorch */
-                    if (!get_aim_dir(&dir)) return;
-                    fire_bolt_or_beam(beam-10, GF_FIRE, dir, damroll(3 + ((plev - 1) / 5), 4));
-                    break;
-                case 3: /* Perilous Shadows */
-                    if (!get_aim_dir(&dir)) return;
-                    fire_bolt_or_beam(beam-10, GF_DARK, dir, damroll(3 + ((plev - 1) / 5), 4));
-                    break;
-                case 4: /* Teleport */
-                    teleport_player(75);
-                    break;
-                case 5: /* Disintegrate  */
-                    if (!get_aim_dir(&dir)) return;
-                    fire_ball(GF_DISINTEGRATE, dir, damroll(8+((plev-5)/4), 8), 0);
-                    break;
-                case 6: /* Demonic Sigil */
-                    msg_print("You carefully draw a sigil on the floor...");
-                    explosive_rune();
-                    break;
-                case 7: /* Hecate's Radiance ( weak light damage + medium charm/confuse/fear spell ) */
-                    (void)lite_area_hecate(damroll(plev, 2), (plev / 10) + 1);
-                    break;
-                case 8: /* Abaddon's Rage */
-                    (void)set_timed_effect( TIMED_SHERO, p_ptr->shero + randint(25) + 25);
-                    (void)set_timed_effect( TIMED_BLESSED, p_ptr->blessed + randint(25) + 25);
-                    break;
-                case 9: /* Mind Leech */
-                    (void)mind_leech();
-                     break;
-                case 10: /* Body Leech*/
-                    (void)body_leech();
-                     break;
-                case 11: /* Glyph of Warding */
-                    warding_glyph();
-                    break;
-                case 12: /* Protection from Evil */
-                    (void)set_timed_effect( TIMED_PROTEVIL, p_ptr->protevil + randint(25) + 3 * p_ptr->lev);
-                    break;
-                case 13: /* Summon Demons */
-                    if (!(summon_specific_friendly(py, px, plev, FILTER_DEMON, TRUE)))
-                        if (!(summon_specific_friendly(py, px, plev, FILTER_DEVIL, TRUE)))
-                            none_came = TRUE;
-                     break;
-                case 14: /* Summon the Fallen */
-                    if (!(summon_specific_friendly(py, px, plev, FILTER_FALLEN_ANGELS, TRUE)))
-                        none_came = TRUE;
-                    break;
-                case 15: /* Balm of the Cocytus */
-                   hp_player(300);
-                   /* Actually set the stat to its new value. */
-                   p_ptr->stat_cur[A_CON] = p_ptr->stat_cur[A_CON]-1;
-                   /* Recalculate bonuses */
-                   p_ptr->update |= (PU_BONUS);
-                   break;
-                case 16: /* Araqiel's Wrath ( Earthquake )  */
-                    (void) earthquake(py,px,8);
-                    break;
-                case 17: /*Kokabiel's Call  ( Summon Spirits, lots of them ) */
-                    none_came = summon_specific_friendly(py, px, plev, FILTER_SPIRITS, TRUE) +
-                    summon_specific_friendly(py, px, plev, FILTER_SPIRITS, TRUE) +
-                    summon_specific_friendly(py, px, plev, FILTER_SPIRITS, TRUE) +
-                    summon_specific_friendly(py, px, plev, FILTER_SPIRITS, TRUE);
-                    none_came = !none_came;
-                    break;
-                case 18: /* Baraquiel's Guile (detect enchantment on entire level of excellents and specials) */
-                    (void)detect_objects_magic(TRUE,TRUE);
-                    break;
-                case 19: /* Sariel's Ire  */
-					dummy = randint(50) + 25;
-                    (void)set_timed_effect( TIMED_BLESSED, p_ptr->blessed + dummy);
-                    (void)set_timed_effect( TIMED_HERO, p_ptr->hero + dummy);
-                    (void)set_timed_effect( TIMED_MAGIC_SHELL, p_ptr->magic_shell + dummy);
+				case 0: /* Unholy strength */
+					(void)set_timed_effect( TIMED_HERO, p_ptr->hero + randint(25) + 25);
+					(void)take_hit( (p_ptr->lev/10)*5+5 , "Strain of Unholy Strength");
 					break;
-                case 20: /* Azazel's Rule */
-                    (void)charm_all_goats();
-                    break;
+				case 1: /* Sense Evil */
+					(void)detect_monsters_evil();
+					break;
+				case 2: /* Scorch */
+					if (!get_aim_dir(&dir)) return;
+					fire_bolt_or_beam(beam-10, GF_FIRE, dir, damroll(3 + ((plev - 1) / 5), 4));
+					break;
+				case 3: /* Perilous Shadows */
+					if (!get_aim_dir(&dir)) return;
+					fire_bolt_or_beam(beam-10, GF_DARK, dir, damroll(3 + ((plev - 1) / 5), 4));
+					break;
+				case 4: /* Teleport */
+					teleport_player(75);
+					break;
+				case 5: /* Disintegrate  */
+					if (!get_aim_dir(&dir)) return;
+					fire_ball(GF_DISINTEGRATE, dir, damroll(8+((plev-5)/4), 8), 0);
+					break;
+				case 6: /* Demonic Sigil */
+					msg_print("You carefully draw a sigil on the floor...");
+					explosive_rune();
+					break;
+				case 7: /* Hecate's Radiance ( weak light damage + medium charm/confuse/fear spell ) */
+					(void)lite_area_hecate(damroll(plev, 2), (plev / 10) + 1);
+					break;
+				case 8: /* Abaddon's Rage */
+					(void)set_timed_effect( TIMED_SHERO, p_ptr->shero + randint(25) + 25);
+					(void)set_timed_effect( TIMED_BLESSED, p_ptr->blessed + randint(25) + 25);
+					(void)set_timed_effect( TIMED_AFRAID , 0);
+					break;
+				case 9: /* Mind Leech */
+					(void)mind_leech();
+					break;
+				case 10: /* Body Leech*/
+					(void)body_leech();
+					break;
+				case 11: /* Glyph of Warding */
+					warding_glyph();
+					break;
+				case 12: /* Protection from Evil */
+					(void)set_timed_effect( TIMED_PROTEVIL, p_ptr->protevil + randint(25) + 3 * p_ptr->lev);
+					break;
+				case 13: /* Summon Demons */
+					if (!(summon_specific_friendly(py, px, plev, FILTER_DEMON, TRUE)))
+						if (!(summon_specific_friendly(py, px, plev, FILTER_DEVIL, TRUE)))
+							none_came = TRUE;
+					break;
+				case 14: /* Summon the Fallen */
+					if (!(summon_specific_friendly(py, px, plev, FILTER_FALLEN_ANGELS, TRUE)))
+						none_came = TRUE;
+					break;
+				case 15: /* Balm of the Cocytus */
+					hp_player(300);
+					/* Actually set the stat to its new value. */
+					p_ptr->stat_cur[A_CON] = p_ptr->stat_cur[A_CON]-1;
+					/* Recalculate bonuses */
+					p_ptr->update |= (PU_BONUS);
+					break;
+				case 16: /* Araqiel's Wrath ( Earthquake )  */
+					(void) earthquake(py,px,8);
+					break;
+				case 17: /*Kokabiel's Call  ( Summon Spirits, lots of them ) */
+					none_came = summon_specific_friendly(py, px, plev, FILTER_SPIRITS, TRUE) +
+					summon_specific_friendly(py, px, plev, FILTER_SPIRITS, TRUE) +
+					summon_specific_friendly(py, px, plev, FILTER_SPIRITS, TRUE) +
+					summon_specific_friendly(py, px, plev, FILTER_SPIRITS, TRUE);
+					none_came = !none_came;
+					break;
+				case 18: /* Baraquiel's Guile (detect enchantment on entire level of excellents and specials) */
+					(void)detect_objects_magic(TRUE,TRUE);
+					break;
+				case 19: /* Sariel's Ire  */
+					dummy = randint(50) + 25;
+					(void)set_timed_effect( TIMED_BLESSED, p_ptr->blessed + dummy);
+					(void)set_timed_effect( TIMED_HERO, p_ptr->hero + dummy);
+					(void)set_timed_effect( TIMED_MAGIC_SHELL, p_ptr->magic_shell + dummy);
+					break;
+				case 20: /* Azazel's Rule */
+					(void)charm_all_goats();
+					break;
 				case 21: /* Danel's Deluge */
 					if (!get_aim_dir(&dir)) return;
 					fire_ball(GF_LITE, dir,
@@ -8635,23 +8631,23 @@ void do_cmd_cast(void)
 					break;
 				default:
 					msg_format("You cast an unknown Demonic spell: %d.", spell);
-                        msg_print(NULL);
+					msg_print(NULL);
 			}
-            break;
+			break;
 		default:
 			msg_format("You cast a spell from an unknown realm: realm %d, spell %d.", realm, spell);
 			msg_print(NULL);
 		}
 		get_extended_spell_info( realm , spell , s_ptr);
-		/* A spell was cast */
-		if( !s_ptr->worked  )
+		/* Did we ever cast this spell succesfully */
+		if(!s_ptr->worked)
 		{
-            int spell_skill = mp_ptr->skill[realm]-1;
+			int spell_skill = mp_ptr->skill[realm]-1;
 			first_time = TRUE;
-            if( spell_skill == SUPER || spell_skill == BETTER )
-                xp_gain = s_ptr->sexp;
-            else
-                xp_gain = s_ptr->sexp *  s_ptr->sexp;
+			if( spell_skill == SUPER || spell_skill == BETTER )
+				xp_gain = s_ptr->sexp;
+			else
+				xp_gain = s_ptr->sexp *  s_ptr->sexp;
 			if (realm == p_ptr->realm1-1)
 				spell_worked1 |= (1L << spell);
 			else
@@ -8662,8 +8658,6 @@ void do_cmd_cast(void)
 	/* Take some time - a spell of your level takes 100, lower level spells take less */
 	energy_use = 100-(5*(p_ptr->lev-s_ptr->slevel));
 	if(energy_use < 10) energy_use = 10;
-
-
 
 	if( p_ptr->pclass != CLASS_BLOOD_MAGE)
 	{
