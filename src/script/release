@@ -1,12 +1,15 @@
 echo on
 echo Master install script
 echo rm -rv hb088
-rm -rv hb088win
-rm hb088src.zip
-rm hb088win.zip
+rm -rfv hb088win
+rm -f hb088src.zip
+rm -f hb088win.zip
 
-REM svn export https://hellband.googlecode.com/svn/trunk/ hb088
-REM we need to archive from the prototype
+#REM svn export https://hellband.googlecode.com/svn/trunk/ hb088
+#REM we need to archive from the prototype
+
+mkdir hb088
+
 cd ..
 cd ..
 git archive master | tar -x -C ./src/script/hb088
@@ -31,10 +34,10 @@ zip -9 -r -q hb088src.zip hb088
 
 cd hb088
 cd src
-REM mkdir mingw32
-REM export FOREIGN=win-mingw32-primitive
-REM #export WARNINGS=all
-REM make -fmakefile.sid
+#REM mkdir mingw32
+#REM export FOREIGN=win-mingw32-primitive
+#REM #export WARNINGS=all
+#REM make -fmakefile.sid
 make -fmakefile.cyg install
 
 cd ..
