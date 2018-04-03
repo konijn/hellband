@@ -411,7 +411,7 @@ static void set_ghost(cptr pname, int hp, int grace, int gclass, int lev)
 	monster_race *r_ptr = &r_info[MAX_R_IDX-1];
 
 	(void)gclass;/* gclass is no longer used */
-	
+
 	/* Extract the basic ghost name */
 	strcpy(gb_name, pname);
 
@@ -540,7 +540,7 @@ static void set_custom_aux( int idx, char mrace, cptr pname )
 		r_ptr->num_blows=3;
 		custom_blow( idx, 0, RBM_HIT, RBE_HURT, 3, 8 );
 	}
-	
+
 	if( mrace == 'G' )
 	{
 		/* Poltergeist.. */
@@ -850,7 +850,7 @@ static void set_custom_race_slot(int idx, cptr pname, int hp, int mrace, int dle
 	int i;
 
 	monster_race *r_ptr = &r_info[idx];
-	
+
 	/* Copy the custom name */
 	strcpy(gb_name, pname);
 
@@ -957,10 +957,6 @@ int find_summon_player_spot( int *x , int *y )
 		if (c.feat == FEAT_GLYPH) continue;
 		if (c.feat == FEAT_MINOR_GLYPH) continue;
 
-		/* ... nor on the Pattern */
-		if ((c.feat >= FEAT_PATTERN_START) && (c.feat <= FEAT_PATTERN_XTRA2))
-			continue;
-
 		/* Okay */
 		return TRUE;
 	}
@@ -970,7 +966,7 @@ int find_summon_player_spot( int *x , int *y )
 int patron_monster( cptr name, char c , int charmed )
 {
 	int idx, x,y;
-	
+
 	idx = find_custom_race_slot();
 	if( idx != -1 )
 	{
@@ -1578,7 +1574,7 @@ s16b get_mon_num(int level)
 
 	/* Shielded levels only contain monsters of that depth */
 	bool       shielded_level;
-	
+
 	/* Shielded levels only contain monsters of that depth */
 	if ( dun_level > DIS_START && dun_level < DIS_END )
 	{
@@ -1641,7 +1637,7 @@ s16b get_mon_num(int level)
 		{
 			continue;
 		}
-		
+
 		/* Hack? -- no NO_SPAWN monsters */
 		if ( (r_ptr->flags7 & (RF7_NO_SPAWN)) /*&& monster_filter_hook== NULL*/ )
 		{
@@ -1663,7 +1659,7 @@ s16b get_mon_num(int level)
 		{
 			continue;
 		}
-		
+
 		/* Accept */
 		table[i].prob3 = table[i].prob2;
 
@@ -2183,7 +2179,7 @@ void update_mon(int m_idx, bool full)
 
 			/* Update health bar as needed */
 			if (health_who == m_idx) p_ptr->redraw |= (PR_HEALTH);
-            
+
 			/* Update monster list window */
 			p_ptr->window |= (PW_VISIBLE);
 
@@ -2223,7 +2219,7 @@ void update_mon(int m_idx, bool full)
 
 			/* Erase the monster */
 			lite_spot(fy, fx);
-            
+
 			/* Update monster list window */
 			p_ptr->window |= (PW_VISIBLE);
 
@@ -2398,13 +2394,13 @@ bool place_monster_one(int y, int x, int r_idx, bool slp, bool charm)
 	monster_race	*r_ptr = &r_info[r_idx];
 
 	cptr		name = (r_name + r_ptr->name);
-	
+
 	/*Variables for Satan's circle*/
 	int lx,ly,x1,y1,k;
 
 	/* Verify location */
 	if (!in_bounds(y, x)) return (FALSE);
-	
+
 	/* Paranoia */
 	if (!r_idx) return (FALSE);
 
@@ -2415,11 +2411,6 @@ bool place_monster_one(int y, int x, int r_idx, bool slp, bool charm)
 	/* Hack -- no creation on glyph of warding */
 	if (cave[y][x].feat == FEAT_GLYPH) return (FALSE);
 	if (cave[y][x].feat == FEAT_MINOR_GLYPH) return (FALSE);
-
-	/* Nor on the Pattern */
-	if ((cave[y][x].feat >= FEAT_PATTERN_START)
-		&& (cave[y][x].feat <= FEAT_PATTERN_XTRA2))
-		return (FALSE);
 
 	/* Paranoia */
 	if (!r_ptr->name) return (FALSE);
@@ -2555,7 +2546,7 @@ bool place_monster_one(int y, int x, int r_idx, bool slp, bool charm)
 	{
 		m_ptr->maxhp = damroll(r_ptr->hdice, r_ptr->hside);
 	}
-	
+
 	/* Set the monster neutral if the info file says so */
 	if( r_ptr->flags7 & RF7_NEUTRAL )
 	{
@@ -2607,13 +2598,13 @@ bool place_monster_one(int y, int x, int r_idx, bool slp, bool charm)
 
 	/* Hack -- Notice new multi-hued monsters */
 	if (r_ptr->flags1 & (RF1_ATTR_MULTI)) shimmer_monsters = TRUE;
-	
+
 	/* Hack - Satan's disintegrating powers have created a circular area for him*/
 	if( dun_level == DIS_END-1 )
 	{
 	x1 = x;
 	y1 = y;
-	
+
 	/* Big area of affect */
 	for (ly = (y1 - 15); ly <= (y1 + 15); ly++)
 	{
@@ -2621,31 +2612,31 @@ bool place_monster_one(int y, int x, int r_idx, bool slp, bool charm)
 		{
 			/* Skip illegal grids */
 			if (!in_bounds(ly, lx)) continue;
-			
+
 			/* Extract the distance */
 			k = distance(y1, x1, ly, lx);
-			
+
 			/* Stay in the circle of death */
 			if (k >= 16) continue;
-			
+
 			/* Dont Delete the monster, only Satan should be there */
 			/* delete_monster(ly, lx); */
-			
+
 			/* Destroy valid grids */
 			if (cave_valid_bold(ly, lx))
 			{
 				/* Delete objects */
 				delete_object(ly, lx);
-				
+
 				/* Access the grid */
 				c_ptr = &cave[ly][lx];
-				
+
 				/* Create floor */
 				c_ptr->feat = FEAT_FLOOR;
-				
+
 				/* No longer part of a room or vault */
 				c_ptr->info &= ~(CAVE_ROOM | CAVE_ICKY);
-				
+
 				/* No longer illuminated or known */
 				c_ptr->info &= ~(CAVE_MARK | CAVE_GLOW);
 			}/* End of fixing cave*/
@@ -2834,19 +2825,19 @@ byte place_monster_aux(int y, int x, int r_idx, bool slp, bool grp, bool charm)
 			{
 				/* Set the escort index */
 				place_monster_idx = r_idx;
-				
+
 				/* Set the escort hook */
 				monster_filter_hook = place_monster_okay;
-				
+
 				/* Prepare allocation table */
 				get_mon_num_prep();
-				
+
 				/* Pick a random race */
 				z = get_mon_num(r_ptr->level);
-				
+
 				/* Remove restriction */
 				monster_filter_hook = NULL;
-				
+
 				/* Prepare allocation table */
 				get_mon_num_prep();
 			}
@@ -2854,7 +2845,7 @@ byte place_monster_aux(int y, int x, int r_idx, bool slp, bool grp, bool charm)
 
 			/* Handle failure */
 			if (!z) break;
-			
+
 			/* Require empty grids */
 			/*if (!cave_empty_bold(ny, nx) || (cave[ny][nx].feat == FEAT_WATER)) continue;*/
 			if(!can_place_monster(ny,nx,z))continue;
@@ -3010,7 +3001,7 @@ byte alloc_monster(int dis, int slp)
 {
 	int y, x;
 	int attempts_left = 10000;
-	
+
 	/* Find a legal, distant, unoccupied, space */
 	while (attempts_left)
 	{
@@ -3075,7 +3066,7 @@ bool monster_filter_okay(int r_idx)
 	/*Dont waste cycles if we got what we want*/
 	if(okay)
 		return okay;
-	
+
 	/*From here on only regular monsters are allowed to be summoned*/
 	if( r_ptr->flags7 & (RF7_NO_SPAWN) )
 		return FALSE;
@@ -3342,11 +3333,6 @@ byte summon_specific(int y1, int x1, int lev, int type)
 		if (cave[y][x].feat == FEAT_GLYPH) continue;
 		if (cave[y][x].feat == FEAT_MINOR_GLYPH) continue;
 
-		/* ... nor on the Pattern */
-		if ((cave[y][x].feat >= FEAT_PATTERN_START)
-			&& (cave[y][x].feat <= FEAT_PATTERN_XTRA2))
-			continue;
-
 		/* Okay */
 		break;
 	}
@@ -3385,7 +3371,7 @@ byte summon_specific(int y1, int x1, int lev, int type)
 */
 	/* Reset it since we abuse it somewhere else */
     monster_filter_type = 0;
-	
+
 	/* Attempt to place the monster (awake, allow groups) */
 	return(place_monster_aux(y, x, r_idx, FALSE, Group_ok, FALSE));
 
@@ -3396,31 +3382,26 @@ byte summon_specific(int y1, int x1, int lev, int type)
 bool summon_skulls(int y1, int x1)
 {
 	int i, x, y, r_idx;
-	
+
 	bool Group_ok = TRUE;
-	
-	
+
+
 	/* Look for a location */
 	for (i = 0; i < 20; ++i)
 	{
 		/* Pick a distance */
 		int d = (i / 15) + 1;
-		
+
 		/* Pick a location */
 		scatter(&y, &x, y1, x1, d);
-		
+
 		/* Require "empty" floor grid */
 		if (!cave_empty_bold(y, x) ) continue;
-		
+
 		/* Hack -- no summon on glyph of warding */
 		if (cave[y][x].feat == FEAT_GLYPH) continue;
 		if (cave[y][x].feat == FEAT_MINOR_GLYPH) continue;
-		
-		/* ... nor on the Pattern */
-		if ((cave[y][x].feat >= FEAT_PATTERN_START)
-			&& (cave[y][x].feat <= FEAT_PATTERN_XTRA2))
-			continue;
-		
+
 		/* Okay */
 		break;
 	}
@@ -3467,11 +3448,6 @@ bool summon_specific_friendly(int y1, int x1, int lev, int type, bool Group_ok)
 		/* Hack -- no summon on glyph of warding */
 		if (cave[y][x].feat == FEAT_GLYPH) continue;
 		if (cave[y][x].feat == FEAT_MINOR_GLYPH) continue;
-
-		/* ... nor on the Pattern */
-		if ((cave[y][x].feat >= FEAT_PATTERN_START)
-			&& (cave[y][x].feat <= FEAT_PATTERN_XTRA2))
-			continue;
 
 		/* Okay */
 		break;
@@ -3849,5 +3825,3 @@ void update_smart_learn(int m_idx, int what)
 #endif /* DRS_SMART_OPTIONS */
 
 }
-
-

@@ -730,10 +730,6 @@ static bool summon_possible(int y1, int x1)
 			if (cave[y][x].feat == FEAT_GLYPH) continue;
 			if (cave[y][x].feat == FEAT_MINOR_GLYPH) continue;
 
-			/* ...nor on the Pattern */
-			if ((cave[y][x].feat >= FEAT_PATTERN_START)
-				&& (cave[y][x].feat <= FEAT_PATTERN_XTRA2)) continue;
-
 			/* Require empty floor grid in line of sight */
 			/**/
 			if (cave_empty_bold(y,x) && los(y1,x1,y,x)) return (TRUE);
@@ -1116,7 +1112,7 @@ static void notice_spell(bool see_either, cptr heard_msg, cptr blind_msg, cptr s
 {
   /* Extract the blind-ness */
 	bool player_blind = (p_ptr->blind ? TRUE : FALSE);
-  
+
 	disturb(1, 0);
 	if (!see_either){
 		msg_print(heard_msg);
@@ -1162,7 +1158,7 @@ static bool monst_spell_monst(int m_idx)
 	bool see_both;
 
 	bool friendly = is_ally(m_ptr);
-	
+
 	/* Cannot cast spells when confused */
 	if (m_ptr->confused) return (FALSE);
 
@@ -2707,7 +2703,7 @@ bool make_attack_spell(int m_idx)
 		msg_format("%^s recognizes your birthright." , m_name);
 		set_ally( m_ptr, ALLY_PLAYER);
 	}
-	
+
 	/* Cannot cast spells at player when you're not interested in getting em dead */
 	if (!is_player_killer(m_ptr )) return (FALSE);
 
@@ -5811,7 +5807,7 @@ static void process_monster(int m_idx, bool is_friend)
 		/* Still sleeping */
 		if (m_ptr->csleep) return;
 	}
-	
+
 	/*  Handle annoyed monsters*/
 	if (r_ptr->flags7 & (RF7_ANNOYED))
 	{
@@ -5825,10 +5821,10 @@ static void process_monster(int m_idx, bool is_friend)
 			if( distance( px , py , m_ptr->fx , m_ptr->fy ) < 16 )
 			{
 				char m_name[80];
-				
+
 				/* Acquire the monster name */
 				monster_desc(m_name, m_ptr, 0);
-				
+
 				/* Dump a message */
 				msg_format("%^s mutters a hex.", m_name);
 				/*summon_specific(py, px, 10, FILTER_SKULLS);*/
@@ -6365,14 +6361,6 @@ static void process_monster(int m_idx, bool is_friend)
 			do_turn = TRUE;
 		}
 
-		if ((cave[ny][nx].feat >= FEAT_PATTERN_START) &&
-			(cave[ny][nx].feat <= FEAT_PATTERN_XTRA2) &&
-			do_turn == FALSE)
-		{
-			do_move = FALSE;
-		}
-
-
 		/* A monster is in the way */
 		if (do_move && c_ptr->m_idx)
 		{
@@ -6395,7 +6383,7 @@ static void process_monster(int m_idx, bool is_friend)
 				did_kill_body = TRUE;
 
 				/* XXX XXX XXX Message */
-                
+
 				/* Update visuals */
 				p_ptr->window |= (PW_VISIBLE);
 
@@ -6925,5 +6913,3 @@ void process_monsters(void)
 		}
 	}
 }
-
-

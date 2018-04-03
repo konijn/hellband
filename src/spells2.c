@@ -106,27 +106,27 @@ bool sp_player(int num)
 	{
 		/* Gain hitpoints */
 		p_ptr->csp += num;
-        
+
 		/* Enforce maximum */
 		if (p_ptr->csp >= p_ptr->msp)
 		{
 			p_ptr->csp = p_ptr->msp;
 			p_ptr->csp_frac = 0;
 		}
-        
+
 		/* Enforce minimum */
 		if (p_ptr->csp < 0)
 		{
 			p_ptr->csp = 0;
 			p_ptr->csp_frac = 0;
 		}
-        
+
 		/* Redraw */
 		p_ptr->redraw |= (PR_MANA);
-        
+
 		/* Window stuff */
 		p_ptr->window |= (PW_PLAYER);
-        
+
         if( num < 0 )
         {
             msg_print("You mind feels drained.");
@@ -136,17 +136,17 @@ bool sp_player(int num)
 		{
 			msg_print("You feel a glow inside.");
 		}
-        
+
 		/* Heal 35+ */
 		else
 		{
 			msg_print("Your mind radiates.");
 		}
-        
+
 		/* Notice */
 		return (TRUE);
 	}
-    
+
 	/* Ignore */
 	return (FALSE);
 }
@@ -577,7 +577,7 @@ bool alchemy(void) /* Turns an object into gold, gain some of its value in a sho
 		if (amt > 1) price *= amt;
 
 		if (price > 30000) price = 30000;
-        
+
         /*To add a touch of cruelty, the object gets id'd, so that we see what we actually destroyed, muhahah */
         /* Identify it fully */
         object_aware(o_ptr);
@@ -586,7 +586,7 @@ bool alchemy(void) /* Turns an object into gold, gain some of its value in a sho
         o_ptr->ident |= (IDENT_MENTAL);
         /* Redescribe it with possibly new knowledge */
        	object_desc(o_name, o_ptr, TRUE, 3);
-        
+
 		msg_format("You turn %s to %ld coins worth of gold.", o_name, price);
 		p_ptr->au += price;
 
@@ -636,10 +636,10 @@ bool alchemy(void) /* Turns an object into gold, gain some of its value in a sho
 void self_knowledge(void)
 {
 	int             i = 0, j, k;
-	
+
 	int corruption_counter;
 	int timed_counter;
-	
+
 	u32b *muta_class = 0;
 
 	u32b    f1 = 0L, f2 = 0L, f3 = 0L;
@@ -701,7 +701,7 @@ void self_knowledge(void)
 		}
 	}
 
-	
+
 	for( j = 0 ; racial_powers[j].description != NULL ; j++ )
 	{
 		if( racial_powers[j].idx == p_ptr->prace && plev >= racial_powers[j].level )
@@ -723,7 +723,7 @@ void self_knowledge(void)
 	/* Handle corruptions */
 	/* Because of ancient history, the other corruption descriptions start with a space, we skip that space with the +1*/
 	/* Also because of ancient history we are not directly accessing the corruptions flag, TODO */
-	
+
 	for( corruption_counter = 0 ; corruption_counter < COUNT_CORRUPTIONS ; corruption_counter++ )
 	{
 		muta_class = corruption_idx_to_u32b( corruptions[corruption_counter].idx );
@@ -732,9 +732,9 @@ void self_knowledge(void)
 			info[i++] = (corruptions[corruption_counter].description)+1;
 		}
 	}
-	
+
 	/* Handle timed effects */
-	
+
 	for( timed_counter = 0 ; timed_counter < TIMED_COUNT ; timed_counter++)
 	{
 		if(  *(timed[timed_counter].timer) > 0   )
@@ -774,20 +774,20 @@ void self_knowledge(void)
 	else if ((p_ptr->resist_elec)
 		 &&  (p_ptr->oppose_elec)) info[i++] = "You resist lightning exceptionally well.";
 	else if ((p_ptr->resist_elec)) info[i++] = "You are resistant to lightning.";
-	
+
 	if (p_ptr->immune_fire)        info[i++] = "You are completely immune to fire.";
 	else if ((p_ptr->resist_fire)
 		  && (p_ptr->oppose_fire)) info[i++] = "You resist fire exceptionally well.";
 	else if ((p_ptr->resist_fire)) info[i++] = "You are resistant to fire.";
-	
+
 	if (p_ptr->immune_cold)        info[i++] = "You are completely immune to cold.";
 	else if ((p_ptr->resist_cold)
 		  && (p_ptr->oppose_cold)) info[i++] = "You resist cold exceptionally well.";
 	else if ((p_ptr->resist_cold)) info[i++] = "You are resistant to cold.";
-	
+
 	if ((p_ptr->resist_pois) && (p_ptr->oppose_pois)) info[i++] = "You resist poison exceptionally well.";
 	else if ((p_ptr->resist_pois))	info[i++] = "You are resistant to poison.";
-	
+
 	/* Higher resistances */
 	if (p_ptr->resist_lite)  info[i++] = "You are resistant to bright light.";
 	if (p_ptr->resist_dark)  info[i++] = "You are resistant to darkness.";
@@ -821,7 +821,7 @@ void self_knowledge(void)
 	if (f1 & (TR1_TUNNEL))  info[i++] = "Your digging ability is affected by your equipment.";
 	if (f1 & (TR1_SPEED))   info[i++] = "Your speed is affected by your equipment.";
 	if (f1 & (TR1_BLOWS))   info[i++] = "Your attack speed is affected by your equipment.";
-	
+
 	/* Access the current weapon */
 	o_ptr = &inventory[INVEN_WIELD];
 
@@ -866,7 +866,7 @@ void self_knowledge(void)
 	/* We will print on top of the map (column 13) */
 	for (k = 2, j = 0; j < i; j++)
 	{
-		
+
 		if( info[j] != NULL )
 		{
 			/* Show the info */
@@ -1344,7 +1344,7 @@ bool detect_objects_magic(bool detect_entire_floor, bool do_instant_pseudo_id)
 		{
 			/* Memorize the item */
 			o_ptr->marked = TRUE;
-            
+
             /* Pseudo-id it */
             if(do_instant_pseudo_id)
             {
@@ -1831,7 +1831,7 @@ bool item_tester_hook_armour(object_type *o_ptr)
 	{
 			return (TRUE);
 	}
-	
+
 	return (FALSE);
 }
 
@@ -2762,7 +2762,7 @@ bool artefact_scroll()
 	bool okay = FALSE;
 	char o_name[80];
 	object_type       *o_ptr;
-	
+
 	/* Assume enchant weapon */
 	item_tester_hook = item_tester_hook_weapon;
 
@@ -2977,7 +2977,7 @@ bool identify_fully(void)
 
 	/* Identify it fully */
 	object_full_id( o_ptr );
-	
+
 	/* Recalculate bonuses */
 	p_ptr->update |= (PU_BONUS);
 
@@ -3969,11 +3969,6 @@ void earthquake(int cy, int cx, int r)
 							if (cave[y][x].feat == FEAT_GLYPH) continue;
 							if (cave[y][x].feat == FEAT_MINOR_GLYPH) continue;
 
-							/* ... nor on the Pattern */
-							if ((cave[y][x].feat <= FEAT_PATTERN_XTRA2) &&
-								(cave[y][x].feat >= FEAT_PATTERN_START))
-								continue;
-
 							/* Important -- Skip "quake" grids */
 							if (map[16+y-cy][16+x-cx]) continue;
 
@@ -4404,7 +4399,7 @@ bool lite_area(int dam, int rad)
 bool lite_area_hecate(int dam, int rad)
 {
 	int flg = PROJECT_GRID | PROJECT_KILL;
-    
+
 	/* Hack -- Message */
 	if (!p_ptr->blind)
 	{
@@ -4412,10 +4407,10 @@ bool lite_area_hecate(int dam, int rad)
 	}
 	/* Hook into the "project()" function */
 	(void)project(0, rad, py, px, dam, GF_HECATE , flg);
-    
+
 	/* Lite up the room */
 	lite_room(py, px);
-    
+
 	/* Assume seen */
 	return (TRUE);
 }
@@ -5091,16 +5086,16 @@ bool charm_all_goats(void)
 {
 	int             i;
 	bool    flag = FALSE;
-    
+
 	/* Scan monsters */
 	for (i = 1; i < m_max; i++)
 	{
 		monster_type *m_ptr = &m_list[i];
 		monster_race *r_ptr = &r_info[m_ptr->r_idx];
-        
+
 		/* Skip dead monsters */
 		if (!m_ptr->r_idx) continue;
-        
+
         if(r_ptr->d_char == 'q')
         {
 			/* Update monster recall window */
@@ -5109,34 +5104,34 @@ bool charm_all_goats(void)
 				/* Window stuff */
 				p_ptr->window |= (PW_MONSTER);
 			}
-            
+
 			/* Repair visibility later */
 			repair_monsters = TRUE;
-            
+
 			/* Hack -- Detect monster */
 			m_ptr->mflag |= (MFLAG_MARK | MFLAG_SHOW);
-            
+
 			/* Hack -- See monster */
 			m_ptr->ml = TRUE;
-            
+
 			/* Redraw */
 			lite_spot(m_ptr->fy, m_ptr->fx);
-            
+
 			/* Detect */
 			flag = TRUE;
-            
+
             /* Super Charm */
             set_ally( m_ptr, ALLY_COMPANION);
 		}
 	}
-    
+
 	/* Describe */
 	if (flag)
 	{
 		/* Describe result */
 		msg_print("Your rule has been established!");
 	}
-    
+
 	/* Result */
 	return (flag);
 }
@@ -5232,14 +5227,14 @@ bool deathray_monsters(void)
 bool charm_monster_type( int dir , int plev , int type )
 {
 	int flg = PROJECT_STOP | PROJECT_KILL;
-	
+
 	/*Set up the filter*/
 	monster_filter_type = type;
 	monster_filter_hook = monster_filter_okay;
-	
+
 	/*Do the the charming*/
 	return (project_hook(GF_CHARM, dir, plev, flg));
-	
+
 	/*Remove the filter*/
 	monster_filter_type = 0;
 	monster_filter_hook = NULL;
@@ -5320,9 +5315,9 @@ void report_magics(void)
 
 	cptr    info[128];
 	int     info2[128];
-	
+
 	/* Handle timed effects */
-	
+
 	for( timed_counter = 0 ; timed_counter < TIMED_COUNT ; timed_counter++)
 	{
 		if(  *(timed[timed_counter].timer) > 0   )
@@ -5494,13 +5489,13 @@ void blow_monster(int y , int x)
 {
 	cave_type *c_ptr;
 	char m_name[80];
-	
+
 	/* Paranoia */
 	if (!in_bounds(y, x)) return;
-		
+
 	/* Check the grid */
 	c_ptr = &cave[y][x];
-	
+
 	/* Delete the monster (if any) */
 	if (c_ptr->m_idx)
 	{
@@ -5541,10 +5536,10 @@ void find_open_spot_at_distance( int x , int y , int rad , int *spotx , int *spo
 		{
 			/* Skip illegal grids */
 			if (!in_bounds(ly, lx)) continue;
-			
+
 			/* Extract the distance */
 			k = distance(y, x, ly, lx);
-			
+
 			/* If we are at the right distance , set the spot and exit */
 			if ( k==rad && cave_valid_bold(ly, lx) && cave_empty_bold(ly, lx) )
 			{
@@ -5566,27 +5561,27 @@ void drown_object(int y , int x , int spoty , int spotx)
 	cave_type *c_ptr;
 	char o_name[80];
 	s16b this_o_idx, next_o_idx = 0;
-	
+
 	/* Paranoia */
 	if (!in_bounds(y, x)) return;
-	
+
 	/* Check the grid */
 	c_ptr = &cave[y][x];
-	
+
 	/* Scan all objects in the grid */
 	for (this_o_idx = c_ptr->o_idx; this_o_idx; this_o_idx = next_o_idx)
 	{
 		object_type *o_ptr;
-		
+
 		/* Acquire object */
 		o_ptr = &o_list[this_o_idx];
-		
+
 		/* Describe the object */
 		object_desc(o_name, o_ptr, TRUE, 3);
-		
+
 		/* Acquire next object */
 		next_o_idx = o_ptr->next_o_idx;
-		
+
 		/* Wipe the object */
 		if( (o_ptr->art_name || artefact_p(o_ptr)) )
 		{
@@ -5621,13 +5616,13 @@ void drown_object(int y , int x , int spoty , int spotx)
 			o_cnt--;
 		}
 	}
-	
+
 	/* Reread the original spot */
 	c_ptr = &cave[y][x];
 	/* Objects are gone unless if we were trying to remove the original spot, hmmmm*/
 	if(x!=spotx||y!=spoty)
 		c_ptr->o_idx = 0;
-	
+
 	/* Visual update, probably superfluous */
 	lite_spot(y, x);
 }
@@ -5638,18 +5633,18 @@ void behemoth_call(void)
 	int lx,ly,x1,y1,k;
 	int spotx =px;
 	int spoty =py;
-	
+
 	cave_type		*c_ptr;
 
 	x1 = px;
 	y1 = py;
-	
+
 	find_open_spot_at_distance(  x1,y1,17,&spotx,&spoty);
 /*
 	spotx = px;
 	spoty = py;
  */
-	
+
 	/* Big area of affect */
 	for (ly = (y1 - 15); ly <= (y1 + 15); ly++)
 	{
@@ -5657,36 +5652,36 @@ void behemoth_call(void)
 		{
 			/* Skip illegal grids */
 			if (!in_bounds(ly, lx)) continue;
-			
+
 			/* Extract the distance */
 			k = distance(y1, x1, ly, lx);
-			
-			
+
+
 			/* Stay in the circle of death */
 			if (k > 16) continue;
-			
+
 			/* If we couldnt find a good spot for artefacts then the player should stay on land*/
 			if( lx == px && ly == py && spotx == px && spoty == py ) continue;
 
 			/* Access the grid */
 			c_ptr = &cave[ly][lx];
-			
+
 			/* Destroy valid grids */
 			if (/*cave_valid_bold(ly, lx)*/!cave_perma_grid(c_ptr) && (  ( k<6 ) || ( k>=6 && cave_floor_bold(ly, lx)  )  ) )
 			{
 				/* Delete objects */
 				/*delete_object(ly, lx);*/
 				drown_object(ly,lx, spoty,spotx);
-				
+
 				/* Try to blow away the monster */
 				blow_monster(ly, lx);
-				
+
 				/* Create water */
 				c_ptr->feat = FEAT_WATER;
-				
+
 				/* No longer part of a room or vault */
 				c_ptr->info &= ~(CAVE_ROOM | CAVE_ICKY);
-				
+
 				/* Illuminated and known */
 				c_ptr->info |= (CAVE_MARK | CAVE_GLOW);
 			}/* End of fixing cave*/
@@ -5700,10 +5695,10 @@ void behemoth_call(void)
 		{
 			/* Skip illegal grids */
 			if (!in_bounds(ly, lx)) continue;
-			
+
 			/* Access the grid */
 			c_ptr = &cave[ly][lx];
-			
+
 			if( c_ptr->feat == FEAT_WATER )
 			{
 				/*vertical*/

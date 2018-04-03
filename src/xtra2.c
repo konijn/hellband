@@ -38,63 +38,63 @@ extern void do_cmd_wiz_cure_all(void);
 bool set_stun( int v)
 {
 	int old_aux, new_aux;
-	
+
 	bool notice = FALSE;
-	
+
 	/* Hack -- Force good values */
 	v = (v > 10000) ? 10000 : (v < 0) ? 0 : v;
-	
+
 	if (p_ptr->prace == GUARDIAN)
 		v = 0;
-	
+
 	/* Knocked out */
 	if (p_ptr->stun > 100)
 	{
 		old_aux = 3;
 	}
-	
+
 	/* Heavy stun */
 	else if (p_ptr->stun > 50)
 	{
 		old_aux = 2;
 	}
-	
+
 	/* Stun */
 	else if (p_ptr->stun > 0)
 	{
 		old_aux = 1;
 	}
-	
+
 	/* None */
 	else
 	{
 		old_aux = 0;
 	}
-	
+
 	/* Knocked out */
 	if (v > 100)
 	{
 		new_aux = 3;
 	}
-	
+
 	/* Heavy stun */
 	else if (v > 50)
 	{
 		new_aux = 2;
 	}
-	
+
 	/* Stun */
 	else if (v > 0)
 	{
 		new_aux = 1;
 	}
-	
+
 	/* None */
 	else
 	{
 		new_aux = 0;
 	}
-	
+
 	/* Increase cut */
 	if (new_aux > old_aux)
 	{
@@ -105,21 +105,21 @@ bool set_stun( int v)
 			case 1:
 				msg_print("You have been stunned.");
 				break;
-				
+
 				/* Heavy stun */
 			case 2:
 				msg_print("You have been heavily stunned.");
 				break;
-				
+
 				/* Knocked out */
 			case 3:
 				msg_print("You have been knocked out.");
 				break;
 		}
-		
+
 		if (randint(1000)<v || randint(16)==1)
 		{
-			
+
 			msg_print("A vicious blow hits your head.");
 			if(randint(3)==1)
 			{
@@ -135,11 +135,11 @@ bool set_stun( int v)
 				if (!p_ptr->sustain_wis) { (void) do_dec_stat(A_WIS); }
 			}
 		}
-		
+
 		/* Notice */
 		notice = TRUE;
 	}
-	
+
 	/* Decrease cut */
 	else if (new_aux < old_aux)
 	{
@@ -152,29 +152,29 @@ bool set_stun( int v)
 				if (disturb_state) disturb(0, 0);
 					break;
 		}
-		
+
 		/* Notice */
 		notice = TRUE;
 	}
-	
+
 	/* Use the value */
 	p_ptr->stun = v;
-	
+
 	/* No change */
 	if (!notice) return (FALSE);
-	
+
 	/* Disturb */
 	if (disturb_state) disturb(0, 0);
-	
+
 	/* Recalculate bonuses */
 	p_ptr->update |= (PU_BONUS);
-	
+
 	/* Redraw the "stun" */
 	p_ptr->redraw |= (PR_STUN);
-	
+
 	/* Handle stuff */
 	handle_stuff();
-	
+
 	/* Result */
 	return (TRUE);
 }
@@ -187,114 +187,114 @@ bool set_stun( int v)
 bool set_cut(int v)
 {
 	int old_aux, new_aux;
-	
+
 	bool notice = FALSE;
-	
+
 	/* Hack -- Force good values */
 	v = (v > 10000) ? 10000 : (v < 0) ? 0 : v;
-	
+
 	if (p_ptr->prace == GUARDIAN || p_ptr->prace == SKELETON ||
 		p_ptr->prace == SPECTRE )
 		v = 0;
 	else if (p_ptr->prace == MUMMY && p_ptr->lev > 11)
 		v = 0;
-	
+
 	/* Mortal wound */
 	if (p_ptr->cut > 1000)
 	{
 		old_aux = 7;
 	}
-	
+
 	/* Deep gash */
 	else if (p_ptr->cut > 200)
 	{
 		old_aux = 6;
 	}
-	
+
 	/* Severe cut */
 	else if (p_ptr->cut > 100)
 	{
 		old_aux = 5;
 	}
-	
+
 	/* Nasty cut */
 	else if (p_ptr->cut > 50)
 	{
 		old_aux = 4;
 	}
-	
+
 	/* Bad cut */
 	else if (p_ptr->cut > 25)
 	{
 		old_aux = 3;
 	}
-	
+
 	/* Light cut */
 	else if (p_ptr->cut > 10)
 	{
 		old_aux = 2;
 	}
-	
+
 	/* Graze */
 	else if (p_ptr->cut > 0)
 	{
 		old_aux = 1;
 	}
-	
+
 	/* None */
 	else
 	{
 		old_aux = 0;
 	}
-	
+
 	/* Mortal wound */
 	if (v > 1000)
 	{
 		new_aux = 7;
 	}
-	
+
 	/* Deep gash */
 	else if (v > 200)
 	{
 		new_aux = 6;
 	}
-	
+
 	/* Severe cut */
 	else if (v > 100)
 	{
 		new_aux = 5;
 	}
-	
+
 	/* Nasty cut */
 	else if (v > 50)
 	{
 		new_aux = 4;
 	}
-	
+
 	/* Bad cut */
 	else if (v > 25)
 	{
 		new_aux = 3;
 	}
-	
+
 	/* Light cut */
 	else if (v > 10)
 	{
 		new_aux = 2;
 	}
-	
+
 	/* Graze */
 	else if (v > 0)
 	{
 		new_aux = 1;
 	}
-	
+
 	/* None */
 	else
 	{
 		new_aux = 0;
 	}
-	
+
 	/* Increase cut */
 	if (new_aux > old_aux)
 	{
@@ -305,53 +305,53 @@ bool set_cut(int v)
 			case 1:
 				msg_print("You have been given a graze.");
 				break;
-				
+
 				/* Light cut */
 			case 2:
 				msg_print("You have been given a light cut.");
 				break;
-				
+
 				/* Bad cut */
 			case 3:
 				msg_print("You have been given a bad cut.");
 				break;
-				
+
 				/* Nasty cut */
 			case 4:
 				msg_print("You have been given a nasty cut.");
 				break;
-				
+
 				/* Severe cut */
 			case 5:
 				msg_print("You have been given a severe cut.");
 				break;
-				
+
 				/* Deep gash */
 			case 6:
 				msg_print("You have been given a deep gash.");
 				break;
-				
+
 				/* Mortal wound */
 			case 7:
 				msg_print("You have been given a mortal wound.");
 				break;
 		}
-		
+
 		/* Notice */
 		notice = TRUE;
-		
+
 		if (randint(1000)<v || randint(16)==1)
 		{
 			if(!p_ptr->sustain_cha)
 			{
 				msg_print("You have been horribly scarred.");
-				
+
 				do_dec_stat(A_CHA);
 			}
 		}
-		
+
 	}
-		
+
 	/* Decrease cut */
 	else if (new_aux < old_aux)
 	{
@@ -364,29 +364,29 @@ bool set_cut(int v)
 				if (disturb_state) disturb(0, 0);
 					break;
 		}
-		
+
 		/* Notice */
 		notice = TRUE;
 	}
-	
+
 	/* Use the value */
 	p_ptr->cut = v;
-	
+
 	/* No change */
 	if (!notice) return (FALSE);
-	
+
 	/* Disturb */
 	if (disturb_state) disturb(0, 0);
-	
+
 	/* Recalculate bonuses */
 	p_ptr->update |= (PU_BONUS);
-	
+
 	/* Redraw the "cut" */
 	p_ptr->redraw |= (PR_CUT);
-	
+
 	/* Handle stuff */
 	handle_stuff();
-	
+
 	/* Result */
 	return (TRUE);
 }
@@ -397,7 +397,7 @@ bool set_timed_effect( byte effect , int v )
 	bool notice = FALSE;
 	/* Access data of the timed effect */
 	timed_type *te_ptr = &timed[effect];
-	
+
 	/*Some timed effects are not that easy*/
 	if( effect == TIMED_CUT )
 		return set_cut(v);
@@ -413,10 +413,10 @@ bool set_timed_effect( byte effect , int v )
 	{
 		msg_note("Trying to access an unknown timed effect");
 	}
-	
+
 	/* Hack -- Force good values */
 	v = (v > 10000) ? 10000 : (v < 0) ? 0 : v;
-	
+
 	/* Start effect */
 	if (v)
 	{
@@ -426,7 +426,7 @@ bool set_timed_effect( byte effect , int v )
 			notice = TRUE;
 		}
 	}
-	
+
 	/* Shut down effect */
 	else
 	{
@@ -436,33 +436,33 @@ bool set_timed_effect( byte effect , int v )
 			notice = TRUE;
 		}
 	}
-	
+
 	/* Use the value */
 	*( te_ptr->timer ) = v;
-	
+
 	/* Nothing to notice */
 	if (!notice) return (FALSE);
-	
+
 	/* Disturb */
 	if (disturb_state) disturb(0, 0);
-	
+
 	/* Update stuff */
 	p_ptr->update |= te_ptr->update;
-	
+
 	/* Redraw stuff */
 	p_ptr->redraw |= te_ptr->redraw;
-	
+
 	/* Window stuff, Hack !! */
 	if( effect == TIMED_BLIND || effect == TIMED_IMAGE || effect == TIMED_INVULN || effect == TIMED_WRAITH_FORM )
 		p_ptr->window |= (PW_OVERHEAD);
-	
+
     /* Window stuff, hack if we need to update monsters, we better update the visible monsters window*/
     if( te_ptr->update & PU_MONSTERS )
 		p_ptr->window |= (PW_VISIBLE);
-    
+
 	/* Handle stuff */
 	handle_stuff();
-	
+
 	/* Result */
 	return (TRUE);
 }
@@ -759,10 +759,10 @@ void check_experience(void)
 		/* Window stuff */
 		p_ptr->window |= (PW_PLAYER);
 		p_ptr->window |= (PW_SPELL);
-		
+
 		/* Handle stuff */
 		handle_stuff();
-		
+
 		/* Give the player the good news */
 		msg_format("You feel magically reinvigorated.");
 		/* Cure the player completely */
@@ -878,7 +878,7 @@ void calculate_xp(monster_race *r_ptr, s32b *exp , s32b *exp_frac)
 
 	/* Maximum player level */
 	div = 10*p_ptr->max_plv;
-	
+
 	if (r_ptr->r_pkills >= 19) div = div * 2; /* Half experience for common monsters */
 	if (r_ptr->r_pkills ==  0) div = div / 3; /* Triple experience for first kill */
 	if (r_ptr->r_pkills ==  1) div = div / 2; /* Double experience for third kill */
@@ -1389,7 +1389,7 @@ bool mon_take_hit(int m_idx, int dam, bool *fear, cptr note)
 
 		/* Get the experience for that monster with current player level */
 		calculate_xp( r_ptr , &new_exp , &new_exp_frac );
-		
+
 		/*No exp or treasure for reborns */
 		if(!((r_ptr->flags7 & (RF7_REBORN)) && r_ptr->r_pkills > 0 ))
 		{
@@ -1446,7 +1446,7 @@ bool mon_take_hit(int m_idx, int dam, bool *fear, cptr note)
 
 		/* Delete the monster */
 		delete_monster_idx(m_idx,TRUE);
-        
+
         /* Update monster list window */
         p_ptr->window |= (PW_VISIBLE);
 		/* Dead monster, update potential xp decreases and stuff */
@@ -1600,7 +1600,7 @@ void verify_panel(void)
 		int pcol = panel_col;;
 
 		/*
-		* In the olden days, a 25 line screen used to scroll 2 spaces of the horizontal edges, 
+		* In the olden days, a 25 line screen used to scroll 2 spaces of the horizontal edges,
 		* and a 80 column screen used to scroll 4 spaces of the vertical edges
 		* These numbers seem stupid now, so why not use the player view distance?
 		* Though that actually does not really work for the original size screen..
@@ -2009,11 +2009,6 @@ static bool target_set_accept(int y, int x)
 		if (c_ptr->feat == FEAT_GLYPH) return (TRUE);
 		if (c_ptr->feat == FEAT_MINOR_GLYPH) return (TRUE);
 
-		/* Notice the Pattern */
-		if ((c_ptr->feat <= FEAT_PATTERN_XTRA2) &&
-			(c_ptr->feat >= FEAT_PATTERN_START))
-			return (TRUE);
-
 		/* Notice doors */
 		if (c_ptr->feat == FEAT_OPEN) return (TRUE);
 		if (c_ptr->feat == FEAT_BROKEN) return (TRUE);
@@ -2380,8 +2375,7 @@ static int target_set_aux(int y, int x, int mode, cptr info)
 			if (feat == FEAT_NONE) name = "unknown grid";
 
 			/* Pick a prefix */
-			if (*s2 && ((feat >= FEAT_MINOR_GLYPH) &&
-				(feat <= FEAT_PATTERN_XTRA2))) s2 = "on ";
+			if (*s2 && (feat == FEAT_MINOR_GLYPH || feat == FEAT_GLYPH)) s2 = "on ";
 			else if (*s2 && (feat >= FEAT_DOOR_HEAD)) s2 = "in ";
 
 			/* Pick proper indefinite article */
@@ -3093,7 +3087,7 @@ int patron_hurt(){
 	int damage    = 0;
 	int treshold  = 0;
 	sprintf(wrath_reason, "the Wrath of %s", patrons[p_ptr->evil_patron].short_name);
-	
+
 	/* Inform the player that someone is really unhappy */
 	msg_format("The voice of %s thunders: 'You no longer serve my purposes!'" , patrons[p_ptr->evil_patron].short_name);
 
@@ -3103,7 +3097,7 @@ int patron_hurt(){
 	damage = ( p_ptr->chp - damage < treshold  )?(p_ptr->chp - treshold):damage;
 	if( damage > 0 )
 		take_hit( damage , format( "the Wrath of %s", patrons[p_ptr->evil_patron].short_name ) );
-	
+
 	/*Negative damage does not count*/
 	return damage<0?0:damage;
 }
@@ -3498,7 +3492,7 @@ bool gain_corruption(int choose_mut)
 		 * will screw up/cure their opposites. Gaining supercomputer brain (+4int/wis)
 		 * will fix idiocy(-4wis/int). The opposite is true of course as well ( for now ).
 		 */
-		
+
 		/* Go over all the opposed corruptions, NULL record has message NULL */
 		for( i = 0 ; opposed_corruptions[i].message ; i++ )
 		{
@@ -3522,7 +3516,7 @@ bool gain_corruption(int choose_mut)
 				}
 			}
 		}
-		
+
 		p_ptr->update |= PU_BONUS;
 		handle_stuff();
 		return TRUE;
@@ -3688,7 +3682,7 @@ void dump_corruptions(FILE * OutFile)
 	int i;
 	u32b *muta_class = 0;
 	if (!OutFile) return;
-	
+
 	for( i = 0 ; i < COUNT_CORRUPTIONS ; i++ )
 	{
 		muta_class = corruption_idx_to_u32b( corruptions[i].idx );
@@ -3701,4 +3695,3 @@ void dump_corruptions(FILE * OutFile)
 		}
 	}
 }
-

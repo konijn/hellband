@@ -11,14 +11,14 @@
  *
  *
  * James E. Wilson and Robert A. Koeneke released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
- */ 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
+ */
 
 #include "angband.h"
 #define MAX_VAMPIRIC_DRAIN 100
@@ -168,9 +168,9 @@ s16b critical_norm(int weight, int plus, int dam)
 	return (dam);
 }
 
-/* My attempt to clean up the mess that is tot_dam_aux, by providing a function of what was repeated all the time 
- * This should prevent copy paste errors, ease the eyes and ease introduction of new damage modifiers 
- * This function checks if a give collection of weapon flags contains a specific flag, 
+/* My attempt to clean up the mess that is tot_dam_aux, by providing a function of what was repeated all the time
+ * This should prevent copy paste errors, ease the eyes and ease introduction of new damage modifiers
+ * This function checks if a give collection of weapon flags contains a specific flag,
  *  check if a given collection of monsters flags contains a specific flag, if so apply new damage
  * and if the monster is in LOS , it will also flag the monster memory properly
 */
@@ -189,9 +189,9 @@ s16b tot_dam_aux_helper(u32b *weaponflags , u32b specific_weaponflag , u32b mons
 	return mult;
 }
 
-/* Of course this means that I was completely screwed for monster that did not have any brand related flags 
+/* Of course this means that I was completely screwed for monster that did not have any brand related flags
  * So I had to add this, and added in the previous function that reallly once a weaponflag was accounted for
- * there was no use in letting it trigger again 
+ * there was no use in letting it trigger again
 */
 
 s16b tot_dam_aux_normal(u32b weaponflags , u32b specific_weaponflag  , int mult , int new_mult )
@@ -221,7 +221,7 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr)
 	monster_race *r_ptr = &r_info[m_ptr->r_idx];
 
 	u32b f1, f2, f3;
-	
+
 	(void)tdam; /*This makes me feel odd in the stomach, what is tdam and why am I not using it ??*/
 
 	/* Extract the flags */
@@ -240,18 +240,18 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr)
 		{
 
 				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_FIRE , r_ptr->flags3 , &r_ptr->r_flags3 , RF3_IM_FIRE		, mult , 10			, m_ptr->ml );
-				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_COLD , r_ptr->flags3 , &r_ptr->r_flags3 , RF3_IM_COLD		, mult , 10			, m_ptr->ml );	
-				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_POIS , r_ptr->flags3 , &r_ptr->r_flags3 , RF3_IM_POIS		, mult , 10			, m_ptr->ml );		
-				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_ELEC , r_ptr->flags3 , &r_ptr->r_flags3 , RF3_IM_ELEC		, mult , 10			, m_ptr->ml );	
-				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_ACID , r_ptr->flags3 , &r_ptr->r_flags3 , RF3_IM_ACID		, mult , 10			, m_ptr->ml );					
-			
-				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_FIRE , r_ptr->flags7 , &r_ptr->r_flags7 , RF7_RES_FIRE	, mult , 50			, m_ptr->ml );		
-				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_COLD , r_ptr->flags7 , &r_ptr->r_flags7 , RF7_RES_COLD	, mult , 50			, m_ptr->ml );						
-				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_POIS , r_ptr->flags7 , &r_ptr->r_flags7 , RF7_RES_POIS	, mult , 50			, m_ptr->ml );										
-				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_ELEC , r_ptr->flags7 , &r_ptr->r_flags7 , RF7_RES_ELEC	, mult , 50			, m_ptr->ml );				
-				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_ACID , r_ptr->flags7 , &r_ptr->r_flags7 , RF7_RES_ACID	, mult , 50			, m_ptr->ml );					
-				
-				mult = tot_dam_aux_helper(&f1 , TR1_SLAY_ANIMAL	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_ANIMAL		, mult , 200		, m_ptr->ml );					
+				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_COLD , r_ptr->flags3 , &r_ptr->r_flags3 , RF3_IM_COLD		, mult , 10			, m_ptr->ml );
+				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_POIS , r_ptr->flags3 , &r_ptr->r_flags3 , RF3_IM_POIS		, mult , 10			, m_ptr->ml );
+				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_ELEC , r_ptr->flags3 , &r_ptr->r_flags3 , RF3_IM_ELEC		, mult , 10			, m_ptr->ml );
+				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_ACID , r_ptr->flags3 , &r_ptr->r_flags3 , RF3_IM_ACID		, mult , 10			, m_ptr->ml );
+
+				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_FIRE , r_ptr->flags7 , &r_ptr->r_flags7 , RF7_RES_FIRE	, mult , 50			, m_ptr->ml );
+				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_COLD , r_ptr->flags7 , &r_ptr->r_flags7 , RF7_RES_COLD	, mult , 50			, m_ptr->ml );
+				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_POIS , r_ptr->flags7 , &r_ptr->r_flags7 , RF7_RES_POIS	, mult , 50			, m_ptr->ml );
+				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_ELEC , r_ptr->flags7 , &r_ptr->r_flags7 , RF7_RES_ELEC	, mult , 50			, m_ptr->ml );
+				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_ACID , r_ptr->flags7 , &r_ptr->r_flags7 , RF7_RES_ACID	, mult , 50			, m_ptr->ml );
+
+				mult = tot_dam_aux_helper(&f1 , TR1_SLAY_ANIMAL	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_ANIMAL		, mult , 200		, m_ptr->ml );
 
 				mult = tot_dam_aux_normal(f1 , TR1_BRAND_FIRE , mult , 300 );
 				mult = tot_dam_aux_normal(f1 , TR1_BRAND_COLD , mult , 300 );
@@ -259,29 +259,29 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr)
 				mult = tot_dam_aux_normal(f1 , TR1_BRAND_ELEC , mult , 300 );
 				mult = tot_dam_aux_normal(f1 , TR1_BRAND_ACID , mult , 300 );
 
-				mult = tot_dam_aux_helper(&f1 , TR1_SLAY_EVIL	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_EVIL		 , mult , 300		, m_ptr->ml );				
+				mult = tot_dam_aux_helper(&f1 , TR1_SLAY_EVIL	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_EVIL		 , mult , 300		, m_ptr->ml );
 				mult = tot_dam_aux_helper(&f1 , TR1_SLAY_UNDEAD	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_UNDEAD		 , mult , 300		, m_ptr->ml );
 				mult = tot_dam_aux_helper(&f1 , TR1_SLAY_DRAGON	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_DRAGON		 , mult , 300		, m_ptr->ml );
-				mult = tot_dam_aux_helper(&f1 , TR1_SLAY_GIANT	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_GIANT		 , mult , 300		, m_ptr->ml );		
-				mult = tot_dam_aux_helper(&f1 , TR1_SLAY_ANGEL	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_FALLEN_ANGEL, mult , 300		, m_ptr->ml );		
-				mult = tot_dam_aux_helper(&f1 , TR1_SLAY_DEMON	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_DEMON		 , mult , 300		, m_ptr->ml );						
+				mult = tot_dam_aux_helper(&f1 , TR1_SLAY_GIANT	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_GIANT		 , mult , 300		, m_ptr->ml );
+				mult = tot_dam_aux_helper(&f1 , TR1_SLAY_ANGEL	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_FALLEN_ANGEL, mult , 300		, m_ptr->ml );
+				mult = tot_dam_aux_helper(&f1 , TR1_SLAY_DEMON	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_DEMON		 , mult , 300		, m_ptr->ml );
 
 				mult = tot_dam_aux_helper(&f1 , TR1_KILL_DRAGON	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_DRAGON		 , mult , 500		, m_ptr->ml );
-				mult = tot_dam_aux_helper(&f1 , TR1_KILL_ANGEL	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_FALLEN_ANGEL, mult , 500		, m_ptr->ml );				
-				
-				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_FIRE	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_HURT_FIRE	, mult , 900		, m_ptr->ml );
-				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_COLD	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_HURT_COLD	, mult , 900		, m_ptr->ml );				
+				mult = tot_dam_aux_helper(&f1 , TR1_KILL_ANGEL	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_FALLEN_ANGEL, mult , 500		, m_ptr->ml );
 
-				
+				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_FIRE	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_HURT_FIRE	, mult , 900		, m_ptr->ml );
+				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_COLD	, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_HURT_COLD	, mult , 900		, m_ptr->ml );
+
+
 				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_FIRE	, r_ptr->flags7 , &r_ptr->r_flags7 , RF7_HEAL_FIRE	, mult , mult-400	, m_ptr->ml );
-				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_COLD	, r_ptr->flags7 , &r_ptr->r_flags7 , RF7_HEAL_COLD	, mult , mult-400	, m_ptr->ml );				
+				mult = tot_dam_aux_helper(&f1 , TR1_BRAND_COLD	, r_ptr->flags7 , &r_ptr->r_flags7 , RF7_HEAL_COLD	, mult , mult-400	, m_ptr->ml );
 
 				/* That Furcifer never did like Dragons ;) */
-				if ( (o_ptr->name1 == ART_SWORD_FURCIFER) && (r_ptr->flags3 & (RF3_DRAGON)) ) 
+				if ( (o_ptr->name1 == ART_SWORD_FURCIFER) && (r_ptr->flags3 & (RF3_DRAGON)) )
 					mult *= 3;
 				/* That Michael guy never did like Fallen Angels ;)*/
-				if ((o_ptr->name1 == ART_MICHAEL) && (r_ptr->flags3 & (RF3_FALLEN_ANGEL)) ) 
-					mult *= 3;						
+				if ((o_ptr->name1 == ART_MICHAEL) && (r_ptr->flags3 & (RF3_FALLEN_ANGEL)) )
+					mult *= 3;
 
 			break;
 		}
@@ -303,9 +303,9 @@ void search(void)
 	s16b this_o_idx, next_o_idx = 0;
 
 	cave_type *c_ptr;
-	
+
 	char o_name[80];
-	
+
 	char out_val[160];
 
 	/* Start with base search ability */
@@ -331,7 +331,7 @@ void search(void)
 				{
 					/* Pick a trap */
 					pick_trap(y, x);
-					
+
 					/* Message */
 					msg_print("You have found a trap.");
 
@@ -373,9 +373,9 @@ void search(void)
 					/* Identify once */
 					if (!object_known_p(o_ptr))
 					{
-						
+
 						object_desc(o_name, o_ptr, TRUE, 3);
-						sprintf(out_val, "You have discovered a trap on %s ", o_name);						
+						sprintf(out_val, "You have discovered a trap on %s ", o_name);
 						/* Message */
 						msg_print(out_val);
 
@@ -406,9 +406,9 @@ void carry(int pickup)
 	s16b this_o_idx, next_o_idx = 0;
 
 	char o_name[80];
-    
+
     cptr feel;
-    
+
 	/* Is there anything on the floor we can pick up and have space for in the inventory ? Assume no */
 	bool can_pick_up;
 
@@ -446,7 +446,7 @@ void carry(int pickup)
 
 			/* Window stuff */
 			p_ptr->window |= (PW_PLAYER);
-			
+
 			/* Delete the gold */
 			delete_object_idx(this_o_idx);
 		}
@@ -494,11 +494,11 @@ void carry(int pickup)
 			/* If the object is worthless then destroy it instead of looking at it up or pick it up */
 			/* Fix konijn, dont go destroying 'worhtless' artefacts... */
 			if ((auto_destroy) && (object_value(o_ptr) <= 0) && !o_ptr->art_name && !artefact_p(o_ptr) && o_ptr->tval!=TV_POTION)
-			{   /* Delete the object */  
+			{   /* Delete the object */
 				delete_object_idx(this_o_idx);
 				msg_format("You stomp on %s.", o_name);
 			}
-			else if (!pickup) 
+			else if (!pickup)
 			{	/* Describe the object otherwise */
 				msg_format("You see %s.", o_name);
 			}
@@ -1054,7 +1054,7 @@ static void natural_attack(s16b m_idx, int attack, bool *fear, bool *mdeath)
 		k = critical_norm(n_weight, p_ptr->to_h, k);
 
 		/* Apply the player damage bonuses */
-		k += p_ptr->to_d;   
+		k += p_ptr->to_d;
 
 		/* No negative damage */
 		if (k < 0) k = 0;
@@ -1423,7 +1423,7 @@ void py_attack(int y, int x)
 		if( mult > 0 )
 		{
 			/* Apply the player damage bonuses */
-			k += p_ptr->to_d;   
+			k += p_ptr->to_d;
 			/* No negative damage */
 			if (k < 0) k = 0;
 		}
@@ -1452,7 +1452,7 @@ void py_attack(int y, int x)
 		}
 		else
 		{
-			msg_format("The %s heals up!", m_name);	
+			msg_format("The %s heals up!", m_name);
 			/* Heal , we substract , because -- == + */
 			m_ptr->hp -= k;
 			/* No overflow */
@@ -1639,123 +1639,6 @@ void py_attack(int y, int x)
 	if (do_quake) earthquake(py, px, 10);
 }
 
-
-
-static bool pattern_tile(byte y, byte x)
-{
-	return
-		((cave[y][x].feat <= FEAT_PATTERN_XTRA2) &&
-		(cave[y][x].feat >= FEAT_PATTERN_START));
-
-}
-
-static bool pattern_seq(byte c_y, byte c_x, byte n_y,byte  n_x)
-{
-	if (!(pattern_tile(c_y, c_x)) && !(pattern_tile(n_y, n_x)))
-		return TRUE;
-
-	if (cave[n_y][n_x].feat == FEAT_PATTERN_START)
-	{
-		if ((!(pattern_tile(c_y, c_x)))
-			&& !(p_ptr->confused || p_ptr->stun || p_ptr->image))
-		{
-			if (get_check("If you start walking the Pattern, you must walk the whole way. Ok? "))
-				return TRUE;
-			else
-				return FALSE;
-		}
-		else
-			return TRUE;
-	}
-	else if ((cave[n_y][n_x].feat == FEAT_PATTERN_OLD) ||
-		(cave[n_y][n_x].feat == FEAT_PATTERN_END) ||
-		(cave[n_y][n_x].feat == FEAT_PATTERN_XTRA2))
-	{
-		if (pattern_tile(c_y, c_x))
-		{
-			return TRUE;
-		}
-		else
-		{
-			msg_print("You must start walking the Pattern from the startpoint.");
-			return FALSE;
-		}
-	}
-	else if ((cave[n_y][n_x].feat == FEAT_PATTERN_XTRA1)||
-		(cave[c_y][c_x].feat == FEAT_PATTERN_XTRA1))
-	{
-		return TRUE;
-	}
-	else if (cave[c_y][c_x].feat == FEAT_PATTERN_START)
-	{
-		if (pattern_tile(n_y, n_x))
-			return TRUE;
-		else
-		{
-			msg_print("You must walk the Pattern in correct order.");
-			return FALSE;
-		}
-	}
-	else if ((cave[c_y][c_x].feat == FEAT_PATTERN_OLD) ||
-		(cave[c_y][c_x].feat == FEAT_PATTERN_END) ||
-		(cave[c_y][c_x].feat == FEAT_PATTERN_XTRA2))
-	{
-		if (!pattern_tile(n_y, n_x))
-		{
-			msg_print("You may not step off from the Pattern.");
-			return FALSE;
-		}
-		else
-		{
-			return TRUE;
-		}
-	}
-	else
-	{
-		if (!pattern_tile(c_y, c_x))
-		{
-			msg_print("You must start walking the Pattern from the startpoint.");
-			return FALSE;
-		}
-		else
-		{
-			byte ok_move = FEAT_PATTERN_START;
-			switch (cave[c_y][c_x].feat)
-			{
-			case FEAT_PATTERN_1:
-				ok_move = FEAT_PATTERN_2;
-				break;
-			case FEAT_PATTERN_2:
-				ok_move = FEAT_PATTERN_3;
-				break;
-			case FEAT_PATTERN_3:
-				ok_move = FEAT_PATTERN_4;
-				break;
-			case FEAT_PATTERN_4:
-				ok_move = FEAT_PATTERN_1;
-				break;
-			default:
-				if (debug_mode)
-					msg_format("Funny Pattern walking, %d.", cave[c_y][c_x]);
-				return TRUE; /* Goof-up */
-			}
-			if ((cave[n_y][n_x].feat == ok_move) ||
-				(cave[n_y][n_x].feat == cave[c_y][c_x].feat))
-				return TRUE;
-			else
-			{
-				if (!pattern_tile(n_y, n_x))
-					msg_print("You may not step off from the Pattern.");
-				else
-					msg_print("You must walk the Pattern in correct order.");
-
-				return FALSE;
-			}
-		}
-	}
-
-}
-
 /*This code is not all over the place ( fortunately )
 however I still feel it deserves its own function for future clarity
 */
@@ -1764,10 +1647,10 @@ int can_move_player( int y , int x )
 	cave_type *c_ptr;
 	bool p_can_pass_walls = FALSE;
 	/*bool wall_is_perma = FALSE; UNUSED */
-	
+
 	/* Examine the destination */
-	c_ptr = &cave[y][x];	
-	
+	c_ptr = &cave[y][x];
+
 	/* Player can not walk through "permanent walls"... */
 	/* unless in Shadow Form */
 	if ((p_ptr->wraith_form) || (p_ptr->prace == SPECTRE))
@@ -1779,10 +1662,10 @@ int can_move_player( int y , int x )
 			p_can_pass_walls = FALSE;
 		}
 	}
-	
+
 	if((!cave_floor_bold(y, x)) && (c_ptr->feat != FEAT_BUSH) && (!p_can_pass_walls))return (FALSE);
 	if( c_ptr->feat == FEAT_WATER && !p_ptr->ffall)return (FALSE);
-	return (TRUE);	
+	return (TRUE);
 }
 
 
@@ -1841,8 +1724,7 @@ void move_player(int dir, int do_pickup)
 		/* Attack -- only if we can see it OR it is not in a wall */
 		if (( is_ally(m_ptr) ) &&
 			!(p_ptr->confused || p_ptr->image || !(m_ptr->ml) || p_ptr->stun
-			|| ((p_ptr->muta2 & COR2_BERS_RAGE) && p_ptr->shero))
-			&& (pattern_seq((byte)py,(byte)px,(byte)y,(byte)x)) &&
+			|| ((p_ptr->muta2 & COR2_BERS_RAGE) && p_ptr->shero)) &&
 			((cave_floor_bold(y, x)) || (p_can_pass_walls)))
 		{
 			m_ptr->csleep = 0;
@@ -1999,16 +1881,7 @@ void move_player(int dir, int do_pickup)
 	}
 
 	/* Normal movement */
-	if (!pattern_seq((byte)py,(byte)px,(byte)y,(byte)x))
-	{
-		if (!(p_ptr->confused || p_ptr->stun || p_ptr->image))
-		{
-			energy_use = 0;
-		}
-		disturb(0,0); /* To avoid a loop with running */
-		return;
-	}
-	/*    else */
+	/* TODO: Konijn: This looks all wrong!! */
 	{
 		int oy, ox;
 
@@ -2057,7 +1930,7 @@ void move_player(int dir, int do_pickup)
 
 		/* Handle "objects" */
 #ifdef ALLOW_EASY_DISARM /* TNB */
-		
+
 		/* For now we we check squelching here Konijn*/
 		if( c_ptr->o_idx )
 		{
@@ -2066,18 +1939,18 @@ void move_player(int dir, int do_pickup)
 			for (this_o_idx = c_ptr->o_idx; this_o_idx; this_o_idx = next_o_idx)
 			{
 				object_type *o_ptr;
-				
+
 				/* Acquire object */
 				o_ptr = &o_list[this_o_idx];
-				
+
 				/* Acquire next object */
 				next_o_idx = o_ptr->next_o_idx;
-					
+
 				/*Consider squelching*/
 				consider_squelch( o_ptr );
 			}
 		}
-		
+
 		carry( 0 /* do_pickup != always_pickup */ );
 
 #else /* ALLOW_EASY_DISARM -- TNB */
@@ -2899,7 +2772,7 @@ void run_step(int dir)
 	if (--running <= 0) return;
 
 	/* Take time */
-	energy_use = extract_energy[p_ptr->pspeed]; 
+	energy_use = extract_energy[p_ptr->pspeed];
 
 	/* Move the player, using the "pickup" flag */
 #ifdef ALLOW_EASY_DISARM /* TNB */
@@ -2912,4 +2785,3 @@ void run_step(int dir)
 
 #endif /* ALLOW_EASY_DISARM -- TNB */
 }
-

@@ -337,10 +337,6 @@ void replace_friend(int m_idx)
 			if (cave[ny][nx].feat == FEAT_GLYPH) continue;
 			if (cave[ny][nx].feat == FEAT_MINOR_GLYPH) continue;
 
-			/* ...nor onto the Pattern */
-			if ((cave[ny][nx].feat >= FEAT_PATTERN_START) &&
-				(cave[ny][nx].feat <= FEAT_PATTERN_XTRA2)) continue;
-
 			/* This grid looks good */
 			look = FALSE;
 
@@ -450,7 +446,7 @@ static bool new_player_spot(void)
 
 		/* Refuse to start on anti-teleport grids */
 		if (cave[y][x].info & (CAVE_ICKY)) continue;
-		
+
 		/*Refuse to place the player in the center of Satan's level*/
 		if( dun_level == DIS_END - 1 )
 		{
@@ -912,7 +908,7 @@ static void destroy_level(void)
 
 	/* Note destroyed levels */
 	if (debug_room) msg_print("Destroyed Level");
-	
+
 	/* Satan's level is extremely destroyed */
 	if( dun_level == DIS_END-1 )
 	{
@@ -1952,17 +1948,17 @@ static void build_type4(int yval, int xval)
 static bool vault_aux_snake(int r_idx)
 {
 	monster_race *r_ptr = &r_info[r_idx];
-	
+
 	/* Decline unique monsters */
 	if (r_ptr->flags1 & (RF1_UNIQUE)) return (FALSE);
-	
+
 	/* Also decline evil jellies (like death molds and shoggoths) */
 	/* Well, evil snakes are more than welcome */
 	/* if (r_ptr->flags3 & (RF3_EVIL)) return (FALSE); */
-	
+
 	/* Require snakes */
 	if (!strchr("J", r_ptr->d_char)) return (FALSE);
-	
+
 	/* Okay */
 	return (TRUE);
 }
@@ -2186,13 +2182,13 @@ static bool vault_aux_demon(int r_idx)
 static bool vault_aux_minordemon(int r_idx)
 {
 	monster_race *r_ptr = &r_info[r_idx];
-	
+
 	/* Decline unique monsters */
 	if (r_ptr->flags1 & (RF1_UNIQUE)) return (FALSE);
-	
+
 	/* Hack -- Require "U" monsters */
 	if (!strchr("u", r_ptr->d_char)) return (FALSE);
-	
+
 	/* Okay */
 	return (TRUE);
 }
@@ -3029,31 +3025,14 @@ static void build_vault(int yval, int xval, int ymax, int xmax, cptr data)
 				}
 
 			case 'p':
-				cave_set_feat(y, x, FEAT_PATTERN_START);
-				break;
-
 			case 'a':
-				cave_set_feat(y, x, FEAT_PATTERN_1);
-				break;
-
 			case 'b':
-				cave_set_feat(y, x, FEAT_PATTERN_2);
-				break;
-
 			case 'c':
-				cave_set_feat(y, x, FEAT_PATTERN_3);
-				break;
-
 			case 'd':
-				cave_set_feat(y, x, FEAT_PATTERN_4);
-				break;
-
 			case 'P':
-				cave_set_feat(y, x, FEAT_PATTERN_END);
-				break;
-
 			case 'B':
-				cave_set_feat(y, x, FEAT_PATTERN_XTRA1);
+				/* Replace the pattern with water */
+				cave_set_feat(y, x, FEAT_WATER);
 				break;
 
 			case 'A':
@@ -3640,14 +3619,14 @@ static bool cave_gen(void)
 
 	if (!(max_panel_rows)) max_vault_ok--;
 	if (!(max_panel_cols)) max_vault_ok--;
-	
+
 	/* These are the rules of Dis :
 	   There shall be no vaults in Dis
 	   There shall be no quests in Dis
 	   There shall be no empty levels in Dis
 	   There shall be no destroyed levels in Dis
 	*/
-	
+
 	if ( dun_level > DIS_START && dun_level < DIS_END )
 	{
 		shielded_level = TRUE;
@@ -3655,14 +3634,14 @@ static bool cave_gen(void)
 	}else{
 		shielded_level = FALSE;
 	}
- 
+
 	if ((randint(EMPTY_LEVEL)==1) && empty_levels && shielded_level == FALSE )
 	{
 		empty_level = TRUE;
 		if (debug_room)
 			msg_print("Arena level.");
 	}
-	
+
 	/* Determine whether to start with granite or with floor */
 	if (empty_level)
 		/* Create granite wall */
@@ -3685,7 +3664,7 @@ static bool cave_gen(void)
 	/* Possible "destroyed" level */
 	if ((dun_level > 10) && (rand_int(DUN_DEST) == 0) && (small_levels) && shielded_level == FALSE)
 		destroyed = TRUE;
-	
+
 	/*The level with Satan is destroyed*/
 	if( dun_level == DIS_END-1 )
 		destroyed = TRUE;
@@ -4545,4 +4524,3 @@ void generate_cave(void)
 	/* Remember when this level was "created" */
 	old_turn = turn;
 }
-

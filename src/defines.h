@@ -841,15 +841,6 @@ and tables.c --TY */
 #define FEAT_PERM_OUTER 0x3E
 #define FEAT_PERM_SOLID 0x3F
 #define FEAT_MINOR_GLYPH 0x40
-#define FEAT_PATTERN_START 0x41
-#define FEAT_PATTERN_1  0x42
-#define FEAT_PATTERN_2  0x43
-#define FEAT_PATTERN_3  0x44
-#define FEAT_PATTERN_4  0x45
-#define FEAT_PATTERN_END 0x46
-#define FEAT_PATTERN_OLD 0x47
-#define FEAT_PATTERN_XTRA1 0x48
-#define FEAT_PATTERN_XTRA2 0x49
 
 /* Beginning of Dis ( Dis contains shielded levels and no vaults ) */
 #define DIS_START 5

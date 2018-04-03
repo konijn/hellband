@@ -656,7 +656,7 @@ static bool do_cmd_open_aux(int y, int x, int dir)
 	cave_type *c_ptr;
 
 	bool more = FALSE;
-	
+
 	(void)dir; /* I prefer to acknowledge oddness than break interfaces */
 
 	/* Take a turn */
@@ -864,7 +864,7 @@ static bool do_cmd_close_aux(int y, int x, int dir)
 	bool		more = FALSE;
 
 	(void)dir; /* I prefer to acknowledge oddness than break interfaces */
-	
+
 	/* Take a turn */
 	energy_use = 100;
 
@@ -1025,7 +1025,7 @@ static bool do_cmd_tunnel_aux(int y, int x, int dir)
 	bool more = FALSE;
 
 	(void)dir; /* I prefer to acknowledge oddness than break interfaces */
-	
+
 	/* Take a turn */
 	energy_use = 100;
 
@@ -1248,8 +1248,7 @@ void do_cmd_tunnel(void)
 		c_ptr = &cave[y][x];
 
 		/* Oops */
-		if (cave_floor_grid(c_ptr) || ((c_ptr->feat >= FEAT_MINOR_GLYPH)
-			&& (c_ptr->feat <= FEAT_PATTERN_XTRA2)))
+		if (cave_floor_grid(c_ptr))
 		{
 			/* Message */
 			msg_print("You cannot tunnel through air.");
@@ -1405,9 +1404,9 @@ static bool do_cmd_disarm_chest(int y, int x, s16b o_idx)
 	bool more = FALSE;
 
 	object_type *o_ptr = &o_list[o_idx];
-	
+
 	char o_name[80];
-	
+
 	char out_val[160];
 
 
@@ -2663,7 +2662,7 @@ void do_cmd_fire(void)
 				{
 						msg_format("You do %d (hp: %d) damage.", tdam, m_ptr->hp);
 				}
-			
+
 
 				/* Hit the monster, check for death */
 				if (mon_take_hit(c_ptr->m_idx, tdam, &fear, note_dies))
@@ -2769,7 +2768,7 @@ void do_cmd_throw(void)
 
 	/* Single object */
 	q_ptr->number = 1;
-	
+
 	/* Modify charges for wands */
 	if(o_ptr->tval==TV_WAND)
 	{
@@ -3047,7 +3046,7 @@ void do_cmd_throw(void)
 	{
 		floor_item_optimize(0 - item);
 	}
-	
+
 	/* Drop (or break) near that location */
 	drop_near(q_ptr, j, y, x);
 }
@@ -3426,13 +3425,13 @@ void do_cmd_racial_power(void)
 
 	/*cptr racial_power = "(none)";*/
 	char       racial_power[80];
-	
-	
+
+
 	/* 3 vars nicked from cmd_racial_power_aux to make the birth ability of the Morui work */
 	s16b plev = p_ptr->lev;
 	int Type = (randint(3)==1?GF_COLD:GF_FIRE);
 	cptr Type_desc = (Type == GF_COLD?"cold":"fire");
-	
+
 
 	for (num = 0; num < 36; num++)
 	{
@@ -3474,7 +3473,7 @@ void do_cmd_racial_power(void)
 			has_racial = TRUE;
 		}
 	}
-	
+
 	if (!(has_racial) && !(p_ptr->muta1) && !(p_ptr->psign))
 	{
 		msg_print("You have no powers to activate.");
@@ -3488,7 +3487,7 @@ void do_cmd_racial_power(void)
 		strcpy(power_desc[0], racial_power);
 		num++;
 	}
-	
+
 	if(p_ptr->psign)
 		/* New and improved sign power descriptions*/
 		for( i = 0 ; sign_powers[i].description != NULL ; i++)
@@ -3515,7 +3514,7 @@ void do_cmd_racial_power(void)
 				powers[num++] = sign_powers[i].power;
 			}
 		}
-			
+
 	if (p_ptr->muta1)
 		/* New and improved sign power descriptions*/
 		for( i = 0 ; freak_powers[i].description != NULL ; i++)
@@ -4342,4 +4341,3 @@ void do_cmd_racial_power(void)
 	/* Success */
 	return;
 }
-

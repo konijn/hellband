@@ -1088,7 +1088,7 @@ void map_info(int y, int x, byte *ap, char *cp)
 				/* color of the baddie w ( white )                               */
 				/* If you want a logical cycling, you need to put the darkest    */
 				/* color in the G line                                           */
-				 
+
 				if ( r_ptr->x_attr == TERM_WHITE )
 				{
 					/* Multi-hued attr */
@@ -1161,7 +1161,7 @@ void map_info(int y, int x, byte *ap, char *cp)
 						}
 					}
 				}
-				
+
 			}
 
 			/* Normal monster (not "clear" in any way) */
@@ -3496,9 +3496,8 @@ bool projectable(int y1, int x1, int y2, int x2)
 		if ((x == x2) && (y == y2)) return (TRUE);
 
 		/* Never pass through walls */
-		if (dist && !cave_floor_bold(y, x) &&
-			!((cave[y][x].feat <= FEAT_PATTERN_XTRA2) &&
-			(cave[y][x].feat >= FEAT_MINOR_GLYPH))) break;
+		if (dist && !cave_floor_bold(y, x))
+		  break;
 
 		/* Calculate the new location */
 		mmove2(&y, &x, y1, x1, y2, x2);
@@ -3685,7 +3684,7 @@ bool is_quest(int level)
 
 	/* Town is never a quest */
 	if (!level) return (FALSE);
-	
+
 	/* No quests in Dis */
 	if ( level > DIS_START && level < DIS_END )
 	{
@@ -3702,6 +3701,3 @@ bool is_quest(int level)
 	/* Nope */
 	return (FALSE);
 }
-
-
-

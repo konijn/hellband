@@ -64,7 +64,7 @@ cptr value_check_aux1(object_type *o_ptr)
 
 	/* Good "weapon" bonus */
 	if (o_ptr->to_h + o_ptr->to_d > 0) return "good";
-	
+
 	/*If the shopkeeper doesnt like it, it's worthless ;)*/
 	if( object_value(o_ptr) <= 0 )
 		return "worthless";
@@ -150,7 +150,7 @@ static void sense_inventory(void)
 
 	/* No sensing when confused */
 	if (p_ptr->confused) return;
-	
+
 	heavy = has_heavy_pseudo_id();
 
 	/* Analyze the class */
@@ -308,7 +308,7 @@ static void sense_inventory(void)
 
 		/* It is fully known, no information needed */
 		if (object_known_p(o_ptr)) continue;
-		
+
 		/* Occasional failure on inventory items */
 		if ((i < INVEN_WIELD) && (0 != rand_int(5))) continue;
 
@@ -320,7 +320,7 @@ static void sense_inventory(void)
 
 		/*Should we be squelchin' ?*/
 		consider_squelch( o_ptr );
-		
+
 		/* Skip non-feelings */
 		if (!feel) continue;
 
@@ -356,174 +356,6 @@ static void sense_inventory(void)
 		p_ptr->window |= (PW_INVEN | PW_EQUIP);
 	}
 }
-
-/*
-* Go to any level (ripped off from wiz_jump)
-*/
-
-static void pattern_teleport(void)
-{
-	int highestquest;
-
-	/* Ask for level */
-	if (get_check("Teleport level? "))
-	{
-		char	ppp[80];
-
-		char	tmp_val[160];
-		int i;
-
-		highestquest=99;
-
-		for (i = 0; i < MAX_Q_IDX; i++)
-		{
-			if ((q_list[i].level || (q_list[i].cur_num != q_list[i].max_num)) && (q_list[i].level < (unsigned int)abs(highestquest)))   highestquest = q_list[i].level;
-		}
-		if(highestquest > p_ptr->max_dun_level) highestquest = p_ptr->max_dun_level;
-		/* Prompt */
-		sprintf(ppp, "Teleport to level (0-%d): ", highestquest);
-
-		/* Default */
-		sprintf(tmp_val, "%d", dun_level);
-
-		/* Ask for a level */
-		if (!get_string(ppp, tmp_val, 10)) return;
-
-		/* Extract request */
-		command_arg = atoi(tmp_val);
-	}
-	else if (get_check("Normal teleport? "))
-	{
-		teleport_player(200);
-		return;
-	}
-	else
-	{
-		return;
-	}
-
-	/* Paranoia */
-	if (command_arg < 1) command_arg = 1;
-
-	/* Paranoia */
-	if (command_arg > highestquest) command_arg = highestquest;
-
-	/* Accept request */
-	msg_format("You teleport to dungeon level %d.", command_arg);
-
-	if (autosave_l)
-	{
-		is_autosave = TRUE;
-		msg_print("Autosaving the game...");
-		do_cmd_save_game();
-		is_autosave = FALSE;
-	}
-
-	/* Change level */
-	dun_level = command_arg;
-	new_level_flag = TRUE;
-}
-
-
-static void wreck_the_pattern(void)
-{
-	int to_ruin = 0, r_y, r_x;
-
-	if (cave[py][px].feat == FEAT_PATTERN_XTRA2)
-	{
-		/* Ruined already */
-		return;
-	}
-
-	msg_print("You bleed on the Pattern!");
-	msg_print("Something terrible happens!");
-
-	if (!(p_ptr->invuln))
-		take_hit(damroll(10,8), "corrupting the Pattern");
-
-	to_ruin = randint(45) + 35;
-	while (to_ruin--)
-	{
-		scatter(&r_y, &r_x, py, px, 4);
-		if ((cave[r_y][r_x].feat >= FEAT_PATTERN_START)
-			&& (cave[r_y][r_x].feat < FEAT_PATTERN_XTRA2))
-		{
-			cave_set_feat(r_y, r_x, FEAT_PATTERN_XTRA2);
-		}
-	}
-	cave_set_feat(py, px, FEAT_PATTERN_XTRA2);
-
-}
-
-
-/* Returns TRUE if we are on the Pattern... */
-static bool pattern_effect(void)
-{
-	if ((cave[py][px].feat < FEAT_PATTERN_START)
-		|| (cave[py][px].feat > FEAT_PATTERN_XTRA2))
-		return FALSE;
-
-
-	if ((p_ptr->prace == NEPHILIM) && (p_ptr->cut>0) &&
-		(randint(10)==1))
-	{
-		wreck_the_pattern();
-	}
-
-	if (cave[py][px].feat == FEAT_PATTERN_END)
-	{
-
-		(void)set_timed_effect( TIMED_POISONED , 0);
-		(void)set_timed_effect( TIMED_IMAGE , 0);
-		(void)set_timed_effect( TIMED_STUN, 0);
-		(void)set_timed_effect( TIMED_CUT, 0);
-		(void)set_timed_effect( TIMED_BLIND , 0);
-		(void)set_timed_effect( TIMED_AFRAID , 0);
-		(void)do_res_stat(A_STR);
-		(void)do_res_stat(A_INT);
-		(void)do_res_stat(A_WIS);
-		(void)do_res_stat(A_DEX);
-		(void)do_res_stat(A_CON);
-		(void)do_res_stat(A_CHA);
-		(void)restore_level();
-		(void)hp_player(1000);
-		cave_set_feat(py, px, FEAT_PATTERN_OLD);
-		msg_print("This section of the Pattern looks less powerful.");
-	}
-
-
-	/* We could make the healing effect of the
-	Pattern center one-time only to avoid various kinds
-	of abuse, like luring the win monster into fighting you
-	in the middle of the pattern... */
-
-	else if (cave[py][px].feat == FEAT_PATTERN_OLD)
-	{
-		/* No effect */
-	}
-	else if (cave[py][px].feat == FEAT_PATTERN_XTRA1)
-	{
-		pattern_teleport();
-	}
-	else if (cave[py][px].feat == FEAT_PATTERN_XTRA2)
-	{
-		if (!(p_ptr->invuln))
-			take_hit(200, "walking the corrupted Pattern");
-	}
-
-	else
-	{
-		if ((p_ptr->prace == NEPHILIM) && (randint(2)!=1))
-			return TRUE;
-		else
-			if (!(p_ptr->invuln))
-				take_hit(damroll(1,3),
-				"walking the Pattern");
-	}
-
-	return TRUE;
-}
-
 
 /*
 * Regenerate hit points				-RAK-
@@ -681,7 +513,7 @@ void do_recall( cptr activation )
 		if (get_check("Reset recall depth? "))
 		p_ptr->max_dun_level = dun_level;
 	}
-	
+
 	if (p_ptr->word_recall == 0)
 	{
 		if( activation != NULL )
@@ -1227,23 +1059,11 @@ static void process_world(void)
 		}
 	}
 
-
-
-	/* Are we walking the pattern? */
-
-	if (pattern_effect())
+	/* Regeneration ability */
+	if (p_ptr->regenerate)
 	{
-		cave_no_regen = TRUE;
+		regen_amount = regen_amount * 2;
 	}
-	else
-	{
-		/* Regeneration ability */
-		if (p_ptr->regenerate)
-		{
-			regen_amount = regen_amount * 2;
-		}
-	}
-
 
 	/* Searching or Resting */
 	if (p_ptr->searching || resting)
@@ -1310,11 +1130,7 @@ static void process_world(void)
 	/* Regenerate Hit Points if needed */
 	if ((p_ptr->chp < p_ptr->mhp) && !(cave_no_regen))
 	{
-		if ((cave[py][px].feat < FEAT_PATTERN_END) &&
-			(cave[py][px].feat >= FEAT_PATTERN_START))
-			regenhp(regen_amount / 5); /* Hmmm. this should never happen? */
-		else
-			regenhp(regen_amount);
+		regenhp(regen_amount);
 	}
 
 	/*** Timeout Various Things ***/
@@ -2413,7 +2229,7 @@ static void process_player(void)
 			/* Redraw stuff (if needed) */
 			if (p_ptr->window) window_stuff();
 		}
-		
+
 		/* Squelch stuff */
 		do_squelch();
 
@@ -2789,7 +2605,7 @@ static void dungeon(void)
 	object_level = dun_level;
 
 	hack_mind = TRUE;
-	
+
 	if(arg_fiddle)msg_note( "About to go into the main loop" );
 
 	/* Main loop */
@@ -3096,7 +2912,7 @@ void play_game(bool new_game)
 		{
 			turn=1;
 		}
-		
+
 		/* You have received a letter */
 		msg_print("You have a received a letter.");
 		msg_print(NULL);
@@ -3121,7 +2937,7 @@ void play_game(bool new_game)
 
 	/* Flavor the objects */
 	flavor_init();
-	
+
 	/* Generate alchemy tables */
 	alchemy_init();
 
@@ -3134,7 +2950,7 @@ void play_game(bool new_game)
 
 	/* Window stuff */
 	p_ptr->window |= (PW_MONSTER | PW_VISIBLE);
-	
+
 	/* Window stuff */
 	if(arg_fiddle)msg_note( "Doing windows stuff" );
 	window_stuff();
@@ -3175,7 +2991,7 @@ void play_game(bool new_game)
 		/* Process the level */
 		if(arg_fiddle)msg_note( "Process the level" );
 		dungeon();
-		
+
 		/* Notice stuff */
 		if(arg_fiddle)msg_note( "Notice stuff" );
 		if (p_ptr->notice) notice_stuff();
@@ -3358,5 +3174,3 @@ void play_game(bool new_game)
 	/* Quit */
 	quit(NULL);
 }
-
-

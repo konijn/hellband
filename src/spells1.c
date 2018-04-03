@@ -136,10 +136,6 @@ void teleport_away(int m_idx, int dis)
 			if (cave[ny][nx].feat == FEAT_GLYPH) continue;
 			if (cave[ny][nx].feat == FEAT_MINOR_GLYPH) continue;
 
-			/* ...nor onto the Pattern */
-			if ((cave[ny][nx].feat >= FEAT_PATTERN_START) &&
-				(cave[ny][nx].feat <= FEAT_PATTERN_XTRA2)) continue;
-
 			/* No teleporting into vaults and such */
 			/* if (cave[ny][nx].info & (CAVE_ICKY)) continue; */
 
@@ -239,10 +235,6 @@ void teleport_to_player(int m_idx)
 			/* Hack -- no teleport onto glyph of warding */
 			if (cave[ny][nx].feat == FEAT_GLYPH) continue;
 			if (cave[ny][nx].feat == FEAT_MINOR_GLYPH) continue;
-
-			/* ...nor onto the Pattern */
-			if ((cave[ny][nx].feat >= FEAT_PATTERN_START) &&
-				(cave[ny][nx].feat <= FEAT_PATTERN_XTRA2)) continue;
 
 			/* No teleporting into vaults and such */
 			/* if (cave[ny][nx].info & (CAVE_ICKY)) continue; */
@@ -2055,10 +2047,10 @@ static bool project_f(int who, int r, int y, int x, int dam, int typ)
 	{
 		/* Non-walls (etc) */
 		if (cave_floor_bold(y, x)) break;
-		
+
 		/* Permanent walls */
 		if (c_ptr->feat >= FEAT_PERM_BUILDING) break;
-		
+
 		/* Only give a message when we see the thing happening*/
 		if (c_ptr->info & (CAVE_MARK))
 		{
@@ -2082,10 +2074,10 @@ static bool project_f(int who, int r, int y, int x, int dam, int typ)
 		cave_set_feat(y, x, FEAT_RUBBLE);
 		/* Update some things */
 		p_ptr->update |= (PU_VIEW | PU_LITE | PU_FLOW | PU_MONSTERS);
-		
+
 		break;
 	}
-		
+
 		/* Make doors */
 	case GF_MAKE_DOOR:
 		{
@@ -2778,7 +2770,7 @@ static bool project_m(int who, int r, int y, int x, int dam, int typ)
 		/* Nuclear waste */
 	case GF_HELLSLIME:
 		{
-			
+
 			if(!project_m_helper( seen, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_IM_POIS   , &dam , dam * 3 / (randint(6)+6) , &note , " resists.") )
 				if (randint(3)==1) do_poly = TRUE;
  			break;
@@ -2968,7 +2960,7 @@ static bool project_m(int who, int r, int y, int x, int dam, int typ)
 
 			if (!resist_tele) do_dist = 10;
 			else do_dist = 0;
-			
+
 			/* If we resisted, dont do this rigamarole */
 			if(	do_dist > 0 && project_m_helper( seen, r_ptr->flags4 , &r_ptr->r_flags4 , RF4_BR_GRAV  , &dam , dam * 3 / (randint(6)+6)  , &note , " resists.") )
 			{
@@ -3611,12 +3603,12 @@ static bool project_m(int who, int r, int y, int x, int dam, int typ)
 			project_m_helper( seen ,  r_ptr->flags4 , &r_ptr->r_flags4  , RF4_BR_DARK	, &dam , dam * 2 / (randint(6)+6) , &note , " resists.");
 			project_m_helper( seen ,  r_ptr->flags3 , &r_ptr->r_flags3  , RF3_HURT_LITE	, &dam , dam * 2 / (randint(6)+6) , &note , " resists.");
 			project_m_helper( seen ,  r_ptr->flags3 , &r_ptr->r_flags3  , RF3_TROLL		, &dam , dam * 2 / (randint(6)+6) , &note , " resists.");
-			
+
 			project_m_helper( seen ,  r_ptr->flags7 , &r_ptr->r_flags7  , RF7_RES_DARK	, &dam , dam / 3 , &note , " resists.");
 			project_m_helper( seen ,  r_ptr->flags7 , &r_ptr->r_flags7  , RF7_IM_DARK	, &dam , dam / 9 , &note , " resists a lot.");
 			project_m_helper( seen ,  r_ptr->flags7 , &r_ptr->r_flags7  , RF7_HURT_DARK	, &dam , dam * 3 , &note , " fades!.");
 			project_m_helper( seen ,  r_ptr->flags7 , &r_ptr->r_flags7  , RF7_HEAL_DARK	, &dam , -dam    , &note , " heals up!.");
-			
+
 			break;
 		}
 		/* Stone to Mud */
@@ -3629,10 +3621,10 @@ static bool project_m(int who, int r, int y, int x, int dam, int typ)
 		project_m_helper( seen, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_IM_FIRE   , &dam , dam /9 , &note , " resists a lot.");
 
 		project_m_helper( seen, r_ptr->flags3 , &r_ptr->r_flags3 , RF3_HURT_FIRE , &dam , dam *3 , &note , " bursts in flames.");
-		
+
 		project_m_helper( seen, r_ptr->flags7 , &r_ptr->r_flags7 , RF7_HEAL_ELEC , &dam , -dam   , &note , " heals up.");
 		project_m_helper( seen, r_ptr->flags7 , &r_ptr->r_flags7 , RF7_HEAL_FIRE , &dam , -dam   , &note , " heals up.");
-		
+
 		break;
 	}
 	case GF_KILL_WALL:
@@ -3649,7 +3641,7 @@ static bool project_m(int who, int r, int y, int x, int dam, int typ)
 		/* Teleport undead (Use "dam" as "power") */
 	case GF_AWAY_UNDEAD:
 		{
-			
+
 			/* Only affect undead */
 			if (r_ptr->flags3 & (RF3_UNDEAD))
 			{
@@ -4037,25 +4029,25 @@ static bool project_m(int who, int r, int y, int x, int dam, int typ)
 		{
 			/* Learn about type */
 			if (seen) r_ptr->r_flags3 |= (RF3_FALLEN_ANGEL);
-			
+
 			/* Obvious */
 			if (seen) obvious = TRUE;
-			
+
 			/* Message */
 			note = " shudders.";
 			note_dies = " dissolves!";
 		}
-		
+
 		/* Others ignore */
 		else
 		{
 			/* Irrelevant */
 			skipped = TRUE;
-			
+
 			/* No damage */
 			dam = 0;
 		}
-		
+
 		break;
 	}
 		/*Dispel devils*/
@@ -4066,25 +4058,25 @@ static bool project_m(int who, int r, int y, int x, int dam, int typ)
 		{
 			/* Learn about type */
 			if (seen) r_ptr->r_flags3 |= (RF3_DEVIL);
-			
+
 			/* Obvious */
 			if (seen) obvious = TRUE;
-			
+
 			/* Message */
 			note = " shudders.";
 			note_dies = " dissolves!";
 		}
-		
+
 		/* Others ignore */
 		else
 		{
 			/* Irrelevant */
 			skipped = TRUE;
-			
+
 			/* No damage */
 			dam = 0;
 		}
-		
+
 		break;
 	}
 		/* Dispel monster */
@@ -4278,7 +4270,7 @@ static bool project_m(int who, int r, int y, int x, int dam, int typ)
 		if (m_ptr->hp > m_ptr->maxhp) m_ptr->hp = m_ptr->maxhp;
 		/* Redraw (later) if needed */
 		if (health_who == c_ptr->m_idx) p_ptr->redraw |= (PR_HEALTH);
-		
+
 		/* Dead monster */
 		if (m_ptr->hp < 0)
 		{
@@ -4333,7 +4325,7 @@ static bool project_m(int who, int r, int y, int x, int dam, int typ)
 			if (health_who == c_ptr->m_idx) p_ptr->redraw |= (PR_HEALTH);
 			dam = 0;
 		}
-		
+
 		/* Hurt the monster, check for fear and death */
 		if (mon_take_hit(c_ptr->m_idx, dam, &fear, note_dies))
 		{
@@ -5623,9 +5615,7 @@ bool project(int who, int rad, int y, int x, int dam, int typ, int flg)
 						/* Ball explosions are stopped by walls */
 						if (typ == GF_DISINTEGRATE)
 						{
-							if (cave_valid_bold(y,x) &&
-								(c_ptr->feat < FEAT_PATTERN_START
-								|| c_ptr->feat > FEAT_PATTERN_XTRA2))
+							if (cave_valid_bold(y,x))
 								cave_set_feat(y, x, FEAT_FLOOR);
 
 							/* Update some things -- similar to GF_KILL_WALL */
@@ -6006,7 +5996,7 @@ bool potion_smash_effect(int who, int y, int x, object_type *o_ptr, monster_type
 		case SV_POTION_DEC_DEX:
 		case SV_POTION_DEC_CON:
 		case SV_POTION_DEC_CHA:
-			return TRUE; 
+			return TRUE;
 		/*I cant help it.. Getting salty, lol!*/
 		case SV_POTION_SALT_WATER:
 			if(m_ptr!=NULL) msg_format("%^s gets salty!", m_name);
@@ -6197,7 +6187,7 @@ void get_spell_info( u16b realm  , int spell , magic_type *s_ptr )
 {
 	int spell_skill;
 	spell_type *spell_info;
-	
+
 	/* How well can the player cast spells from this realm ?*/
 	spell_skill = mp_ptr->skill[realm]-1;
 	/* Browsing realms with skill NO, have now -1 in spell_skill, not good for array access*/
@@ -6672,7 +6662,7 @@ void do_cmd_cast(void)
 	int	plev = p_ptr->lev;
 	int	increment = 0, dummy = 0;
 	int	use_realm, i;
-	
+
 	bool  first_time =  FALSE;
 	int   xp_gain = 0;
 	bool  none_came = FALSE;
@@ -8012,10 +8002,10 @@ void do_cmd_cast(void)
 
 					/* Paranoia */
 					if (dummy > p_ptr->max_dun_level) dummy = p_ptr->max_dun_level;
-					
+
 					/*Actually set the new depth*/
 					p_ptr->max_dun_level= dummy;
-					
+
 					/* Accept request */
 					msg_format("Recall depth set to level %d (%d').", p_ptr->max_dun_level, p_ptr->max_dun_level * 50 );
 				}
@@ -8085,7 +8075,7 @@ void do_cmd_cast(void)
 					case 2: dummy = FILTER_BIZARRE2; break;
 					case 3: dummy = FILTER_BIZARRE4; break;
 					case 4: dummy = FILTER_BIZARRE5; break;
-						
+
 				}
 					if (randint(2)==1)
 					{
@@ -8214,7 +8204,7 @@ void do_cmd_cast(void)
 				break;
 			case 30: /* The Traitor */
 			{
-				
+
 				none_came = !summon_specific_potential_ally( FILTER_FALLEN_ANGELS, 3, 10, "The Fallen Angel gets angry!");
 				break;
 			}
@@ -8754,5 +8744,3 @@ void do_cmd_cast(void)
 	if(first_time)
 		gain_exp(xp_gain);
 }
-
-
