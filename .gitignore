@@ -15,3 +15,6 @@ lib/save/*
 bone.*
 doxy
 Doxyfile
+godb
+src/script/releasenote.txt
+src/script/hb*
