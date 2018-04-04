@@ -1673,11 +1673,9 @@ bool save_player(void)
 */
 bool load_player(void)
 {
-	int             fd = -1;
-
-	errr    err = 0;
-
-	byte    vvv[4];
+	int  fd = -1;
+	errr err = 0;
+	byte vvv[4];
 
 #ifdef VERIFY_TIMESTAMP
 	struct stat     statbuf;
@@ -1685,24 +1683,21 @@ bool load_player(void)
 
 	cptr    what = "generic";
 
-
 	/* Paranoia */
 	turn = 0;
 
 	/* Paranoia */
 	death = FALSE;
 
-
 	/* Allow empty savefile name */
 	if (!savefile[0]) return (TRUE);
 
-
-#if !defined(MACINTOSH) && !defined(WINDOWS) && !defined(USE_CLANG)  && !defined(live)
+#if !defined(MACINTOSH) && !defined(WINDOWS)
 
 	/* XXX XXX XXX Fix this */
 
 	/* Verify the existance of the savefile */
-	int has_access = access(savefile, 0);
+	int has_access = stat(savefile, 0);
 	if ( has_access < 0)
 	{
 		msg_print(strerror(errno));
