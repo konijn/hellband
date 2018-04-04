@@ -103,6 +103,7 @@
   - 0.8.8 Stat potions, experience potions, and invulnerability potions are now considered good
   - 0.8.8 Players are now told that an object has been *identified* when 'I'nspecting it -MITZE-
   - 0.8.8 Potions that decrease stats now damage monsters and get identified on throw
+  - 0.8.8 Potions that increase stats or exp now greatly enhance monsters and get identified on throw
   - 0.8.8 Identified summoning staves and scrolls now have a 1 in 3 chance to summon a unique
   - 0.8.8 Scrolls of *enchantment* are much more useful now..
   - 0.8.8 Staff of detect invisible now also gives temporary detect invisible
@@ -300,7 +301,7 @@
   - 0.8.7 Weapons of KILL_ANGEL now protect the player from Lucifer's curse
 
 *Combat & Magic
-  - 0.8.8 Abaddon's Rage stops time fear now
+  - 0.8.8 Abaddon's Rage stops timed fear now
   - 0.8.8 Call Chaos no longer asks for directions any more, a random direction is chosen for the player.
   - 0.8.6 Spell spoilers are now available inside stores as well, so you can check out what those spells mean
   - 0.8.6 Angelic weapons are blessed now
@@ -525,4 +526,3 @@ the stores array :
 GREAT IDEAS:
 
 Thieves have greed level, once passed they leave the level, gold is gone, otherwise you can get it back.
-Throwing potions should cause the potions effect on the target
