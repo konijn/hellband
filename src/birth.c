@@ -3044,8 +3044,12 @@ static bool player_birth_aux()
 			if( p_ptr->prace < AFFLICTED )
 			{
 				p_ptr->psign = (char)rand_range(0,COUNT_SIGNS-1);
-				bsp_ptr = &sign_info[p_ptr->psign];
 			}
+			else
+			{
+				p_ptr->psign = 0;
+			}
+			bsp_ptr = &sign_info[p_ptr->psign];
 			if( p_ptr->prace != HUMAN && p_ptr->prace != AFFLICTED ) break;
 		}
 
