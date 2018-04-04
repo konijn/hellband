@@ -185,17 +185,17 @@ static char sf_get_char(void)
 {
 	char cc;
 	byte c, v;
-	
+
 	Get a character, decode the value
 	cc = getc(fff);
 	c = cc & 0xFF;
 	v = c ^ xor_byte;
 	xor_byte = c;
-	
+
 	Maintain the checksum info
 	v_check += v;
 	x_check += xor_byte;
-	
+
 	Return the value
 	return (cc);
 }
@@ -579,7 +579,7 @@ static void rd_lore(int r_idx)
 	rd_u32b(&r_ptr->r_flags5);
 	rd_u32b(&r_ptr->r_flags6);
 	rd_u32b(&r_ptr->r_flags7);
-	
+
 
 	/* Read the "Racial" monster limit per level */
 	rd_byte(&r_ptr->max_num);
@@ -643,7 +643,7 @@ static errr rd_store(int n)
 		rd_item(q_ptr);
 
 		/* Acquire valid items */
-		if (st_ptr->stock_num < STORE_INVEN_MAX)
+		if (st_ptr->stock_num < st_ptr->stock_size)
 		{
 			int k = st_ptr->stock_num++;
 
@@ -740,12 +740,12 @@ static void rd_options(void)
 	debug_live = (c & 0x2000) ? TRUE : FALSE;
 	debug_wild = (c & 0x4000) ? TRUE : FALSE;
 
-	
+
 	rd_byte(&b);
 	autosave_l = b;   /*Grrr, byte is not boolean is not byte is not boolean*/
 	rd_byte(&b);
 	autosave_t = b;   /*Grrr, byte is not boolean is not byte is not boolean*/
-	
+
 	rd_s16b(&autosave_freq);
 
 	/*** Normal Options ***/
@@ -785,10 +785,10 @@ static void rd_options(void)
 			}
 		}
 	}
-	
+
 	/*Sane price*/
 	rd_u32b(&sane_price);
-	
+
 	/* Read the squelching rules */
 	for( i=0; i < SQ_HL_COUNT ; i++ )
 	{
@@ -1615,7 +1615,7 @@ static errr rd_savefile_new_aux(void)
 
 		k_ptr->aware = (tmp8u & 0x01) ? TRUE: FALSE;
 		k_ptr->tried = (tmp8u & 0x02) ? TRUE: FALSE;
-		
+
 		/*Paranoid, first move into byte*/
 		rd_byte(&tmp8u);
 		k_ptr->squelch = tmp8u;
@@ -1624,7 +1624,7 @@ static errr rd_savefile_new_aux(void)
 
 	/*Load the alchemy seed for consistent formulas*/
 	rd_u32b(&seed_alchemy);
-	
+
 	/* Load the alchemy meta data */
 	rd_u16b(&tmp16u);
 	if (tmp16u != SV_POTION_MAX)
@@ -1639,7 +1639,7 @@ static errr rd_savefile_new_aux(void)
 		potion_alch[i].known1 = (tmp8u & 0x01) ? TRUE: FALSE;
 		potion_alch[i].known2 = (tmp8u & 0x02) ? TRUE: FALSE;
 	}
-		
+
 	/* Load the Quests */
 	rd_u16b(&tmp16u);
 
@@ -1832,4 +1832,3 @@ errr rd_savefile_new(void)
 	/* Result */
 	return (err);
 }
-

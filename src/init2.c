@@ -121,12 +121,12 @@ void init_file_paths(char *path , int attempt)
 	char buf[1024];
 	char why[1024];
 	char *path_separator;
-	
+
 	/*** Free everything ***/
-	
+
 	/* Free the main path */
 	string_free(ANGBAND_DIR);
-	
+
 	/* Free the sub-paths */
 	string_free(ANGBAND_DIR_APEX);
 	string_free(ANGBAND_DIR_BONE);
@@ -140,21 +140,21 @@ void init_file_paths(char *path , int attempt)
 	string_free(ANGBAND_DIR_USER);
 	string_free(ANGBAND_DIR_XTRA);
 	string_free(ANGBAND_DIR_DUMP);
-	
+
 	/*** Prepare the "path" ***/
-	
+
 	/* Hack -- save the main directory */
 	ANGBAND_DIR = string_make(path);
-	
+
 	/* Prepare to append to the Base Path */
 	tail = path + strlen(path);
-	
+
 	/*** Build the sub-directory names ***/
-	
+
 	/* Build a path name */
 	strcpy(tail, "edit");
 	ANGBAND_DIR_EDIT = string_make(path);
-	
+
 	/* Build a path name */
 	strcpy(tail, "file");
 	ANGBAND_DIR_FILE = string_make(path);
@@ -162,61 +162,61 @@ void init_file_paths(char *path , int attempt)
 	/* Build a path name */
 	strcpy(tail, "pref");
 	ANGBAND_DIR_LIB_PREF = string_make(path);
-	
+
 	/* Build a path name */
 	strcpy(tail, "help");
 	ANGBAND_DIR_HELP = string_make(path);
-	
+
 	/* Build a path name */
 	strcpy(tail, "info");
 	ANGBAND_DIR_INFO = string_make(path);
-	
-	
+
+
 #ifdef PRIVATE_USER_PATH
-	
+
 	/* Build the path to the user specific directory */
 	path_build(buf, sizeof(buf), PRIVATE_USER_PATH, VERSION_NAME);
-	
+
 	/* Build a relative path name */
 	ANGBAND_DIR_USER = string_make(buf);
-	
+
 #else /* PRIVATE_USER_PATH */
-	
+
 	/* Build a path name */
 	strcpy(tail, "user");
 	ANGBAND_DIR_USER = string_make(path);
-	
+
 #endif /* PRIVATE_USER_PATH */
-	
+
 #ifdef USE_PRIVATE_PATHS
-	
+
 	/* Build the path to the user specific sub-directory */
 	path_build(buf, sizeof(buf), ANGBAND_DIR_USER, "scores");
-	
+
 	/* Build a relative path name */
 	ANGBAND_DIR_APEX = string_make(buf);
-	
+
 	/* Build the path to the user specific sub-directory */
 	path_build(buf, sizeof(buf), ANGBAND_DIR_USER, "bone");
-	
+
 	/* Build a relative path name */
 	ANGBAND_DIR_BONE = string_make(buf);
-	
+
 	/* Build the path to the user specific sub-directory */
 	path_build(buf, sizeof(buf), ANGBAND_DIR_USER, "data");
-	
+
 	/* Build a relative path name */
 	ANGBAND_DIR_DATA = string_make(buf);
-	
+
 	/* Build the path to the user specific sub-directory */
 	path_build(buf, sizeof(buf), ANGBAND_DIR_USER, "save");
-	
+
 	/* Build a relative path name */
 	ANGBAND_DIR_SAVE = string_make(buf);
-	
+
 	/* Build the path to the user specific sub-directory */
 	path_build(buf, sizeof(buf), ANGBAND_DIR_USER, "dump");
-	
+
 	/* Build a relative path name */
 	ANGBAND_DIR_DUMP = string_make(buf);
 
@@ -235,69 +235,69 @@ void init_file_paths(char *path , int attempt)
 	/* Build a path name */
 	strcpy(tail, "apex");
 	ANGBAND_DIR_APEX = string_make(path);
-	
+
 	/* Build a path name */
 	strcpy(tail, "bone");
 	ANGBAND_DIR_BONE = string_make(path);
-	
+
 	/* Build a path name */
 	strcpy(tail, "data");
 	ANGBAND_DIR_DATA = string_make(path);
-	
+
 	/* Build a path name */
 	strcpy(tail, "save");
 	ANGBAND_DIR_SAVE = string_make(path);
-	
+
 	/* Build a path name */
 	strcpy(tail, "dump");
 	ANGBAND_DIR_DUMP = string_make(path);
-	
+
 #endif /* USE_PRIVATE_PATHS */
-	
+
 	/* Build a path name */
 	strcpy(tail, "xtra");
 	ANGBAND_DIR_XTRA = string_make(path);
-	
-	
+
+
 #ifdef NeXT
-	
+
 	/* Allow "fat binary" usage with NeXT */
 	if (TRUE)
 	{
 		cptr next = NULL;
-		
+
 # if defined(m68k)
 		next = "m68k";
 # endif
-		
+
 # if defined(i386)
 		next = "i386";
 # endif
-		
+
 # if defined(sparc)
 		next = "sparc";
 # endif
-		
+
 # if defined(hppa)
 		next = "hppa";
 # endif
-		
+
 		/* Use special directory */
 		if (next)
 		{
 			/* Forget the old path name */
 			string_free(ANGBAND_DIR_DATA);
-			
+
 			/* Build a new path name */
 			sprintf(tail, "data-%s", next);
 			ANGBAND_DIR_DATA = string_make(path);
 		}
 	}
-	
+
 #endif /* NeXT */
 	puts( "User dir:" );
 	puts( ANGBAND_DIR_USER );
-	
+
 	/*** Verify the "news" file ***/
 
 	/* Build the filename */
@@ -309,7 +309,7 @@ void init_file_paths(char *path , int attempt)
 	/* Failure */
 	if (fd < 0)
 	{
-	
+
 		/* We do a last minute attempt to fix the mess */
 		if( attempt == 1 )
 		{
@@ -327,7 +327,7 @@ void init_file_paths(char *path , int attempt)
 				path_separator++;
 				strcpy( path_separator , "lib/" );
 			}
-			
+
 			puts( "Trying this alternative path : " );
 			puts( path );
 			/* By numbering this attempt '2', we will avoid infinite loops and
@@ -345,7 +345,7 @@ void init_file_paths(char *path , int attempt)
 
 	/* Close it */
 	(void)fd_close(fd);
-	
+
 }
 
 
@@ -362,44 +362,44 @@ void create_user_dirs(void)
 	char dirpath[1024];
 	char subdirpath[1024];
 	int status;
-	
+
 	/* Get an absolute path from the filename */
 	path_parse(dirpath, sizeof(dirpath), PRIVATE_USER_PATH);
-	
+
 	/* Create the ~/.angband/ directory */
 	status = mkdir(dirpath, 0700);
 
 	/* Build the path to the variant-specific sub-directory */
 	path_build(subdirpath, sizeof(subdirpath), dirpath, VERSION_NAME);
-	
+
 	/* Create the directory */
 	mkdir(subdirpath, 0700);
-	
+
 #ifdef USE_PRIVATE_PATHS
 	/* Build the path to the scores sub-directory */
 	path_build(dirpath, sizeof(dirpath), subdirpath, "scores");
-	
+
 	/* Create the directory */
 	mkdir(dirpath, 0700);
-	
+
 	/* Build the path to the savefile sub-directory */
 	path_build(dirpath, sizeof(dirpath), subdirpath, "bone");
-	
+
 	/* Create the directory */
 	mkdir(dirpath, 0700);
-	
+
 	/* Build the path to the savefile sub-directory */
 	path_build(dirpath, sizeof(dirpath), subdirpath, "data");
-	
+
 	/* Create the directory */
 	mkdir(dirpath, 0700);
-	
+
 	/* Build the path to the savefile sub-directory */
 	path_build(dirpath, sizeof(dirpath), subdirpath, "save");
-	
+
 	/* Create the directory */
 	mkdir(dirpath, 0700);
-	
+
 	/* Build the path to the savefile sub-directory */
 	path_build(dirpath, sizeof(dirpath), subdirpath, "dump");
 
@@ -912,7 +912,7 @@ static errr init_k_info(void)
 	/* Hack -- make "fake" arrays */
 	C_MAKE(k_name, fake_name_size, char);
 	C_MAKE(k_text, fake_text_size, char);
-	
+
 	/*** Load the ascii template file ***/
 
 	/* Build the filename */
@@ -2797,7 +2797,10 @@ static errr init_other(void)
 		store_type *st_ptr = &store[j];
 
 		/* Assume full stock */
-		st_ptr->stock_size = STORE_INVEN_MAX;
+		if(j == STORE_ALCHEMIST_BASEMENT)
+			st_ptr->stock_size = SV_POTION_MAX;
+		else
+			st_ptr->stock_size = STORE_INVEN_MAX;
 
 		/* Allocate the stock */
 		C_MAKE(st_ptr->stock, st_ptr->stock_size, object_type);
@@ -2888,10 +2891,10 @@ static errr init_other(void)
 			}
 		}
 	}
-	
+
 	/*Set the sane price to the initial value*/
 	sane_price = SQUELCH_PRICE_START;
-	
+
 	/* Set the squelching rules to 0 */
 	for( i=0; i < SQ_HL_COUNT ; i++ )
 	{
@@ -3272,8 +3275,8 @@ void init_angband()
 
 	/* build a name for the basic 'help' index */
 	sprintf(syshelpfile_birth,"chargen.txt");
-	
-	
+
+
 	/* Access the "basic" pref file */
 	strcpy(buf, "pref.prf");
 
@@ -3375,5 +3378,3 @@ void cleanup_angband(void)
 	string_free(ANGBAND_DIR_USER);
 	string_free(ANGBAND_DIR_XTRA);
 }
-
-

@@ -89,7 +89,6 @@ static cptr comment_3a[MAX_COMMENT_3A] =
 		"My patience grows thin.  %s is final."
 };
 
-
 #define MAX_COMMENT_3B	12
 
 static cptr comment_3b[MAX_COMMENT_3B] =
@@ -788,7 +787,7 @@ static bool is_blessed(object_type *o_ptr)
 */
 static bool store_will_buy(object_type *o_ptr)
 {
-	/* Hack -- The Home is simple */
+	/* Hack -- The Home and the basement are simple */
 	if (cur_store_num == STORE_HOME) return (TRUE);
 	if (cur_store_num == 99) return (FALSE);
 
@@ -796,7 +795,7 @@ static bool store_will_buy(object_type *o_ptr)
 	switch (cur_store_num)
 	{
 		/* General Store */
-	case 0:
+	case STORE_GENERAL:
 		{
 			/* Analyze the type */
 			switch (o_ptr->tval)
@@ -819,7 +818,7 @@ static bool store_will_buy(object_type *o_ptr)
 		}
 
 		/* Armoury */
-	case 1:
+	case STORE_ARMOURY:
 		{
 			/* Analyze the type */
 			switch (o_ptr->tval)
@@ -841,7 +840,7 @@ static bool store_will_buy(object_type *o_ptr)
 		}
 
 		/* Weapon Shop */
-	case 2:
+	case STORE_WEAPON:
 		{
 			/* Analyze the type */
 			switch (o_ptr->tval)
@@ -862,7 +861,7 @@ static bool store_will_buy(object_type *o_ptr)
 		}
 
 		/* Temple */
-	case 3:
+	case STORE_TEMPLE:
 		{
 			/* Analyze the type */
 			switch (o_ptr->tval)
@@ -885,7 +884,7 @@ static bool store_will_buy(object_type *o_ptr)
 		}
 
 		/* Alchemist */
-	case 4:
+	case STORE_ALCHEMIST:
 		{
 			/* Analyze the type */
 			switch (o_ptr->tval)
@@ -900,17 +899,17 @@ static bool store_will_buy(object_type *o_ptr)
 		}
 
 		/* Magic Shop */
-	case 5:
+	case STORE_MAGIC:
 		{
 			/* Analyze the type */
 			switch (o_ptr->tval)
 			{
-            case TV_LITE:
-            {
-                if(o_ptr->sval!=SV_LITE_ORB)
-                    return (FALSE);
-                 break;
-            }
+				case TV_LITE:
+				{
+					if(o_ptr->sval!=SV_LITE_ORB)
+						return (FALSE);
+					break;
+				}
 			case TV_SORCERY_BOOK:
 			case TV_NATURE_BOOK:
 			case TV_CHAOS_BOOK:
@@ -918,7 +917,7 @@ static bool store_will_buy(object_type *o_ptr)
 			case TV_TAROT_BOOK:
 			case TV_CHARMS_BOOK:
 			case TV_SOMATIC_BOOK:
-            case TV_DEMONIC_BOOK:
+			case TV_DEMONIC_BOOK:
 			case TV_AMULET:
 			case TV_RING:
 			case TV_STAFF:
@@ -933,8 +932,8 @@ static bool store_will_buy(object_type *o_ptr)
 			break;
 		}
 		/* Bookstore */
-	case 8:
-	case 12:
+	case STORE_LIBRARY:
+	case STORE_BOOK_SWAP:
 		{
 			/* Analyze the type */
 			switch (o_ptr->tval)
@@ -947,7 +946,7 @@ static bool store_will_buy(object_type *o_ptr)
 			case TV_TAROT_BOOK:
 			case TV_CHARMS_BOOK:
 			case TV_SOMATIC_BOOK:
-            case TV_DEMONIC_BOOK:
+			case TV_DEMONIC_BOOK:
 				/* Player needs to start donating a really rare book */
 				if( cur_store_num == STORE_BOOK_SWAP && !store[cur_store_num].bought && o_ptr->sval != 3 )
 					return (FALSE);
@@ -958,7 +957,7 @@ static bool store_will_buy(object_type *o_ptr)
 			break;
 		}
 		/* Inn */
-	case 9:
+	case STORE_INN:
 		/* The Inn will not buy anything */
 		{
 			if(o_ptr->tval != TV_FOOD && o_ptr->tval != TV_BOTTLE )
@@ -966,16 +965,23 @@ static bool store_will_buy(object_type *o_ptr)
 			break;
 		}
 		/* Hall of Records */
-	case 10:
+	case STORE_HALL:
 		{
 			/* Hall does not buy */
 			return (FALSE);
 		}
 		/* Pawnbrokers */
-	case 11:
+	case STORE_PAWN:
 		{
 			/* Will buy anything */
 			return (TRUE);
+		}
+	/*The basement only uses potions*/
+	case STORE_ALCHEMIST_BASEMENT:
+		{
+			if(o_ptr->tval != TV_POTION)
+				return FALSE;
+			break;
 		}
 	}
 
@@ -999,11 +1005,10 @@ static bool store_will_buy(object_type *o_ptr)
 */
 static int home_carry(object_type *o_ptr)
 {
-	int                 slot;
-	s32b               value, j_value;
 	int		i;
+	int  slot;
+	s32b value, j_value;
 	object_type *j_ptr;
-
 
 	/* Check each existing item (try to combine) */
 	for (slot = 0; slot < st_ptr->stock_num; slot++)
@@ -1024,7 +1029,6 @@ static int home_carry(object_type *o_ptr)
 
 	/* No space? */
 	if (st_ptr->stock_num >= st_ptr->stock_size) return (-1);
-
 
 	/* Determine the "value" of the item */
 	value = object_value(o_ptr);
@@ -1328,6 +1332,10 @@ static void store_create(void)
 	/* Paranoia -- no room left */
 	if (st_ptr->stock_num >= st_ptr->stock_size) return;
 
+	/*Dont stock the basement*/
+	if ( cur_store_num == STORE_ALCHEMIST_BASEMENT )
+		return;
+
 	tries_count = 4;
 	/* Some, well ok, one store, for now, gets more items */
 	if ( cur_store_num == STORE_BOOK_SWAP )
@@ -1426,7 +1434,7 @@ static void store_create(void)
 /*
 * Eliminate need to bargain if player has haggled well in the past
 */
-static bool noneedtobargain(s32b minprice)
+static bool no_need_to_bargain(s32b minprice)
 {
 	s32b good = st_ptr->good_buy;
 	s32b bad = st_ptr->bad_buy;
@@ -1448,7 +1456,7 @@ static bool noneedtobargain(s32b minprice)
 /*
 * Update the bargain info
 */
-static void updatebargain(s32b price, s32b minprice)
+static void update_bargain(s32b price, s32b minprice)
 {
 	/* Hack -- auto-haggle */
 	if (auto_haggle) return;
@@ -1516,7 +1524,7 @@ static void display_entry(int pos)
 	}
 
 	/* Describe an item in the home */
-	if (cur_store_num == STORE_HOME)
+	if (cur_store_num == STORE_HOME || cur_store_num == STORE_ALCHEMIST_BASEMENT)
 	{
 		maxwid = 75;
 
@@ -1589,7 +1597,7 @@ static void display_entry(int pos)
 			x = price_item(o_ptr, ot_ptr->min_inflate, FALSE);
 
 			/* Hack -- Apply Sales Tax if needed */
-			if (!noneedtobargain(x)) x += x / 10;
+			if (!no_need_to_bargain(x)) x += x / 10;
 
 			/* Actually draw the price (with tax) */
 			(void)sprintf(out_val, "%9ld  ", (long)x);
@@ -1697,27 +1705,44 @@ static void display_store(void)
 			put_str("Weight", 5, 70);
 		}
 	}
-
 	/* So is the Hall */
-	if (cur_store_num == STORE_HALL)
+	else if (cur_store_num == STORE_ALCHEMIST_BASEMENT)
+	{
+		/* Put the owner name */
+		put_str("The alchemy shop basement", 3, 30);
+
+		/* Label the item descriptions */
+		put_str("Item Description", 5, 3);
+
+		/* If showing weights, show label */
+		if (show_weights)
+		{
+			put_str("Weight", 5, 70);
+		}
+	}
+	else if (cur_store_num == STORE_HALL)
 	{
 		put_str("Hall Of Records",3,30);
 	}
-
 	/* Normal stores */
-	if ((cur_store_num != STORE_HOME) && (cur_store_num != STORE_HALL))
+	else
 	{
 		cptr store_name;
 		cptr owner_name = (ot_ptr->owner_name);
 		cptr race_name = race_info[ot_ptr->owner_race].title;
-		if(cur_store_num != STORE_BOOK_SWAP)
+		if(cur_store_num == STORE_BOOK_SWAP)
 		{
-			store_name = (f_name + f_info[FEAT_SHOP_HEAD + cur_store_num].name);
+			/*Hack, this one is the second floor of the feature ;\ */
+			store_name = "Mage Guild";
+		}
+		else if(cur_store_num == STORE_ALCHEMIST_BASEMENT)
+		{
+			/*Hack, this one is the basement of the feature ;\ */
+			store_name = "Alchemy store basement";
 		}
 		else
 		{
-			/*Hack, this is one the second floor of the feature ;\ */
-			store_name = "Mage Guild";
+			store_name = (f_name + f_info[FEAT_SHOP_HEAD + cur_store_num].name);
 		}
 
 		/* Put the owner name and race for all except Inn, where only owner_name is shown*/
@@ -1749,13 +1774,9 @@ static void display_store(void)
 	/* Display the current gold */
 	store_prt_gold();
 
-
-
 	/* Draw in the inventory */
 	display_inventory();
 }
-
-
 
 /*
 * Get the ID of a store item and return its value	-RAK-
@@ -2075,7 +2096,7 @@ static bool purchase_haggle(object_type *o_ptr, s32b *price)
 	final_ask = price_item(o_ptr, ot_ptr->min_inflate, FALSE);
 
 	/* Determine if haggling is necessary */
-	noneed = noneedtobargain(final_ask);
+	noneed = no_need_to_bargain(final_ask);
 
 	/* No need to haggle */
 	if (noneed || auto_haggle)
@@ -2215,7 +2236,7 @@ static bool purchase_haggle(object_type *o_ptr, s32b *price)
 	if (cancel) return (TRUE);
 
 	/* Update bargaining info */
-	updatebargain(*price, final_ask);
+	update_bargain(*price, final_ask);
 
 	/* Those born under plutus can only part with a quarter of their treasure at a time */
 	if( p_ptr->psign==SIGN_PLUTUS && *price > p_ptr->au/4)
@@ -2254,7 +2275,7 @@ static bool service_haggle(s32b service_cost, s32b *price)
 	final_ask = service_cost;
 
 	/* Determine if haggling is necessary */
-	noneed = noneedtobargain(final_ask);
+	noneed = no_need_to_bargain(final_ask);
 
 	/* No need to haggle */
 	if (noneed || auto_haggle)
@@ -2389,7 +2410,7 @@ static bool service_haggle(s32b service_cost, s32b *price)
 	if (cancel) return (TRUE);
 
 	/* Update bargaining info */
-	updatebargain(*price, final_ask);
+	update_bargain(*price, final_ask);
 
 	/* Those born under plutus can only part with a quarter of their treasure at a time */
 	if( p_ptr->psign==SIGN_PLUTUS && *price > p_ptr->au/4)
@@ -2433,7 +2454,7 @@ static bool sell_haggle(object_type *o_ptr, s32b *price)
 	final_ask = price_item(o_ptr, ot_ptr->min_inflate, TRUE);
 
 	/* Determine if haggling is necessary */
-	noneed = noneedtobargain(final_ask);
+	noneed = no_need_to_bargain(final_ask);
 
 	/* Get the owner's payout limit */
 	purse = (s32b)(ot_ptr->max_cost);
@@ -2593,7 +2614,7 @@ static bool sell_haggle(object_type *o_ptr, s32b *price)
 	if (cancel) return (TRUE);
 
 	/* Update bargaining info */
-	updatebargain(*price, final_ask);
+	update_bargain(*price, final_ask);
 
 	/* Do not cancel */
 	return (FALSE);
@@ -2604,13 +2625,12 @@ static bool sell_haggle(object_type *o_ptr, s32b *price)
 */
 void store_maint(int which)
 {
-	int         j;
-
-	int		old_rating = rating;
+	int j;
+	int tries = 0;
+	int old_rating = rating;
 
 	/* Ignore home */
-	if ((which == STORE_HOME) || (which == STORE_HALL) || (which == STORE_PAWN) )return;
-
+	if ((which == STORE_HOME) || (which == STORE_HALL) || (which == STORE_PAWN) || (which == STORE_ALCHEMIST_BASEMENT))return;
 
 	/* Save the store indices */
 	cur_store_num = which;
@@ -2642,7 +2662,6 @@ void store_maint(int which)
 			}
 		}
 	}
-
 
 	/* Choose the number of slots to keep */
 	j = st_ptr->stock_num;
@@ -2684,14 +2703,15 @@ void store_maint(int which)
 	while (st_ptr->stock_num < j)
 	{
 		store_create();
+		tries++;
+		/* This will prevent future gdb debugging ;) */
+		if(tries>10000)
+			quit_fmt("Could not stock shop %d", which);
 	}
 
 	/* Hack -- Restore the rating */
 	rating = old_rating;
 }
-
-
-
 
 /*
 * Buy an item from a store				-RAK-
@@ -2732,7 +2752,7 @@ static void store_purchase(void)
 	if (i > 12) i = 12;
 
 	/* Prompt */
-	if (cur_store_num == STORE_HOME)
+	if (cur_store_num == STORE_HOME || cur_store_num == STORE_ALCHEMIST_BASEMENT)
 	{
 		sprintf(out_val, "Which item do you want to take? ");
 	}
@@ -3055,6 +3075,7 @@ static void store_sell(void)
 	object_type *o_ptr;
 
 	cptr pmt = "Sell which item? ";
+	cptr not_interested = "You have nothing that I want.";
 
 	char o_name[80];
 
@@ -3063,13 +3084,17 @@ static void store_sell(void)
 		pmt = "Donate which item? ";
 
 	/* Prepare a prompt */
-	if (cur_store_num == STORE_HOME) pmt = "Drop which item? ";
+	if (cur_store_num == STORE_HOME || cur_store_num == STORE_ALCHEMIST_BASEMENT)
+	{
+		pmt = "Drop which item? ";
+		not_interested = "You come up empty handed.";
+	}
 
 	/* Only allow items the store will buy */
 	item_tester_hook = store_will_buy;
 
 	/* Get an item (from equip or inven) */
-	if (!get_item(&item, pmt,"You have nothing that I want.", USE_EQUIP | USE_INVEN))
+	if (!get_item(&item, pmt, not_interested, USE_EQUIP | USE_INVEN))
 	{
 		return;
 	}
@@ -3139,7 +3164,7 @@ static void store_sell(void)
 	}
 
 	/* Real store */
-	if (cur_store_num != STORE_HOME)
+	if (cur_store_num != STORE_HOME && cur_store_num != STORE_ALCHEMIST_BASEMENT)
 	{
 		if( cur_store_num == STORE_BOOK_SWAP && !store[cur_store_num].bought )
 		{
@@ -3319,7 +3344,7 @@ static void store_sell(void)
 		}
 	}
 
-	/* Player is at home */
+	/* Player is at home or in the basement */
 	else
 	{
 		/* Describe */
@@ -3592,8 +3617,19 @@ static void store_process_command(void)
 				store_top = 0;
 				/* Display the store */
 				display_store();
+			}
+			else if( cur_store_num == STORE_ALCHEMIST_BASEMENT )
+			{
+				/* Go upstairs to get to the geek basement` */
+				cur_store_num = STORE_ALCHEMIST;
+				/* Set pointer to correct store */
+				st_ptr = &store[cur_store_num];
+				/* Start at the beginning */
+				store_top = 0;
+							/* Display the store */
+				display_store();
 			}else{
-				msg_print("Only the library has a second floor.");
+				msg_print("There are no stairs that way.");
 			}
 			break;
 		}
@@ -3601,7 +3637,7 @@ static void store_process_command(void)
 		{
 			if( cur_store_num == STORE_BOOK_SWAP )
 			{
-				/* Go upstairs to get to the geek club */
+				/* Go back downstairs to get to the ordinary book club` */
 				cur_store_num = STORE_LIBRARY;
 				/* Set pointer to correct store */
 				st_ptr = &store[cur_store_num];
@@ -3609,8 +3645,50 @@ static void store_process_command(void)
 				store_top = 0;
 				/* Display the store */
 				display_store();
-			}else{
-				msg_print("Only the mage guild is on the second floor.");
+			}
+			else if( cur_store_num == STORE_ALCHEMIST )
+			{
+				if (store[STORE_ALCHEMIST_BASEMENT].bought == 1)
+				{
+					/* Go upstairs to get to the geek club */
+					cur_store_num = STORE_ALCHEMIST_BASEMENT;
+					/* Set pointer to correct store */
+					st_ptr = &store[cur_store_num];
+					/* Start at the beginning */
+					store_top = 0;
+					/* Display the store */
+					display_store();
+				}
+				else
+				{
+					msg_format("You need to pay for using my basement.");
+					if (!service_haggle(30000,&price))
+					{
+						if (price >= p_ptr->au)
+						{
+							msg_format("You do not have the gold!");
+						}
+						else
+						{
+							p_ptr->au -= price;
+							/* Say "okay" */
+							say_comment_1();
+							/* Make a sound */
+							sound(SOUND_BUY);
+							/* Be happy */
+							decrease_insults();
+							store_prt_gold();
+							store[STORE_ALCHEMIST_BASEMENT].bought=1;
+							msg_format("You may move in at once.");
+						}
+						p_ptr->window |= (PW_INVEN | PW_EQUIP | PW_PLAYER);
+						handle_stuff();
+					}
+				}
+			}
+			else
+			{
+				msg_print("There are no stairs that way.");
 			}
 			break;
 		}
@@ -4152,25 +4230,28 @@ void put_store_commands()
 		prt(" escape) Exit", 22, 0);
 
 		/* Unbought Mage Guild does not follow any rule*/
-		if( cur_store_num == STORE_BOOK_SWAP && !store[cur_store_num].bought )
+		if( cur_store_num == STORE_BOOK_SWAP )
 		{
-			prt("d) Donate" , 22 , 17 );
+			/*Show the stairs either way*/
 			prt(">) Go downstairs" , 22 , 30 );
-			return;
+			if(!store[cur_store_num].bought){
+		  	prt("d) Donate" , 22 , 17 );
+				return;
+			}
 		}
 
 		/* Shop commands XXX XXX XXX */
-		if ((cur_store_num != STORE_HOME) && (cur_store_num != STORE_HALL))
+		if ((cur_store_num != STORE_HOME) && (cur_store_num != STORE_HALL) && (cur_store_num != STORE_ALCHEMIST_BASEMENT))
 		{
 			prt(" s) Sell", 22, 15);
 			prt(" p) Purchase", 22, 30);
 		}
 
 		/* Home commands */
-		if (cur_store_num == STORE_HOME)
+		if ((cur_store_num == STORE_HOME) || (cur_store_num == STORE_ALCHEMIST_BASEMENT))
 		{
-			prt(" g) Get", 22, 31);
-			prt(" d) Drop", 23, 31);
+			prt(" g) Get", 22, 15);
+			prt(" d) Drop", 22, 31);
 		}
 
 		if (cur_store_num == STORE_HALL)
@@ -4213,6 +4294,7 @@ void put_store_commands()
 		case STORE_ALCHEMIST:
 			{
 				prt(" r) Research", 22, 60);
+				prt(" >) Go downstairs", 23, 15);
 				break;
 			}
 		case STORE_MAGIC:
@@ -4222,7 +4304,7 @@ void put_store_commands()
 			}
 		case STORE_HOME:
 			{
-				prt(" r) Rest.",23,56);
+				prt(" r) Rest.",22,60);
 				break;
 			}
 		case STORE_LIBRARY:
@@ -4250,6 +4332,11 @@ void put_store_commands()
 		case STORE_PAWN:
 			{
 				prt(" r) Identify all", 22,60);
+				break;
+			}
+		case STORE_ALCHEMIST_BASEMENT:
+			{
+				prt(" <) Go upstairs",23,15);
 				break;
 			}
 		}
