@@ -116,9 +116,10 @@
 
 /*
 * Total number of stores (see "store.c", etc)
+* Total numbers of stores without a building (Mage guild and alchemy basement`)
 */
-#define MAX_STORES      13
-
+#define MAX_STORES      14
+#define SUB_STORES      2
 /*
 * Road Directions
 */
@@ -144,9 +145,11 @@
 #define STORE_HALL      10
 #define STORE_PAWN      11
 #define STORE_BOOK_SWAP 12
+#define STORE_ALCHEMIST_BASEMENT 13
 
 /*
 * Total number of owners per store (see "store.c", etc)
+* Also update owner_type owners
 */
 #define MAX_OWNERS      16
 
