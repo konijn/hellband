@@ -4100,7 +4100,7 @@ static void town_gen_hack(void)
 
 	cave_type *c_ptr;
 
-	int rooms[MAX_STORES-1];
+	int rooms[MAX_STORES-SUB_STORES];
 
 	/* Hack -- Use the "simple" RNG */
 	Rand_quick = TRUE;
@@ -4110,7 +4110,7 @@ static void town_gen_hack(void)
 
 
 	/* Prepare an Array of "remaining stores", and count them */
-	for (n = 0; n < MAX_STORES-1; n++) rooms[n] = n;
+	for (n = 0; n < MAX_STORES-SUB_STORES; n++) rooms[n] = n;
 
 	/* Place four rows of stores */
 	for (y = 0; y < 4; y++)
