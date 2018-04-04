@@ -1695,9 +1695,14 @@ bool load_player(void)
 #if !defined(MACINTOSH) && !defined(WINDOWS)
 
 	/* XXX XXX XXX Fix this */
+	  struct stat buffer;
+	  char buf[1024];
 
+	/* Hack -- Try to parse the ~ in the path */
+	if (path_parse(buf, 1024, savefile))
+		return (FALSE);
 	/* Verify the existance of the savefile */
-	int has_access = stat(savefile, 0);
+	int has_access = stat(buf, &buffer);
 	if ( has_access < 0)
 	{
 		msg_print(strerror(errno));
