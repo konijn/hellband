@@ -95,7 +95,7 @@ endif
 CFLAGS = -I/usr/include -Wall \
          -O0 -pedantic \
          -g -ggdb3 \
-         -D"USE_GCU" -D"linux" -std=c99 -DDEFAULT_PATH=\"~/git/hellband/lib/\" -Dlive
+         -D"USE_GCU" -D"linux" -std=c99 -DDEFAULT_PATH=\"/home/pi/git/hellband/lib/\" -Dlive
 LIBS = -L/usr/lib -lncurses
 
 #
