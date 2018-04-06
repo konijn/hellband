@@ -209,7 +209,7 @@
 #define COR1_TELEKINES                  0x00000008L
 #define COR1_VTELEPORT                  0x00000010L /* Voluntary teleport */
 #define COR1_MIND_BLST                  0x00000020L
-#define COR1_SLIME                      0x00000040L
+#define COR1_SLIME                      0x00000040L /* MUT1_RADIATION */
 #define COR1_VAMPIRISM                  0x00000080L
 #define COR1_SMELL_MET                  0x00000100L
 #define COR1_SMELL_MON                  0x00000200L
@@ -230,7 +230,7 @@
 #define COR1_STERILITY                  0x01000000L
 #define COR1_PANIC_HIT                  0x02000000L
 #define COR1_DAZZLE                     0x04000000L
-#define COR1_EYE_BEAM                   0x08000000L
+#define COR1_EYE_BEAM                   0x08000000L /* MUT1_COR1_LASER_EYE */
 #define COR1_RECALL                     0x10000000L
 #define COR1_BANISH                     0x20000000L
 #define COR1_COLD_TOUCH                 0x40000000L
@@ -266,7 +266,7 @@
 #define COR2_ATT_DRAGON                 0x00400000L
 #define COR2_WEIRD_MIND                 0x00800000L
 #define COR2_NAUSEA                     0x01000000L
-#define COR2_PATRON                 0x02000000L
+#define COR2_PATRON                     0x02000000L
 #define COR2_INTUITION                  0x04000000L
 #define COR2_WARNING                    0x08000000L
 #define COR2_INVULN                     0x10000000L
@@ -274,26 +274,24 @@
 #define COR2_HP_TO_SP                   0x40000000L
 #define COR2_DISARM                     0x80000000L
 
-
-
 /* Other corruptions will be mainly in COR3_* */
 
 #define COR3_HYPER_STR                  0x00000001L
 #define COR3_PUNY                       0x00000002L
 #define COR3_HYPER_INT                  0x00000004L
-#define COR3_IDIOTIC                    0x00000008L
+#define COR3_IDIOTIC                    0x00000008L /* MUT3_MORONIC */
 #define COR3_RESILIENT                  0x00000010L
 #define COR3_XTRA_FAT                   0x00000020L
 #define COR3_ALBINO                     0x00000040L
 #define COR3_FLESH_ROT                  0x00000080L
 #define COR3_SILLY_VOI                  0x00000100L
-#define COR3_FORKED_TONGUE              0x00000200L
+#define COR3_FORKED_TONGUE              0x00000200L /* COR3_BLANK_FAC */
 #define COR3_ILL_NORM                   0x00000400L
-#define COR3_GLOW_EYES                  0x00000800L
+#define COR3_GLOW_EYES                  0x00000800L /* MUT3_XTRA_EYES */
 #define COR3_MAGIC_RES                  0x00001000L
-#define COR3_STENCH	                    0x00002000L
+#define COR3_STENCH	                    0x00002000L /* MUT3_XTRA_NOIS */
 #define COR3_INFRAVIS                   0x00004000L
-#define COR3_GOAT_LEGS                  0x00008000L
+#define COR3_GOAT_LEGS                  0x00008000L /* MUT3_XTRA_LEGS */
 #define COR3_SHORT_LEG                  0x00010000L
 #define COR3_ELEC_TOUC                  0x00020000L
 #define COR3_FIRE_BODY                  0x00040000L
@@ -701,8 +699,8 @@ and tables.c --TY */
 #define CLASS_HIGH_MAGE    10
 #define CLASS_BLOOD_MAGE   11
 #define CLASS_WARLOCK      12
-#define CLASS_MYSTIC       13
-#define CLASS_ORPHIC       14
+#define CLASS_MYSTIC       13 /*was MONK*/
+#define CLASS_ORPHIC       14 /*was MINDCRAFTER*/
 #define CLASS_DRUID        15
 
 /*
@@ -731,35 +729,35 @@ and tables.c --TY */
  * Player race constants (hard-coded by save-files, arrays, etc)
  */
 
-#define FLORENTIAN 	0
-#define GIPSY		1
-#define NORDIC		2
-#define ATLANTIAN	3
-#define DWARF		4
-#define ELF			5
-#define OGRE		6
-#define TROLL		7
-#define GIANT		8
-#define TITAN		9
-#define NEPHILIM	10
-#define HUMAN		11 /*Special case for shop owners*/
-#define AFFLICTED	11 /*Special case to indicate these guys dont have a birth sign*/
-#define FAE 		12
-#define GNOME		13
-#define LEPRECHAUN	14
-#define KOBOLD		15
-#define DEVILSPAWN	16
-#define IMP			17
-#define SUCCUBUS	18
-#define LILI		19
-#define ELDER		20
-#define GUARDIAN	21
-#define HORROR		22
-#define VAMPIRE     23
-#define WEREWOLF    24
-#define SKELETON    25
-#define MUMMY       26
-#define SPECTRE     27
+#define FLORENTIAN 0
+#define GIPSY      1
+#define NORDIC     2
+#define ATLANTIAN  3
+#define DWARF      4
+#define ELF        5
+#define OGRE       6
+#define TROLL      7
+#define GIANT      8
+#define TITAN      9
+#define NEPHILIM   10
+#define HUMAN      11 /*Special case for shop owners*/
+#define AFFLICTED  11 /*Special case to indicate these guys dont have a birth sign*/
+#define FAE        12
+#define GNOME      13
+#define LEPRECHAUN 14
+#define KOBOLD     15
+#define DEVILSPAWN 16
+#define IMP        17
+#define SUCCUBUS   18
+#define LILI       19
+#define ELDER      20
+#define GUARDIAN   21
+#define HORROR     22
+#define VAMPIRE    23
+#define WEREWOLF   24
+#define SKELETON   25
+#define MUMMY      26
+#define SPECTRE    27
 
 /* Eh this is hackish, but at least you wont be able to miss out when you created new races*/
 
@@ -855,32 +853,32 @@ and tables.c --TY */
 #define FEAT_SHOP_TAIL         0x55
 
 /* Other Surface Stuff */
-#define FEAT_GATE                    0x60
-#define FEAT_WATER                 0x61
-#define FEAT_TREE                     0x62
-#define FEAT_BUSH                    0x63
+#define FEAT_GATE   0x60
+#define FEAT_WATER  0x61
+#define FEAT_TREE   0x62
+#define FEAT_BUSH   0x63
 
 /*** Artifact indexes (see "lib/edit/a_info.txt") ***/
 
-
 /* Lites  ART_GALADRIEL , ART_GEM_SEEING ,  ART_INSIGHT */
-#define ART_BEATRICE     1
-#define ART_EOS          2
-#define ART_HIPPO        3
+/* ART_GALADRIEL ART_ELENDIL ART_THRAIN */
+#define ART_BEATRICE 1 /* Illumination every 10+d10 turns*/
+#define ART_EOS      2 /* Magic mapping and light every 20+d20 turns, draining you*/
+#define ART_HIPPO    3 /* Clairvoyance and cure*/
 
 /* Amulets  ART_PURITY , ART_INQUISITION , ART_DWARVES */
-#define ART_DOOM            4
-#define ART_AMULET_RAPHAEL  5
-#define ART_AMULET_MICHAEL  6
-#define ART_NEPHILIM        7
+#define ART_DOOM           4 /* Fire ball(250) and protection from fire every 450+d50 turns*/
+#define ART_AMULET_RAPHAEL 5 /* Dispel evil (x5) and protection from evil every 450+d450 turns*/
+#define ART_AMULET_MICHAEL 6 /* Dispel evil (x5) and protection from evil every 450+d450 turns*/
+#define ART_NEPHILIM       7 /* Do nothing */
 
 /* Rings ART_MAGIC , ART_BAST ,  ART_ELEMFIRE , ART_ELEMICE , ART_ELEMSTORM , ART_ONE_RING*/
-#define ART_RING_GEORGE     8
-#define ART_RING_GABRIEL    9
-#define ART_RING_RAPHAEL    10
-#define ART_RING_MICHAEL    11
-#define ART_EMMANUEL        13
-#define ART_FIRST           14
+#define ART_RING_GEORGE  8  /* Shield and berserk (100+d25 turns) every 100+d100 turns*/
+#define ART_RING_GABRIEL 9  /* Haste self (125 turns) every 150+d150 turns*/
+#define ART_RING_RAPHAEL 10 /* Fire ball(250), healing and protective magic every 700+d250 turns*/
+#define ART_RING_MICHAEL 11 /* Frost ball(200) and combat magic every 250+d250 turns*/
+#define ART_EMMANUEL     13 /* Lightning ball(250) and heal(700) every 700+d300 turns*/
+#define ART_FIRST        14 /* Bizarre things every 450+d450 turns*/
 
 /*
 ART_KOBOLD -> ART_ALASTOR
@@ -888,40 +886,44 @@ ART_WYVERNSCALE - > ART_WHIRLWIND
 ART_HEARTGUARD -> ART_SABNOCK
 ART_OGRELORDS -> ART_PRAVUIL
 ART_SERPENTS -> ART_SEIRIM
+BELEGENNON -> LOHENGRIN
+LOHENGRIN -> VAMPLORD
 ART_VAMPLORD ->  ART_ROBE_MICHAEL
 ART_ORCS -> VEPAR
 */
-#define ART_SABNOCK         15
-#define ART_ALASTOR         16
-#define ART_WHIRLWIND       17
-#define ART_PRAVUIL         18
-#define ART_SEIRIM          21
-#define ART_ROBE_MICHAEL    22
-#define ART_VEPAR           25
+#define ART_SABNOCK      15 /* Do nothing */
+#define ART_ALASTOR      16 /* Do nothing */
+#define ART_WHIRLWIND    17 /* Do nothing */
+#define ART_PRAVUIL      18 /* Door and trap destruction every 10 turns*/
+#define ART_SEIRIM       21 /* Genocide every 500 turns*/
+#define ART_ROBE_MICHAEL 22 /* Heal (777), curing and heroism every 300 turns*/
+#define ART_VEPAR        25 /* Cast Storm of the Dark Waters every 500 turns*/
 
 /* ART_SOULKEEPER - > ART_GAEP , ART_ZIMINAR , ART_CORSON , ART_AMAYMON */
-#define ART_GAEP            26
-#define ART_ZIMINAR         27
-#define ART_CORSON          28
-#define ART_AMAYMON         29
+#define ART_GAEP         26 /* Do nothing */
+#define ART_ZIMINAR      27 /* Do nothing */
+#define ART_CORSON       28 /* Heal (1000) every 888 turns*/
+#define ART_AMAYMON      29 /* Poisonous nether breath(700) every 888 turns*/
+
 
 /* Dragon Scale */
 /* ART_RAZORBACK - > ART_BAPHOMET + ART_ASMODAI */
-#define ART_BAPHOMET        30
-#define ART_ASMODAI         31
+#define ART_BAPHOMET     30 /* Star ball (150) every 1000 turns*/
+#define ART_ASMODAI      31 /* Star ball (150) every 1000 turns*/
 
 /* ART_BLADETURNER -> ART_SAMAEL + ART_ABADDON + ART_BLOOD_MICHAEL */
 
-#define ART_SAMAEL          32
-#define ART_ABADDON         33
-#define ART_BLOOD_MICHAEL   34
+#define ART_SAMAEL        32 /* Breathe elements (300), berserk rage, bless, and resistance*/
+#define ART_ABADDON       33 /* Breathe elements (300), berserk rage, bless, and resistance*/
+#define ART_BLOOD_MICHAEL 34 /* Breathe elements (300), berserk rage, bless, and resistance*/
 
 /*#define ART_GODS                20 -> Has become Halphas and Naberius */
 
 /* Shields */
-#define ART_SHIELD_MICHAEL  35
-#define ART_SHIELD_ELEMENTS 36
-#define ART_SHIELD_AGES     37
+#define ART_SHIELD_MICHAEL  35 /* Do nothing */
+#define ART_SHIELD_ELEMENTS 36 /* Do nothing */
+#define ART_SHIELD_AGES     37 /* Do nothing */
+
 
 /* Helms and Crowns
 ART_UNIVERSE -> ART_SEVENTH
@@ -932,51 +934,51 @@ ART_HAMMERHAND -> ART_GALLU
 ART_POWER -> ART_LAMMASU
 */
 
-#define ART_AUGUSTIN        38
-#define ART_SOLOMON         39
-#define ART_GALLU           40
-#define ART_MASK            41
-#define ART_SKULLKEEPER     42
-#define ART_MISERY          43
-#define ART_LAMMASU         44
-#define ART_SUN             45
-#define ART_SEVENTH         46
+#define ART_AUGUSTIN    38 /* Do nothing */
+#define ART_SOLOMON     39 /* Do nothing */
+#define ART_GALLU       40 /* Do nothing */
+#define ART_MASK        41 /* Rays of fear in every direction*/
+#define ART_SKULLKEEPER 42 /* Detection every 55+d55 turns*/
+#define ART_MISERY      43 /* Do nothing */
+#define ART_LAMMASU     44 /* Rays of fear in every direction*/
+#define ART_SUN         45 /* Heal (700) every 250 turns*/
+#define ART_SEVENTH     46 /* Do nothing */
 
 /* Cloaks
 ART_SHADE - > ART_SIMPLE
 ART_SWASHBUCKLER -> ART_BARD
 ART_DARKNESS -> ART_DRAEBOR
 */
-#define ART_SHIFTER         47
-#define ART_SIMPLE          48
-#define ART_JOSEPH          49
-#define ART_DRAEBOR         50
-#define ART_BARD            51
-#define ART_LIFE            52
-#define ART_LUCIFUGE        53
-#define ART_FROSTPLAINS     53
+#define ART_NYNAULD     47 /* Teleport every 45 turns*/
+#define ART_SIMPLE      48 /* Sleep nearby monsters every 55 turns*/
+#define ART_JOSEPH      49 /* Resistance (20+d20 turns) every 111 turns*/
+#define ART_DRAEBOR     50 /* Confusion ball (200) radius 5 and blink*/
+#define ART_BARD        51 /* Recharge item I every 70 turns*/
+#define ART_LIFE        52 /* Restore life levels every 450 turns*/
+#define ART_LUCIFUGE    53 /* Do nothing */
+#define ART_FROSTPLAINS 53 /* Do nothing */
 
 /* Gloves
 ART_CALFSKIN -> ART_MALPHAS
 ART_WHITESPARK -> ART_FURFICER
 ART_COMBAT -> ART_GRIMREAPER
 */
-#define ART_MALPHAS         55
-#define ART_LIGHT           56
-#define ART_IRONFIST        57
-#define ART_GHOULS          58
-#define ART_FURFICER        59
-#define ART_DEAD            60
-#define ART_THANOS          61
-#define ART_GRIMREAPER      62
+#define ART_MALPHAS    55 /* Do nothing */
+#define ART_LIGHT      56 /* Magic missile (2d6) every 2 turns*/
+#define ART_IRONFIST   57 /* Fire bolt (9d8) every 8+d8 turns*/
+#define ART_GHOULS     58 /* Frost bolt (6d8) every 7+d7 turns*/
+#define ART_FURFICER   59 /* Lightning bolt (4d8) every 6+d6 turns*/
+#define ART_DEAD       60 /* Acid bolt (5d8) every 5+d5 turns*/
+#define ART_THANOS     61 /* Do nothing */
+#define ART_GRIMREAPER 62 /* A magical seeker bolt (450) every 90+d90 turns*/
 
 /* Boots
 ART_TRAVEL -> ART_BOOTS_GABRIEL , ART_BOOTS_FURCIFER
 */
-#define ART_DANCING         63
-#define ART_BLACKREAVER     64
-#define ART_BOOTS_FURCIFER  65
-#define ART_BOOTS_GABRIEL   66
+#define ART_DANCING        63 /* Remove fear and cure poison every 5 turns*/
+#define ART_BLACKREAVER    64 /* Do nothing */
+#define ART_BOOTS_FURCIFER 65 /* Haste self (50 turns) every 200 turns*/
+#define ART_BOOTS_GABRIEL  66 /* Haste self (50 turns) every 200 turns*/
 
 /* BLADES & Co
 ART_HOPE -> ART_COCYTUS
@@ -985,57 +987,57 @@ ART_CHARITY -> ART_DAGGER_FURCIFER
 ART_THOTH -> ART_KINSLAYER
 */
 
-#define ART_COCYTUS         67
-#define ART_DAGGER_INFERNO  68
-#define ART_DAGGER_FURCIFER 69
-#define ART_KINSLAYER       70
-#define ART_FROST           71
-#define ART_VALEFAR         72
-#define ART_HOMER           73
-#define ART_BARBATOS        74
-#define ART_MERLIN          75
-#define ART_SOULSWORD       76
-#define ART_GUSION          77
-#define ART_SITRI           78
-#define ART_OROBAS          79
-#define ART_BRIGHTBLADE     80
-#define ART_BLACKICE        81
-#define ART_ANDROMALIUS     82
-#define ART_RASHAVERAK      83
-#define ART_SWORD_FURCIFER  86
-#define ART_MICHAEL         87
-#define ART_DRAGONSLAYER    91
-#define ART_FIRETONGUE      92
-#define ART_AZRAEL          94
-#define ART_DAWN            95
-#define ART_ASTAROTH        96
+#define ART_COCYTUS         67 /* Frost bolt (6d8) every 7+d7 turns*/
+#define ART_DAGGER_INFERNO  68 /* Fire bolt (9d8) every 8+d8 turns*/
+#define ART_DAGGER_FURCIFER 69 /* Lightning bolt (4d8) every 6+d6 turns*/
+#define ART_KINSLAYER       70 /* Stinking cloud (12) every 4+d4 turns*/
+#define ART_FROST           71 /* Frost ball (48) every 5+d5 turns*/
+#define ART_VALEFAR         72 /* Do nothing */
+#define ART_HOMER           73 /* Do nothing */
+#define ART_BARBATOS        74 /* Do nothing */
+#define ART_MERLIN          75 /* Do nothing */
+#define ART_SOULSWORD       76 /* Do nothing */
+#define ART_GUSION          77 /* Do nothing */
+#define ART_SITRI           78 /* Do nothing */
+#define ART_OROBAS          79 /* Do nothing */
+#define ART_BRIGHTBLADE     80 /* Do nothing */
+#define ART_BLACKICE        81 /* Do nothing */
+#define ART_ANDROMALIUS     82 /* A getaway every 35 turns*/
+#define ART_RASHAVERAK      83 /* Fire ball (72) every 400 turns*/
+#define ART_SWORD_FURCIFER  86 /* Do nothing */
+#define ART_MICHAEL         87 /* Frost ball (100) every 300 turns*/
+#define ART_DRAGONSLAYER    91 /* Do nothing */
+#define ART_FIRETONGUE      92 /* Do nothing */
+#define ART_AZRAEL          94 /* Word of recall every 200 turns, Avavir*/
+#define ART_DAWN            95 /* Summon a Black Reaver every 500+d500 turns*/
+#define ART_ASTAROTH        96 /* Do nothing */
 
 /* Polearms */
 
-#define ART_ODIN            98
-#define ART_DESTINY         99
-#define ART_ELIGOR          102
-#define ART_PHENEX          106
-#define ART_MORNINGSTAR     107
-#define ART_BELETH          108
-#define ART_TROLLS          113
-#define ART_RONOVE          115
-#define ART_TRITONS         117
-#define ART_HAMMER_AMAYMON  118
-#define ART_HAMMER_ABADDON  120
+#define ART_ODIN           98 /* Lightning ball (100) every 500 turns*/
+#define ART_DESTINY        99 /* Stone to mud every 5 turns*/
+#define ART_ELIGOR         102 /* Drain life (120) every 400 turns*/
+#define ART_PHENEX         106 /* Confuse monster every 15 turns*/
+#define ART_MORNINGSTAR    107 /* Large fire ball (72) every 100 turns*/
+#define ART_BELETH         108 /* Haste self (20+d20 turns) every 100+d100 turns*/
+#define ART_TROLLS         113 /* Mass genocide every 1000 turns*/
+#define ART_RONOVE         115 /* Cure wounds (4d7) every 3+d3 turns*/
+#define ART_TRITONS        117 /* Teleport others away every 150 turns*/
+#define ART_HAMMER_AMAYMON 118 /* Do nothing */
+#define ART_HAMMER_ABADDON 120 /* Do nothing */
 
 /* Quarterstafs staves stavens ? Grin ;) */
 
-#define ART_FIRESTAFF       121
-#define ART_ERIRIL          122
-#define ART_JUSTICE         123
-#define ART_ATAL            124
+#define ART_FIRESTAFF      121 /* Do nothing */
+#define ART_ERIRIL         122 /* Identify every 10 turns*/
+#define ART_JUSTICE        123 /* Drain life (90) every 70 turns*/
+#define ART_ATAL           124 /* Probing, detection and full id every 1000 turns*/
 
 /* Bows */
 
-#define ART_BOWASSASSIN     126
-#define ART_SURESHOT        127
-#define ART_DEATH           128
+#define ART_BOWASSASSIN    126 /* Do nothing */
+#define ART_SURESHOT       127 /* Do nothing */
+#define ART_DEATH          128 /* Fire branding of bolts every 999 turns*/
 
 /*** Ego-Item indexes (see "lib/edit/e_info.txt") ***/
 
@@ -1088,13 +1090,13 @@ ART_THOTH -> ART_KINSLAYER
 
 /* Cloaks */
 #define EGO_PROTECTION          40
-#define EGO_STEALTH                     41
-#define EGO_AMAN                        42
-#define EGO_AURA_FIRE                   43
+#define EGO_STEALTH             41
+#define EGO_AMAN                42
+#define EGO_AURA_FIRE           43
 #define EGO_ENVELOPING          44
 #define EGO_VULNERABILITY       45
 #define EGO_IRRITATION          46
-#define EGO_AURA_ELEC               47
+#define EGO_AURA_ELEC           47
 
 /* Gloves */
 #define EGO_FREE_ACTION         48
@@ -1155,11 +1157,11 @@ ART_THOTH -> ART_KINSLAYER
 #define EGO_VAMPIRIC            96
 /* xxx */
 /* xxx */
-#define EGO_PLANAR               98
+#define EGO_PLANAR              98  /*was EGO_TRUMP*/
 #define EGO_PATTERN             99
-#define EGO_DIGGING                     100
+#define EGO_DIGGING             100
 /* xxx */
-#define EGO_HELL                      102
+#define EGO_HELL                102
 /* xxx */
 
 /* Bows */
@@ -1634,32 +1636,32 @@ ART_THOTH -> ART_KINSLAYER
 #define SV_WAND_HASTE_MONSTER   1
 #define SV_WAND_CLONE_MONSTER   2
 #define SV_WAND_TELEPORT_AWAY   3
-#define SV_WAND_DISARMING               4
+#define SV_WAND_DISARMING       4
 #define SV_WAND_TRAP_DOOR_DEST  5
 #define SV_WAND_STONE_TO_MUD    6
-#define SV_WAND_LITE                    7
+#define SV_WAND_LITE            7
 #define SV_WAND_SLEEP_MONSTER   8
 #define SV_WAND_SLOW_MONSTER    9
 #define SV_WAND_CONFUSE_MONSTER 10
 #define SV_WAND_FEAR_MONSTER    11
-#define SV_WAND_DRAIN_LIFE              12
-#define SV_WAND_POLYMORPH               13
+#define SV_WAND_DRAIN_LIFE      12
+#define SV_WAND_POLYMORPH       13
 #define SV_WAND_STINKING_CLOUD  14
 #define SV_WAND_MAGIC_MISSILE   15
-#define SV_WAND_ACID_BOLT               16
-#define SV_WAND_CHARM_MONSTER           17
-#define SV_WAND_FIRE_BOLT               18
-#define SV_WAND_COLD_BOLT               19
-#define SV_WAND_ACID_BALL               20
-#define SV_WAND_ELEC_BALL               21
-#define SV_WAND_FIRE_BALL               22
-#define SV_WAND_COLD_BALL               23
-#define SV_WAND_WONDER                  24
+#define SV_WAND_ACID_BOLT       16
+#define SV_WAND_CHARM_MONSTER   17
+#define SV_WAND_FIRE_BOLT       18
+#define SV_WAND_COLD_BOLT       19
+#define SV_WAND_ACID_BALL       20
+#define SV_WAND_ELEC_BALL       21
+#define SV_WAND_FIRE_BALL       22
+#define SV_WAND_COLD_BALL       23
+#define SV_WAND_WONDER          24
 #define SV_WAND_ANNIHILATION    25
-#define SV_WAND_DRAGON_FIRE             26
-#define SV_WAND_DRAGON_COLD             27
+#define SV_WAND_DRAGON_FIRE     26
+#define SV_WAND_DRAGON_COLD     27
 #define SV_WAND_DRAGON_BREATH   28
-#define SV_WAND_SHARD         29
+#define SV_WAND_SHARD           29
 
 /* The "sval" codes for TV_ROD */
 #define SV_ROD_DETECT_TRAP              0
@@ -1675,10 +1677,10 @@ ART_THOTH -> ART_KINSLAYER
 #define SV_ROD_RESTORATION              10
 #define SV_ROD_SPEED                    11
 /* xxx (aimed) */
-#define SV_ROD_TELEPORT_AWAY    13
+#define SV_ROD_TELEPORT_AWAY            13
 #define SV_ROD_DISARMING                14
-#define SV_ROD_LITE                             15
-#define SV_ROD_SLEEP_MONSTER    16
+#define SV_ROD_LITE                     15
+#define SV_ROD_SLEEP_MONSTER            16
 #define SV_ROD_SLOW_MONSTER             17
 #define SV_ROD_DRAIN_LIFE               18
 #define SV_ROD_POLYMORPH                19
@@ -2636,10 +2638,10 @@ ART_THOTH -> ART_KINSLAYER
 #define RF4_BR_PLAS                 0x02000000      /* Breathe Plasma */
 #define RF4_BR_WALL                 0x04000000      /* Breathe Force */
 #define RF4_BR_MANA                 0x08000000      /* Breathe Mana */
-#define RF4_BA_SLIM                 0x10000000  /* TY: Hell slime */
-#define RF4_BR_SLIM                 0x20000000  /* TY: Toxic Breath */
-#define RF4_BA_CHAO                 0x40000000  /* TY: Primal Chaos Ball */
-#define RF4_BR_DISI                 0x80000000 /* Breathe Disintegration */
+#define RF4_BA_SLIM                 0x10000000      /* Konijn: Hell slime */
+#define RF4_BR_SLIM                 0x20000000      /* Konijn: Toxic Breath */
+#define RF4_BA_CHAO                 0x40000000      /* TY: Primal Chaos Ball */
+#define RF4_BR_DISI                 0x80000000      /* Breathe Disintegration */
 
 /*
 * New monster race bit flags
@@ -2730,8 +2732,8 @@ ART_THOTH -> ART_KINSLAYER
 #define RF7_RES_ACID                0x00004000      /* Resists Acid */
 #define RF7_RES_ELEC                0x00008000      /* Resist Electricity */
 #define RF7_HEAL_ELEC               0x00010000      /* Heal by Electricity */
-#define RF7_HEAL_NETH				0x00020000      /* Heal by Nether */
-#define RF7_RES_POIS				0x00040000      /* Resist poison */
+#define RF7_HEAL_NETH               0x00020000      /* Heal by Nether */
+#define RF7_RES_POIS                0x00040000      /* Resist poison */
 #define RF7_AQUATIC                 0x00080000      /* Thrives in water */
 #define RF7_FLIGHT                  0x00100000      /* Can fly or levitate */
 #define RF7_NEUTRAL                 0x00200000      /* Doesnt want to kill player when generated */

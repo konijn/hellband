@@ -427,8 +427,8 @@ extern u32b seed_alchemy;
 
 /* birth.c */
 extern void create_random_name( int type , byte sex , char *name );
-extern void player_birth(void);
 extern void outfit(object_type *q_ptr);
+extern void player_birth(void);
 
 /* cave.c */
 extern int distance(int y1, int x1, int y2, int x2);
@@ -577,6 +577,7 @@ extern void do_recall( cptr activation );
 extern int player_uid;
 extern int player_egid;
 #endif /* SET_UID */
+extern void player_flags(u32b *f1, u32b *f2, u32b *f3);
 extern void safe_setuid_drop(void);
 extern void safe_setuid_grab(void);
 extern s16b tokenize(char *buf, s16b num, char **tokens);
@@ -934,12 +935,13 @@ extern bool spell_basic_resistance(int duration);
 /* store.c */
 extern void do_cmd_store(void);
 extern void store_shuffle(int which);
-/*extern void store_maint(int which);*/
 extern void store_maint_all( int times );
 extern void store_init(int which);
 extern void move_to_black_market(object_type * o_ptr);
 extern int get_which_store(void);
 extern void do_store_browse( object_type *o_ptr);
+extern s32b price_item(object_type *o_ptr, int greed, bool flip);
+extern bool no_need_to_bargain(s32b minprice);
 /* util.c */
 extern errr path_parse(char *buf, size_t max, cptr file);
 extern errr path_temp(char *buf, int max);
