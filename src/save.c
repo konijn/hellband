@@ -235,7 +235,6 @@ static errr wr_savefile(void)
 
 	byte    fake[4];
 
-
 	/*** Hack -- extract some data ***/
 
 	/* Hack -- Acquire the current time */
@@ -249,7 +248,6 @@ static errr wr_savefile(void)
 
 	/* Note the number of saves */
 	sf_saves++;
-
 
 	/*** Actually write the file ***/
 
@@ -265,14 +263,11 @@ static errr wr_savefile(void)
 	/* Dump the data */
 	err = fd_write(data_fd, (char*)&fake, 4);
 
-
 	/* Make array XXX XXX XXX */
 	C_MAKE(data_head, 65535, byte);
 
 	/* Hack -- reset */
 	data_next = data_head;
-
-
 
 	/* Dump the "options" */
 	put_options();
@@ -291,21 +286,14 @@ static errr wr_savefile(void)
 	/* Dump the "final" marker XXX XXX XXX */
 	/* Type zero, Size zero, Contents zero, etc */
 
-
 	/* XXX XXX XXX Check for errors */
-
 
 	/* Kill array XXX XXX XXX */
 	C_KILL(data_head, 65535, byte);
 
-
 	/* Success */
 	return (0);
 }
-
-
-
-
 
 /*
 * Hack -- read the next "block" from the savefile
@@ -871,7 +859,7 @@ static void wr_options(void)
 
 	/*Dump the sane price*/
 	wr_u32b( sane_price );
-	
+
 	/* Dump the squelching rules */
 	for( i=0; i < SQ_HL_COUNT ; i++ )
 	{
@@ -985,7 +973,7 @@ static void wr_customs(void)
 			wr_u16b( i );
 			wr_custom( i );
 		}
-			
+
 	}
 }
 
@@ -1409,15 +1397,15 @@ static bool wr_savefile_new(void)
 	tmp16u = MAX_K_IDX;
 	wr_u16b(tmp16u);
 	for (i = 0; i < tmp16u; i++) wr_xtra(i);
-	
+
 	/*Dump the alchemy formula seed*/
 	wr_u32b(seed_alchemy);
-	
+
 	/* Dump the alchemy info */
 	/*First write the amount of entries*/
 	tmp16u = SV_POTION_MAX;
 	wr_u16b(tmp16u);
-	
+
 	/*Then write the entries*/
 	for (i = 0; i < tmp16u; i++)
 	{
@@ -1426,7 +1414,7 @@ static bool wr_savefile_new(void)
 		if (potion_alch[i].known2) tmp8u |= 0x02; /* because 2 binary is 0010 */
 		wr_byte(tmp8u);                           /* resulting in 11 ( both ) , 01 ( first only ) or 10 ( second only ) */
 	}
-	
+
 	/* Hack -- Dump the quests */
 	tmp16u = MAX_Q_IDX;
 	wr_u16b(tmp16u);
@@ -1912,5 +1900,3 @@ bool load_player(void)
 	/* Oops */
 	return (FALSE);
 }
-
-
