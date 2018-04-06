@@ -1089,10 +1089,7 @@ s32b flag_cost(object_type * o_ptr, int plusses)
 		else if (type == ACT_TELEPORT) total += 2000;
 		else if (type == ACT_RECALL) total += 7500;
 	}
-
-
 	return total;
-
 }
 
 
@@ -4380,7 +4377,8 @@ static bool kind_is_good(int k_idx)
 			if( k_ptr->sval == SV_POTION_EXPERIENCE) return TRUE;
 			if( k_ptr->sval == SV_POTION_INVULNERABILITY) return TRUE;
 			if( k_ptr->sval == SV_POTION_AUGMENTATION) return TRUE;
-			return FALSE;
+	
+		return FALSE;
 		}
 	/* Books -- High level books are good (except Books of Charms) */
 	case TV_MIRACLES_BOOK:
