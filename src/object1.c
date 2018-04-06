@@ -145,7 +145,7 @@ static byte amulet_col[MAX_AMULETS] =
  Tamarisk , (Ps.92.14, 1King.6.29,32,35,7.36, Lev.23.40, Jn.12.31, Neh.8.15, Jn.12.13)
  Juniper
  Wormwood, Deut.29.18, Prov.5.4, Rev.8.11.
- 
+
 */
 
 static cptr staff_adj[MAX_WOODS] =
@@ -397,7 +397,7 @@ static bool object_has_flavor(int i)
 		if (k_ptr->sval < SV_FOOD_MIN_FOOD) return (TRUE);
 		return (FALSE);
 	}
-	
+
 	/* Get describer */
 	describer = read_tval_description( k_ptr->tval );
 	/* Only full monty tvals have flavor */
@@ -419,7 +419,7 @@ static bool object_easy_know(int i)
 {
 	object_kind *k_ptr = &k_info[i];
 	tv_describer_type describer;
-	
+
 	/* First rule, if it is easy know, it is easy know */
 	if (k_ptr->flags3 & (TR3_EASY_KNOW)) return (TRUE);
 	/* Get describer */
@@ -1275,7 +1275,7 @@ void object_desc(char *buf, object_type *o_ptr, int pref, int mode)
 	artefact_type			*a_ptr = &a_info[o_ptr->name1];  /* This could be null pointer ! */
 
 	tv_describer_type describer;
-	
+
 	/* Extract some flags */
 	object_flags(o_ptr, &f1, &f2, &f3);
 
@@ -1306,7 +1306,7 @@ void object_desc(char *buf, object_type *o_ptr, int pref, int mode)
 
 	/* Assume no "modifier" string */
 	modstr = "";
-	
+
 	/* Hack -- Gold/Gems */
 	if(o_ptr->tval == TV_GOLD)
 	{
@@ -1331,7 +1331,7 @@ void object_desc(char *buf, object_type *o_ptr, int pref, int mode)
 		describer = read_tval_description( o_ptr->tval );
 
 		/* Hack ^ 2 Potions with sval being -1 are vials, indicating to player they are quite different */
-		
+
 		if( o_ptr->tval == TV_POTION && o_ptr->pval == -1 )
 		{
 			describer.plain = "& Vial~";
@@ -1351,7 +1351,7 @@ void object_desc(char *buf, object_type *o_ptr, int pref, int mode)
 				/* The hard-coded mushroom exception */
 				if( o_ptr->tval == TV_FOOD && o_ptr->sval >= SV_FOOD_MIN_FOOD )
 					goto legacy_break;
-				
+
 				/* Known artefacts */
 				if (artefact_p(o_ptr) && aware)
 					goto legacy_break;
@@ -1979,565 +1979,156 @@ cptr item_activation(object_type *o_ptr)
 	a name. Thus we eliminate other possibilities instead of checking
 	for art_name */
 
-	if (!(o_ptr->name1) && !(o_ptr->name2)
-		&& !(o_ptr->xtra1) && (o_ptr->xtra2))
+	if (!(o_ptr->name1) && !(o_ptr->name2) && !(o_ptr->xtra1) && (o_ptr->xtra2))
 	{
 		switch (o_ptr->xtra2)
 		{
-		case ACT_SUNLIGHT:
-			{
-				return "beam of sunlight every 10 turns";
-			}
-		case ACT_BO_MISS_1:
-			{
-				return "magic missile (2d6) every 2 turns";
-			}
-		case ACT_BA_POIS_1:
-			{
-				return "stinking cloud (12), rad. 3, every 4+d4 turns";
-			}
-		case ACT_BO_ELEC_1:
-			{
-				return "lightning bolt (4d8) every 6+d6 turns";
-			}
-		case ACT_BO_ACID_1:
-			{
-				return "acid bolt (5d8) every 5+d5 turns";
-			}
-		case ACT_BO_COLD_1:
-			{
-				return "frost bolt (6d8) every 7+d7 turns";
-			}
-		case ACT_BO_FIRE_1:
-			{
-				return "fire bolt (9d8) every 8+d8 turns";
-			}
-		case ACT_BA_COLD_1:
-			{
-				return "ball of cold (48) every 400 turns";
-			}
-		case ACT_BA_FIRE_1:
-			{
-				return "ball of fire (72) every 400 turns";
-			}
-		case ACT_DRAIN_1:
-			{
-				return "drain life (100) every 100+d100 turns";
-			}
-		case ACT_BA_COLD_2:
-			{
-				return "ball of cold (100) every 300 turns";
-			}
-		case ACT_BA_ELEC_2:
-			{
-				return "ball of lightning (100) every 500 turns";
-			}
-		case ACT_DRAIN_2:
-			{
-				return "drain life (120) every 400 turns";
-			}
-		case ACT_VAMPIRE_1:
-			{
-				return "vampiric drain (3*50) every 400 turns";
-			}
-		case ACT_BO_MISS_2:
-			{
-				return "arrows (150) every 90+d90 turns";
-			}
-		case ACT_BA_FIRE_2:
-			{
-				return "fire ball (120) every 225+d225 turns";
-			}
-		case ACT_BA_COLD_3:
-			{
-				return "ball of cold (200) every 325+d325 turns";
-			}
-		case ACT_WHIRLWIND:
-			{
-				return "whirlwind attack every 250 turns";
-			}
-		case ACT_VAMPIRE_2:
-			{
-				return "vampiric drain (3*100) every 400 turns";
-			}
-		case ACT_CALL_CHAOS:
-			{
-				return "call chaos every 350 turns";
-			}
-		case ACT_SHARD:
-			{
-				return "shard ball (120+level) every 400 turns";
-			}
-		case ACT_DISP_EVIL:
-			{
-				return "dispel evil (level*5) every 300+d300 turns";
-			}
-		case ACT_DISP_GOOD:
-			{
-				return "dispel good (level*5) every 300+d300 turns";
-			}
-		case ACT_BA_MISS_3:
-			{
-				return "elemental breath (300) every 500 turns";
-			}
-		case ACT_CONFUSE:
-			{
-				return "confuse monster every 15 turns";
-			}
-		case ACT_SLEEP:
-			{
-				return "sleep nearby monsters every 55 turns";
-			}
-		case ACT_QUAKE:
-			{
-				return "earthquake (rad 10) every 50 turns";
-			}
-		case ACT_TERROR:
-			{
-				return "terror every 3 * (level+10) turns";
-			}
-		case ACT_TELE_AWAY:
-			{
-				return "teleport away every 200 turns";
-			}
-		case ACT_BANISH_EVIL:
-			{
-				return "banish evil every 250+d250 turns";
-			}
-		case ACT_GENOCIDE:
-			{
-				return "genocide every 500 turns";
-			}
-		case ACT_MASS_GENO:
-			{
-				return "mass genocide every 1000 turns";
-			}
-		case ACT_CHARM_ANIMAL:
-			{
-				return "charm animal every 300 turns";
-			}
-		case ACT_CHARM_UNDEAD:
-			{
-				return "enslave undead every 333 turns";
-			}
-		case ACT_CHARM_OTHER:
-			{
-				return "charm monster every 400 turns";
-			}
-		case ACT_CHARM_ANIMALS:
-			{
-				return "animal friendship every 500 turns";
-			}
-		case ACT_CHARM_OTHERS:
-			{
-				return "mass charm every 750 turns";
-			}
-		case ACT_SUMMON_ANIMAL:
-			{
-				return "summon animal every 200+d300 turns";
-			}
-		case ACT_SUMMON_PHANTOM:
-			{
-				return "summon phantasmal servant every 200+d200 turns";
-			}
-		case ACT_SUMMON_ELEMENTAL:
-			{
-				return "summon elemental every 750 turns";
-			}
-		case ACT_SUMMON_DEMON:
-			{
-				return "summon demon every 666+d333 turns";
-			}
-		case ACT_SUMMON_UNDEAD:
-			{
-				return "summon undead every 666+d333 turns";
-			}
-		case ACT_CURE_LW:
-			{
-				return "remove fear & heal 30 hp every 10 turns";
-			}
-		case ACT_CURE_MW:
-			{
-				return "heal 4d8 & wounds every 3+d3 turns";
-			}
-		case ACT_CURE_POISON:
-			{
-				return "remove fear and cure poison every 5 turns";
-			}
-		case ACT_REST_LIFE:
-			{
-				return "restore life levels every 450 turns";
-			}
-		case ACT_REST_ALL:
-			{
-				return "restore stats and life levels every 750 turns";
-			}
-		case ACT_CURE_700:
-			{
-				return "heal 700 hit points every 250 turns";
-			}
-		case ACT_CURE_1000:
-			{
-				return "heal 1000 hit points every 888 turns";
-			}
-		case ACT_ESP:
-			{
-				return "temporary ESP (dur 25+d30) every 200 turns";
-			}
-		case ACT_BERSERK:
-			{
-				return "heroism and berserk (dur 50+d50) every 100+d100 turns";
-			}
-		case ACT_PROT_EVIL:
-			{
-				return "protect evil (dur level*3 + d25) every 225+d225 turns";
-			}
-		case ACT_RESIST_ALL:
-			{
-				return "resist elements (dur 40+d40) every 200 turns";
-			}
-		case ACT_SPEED:
-			{
-				return "speed (dur 20+d20) every 250 turns";
-			}
-		case ACT_XTRA_SPEED:
-			{
-				return "speed (dur 75+d75) every 200+d200 turns";
-			}
-		case ACT_WRAITH:
-			{
-				return "wraith form (level/2 + d(level/2)) every 1000 turns";
-			}
-		case ACT_INVULN:
-			{
-				return "invulnerability (dur 8+d8) every 1000 turns";
-			}
-		case ACT_LIGHT:
-			{
-				return "light area (dam 2d15) every 10+d10 turns";
-			}
-		case ACT_MAP_LIGHT:
-			{
-				return "light (dam 2d15) & map area every 50+d50 turns";
-			}
-		case ACT_DETECT_ALL:
-			{
-				return "detection every 55+d55 turns";
-			}
-		case ACT_DETECT_XTRA:
-			{
-				return "detection, probing and identify true every 1000 turns";
-			}
-		case ACT_ID_FULL:
-			{
-				return "identify true every 750 turns";
-			}
-		case ACT_ID_PLAIN:
-			{
-				return "identify spell every 10 turns";
-			}
-		case ACT_RUNE_EXPLO:
-			{
-				return "explosive rune every 200 turns";
-			}
-		case ACT_RUNE_PROT:
-			{
-				return "rune of protection every 400 turns";
-			}
-		case ACT_SATIATE:
-			{
-				return "satisfy hunger every 200 turns";
-			}
-		case ACT_DEST_DOOR:
-			{
-				return "destroy doors every 10 turns";
-			}
-		case ACT_STONE_MUD:
-			{
-				return "stone to mud every 5 turns";
-			}
-		case ACT_RECHARGE:
-			{
-				return "recharging every 70 turns";
-			}
-		case ACT_ALCHEMY:
-			{
-				return "alchemy every 500 turns";
-			}
-		case ACT_DIM_DOOR:
-			{
-				return "dimension door every 100 turns";
-			}
-		case ACT_TELEPORT:
-			{
-				return "teleport (range 100) every 45 turns";
-			}
-		case ACT_RECALL:
-			{
-				return "word of recall every 200 turns";
-			}
-		default:
-			{
-				return "something undefined";
-			}
+		case ACT_SUNLIGHT:         return "beam of sunlight every 10 turns";
+		case ACT_BO_MISS_1:        return "magic missile (2d6) every 2 turns";
+		case ACT_BA_POIS_1:        return "stinking cloud (12), rad. 3, every 4+d4 turns";
+		case ACT_BO_ELEC_1:        return "lightning bolt (4d8) every 6+d6 turns";
+		case ACT_BO_ACID_1:        return "acid bolt (5d8) every 5+d5 turns";
+		case ACT_BO_COLD_1:        return "frost bolt (6d8) every 7+d7 turns";
+		case ACT_BO_FIRE_1:        return "fire bolt (9d8) every 8+d8 turns";
+		case ACT_BA_COLD_1:        return "ball of cold (48) every 400 turns";
+		case ACT_BA_FIRE_1:        return "ball of fire (72) every 400 turns";
+		case ACT_DRAIN_1:          return "drain life (100) every 100+d100 turns";
+		case ACT_BA_COLD_2:        return "ball of cold (100) every 300 turns";
+		case ACT_BA_ELEC_2:        return "ball of lightning (100) every 500 turns";
+		case ACT_DRAIN_2:          return "drain life (120) every 400 turns";
+		case ACT_VAMPIRE_1:        return "vampiric drain (3*50) every 400 turns";
+		case ACT_BO_MISS_2:        return "arrows (150) every 90+d90 turns";
+		case ACT_BA_FIRE_2:        return "fire ball (120) every 225+d225 turns";
+		case ACT_BA_COLD_3:        return "ball of cold (200) every 325+d325 turns";
+		case ACT_WHIRLWIND:        return "whirlwind attack every 250 turns";
+		case ACT_VAMPIRE_2:        return "vampiric drain (3*100) every 400 turns";
+		case ACT_CALL_CHAOS:       return "call chaos every 350 turns";
+		case ACT_SHARD:            return "shard ball (120+level) every 400 turns";
+		case ACT_DISP_EVIL:        return "dispel evil (level*5) every 300+d300 turns";
+		case ACT_DISP_GOOD:        return "dispel good (level*5) every 300+d300 turns";
+		case ACT_BA_MISS_3:        return "elemental breath (300) every 500 turns";
+		case ACT_CONFUSE:          return "confuse monster every 15 turns";
+		case ACT_SLEEP:            return "sleep nearby monsters every 55 turns";
+		case ACT_QUAKE:            return "earthquake (rad 10) every 50 turns";
+		case ACT_TERROR:           return "terror every 3 * (level+10) turns";
+		case ACT_TELE_AWAY:        return "teleport away every 200 turns";
+		case ACT_BANISH_EVIL:      return "banish evil every 250+d250 turns";
+		case ACT_GENOCIDE:         return "genocide every 500 turns";
+		case ACT_MASS_GENO:        return "mass genocide every 1000 turns";
+		case ACT_CHARM_ANIMAL:     return "charm animal every 300 turns";
+		case ACT_CHARM_UNDEAD:     return "enslave undead every 333 turns";
+		case ACT_CHARM_OTHER:      return "charm monster every 400 turns";
+		case ACT_CHARM_ANIMALS:    return "animal friendship every 500 turns";
+		case ACT_CHARM_OTHERS:     return "mass charm every 750 turns";
+		case ACT_SUMMON_ANIMAL:    return "summon animal every 200+d300 turns";
+		case ACT_SUMMON_PHANTOM:   return "summon phantasmal servant every 200+d200 turns";
+		case ACT_SUMMON_ELEMENTAL: return "summon elemental every 750 turns";
+		case ACT_SUMMON_DEMON:     return "summon demon every 666+d333 turns";
+		case ACT_SUMMON_UNDEAD:    return "summon undead every 666+d333 turns";
+		case ACT_CURE_LW:          return "remove fear & heal 30 hp every 10 turns";
+		case ACT_CURE_MW:          return "heal 4d8 & wounds every 3+d3 turns";
+		case ACT_CURE_POISON:      return "remove fear and cure poison every 5 turns";
+		case ACT_REST_LIFE:        return "restore life levels every 450 turns";
+		case ACT_REST_ALL:         return "restore stats and life levels every 750 turns";
+		case ACT_CURE_700:         return "heal 700 hit points every 250 turns";
+		case ACT_CURE_1000:        return "heal 1000 hit points every 888 turns";
+		case ACT_ESP:              return "temporary ESP (dur 25+d30) every 200 turns";
+		case ACT_BERSERK:          return "heroism and berserk (dur 50+d50) every 100+d100 turns";
+		case ACT_PROT_EVIL:        return "protect evil (dur level*3 + d25) every 225+d225 turns";
+		case ACT_RESIST_ALL:       return "resist elements (dur 40+d40) every 200 turns";
+		case ACT_SPEED:            return "speed (dur 20+d20) every 250 turns";
+		case ACT_XTRA_SPEED:       return "speed (dur 75+d75) every 200+d200 turns";
+		case ACT_WRAITH:           return "wraith form (level/2 + d(level/2)) every 1000 turns";
+		case ACT_INVULN:           return "invulnerability (dur 8+d8) every 1000 turns";
+		case ACT_LIGHT:            return "light area (dam 2d15) every 10+d10 turns";
+		case ACT_MAP_LIGHT:        return "light (dam 2d15) & map area every 50+d50 turns";
+		case ACT_DETECT_ALL:       return "detection every 55+d55 turns";
+		case ACT_DETECT_XTRA:      return "detection, probing and identify true every 1000 turns";
+		case ACT_ID_FULL:          return "identify true every 750 turns";
+		case ACT_ID_PLAIN:         return "identify spell every 10 turns";
+		case ACT_RUNE_EXPLO:       return "explosive rune every 200 turns";
+		case ACT_RUNE_PROT:        return "rune of protection every 400 turns";
+		case ACT_SATIATE:          return "satisfy hunger every 200 turns";
+		case ACT_DEST_DOOR:        return "destroy doors every 10 turns";
+		case ACT_STONE_MUD:        return "stone to mud every 5 turns";
+		case ACT_RECHARGE:         return "recharging every 70 turns";
+		case ACT_ALCHEMY:          return "alchemy every 500 turns";
+		case ACT_DIM_DOOR:         return "dimension door every 100 turns";
+		case ACT_TELEPORT:         return "teleport (range 100) every 45 turns";
+		case ACT_RECALL:           return "word of recall every 200 turns";
+		default:                   return "something undefined";
 		}
 	}
 
 	/* Some artefacts can be activated */
 	switch (o_ptr->name1)
 	{
-	case ART_DAGGER_INFERNO:
-		{
-			return "fire bolt (9d8) every 8+d8 turns";
-		}
-	case ART_COCYTUS:
-		{
-			return "frost bolt (6d8) every 7+d7 turns";
-		}
-	case ART_DAGGER_FURCIFER:
-		{
-			return "lightning bolt (4d8) every 6+d6 turns";
-		}
-	case ART_KINSLAYER:
-		{
-			return "stinking cloud (12) every 4+d4 turns";
-		}
-	case ART_FROST:
-		{
-			return "frost ball (48) every 5+d5 turns";
-		}
-	case ART_DANCING:
-		{
-			return "remove fear and cure poison every 5 turns";
-		}
-	case ART_MICHAEL:
-		{
-			return "frost ball (100) every 300 turns";
-		}
-	case ART_DAWN:
-		{
-			return "summon a Black Reaver every 500+d500 turns";
-		}
-	case ART_RASHAVERAK:
-		{
-			return "fire ball (72) every 400 turns";
-		}
-	case ART_MORNINGSTAR:
-		{
-			return "large fire ball (72) every 100 turns";
-		}
+	case ART_DAGGER_INFERNO:  return "fire bolt (9d8) every 8+d8 turns";
+	case ART_COCYTUS:         return "frost bolt (6d8) every 7+d7 turns";
+	case ART_DAGGER_FURCIFER: return "lightning bolt (4d8) every 6+d6 turns";
+	case ART_KINSLAYER:       return "stinking cloud (12) every 4+d4 turns";
+	case ART_FROST:           return "frost ball (48) every 5+d5 turns";
+	case ART_DANCING:         return "remove fear and cure poison every 5 turns";
+	case ART_MICHAEL:         return "frost ball (100) every 300 turns";
+	case ART_DAWN:            return "summon a Black Reaver every 500+d500 turns";
+	case ART_RASHAVERAK:      return "fire ball (72) every 400 turns";
+	case ART_MORNINGSTAR:     return "large fire ball (72) every 100 turns";
 	case ART_BOOTS_FURCIFER:
-		{
-			return "haste self (50 turns) every 200 turns";
-		}
-	case ART_BOOTS_GABRIEL:
-	{
-		return "haste self (50 turns) every 200 turns";
-	}
-	case ART_ELIGOR:
-		{
-			return "drain life (120) every 400 turns";
-		}
-	case ART_JUSTICE:
-		{
-			return "drain life (90) every 70 turns";
-		}
-	case ART_PRAVUIL:
-		{
-			return "door and trap destruction every 10 turns";
-		}
-	case ART_AZRAEL:
-		{
-			return "word of recall every 200 turns";
-		}
-	case ART_BELETH:
-		{
-			return "haste self (20+d20 turns) every 100+d100 turns";
-		}
-	case ART_ERIRIL:
-		{
-			return "identify every 10 turns";
-		}
-	case ART_ATAL:
-		{
-			return "probing, detection and full id  every 1000 turns";
-		}
-	case ART_TROLLS:
-		{
-			return "mass genocide every 1000 turns";
-		}
-	case ART_RONOVE:
-		{
-			return "cure wounds (4d7) every 3+d3 turns";
-		}
-	case ART_DEATH:
-		{
-			return "fire branding of bolts every 999 turns";
-		}
-	case ART_ANDROMALIUS:
-		{
-			return "a getaway every 35 turns";
-		}
-	case ART_ODIN:
-		{
-			return "lightning ball (100) every 500 turns";
-		}
-	case ART_DESTINY:
-		{
-			return "stone to mud every 5 turns";
-		}
-	case ART_CORSON:
-		{
-			return "heal (1000) every 888 turns";
-		}
-	case ART_AMAYMON:
-	{
-		return "poisonous nether breath(700) every 888 turns";
-	}
-	case ART_ROBE_MICHAEL:
-		{
-			return ("heal (777), curing and heroism every 300 turns");
-		}
-	case ART_VEPAR:
-	    {
-		return ("storm of the Dark Waters every 500 turns");
-    	}
-/*
-	case ART_ORCS:
-		{
-			return "genocide every 500 turns";
-		}
-*/
-	case ART_LIFE:
-		{
-			return "restore life levels every 450 turns";
-		}
-	case ART_TRITONS:
-		{
-			return "teleport away every 150 turns";
-		}
-	case ART_JOSEPH:
-		{
-			return "resistance (20+d20 turns) every 111 turns";
-		}
-	case ART_DRAEBOR:
-		{
-			return "confusion ball (200) radius 5 and blink";
-		}
-	case ART_BARD:
-		{
-			return "recharge item I every 70 turns";
-		}
-	case ART_SHIFTER:
-		{
-			return "teleport every 45 turns";
-		}
-	case ART_PHENEX:
-		{
-			return "confuse monster every 15 turns";
-		}
-	case ART_LIGHT:
-		{
-			return "magic missile (2d6) every 2 turns";
-		}
-	case ART_IRONFIST:
-		{
-			return "fire bolt (9d8) every 8+d8 turns";
-		}
-	case ART_GHOULS:
-		{
-			return "frost bolt (6d8) every 7+d7 turns";
-		}
-	case ART_FURFICER:
-		{
-			return "lightning bolt (4d8) every 6+d6 turns";
-		}
-	case ART_DEAD:
-		{
-			return "acid bolt (5d8) every 5+d5 turns";
-		}
-	case ART_GRIMREAPER:
-		{
-			return "a magical seeker bolt (450) every 90+d90 turns";
-		}
-	case ART_SKULLKEEPER:
-		{
-			return "detection every 55+d55 turns";
-		}
-	case ART_SUN:
-		{
-			return "heal (700) every 250 turns";
-		}
-	case ART_ASMODAI:
-		{
-			return "star ball (150) every 1000 turns";
-		}
-	case ART_BAPHOMET:
-	{
-		return "star ball (150) every 1000 turns";
-	}
+	case ART_BOOTS_GABRIEL:   return "haste self (50 turns) every 200 turns";
+	case ART_ELIGOR:          return "drain life (120) every 400 turns";
+	case ART_JUSTICE:         return "drain life (90) every 70 turns";
+	case ART_PRAVUIL:         return "door and trap destruction every 10 turns";
+	case ART_AZRAEL:          return "word of recall every 200 turns";
+	case ART_BELETH:          return "haste self (20+d20 turns) every 100+d100 turns";
+	case ART_ERIRIL:          return "identify every 10 turns";
+	case ART_ATAL:            return "probing, detection and full id  every 1000 turns";
+	case ART_TROLLS:          return "mass genocide every 1000 turns";
+	case ART_RONOVE:          return "cure wounds (4d7) every 3+d3 turns";
+	case ART_DEATH:           return "fire branding of bolts every 999 turns";
+	case ART_ANDROMALIUS:     return "a getaway every 35 turns";
+	case ART_ODIN:            return "lightning ball (100) every 500 turns";
+	case ART_DESTINY:         return "stone to mud every 5 turns";
+	case ART_CORSON:          return "heal (1000) every 888 turns";
+	case ART_AMAYMON:         return "poisonous nether breath(700) every 888 turns";
+	case ART_ROBE_MICHAEL:    return "heal (777), curing and heroism every 300 turns";
+	case ART_VEPAR:           return "cast Storm of the Dark Waters every 500 turns";
+	case ART_SEIRIM:          return "genocide every 500 turns";
+	case ART_LIFE:            return "restore life levels every 450 turns";
+	case ART_TRITONS:         return "teleport others away every 150 turns";
+	case ART_SIMPLE:          return "sleep nearby monsters every 55 turns";
+	case ART_JOSEPH:          return "resistance (20+d20 turns) every 111 turns";
+	case ART_DRAEBOR:         return "confusion ball (200) radius 5 and blink";
+	case ART_BARD:            return "recharge item I every 70 turns";
+	case ART_NYNAULD:         return "teleport every 45 turns";
+	case ART_PHENEX:          return "confuse monster every 15 turns";
+	case ART_LIGHT:           return "magic missile (2d6) every 2 turns";
+	case ART_IRONFIST:        return "fire bolt (9d8) every 8+d8 turns";
+	case ART_GHOULS:          return "frost bolt (6d8) every 7+d7 turns";
+	case ART_FURFICER:        return "lightning bolt (4d8) every 6+d6 turns";
+	case ART_DEAD:            return "acid bolt (5d8) every 5+d5 turns";
+	case ART_GRIMREAPER:      return "a magical seeker bolt (450) every 90+d90 turns";
+	case ART_SKULLKEEPER:     return "detection every 55+d55 turns";
+	case ART_SUN:             return "heal (700) every 250 turns";
+	case ART_ASMODAI:         return "star ball (150) every 1000 turns";
+	case ART_BAPHOMET:        return "star ball (150) every 1000 turns";
 	case ART_SAMAEL:
-	{
-		return "breathe elements (300), berserk rage, bless, and resistance";
-	}
 	case ART_ABADDON:
-	{
-		return "breathe elements (300), berserk rage, bless, and resistance";
+	case ART_BLOOD_MICHAEL:   return "breathe elements (300), berserk rage, bless, and resistance";
+	case ART_BEATRICE:        return "illumination every 10+d10 turns";
+	case ART_EOS:             return "magic mapping and light every 20+d20 turns, draining you";
+	case ART_HIPPO:           return "clairvoyance and cure";
+	case ART_AMULET_MICHAEL:
+	case ART_AMULET_RAPHAEL:  return "dispel evil (x5) and protection from evil every 450+d450 turns";
+	case ART_DOOM:            return "fire ball(250) and protection from fire every 450+d50 turns";
+	case ART_RING_GEORGE:     return "shield and berserk (100+d25 turns) every 100+d100 turns";
+	case ART_RING_GABRIEL:    return "haste self (125 turns) every 150+d150 turns";
+	case ART_RING_RAPHAEL:    return "fire ball(250), healing and protective magic every 700+d250 turns";
+	case ART_RING_MICHAEL:    return "frost ball(200) and combat magic  every 250+d250 turns";
+	case ART_EMMANUEL:        return "lightning ball(250) and heal(700) every 700+d300 turns";
+	case ART_FIRST:           return "bizarre things every 450+d450 turns";
+	case ART_LAMMASU:
+	case ART_MASK:            return "rays of fear in every direction";
 	}
-	case ART_BLOOD_MICHAEL:
-	{
-		return "breathe elements (300), berserk rage, bless, and resistance";
-	}
-	case ART_BEATRICE:
-		{
-			return "illumination every 10+d10 turns";
-		}
-	case ART_EOS:
-		{
-			return "magic mapping and light every 20+d20 turns, draining you";
-		}
-	case ART_HIPPO:
-		{
-			return "clairvoyance and cure";
-		}
-	case ART_AMULET_MICHAEL : case ART_AMULET_RAPHAEL:
-		{
-			return "dispel evil (x5) and protection from evil every 450+d450 turns";
-		}
-	case ART_DOOM:
-		{
-			return "fireball(250) and protection from fire every 450+d50 turns";
-		}
-	case ART_RING_GEORGE:
-		{
-			return "shield and berserk (100+d25 turns) every 100+d100 turns";
-		}
-	case ART_RING_GABRIEL:
-		{
-			return "haste self (125 turns) every 150+d150 turns";
-		}
-	case ART_RING_RAPHAEL:
-		{
-			return "fireball(250), healing and protective magic every 700+d250 turns";
-		}
-	case ART_RING_MICHAEL:
-		{
-			return "frostball(200) and combat magic  every 250+d250 turns";
-		}
-	case ART_EMMANUEL:
-		{
-			return "lightning ball(250) and heal(700) every 700+d300 turns";
-		}
-	case ART_FIRST:
-		{
-			return "bizarre things every 450+d450 turns";
-		}
-	case ART_LAMMASU: case ART_MASK:
-		{
-			return "rays of fear in every direction";
-		}
-	}
-
 
 	if (o_ptr->name2 == EGO_PLANAR)
 	{
@@ -2548,14 +2139,10 @@ cptr item_activation(object_type *o_ptr)
 	{
 		switch(o_ptr->sval)
 		{
-		case SV_RING_FLAMES:
-			return "ball of fire and resist fire";
-		case SV_RING_ICE:
-			return "ball of cold and resist cold";
-		case SV_RING_ACID:
-			return "ball of acid and resist acid";
-		default:
-			return NULL;
+		case SV_RING_FLAMES: return "ball of fire and resist fire";
+		case SV_RING_ACID:   return "ball of acid and resist acid";
+		case SV_RING_ICE:    return "ball of cold and resist cold";
+		default: return NULL;
 		}
 	}
 
@@ -2565,60 +2152,20 @@ cptr item_activation(object_type *o_ptr)
 	/* Branch on the sub-type */
 	switch (o_ptr->sval)
 	{
-	case SV_DRAGON_BLUE:
-		{
-			return "breathe lightning (100) every 450+d450 turns";
-		}
-	case SV_DRAGON_WHITE:
-		{
-			return "breathe frost (110) every 450+d450 turns";
-		}
-	case SV_DRAGON_BLACK:
-		{
-			return "breathe acid (130) every 450+d450 turns";
-		}
-	case SV_DRAGON_GREEN:
-		{
-			return "breathe poison gas (150) every 450+d450 turns";
-		}
-	case SV_DRAGON_RED:
-		{
-			return "breathe fire (200) every 450+d450 turns";
-		}
-	case SV_DRAGON_MULTIHUED:
-		{
-			return "breathe multi-hued (250) every 225+d225 turns";
-		}
-	case SV_DRAGON_BRONZE:
-		{
-			return "breathe confusion (120) every 450+d450 turns";
-		}
-	case SV_DRAGON_GOLD:
-		{
-			return "breathe sound (130) every 450+d450 turns";
-		}
-	case SV_DRAGON_CHAOS:
-		{
-			return "breathe chaos/disenchant (220) every 300+d300 turns";
-		}
-	case SV_DRAGON_LAW:
-		{
-			return "breathe sound/shards (230) every 300+d300 turns";
-		}
-	case SV_DRAGON_BALANCE:
-		{
-			return "You breathe balance (250) every 300+d300 turns";
-		}
-	case SV_DRAGON_SHINING:
-		{
-			return "breathe light/darkness (200) every 300+d300 turns";
-		}
-	case SV_DRAGON_POWER:
-		{
-			return "breathe the elements (300) every 300+d300 turns";
-		}
+	case SV_DRAGON_BLUE:      return "breathe lightning (100) every 450+d450 turns";
+	case SV_DRAGON_WHITE:     return "breathe frost (110) every 450+d450 turns";
+	case SV_DRAGON_BLACK:     return "breathe acid (130) every 450+d450 turns";
+	case SV_DRAGON_GREEN:     return "breathe poison gas (150) every 450+d450 turns";
+	case SV_DRAGON_RED:       return "breathe fire (200) every 450+d450 turns";
+	case SV_DRAGON_MULTIHUED: return "breathe multi-hued (250) every 225+d225 turns";
+	case SV_DRAGON_BRONZE:    return "breathe confusion (120) every 450+d450 turns";
+	case SV_DRAGON_GOLD:      return "breathe sound (130) every 450+d450 turns";
+	case SV_DRAGON_CHAOS:     return "breathe chaos/disenchant (220) every 300+d300 turns";
+	case SV_DRAGON_LAW:       return "breathe sound/shards (230) every 300+d300 turns";
+	case SV_DRAGON_BALANCE:   return "You breathe balance (250) every 300+d300 turns";
+	case SV_DRAGON_SHINING:   return "breathe light/darkness (200) every 300+d300 turns";
+	case SV_DRAGON_POWER:     return "breathe the elements (300) every 300+d300 turns";
 	}
-
 
 	/* Oops */
 	return NULL;
@@ -2752,7 +2299,7 @@ int identify_fully_strings( object_type *o_ptr )
 		if (f1 & (TR1_TUNNEL))	info[i++] = "It affects your ability to tunnel.";
 		if (f1 & (TR1_SPEED))	info[i++] = "It affects your movement speed.";
 		if (f1 & (TR1_BLOWS))	info[i++] = "It affects your attack speed.";
-		
+
 		if (f1 & (TR1_BRAND_ACID))	info[i++] = "It does extra damage from acid.";
 		if (f1 & (TR1_BRAND_ELEC))	info[i++] = "It does extra damage from electricity.";
 		if (f1 & (TR1_BRAND_FIRE))	info[i++] = "It does extra damage from fire.";
@@ -2962,13 +2509,13 @@ void display_koff(int k_idx)
 			{
 				/* Check for this spell */
 				if (fake_spell_flags[sval] & (1L << spell))
-	
+
 				{
 					/* Collect this spell */
 					spells[num++] = spell;
 				}
 			}
-	
+
 			/* Print spells */
 			print_spells(spells, num, 2, 0,
 				(q_ptr->tval == p_ptr->realm1+89 ?p_ptr->realm1-1:p_ptr->realm2-1));
@@ -3180,7 +2727,7 @@ cptr mention_use(int i)
 	}
 
 	weight_capacity = adj_stat[p_ptr->stat_ind[A_STR]][ADJ_WEIGHT];
-	
+
 	/* Hack -- Heavy weapon */
 	if (i == INVEN_WIELD)
 	{
@@ -3241,9 +2788,9 @@ cptr describe_use(int i)
 	}
 
 	weight_capacity = adj_stat[p_ptr->stat_ind[A_STR]][ADJ_WEIGHT];
-	
+
 	/*TODO: These 20 lines could be 5 lines of code, would need testing*/
-	
+
 	/* Hack -- Heavy weapon */
 	if (i == INVEN_WIELD)
 	{
@@ -3328,36 +2875,36 @@ bool item_tester_okay(object_type *o_ptr)
 int scan_floor(int *items, int size, int y, int x, int mode)
 {
 	int this_o_idx, next_o_idx;
-    
+
 	int num = 0;
-    
+
 	/* Sanity */
 	if (!in_bounds(y, x)) return (0);
-    
+
 	/* Scan all objects in the grid */
 	for (this_o_idx = cave[py][px].o_idx; this_o_idx; this_o_idx = next_o_idx)
 	{
 		object_type *o_ptr;
-        
+
 		/* Get the object */
 		o_ptr = &o_list[this_o_idx];
-        
+
 		/* Get the next object */
 		next_o_idx = o_ptr->next_o_idx;
-        
+
 		/* Verify item tester */
 		if ((mode & 0x01) && !item_tester_okay(o_ptr)) continue;
-        
+
 		/* Marked items only */
 		if ((mode & 0x02) && !o_ptr->marked) continue;
-        
+
 		/* Accept this item */
 		items[num++] = this_o_idx;
-        
+
 		/* Enforce size limit */
 		if (num >= size) break;
 	}
-    
+
 	/* Result */
 	return (num);
 }
@@ -3817,87 +3364,87 @@ void show_floor(const int *floor_list, int floor_num)
 {
 	int i, j, k, l;
 	int col, len, lim;
-    
+
 	object_type *o_ptr;
-    
+
 	char o_name[80];
-    
+
 	char tmp_val[80];
-    
+
 	int out_index[MAX_FLOOR_STACK];
 	byte out_color[MAX_FLOOR_STACK];
 	char out_desc[MAX_FLOOR_STACK][80];
-    
-    
+
+
 	/* Default length */
 	len = 79 - 50;
-    
+
 	/* Maximum space allowed for descriptions */
 	lim = 79 - 3;
-    
+
 	/* Require space for weight (if needed) */
 	if (show_weights) lim -= 9;
-    
+
 	/* Display the inventory */
 	for (k = 0, i = 0; i < floor_num; i++)
 	{
 		o_ptr = &o_list[floor_list[i]];
-        
+
 		/* Is this item acceptable? */
 		if (!item_tester_okay(o_ptr)) continue;
-        
+
 		/* Description */
 		object_desc(o_name, o_ptr, TRUE, 3);
-        
+
 		/* Hack -- enforce max length */
 		o_name[lim] = '\0';
-        
+
 		/* Save the index */
 		out_index[k] = i;
-        
+
 		/* Get inventory color */
 		out_color[k] = tval_to_attr[o_ptr->tval % N_ELEMENTS(tval_to_attr)];
-        
+
 		/* Save the object description */
 		my_strcpy(out_desc[k], o_name, sizeof(out_desc[0]));
-        
+
 		/* Find the predicted "line length" */
 		l = strlen(out_desc[k]) + 5;
-        
+
 		/* Be sure to account for the weight */
 		if (show_weights) l += 9;
-        
+
 		/* Maintain the maximum length */
 		if (l > len) len = l;
-        
+
 		/* Advance to next "line" */
 		k++;
 	}
-    
+
 	/* Find the column to start in */
 	col = (len > 76) ? 0 : (79 - len);
-    
+
 	/* Output each entry */
 	for (j = 0; j < k; j++)
 	{
 		/* Get the index */
 		i = floor_list[out_index[j]];
-        
+
 		/* Get the item */
 		o_ptr = &o_list[i];
-        
+
 		/* Clear the line */
 		prt("", j + 1, col ? col - 2 : col);
-        
+
 		/* Prepare an index --(-- */
 		sprintf(tmp_val, "%c)", index_to_label(out_index[j]));
-        
+
 		/* Clear the line with the (possibly indented) index */
 		put_str(tmp_val, j + 1, col);
-        
+
 		/* Display the entry itself */
 		c_put_str(out_color[j], out_desc[j], j + 1, col + 3);
-        
+
 		/* Display the weight if needed */
 		if (show_weights)
 		{
@@ -3906,7 +3453,7 @@ void show_floor(const int *floor_list, int floor_num)
 			put_str(tmp_val, j + 1, 71);
 		}
 	}
-    
+
 	/* Make a "shadow" below the list (only if needed) */
 	if (j && (j < 23)) prt("", j + 1, col ? col - 2 : col);
 }
@@ -4044,19 +3591,19 @@ static bool get_item_allow(int item)
 static bool get_item_okay(int item)
 {
 	object_type *o_ptr;
-    
+
 	/* Inventory */
 	if (item >= 0)
 	{
 		o_ptr = &inventory[item];
 	}
-    
+
 	/* Floor */
 	else
 	{
 		o_ptr = &o_list[0 - item];
 	}
-    
+
 	/* Verify the item */
 	return (item_tester_okay(o_ptr));
 }
@@ -4182,17 +3729,17 @@ static int get_tag(int *cp, char tag)
 bool get_item(int *cp, cptr pmt, cptr str, int mode)
 {
 	char which;
-    
+
 	int i, j, k;
-    
+
 	int i1, i2;
 	int e1, e2;
 	int f1, f2;
-    
+
 	bool done, item;
-    
+
 	bool oops = FALSE;
-    
+
 	bool use_inven = ((mode & (USE_INVEN)) ? TRUE : FALSE);
 	bool use_equip = ((mode & (USE_EQUIP)) ? TRUE : FALSE);
 	bool use_floor = ((mode & (USE_FLOOR)) ? TRUE : FALSE);
@@ -4201,12 +3748,12 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 	bool allow_inven = FALSE;
 	bool allow_equip = FALSE;
 	bool allow_floor = FALSE;
-    
+
 	bool toggle = FALSE;
-    
+
 	char tmp_val[160];
 	char out_val[160];
-    
+
 	int floor_list[MAX_FLOOR_STACK];
 	int floor_num;
 
@@ -4214,7 +3761,7 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 	p_ptr->command_see = TRUE;
 
 #ifdef ALLOW_REPEAT
-    
+
 	/* Get the item index */
 	if (repeat_pull(cp))
 	{
@@ -4223,10 +3770,10 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 		{
 			/* Forget the item_tester_tval restriction */
 			item_tester_tval = 0;
-            
+
 			/* Forget the item_tester_hook restriction */
 			item_tester_hook = NULL;
-            
+
 			/* Success */
 			return (TRUE);
 		}
@@ -4236,82 +3783,82 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 			repeat_clear();
 		}
 	}
-    
+
 #endif /* ALLOW_REPEAT */
-    
-    
+
+
 	/* Paranoia XXX XXX XXX */
 	msg_print( NULL );
-    
-    
+
+
 	/* Not done */
 	done = FALSE;
-    
+
 	/* No item selected */
 	item = FALSE;
-    
-    
+
+
 	/* Full inventory */
 	i1 = 0;
 	i2 = INVEN_PACK - 1;
-    
+
 	/* Forbid inventory */
 	if (!use_inven) i2 = -1;
-    
+
 	/* Restrict inventory indexes */
 	while ((i1 <= i2) && (!get_item_okay(i1))) i1++;
 	while ((i1 <= i2) && (!get_item_okay(i2))) i2--;
-    
+
 	/* Accept inventory */
 	if (i1 <= i2) allow_inven = TRUE;
-    
-    
+
+
 	/* Full equipment */
 	e1 = INVEN_WIELD;
 	e2 = INVEN_TOTAL - 1;
-    
+
 	/* Forbid equipment */
 	if (!use_equip) e2 = -1;
-    
+
 	/* Restrict equipment indexes */
 	while ((e1 <= e2) && (!get_item_okay(e1))) e1++;
 	while ((e1 <= e2) && (!get_item_okay(e2))) e2--;
-    
+
 	/* Accept equipment */
 	if (e1 <= e2) allow_equip = TRUE;
-    
-    
+
+
 	/* Scan all objects in the grid */
 	floor_num = scan_floor(floor_list, MAX_FLOOR_STACK, py, px, 0x00);
-    
+
 	/* Full floor */
 	f1 = 0;
 	f2 = floor_num - 1;
-    
+
 	/* Forbid floor */
 	if (!use_floor) f2 = -1;
-    
+
 	/* Restrict floor indexes */
 	while ((f1 <= f2) && (!get_item_okay(0 - floor_list[f1]))) f1++;
 	while ((f1 <= f2) && (!get_item_okay(0 - floor_list[f2]))) f2--;
-    
+
 	/* Accept floor */
 	if (f1 <= f2) allow_floor = TRUE;
-    
-    
+
+
 	/* Require at least one legal choice */
 	if (!allow_inven && !allow_equip && !allow_floor)
 	{
 		/* Cancel p_ptr->command_see */
 		p_ptr->command_see = FALSE;
-        
+
 		/* Oops */
 		oops = TRUE;
-        
+
 		/* Done */
 		done = TRUE;
 	}
-    
+
 	/* Analyze choices */
 	else
 	{
@@ -4322,35 +3869,35 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 		{
 			p_ptr->command_wrk = (USE_EQUIP);
 		}
-        
+
 		/* Use inventory if allowed */
 		else if (use_inven)
 		{
 			p_ptr->command_wrk = (USE_INVEN);
 		}
-        
+
 		/* Use equipment if allowed */
 		else if (use_equip)
 		{
 			p_ptr->command_wrk = (USE_EQUIP);
 		}
-        
+
 		/* Use floor if allowed , konijn decided that floor is always allowed */
 		else /*if (easy_floor)*/
 		{
 			p_ptr->command_wrk = (USE_FLOOR);
 		}
 	}
-    
-    
+
+
 	/* Start out in "display" mode */
 	if (p_ptr->command_see)
 	{
 		/* Save screen */
 		Term_save();
 	}
-    
-    
+
+
 	/* Repeat until done */
 	while (!done)
 	{
@@ -4359,34 +3906,34 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 		{
 			int ni = 0;
 			int ne = 0;
-            
+
 			/* Scan windows */
 			for (j = 0; j < ANGBAND_TERM_MAX; j++)
 			{
 				/* Unused */
 				if (!angband_term[j]) continue;
-                
+
 				/* Count windows displaying inven */
 				if (window_flag[j] & (PW_INVEN)) ni++;
-                
+
 				/* Count windows displaying equip */
 				if (window_flag[j] & (PW_EQUIP)) ne++;
 			}
-            
+
 			/* Toggle if needed */
 			if (((p_ptr->command_wrk == (USE_EQUIP)) && ni && !ne) ||
 			    ((p_ptr->command_wrk == (USE_INVEN)) && !ni && ne))
 			{
 				/* Toggle */
 				toggle_inven_equip();
-                
+
 				/* Track toggles */
 				toggle = !toggle;
 			}
-            
+
 			/* Update */
 			p_ptr->window |= (PW_INVEN | PW_EQUIP);
-            
+
 			/* Redraw windows */
 			window_stuff();
 		}
@@ -4396,103 +3943,103 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 		{
 			/* Redraw if needed */
 			if (p_ptr->command_see) show_inven();
-            
+
 			/* Begin the prompt */
 			sprintf(out_val, "Inven:");
-            
+
 			/* List choices */
 			if (i1 <= i2)
 			{
 				/* Build the prompt */
 				sprintf(tmp_val, " %c-%c,",
 				        index_to_label(i1), index_to_label(i2));
-                
+
 				/* Append */
 				my_strcat(out_val, tmp_val, sizeof(out_val));
 			}
-            
+
 			/* Indicate ability to "view" */
 			if (!p_ptr->command_see) strcat(out_val, " * to see,");
-            
+
 			/* Indicate legality of "toggle" */
 			if (use_equip) strcat(out_val, " / for Equip,");
-            
+
 			/* Indicate legality of the "floor" */
 			if (allow_floor) strcat(out_val, " - for floor,");
 		}
-        
+
 		/* Viewing equipment */
 		else if (p_ptr->command_wrk == (USE_EQUIP))
 		{
 			/* Redraw if needed */
 			if (p_ptr->command_see) show_equip();
-            
+
 			/* Begin the prompt */
 			sprintf(out_val, "Equip:");
-            
+
 			/* List choices */
 			if (e1 <= e2)
 			{
 				/* Build the prompt */
 				sprintf(tmp_val, " %c-%c,",
 				        index_to_label(e1), index_to_label(e2));
-                
+
 				/* Append */
 				my_strcat(out_val, tmp_val, sizeof(out_val));
 			}
-            
+
 			/* Indicate ability to "view" */
 			if (!p_ptr->command_see) strcat(out_val, " * to see,");
-            
+
 			/* Indicate legality of "toggle" */
 			if (use_inven) strcat(out_val, " / for Inven,");
-            
+
 			/* Indicate legality of the "floor" */
 			if (allow_floor) strcat(out_val, " - for floor,");
 		}
-        
+
 		/* Viewing floor */
 		else
 		{
 			/* Redraw if needed */
 			if (p_ptr->command_see) show_floor(floor_list, floor_num);
-            
+
 			/* Begin the prompt */
 			sprintf(out_val, "Floor:");
-            
+
 			/* List choices */
 			if (f1 <= f2)
 			{
 				/* Build the prompt */
 				sprintf(tmp_val, " %c-%c,", I2A(f1), I2A(f2));
-                
+
 				/* Append */
 				my_strcat(out_val, tmp_val, sizeof(out_val));
 			}
-            
+
 			/* Indicate ability to "view" */
 			if (!p_ptr->command_see) strcat(out_val, " * to see,");
-            
+
 			/* Append */
 			if (use_inven) strcat(out_val, " / for Inven,");
-            
+
 			/* Append */
 			else if (use_equip) strcat(out_val, " / for Equip,");
 		}
-        
+
 		/* Finish the prompt */
 		strcat(out_val, " ESC");
-        
+
 		/* Build the prompt */
 		strnfmt(tmp_val, sizeof(tmp_val), "(%s) %s", out_val, pmt);
-        
+
 		/* Show the prompt */
 		prt(tmp_val, 0, 0);
-        
-        
+
+
 		/* Get a key */
 		which = inkey();
-        
+
 		/* Parse it */
 		switch (which)
 		{
@@ -4501,7 +4048,7 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 				done = TRUE;
 				break;
 			}
-                
+
 			case '*':
 			case '?':
 			case ' ':
@@ -4511,24 +4058,24 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 				{
 					/* Flip flag */
 					p_ptr->command_see = FALSE;
-                    
+
 					/* Load screen */
 					Term_load();
 				}
-                
+
 				/* Show the list */
 				else
 				{
 					/* Save screen */
 					Term_save();
-                    
+
 					/* Flip flag */
 					p_ptr->command_see = TRUE;
 				}
-                
+
 				break;
 			}
-                
+
 			case '/':
 			{
 				/* Toggle to inventory */
@@ -4536,34 +4083,34 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 				{
 					p_ptr->command_wrk = (USE_INVEN);
 				}
-                
+
 				/* Toggle to equipment */
 				else if (use_equip && (p_ptr->command_wrk != (USE_EQUIP)))
 				{
 					p_ptr->command_wrk = (USE_EQUIP);
 				}
-                
+
 				/* No toggle allowed */
 				else
 				{
 					msg_bell("Cannot switch item selector!");
 					break;
 				}
-                
+
 				/* Hack -- Fix screen */
 				if (p_ptr->command_see)
 				{
 					/* Load screen */
 					Term_load();
-                    
+
 					/* Save screen */
 					Term_save();
 				}
-                
+
 				/* Need to redraw */
 				break;
 			}
-                
+
 			case '-':
 			{
 				/* Paranoia */
@@ -4572,7 +4119,7 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 					msg_bell("Cannot select floor!");
 					break;
 				}
-                
+
 				if (TRUE)
 				{
 					/* There is only one item */
@@ -4583,63 +4130,63 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 						{
 							/* Special index */
 							k = 0 - floor_list[0];
-                            
+
 							/* Allow player to "refuse" certain actions */
 							if (!get_item_allow(k))
 							{
 								done = TRUE;
 								break;
 							}
-                            
+
 							/* Accept that choice */
 							(*cp) = k;
 							item = TRUE;
 							done = TRUE;
-                            
+
 							break;
 						}
 					}
-                    
+
 					/* Hack -- Fix screen */
 					if (p_ptr->command_see)
 					{
 						/* Load screen */
 						Term_load();
-                        
+
 						/* Save screen */
 						Term_save();
 					}
-                    
+
 					p_ptr->command_wrk = (USE_FLOOR);
-                    
+
 					break;
 				}
-                
+
 				/* Check each legal object */
 				for (i = 0; i < floor_num; ++i)
 				{
 					/* Special index */
 					k = 0 - floor_list[i];
-                    
+
 					/* Skip non-okay objects */
 					if (!get_item_okay(k)) continue;
-                    
+
 					/* Verify the item (if required) */
 					if (!verify("Try", k)) continue;
-                    
+
 					/* Allow player to "refuse" certain actions */
 					if (!get_item_allow(k)) continue;
-                    
+
 					/* Accept that choice */
 					(*cp) = k;
 					item = TRUE;
 					done = TRUE;
 					break;
 				}
-                
+
 				break;
 			}
-                
+
 			case '0':
 			case '1': case '2': case '3':
 			case '4': case '5': case '6':
@@ -4651,35 +4198,35 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 					msg_bell("Illegal object choice (tag)!");
 					break;
 				}
-                
+
 				/* Hack -- Validate the item */
 				if ((k < INVEN_WIELD) ? !allow_inven : !allow_equip)
 				{
 					msg_bell("Illegal object choice (tag)!");
 					break;
 				}
-                
+
 				/* Validate the item */
 				if (!get_item_okay(k))
 				{
 					msg_bell("Illegal object choice (tag)!");
 					break;
 				}
-                
+
 				/* Allow player to "refuse" certain actions */
 				if (!get_item_allow(k))
 				{
 					done = TRUE;
 					break;
 				}
-                
+
 				/* Accept that choice */
 				(*cp) = k;
 				item = TRUE;
 				done = TRUE;
 				break;
 			}
-                
+
 			case '\n':
 			case '\r':
 			{
@@ -4691,10 +4238,10 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 						msg_bell("Illegal object choice (default)!");
 						break;
 					}
-                    
+
 					k = i1;
 				}
-                
+
 				/* Choose "default" equipment item */
 				else if (p_ptr->command_wrk == (USE_EQUIP))
 				{
@@ -4703,10 +4250,10 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 						msg_bell("Illegal object choice (default)!");
 						break;
 					}
-                    
+
 					k = e1;
 				}
-                
+
 				/* Choose "default" floor item */
 				else
 				{
@@ -4715,101 +4262,101 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 						msg_bell("Illegal object choice (default)!");
 						break;
 					}
-                    
+
 					k = 0 - floor_list[f1];
 				}
-                
+
 				/* Validate the item */
 				if (!get_item_okay(k))
 				{
 					msg_bell("Illegal object choice (default)!");
 					break;
 				}
-                
+
 				/* Allow player to "refuse" certain actions */
 				if (!get_item_allow(k))
 				{
 					done = TRUE;
 					break;
 				}
-                
+
 				/* Accept that choice */
 				(*cp) = k;
 				item = TRUE;
 				done = TRUE;
 				break;
 			}
-                
+
 			default:
 			{
 				bool do_verify;
-                
+
 				/* Note verify */
 				do_verify = (isupper((unsigned char)which) ? TRUE : FALSE);
-                
+
 				/* Lowercase */
 				which = tolower((unsigned char)which);
-                
+
 				/* Convert letter to inventory index */
 				if (p_ptr->command_wrk == (USE_INVEN))
 				{
 					k = label_to_inven(which);
-                    
+
 					if (k < 0)
 					{
 						msg_bell("Illegal object choice (inven)!");
 						break;
 					}
 				}
-                
+
 				/* Convert letter to equipment index */
 				else if (p_ptr->command_wrk == (USE_EQUIP))
 				{
 					k = label_to_equip(which);
-                    
+
 					if (k < 0)
 					{
 						msg_bell("Illegal object choice (equip)!");
 						break;
 					}
 				}
-                
+
 				/* Convert letter to floor index */
 				else
 				{
 					k = (islower((unsigned char)which) ? A2I(which) : -1);
-                    
+
 					if (k < 0 || k >= floor_num)
 					{
 						msg_bell("Illegal object choice (floor)!");
 						break;
 					}
-                    
+
 					/* Special index */
 					k = 0 - floor_list[k];
 				}
-                
+
 				/* Validate the item */
 				if (!get_item_okay(k))
 				{
 					msg_bell("Illegal object choice (normal)!");
 					break;
 				}
-                
+
 				/* Verify the item */
 				if (do_verify && !verify("Try", k))
 				{
 					done = TRUE;
 					break;
 				}
-                
+
 				/* Allow player to "refuse" certain actions */
 				if (!get_item_allow(k))
 				{
 					done = TRUE;
 					break;
 				}
-                
+
 				/* Accept that choice */
 				(*cp) = k;
 				item = TRUE;
@@ -4818,53 +4365,53 @@ bool get_item(int *cp, cptr pmt, cptr str, int mode)
 			}
 		}
 	}
-    
-    
+
+
 	/* Fix the screen if necessary */
 	if (p_ptr->command_see)
 	{
 		/* Load screen */
 		Term_load();
-        
+
 		/* Hack -- Cancel "display" */
 		p_ptr->command_see = FALSE;
 	}
-    
-    
+
+
 	/* Forget the item_tester_tval restriction */
 	item_tester_tval = 0;
-    
+
 	/* Forget the item_tester_hook restriction */
 	item_tester_hook = NULL;
-    
-    
+
+
 	/* Clean up */
 	if (show_choices)
 	{
 		/* Toggle again if needed */
 		if (toggle) toggle_inven_equip();
-        
+
 		/* Update */
 		p_ptr->window |= (PW_INVEN | PW_EQUIP);
-        
+
 		/* Window stuff */
 		window_stuff();
 	}
-    
-    
+
+
 	/* Clear the prompt line */
 	prt("", 0, 0);
-    
+
 	/* Warning if needed */
 	if (oops && str) msg_print(str);
-    
+
 #ifdef ALLOW_REPEAT
-    
+
 	/* Save item if available */
 	if (item) repeat_push(*cp);
-    
+
 #endif /* ALLOW_REPEAT */
-    
+
 	/* Result */
 	return (item);
 }
@@ -4962,76 +4509,76 @@ byte object_attr(object_type *  o_ptr)
 void alchemy_init(void)
 {
 	int i, j, sv1, sv2, k1, k2;
-	
+
 	bool exists;
-	
+
 	int potion_list[SV_POTION_MAX]; /* list of k_idxs of all potions, by SVAL */
-	
+
 	object_kind *k_ptr;
-	
+
 	s16b target_pval = 0;
 	s16b pval1 = 0;
 	s16b pval2 = 0;
-		
+
 	/* Hack -- Use the "simple" RNG */
 	Rand_quick = TRUE;
-	
+
 	/* Hack -- Induce consistant flavors */
 	Rand_value = seed_alchemy;
-	
+
 	/* Build list of legal potions */
 	for (i = 0; i < SV_POTION_MAX; i++)
 	{
 		potion_list[i] = -1;
-		
+
 		for (j = 0; j < MAX_K_IDX; j++)
 		{
 			k_ptr = &k_info[j];
-			
+
 			/* Found a match */
 			if ((k_ptr->tval == TV_POTION) && (k_ptr->sval == i)) potion_list[i] = j;
 		}
 	}
-	
+
 	for (i = 0; i < SV_POTION_MAX; i++)
 	{
 		k_ptr = &k_info[potion_list[i]];
-		
+
 		if (potion_list[i] > -1 && k_ptr->pval > -1)
 		{
 			while (TRUE)
 			{
 				sv1 = rand_int(SV_POTION_MAX);
 				sv2 = rand_int(SV_POTION_MAX);
-				
+
 				k1 = potion_list[sv1];
 				k2 = potion_list[sv2];
-				
+
 				/* Can't mix with yourself */
 				if (sv1 == sv2) continue;
-				
+
 				/* Neither can be the resulting potion */
 				if ((sv1 == i) || (sv2 == i)) continue;
-				
+
 				/* Must be legal potions */
 				if ((k1 == -1) || (k2 == -1)) continue;
-				
+
 				/*Must be potions that fill the stomach */
 				/*For now this excludes really crappy potions (death etc.) and invulnerability*/
 				if ((k_info[k1].pval < 0) || (k_info[k2].pval < 0)) continue;
-				
+
 				/* Same combination mustn't exist */
 				exists = FALSE;
-				
+
 				for (j = 0; j < i; j++)
 				{
 					if (((sv1 == potion_alch[j].sval1) && (sv2 == potion_alch[j].sval2)) ||
 						((sv1 == potion_alch[j].sval2) && (sv2 == potion_alch[j].sval1)))
 						exists = TRUE;
 				}
-				
+
 				if (exists) continue;
-				
+
 				/* For crazy potions like invulnerability, this is a solution*/
 				/* It cuts of pval at 199 */
 				/* Note that this whole idea might be stupid, pval in Hell is hunger*/
@@ -5039,28 +4586,28 @@ void alchemy_init(void)
 				pval1 = k_info[k1].pval + k_info[k1].level +  (s16b)( k_info[k1].cost > 199 ? 199 : k_info[k1].cost);
 				pval2 = k_info[k2].pval + k_info[k2].level +  (s16b)( k_info[k2].cost > 199 ? 199 : k_info[k2].cost);
 				target_pval = ( k_ptr->pval > 199 ? 199 : k_ptr->pval) + k_ptr->level + (s16b)( k_ptr->cost > 199 ? 199 : k_ptr->cost);
-				
-				
+
+
 				/* Check for legal combination */
 				if ( pval1 + pval2 < target_pval )
 					continue;
-				
 
-				
+
+
 				/* No single component should exceed the total with 100 hunger points */
 				if (( pval1 > target_pval+50) || (pval2 > target_pval+50))
 					continue;
-				
+
 				/* Not too expensive, if possible with a margin of 101 ( originally 1 ) */
 				if (pval1 + pval2 > target_pval + 51)
 				{
 					/* Only rarely allow these potions */
 					if (rand_int(15)) continue;
 				}
-				
+
 				break;
 			}
-			
+
 			potion_alch[i].sval1 = sv1;
 			potion_alch[i].sval2 = sv2;
 		}
@@ -5070,7 +4617,7 @@ void alchemy_init(void)
 			potion_alch[i].sval2 = i;
 		}
 	}
-	
+
 	/* Hack -- Use the "complex" RNG */
 	Rand_quick = FALSE;
 }
@@ -5085,7 +4632,7 @@ byte tval_to_sql_hl( byte tval )
 {
 	switch (tval)
 	{
-		
+
 		case TV_BOOTS:
 		case TV_GLOVES:
 		case TV_HELM:
@@ -5179,14 +4726,14 @@ void do_squelch( void )
 	cave_type *c_ptr;
 	s16b this_o_idx, next_o_idx = 0;
 	int i;
-	
+
 	/* Check everything */
 	for (i = 0; i < INVEN_PACK; i++)
 	{
 		o_ptr = &inventory[i];
 		/* Skip empty slots */
 		if (!o_ptr->k_idx) continue;
-		
+
 		/*If we need to squelch , we squelcht*/
 		if( o_ptr->squelch )
 		{
@@ -5200,22 +4747,22 @@ void do_squelch( void )
 			i=-1;
 		}
 	}
-	
+
 	/* Check the grid */
 	c_ptr = &cave[py][px];
-	
+
 	/* Scan all objects in the grid */
 	for (this_o_idx = c_ptr->o_idx; this_o_idx; this_o_idx = next_o_idx)
 	{
 		/* Acquire object */
 		o_ptr = &o_list[this_o_idx];
-		
+
 		/* Skip empty stuff */
 		if (!o_ptr->k_idx) continue;
-		
+
 		/* Acquire next object */
 		next_o_idx = o_ptr->next_o_idx;
-		
+
 		/* Wipe the object if needed,*/
 		if( o_ptr->squelch )
 		{
@@ -5236,7 +4783,7 @@ void do_squelch( void )
 			prev_o_ptr = o_ptr;
 		}
 	}
-	
+
 }
 
 /*
@@ -5264,18 +4811,18 @@ void consider_squelch( object_type *o_ptr )
 	u32b f1,f2,f3;
 	char o_name[80];
 	cptr s;
-	
+
 	/*If we know already we need to squelch, get out*/
 	if( o_ptr->squelch )
 		return;
-	
+
 	/*Paranoia in case strchr might bomb out on empty inscriptions*/
 	if(quark_str(o_ptr->note))
 	{
 		/*If the item is protected with !k we wont squelch*/
 		/* First find a '!' */
 		s = strchr(quark_str(o_ptr->note), '!');
-		
+
 		/* Process preventions */
 		while (s)
 		{
@@ -5293,21 +4840,21 @@ void consider_squelch( object_type *o_ptr )
 
 	/* Get the item-category */
 	sq_hl = tval_to_sql_hl( o_ptr->tval );
-	
+
 	/* If we dont know about the TVAL ( eg ) potions, we get out*/
 	if(sq_hl == SQ_HL_OTHERS)
 		return;
-	
+
 	/* Get the squelching option */
 	sq_option = squelch_options[sq_hl];
-	
+
 	/* If we aint squelchin, we aint squelchin*/
 	if(!sq_option)
 		return;
-	
+
 	/* Get all options for future reference */
 	object_flags( o_ptr , &f1 , &f2 , &f3 );
-	
+
 	/* Get some id flags for future reference */
 	storebought = (o_ptr->ident & IDENT_STOREB);
 	id          = (o_ptr->ident & (IDENT_MENTAL | IDENT_KNOWN ));
@@ -5321,10 +4868,10 @@ void consider_squelch( object_type *o_ptr )
 	feel_heavy = value_check_aux1(o_ptr);
 	/* Assume we wont squelch */
 	go_squelch = FALSE;
-	
+
 	/* Describe the object */
 	object_desc(o_name, o_ptr, TRUE, 3);
-	
+
 	if (arg_fiddle)
 	{
 		msg_format("Squelch %s ?" , o_name);
@@ -5339,7 +4886,7 @@ void consider_squelch( object_type *o_ptr )
 			msg_format("No feeling or id." , feel_heavy );
 		}
 	}
-	
+
 	if( sq_hl == SQ_HL_ARMOURS || sq_hl == SQ_HL_WEAPONS || sq_hl == SQ_HL_AMMO )
 	{
 		/*If we only want artefacts we squelch it all, artefacts are the only ones to survive that*/
@@ -5362,7 +4909,7 @@ void consider_squelch( object_type *o_ptr )
 			if( sense && !heavy && ( streq(feel, "cursed") ||  streq(feel, "broken")  || streq(feel, "") ) )
 				go_squelch = TRUE;
 		}
-		
+
 		if( sq_option == SQUELCH_GOOD )
 		{
 			/*If we have pseudo id (weak or not) or id, we can delete cursed and average*/
@@ -5370,7 +4917,7 @@ void consider_squelch( object_type *o_ptr )
 				go_squelch = TRUE;
 		}
 	}
-	
+
 	if( sq_hl == SQ_HL_JEWELRY || sq_hl == SQ_HL_LIGHTS )
 	{
 		/*If we only want artefacts we squelch it all, artefacts are the only ones to survive that*/
@@ -5390,13 +4937,13 @@ void consider_squelch( object_type *o_ptr )
 				go_squelch = TRUE;
 		}
 	}
-	
+
 	if( sq_hl == SQ_HL_SCROLLS || sq_hl == SQ_HL_WANDS || sq_hl == SQ_HL_RODS || sq_hl == SQ_HL_STAVES )
 	{
 		/* We want it all gone, assumed is that sanity checks are configured on tval-sval level */
 		if( sq_option == SQUELCH_ALL )
 			go_squelch = TRUE;
-		
+
 		/*If we want great stuff, we need to have id or powerfull sense that it is great or have it id'd*/
 		if( sq_option == SQUELCH_GREAT )
 		{
@@ -5405,7 +4952,7 @@ void consider_squelch( object_type *o_ptr )
 				go_squelch = TRUE;
 		}
 	}
-	
+
 	if( sq_hl == SQ_HL_BOOKS )
 	{
 		/* We want it all gone, assumed is that we are playing a warrior or that all books have been found and marked {!k}  */
@@ -5415,14 +4962,14 @@ void consider_squelch( object_type *o_ptr )
 		if( sq_option == SQUELCH_TOWN_BOOKS && o_ptr->sval < 2 )
 			go_squelch = TRUE;
 	}
-	
+
 	if( sq_hl == SQ_HL_MISC )
 	{
 		/* We want it all gone, assumed is that we are playing a warrior or that all books have been found and marked {!k}  */
 		if( sq_option == SQUELCH_ALL )
 			go_squelch = TRUE;
 	}
-	
+
 	if( sq_hl == SQ_HL_CHESTS )
 	{
 		/* We want it all gone, assumed is that we is so tuff that we no need no crummy chests ;)  */
@@ -5431,14 +4978,14 @@ void consider_squelch( object_type *o_ptr )
 		if( sq_option == SQUELCH_OPENED && o_ptr->pval == 0 )
 			go_squelch = TRUE;
 	}
-	
+
 	/*If we dont squelch then getoutahere */
 	if(!go_squelch)
 		return;
-	
+
 	if (arg_fiddle)
 		msg_print("go_squelch=TRUE");
-	
+
 	if (arg_fiddle)
 		msg_print("Artefact ?");
 	/* Now we check for aretefacts */
@@ -5463,16 +5010,16 @@ void consider_squelch( object_type *o_ptr )
 	}
 	if (arg_fiddle)
 		msg_print("No.");
-	
+
 	if (arg_fiddle)
 		msg_print("Sane & Storebought ?");
 	/* Check for storebought only now ;) */
 	if( sanity_store && storebought )
 		return;
-	
+
 	if (arg_fiddle)
 		msg_print("No.");
-	
+
 	if (arg_fiddle)
 		msg_print("Sane & Unknown?");
 	/*Check for the known status of consumables*/
@@ -5480,7 +5027,7 @@ void consider_squelch( object_type *o_ptr )
 		return;
 	if (arg_fiddle)
 		msg_print("No.");
-	
+
 	if (arg_fiddle)
 		msg_print("Sane & High Price?");
 	/*Check for sanity check on price*/
@@ -5488,21 +5035,21 @@ void consider_squelch( object_type *o_ptr )
 		return;
 	if (arg_fiddle)
 		msg_print("No.");
-	
+
 	/* There are other sanity checks for misc stuff and chests */
 	if( sq_hl == SQ_HL_CHESTS || sq_hl == SQ_HL_MISC )
 	{
 		mark_squelch(o_ptr);
 		return;
 	}
-	
+
 	/* Check for own realm if needed, otherwise kill it*/
 	if( sq_hl == SQ_HL_BOOKS && sanity_realm)
 	{
 		if( o_ptr->tval-TV_MIRACLES_BOOK == p_ptr->realm1 - 1 || o_ptr->tval-TV_MIRACLES_BOOK== p_ptr->realm2-1  )
 			return;
 	}
-	
+
 
 	/* We make an exception, if we are dealing with boots that are not cursed
 	   they might be boots of speed , so lets keep those */
@@ -5536,26 +5083,26 @@ void consider_squelch( object_type *o_ptr )
 		mark_squelch(o_ptr);
 		return;
 	}
-	
+
 	/* By know we know it is not cursed , so we assumed the player put it on to try it */
 	if( sanity_speed && ( TR1_SPEED & f1 ) )
 		return;
-	
+
 	/* Immunities are not as obvious , so we need *id* or obvious stuff */
 	if( fullid  && sanity_immune && ( f2 & ( TR2_IM_ACID | TR2_IM_ELEC | TR2_IM_FIRE | TR2_IM_COLD ) ) )
 		return;
-	
+
 	/* By know we know it is not cursed , so we assumed the player put it on to try it */
 	if( sanity_telepathy && ( TR3_TELEPATHY & f3 ) )
 		return;
-	
+
 	/* High resists are not as obvious , so we need *id* or obvious stuff */
 	if( fullid  && sanity_immune && ( f2 & ( TR2_RES_CHAOS | TR2_RES_DISEN | TR2_RES_NETHER | TR2_RES_NEXUS ) ) )
 		return;
-	
+
 	/*Sanity didnt save us, and now the thingy must die*/
 	mark_squelch(o_ptr);
-	
+
 }
 
 
