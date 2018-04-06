@@ -460,7 +460,7 @@ static byte rgold_adj[COUNT_SUBRACES][COUNT_SUBRACES] =
 * to adjust (by 200) to extract a usable multiplier.  Note that the
 * "greed" value is always something (?).
 */
-static s32b price_item(object_type *o_ptr, int greed, bool flip)
+s32b price_item(object_type *o_ptr, int greed, bool flip)
 {
 	int     factor;
 	int     adjust;
@@ -1434,7 +1434,7 @@ static void store_create(void)
 /*
 * Eliminate need to bargain if player has haggled well in the past
 */
-static bool no_need_to_bargain(s32b minprice)
+bool no_need_to_bargain(s32b minprice)
 {
 	s32b good = st_ptr->good_buy;
 	s32b bad = st_ptr->bad_buy;
