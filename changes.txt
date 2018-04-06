@@ -159,6 +159,7 @@
   - Added !xxxx for artefact names, this will takes as the name whatever comes after !, ignoring base name
 
 *Character Building
+  - 0.8.8b Random characters without a star sign crashed the game
   - 0.8.8 Turns out Florentians should be Florentines
   - 0.8.8 Turns out Atlantians should be Atlanteans
   - 0.8.7 Restarting character creation allows you to re-choose stats
@@ -409,6 +410,8 @@
   - 0.8.6 No more references to 'Mortal', about half of the races is not mortal
 
 *Stores
+  - 0.8.8b Measures are added for infinitely trying to fill up a store
+  - 0.8.8b The alchemy store now rents the basement for extra potion storage
   - 0.8.8 Black Markets have deeper items, based on both character level and max dungeon level
   - 0.8.7 Black Markets have deeper items once you start to get over character level 25
 
@@ -467,61 +470,53 @@
   - 0.8.5 Found and got GPL release of Skirmantas Kligys
   - 0.8.5 Found and got GPL release of Chris R. Martin
   - 0.8.5 Found and got GPL release of Kevin Bracey
+  - TODO Find Roland Jay Roberts ( Found and waiting )
+  - TODO Find Ross E Becker ( Found and waiting )
+  - TODO Find Randy Hutson, the one that studied in the Math department of Texas ( not found )
 
 - TODO :
 
-* Somehow books are targets for identification??
+* Somehow books are targets for identification?
 * Icy Lantern Holder should hold a Icy Lantern
 * Do something with flasks
+* Dont auto kill wands of TO
 
-
+- MYTHICAL bugs:
 
 * MITZE Get allies, have them fight, dismiss them, walk around, see monsters that are there/not there
 
-* Dont auto kill wands of TO
-* Berserk spell should clear fear
-
 - ONE DAY
-
-
 
 * Alchemy overview: ideally carried potions should be coloured
 * Ideally, the potion shop should rent it's space for 30K as well
 * When finding a new item that fits what you wear with !k, don't kill it
-
-Make sure that arte 5 and 6 can get generated..
+* Make sure that arte 5 and 6 can get generated.. -FORGOTTEN-
 
 - DREAMS
-
 
 - Level 5 should have Minos' palace placed, with the only exit that points downstairs covering all other downstairs conveniently with rubble ( go calamarain ;)
 - Allow Hell Knights to control the powers of Demonic Weapons ( basically : todo demonic weapons )
 - allow clean_shot to use is_monster_killer(enemy, m_ptr)
 - wtf is MFLAG_NICE
-- Chaos Knights are not in
 - drop_good_only drop_great_only bm_sells_thegoodstuff are not in
 - cmd5.c is not using to the fullest the new spell capabilities
 - Same classes should get access to more realms ( they will be bad at it, but role-players don't care )
 - unique set drops
 - Need a centralized U_power to description algorithm
 
-
-- Find Roland Jay Roberts ( Found and waiting )
-- Find Ross E Becker ( Found and waiting )
-- Find Randy Hutson, the one that studied in the Math department of Texas ( not found )
-
 - Do the major step of updating code to be doxygen compliant
 - When generating skeletons, generate 2/3 'bad' object, 1/3 good object
-	if ( dam > m_ptr->hp)
+- Introduce Zangband figurines
 
-add #define STORES_SECOND_FLOOR 1          /**< Total number of stores in game, this includes 2nd floor stores, see store.c */
-
-the stores array :
-- Does store have inventory flux( no for town hall, house , chop shop, mages guild )
-- Does store have multiple for selling ?
-- Does store have multiple for buying ?
-- Does never buy
-- Has special title
+- Create a stores array :
+  - Does store have inventory flux( no for town hall, house , chop shop, mages guild )
+  - Does store have multiple for selling ?
+  - Does store have multiple for buying ?
+  - Does never buy
+  - Has special title
+  - Acts as player storage
+  - Who is upstairs?
+  - Who is downstairs?
 
 GREAT IDEAS:
 
