@@ -588,6 +588,10 @@ player_sex sex_info[MAX_SEXES] =
 *      Female (Hgt, Wgt)
 *      infra,
 *      class-choices
+*      rations
+*      undead
+*      f3rles
+*      !light
 */
 player_race race_info[COUNT_SUBRACES] = {
 /*     Name					 STRINTWISDEXCONCHA    dis  dev sav stl sh  shf th thshoot  hd  exp  age1   2   hgt1  2  whgt1 2  hght1 2 whgt1   2  infra  choices	rations undead  f3rles  !light*/
@@ -627,35 +631,33 @@ player_race sign_info[COUNT_SIGNS] = {
 	{  "Draco",				{ 2, 1, 1, 1, 2,-3 }, 	-2,  5,  3,  0,  1, 10,  5,  5, 	0, 150, 75,  33,   0,  0,   0,  0,   0,  0,   0,   0,  2,  0x1FFF,		TRUE,	FALSE,	FALSE,	FALSE,}, /* All but Rogue, Paladin and Hell Knight */
 	{  "Serpens",			{ 0, 0, 0, 0, 0, 0 }, 	 0,  0,  0, 10,  0, 10,  0,  0, 	0,   0,  0,   0,   0,  0,   0,  0,   0,  0,   0,   0,  0,  0x1FFF,		TRUE,	FALSE,	FALSE,	FALSE,}, /* All */
 	{  "Plutus",			{ 0, 0, 0, 0, 0, 0 }, 	 0, 10,  0,  0,  0, 10,  0,  0, 	0,   0,  0,   0,   0,  0,   0,  0,   0,  0,   0,   0,  0,  0x1FFF,		TRUE,	FALSE,	FALSE,	FALSE,}, /* All */
-    {  "Morui",				{ 2,-1,-1, 1, 2,-2 }, 	10,  5,  5,  0, -1, 10,  5,  5, 	2,  35,  6,   0,   0,  0,   0,  0,   0,  0,   0,   0,  2,  0x1FFF,		TRUE,	FALSE,	FALSE,	FALSE,},
+	{  "Morui",				{ 2,-1,-1, 1, 2,-2 }, 	10,  5,  5,  0, -1, 10,  5,  5, 	2,  35,  6,   0,   0,  0,   0,  0,   0,  0,   0,   0,  2,  0x1FFF,		TRUE,	FALSE,	FALSE,	FALSE,},
 };
-
 
 /*  The description should be no longer than 20 characters if you want it to look pretty in the 'U'se menu */
 /*  The description should be able to work with 'You can ...' if you want it to look pretty with self knowledge */
 U_power racial_powers[] = {
-	/*Race             desc5678901234567890   lev  cost cost/level  stat   extra_info		power*/
-	{ DWARF			, "detect traps & doors",	5,	5,		0,		A_WIS,	NULL,			0,},
-	{ GNOME			, "teleport",				5,	5,		0,		A_INT,	NULL,			0,},
-	{ LEPRECHAUN	, "teleport",				5,	5,		5,		A_INT,	NULL,			0,},
-	{ TROLL			, "berserk",				10,	12,		0,		A_WIS,	NULL,			0,},
-	{ NORDIC		, "berserk",				8,	10,		0,		A_WIS,	NULL,			0,},
-	{ NEPHILIM		, "use divine powers",		30,	50,		0,		A_INT,	NULL,			0,},
-	{ OGRE			, "set a trap",				25,	35,		0,		A_INT,	NULL,			0,},
-	{ GIANT			, "bash a wall",			20,	10,		0,		A_STR,	NULL,			0,},
-	{ TITAN			, "probe",					25,	20,		0,		A_INT,	NULL,			0,},
-	{ SPECTRE		, "scare",					4,	3,		0,		A_INT,	NULL,			0,},
-	{ KOBOLD		, "spit poison",			12,	8,		0,		A_DEX,	"dam lvl",		0},
-	{ ATLANTIAN		, "conjure a  missile",		2,	2,		0,		A_INT,	NULL,			0,},
-	{ HORROR		, "mind blast",				15,	12,		0,		A_INT,	"dam lvl",		0},
-	{ IMP			, "blast fire",				9,	15,		0,		A_WIS,	"dam lvl",		0},
-	{ GUARDIAN		, "cast stone skin",		20,	15,		0,		A_CON,	"dur 30+d20",	0},
-	{ SKELETON		, "restore life",			30,	30,		0,		A_WIS,	NULL,			0,},
-	{ MUMMY			, "restore life",			30,	30,		0,		A_WIS,	NULL,			0,},
-	{ VAMPIRE		, "drain life",				2,	1,		3,		A_CON,	NULL,			0,},
-	{ FAE			, "throw faerie dust",		12,	12,		0,		A_INT,	NULL,			0,},
-	{ 0				, NULL,						0,	0,		0,		0	,	NULL,			0,},/*Famous NULL record*/
-
+	/*Race         desc5678901234567890   lev cost cost/level  stat   extra_info		power*/
+	{ DWARF			, "detect traps & doors", 5 , 5 , 0, A_WIS, NULL        , 0},
+	{ GNOME			, "teleport"            , 5 , 5 , 0, A_INT, NULL        , 0},
+	{ LEPRECHAUN, "teleport"            , 5 , 5 , 5, A_INT, NULL        , 0},
+	{ TROLL			, "berserk"             , 10, 12, 0, A_WIS, NULL        , 0},
+	{ NORDIC		, "berserk"             , 8 , 10, 0, A_WIS, NULL        , 0},
+	{ NEPHILIM	, "use divine powers"   , 30, 50, 0, A_INT, NULL        , 0},
+	{ OGRE			, "set a trap"          , 25, 35, 0, A_INT, NULL        , 0},
+	{ GIANT     , "bash a wall"         , 20, 10, 0, A_STR, NULL        , 0},
+	{ TITAN     , "probe"               , 25, 20, 0, A_INT, NULL        , 0},
+	{ SPECTRE   , "scare"               , 4 , 3 , 0, A_INT, NULL        , 0},
+	{ KOBOLD    , "spit poison"         , 12, 8 , 0, A_DEX, "dam lvl"   , 0},
+	{ ATLANTIAN , "conjure a  missile"  , 2 , 2 , 0, A_INT, NULL        , 0},
+	{ HORROR    , "mind blast"          , 15, 12, 0, A_INT, "dam lvl"   , 0},
+	{ IMP       , "blast fire"          , 9 , 15, 0, A_WIS, "dam lvl"   , 0},
+	{ GUARDIAN  , "cast stone skin"     , 20, 15, 0, A_CON, "dur 30+d20", 0},
+	{ SKELETON  , "restore life"        , 30, 30, 0, A_WIS, NULL        , 0},
+	{ MUMMY     , "restore life"        , 30, 30, 0, A_WIS, NULL        , 0},
+	{ VAMPIRE   , "drain life"          , 2 , 1 , 3, A_CON, NULL        , 0},
+	{ FAE       , "throw faerie dust"   , 12, 12, 0, A_INT, NULL        , 0},
+	{ 0         , NULL                  , 0 , 0 , 0, 0    , NULL        , 0}, /* Infamous NULL record */
 };
 
 /*  The description should be no longer than 20 characters if you want it to look pretty in the 'U'se menu */
@@ -671,7 +673,7 @@ U_power sign_powers[] = {
 /*  The description should be no longer than 20 characters if you want it to look pretty in the 'U'se menu */
 /*  Another table is used for self knowledge */
 U_power freak_powers[] = {
-	/*Sign                 desc5678901234567890   lev  cost cost/level   stat   extra_info		power*/
+	/*Sign              desc5678901234567890   lev  cost cost/level   stat   extra_info		power*/
 	{ COR1_SPIT_ACID	, "spit acid",				9,	9,		0,		A_DEX,	"dam lvl",		COR1_SPIT_ACID,},
 	{ COR1_BR_FIRE		, "fire breath",			20,	0,		1,		A_CON,	"dam 2*lvl",	COR1_BR_FIRE,},
 	{ COR1_HYPN_GAZE	, "hypnotic gaze",			12,	12,		0,		A_CHA,	NULL,			COR1_HYPN_GAZE,},
@@ -703,7 +705,7 @@ U_power freak_powers[] = {
 	{ COR1_RECALL		, "recall",					17,	50,		0,		A_INT,	NULL,			COR1_RECALL,},
 	{ COR1_BANISH		, "banish evil",			25,	25,		0,		A_WIS,	NULL,			COR1_BANISH,},
 	{ COR1_COLD_TOUCH	, "cold touch",				2,	2,		0,		A_CON,	NULL,			COR1_COLD_TOUCH,},
-	{ COR1_LAUNCHER		, "cold touch",				2,	2,		0,		A_CON,	NULL,			3,}, /* XXX_XXX_XXX Hack! COR1_LAUNCHER counts as negative... */
+	{ COR1_LAUNCHER		, "cold touch",				2,	2,		0,		A_CON,	NULL,			COR1_LAUNCHER,}, /* XXX_XXX_XXX Hack! COR1_LAUNCHER counts as negative... */
 	{ 0					, NULL,						0,	0,		0,		0	,	NULL,			0,},/*Famous NULL record*/
 };
 
@@ -969,7 +971,6 @@ byte spell_skill_level[50][5]={
 	{  50,  49,   49,  47,    42,},
 	{  50,  50,   50,  49,    45,},
 };
-
 
 /*
  * This table contains the cost of the spells, the center column simply goes up from 1 to 25
@@ -1992,7 +1993,7 @@ realm_flag realm_flags[MAX_EGO_REALMS] =
 	},
 	{
 		"Mind", TERM_YELLOW, 2,
-		TR1_INT | TR1_WIS |
+		TR1_INT | TR1_WIS,
 		TR2_SUST_INT |TR2_SUST_WIS | TR2_RES_CONF | TR2_RES_FEAR,
 		TR3_TELEPATHY,
 	},
@@ -2016,7 +2017,7 @@ realm_flag realm_flags[MAX_EGO_REALMS] =
 	},
 	{
 		"Magic", TERM_L_BLUE, 5,
-		TR1_INT | TR1_WIS |
+		TR1_INT | TR1_WIS,
 		TR2_RES_DISEN | TR2_SUST_INT |TR2_SUST_WIS,
 		0,
 	},
