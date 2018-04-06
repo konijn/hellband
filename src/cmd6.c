@@ -11,14 +11,14 @@
  *
  *
  * James E. Wilson and Robert A. Koeneke released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
- */ 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
+ */
 
 
 #include "angband.h"
@@ -415,7 +415,7 @@ void do_cmd_quaff_potion(int item)
 	int		ident, lev;
 
 	object_type	*o_ptr;
-	
+
 	char line[80];
 
 	/* Restrict choices to potions */
@@ -998,47 +998,47 @@ void do_cmd_quaff_potion(int item)
 		object_aware(o_ptr);
 		gain_exp((lev + (p_ptr->lev >> 1)) / p_ptr->lev);
 	}
-	
+
 	/* Check if the alchemy formula is learnt */
 	/* TODO race/class alchemy skill assignment */
 	if (!((potion_alch[o_ptr->sval].known1) && (potion_alch[o_ptr->sval].known2)) &&
 		(rand_int(100) <= /*p_ptr->skill[SK_ALC]*/ 60 - 30 ))
 	{
 		object_kind *k_ptr;
-		
+
 		int k;
 		bool item_known1 = FALSE;
 		bool item_known2 = FALSE;
-		
+
 		bool learn = FALSE;
-		
+
 		/* Check if the components are known */
 		for (k = 1; k < MAX_K_IDX; k++)
 		{
 			k_ptr = &k_info[k];
-			
+
 			/* Found a match */
-			if ((k_ptr->tval == TV_POTION) && (k_ptr->sval == potion_alch[o_ptr->sval].sval1)) 
+			if ((k_ptr->tval == TV_POTION) && (k_ptr->sval == potion_alch[o_ptr->sval].sval1))
 				item_known1 = (k_ptr->tried || k_ptr->aware);
-			if ((k_ptr->tval == TV_POTION) && (k_ptr->sval == potion_alch[o_ptr->sval].sval2)) 
+			if ((k_ptr->tval == TV_POTION) && (k_ptr->sval == potion_alch[o_ptr->sval].sval2))
 				item_known2 = (k_ptr->tried || k_ptr->aware);
 		}
-		
-		/* 
+
+		/*
 			* Learn, if you are aware of the component potion, but
 		 * you are not yet aware it is part of the potion.
 		 */
-		if ((!(potion_alch[o_ptr->sval].known1)) && item_known1) 
+		if ((!(potion_alch[o_ptr->sval].known1)) && item_known1)
 		{
 			potion_alch[o_ptr->sval].known1 = TRUE;
 			learn = TRUE;
 		}
-		else if ((!(potion_alch[o_ptr->sval].known2)) && item_known2) 
+		else if ((!(potion_alch[o_ptr->sval].known2)) && item_known2)
 		{
 			potion_alch[o_ptr->sval].known2 = TRUE;
 			learn = TRUE;
 		}
-		
+
 		/* Message, if something new was learned */
 		if (learn)
 		{
@@ -1047,7 +1047,7 @@ void do_cmd_quaff_potion(int item)
 			msg_print(line);
 		}
 	}
-	
+
 	/* Window stuff */
 	p_ptr->window |= (PW_INVEN | PW_EQUIP | PW_PLAYER);
 
@@ -1101,7 +1101,7 @@ bool curse_armour(void)
 	}else if( p_ptr->resist_disen && (rand_int(100) < 50) )
 	{   /* Cool */
 		msg_format("A %s tries to %s %s, but your resistance to disenchantment staves off the effects!",
-			"terrible black aura", "surround your ", o_name);		
+			"terrible black aura", "surround your ", o_name);
 	}
 	else /* not artefact or failed save... */
 	{
@@ -1140,7 +1140,7 @@ bool curse_armour(void)
 		if( randint(5)==1 ) o_ptr->art_flags3 |= TR3_HEAVY_CURSE;
 		if( randint(5)==1 ) o_ptr->art_flags3 |= TR3_DRAIN_EXP;
 		if( randint(5)==1 ) o_ptr->art_flags3 |= TR3_AGGRAVATE;
-				
+
 		/* Recalculate bonuses */
 		p_ptr->update |= (PU_BONUS);
 
@@ -1184,7 +1184,7 @@ bool curse_weapon(void)
 	}else if( p_ptr->resist_disen && (rand_int(100) < 50) )
 	{   /* Cool */
 		msg_format("A %s tries to %s %s, but your resistance to disenchantment staves off the effects!",
-			"terrible black aura", "surround your ", o_name);		
+			"terrible black aura", "surround your ", o_name);
 	}
 	/* not artefact or failed save... */
 	else
@@ -1880,7 +1880,7 @@ void do_cmd_use_staff(int item)
 					{
 						ident = TRUE;
 					}
-				} 
+				}
 				else if (summon_specific(py, px, dun_level, 0))
 				{
 					ident = TRUE;
@@ -2991,7 +2991,7 @@ static void ring_of_power()
 				do_cmd_save_game();
 				is_autosave = FALSE;
 			}
-			new_level_flag = TRUE;			
+			new_level_flag = TRUE;
 			break;
     	}
 	case 2:
@@ -3004,7 +3004,7 @@ static void ring_of_power()
 	case 3:
 		{
 			/* *Destroy* */
-			destroy_area(py, px, 15, TRUE);		
+			destroy_area(py, px, 15, TRUE);
 			break;
 		}
 	}
@@ -3154,13 +3154,11 @@ void do_cmd_activate(int item)
 		return;
 	}
 
-
 	/* Activate the artefact */
 	msg_print("You activate it...");
 
 	/* Sound */
 	sound(SOUND_ZAP);
-
 
 	if (o_ptr->art_name)
 	{
@@ -3171,7 +3169,6 @@ void do_cmd_activate(int item)
 		/* Success */
 		return;
 	}
-
 
 	/* Artifacts */
 	else if (o_ptr->name1)
@@ -3193,7 +3190,7 @@ void do_cmd_activate(int item)
 				map_area();
 				lite_area(damroll(2, 15), 3);
 				msg_print("The gem stings you...");
-				take_hit(damroll(3,8), "the Gem of Eos'");				
+				take_hit(damroll(3,8), "the Gem of Eos'");
 				o_ptr->timeout = rand_s16b(20) + 20;
 				break;
 			}
@@ -3205,7 +3202,7 @@ void do_cmd_activate(int item)
 				(void)detect_traps();
 				(void)detect_doors();
 				(void)detect_stairs();
-				msg_print("The gem restores your vitality...");				
+				msg_print("The gem restores your vitality...");
                 /*
 				 Removed recall for thematic reasons
 				 Added cure blindness,confusion,stun , cure poison, cure cuts
@@ -3226,8 +3223,8 @@ void do_cmd_activate(int item)
 				(void)set_timed_effect( TIMED_OPPOSE_FIRE, p_ptr->oppose_fire + randint(50) + 450);
 				o_ptr->timeout = rand_s16b(50) + 450;
 				break;
-			}			
-			
+			}
+
 
 		case ART_AMULET_MICHAEL : case ART_AMULET_RAPHAEL:
 			{
@@ -3243,14 +3240,13 @@ void do_cmd_activate(int item)
 			{
 
 				msg_print("The ring calls out the Dragon...");
-				effects_timeout = randint(25) + 100; 
+				effects_timeout = randint(25) + 100;
 				(void)set_timed_effect( TIMED_SHIELD, p_ptr->shield + effects_timeout);
 				(void)set_timed_effect( TIMED_SHERO, p_ptr->shero + effects_timeout);
 				(void)set_timed_effect( TIMED_BLESSED, p_ptr->blessed + effects_timeout);
 				o_ptr->timeout = rand_s16b(100) + 100;
 				break;
 			}
-
 
 		case ART_RING_GABRIEL:
 			{
@@ -3266,8 +3262,8 @@ void do_cmd_activate(int item)
 				fire_ball(GF_FIRE, 5, 250, 5);
 				(void)hp_player(700);
 				(void)set_timed_effect( TIMED_PROTEVIL, randint(25) + 100);
-				(void)set_timed_effect( TIMED_OPPOSE_COLD, p_ptr->oppose_cold + randint(50) + 250);				
-				o_ptr->timeout = rand_s16b(700) + 250;				
+				(void)set_timed_effect( TIMED_OPPOSE_COLD, p_ptr->oppose_cold + randint(50) + 250);
+				o_ptr->timeout = rand_s16b(700) + 250;
 				break;
 			}
 
@@ -3275,12 +3271,12 @@ void do_cmd_activate(int item)
 			{
 				msg_print("The ring glows bright white...");
 				fire_ball(GF_COLD, 5 , 250, 5);
-				effects_timeout = randint(25) + 100; 
+				effects_timeout = randint(25) + 100;
                 set_timed_effect( TIMED_FAST, effects_timeout);
 				set_timed_effect( TIMED_HERO, effects_timeout);
 				set_timed_effect( TIMED_BLESSED, effects_timeout);
 				set_timed_effect( TIMED_SHERO, effects_timeout);
-				(void)set_timed_effect( TIMED_OPPOSE_COLD, p_ptr->oppose_cold + randint(50) + 250);				
+				(void)set_timed_effect( TIMED_OPPOSE_COLD, p_ptr->oppose_cold + randint(50) + 250);
 				o_ptr->timeout = rand_s16b(250) + 250;
 				break;
 			}
@@ -3290,7 +3286,7 @@ void do_cmd_activate(int item)
 				msg_print("The ring glows deep blue...");
 				fire_ball(GF_ELEC, 5, 250, 5);
 				(void)hp_player(700);
-				(void)set_timed_effect( TIMED_CUT, 0);				
+				(void)set_timed_effect( TIMED_CUT, 0);
 				(void)do_res_stat(A_INT);
 				(void)do_res_stat(A_WIS);
 				(void)set_timed_effect( TIMED_OPPOSE_ELEC, p_ptr->oppose_elec + randint(50) + 250);
@@ -3300,7 +3296,7 @@ void do_cmd_activate(int item)
 
 		case ART_FIRST:
 			{
-				msg_print("The ring glows intensely black...");
+				msg_print("The ring darkens...");
 				ring_of_power();
 				/* Not a bug, not 'broken'*/
 				o_ptr->timeout = 10;
@@ -3308,22 +3304,17 @@ void do_cmd_activate(int item)
 			}
 
 		case ART_BAPHOMET:
-			{
-				msg_print("Your armour is surrounded by lightning...");
-				for (i = 0; i < 8; i++) fire_ball(GF_ELEC, ddd[i], 150, 3);
-				o_ptr->timeout = 1000;
-				break;
-			}
-			
 		case ART_ASMODAI:
 		{
 			msg_print("Your armour is surrounded by lightning...");
 			for (i = 0; i < 8; i++) fire_ball(GF_ELEC, ddd[i], 150, 3);
 			o_ptr->timeout = 1000;
 			break;
-		}			
-
+		}
+		
 		case ART_SAMAEL:
+		case ART_ABADDON:
+		case ART_BLOOD_MICHAEL:
 			{
 				fire_ball(GF_MISSILE, 5, 300, -4);
 				msg_print("Your armour glows many colours...");
@@ -3335,33 +3326,6 @@ void do_cmd_activate(int item)
 				o_ptr->timeout = 400;
 				break;
 			}
-			
-		case ART_ABADDON:
-		{
-			fire_ball(GF_MISSILE, 5, 300, -4);
-			msg_print("Your armour glows many colours...");
-			(void)set_timed_effect( TIMED_AFRAID , 0);
-			(void)set_timed_effect( TIMED_SHERO, p_ptr->shero + randint(50) + 50);
-			(void)hp_player(30);
-			(void)set_timed_effect( TIMED_BLESSED, p_ptr->blessed + randint(50) + 50);
-			(void)spell_basic_resistance(50);
-			o_ptr->timeout = 400;
-			break;
-		}
-			
-		case ART_BLOOD_MICHAEL:
-		{
-			fire_ball(GF_MISSILE, 5, 300, -4);
-			msg_print("Your armour glows many colours...");
-			(void)set_timed_effect( TIMED_AFRAID , 0);
-			(void)set_timed_effect( TIMED_SHERO, p_ptr->shero + randint(50) + 50);
-			(void)hp_player(30);
-			(void)set_timed_effect( TIMED_BLESSED, p_ptr->blessed + randint(50) + 50);
-			(void)spell_basic_resistance(50);
-			o_ptr->timeout = 400;
-			break;
-		}			
-
 		case ART_CORSON:
 			{
 				msg_print("Your armour calls the power of the earth...");
@@ -3371,32 +3335,32 @@ void do_cmd_activate(int item)
 				o_ptr->timeout = 888;
 				break;
 			}
-			
+
 		case ART_AMAYMON:
 		{
 			msg_print("You breathe poisonous nether");
-            if (!get_aim_dir(&dir)) return;
-			fire_ball(GF_NETHER  , dir, 200, 5);			
+			if (!get_aim_dir(&dir)) return;
+			fire_ball(GF_NETHER  , dir, 200, 5);
 			fire_ball(GF_POIS  , dir, 500, 5);
 			o_ptr->timeout = 888;
 			break;
-		}			
+		}
 
 		case ART_ZIMINAR:
 		{
 			msg_print("You feel inclined to write an email to konijn@gmail.com to give feedback");
 			o_ptr->timeout = 50;
 			break;
-		}				
-			
+		}
+
 		case ART_GAEP:
-		{   
+		{
 			/*TODO: You buckle down and run to the <dir>*/
 			(void)set_timed_effect( TIMED_FAST, p_ptr->fast + 125);
 			o_ptr->timeout = 50;
 			break;
-		}							
-			
+		}
+
 		case ART_ROBE_MICHAEL:
 			{
 				msg_print("A heavenly choir sings...");
@@ -3413,53 +3377,39 @@ void do_cmd_activate(int item)
 		case ART_VEPAR:
 		{
 			msg_print("Your armour crackles with lighning...");
-			for (i = 0; i < 4; i++) 
+			for (i = 0; i < 4; i++)
 			{
 				fire_ball(GF_ELEC, 5, 150, 5);
 				fire_ball(GF_WATER, 5, 150, 5);
+				fire_ball(GF_DARK, 5, 150, 5);
 			}
 			o_ptr->timeout = 500;
 			break;
 		}
-			
-/*
-		case ART_ORCS:
-			{
-				msg_print("Your armour glows deep blue...");
-				(void)genocide(TRUE);
-				o_ptr->timeout = 500;
-				break;
-			}
-*/			
-
 		case ART_PRAVUIL:
-			{
-				msg_print("You feel the Word elevate you...");
-				inc_stat(A_INT);
-				inc_stat(A_WIS);
-				o_ptr->timeout = 3333;
-				break;
-			}
+		{
+			msg_print("You feel the Word elevate you...");
+			inc_stat(A_INT);
+			inc_stat(A_WIS);
+			o_ptr->timeout = 3333;
+			break;
+		}
 
 		case ART_LAMMASU: case ART_MASK:
-
-			{
-				turn_monsters(40 + p_ptr->lev);
-				o_ptr->timeout = 3 * (p_ptr->lev + 10);
-
-				break;
-
-			}
-
+		{
+			turn_monsters(40 + p_ptr->lev);
+			o_ptr->timeout = 3 * (p_ptr->lev + 10);
+			break;
+		}
 
 		case ART_SKULLKEEPER:
-			{
-				msg_print("Your helm glows bright white...");
-				msg_print("An image forms in your mind...");
-				detect_all();
-				o_ptr->timeout = rand_s16b(55) + 55;
-				break;
-			}
+		{
+			msg_print("Your helm glows bright white...");
+			msg_print("An image forms in your mind...");
+			detect_all();
+			o_ptr->timeout = rand_s16b(55) + 55;
+			break;
+		}
 
 		case ART_SUN:
 			{
@@ -3471,6 +3421,13 @@ void do_cmd_activate(int item)
 				break;
 			}
 
+		case ART_SIMPLE:
+		{
+			msg_print("It glows deep blue...");
+			sleep_monsters_touch();
+			o_ptr->timeout = 55;
+			break;
+		}
 
 		case ART_JOSEPH:
 			{
@@ -3483,7 +3440,7 @@ void do_cmd_activate(int item)
 		case ART_DRAEBOR:
 			{
 				msg_print("You're feeling impish...");
-				fire_ball(GF_CONFUSION  , 5, 200, 5);					
+				fire_ball(GF_CONFUSION  , 5, 200, 5);
 				teleport_player(10);
 				o_ptr->timeout = 155;
 				break;
@@ -3497,7 +3454,7 @@ void do_cmd_activate(int item)
 				break;
 			}
 
-		case ART_SHIFTER:
+		case ART_NYNAULD:
 			{
 				msg_print("Your cloak twists space around you...");
 				teleport_player(100);
@@ -3570,29 +3527,22 @@ void do_cmd_activate(int item)
 
 
 		case ART_BOOTS_FURCIFER:
+		case ART_BOOTS_GABRIEL:
 			{
 				msg_print("A wind swirls around your boots...");
         		(void)set_timed_effect( TIMED_FAST, p_ptr->fast + 50);
 				o_ptr->timeout = 200;
 				break;
 			}
-			
-		case ART_BOOTS_GABRIEL:
-		{
-			msg_print("A wind swirls around your boots...");
-			(void)set_timed_effect( TIMED_FAST, p_ptr->fast + 50);
-			o_ptr->timeout = 200;
-			break;
-		}
+
 		case ART_DANCING:
 			{
-				msg_print("Your boots glow deep blue...");
+				msg_print("Your boots glow a deep purple...");
 				(void)set_timed_effect( TIMED_AFRAID , 0);
 				(void)set_timed_effect( TIMED_POISONED , 0);
 				o_ptr->timeout = 5;
 				break;
 			}
-
 
 		case ART_DAGGER_INFERNO:
 			{
@@ -3673,7 +3623,7 @@ void do_cmd_activate(int item)
 
 		case ART_MICHAEL:
 			{
-				msg_print("Your sword glows an intense blue...");
+				msg_print("Your sword glows an intense sky blue...");
 				if (!get_aim_dir(&dir)) return;
 				fire_ball(GF_COLD, dir, 100, 2);
 				o_ptr->timeout = 300;
@@ -3733,6 +3683,14 @@ void do_cmd_activate(int item)
 				break;
 			}
 
+		case ART_SEIRIM:
+			{
+				msg_print("It glows deep blue...");
+				(void)genocide(TRUE);
+				o_ptr->timeout = 500;
+				break;
+			}
+
 		case ART_RONOVE:
 			{
 				msg_print("Your battle axe radiates deep purple...");
@@ -3785,7 +3743,7 @@ void do_cmd_activate(int item)
 				}
 				else
 				{
-					(void)set_timed_effect( TIMED_FAST, p_ptr->fast + 5);
+					(void)set_timed_effect( TIMED_FAST, p_ptr->fast + 20);
 				}
 				o_ptr->timeout = rand_s16b(100) + 100;
 				break;
@@ -4772,7 +4730,7 @@ static bool activate_random_artefact(object_type * o_ptr)
 		}
 	case ACT_RECALL:
 		{
-			do_recall( "It glows soft white..." );			
+			do_recall( "It glows soft white..." );
 			o_ptr->timeout = 200;
 			break;
 		}
@@ -4783,8 +4741,8 @@ static bool activate_random_artefact(object_type * o_ptr)
 	return TRUE;
 }
 
-/* 
-* Mix two potions to (maybe) create a third 
+/*
+* Mix two potions to (maybe) create a third
  */
 void do_cmd_mix(void)
 {
@@ -4793,67 +4751,67 @@ void do_cmd_mix(void)
 	int chance = 0;
 	int penalty = 0;
 	int roll;
-	
+
 	bool found = FALSE;
-	
+
 	cptr q, r; /*s UNUSED*/
 	object_kind *k_ptr;
 	object_type object_type_body;
 	object_type *o_ptr1, *o_ptr2, *to_ptr;
-	
+
 	/* Get an item */
 	q = "Mix which potion? ";
 	/*s = "You don't have enough potions to mix."; UNUSED TODO*/
 	r = "With which potion? ";
 	item_tester_tval = TV_POTION;
 
-		
+
 	if(!get_item(&item1, q, "You dont have a potion",  USE_EQUIP | USE_INVEN | USE_FLOOR )) return;
 	item_tester_tval = TV_POTION;
 	if (!get_item(&item2, r, "You dont have another potion", USE_EQUIP | USE_INVEN | USE_FLOOR )) return;
-	
+
 	if (item1 >= 0)
 	{
 		o_ptr1 = &inventory[item1];
 	}
-	
+
 	/* Get the item (on the floor) */
 	else
 	{
 		o_ptr1 = &o_list[0 - item1];
 	}
-	
+
 	if (item2 >= 0)
 	{
 		o_ptr2= &inventory[item2];
 	}
-	
+
 	/* Get the item (on the floor) */
 	else
 	{
 		o_ptr2 = &o_list[0 - item2];
 	}
-	
+
 	if (o_ptr1->sval==o_ptr2->sval)
 	{
 		msg_print("You must mix two different potions!");
 		msg_print(NULL);
 		return;
 	}
-	
+
 	/* Take a turn */
 	energy_use = 100;
-	
+
 	/* Extract the tval/sval codes */
 	for (sv = 0; sv < SV_POTION_MAX; sv++)
 	{
 		if (((potion_alch[sv].sval1 == o_ptr1->sval) && (potion_alch[sv].sval2 == o_ptr2->sval))
 			|| ((potion_alch[sv].sval2 == o_ptr1->sval) && (potion_alch[sv].sval1 == o_ptr2->sval)))
 			found = TRUE;
-		
+
 		if (found) break;
 	}
-	
+
 	/* Found a potion? */
 	if (found)
 	{
@@ -4861,17 +4819,17 @@ void do_cmd_mix(void)
 		for (k_idx = 1; k_idx < MAX_K_IDX; k_idx++)
 		{
 			k_ptr = &k_info[k_idx];
-			
+
 			/* Found a match */
 			if ((k_ptr->tval == TV_POTION) && (k_ptr->sval == sv)) break;
 		}
-		
+
 		/* If there's no potion, always fail */
-		if (k_idx != MAX_K_IDX) 
+		if (k_idx != MAX_K_IDX)
 		{
 			chance = 25 + (/*p_ptr->skill[SK_ALC]*/ 60) - ( k_ptr->pval /  5);
 			penalty = ((k_ptr->pval * k_ptr->pval) / 2);
-			
+
 			/* Always 5% chance of success or failure*/
 			if (chance < 5) chance = 5;
 			if (chance > 95) chance = 95;
@@ -4882,53 +4840,53 @@ void do_cmd_mix(void)
 	  k_idx   = 0; /* Paranoia : if this falls through, we get water*/
 	  k_ptr = &k_info[k_idx]; /* Paranoia : if this falls through, we get water*/
 	  chance  = 5;  /* It is good I am paranoid in 5% of the cases*/
-	  penalty = ((k_ptr->pval * k_ptr->pval) / 2);	  
+	  penalty = ((k_ptr->pval * k_ptr->pval) / 2);
 	}
-	
+
 	/*** Skill check ***/
-	roll = rand_int(100);	
-	
+	roll = rand_int(100);
+
 	if (roll < chance)
 	{
 		/*** Create new potion ****/
-		
+
 		/* Get local object */
 		to_ptr = &object_type_body;
-		
+
 		/* Wipe the object */
 		object_wipe(to_ptr);
-		
+
 		/* Prepare the ojbect */
 		object_prep(to_ptr, k_idx);
-		
+
 		drop_near(to_ptr, -1, py, px); /* drop the object */
 		potion_alch[sv].known1 = TRUE;
 		potion_alch[sv].known2 = TRUE;
 	}
-	else if ((roll < chance + 30) && (roll < 99)) 
+	else if ((roll < chance + 30) && (roll < 99))
 	{
 		msg_print("You have wasted the potions.");
 		msg_print(NULL);
 	}
-	else 
+	else
 	{
 		msg_print("The potions explode in your hands!");
 		msg_print(NULL);
 		take_hit(damroll(4,8) + penalty, "carelessly mixing potions");
 	}
-	
+
 	/* Hack - make sure the potions are destroyed in order */
 	i1= (item1 > item2) ? item1 : item2;
 	i2= (item1 > item2) ? item2 : item1;
-	
+
 	/* Destroy a potion in the pack */
 	if (i1 >= 0)
 	{
 		inven_item_increase(i1, -1);
 		inven_item_describe(i1);
-		inven_item_optimize(i1); 
+		inven_item_optimize(i1);
 	}
-	
+
 	/* Destroy a potion on the floor */
 	else
 	{
@@ -4936,7 +4894,7 @@ void do_cmd_mix(void)
 		floor_item_describe(0 - i1);
 		floor_item_optimize(0 - i1);
 	}
-	
+
 	/* Destroy a potion in the pack */
 	if (i2 >= 0)
 	{
@@ -4944,7 +4902,7 @@ void do_cmd_mix(void)
 		inven_item_describe(i2);
 		inven_item_optimize(i2);
 	}
-	
+
 	/* Destroy a potion on the floor */
 	else
 	{
