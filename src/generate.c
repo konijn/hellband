@@ -197,21 +197,6 @@ int template_race;
 
 static bool new_player_spot(void);
 
-
-/*
-* Simple structure to hold a map location
-*/
-
-
-typedef struct coord coord;
-
-struct coord
-{
-	byte y;
-	byte x;
-};
-
-
 /*
 * Room type information
 */
