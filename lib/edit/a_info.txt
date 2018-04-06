@@ -53,7 +53,7 @@
 # If an activation is given then the artifact must also have the
 # ACTIVATE flag.
 
-#okay, perfect equipment : 
+#okay, perfect equipment :
 # Long sword of michael , 82
 # BladeTurner , 17
 # Dragon helm of power 39 or crown of the sun 42 or crown of the universe 34
@@ -104,14 +104,14 @@ F:SPEED
 F:SEE_INVIS | HOLD_LIFE | RES_POIS
 F:INSTA_ART | ACTIVATE
 
-#Gem of Augustine of Hippo, or Austin, random stuff 
+#Gem of Augustine of Hippo, or Austin, random stuff
 #define ART_HIPPO        3
 N:3:of Austin
 I:39:6:3
 W:50:50:5:70000
 P:0:1d1:0:0:0
 F:WIS | INT
-F:SEE_INVIS | HOLD_LIFE | 
+F:SEE_INVIS | HOLD_LIFE |
 F:RES_CHAOS | RES_DARK | RES_CONF
 F:INSTA_ART | ACTIVATE
 
@@ -129,7 +129,7 @@ N:4:of Fiery Doom
 I:40:10:5
 W:50:10:3:60000
 P:0:1d1:5:5:-25
-F:CON | 
+F:CON |
 F:RES_FIRE | IM_FIRE
 F:INSTA_ART | ACTIVATE | HIDE_TYPE
 
@@ -139,7 +139,7 @@ F:INSTA_ART | ACTIVATE | HIDE_TYPE
 N:5:of Raphael
 I:40:11:3
 W:65:30:3:90000
-F:WIS | CHA | 
+F:WIS | CHA |
 F:INFRA | SEE_INVIS | TELEPATHY | RES_ACID | RES_COLD | RES_ELEC | RES_FIRE
 F:INSTA_ART | ACTIVATE | HIDE_TYPE
 
@@ -152,12 +152,12 @@ W:65:30:3:90000
 F:CON | DEX | SPEED | RES_CONF | BLOWS
 F:INSTA_ART | ACTIVATE | HIDE_TYPE
 
-# The Necklace of the Nephilim ( warrior ) STR,CON , 
+# The Necklace of the Nephilim ( warrior ) STR,CON ,
 #define ART_NEPHILIM        7
 N:7:of the Nephilim
 I:40:12:3
 W:70:50:3:75000
-F:STR | CON | 
+F:STR | CON |
 F:SEE_INVIS | INFRA | REGEN | FREE_ACT
 F:INSTA_ART | HIDE_TYPE
 
@@ -178,7 +178,7 @@ F:INSTA_ART | ACTIVATE | HIDE_TYPE
 N:9:of Gabriel, the Messenger
 I:45:32:1
 W:50:25:2:75000
-F:STR | INT | WIS | DEX | CON | CHA | 
+F:STR | INT | WIS | DEX | CON | CHA |
 F:STEALTH | RES_POIS | SEE_INVIS | SEARCH |
 F:INSTA_ART | HIDE_TYPE | ACTIVATE
 
@@ -186,9 +186,9 @@ N:10:of Saint Raphael, the Healer
 I:45:34:1
 W:70:30:2:100000
 P:0:1d1:10:10:0
-F:STR | INT | WIS | DEX | CON | CHA | SPEED | 
-F:FREE_ACT | SEE_INVIS | SLOW_DIGEST | REGEN | SUST_STR | SUST_DEX 
-F:IM_FIRE | 
+F:STR | INT | WIS | DEX | CON | CHA | SPEED |
+F:FREE_ACT | SEE_INVIS | SLOW_DIGEST | REGEN | SUST_STR | SUST_DEX
+F:IM_FIRE |
 F:INSTA_ART | ACTIVATE | HIDE_TYPE
 
 N:11:of Saint Michael, Prince of Mercy
@@ -196,8 +196,8 @@ I:45:35:2
 W:80:40:2:200000
 P:0:1d1:11:11:0
 F:STR | INT | WIS | DEX | CON | CHA | SPEED | BLOWS
-F:HOLD_LIFE | FREE_ACT | SEE_INVIS | FEATHER | REGEN | SUST_INT | SUST_WIS | 
-F:IM_COLD | 
+F:HOLD_LIFE | FREE_ACT | SEE_INVIS | FEATHER | REGEN | SUST_INT | SUST_WIS |
+F:IM_COLD |
 F:INSTA_ART | HIDE_TYPE | ACTIVATE | SHOW_MODS
 
 N:12:!Ring of Sheating
@@ -210,24 +210,24 @@ N:13:!Ring of the Emmanuel
 I:45:36:3
 W:90:50:2:300000
 P:0:1d1:12:12:0
-F:STR | INT | WIS | DEX | CON | CHA | SPEED |  
-F:HOLD_LIFE | FREE_ACT | SEE_INVIS | FEATHER | SLOW_DIGEST | REGEN | 
-F:SUST_INT | SUST_WIS | SUST_STR | SUST_DEX | 
-F:IM_ELEC | 
-F:INSTA_ART | HIDE_TYPE | ACTIVATE | 
+F:STR | INT | WIS | DEX | CON | CHA | SPEED |
+F:HOLD_LIFE | FREE_ACT | SEE_INVIS | FEATHER | SLOW_DIGEST | REGEN |
+F:SUST_INT | SUST_WIS | SUST_STR | SUST_DEX |
+F:IM_ELEC |
+F:INSTA_ART | HIDE_TYPE | ACTIVATE |
 
 #Gets extra power and resist
 N:14:!First Ring
 I:45:37:5
 W:100:100:2:5000000
 P:0:1d1:15:15:0
-F:STR | INT | WIS | DEX | CON | CHA | SPEED | STEALTH | HIDE_TYPE | 
-F:ACTIVATE | CURSED | HEAVY_CURSE | PERMA_CURSE | 
-F:DRAIN_EXP | SEE_INVIS | REGEN | 
+F:STR | INT | WIS | DEX | CON | CHA | SPEED | STEALTH | HIDE_TYPE |
+F:ACTIVATE | CURSED | HEAVY_CURSE | PERMA_CURSE |
+F:DRAIN_EXP | SEE_INVIS | REGEN |
 #F:AGGRAVATE | TY_CURSE |
 F:IM_FIRE | IM_COLD | IM_ELEC | IM_ACID |
-F:SUST_STR | SUST_DEX | SUST_CON | 
-F:SUST_INT | SUST_WIS | SUST_CHA | 
+F:SUST_STR | SUST_DEX | SUST_CON |
+F:SUST_INT | SUST_WIS | SUST_CHA |
 F:INSTA_ART
 
 #####################################################################################################################
@@ -246,12 +246,12 @@ N:15:!Lion Crested Armour of Sabnock
 I:37:4:2
 W:20:3:220:32000
 P:14:1d4:-2:0:15
-F:STR | CHA | HIDE_TYPE | 
+F:STR | CHA | HIDE_TYPE |
 F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_SHARDS | RES_NEXUS
 
 N:16:!Robes of Alastor, the Executor
 I:36:4:4
-W:20:3:80:45000 
+W:20:3:80:45000
 P:4:0d0:0:7:20
 F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_DARK
 
@@ -261,7 +261,7 @@ N:17:'Whirlwind'
 I:36:11:3
 W:20:3:60:25000
 P:11:1d1:-1:0:25
-F:DEX | HIDE_TYPE | SPEED | FREE_ACT | FEATHER | 
+F:DEX | HIDE_TYPE | SPEED | FREE_ACT | FEATHER |
 
 #####################################################################################################################
 #############################  1 uncommon armours, quite useful                          ############################
@@ -273,9 +273,9 @@ N:18:of Pravuil, Angel of the Word
 I:37:6:3
 W:25:9:270:40000
 P:16:1d4:-2:0:35
-F:INT | WIS | CON |  
+F:INT | WIS | CON |
 F:RES_DARK | RES_LITE | RES_POIS | RES_CONF
-F:HIDE_TYPE | 
+F:HIDE_TYPE |
 F:ACTIVATE
 
 #####################################################################################################################
@@ -287,8 +287,8 @@ N:19:!Plate Armour of Halphas the Demon
 I:37:15:1
 W:30:3:300:50000
 P:25:2d4:0:0:25
-F:CON | 
-F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | 
+F:CON |
+F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD |
 F:RES_SOUND | RES_CONF | RES_NEXUS
 
 #the most valiant Marquis of Hell
@@ -296,8 +296,8 @@ N:20:!Plate Armour of Naberius the Demon
 I:37:15:1
 W:30:3:300:50000
 P:25:2d4:15:15:25
-F:CON | 
-F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | 
+F:CON |
+F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD |
 F:RES_SOUND | RES_CONF | RES_NEXUS
 
 # Se'irim are goat demons
@@ -306,7 +306,7 @@ N:21:of the Se'irim
 I:37:9:2
 W:30:3:200:30000
 P:19:1d4:0:0:15
-F:STR | DEX | HIDE_TYPE | 
+F:STR | DEX | HIDE_TYPE | ACTIVATE
 F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_CONF | RES_SOUND
 
 #####################################################################################################################
@@ -317,7 +317,7 @@ N:22:!Robe of Saint Michael
 I:36:2:4
 W:40:3:20:135000
 P:28:1d4:-1:0:45
-F:CON | STR | DEX | SPEED | 
+F:CON | STR | DEX | SPEED |
 F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_POIS |
 F:RES_DARK | RES_FEAR |
 F:SEE_INVIS | SH_FIRE
@@ -327,16 +327,16 @@ N:23:!Robe of Saint Raphael
 I:36:2:2
 W:40:3:20:333000
 P:28:1d4:-1:0:45
-F:INT | WIS | CHA | 
+F:INT | WIS | CHA |
 F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_POIS |
 F:RES_LITE | HOLD_LIFE | RES_NETHER | SH_FIRE | TELEPATHY
-F:SEE_INVIS | 
+F:SEE_INVIS |
 
 N:24:!Robe of Saint Gabriel
 I:36:2:7
 W:40:3:20:333000
 P:28:1d4:-1:0:45
-F:STEALTH | SPEED | DEX | 
+F:STEALTH | SPEED | DEX |
 F:TELEPATHY | RES_CHAOS | RES_NEXUS
 
 #####################################################################################################################
@@ -349,8 +349,8 @@ N:25:!Corslet of Vepar, Mistress of the Dark Waters
 I:37:35:4
 W:40:3:340:150000
 P:15:2d4:-6:0:40
-F:CHA | HIDE_TYPE | 
-F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_DARK | 
+F:CHA | HIDE_TYPE |
+F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_DARK |
 F:RES_DISEN | IM_ELEC
 F:ACTIVATE
 
@@ -366,8 +366,8 @@ I:37:30:2
 W:75:9:420:300000
 P:40:2d4:-4:0:20
 F:WIS | INT | SPEED
-F:HOLD_LIFE | SUST_WIS | 
-F:RES_ACID | RES_COLD | RES_DARK | RES_NETHER | RES_NEXUS | RES_CHAOS | 
+F:HOLD_LIFE | SUST_WIS |
+F:RES_ACID | RES_COLD | RES_DARK | RES_NETHER | RES_NEXUS | RES_CHAOS |
 F:ACTIVATE
 
 #Has power over water
@@ -376,7 +376,7 @@ N:27:!Plate Mail of Ziminiar, Demon King
 I:37:30:2
 W:75:9:420:300000
 P:40:2d4:-4:0:20
-F:WIS | RES_CONF | RES_COLD | IM_COLD | NO_MAGIC | FREE_ACT | 
+F:WIS | RES_CONF | RES_COLD | IM_COLD | NO_MAGIC | FREE_ACT |
 F:ACTIVATE
 
 #Has power over earth
@@ -388,7 +388,7 @@ N:28:!Plate Mail of Gorson, Demon King
 I:37:30:2
 W:75:9:420:300000
 P:40:2d4:-4:0:20
-F:WIS | 
+F:WIS |
 F:HOLD_LIFE | SUST_CON | IM_ACID | NO_MAGIC | REGEN | REFLECT | RES_SHARDS | RES_SOUND
 F:ACTIVATE
 
@@ -400,7 +400,7 @@ N:29:!Plate Mail of Amaymon, Demon King
 I:37:30:2
 W:75:9:420:300000
 P:40:2d4:-4:0:20
-F:CON | SPEED | 
+F:CON | SPEED |
 F:NO_MAGIC | RES_ELEC | RES_LITE | IM_ELEC | FEATHER | FREE_ACT
 F:ACTIVATE
 
@@ -412,18 +412,18 @@ N:30:!Armour of Baphomet, master of blood
 I:38:6:0
 W:90:9:500:400000
 P:30:2d4:-4:0:25
-F:FREE_ACT | IM_ELEC | 
-F:RES_FIRE | RES_COLD | RES_POIS | RES_LITE | RES_DARK | 
-F:LITE | SEE_INVIS | AGGRAVATE | 
+F:FREE_ACT | IM_ELEC |
+F:RES_FIRE | RES_COLD | RES_POIS | RES_LITE | RES_DARK |
+F:LITE | SEE_INVIS | AGGRAVATE |
 F:ACTIVATE
 
 N:31:!Armour of Asmodai, King of Demons
 I:38:6:0
 W:90:9:500:400000
 P:30:2d4:-4:0:25
-F:FREE_ACT | IM_ELEC | 
-F:RES_FIRE | RES_COLD | RES_POIS | RES_LITE | RES_DARK | 
-F:LITE | SEE_INVIS | AGGRAVATE | 
+F:FREE_ACT | IM_ELEC |
+F:RES_FIRE | RES_COLD | RES_POIS | RES_LITE | RES_DARK |
+F:LITE | SEE_INVIS | AGGRAVATE |
 F:ACTIVATE
 
 #####################################################################################################################
@@ -464,7 +464,7 @@ F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD |
 F:ACTIVATE
 
 #N:16:!Plate Mail of Purson, Demon King
-# of 
+# of
 
 #####################################################################################################################
 #######################################                                       #######################################
@@ -478,8 +478,8 @@ N:35:!Shield of Saint Michael
 I:34:3:4
 W:30:6:65:60000
 P:3:1d2:0:0:25
-F:STR | CON | HIDE_TYPE | 
-F:FREE_ACT | IM_ACID | RES_SOUND | 
+F:STR | CON | HIDE_TYPE |
+F:FREE_ACT | IM_ACID | RES_SOUND |
 F:RES_CHAOS
 
 N:36:of the Lower Elements
@@ -493,9 +493,9 @@ N:37:of the Ages
 I:34:5:0
 W:40:9:120:160000
 P:5:1d3:0:0:45
-F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | 
-F:SUST_STR | SUST_INT | SUST_WIS | SUST_DEX | SUST_CON | SUST_CHA | 
-F:HOLD_LIFE | 
+F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD |
+F:SUST_STR | SUST_INT | SUST_WIS | SUST_DEX | SUST_CON | SUST_CHA |
+F:HOLD_LIFE |
 
 #####################################################################################################################
 #######################################                                       #######################################
@@ -525,13 +525,13 @@ W:20:2:15:50000
 P:2:0d0:0:0:10
 F:INT | WIS | HIDE_TYPE | RES_BLIND | TELEPATHY
 
-# a wild spirit or underworld demon that, under the shape of a bull, went through the cities, especially by night. 
+# a wild spirit or underworld demon that, under the shape of a bull, went through the cities, especially by night.
 N:40:of Gallu, the Wild Spirit
 I:32:6:3
 W:20:2:60:45000
 P:6:1d3:0:0:20
-F:STEALTH | STR | DEX | CON | HIDE_TYPE | 
-F:RES_DARK | 
+F:STEALTH | STR | DEX | CON | HIDE_TYPE |
+F:RES_DARK |
 
 N:41:'Terror Mask'
 I:32:5:-2
@@ -546,7 +546,7 @@ N:42:'Skullkeeper'
 I:32:5:2
 W:20:5:75:100000
 P:5:1d3:0:0:10
-F:INT | WIS | SEARCH | HIDE_TYPE | 
+F:INT | WIS | SEARCH | HIDE_TYPE |
 F:RES_BLIND | SEE_INVIS | ACTIVATE
 
 #####################################################################################################################
@@ -558,16 +558,16 @@ N:43:of Misery
 I:33:10:-25
 W:40:12:20:0
 P:0:1d1:0:0:25
-F:STR | DEX | CON | HIDE_TYPE | 
+F:STR | DEX | CON | HIDE_TYPE |
 F:FREE_ACT | SEE_INVIS | TELEPATHY | CURSED
 
 N:44:!Helm of the Lammasu
 I:32:7:4
 W:40:12:75:300000
 P:8:1d3:0:0:20
-F:STR | DEX | CON | HIDE_TYPE | 
-F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_LITE | RES_BLIND | 
-F:LITE | SEE_INVIS | TELEPATHY | 
+F:STR | DEX | CON | HIDE_TYPE |
+F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_LITE | RES_BLIND |
+F:LITE | SEE_INVIS | TELEPATHY |
 F:ACTIVATE
 
 # The Golden Crown of the Sun
@@ -589,11 +589,11 @@ N:46:of the Seventh Day
 I:33:50:125
 W:100:1:20:10000000
 P:0:1d1:0:0:0
-F:STR | INT | WIS | DEX | CON | CHA | INFRA | HIDE_TYPE | 
-F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_POIS | 
-F:RES_LITE | RES_DARK | RES_CONF | RES_NEXUS | 
+F:STR | INT | WIS | DEX | CON | CHA | INFRA | HIDE_TYPE |
+F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_POIS |
+F:RES_LITE | RES_DARK | RES_CONF | RES_NEXUS |
 F:LITE | SEE_INVIS | TELEPATHY |
-F:CURSED | HEAVY_CURSE | PERMA_CURSE | 
+F:CURSED | HEAVY_CURSE | PERMA_CURSE |
 F:INSTA_ART
 
 #####################################################################################################################
@@ -629,7 +629,7 @@ N:49:of Joseph
 I:35:1:0
 W:5:45:10:10000
 P:1:0d0:0:0:15
-F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_POIS | 
+F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_POIS |
 F:ACTIVATE
 
 # The Cloak of Draebor
@@ -637,8 +637,8 @@ N:50:of Draebor
 I:35:1:2
 W:5:45:10:13000
 P:1:0d0:0:0:12
-F:INT | WIS | STEALTH | HIDE_TYPE | 
-F:RES_ACID | RES_DARK | 
+F:INT | WIS | STEALTH | HIDE_TYPE |
+F:RES_ACID | RES_DARK |
 F:ACTIVATE
 
 #####################################################################################################################
@@ -649,8 +649,8 @@ N:51:of the Bard
 I:35:1:3
 W:10:90:10:35000
 P:1:0d0:0:0:18
-F:DEX | CHA | HIDE_TYPE | 
-F:FREE_ACT | RES_ACID | RES_FIRE | RES_COLD | 
+F:DEX | CHA | HIDE_TYPE |
+F:FREE_ACT | RES_ACID | RES_FIRE | RES_COLD |
 F:ACTIVATE
 
 #####################################################################################################################
@@ -669,7 +669,7 @@ N:53:of the Lucifuge
 I:35:6:4
 W:40:40:5:35000
 P:6:0d0:0:0:12
-F:STEALTH | 
+F:STEALTH |
 F:FREE_ACT | IM_ACID | SEE_INVIS | RES_CONF | RES_CHAOS | RES_FIRE
 
 N:54:of the Frost Plains
@@ -703,7 +703,7 @@ N:56:!Gloves of Incandescent Light
 I:31:1:0
 W:10:3:5:30000
 P:1:0d0:0:0:10
-F:FREE_ACT | RES_LITE | SUST_CON | LITE | 
+F:FREE_ACT | RES_LITE | SUST_CON | LITE |
 F:ACTIVATE
 
 # The Set of Gauntlets 'Ironfist'
@@ -732,7 +732,7 @@ N:60:of the Dead
 I:31:2:0
 W:10:20:25:12000
 P:2:1d1:0:0:15
-F:RES_ACID | ACTIVATE | CURSED | HEAVY_CURSE | 
+F:RES_ACID | ACTIVATE | CURSED | HEAVY_CURSE |
 
 # The Set of Gauntlets of Thanos , b00h
 N:61:of Thanos
@@ -752,7 +752,7 @@ N:62:of the Grim Reaper
 I:31:5:4
 W:40:15:40:110000
 P:5:1d1:10:10:20
-F:DEX | HIDE_TYPE | IM_COLD | 
+F:DEX | HIDE_TYPE | IM_COLD |
 F:FREE_ACT | RES_ACID | ACTIVATE | SHOW_MODS
 
 #####################################################################################################################
@@ -772,9 +772,9 @@ N:63:!Satan's Dancing Boots
 I:30:2:5
 W:10:25:20:40000
 P:2:1d1:0:0:15
-F:DEX | FREE_ACT | 
-F:CHA | SUST_CHA | 
-F:ACTIVATE | SPEED | 
+F:DEX | FREE_ACT |
+F:CHA | SUST_CHA |
+F:ACTIVATE | SPEED |
 F:RES_NETHER | RES_CHAOS | SUST_CON
 
 #####################################################################################################################
@@ -804,7 +804,7 @@ N:66:of Saint Gabriel
 I:30:3:15
 W:40:120:40:300000
 P:3:1d1:0:0:20
-F:SPEED | RES_NEXUS | ACTIVATE | 
+F:SPEED | RES_NEXUS | ACTIVATE |
 F:RES_CHAOS | RES_CONF | FEATHER | FREE_ACT | RES_LITE | RES_FEAR
 
 #####################################################################################################################
@@ -872,7 +872,7 @@ F:ACTIVATE | SHOW_MODS | BRAND_POIS
 #####################################################################################################################
 
 # The Main Gauche of Valefar
-#He tempts people to steal and is in charge of a good relationship among thieves, but later he brings them to the gallows. 
+#He tempts people to steal and is in charge of a good relationship among thieves, but later he brings them to the gallows.
 N:72:of Valefar
 I:23:5:3
 W:15:30:30:22500
@@ -894,7 +894,7 @@ N:74:of Barbatos
 I:23:11:1
 W:15:8:50:25000
 P:0:1d7:6:8:0
-F:BLOWS | 
+F:BLOWS |
 F:SLAY_DEMON | KILL_DRAGON | SLAY_EVIL | SLAY_UNDEAD | SHOW_MODS
 
 #####################################################################################################################
@@ -925,8 +925,8 @@ N:77:of Gusion
 I:23:12:3
 W:20:8:110:28000
 P:0:1d7:10:11:0
-F:DEX | STEALTH | HIDE_TYPE | 
-F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | FEATHER | 
+F:DEX | STEALTH | HIDE_TYPE |
+F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | FEATHER |
 F:SEE_INVIS | REGEN | SHOW_MODS
 
 # The Long Sword of Sitri
@@ -941,8 +941,8 @@ N:79:of Orobas, Demon Prince
 I:23:8:2
 W:20:15:75:100000
 P:0:1d6:7:8:0
-F:STR | DEX | CON | BLOWS | 
-F:SLAY_EVIL | SLAY_UNDEAD |  
+F:STR | DEX | CON | BLOWS |
+F:SLAY_EVIL | SLAY_UNDEAD |
 F:FREE_ACT | RES_LITE | LITE | SEE_INVIS | SHOW_MODS
 
 # The Broad Sword 'Brightblade'
@@ -950,7 +950,7 @@ N:80:'Brightblade'
 I:23:16:1
 W:20:20:150:40000
 P:0:2d5:10:15:0
-F:SEARCH | 
+F:SEARCH |
 F:SLAY_EVIL | BRAND_FIRE | SLAY_DEMON | RES_FIRE | RES_LITE | LITE | SH_FIRE
 F:SLOW_DIGEST | SHOW_MODS
 
@@ -960,7 +960,7 @@ I:23:16:7
 W:20:20:150:40000
 P:0:2d5:10:15:0
 F:STEALTH | RES_DARK
-F:SLAY_EVIL | BRAND_COLD | SLAY_DEMON | RES_COLD | LITE | 
+F:SLAY_EVIL | BRAND_COLD | SLAY_DEMON | RES_COLD | LITE |
 F:SLOW_DIGEST | SHOW_MODS
 
 # The Long Sword Great Earl of Hell
@@ -969,7 +969,7 @@ I:23:17:2
 W:20:30:130:150000
 P:0:2d5:8:12:0
 F:STR | CON | HIDE_TYPE | CHAOTIC | REGEN | SLOW_DIGEST |
-F:SLAY_EVIL | BRAND_ELEC | SLAY_DEMON | FREE_ACT | RES_ELEC | 
+F:SLAY_EVIL | BRAND_ELEC | SLAY_DEMON | FREE_ACT | RES_ELEC |
 F:RES_LITE | LITE | SEE_INVIS | SHOW_MODS | SPEED |
 F:SUST_CON | SUST_STR | SUST_INT | SUST_WIS | RES_DARK |
 F:RES_DISEN | RES_FEAR | BLOWS |
@@ -979,8 +979,8 @@ N:83:of Rashaverak, the Unknown
 I:23:17:4
 W:20:40:130:80000
 P:0:2d5:10:15:5
-F:STR | HIDE_TYPE | 
-F:SLAY_EVIL | BRAND_FIRE | SLAY_ANGEL | FREE_ACT | 
+F:STR | HIDE_TYPE |
+F:SLAY_EVIL | BRAND_FIRE | SLAY_ANGEL | FREE_ACT |
 F:RES_FIRE | SUST_DEX | SEE_INVIS | SHOW_MODS | LITE
 F:ACTIVATE
 
@@ -989,14 +989,14 @@ N:84:of Saint George
 I:23:11:4
 W:20:45:50:125000
 P:0:2d7:20:12:0
-F:STR | DEX | CON | SUST_CON | SUST_STR | SUST_DEX | 
-F:REGEN | FREE_ACT | SEE_INVIS | HOLD_LIFE | 
+F:STR | DEX | CON | SUST_CON | SUST_STR | SUST_DEX |
+F:REGEN | FREE_ACT | SEE_INVIS | HOLD_LIFE |
 F:RES_CHAOS | RES_NETHER | RES_FEAR |
-F:RES_COLD | RES_FIRE | 
-F:SLAY_DEMON | SLAY_EVIL | SLAY_DRAGON | SLAY_UNDEAD | KILL_DRAGON | 
-F:BRAND_COLD |BRAND_FIRE | 
-F:SLOW_DIGEST | BLESSED | 
-F:SHOW_MODS | HIDE_TYPE | 
+F:RES_COLD | RES_FIRE |
+F:SLAY_DEMON | SLAY_EVIL | SLAY_DRAGON | SLAY_UNDEAD | KILL_DRAGON |
+F:BRAND_COLD |BRAND_FIRE |
+F:SLOW_DIGEST | BLESSED |
+F:SHOW_MODS | HIDE_TYPE |
 
 # The Dagger of Iscariot
 N:85:of Iscariot
@@ -1006,7 +1006,7 @@ P:0:2d4:10:15:5
 F:DEX | HIDE_TYPE | STEALTH | SEARCH |
 F:SLAY_EVIL | SLAY_ANGEL | BRAND_POIS |
 F:FREE_ACT | RES_DARK | SUST_DEX | SEE_INVIS |
-F:SHOW_MODS | CURSED | HEAVY_CURSE | 
+F:SHOW_MODS | CURSED | HEAVY_CURSE |
 
 #This one _executes_ dragons
 # The Broad Sword of Furcifer
@@ -1014,18 +1014,18 @@ N:86:of Furcifer
 I:23:16:4
 W:20:90:150:95000
 P:0:2d5:12:16:0
-F:SEARCH | 
+F:SEARCH |
 F:BRAND_ELEC | SLAY_EVIL | KILL_DRAGON | RES_FEAR |
 F:RES_ELEC | LITE | RES_FIRE | RES_POIS |
-F:SLOW_DIGEST | SHOW_MODS | IM_ELEC | SH_ELEC | 
+F:SLOW_DIGEST | SHOW_MODS | IM_ELEC | SH_ELEC |
 
 # The Long Sword of Michael
 N:87:of Michael
 I:23:17:10
 W:20:120:130:300000
 P:0:4d5:22:25:0
-F:SPEED | 
-F:SLAY_EVIL | BRAND_COLD | SLAY_UNDEAD | SLAY_DEMON |  
+F:SPEED |
+F:SLAY_EVIL | BRAND_COLD | SLAY_UNDEAD | SLAY_DEMON |
 F:FREE_ACT | RES_COLD | RES_LITE | LITE | SEE_INVIS | SLOW_DIGEST | REGEN | SHOW_MODS
 F:ACTIVATE | KILL_ANGEL
 
@@ -1037,8 +1037,8 @@ N:88:of the Wailing Tree
 I:23:21:5
 W:30:15:140:100000
 P:0:5d4:-20:20:0
-F:CON | HIDE_TYPE | 
-F:KILL_DRAGON | SLAY_EVIL | SLAY_DEMON | KILL_ANGEL | RES_DISEN | 
+F:CON | HIDE_TYPE |
+F:KILL_DRAGON | SLAY_EVIL | SLAY_DEMON | KILL_ANGEL | RES_DISEN |
 F:AGGRAVATE | CURSED | HEAVY_CURSE | SHOW_MODS
 
 # The Two-Handed Sword 'Twilight'
@@ -1062,7 +1062,7 @@ N:91:'Dragonslayer'
 I:23:25:2
 W:30:30:200:100000
 P:0:3d6:13:17:0
-F:STR | HIDE_TYPE | 
+F:STR | HIDE_TYPE |
 F:KILL_DRAGON | FREE_ACT | SLOW_DIGEST | REGEN | SHOW_MODS
 
 # The Two-Handed Sword 'Firetongue'
@@ -1072,7 +1072,7 @@ W:30:180:250:205000
 P:0:4d6:19:21:0
 F:STR | CHA | INFRA | HIDE_TYPE | VORPAL |
 F:KILL_DRAGON | SLAY_ANIMAL | SLAY_EVIL | BRAND_FIRE | LITE |
-F:SLAY_UNDEAD | SLAY_DEMON | SLAY_ANGEL | SLAY_GIANT |  
+F:SLAY_UNDEAD | SLAY_DEMON | SLAY_ANGEL | SLAY_GIANT |
 F:RES_FIRE | RES_CHAOS | FREE_ACT | SEE_INVIS | AGGRAVATE | SHOW_MODS
 
 #####################################################################################################################
@@ -1087,13 +1087,13 @@ P:0:4d5:18:19:0
 F:SLAY_DRAGON | SLAY_EVIL | SLAY_UNDEAD | KILL_ANGEL | SLAY_GIANT | SLAY_DEMON
 F:SEE_INVIS | SHOW_MODS | VORPAL | BRAND_POIS | SH_FIRE
 
-# The Scythe of 
+# The Scythe of
 N:94:of Azrael
 I:22:17:3
 W:40:8:250:18000
 P:0:5d3:8:8:10
-F:DEX | CHA | HIDE_TYPE | 
-F:BRAND_COLD | BRAND_FIRE | FREE_ACT | RES_FIRE | RES_COLD | 
+F:DEX | CHA | HIDE_TYPE |
+F:BRAND_COLD | BRAND_FIRE | FREE_ACT | RES_FIRE | RES_COLD |
 F:RES_LITE | LITE | SEE_INVIS | SHOW_MODS
 F:ACTIVATE
 
@@ -1132,7 +1132,7 @@ F:KILL_DRAGON | SLAY_ANIMAL | SLAY_EVIL | KILL_ANGEL |
 F:FREE_ACT | SEE_INVIS | TELEPATHY | LITE
 F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_CHAOS
 F:CHAOTIC | VORPAL
-F:BRAND_FIRE | BRAND_POIS |BRAND_COLD |  
+F:BRAND_FIRE | BRAND_POIS |BRAND_COLD |
 F:AGGRAVATE | SHOW_MODS
 
 #####################################################################################################################
@@ -1186,7 +1186,7 @@ I:22:5:2
 W:15:35:300:90000
 P:0:3d8:16:18:0
 F:STR | DEX | HIDE_TYPE | CHAOTIC |
-F:SLAY_EVIL | SLAY_UNDEAD | RES_LITE | RES_DARK | SEE_INVIS | 
+F:SLAY_EVIL | SLAY_UNDEAD | RES_LITE | RES_DARK | SEE_INVIS |
 F:BLESSED | SHOW_MODS
 
 #####################################################################################################################
@@ -1199,7 +1199,7 @@ N:102:of Eligor
 I:22:10:3
 W:20:15:180:40000
 P:0:2d6:8:10:0
-F:WIS | CON | HIDE_TYPE | 
+F:WIS | CON | HIDE_TYPE |
 F:SLAY_DRAGON | TELEPATHY | SLOW_DIGEST | ACTIVATE | SHOW_MODS
 
 # The Lance of Orias
@@ -1207,7 +1207,7 @@ N:103:of Orias
 I:22:20:2
 W:20:23:360:55000
 P:0:3d8:3:21:0
-F:DEX | HIDE_TYPE | 
+F:DEX | HIDE_TYPE |
 F:SLAY_EVIL | SLAY_ANGEL | SEE_INVIS | SHOW_MODS
 
 # The Pike of Tepes
@@ -1215,8 +1215,8 @@ N:104:of Tepes
 I:22:8:2
 W:20:15:160:32000
 P:0:2d5:10:12:10
-F:INT | HIDE_TYPE | 
-F:BRAND_COLD | BRAND_FIRE | SLAY_DEMON | SLAY_ANGEL | SLAY_GIANT | 
+F:INT | HIDE_TYPE |
+F:BRAND_COLD | BRAND_FIRE | SLAY_DEMON | SLAY_ANGEL | SLAY_GIANT |
 F:RES_FIRE | RES_COLD | SUST_INT | SLOW_DIGEST | SHOW_MODS | LITE
 
 # The Morning Star of Beherit
@@ -1224,9 +1224,9 @@ N:105:of Beherit
 I:21:12:4
 W:20:30:150:30000
 P:0:2d6:8:22:0
-F:STR | HIDE_TYPE | 
+F:STR | HIDE_TYPE |
 F:SLAY_DEMON | SLAY_GIANT | SLAY_EVIL | SLAY_UNDEAD
-F:RES_NEXUS | SEE_INVIS | 
+F:RES_NEXUS | SEE_INVIS |
 F:SHOW_MODS
 
 # The Flail of Phenex
@@ -1234,8 +1234,8 @@ N:106:of Phenex
 I:21:13:2
 W:20:8:150:55000
 P:0:3d6:6:8:0
-F:STEALTH | 
-F:SLAY_EVIL | BRAND_FIRE | RES_FIRE | RES_CONF | ACTIVATE | 
+F:STEALTH |
+F:SLAY_EVIL | BRAND_FIRE | RES_FIRE | RES_CONF | ACTIVATE |
 F:SHOW_MODS | LITE
 
 # The Morning Star 'Morningstar'
@@ -1246,7 +1246,7 @@ P:0:2d6:5:7:2
 F:BRAND_FIRE | RES_FIRE | ACTIVATE | SHOW_MODS | LITE
 
 # The Mace of Beleth
-N:108:of Beleth, 
+N:108:of Beleth,
 I:21:5:0
 W:20:15:200:50000
 P:0:3d4:12:12:0
@@ -1257,8 +1257,8 @@ N:109:of Carabia
 I:22:15:3
 W:20:8:190:22000
 P:0:3d5:6:9:0
-F:CHA | HIDE_TYPE | 
-F:BRAND_FIRE | SLAY_UNDEAD | SLAY_GIANT | RES_FIRE | RES_SOUND | 
+F:CHA | HIDE_TYPE |
+F:BRAND_FIRE | SLAY_UNDEAD | SLAY_GIANT | RES_FIRE | RES_SOUND |
 F:FEATHER | SEE_INVIS | SHOW_MODS | LITE
 
 # The Broad Axe of Nodens
@@ -1266,8 +1266,8 @@ N:110:of Nodens
 I:22:11:3
 W:20:8:160:50000
 P:0:2d6:13:19:0
-F:CON | HIDE_TYPE | 
-F:SLAY_EVIL | SLAY_ANGEL | SLAY_GIANT | 
+F:CON | HIDE_TYPE |
+F:SLAY_EVIL | SLAY_ANGEL | SLAY_GIANT |
 F:SEE_INVIS | SHOW_MODS
 
 #####################################################################################################################
@@ -1286,8 +1286,8 @@ N:112:of the Weak
 I:22:25:3
 W:30:90:230:150000
 P:0:4d4:10:20:15
-F:CON | HIDE_TYPE | 
-F:KILL_DRAGON | SLAY_DEMON | KILL_ANGEL | FREE_ACT | 
+F:CON | HIDE_TYPE |
+F:KILL_DRAGON | SLAY_DEMON | KILL_ANGEL | FREE_ACT |
 F:RES_ACID | RES_FIRE | RES_LITE | RES_DARK | RES_CHAOS | SHOW_MODS
 
 # The Great Axe of the Trolls
@@ -1295,9 +1295,9 @@ N:113:of the Trolls
 I:22:25:2
 W:30:120:230:200000
 P:0:4d4:15:18:8
-F:STR | WIS | DEX | CON | HIDE_TYPE | 
+F:STR | WIS | DEX | CON | HIDE_TYPE |
 F:SLAY_EVIL | BRAND_COLD | SLAY_UNDEAD | RES_LITE | STEALTH
-F:SLAY_DEMON | FREE_ACT | IM_COLD | SEE_INVIS | ACTIVATE | 
+F:SLAY_DEMON | FREE_ACT | IM_COLD | SEE_INVIS | ACTIVATE |
 F:BLESSED | SHOW_MODS
 
 # The Battle Axe of N'Kai
@@ -1305,11 +1305,11 @@ N:114:of N'Kai
 I:22:22:3
 W:30:15:170:90000
 P:0:3d8:8:11:5
-F:STR | CON | 
-F:STEALTH | FREE_ACT | 
-F:SLAY_DEMON | SLAY_ANGEL | 
+F:STR | CON |
+F:STEALTH | FREE_ACT |
+F:SLAY_DEMON | SLAY_ANGEL |
 F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_BLIND |
-F:SEE_INVIS | REGEN |  FEATHER | 
+F:SEE_INVIS | REGEN |  FEATHER |
 F:HIDE_TYPE | SHOW_MODS
 
 # The Battle Axe of Ronove
@@ -1317,7 +1317,7 @@ N:115:of Ronove
 I:22:22:1
 W:30:15:170:21000
 P:0:2d8:4:3:0
-F:STR | DEX | HIDE_TYPE | 
+F:STR | DEX | HIDE_TYPE |
 F:SLAY_ANGEL | ACTIVATE | SHOW_MODS
 
 # The Lochaber Axe of the Dwarves
@@ -1326,8 +1326,8 @@ I:22:28:10
 W:30:8:250:80000
 P:0:3d8:12:17:0
 F:SLAY_EVIL | SLAY_GIANT |
-F:TUNNEL | INFRA | SEARCH | 
-F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD 
+F:TUNNEL | INFRA | SEARCH |
+F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD
 F:RES_FEAR |
 F:SHOW_MODS
 
@@ -1336,14 +1336,14 @@ N:117:of the Tritons
 I:22:5:4
 W:30:90:70:120000
 P:0:4d8:15:19:0
-F:DEX | 
-F:SLAY_DRAGON | SLAY_ANIMAL 
-F:FREE_ACT | HOLD_LIFE | SLOW_DIGEST | SEE_INVIS | REGEN | 
-F:RES_NETHER | 
-F:IM_ACID | 
-F:BLESSED | 
-F:SHOW_MODS | HIDE_TYPE | 
-F:ACTIVATE | 
+F:DEX |
+F:SLAY_DRAGON | SLAY_ANIMAL
+F:FREE_ACT | HOLD_LIFE | SLOW_DIGEST | SEE_INVIS | REGEN |
+F:RES_NETHER |
+F:IM_ACID |
+F:BLESSED |
+F:SHOW_MODS | HIDE_TYPE |
+F:ACTIVATE |
 
 #####################################################################################################################
 ############################# 1 *  level 40                                                  ########################
@@ -1354,9 +1354,9 @@ N:118:of Amaymon, Prince of Hell
 I:21:8:4
 W:40:75:120:250000
 P:0:9d3:19:21:5
-F:WIS | HIDE_TYPE | 
-F:KILL_DRAGON | SLAY_EVIL | BRAND_ELEC | SLAY_UNDEAD | SLAY_DEMON | 
-F:FREE_ACT | RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_NEXUS | 
+F:WIS | HIDE_TYPE |
+F:KILL_DRAGON | SLAY_EVIL | BRAND_ELEC | SLAY_UNDEAD | SLAY_DEMON |
+F:FREE_ACT | RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_NEXUS |
 F:SEE_INVIS | SHOW_MODS
 
 #####################################################################################################################
@@ -1368,8 +1368,8 @@ N:119:of Samael, Angel of Death
 I:21:18:4
 W:45:38:300:160000
 P:0:3d6:5:18:0
-F:STR | HIDE_TYPE | 
-F:SLAY_ANIMAL | BRAND_FIRE | BRAND_ELEC | 
+F:STR | HIDE_TYPE |
+F:SLAY_ANIMAL | BRAND_FIRE | BRAND_ELEC |
 F:RES_ELEC | RES_FIRE | RES_DARK | SHOW_MODS | LITE
 
 #####################################################################################################################
@@ -1382,7 +1382,7 @@ I:21:50:0
 W:100:1:1000:500000
 P:0:9d9:5:25:10
 F:KILL_DRAGON | SLAY_ANIMAL | SLAY_EVIL | IMPACT | SLAY_UNDEAD | NO_MAGIC |
-F:SLAY_DEMON | RES_ACID | RES_ELEC | RES_FIRE | 
+F:SLAY_DEMON | RES_ACID | RES_ELEC | RES_FIRE |
 F:RES_COLD | SEE_INVIS | TELEPATHY | AGGRAVATE | SHOW_MODS | INSTA_ART
 
 #####################################################################################################################
@@ -1402,7 +1402,7 @@ N:121:'Firestaff'
 I:21:3:3
 W:20:18:150:70000
 P:0:1d9:10:20:0
-F:INT | HIDE_TYPE | 
+F:INT | HIDE_TYPE |
 F:SLAY_ANIMAL | BRAND_FIRE | RES_FIRE | SHOW_MODS | LITE
 
 # The Quarterstaff 'Eriril'
@@ -1410,7 +1410,7 @@ N:122:'Eriril'
 I:21:3:4
 W:20:18:150:20000
 P:0:1d9:3:5:0
-F:INT | WIS | HIDE_TYPE | 
+F:INT | WIS | HIDE_TYPE |
 F:SLAY_EVIL | RES_LITE | LITE | SEE_INVIS | ACTIVATE | SHOW_MODS
 
 # The Lucerne Hammer 'Justice'
@@ -1418,8 +1418,8 @@ N:123:'Justice'
 I:21:8:4
 W:20:15:120:30000
 P:0:2d5:10:6:8
-F:WIS | INFRA | HIDE_TYPE | 
-F:BRAND_COLD | SLAY_ANGEL | RES_COLD | RES_LITE | LITE | REGEN | 
+F:WIS | INFRA | HIDE_TYPE |
+F:BRAND_COLD | SLAY_ANGEL | RES_COLD | RES_LITE | LITE | REGEN |
 F:ACTIVATE | SHOW_MODS
 
 #####################################################################################################################
@@ -1445,7 +1445,7 @@ I:21:20:6
 W:80:38:400:444444
 P:0:7d8:18:18:0
 F:STR | TUNNEL | HIDE_TYPE | NO_TELE |
-F:SLAY_DRAGON | SLAY_ANIMAL | SLAY_EVIL | SLAY_UNDEAD | BRAND_FIRE | 
+F:SLAY_DRAGON | SLAY_ANIMAL | SLAY_EVIL | SLAY_UNDEAD | BRAND_FIRE |
 F:IM_FIRE | RES_DARK | RES_CHAOS | RES_DISEN | AGGRAVATE | LITE |
 F:SHOW_MODS | BRAND_POIS | VAMPIRIC
 
@@ -1462,7 +1462,7 @@ I:19:13:3
 W:40:20:40:35000
 P:0:0d0:20:22:0
 F:DEX | STEALTH | XTRA_SHOTS | XTRA_MIGHT
-F:RES_DISEN | 
+F:RES_DISEN |
 F:SHOW_MODS | HIDE_TYPE
 
 N:127:'Sureshot'
@@ -1476,15 +1476,15 @@ N:128:!Crossbow of Death
 I:19:23:10
 W:50:25:110:50000
 P:0:0d0:10:14:0
-F:SPEED | XTRA_MIGHT | 
-F:RES_FIRE | 
+F:SPEED | XTRA_MIGHT |
+F:RES_FIRE |
 F:ACTIVATE | SHOW_MODS
 
 N:129:!White Banner
 I:39:8:10
 W:3:1:10:10000
 P:0:1d1:0:0:0
-F:SPEED | AGGRAVATE | HEAVY_CURSE | 
+F:SPEED | AGGRAVATE | HEAVY_CURSE |
 F:INSTA_ART |
 
 ########
