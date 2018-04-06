@@ -10,13 +10,13 @@
  * are included in all such copies.
  *
  * James E. Wilson and Robert A. Koeneke have released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
  */
 
 
@@ -198,7 +198,7 @@ struct object_kind
 	bool aware;			/* The player is "aware" of the item's effects */
 
 	bool tried;			/* The player has "tried" one of the items */
-	
+
 	byte squelch;        /* Squelch information */
 };
 
@@ -397,8 +397,8 @@ struct monster_race
 	u32b r_flags4;			/* Observed racial flags */
 	u32b r_flags5;			/* Observed racial flags */
 	u32b r_flags6;			/* Observed racial flags */
-	u32b r_flags7;			/* Observed racial flags */	
-	
+	u32b r_flags7;			/* Observed racial flags */
+
 	int  r_escort;          /* *** Inferno : what specific escort is defined ? *** */
 };
 
@@ -525,7 +525,7 @@ struct object_type
 
 	byte name1;			/* Artifact type, if any */
 	byte name2;			/* Ego-Item type, if any */
-
+	
 	byte xtra1;			/* Extra info type */
 	byte xtra2;			/* Extra info index */
 
@@ -556,7 +556,7 @@ struct object_type
 	s16b next_o_idx;	/* Next object in stack (if any) */
 
 	s16b held_m_idx;	/* Monster holding us (if any) */
-	
+
 	bool squelch;		/*Does it need to be squelched?*/
 };
 
@@ -806,9 +806,9 @@ struct bookswap_deal
 	byte race;				/* Race of the counterpart */
 	byte pclass;			/* Class of the counterpart */
 	char player_name[32];	/* Name of the counterpart */
-	
+
 	bool active;			/* Hack, setting this to true will make the deal appear in the shop */
-	
+
 	s16b wants_tval1; 		/* tvals of the wanted books */
 	s16b wants_tval2;
 	s16b wants_tval3;
@@ -816,7 +816,7 @@ struct bookswap_deal
 	byte wants_sval1;		/* svals of the wanted books */
 	byte wants_sval2;
 	byte wants_sval3;
-	
+
 	s16b offers_tval1;		/* tvals of the offered books */
 	s16b offers_tval2;
 	s16b offers_tval3;
@@ -865,23 +865,23 @@ struct spell_type
 	cptr spoiler;		/* Description of the spell*/
 };
 
-/* All spell info and all player spell info*/ 
+/* All spell info and all player spell info*/
 typedef struct magic_type magic_type;
 struct magic_type
 {
-	byte slevel;		/* Required level (to learn) */
+	byte slevel;/* Required level (to learn) */
 	byte smana;			/* Required mana (to cast) */
 	byte sfail;			/* Minimum chance of failure */
 	byte sexp;			/* Encoded experience bonus */
 	cptr name;          /* Name of the spell */
-	cptr macro;			/* Macro of the spell description */	
+	cptr macro;			/* Macro of the spell description */
 	cptr spoiler;       /* Spoiler of the spell */
 	char *info;			/* Information about the spell */
 	byte attr_info;		/* Color of the info */
-	byte attr_realm;    /* Color of the realm */
-	bool forgotten;     /* Have we forgotten it ?*/
-	bool learned;		/* Have we learned it once ? */
-	bool worked;         /* Have we tried it once ? */
+	byte attr_realm; /* Color of the realm */
+	bool forgotten; /* Have we forgotten it ?*/
+	bool learned;/* Have we learned it once ? */
+	bool worked;   /* Have we tried it once ? */
 };
 
 /*
@@ -930,7 +930,7 @@ typedef struct player_sex player_sex;
 struct player_sex
 {
 	cptr title;			/* Type of sex */
-	
+
 	cptr address;        /* 'Addressment' of the sex */
 
 	cptr winner;		/* Name of winner */
@@ -977,13 +977,13 @@ struct player_race
 	byte infra;			/* Infra-vision	range */
 
 	u16b choice;        /* Legal class choices */
-	
+
 	bool rations;		/* Can use regular food */
-	
+
 	bool undead;		/* Undead ?*/
-	
+
 	bool fearless;		/* Fearless ? */
-	
+
 	bool hates_light;	/* Hates light ? */
 	/*    byte choice_xtra;   */
 };
@@ -1037,9 +1037,6 @@ struct player_class
 	s16b c_mhp;			/* Class hit-dice adjustment */
 	s16b c_exp;			/* Class experience factor */
 };
-
-
-
 
 /*
 * Most of the "player" information goes here.
@@ -1100,7 +1097,7 @@ struct player_type
 
 	s16b max_plv;		/* Max Player Level */
 	s16b max_dun_level; /* Deepest dungeon level explored */
-	u32b visits;        /* Levels visited by taking the stairs */	
+	u32b visits;        /* Levels visited by taking the stairs */
 
 	s16b stat_max[6];	/* Current "maximal" stat values */
 	s16b stat_cur[6];	/* Current "natural" stat values */
@@ -1285,7 +1282,7 @@ struct player_type
 	byte tval_ammo;		/* Correct ammo tval */
 
 	s16b pspeed;		/* Current speed */
-    
+
     s16b command_see;		/* See "cmd1.c" */
 	s16b command_wrk;		/* See "cmd1.c" */
 };
@@ -1305,8 +1302,6 @@ struct martial_arts
 	int     effect;     /* Special effects */
 };
 
-
-
 /* Orphics */
 
 typedef struct mindcraft_power mindcraft_power;
@@ -1321,7 +1316,7 @@ typedef struct U_power U_power;
 struct U_power {
 	int  idx;
 	cptr description;
-	int level;	
+	int level;
 	int cost;
 	int cost_level;
 	int stat;
@@ -1345,7 +1340,7 @@ struct opposed_corruptions_type {
 	byte idx_gain;
 	u32b bitflag_gain;
 	byte idx;
-	u32b bitflag;	
+	u32b bitflag;
 	cptr message;
 };
 
@@ -1356,7 +1351,7 @@ struct timed_type {
 	cptr status;
 	cptr gain;
 	cptr lose;
-	u32b redraw;	
+	u32b redraw;
 	u32b update;
 };
 
@@ -1419,3 +1414,10 @@ struct art_bias_entry
 	byte calculated_odds;             /* Calculated odds, get filled in at runtime */
 };
 
+/* For the borg! */
+typedef struct coord coord;
+struct coord
+{
+	byte y;
+	byte x;
+};
