@@ -1327,7 +1327,7 @@ static void display_player_various(void)
 /*
 * Obtain the "flags" for the player as if he was an item
 */
-void player_flags(u32b *f1, u32b *f2, u32b *f3)
+extern void player_flags(u32b *f1, u32b *f2, u32b *f3)
 {
 	/* Clear */
 	(*f1) = (*f2) = (*f3) = 0L;
