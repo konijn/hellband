@@ -1,0 +1,31 @@
+
+* MUST
+  * Build support for the Nephilim powers which are based off the Amberite powers
+  * Make sure the forked tongue mutation is properly implemented
+  * Teach the borg how to work the cloak of Draebor
+
+* SHOULD
+  * zborg1.h /*TODO: understand the difference between track_shop and track_building*/
+  * Verify zborg3.c:borg_mutation
+  * Does Orb of Draining still destroy cursed non-artefacts?
+  * Make RACE_LILITH and RACE_LUCIFER flexible
+  * Should have a temp resist poison artefact, even a random res poison power
+  * Verify that Handle "satisfy hunger" properly deals with Vampires
+
+* NICE
+  * move total_weight to p_ptr->total_weight
+  * make cmd2.c use the corruption table..
+  * Use zborg3.c diff calculation to cmd2.c to be used by Hellband and the borg
+  * Some files still mention the Logrus..
+
+* Version 1.0.0
+  * Add more races, Amberites are gone forever though
+  * Add temporary brands
+  * Add RBE_EXP_VAMP, poetic justice
+  * Add Zombies in, but cool like, possibly turning denizens
+
+* UNLIKELY
+
+*Documentation
+
+* There is no name3 in Hellband, because Hellband does not yet have temporary brands
