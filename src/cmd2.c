@@ -3426,7 +3426,6 @@ void do_cmd_racial_power(void)
 	/*cptr racial_power = "(none)";*/
 	char       racial_power[80];
 
-
 	/* 3 vars nicked from cmd_racial_power_aux to make the birth ability of the Morui work */
 	s16b plev = p_ptr->lev;
 	int Type = (randint(3)==1?GF_COLD:GF_FIRE);
@@ -3924,7 +3923,7 @@ void do_cmd_racial_power(void)
 		case COR1_SLIME:
 			if (racial_aux(15, 15, A_CON, 14))
 			{
-				msg_print("You invoke some hellslime...");
+				msg_print("You summon a hellslime storm!");
 				fire_ball(GF_HELLSLIME, 0, (p_ptr->lev * 2), 3 + (p_ptr->lev / 20));
 			}
 			break;
