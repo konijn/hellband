@@ -293,10 +293,10 @@ struct borg_kill
 
 	byte    ox, oy;     /* Old location */
 
-	s16b	dist;			/* how far from the player */
-	bool	los;		/* Probably in Line of Sight */
-	byte    speed;      /* Estimated speed */
-	byte    moves;      /* Estimates moves */
+	s16b  dist;			/* how far from the player */
+	bool  los;		/* Probably in Line of Sight */
+	byte  speed;      /* Estimated speed */
+	byte  moves;      /* Estimates moves */
 
 	byte	ranged_attack; /* numbr of ranged attacks */
 	byte	spell[96];	/* spell flags for monsters */
@@ -306,8 +306,8 @@ struct borg_kill
 	s16b    level;      /* Monsters Level */
 	s16b	m_idx;		/* Game's index of monster */
 
-	bool	friendly;	/* friend/pet */
-	bool	pet;
+	bool	ally;
+	bool  neutral;
 	s16b    when;       /* When last seen */
 	bool	summoner;	/* Summoner */
 	bool	unique;		/* Unique */
@@ -415,7 +415,7 @@ struct borg_data
 extern bool borg_active;        /* Actually active */
 extern bool borg_resurrect;     /* Continous play mode */
 extern bool borg_cancel;        /* Being cancelled */
-extern bool borg_pets;			/* borg near pets */
+extern bool borg_allies;        /* borg near allies */
 extern char genocide_target;    /* Identity of the poor unsuspecting soul */
 extern int zap_slot;            /* to avoid a nasty game bug with amnesia */
 extern bool borg_casted_glyph;  /* we dont have a launch messages anymore */
@@ -860,7 +860,6 @@ extern int unique_on_level;     /* race index of unique on the level */
 extern bool borg_swapped_rings; /* rings swapped on this level */
 
 extern s16b old_depth;
-extern s16b old_town;
 extern s16b borg_respawning;       /* to prevent certain crashes */
 extern bool borg_cheat_death;		/* borg will avoid death and respawn */
 extern s16b borg_no_retreat;
@@ -1771,5 +1770,11 @@ extern cptr BORG_DIR_DATA;
 #define SV_FOOD_WAYBREAD SV_FOOD_AMBROSIA
 #define RACE_HALF_GIANT GIANT
 #define SV_WAND_ROCKETS SV_WAND_SHARD
+#define max_f_idx MAX_F_IDX
+#define max_e_idx MAX_E_IDX
+#define max_k_idx MAX_K_IDX
+#define max_a_idx MAX_A_IDX
+#define max_r_idx MAX_R_IDX
+#define FEAT_PERM_EXTRA FEAT_PERM_BUILDING
 
 #endif

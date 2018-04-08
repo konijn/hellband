@@ -28,11 +28,11 @@
 #define GOAL_XTRA   5       /* Searching */
 #define GOAL_BORE   6       /* Leaving */
 #define GOAL_FLEE   7       /* Fleeing */
-#define GOAL_TOWN	8		/* Town Special Grid */
-#define GOAL_VAULT  9		/* Vaults */
-#define GOAL_RECOVER 10		/* Safe grid for me to rest on */
-#define GOAL_DIGGING 11		/* Anti-summon Corridor */
-#define GOAL_UNREACH 12		/* Move to a safer grid so monsters cant hit him */
+#define GOAL_TOWN8          /* Town Special Grid */
+#define GOAL_VAULT  9       /* Vaults */
+#define GOAL_RECOVER 10     /* Safe grid for me to rest on */
+#define GOAL_DIGGING 11     /* Anti-summon Corridor */
+#define GOAL_UNREACH 12     /* Move to a safer grid so monsters cant hit him */
 
 /*
  * Minimum "harmless" food
@@ -66,14 +66,13 @@ extern bool borg_check_rest(int y, int x);
 extern bool borg_on_safe_grid(int y, int x);
 extern int borg_near_monster_type(int dist);
 extern bool borg_happy_grid_bold(int y, int x);
+
 /*
  * Twitchy goals
  */
 extern bool borg_charge_kill(void);
 extern bool borg_charge_take(void);
 extern bool borg_twitchy(void);
-
-
 
 /*
  * Continue a high level goal
@@ -98,7 +97,6 @@ extern bool borg_flow_passwall(void);
 extern bool borg_check_lite_only(void);
 extern bool borg_backup_swap(int p);
 
-
 /*
  * Flow to shops
  */
@@ -109,7 +107,6 @@ extern bool borg_flow_shop_special(bool first);
 extern int borg_net_mutations(void);
 extern bool borg_flow_shop_inn(void);
 extern bool borg_flow_shop_trump(void);
-
 
 /*
  * Flow towards monsters/objects
@@ -159,10 +156,6 @@ extern bool borg_target_unknown_wall(int g_y,int g_x);
  */
 extern void borg_init_6(void);
 
-
-
-
 #endif
 
 #endif
-

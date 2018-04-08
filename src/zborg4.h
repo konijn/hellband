@@ -19,6 +19,12 @@
 #include "zborg3.h"
 
 
+/*
+ * Simplied functions for Hellband quests
+ */
+extern bool is_borg_quest_monster(s16b r_idx);
+
+
 
 /*
  * Extract various bonuses

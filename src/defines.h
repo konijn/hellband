@@ -118,8 +118,9 @@
 * Total number of stores (see "store.c", etc)
 * Total numbers of stores without a building (Mage guild and alchemy basement`)
 */
-#define MAX_STORES      14
-#define SUB_STORES      2
+#define MAX_STORES 14
+#define SUB_STORES 2
+#define MAX_BLDG   MAX_STORES - SUB_STORES
 /*
 * Road Directions
 */
@@ -814,6 +815,22 @@ and tables.c --TY */
 
 /* Traps */
 #define FEAT_TRAP_HEAD  0x10
+#define FEAT_TRAP_TRAPDOOR   FEAT_TRAP_HEAD + 0x00
+#define FEAT_TRAP_PIT        FEAT_TRAP_HEAD + 0x01
+#define FEAT_TRAP_SPIKED_PIT FEAT_TRAP_HEAD + 0x02
+#define FEAT_TRAP_POISON_PIT FEAT_TRAP_HEAD + 0x03
+#define FEAT_TRAP_TY_CURSE   FEAT_TRAP_HEAD + 0x04
+#define FEAT_TRAP_TELEPORT   FEAT_TRAP_HEAD + 0x05
+#define FEAT_TRAP_FIRE       FEAT_TRAP_HEAD + 0x06
+#define FEAT_TRAP_ACID       FEAT_TRAP_HEAD + 0x07
+#define FEAT_TRAP_SLOW       FEAT_TRAP_HEAD + 0x08
+#define FEAT_TRAP_LOSE_STR   FEAT_TRAP_HEAD + 0x09
+#define FEAT_TRAP_LOSE_DEX   FEAT_TRAP_HEAD + 0x0A
+#define FEAT_TRAP_LOSE_CON   FEAT_TRAP_HEAD + 0x0B
+#define FEAT_TRAP_BLIND      FEAT_TRAP_HEAD + 0x0C
+#define FEAT_TRAP_CONFUSE    FEAT_TRAP_HEAD + 0x0D
+#define FEAT_TRAP_POISON     FEAT_TRAP_HEAD + 0x0E
+#define FEAT_TRAP_SLEEP      FEAT_TRAP_HEAD + 0x0F
 #define FEAT_TRAP_TAIL  0x1F
 
 /* Doors */
@@ -850,7 +867,7 @@ and tables.c --TY */
 
 /* Shops */
 #define FEAT_SHOP_HEAD        0x4A
-#define FEAT_SHOP_TAIL         0x55
+#define FEAT_SHOP_TAIL        0x55
 
 /* Other Surface Stuff */
 #define FEAT_GATE   0x60
@@ -1822,10 +1839,10 @@ ART_THOTH -> ART_KINSLAYER
 
 /* The "sval" codes for TV_FOOD */
 #define SV_FOOD_POISON                  0
-#define SV_FOOD_THIRD_SIGHT               1
-#define SV_FOOD_FRIGHT                2
+#define SV_FOOD_THIRD_SIGHT             1
+#define SV_FOOD_FRIGHT                  2
 #define SV_FOOD_CONFUSION               3
-#define SV_FOOD_HALLUCINATION   4
+#define SV_FOOD_HALLUCINATION           4
 #define SV_FOOD_PARALYSIS               5
 #define SV_FOOD_WEAKNESS                6
 #define SV_FOOD_SICKNESS                7
@@ -1834,10 +1851,10 @@ ART_THOTH -> ART_KINSLAYER
 #define SV_FOOD_UNHEALTH                10
 #define SV_FOOD_DISEASE                 11
 #define SV_FOOD_CURE_POISON             12
-#define SV_FOOD_CURE_BLINDNESS  13
-#define SV_FOOD_CURE_PARANOIA   14
-#define SV_FOOD_CURE_CONFUSION  15
-#define SV_FOOD_CURE_SERIOUS    16
+#define SV_FOOD_CURE_BLINDNESS          13
+#define SV_FOOD_CURE_PARANOIA           14
+#define SV_FOOD_CURE_CONFUSION          15
+#define SV_FOOD_CURE_SERIOUS            16
 #define SV_FOOD_RESTORE_STR             17
 #define SV_FOOD_RESTORE_CON             18
 #define SV_FOOD_RESTORING               19
@@ -1848,7 +1865,7 @@ ART_THOTH -> ART_KINSLAYER
 #define SV_FOOD_SLIME_MOLD              36
 #define SV_FOOD_AMBROSIA                37
 #define SV_FOOD_PINT_OF_ALE             38
-#define SV_FOOD_PINT_OF_WINE    39
+#define SV_FOOD_PINT_OF_WINE            39
 
 
 /*

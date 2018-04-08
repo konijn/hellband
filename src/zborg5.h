@@ -17,7 +17,6 @@
 #include "zborg3.h"
 #include "zborg6.h"
 
-
 /*
  * Update state based on current "map"
  */

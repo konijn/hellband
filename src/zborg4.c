@@ -57,6 +57,11 @@
  */
 
 
+bool is_borg_quest_monster(s16b r_idx){
+	if(r_idx == RACE_LILITH || r_idx == RACE_LUCIFER)
+		return TRUE;
+	return FALSE;
+}
 
 /*
  * Helper function -- notice the player equipment
@@ -10637,7 +10642,7 @@ int borg_danger_aux(int y, int x, int c, int i, bool average, bool mon_v_mon)
 		 */
 		if (d == 1)
 		{
-			int pets = 0;
+			int allies = 0;
 
 			/* How many pets are adjacent to the monster? */
 			for (ii = 0; ii < 8; ii++)
@@ -10651,12 +10656,11 @@ int borg_danger_aux(int y, int x, int c, int i, bool average, bool mon_v_mon)
 				if (!borg_grids[y][x].kill) continue;
 
 				/* skip non-pets */
-				if (borg_kills[borg_grids[y][x].kill].pet ||
-					borg_kills[borg_grids[y][x].kill].friendly) pets ++;
+				if (borg_kills[borg_grids[y][x].kill].ally) allies ++;
 			}
 
 			/* reduce the threat */
-			v1 = v1 / (pets + 1);
+			v1 = v1 / (allies + 1);
 		}
 
 		/* A low level borg might be able to flee better after drinking that speed pot */
@@ -10898,7 +10902,7 @@ int borg_danger_aux(int y, int x, int c, int i, bool average, bool mon_v_mon)
 			if (!kill->r_idx) continue;
 
 			/* Skip non pets */
-			if (!kill->pet && !kill->friendly) continue;
+			if (!kill->ally) continue;
 
 			/* Have to be projectable to this friendly */
 			if (!borg_projectable(kill->y, kill->x, y9, x9, FALSE, TRUE)) continue;
@@ -10932,7 +10936,7 @@ int borg_danger_aux(int y, int x, int c, int i, bool average, bool mon_v_mon)
 		p = MAX(v1, v2);
 
 	/* No danger from friends or pets */
-	if (kill->friendly || kill->pet) p = 0;
+	if (kill->ally) p = 0;
 
 		/* Result */
 		return (p);
@@ -11809,6 +11813,8 @@ cptr borg_prep(int depth)
 							if ( r_ptr->level >= depth ) break;
 
 							/* skip the check on Questors */
+							if(is_borg_quest_monster(i))
+								continue;
 							/*if (r_ptr->flags1 & RF1_QUESTOR) continue;*/
 
 							/* Skip Friendly */

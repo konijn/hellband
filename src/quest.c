@@ -12,23 +12,23 @@
  * are included in all such copies.
  *
  * James E. Wilson and Christopher J. Stuart released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
  */
 
 /*
 *
 * Heino Vander Sanden
 * Heino.VanderSanden@AdValvas.Be
-* 
+*
 * Heino Vander Sanden released all changes to the Angband code under the terms of the GNU General Public License (version 2),
-* as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
-* or under the terms of the traditional Angband license.  
+* as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+* or under the terms of the traditional Angband license.
 *
 */
 	
@@ -102,10 +102,10 @@ void print_quest_message(void)
 static cptr find_quest[5] =
 {
 	"You find the following inscription in the floor",
-		"You see a message inscribed in the wall",
-		"There is a sign saying",
-		"Something is writen on the staircase",
-		"You find a scroll with the following message",
+	"You see a message inscribed in the wall",
+	"There is a sign saying",
+	"Something is writen on the staircase",
+	"You find a scroll with the following message",
 };
 
 /*

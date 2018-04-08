@@ -1127,7 +1127,7 @@ s16b borg_kills_summoner;    /* index of a summoner */
 s16b borg_kills_nxt;
 
 borg_kill *borg_kills;
-bool borg_pets;
+bool borg_allies;
 
 int borg_target_y;
 int borg_target_x;
