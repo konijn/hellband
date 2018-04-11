@@ -2298,7 +2298,7 @@ void update_monsters(bool full)
 }
 
 /*Only these guys are able to float/fly/swim */
-int water_ok_type(int summon_type)
+bool water_ok_type(int summon_type)
 {
 	return ( summon_type == FILTER_DRAGON ||
 			 summon_type == FILTER_FALLEN_ANGELS ||
@@ -2312,10 +2312,10 @@ int water_ok_type(int summon_type)
 }
 
 /*Only monsters that are aquatic and/or flight are ok with water*/
-int water_ok(int r_idx)
+bool water_ok(int r_idx )
 {
-	monster_race	*r_ptr = &r_info[r_idx];
-	return (r_ptr->flags7 & RF7_AQUATIC || r_ptr->flags7 & RF7_FLIGHT );
+	monster_race *r_ptr = &r_info[r_idx];
+	return (r_ptr->flags7 & RF7_AQUATIC || r_ptr->flags7 & RF7_FLIGHT ) ? TRUE : FALSE;
 }
 
 /* Can a monster be placed somewhere ?

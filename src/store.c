@@ -776,8 +776,6 @@ static bool is_blessed(object_type *o_ptr)
 	else return (FALSE);
 }
 
-
-
 /*
 * Determine if the current store will purchase the given item
 *
@@ -1090,7 +1088,6 @@ static int home_carry(object_type *o_ptr)
 	/* Return the location */
 	return (slot);
 }
-
 
 /*
 * Add the item "o_ptr" to a real stores inventory.
@@ -1738,7 +1735,7 @@ static void display_store(void)
 		else if(cur_store_num == STORE_ALCHEMIST_BASEMENT)
 		{
 			/*Hack, this one is the basement of the feature ;\ */
-			store_name = "Alchemy store basement";
+			store_name = "Alchemy Store Basement";
 		}
 		else
 		{

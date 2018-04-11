@@ -1893,7 +1893,7 @@ static void borg_notice_aux2(void)
 				borg_spell_legal(REALM_CHARMS, 1, 0) ||
 				borg_spell_legal(REALM_NATURE, 1, 2) ||
 				borg_mindcr_legal(MIND_PRECOGNIT, 2) ||
-				borg_racial_check(DWARF, 10, 1))
+				borg_racial_check(DWARF, 10))
 		{
 				borg_skill[BI_ADETTRAP] += 1000;
 				borg_skill[BI_ADETDOOR] += 1000;
@@ -1981,7 +1981,7 @@ static void borg_notice_aux2(void)
 		if (borg_spell_legal(REALM_MIRACLES, 1, 7) ||
 				borg_spell_legal(REALM_MIRACLES, 2, 7) ||
 		borg_spell_legal(REALM_SORCERY, 3, 2) ||	/* Actually explosive rune */
-		borg_racial_check(OGRE, 27, 1) || /* Actually explosive rune */
+		borg_racial_check(OGRE, 27) || /* Actually explosive rune */
 		borg_equips_activation(ACT_RUNE_EXPLO, FALSE) ||
 		borg_equips_activation(ACT_RUNE_PROT, FALSE))
 		{
@@ -2023,7 +2023,7 @@ static void borg_notice_aux2(void)
 		if (borg_spell_legal_fail(REALM_CHARMS, 2, 4, 40) ||
 				borg_spell_legal_fail(REALM_NATURE, 1, 0, 40) ||
 				borg_spell_legal_fail(REALM_CHAOS, 0, 6, 40) ||
-				borg_racial_check(GIANT, 40, 1))
+				borg_racial_check(GIANT, 40))
 		{
 				amt_digger += 1;
 		}
@@ -2051,7 +2051,7 @@ static void borg_notice_aux2(void)
 				borg_spell_legal_fail(REALM_CHARMS,3, 1, 40) ||
 				borg_spell_legal_fail(REALM_TAROT, 1, 5, 40) ||
 				/*Not really teleport level, but good enough*/
-				borg_racial_check(NEPHILIM, 40, 1))
+				borg_racial_check(NEPHILIM, 40))
 		{
 			borg_skill[BI_ATELEPORTLVL] += 1000;
 		}
@@ -2167,9 +2167,9 @@ static void borg_notice_aux2(void)
 		if (borg_equips_artifact(ART_LIFE) ||
 				borg_spell_legal(REALM_MIRACLES, 3, 3) ||
 				borg_spell_legal(REALM_DEATH, 1, 7) ||
-				borg_racial_check(SKELETON, 10, 1) ||
+				borg_racial_check(SKELETON, 10) ||
 				/*borg_racial_check(ZOMBIE, 10, 1) ||*/
-				borg_racial_check(NEPHILIM, 10, 2) ||
+				borg_racial_check(NEPHILIM, 10) ||
 				borg_equips_activation(ACT_REST_LIFE, FALSE) ||
 				borg_equips_activation(ACT_REST_ALL, FALSE))
 		{
@@ -2190,7 +2190,7 @@ static void borg_notice_aux2(void)
 			borg_spell_legal(REALM_NATURE,1, 0) ||
 			borg_spell_legal(REALM_CHAOS,0, 6) ||
 			borg_mutation(COR1_EAT_ROCK, TRUE, 40, TRUE) ||  /* He should be standing right next to it here */
-			borg_racial_check(GIANT, 10, 1) ||
+			borg_racial_check(GIANT, 10) ||
 			borg_equips_activation(ACT_STONE_MUD, FALSE))
 	{
 		borg_skill[BI_ASTONE2MUD] += 1000;
@@ -2428,7 +2428,7 @@ void borg_notice_swap_weapon(void)
 										!borg_spell_legal_fail(REALM_NATURE, 1, 0, 40) &&
 										!borg_spell_legal_fail(REALM_CHAOS, 0, 6, 40) &&
 					!borg_mutation(COR1_EAT_ROCK, TRUE, 40, TRUE) &&
-										!borg_racial_check(GIANT, 40, 1) &&
+										!borg_racial_check(GIANT, 40) &&
 										!(borg_items[INVEN_WIELD].flags1 & TR1_TUNNEL))
 								weapon_swap_digger = item->pval;
 						}
@@ -11025,8 +11025,8 @@ cptr borg_restock(int depth)
 {
 
 		/* We are now looking at our preparedness */
-		if ( -1 == borg_ready_morgoth)
-				borg_ready_morgoth = 0;
+		if ( -1 == borg_ready_lucifer)
+				borg_ready_lucifer = 0;
 
 		/* Always ready for the town */
 		if (!depth) return ((cptr)NULL);
@@ -11124,12 +11124,12 @@ static cptr borg_prepared_aux(int depth)
 		req_item* Req_item;
 		static char ret_string[2000]; /* hack.  big ass string to return 'why things are bad' string */
 
-		if ( -1 == borg_ready_morgoth)
-				borg_ready_morgoth = 0;
+		if ( -1 == borg_ready_lucifer)
+				borg_ready_lucifer = 0;
 
 		if (borg_skill[BI_KING])
 		{
-				borg_ready_morgoth = 1;
+				borg_ready_lucifer = 1;
 				return ((cptr)NULL);
 		}
 
@@ -11201,11 +11201,11 @@ static cptr borg_prepared_aux(int depth)
  */
 static cptr borg_prepared_aux2(int depth)
 {
-		if ( -1 == borg_ready_morgoth)
-				borg_ready_morgoth = 0;
+		if ( -1 == borg_ready_lucifer)
+				borg_ready_lucifer = 0;
 		if (borg_skill[BI_KING])
 				{
-						borg_ready_morgoth = 1;
+						borg_ready_lucifer = 1;
 						return ((cptr)NULL);
 				}
 
@@ -11664,7 +11664,7 @@ cptr borg_prep(int depth)
 		cptr reason;
 
 		/* -1 is unknown. */
-		borg_ready_morgoth = -1;
+		borg_ready_lucifer = -1;
 
 		/* Town and First level */
 		if (depth == 1) return ((cptr)NULL);
@@ -11828,7 +11828,7 @@ cptr borg_prep(int depth)
 
 					if (numb_live_unique < 1)
 					{
-							if (depth > 99) borg_ready_morgoth = 1;
+							if (depth > 99) borg_ready_lucifer = 1;
 							return ((cptr)NULL);
 					}
 					/* Under special cases allow the borg to dive to 99 then quickly

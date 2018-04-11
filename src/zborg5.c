@@ -878,7 +878,9 @@ static void borg_update_kill_new(int i) {
 
 	/* There are no pets in Hellband, there are allies */
 	kill->ally = is_ally(m_ptr);
-	
+	kill->neutral = (m_ptr->ally == ALLY_SELF) ? TRUE : FALSE;
+	kill->killer = (kill->ally || kill->neutral) ? FALSE : TRUE;
+
 	/* There are no friendly characters in Hellband, yet */
 	/*if (is_friendly(m_ptr)) kill->friendly = TRUE; */
 
@@ -1384,11 +1386,11 @@ static void borg_follow_kill(int i) {
 
 	borg_grid *ag;
 	borg_kill *kill = &borg_kills[i];
-	
+
 	/* Paranoia */
 	if (!kill->r_idx)
 		return;
-	
+
 	monster_race *r_ptr = &r_info[kill->r_idx];
 
 	/* Old location */

@@ -501,6 +501,7 @@ extern void do_cmd_rest(void);
 extern void do_cmd_fire(void);
 extern void do_cmd_throw(void);
 extern int chest_check(int y, int x);
+extern int racial_chance(s16b min_level, int use_stat, int difficulty);
 
 /* cmd3.c */
 extern void do_cmd_inven(void);
@@ -657,6 +658,7 @@ extern void screen_roff(int r_idx);
 extern void display_roff(int r_idx);
 extern void display_visible(void);
 extern void display_visible_items(void);
+extern bool monster_living(monster_race *r_ptr);
 
 /* monster2.c */
 extern s16b place_ghost(void);
@@ -691,7 +693,7 @@ extern bool summon_specific_friendly(int y1, int x1, int lev, int type, bool Gro
 extern bool place_monster_one(int y, int x, int r_idx, bool slp, bool charm);
 extern void remove_non_pets(void);
 extern bool summon_skulls(int y1, int x1);
-extern int water_ok(int r_idx);
+extern bool water_ok(int r_idx);
 extern int can_place_monster_type( int y , int x , int summon_type);
 extern int can_place_monster( int y , int x , int r_idx);
 extern int can_go_monster( int y , int x , int r_idx);

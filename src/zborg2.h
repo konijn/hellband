@@ -30,12 +30,7 @@
  * Line 4 -- forbid normal objects
  */
 #define borg_cave_clean_bold(Y,X) \
-	(((cave[Y][X].feat == FEAT_FLOOR) || \
-	  (cave[Y][X].feat == FEAT_SHAL_WATER) || \
-	  (cave[Y][X].feat == FEAT_SHAL_LAVA) || \
-	  (cave[Y][X].feat == FEAT_GRASS) || \
-	  (cave[Y][X].feat == FEAT_DIRT)) && \
-	  (cave[Y][X].o_idx == 0))
+	((cave[Y][X].feat == FEAT_FLOOR) && (cave[Y][X].o_idx == 0))
 
 
 extern bool borg_cave_floor_grid(borg_grid *ag);

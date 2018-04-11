@@ -327,7 +327,7 @@ extern bool borg_mindcr_legal_fail(int spell, int level, int allow_fail );
 /*
  * Racial abilities
  */
-extern bool borg_racial_check(int race, bool check_fail, int num);
+extern bool borg_racial_check(int race, bool check_fail/*, int num*/);
 extern bool borg_racial(int race, int num);
 
 /*

@@ -10,13 +10,13 @@
  * are included in all such copies.
  *
  * James E. Wilson and Christopher J. Stuart released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
  */
 
 #include "angband.h"
@@ -37,10 +37,20 @@ static cptr wd_his[3] =
 #define plural(c,s,p) \
 	(((c) == 1) ? (s) : (p))
 
-
-
-
-
+/*
+ * Is the monster "alive"?
+ *
+ * Used to determine the message to print for a killed monster.
+ * ("dies", "destroyed")
+ */
+bool monster_living(monster_race *r_ptr)
+{
+	/* Non-living, undead, or demon */
+	if (r_ptr->flags3 & (RF3_DEMON | RF3_UNDEAD | RF3_NONLIVING))
+		return FALSE;
+	else
+		return TRUE;
+}
 
 /*
 * Determine if the "armour" is known
@@ -134,7 +144,7 @@ static void roff_aux(int r_idx)
 	u32b		flags4;
 	u32b		flags5;
 	u32b		flags6;
-	u32b		flags7;	
+	u32b		flags7;
 
 	int			vn = 0;
 	cptr		vp[64];
@@ -196,7 +206,7 @@ static void roff_aux(int r_idx)
 		r_ptr->r_flags4 = r_ptr->flags4;
 		r_ptr->r_flags5 = r_ptr->flags5;
 		r_ptr->r_flags6 = r_ptr->flags6;
-		r_ptr->r_flags7 = r_ptr->flags7;		
+		r_ptr->r_flags7 = r_ptr->flags7;
 	}
 
 
@@ -864,7 +874,7 @@ static void roff_aux(int r_idx)
 	if (flags2 & (RF2_TAKE_ITEM)) vp[vn++] = "pick up objects";
 	if (flags2 & (RF2_KILL_ITEM)) vp[vn++] = "destroy objects";
 	if (flags7 & (RF7_AQUATIC)) vp[vn++] = "swim";
-	if (flags7 & (RF7_FLIGHT)) vp[vn++] = "fly";	
+	if (flags7 & (RF7_FLIGHT)) vp[vn++] = "fly";
 
 	/* Describe special abilities. */
 	if (vn)
@@ -922,7 +932,7 @@ static void roff_aux(int r_idx)
 	if (flags3 & (RF3_HURT_LITE)) vp[vn++] = "bright light";
 	if (flags3 & (RF3_HURT_FIRE)) vp[vn++] = "fire";
 	if (flags3 & (RF3_HURT_COLD)) vp[vn++] = "cold";
-	if (flags7 & (RF7_HURT_DARK)) vp[vn++] = "darkness";	
+	if (flags7 & (RF7_HURT_DARK)) vp[vn++] = "darkness";
 
 	/* Describe susceptibilities */
 	if (vn)
@@ -954,7 +964,7 @@ static void roff_aux(int r_idx)
 	if (flags3 & (RF3_IM_FIRE)) vp[vn++] = "fire";
 	if (flags3 & (RF3_IM_COLD)) vp[vn++] = "cold";
 	if (flags3 & (RF3_IM_POIS)) vp[vn++] = "poison";
-	if (flags7 & (RF7_IM_LITE)) vp[vn++] = "light";	
+	if (flags7 & (RF7_IM_LITE)) vp[vn++] = "light";
 	if (flags7 & (RF7_IM_DARK)) vp[vn++] = "darkness";
 
 	/* Describe immunities */
@@ -983,12 +993,12 @@ static void roff_aux(int r_idx)
 	/* Collect resistances */
 	vn = 0;
 	if (flags7 & (RF7_RES_FIRE)) vp[vn++] = "fire";
-	if (flags7 & (RF7_RES_COLD)) vp[vn++] = "cold";	
+	if (flags7 & (RF7_RES_COLD)) vp[vn++] = "cold";
 	if (flags7 & (RF7_RES_ELEC)) vp[vn++] = "electricity";
 	if (flags7 & (RF7_RES_ACID)) vp[vn++] = "acid";
-	if (flags7 & (RF7_RES_POIS)) vp[vn++] = "poison";	
+	if (flags7 & (RF7_RES_POIS)) vp[vn++] = "poison";
 	if (flags7 & (RF7_RES_LITE)) vp[vn++] = "light";
-	if (flags7 & (RF7_RES_DARK)) vp[vn++] = "darkness";	
+	if (flags7 & (RF7_RES_DARK)) vp[vn++] = "darkness";
 	if (flags3 & (RF3_RES_NETH)) vp[vn++] = "nether";
 	if (flags3 & (RF3_RES_WATE)) vp[vn++] = "water";
 	if (flags3 & (RF3_RES_PLAS)) vp[vn++] = "plasma";
@@ -1021,10 +1031,10 @@ static void roff_aux(int r_idx)
 	/* Collect healing elements */
 	vn = 0;
 	if (flags7 & (RF7_HEAL_FIRE)) vp[vn++] = "fire";
-	if (flags7 & (RF7_HEAL_COLD)) vp[vn++] = "cold";	
+	if (flags7 & (RF7_HEAL_COLD)) vp[vn++] = "cold";
 	if (flags7 & (RF7_HEAL_ELEC)) vp[vn++] = "electricity";
 	if (flags7 & (RF7_HEAL_LITE)) vp[vn++] = "light";
-	if (flags7 & (RF7_HEAL_DARK)) vp[vn++] = "darkness";	
+	if (flags7 & (RF7_HEAL_DARK)) vp[vn++] = "darkness";
 	if (flags7 & (RF7_HEAL_NETH)) vp[vn++] = "nether";
 	
 	/* Describe resistances */
@@ -1448,12 +1458,12 @@ static void roff_aux(int r_idx)
 	if (flags7 & (RF7_STORM))
 	{
 		roff( format("%^s is blown about to and fro by a violent storm.", wd_he[msex]));
-	}	 
+	}
 	/* Notice monsters that never die permanently */
 	if (flags7 & (RF7_REBORN))
 	{
 		roff( format("%^s recovers from fatal wounds.", wd_he[msex]));
-	}	     
+	}
 	
 	/* All done */
 	roff("\n");
@@ -1701,7 +1711,7 @@ void display_visible(void)
     
 	/* XXX Hallucination - no monster list */
 	if (p_ptr->image)
-	{		
+	{
 		c_prt(TERM_WHITE,"You see a lot of pretty colours.",0,0);
 		return;
 	}
@@ -1775,7 +1785,7 @@ void display_visible(void)
 			byte attr = TERM_WHITE;
             
 			/* Uniques are red */
-			if  (r_ptr->flags1 & (RF1_UNIQUE)) 
+			if  (r_ptr->flags1 & (RF1_UNIQUE))
                 attr = TERM_L_RED;
             
 			/* Have we ever killed one? */
@@ -1789,7 +1799,7 @@ void display_visible(void)
 			else
 			{
                 attr = TERM_SLATE;
-			}			
+			}
             
             strcpy(m_name, (r_name + r_ptr->name));
                         

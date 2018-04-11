@@ -21,26 +21,24 @@
 /*
  * Possible values of "goal"
  */
-#define GOAL_KILL   1       /* Monsters */
-#define GOAL_TAKE   2       /* Objects */
-#define GOAL_MISC   3       /* Stores */
-#define GOAL_DARK   4       /* Exploring */
-#define GOAL_XTRA   5       /* Searching */
-#define GOAL_BORE   6       /* Leaving */
-#define GOAL_FLEE   7       /* Fleeing */
-#define GOAL_TOWN8          /* Town Special Grid */
-#define GOAL_VAULT  9       /* Vaults */
-#define GOAL_RECOVER 10     /* Safe grid for me to rest on */
-#define GOAL_DIGGING 11     /* Anti-summon Corridor */
-#define GOAL_UNREACH 12     /* Move to a safer grid so monsters cant hit him */
+#define GOAL_KILL    1  /* Monsters */
+#define GOAL_TAKE    2  /* Objects */
+#define GOAL_MISC    3  /* Stores */
+#define GOAL_DARK    4  /* Exploring */
+#define GOAL_XTRA    5  /* Searching */
+#define GOAL_BORE    6  /* Leaving */
+#define GOAL_FLEE    7  /* Fleeing */
+#define GOAL_TOWN    8  /* Town Special Grid */
+#define GOAL_VAULT   9  /* Vaults */
+#define GOAL_RECOVER 10 /* Safe grid for me to rest on */
+#define GOAL_DIGGING 11 /* Anti-summon Corridor */
+#define GOAL_UNREACH 12 /* Move to a safer grid so monsters cant hit him */
 
 /*
  * Minimum "harmless" food
  */
 
 #define SV_FOOD_MIN_OKAY    SV_FOOD_CURE_POISON
-
-
 
 /*
  * Attempt to induce "word of recall"
@@ -83,16 +81,16 @@ extern bool borg_flow_old(int why);
  * Flow to stairs
  */
 extern bool borg_flow_stair_both(int why, bool sneak, bool prep_check);
-extern bool borg_flow_stair_both_dim(int why);
+extern bool borg_flow_stair_both_dim(/*int why*/);
 extern bool borg_flow_stair_less(int why, bool sneak);
-extern bool borg_flow_stair_less_dim(int why);
+extern bool borg_flow_stair_less_dim(/*int why*/);
 extern bool borg_flow_stair_more(int why, bool sneak, bool prep_check);
-extern bool borg_flow_stair_more_dim(int why);
+extern bool borg_flow_stair_more_dim(/*int why*/);
 extern bool borg_flow_town_exit(int why);
 extern bool borg_flow_demenager(int town_num, int why);
-extern bool borg_flow_glyph(int why);
+extern bool borg_flow_glyph(/*int why*/);
 extern bool borg_flow_light(int why);
-extern bool borg_flow_recover(bool viewable, int dist);
+extern bool borg_flow_recover(/*bool viewable,*/ int dist);
 extern bool borg_flow_passwall(void);
 extern bool borg_check_lite_only(void);
 extern bool borg_backup_swap(int p);
@@ -113,10 +111,10 @@ extern bool borg_flow_shop_trump(void);
  */
 extern bool borg_flow_kill(bool viewable, int nearness);
 extern bool borg_flow_kill_aim(bool viewable);
-extern bool borg_flow_kill_corridor_1(bool viewable);
-extern bool borg_flow_kill_corridor_2(bool viewable);
+extern bool borg_flow_kill_corridor_1(/*bool viewable*/);
+extern bool borg_flow_kill_corridor_2(/*bool viewable*/);
 extern bool borg_flow_kill_unreachable(int nearness);
-extern bool borg_flow_kill_direct(bool viewable);
+extern bool borg_flow_kill_direct(/*bool viewable*/);
 extern bool borg_flow_take(bool viewable, int nearness);
 extern bool borg_flow_take_lunal(bool viewable, int nearness);
 extern bool borg_flow_vein(bool viewable, int nearness);

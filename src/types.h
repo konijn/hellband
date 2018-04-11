@@ -334,7 +334,7 @@ struct monster_race
 	byte hdice;				/* Creatures hit dice count */
 	byte hside;				/* Creatures hit dice sides */
 
-	s16b ac;				/* Armour Class */
+	s16b ac;					/* Armour Class */
 
 	s16b sleep;				/* Inactive counter (base) */
 	byte aaf;				/* Area affect radius (1-100) */
@@ -525,7 +525,7 @@ struct object_type
 
 	byte name1;			/* Artifact type, if any */
 	byte name2;			/* Ego-Item type, if any */
-	
+
 	byte xtra1;			/* Extra info type */
 	byte xtra2;			/* Extra info index */
 
@@ -1057,13 +1057,13 @@ typedef struct player_type player_type;
 
 struct player_type
 {
-	byte psex;			/* Sex index */
-	byte prace;			/* Race index */
-	byte psign;         /* Birth Sign Index */
-	byte pclass;		/* Class index */
-	u16b realm1;        /* First magic realm */
-	u16b realm2;        /* Second magic realm */
-	byte oops;			/* Unused */
+	byte psex;     /* Sex index */
+	byte prace;    /* Race index */
+	byte psign;    /* Birth Sign Index */
+	byte pclass;   /* Class index */
+	u16b realm1;   /* First magic realm */
+	u16b realm2;   /* Second magic realm */
+	byte oops;     /* Unused */
 
 	byte hitdie;		/* Hit dice (sides) */
 	u16b expfact;       /* Experience factor

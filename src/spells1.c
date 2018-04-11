@@ -5338,7 +5338,6 @@ bool project(int who, int rad, int y, int x, int dam, int typ, int flg)
 	/* Actual radius encoded in gm[] */
 	int gm_rad = rad;
 
-
 	/* Location of player */
 	/* y0 = py; x0 = px; UNUSED */
 
@@ -5391,10 +5390,8 @@ bool project(int who, int rad, int y, int x, int dam, int typ, int flg)
 	/* Hack -- Assume there will be no blast (max radius 32) */
 	for (dist = 0; dist < 32; dist++) gm[dist] = 0;
 
-
 	/* Hack -- Handle stuff */
 	handle_stuff();
-
 
 	/* Start at the source */
 	x = x9 = x1;
@@ -5875,13 +5872,9 @@ bool project(int who, int rad, int y, int x, int dam, int typ, int flg)
 		}
 	}
 
-
 	/* Return "something was noticed" */
 	return (notice);
 }
-
-
-
 
 /*
 * Potions "smash open" and cause an area effect when

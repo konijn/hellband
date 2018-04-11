@@ -1,4 +1,5 @@
 
+
 /* File: zborg1.h */
 /* Purpose: Header file for "borg1.c" -BEN- */
 
@@ -72,6 +73,7 @@
 #define RACE_LILITH    593
 #define RACE_LUCIFER   594
 
+#define LILITH_DEPTH   99
 #define LUCIFER_DEPTH  100
 
 #define BORG_PIT_JUMP       10  /* minimum # of monsters LOS for DimDoor Jump */
@@ -185,7 +187,7 @@ extern byte borg_depth;		/* Flags for special guys on the depth */
 
 /*
  * Some assistance with the borg_attack and magic arrows
-
+ */
 #define GF_ARROW_ANIMAL      92
 #define GF_ARROW_EVIL        93
 #define GF_ARROW_DRAGON      94
@@ -196,11 +198,11 @@ extern byte borg_depth;		/* Flags for special guys on the depth */
 #define GF_ARROW_SEEKER      99  // Heavy ammo
 #define GF_ARROW_WOUNDING    100
 #define GF_HOLY_WORD         101
+#define GF_DEATHRAY          104
 #define GF_DISP_UNDEAD_DEMON 102 // Effect both
 #define GF_ELEMENTS          103 // All elements could be cast
-#define GF_DEATHRAY          104
-#define GF_AWAY_ALL_MORGOTH  105
-*/
+#define GF_AWAY_ALL_LUCIFER  105
+
 
 /* the Z randarts are considered #127 by the borg */
 #define ART_RANDART  127
@@ -306,14 +308,15 @@ struct borg_kill
 	s16b    level;      /* Monsters Level */
 	s16b	m_idx;		/* Game's index of monster */
 
-	bool	ally;
-	bool  neutral;
-	s16b    when;       /* When last seen */
-	bool	summoner;	/* Summoner */
-	bool	unique;		/* Unique */
-	bool	questor;	/* level questor */
-	bool	avoid;		/* Do not try to hunt this guy */
-	bool	cautious;	/* long battle ahead with this guy */
+	bool  ally;     /* Fights with you */
+	bool  neutral;  /* Does not care either way */
+	bool killer;    /* Wants to kill you */
+	s16b    when;   /* When last seen */
+	bool  summoner; /* Summoner */
+	bool  unique;   /* Unique */
+	bool  questor;  /* level questor */
+	bool  avoid;    /* Do not try to hunt this guy */
+	bool  cautious; /* long battle ahead with this guy */
 };
 
 /*
@@ -1463,7 +1466,7 @@ extern borg_kill *borg_kills;
 /*
  * Hack -- depth readiness
  */
-extern int borg_ready_morgoth;
+extern int borg_ready_lucifer;
 
 /*
  * Hack -- extra fear per "region"
@@ -1776,5 +1779,29 @@ extern cptr BORG_DIR_DATA;
 #define max_a_idx MAX_A_IDX
 #define max_r_idx MAX_R_IDX
 #define FEAT_PERM_EXTRA FEAT_PERM_BUILDING
+#define REALM_LIFE REALM_MIRACLES
+#define RACE_SPECTRE SPECTRE
+#define RACE_GNOME GNOME
+#define RACE_HALF_OGRE OGRE
+#define RACE_HALF_TROLL TROLL
+#define RACE_SKELETON SKELETON
+#define RACE_GOLEM GUARDIAN
+#define RACE_BARBARIAN NORDIC
+#define RACE_VAMPIRE VAMPIRE
+#define RACE_KOBOLD KOBOLD
+#define RACE_SPRITE FAE
+#define RACE_MIND_FLAYER HORROR
+#define RACE_IMP IMP
+#define RACE_DARK_ELF ATLANTIAN
+#define CLASS_CHAOS_WARRIOR CLASS_CHAOS_KNIGHT
+#define REALM_TRUMP REALM_TAROT
+#define REALM_ARCANE REALM_CHARMS
+#define ART_GALADRIEL ART_BEATRICE
+#define REALM1_BOOK realm_names[p_ptr->realm1].tval
+#define REALM2_BOOK realm_names[p_ptr->realm2].tval
+#define RF7_CAN_FLY RF7_FLIGHT
+#define CLASS_MONK CLASS_MYSTIC
+#define FEAT_BLDG_HEAD FEAT_SHOP_HEAD
+#define FEAT_BLDG_TAIL FEAT_SHOP_TAIL
 
 #endif

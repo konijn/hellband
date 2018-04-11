@@ -84,7 +84,6 @@
 #define SCREEN_HGT     (session_width == 0 ? 22 : session_height)
 #define SCREEN_WID     (session_height == 0 ? 80 : session_width)
 
-
 #define DUNGEON_HGT    22
 #define DUNGEON_WID    66
 
@@ -683,7 +682,6 @@ and tables.c --TY */
 #define SEX_FEMALE              0
 #define SEX_MALE                1
 
-
 /*
 * Player class constants (hard-coded by save-files, arrays, etc)
 */
@@ -708,7 +706,6 @@ and tables.c --TY */
 * Maximum number of player "class" types (see "table.c", etc)
 */
 #define MAX_CLASS            16
-
 
 #define COUNT_LINES  14
 #define COUNT_SEXES  2
@@ -797,6 +794,7 @@ and tables.c --TY */
 #define SIGN_SERPENS 2
 #define SIGN_PLUTUS  3
 #define SIGN_MORUI   4
+#define SIGN_HEAD    100
 
 /*** Terrain Feature Indexes (see "lib/edit/f_info.txt") ***/
 
@@ -922,7 +920,6 @@ ART_ORCS -> VEPAR
 #define ART_CORSON       28 /* Heal (1000) every 888 turns*/
 #define ART_AMAYMON      29 /* Poisonous nether breath(700) every 888 turns*/
 
-
 /* Dragon Scale */
 /* ART_RAZORBACK - > ART_BAPHOMET + ART_ASMODAI */
 #define ART_BAPHOMET     30 /* Star ball (150) every 1000 turns*/
@@ -940,7 +937,6 @@ ART_ORCS -> VEPAR
 #define ART_SHIELD_MICHAEL  35 /* Do nothing */
 #define ART_SHIELD_ELEMENTS 36 /* Do nothing */
 #define ART_SHIELD_AGES     37 /* Do nothing */
-
 
 /* Helms and Crowns
 ART_UNIVERSE -> ART_SEVENTH
@@ -971,7 +967,7 @@ ART_DARKNESS -> ART_DRAEBOR
 #define ART_JOSEPH      49 /* Resistance (20+d20 turns) every 111 turns*/
 #define ART_DRAEBOR     50 /* Confusion ball (200) radius 5 and blink*/
 #define ART_BARD        51 /* Recharge item I every 70 turns*/
-#define ART_LIFE        52 /* Restore life levels every 450 turns*/
+#define ART_LIFE        52 /* Restore life levels every 450 turns LUTHIEN*/
 #define ART_LUCIFUGE    53 /* Do nothing */
 #define ART_FROSTPLAINS 53 /* Do nothing */
 
@@ -1031,15 +1027,15 @@ ART_THOTH -> ART_KINSLAYER
 
 /* Polearms */
 
-#define ART_ODIN           98 /* Lightning ball (100) every 500 turns*/
-#define ART_DESTINY        99 /* Stone to mud every 5 turns*/
+#define ART_ODIN           98  /* Lightning ball (100) every 500 turns*/
+#define ART_DESTINY        99  /* Stone to mud every 5 turns*/
 #define ART_ELIGOR         102 /* Drain life (120) every 400 turns*/
 #define ART_PHENEX         106 /* Confuse monster every 15 turns*/
 #define ART_MORNINGSTAR    107 /* Large fire ball (72) every 100 turns*/
 #define ART_BELETH         108 /* Haste self (20+d20 turns) every 100+d100 turns*/
-#define ART_TROLLS         113 /* Mass genocide every 1000 turns*/
-#define ART_RONOVE         115 /* Cure wounds (4d7) every 3+d3 turns*/
-#define ART_TRITONS        117 /* Teleport others away every 150 turns*/
+#define ART_TROLLS         113 /* Mass genocide every 1000 turns EONWE*/
+#define ART_RONOVE         115 /* Cure wounds (4d7) every 3+d3 turns ART_LOTHARANG*/
+#define ART_TRITONS        117 /* Teleport others away every 150 turns ART_ULMO*/
 #define ART_HAMMER_AMAYMON 118 /* Do nothing */
 #define ART_HAMMER_ABADDON 120 /* Do nothing */
 
@@ -2003,13 +1999,13 @@ ART_THOTH -> ART_KINSLAYER
  *
  */
 
-#define ALLY_NO					0
-#define ALLY_LUCIFER		    1
-#define ALLY_GOD				2
-#define ALLY_RACE				4
-#define ALLY_PLAYER				8
-#define ALLY_SELF				16
-#define ALLY_COMPANION			32
+#define ALLY_NO        0
+#define ALLY_LUCIFER   1
+#define ALLY_GOD       2
+#define ALLY_RACE      4
+#define ALLY_PLAYER    8
+#define ALLY_SELF      16
+#define ALLY_COMPANION 32
 
 /*
 * Bit flags for the "p_ptr->notice" variable

@@ -685,7 +685,7 @@ U_power freak_powers[] = {
 	{ COR1_SMELL_MET	, "sense metal",			3,	2,		0,		A_INT,	NULL,			COR1_SMELL_MET,},
 	{ COR1_SMELL_MON	, "sense monsters",			5,	4,		0,		A_INT,	NULL,			COR1_SMELL_MON,},
 	{ COR1_BLINK		, "blink",					3,	3,		0,		A_WIS,	NULL,			COR1_BLINK,},
-	{ COR1_EAT_ROCK		, "eat rock",				8,	12,		0,		A_CON,	NULL,			COR1_EAT_ROCK,},
+	{ COR1_EAT_ROCK   , "eat rock",				8,	12,		0,		A_CON,	NULL,			COR1_EAT_ROCK,},
 	{ COR1_SWAP_POS		, "swap position",			15,	12,		0,		A_DEX,	NULL,			COR1_SWAP_POS,},
 	{ COR1_SHRIEK		, "shriek",					4,	4,		0,		A_CON,	NULL,			COR1_SHRIEK,},
 	{ COR1_ILLUMINE		, "illuminate",				3,	2,		0,		A_INT,	NULL,			COR1_ILLUMINE,},

@@ -11,14 +11,14 @@
  *
  *
  * James E. Wilson and Robert A. Koeneke released all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version), 
- * or under the terms of the traditional Angband license. 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2 or any later version),
+ * or under the terms of the traditional Angband license.
  *
  * All changes in Hellband are Copyright (c) 2005-2007 Konijn
  * I Konijn  release all changes to the Angband code under the terms of the GNU General Public License (version 2),
- * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2), 
- * or under the terms of the traditional Angband license. 
- */ 
+ * as well as under the traditional Angband license. It may be redistributed under the terms of the GPL (version 2),
+ * or under the terms of the traditional Angband license.
+ */
 
 /*
 * Look through the following lines, and where a comment includes the
@@ -112,7 +112,7 @@
 * This will handle "gids" correctly once the permissions are set right.
 *
 */
-#define SAFE_SETUID 
+#define SAFE_SETUID
 
 
 /*
@@ -170,7 +170,8 @@
 /*
 * OPTION: Hack -- Compile in support for "Cyborg" mode
 */
-/*#define ALLOW_BORG*/
+#define ALLOW_BORG
+#define ALLOW_BORG_GRAPHICS
 
 /*
 * OPTION: Hack -- Compile in support for "Wizard Commands"
@@ -275,7 +276,7 @@
 /*
 * Allow "Borgs" to yield "high scores"
 */
-/*#define SCORE_BORGS*/
+#define SCORE_BORGS
 
 /*
 * Allow "debuggers" to yield "high scores"

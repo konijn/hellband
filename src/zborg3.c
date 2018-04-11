@@ -2632,8 +2632,6 @@ bool borg_equips_artifact(int name1)
 				/* Check charge.  But not on certain ones  Wor, ID, phase, TELEPORT.*/
 				/* this is to ensure that his borg_prep code is working ok */
 				if ((name1 != ART_AZRAEL &&
-						 name1 != ART_ERIRIL &&
-						 name1 != ART_ROBE_MICHAEL &&
 						 name1 != ART_NYNAULD) &&
 					 (item->timeout) ) continue;
 				/*
@@ -3227,35 +3225,35 @@ bool borg_mindcr_okay(int spell, int level)
 /*
  * fail rate on a mindcrafter spell
  */
-static int borg_mindcr_fail_rate(int spell, int level)
+static int borg_mindcr_fail_rate(int spell/*, int level*/)
 {
-		int     chance, minfail;
+	int     chance, minfail;
 	borg_mind	*as = &borg_minds[spell];
 
-		/* Access the spell  */
-		chance = as->sfail;
+	/* Access the spell  */
+	chance = as->sfail;
 
-		/* Reduce failure rate by "effective" level adjustment */
-		chance -= 3 * (borg_skill[BI_CLEVEL] - as->level);
+	/* Reduce failure rate by "effective" level adjustment */
+	chance -= 3 * (borg_skill[BI_CLEVEL] - as->level);
 
-		/* Reduce failure rate by INT/WIS adjustment */
-		chance -= 3 * (adj_stat[ADJ_INTWIS][my_stat_ind[A_WIS]] - 1);
+	/* Reduce failure rate by INT/WIS adjustment */
+	chance -= 3 * (adj_stat[ADJ_INTWIS][my_stat_ind[A_WIS]] - 1);
 
-		/* Extract the minimum failure rate */
-		minfail = adj_stat[ADJ_FAILURE][my_stat_ind[A_WIS]];
+	/* Extract the minimum failure rate */
+	minfail = adj_stat[ADJ_FAILURE][my_stat_ind[A_WIS]];
 
-		/* Minimum failure rate */
-		if (chance < minfail) chance = minfail;
+	/* Minimum failure rate */
+	if (chance < minfail) chance = minfail;
 
-		/* Stunning makes spells harder */
-		if (borg_skill[BI_ISHEAVYSTUN]) chance += 25;
-		if (borg_skill[BI_ISSTUN]) chance += 15;
+	/* Stunning makes spells harder */
+	if (borg_skill[BI_ISHEAVYSTUN]) chance += 25;
+	if (borg_skill[BI_ISSTUN]) chance += 15;
 
-		/* Always a 5 percent chance of working */
-		if (chance > 95) chance = 95;
+	/* Always a 5 percent chance of working */
+	if (chance > 95) chance = 95;
 
-		/* Return the chance */
-		return (chance);
+	/* Return the chance */
+	return (chance);
 }
 
 /*
@@ -3263,7 +3261,7 @@ static int borg_mindcr_fail_rate(int spell, int level)
  */
 bool borg_mindcr_okay_fail(int spell, int level, int allow_fail )
 {
-		if (borg_mindcr_fail_rate(spell, level) > allow_fail)
+		if (borg_mindcr_fail_rate(spell/*, level*/) > allow_fail)
 				return FALSE;
 		return borg_mindcr_okay(spell, level );
 }
@@ -3273,7 +3271,7 @@ bool borg_mindcr_okay_fail(int spell, int level, int allow_fail )
  */
 bool borg_mindcr_fail(int spell, int level, int allow_fail)
 {
-		if (borg_mindcr_fail_rate(spell, level) > allow_fail)
+		if (borg_mindcr_fail_rate(spell/*, level*/) > allow_fail)
 				return FALSE;
 		return borg_mindcr(spell, level);
 }
@@ -3283,7 +3281,7 @@ bool borg_mindcr_fail(int spell, int level, int allow_fail)
  */
 bool borg_mindcr_legal_fail(int spell, int level, int allow_fail)
 {
-		if (borg_mindcr_fail_rate(spell, level) > allow_fail)
+		if (borg_mindcr_fail_rate(spell/*, level*/) > allow_fail)
 				return FALSE;
 		return borg_mindcr_legal(spell, level );
 }
@@ -3295,8 +3293,8 @@ bool borg_mindcr(int spell, int level)
 {
 	borg_mind	*as = &borg_minds[spell];
 
-		/* Require ability (right now) */
-		if (!borg_mindcr_okay(spell, level)) return (FALSE);
+	/* Require ability (right now) */
+	if (!borg_mindcr_okay(spell, level)) return (FALSE);
 
 	/* Not if locked down */
 	if (borg_skill[BI_CRSNOMAGIC]) return (FALSE);
@@ -3304,18 +3302,19 @@ bool borg_mindcr(int spell, int level)
 	/* If attempting Phase Door vs Dimension Door */
 	if (spell == MIND_MINOR_DISP && level == 3 && borg_skill[BI_CLEVEL] >=40) return (FALSE);
 
-		/* Debugging Info */
-	borg_note(format("# Casting %s (spell: %d, level: %d, fail rate: %d).", as->name, spell, level,borg_mindcr_fail_rate(spell, level)));
+	/* Debugging Info */
+	borg_note(format("# Casting %s (spell: %d, level: %d, fail rate: %d).",
+						  as->name, spell, level, borg_mindcr_fail_rate(spell/*, level*/)));
 
-		/* Cast a spell */
-		borg_keypress('m');
+	/* Cast a spell */
+	borg_keypress('m');
 	borg_keypress(as->letter);
 
-		/* increment the spell counter */
-		as->times ++;
+	/* increment the spell counter */
+	as->times ++;
 
-		/* Success */
-		return (TRUE);
+	/* Success */
+	return (TRUE);
 }
 
 
@@ -3327,7 +3326,7 @@ bool borg_mindcr(int spell, int level)
  * -or-
  * with a reasonable degree of difficulty with Check_fail
  */
-bool borg_racial_check(int race, bool check_fail, int num)
+bool borg_racial_check(int race, bool check_fail/*, int num*/)
 {
 	int i;
 	int val;
@@ -3350,57 +3349,84 @@ bool borg_racial_check(int race, bool check_fail, int num)
 
 	/*Assume there is no power, (aka set lev_req as 99)*/
 	lev_req = 99;
-
-	/* New and improved racial power descriptions*/
-	for( i = 0 ; racial_powers[i].description != NULL ; i++)
-	{
-		if( racial_powers[i].idx == borg_race )
+	
+	/*TODO SHOULD we should create a variable that points to either racial or sign powers
+	https://stackoverflow.com/questions/16201607/c-pointer-to-array-of-structs*/
+	
+	if(race>=SIGN_HEAD){
+		race = race - SIGN_HEAD;
+		/* New and improved racial power descriptions*/
+		for( i = 0 ; sign_powers[i].description != NULL ; i++)
 		{
+			if( sign_powers[i].idx == race )
+			{
+				use_stat = sign_powers[i].stat;
+				lev_req = sign_powers[i].level;
+				cost = sign_powers[i].cost + borg_skill[BI_CLEVEL] * sign_powers[i].cost_level;
+				break;
+			}
+		}
+		switch(race){
+			case SIGN_MORUI:
+				diff = 14;
+				break;
+			case SIGN_DRACO:
+			case SIGN_PLUTUS:
+				diff = 12;
+			break;
+		}
+		
+	}else{
+		/* New and improved racial power descriptions*/
+		for( i = 0 ; racial_powers[i].description != NULL ; i++)
+		{
+			if( racial_powers[i].idx == race )
+			{
 				use_stat = racial_powers[i].stat;
 				lev_req = racial_powers[i].level;
 				cost = racial_powers[i].cost + borg_skill[BI_CLEVEL] * racial_powers[i].cost_level;
 				break;
+			}
 		}
-	}
-
-	switch (borg_race)
-	{
-		case SPECTRE:
-			diff = 3;
-			break;
-		case GUARDIAN:
-			diff = 8;
-			break;
-		case ATLANTIAN:
-		case VAMPIRE:
-			diff = 9;
-			break;
-		case LEPRECHAUN:
-		case DWARF:
-		case GNOME:
-		case GIANT:
-		case TITAN:
-			diff = 12;
-			break;
-		case NORDIC:
-		case TROLL:
-			diff = ((borg_class == CLASS_WARRIOR) ? 6: 12);
-			break;
-		case HORROR:
-		case KOBOLD:
-			diff = 14;
-			break;
-		case OGRE:
-		case IMP:
-		case FAE:
-			diff = 15;
-			break;
-		case SKELETON:
-		case MUMMY:
-			diff = 18;
-		case NEPHILIM:
-			diff = 50;
-			break;
+		switch (race)
+		{
+			case SPECTRE:
+				diff = 3;
+				break;
+			case GUARDIAN:
+				diff = 8;
+				break;
+			case ATLANTIAN:
+			case VAMPIRE:
+				diff = 9;
+				break;
+			case LEPRECHAUN:
+			case DWARF:
+			case GNOME:
+			case GIANT:
+			case TITAN:
+				diff = 12;
+				break;
+			case NORDIC:
+			case TROLL:
+				diff = ((borg_class == CLASS_WARRIOR) ? 6: 12);
+				break;
+			case HORROR:
+			case KOBOLD:
+				diff = 14;
+				break;
+			case OGRE:
+			case IMP:
+			case FAE:
+				diff = 15;
+				break;
+			case SKELETON:
+			case MUMMY:
+				diff = 18;
+			case NEPHILIM:
+				diff = 50;
+				break;
+		}
 	}
 
 	/* Power is not available yet */
@@ -3479,7 +3505,7 @@ bool borg_racial(int race, int num)
 {
 
 		/* Require ability (right now) */
-		if (!borg_racial_check(race, TRUE, num)) return (FALSE);
+		if (!borg_racial_check(race, TRUE/*, num*/)) return (FALSE);
 
 		/* Debugging Info */
 		borg_note("# Racial Power.");

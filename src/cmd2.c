@@ -3051,6 +3051,49 @@ void do_cmd_throw(void)
 	drop_near(q_ptr, j, y, x);
 }
 
+int racial_chance(s16b min_level, int use_stat, int difficulty)
+{
+	int i;
+	int val;
+	int sum = 0;
+	int stat = p_ptr->stat_cur[use_stat];
+
+	/* No chance for success */
+	if ((p_ptr->lev < min_level) || p_ptr->confused)
+	{
+		return (0);
+	}
+
+	/* Calculate difficulty */
+	if (p_ptr->stun)
+	{
+		difficulty += p_ptr->stun;
+	}
+	else if (p_ptr->lev > min_level)
+	{
+		int lev_adj = ((p_ptr->lev - min_level) / 3);
+		if (lev_adj > 10) lev_adj = 10;
+		difficulty -= lev_adj;
+	}
+
+	if (difficulty < 5) difficulty = 5;
+
+	/* We only need halfs of the difficulty */
+	difficulty = difficulty / 2;
+
+	for (i = 1; i <= stat; i++)
+	{
+		val = i - difficulty;
+		if (val > 0)
+			sum += (val <= difficulty) ? val : difficulty;
+	}
+
+	if (difficulty == 0)
+		return (100);
+	else
+		return (((sum * 100) / difficulty) / stat);
+}
+
 
 /* Note: return value indicates that we have succesfully used the power */
 
@@ -3113,8 +3156,7 @@ bool racial_aux(s16b min_level, int cost, int use_stat, int difficulty)
 
 
 	/* Success? */
-	if (randint(p_ptr->stat_cur[use_stat]) >=
-		((difficulty / 2) + randint(difficulty / 2)))
+	if (randint(p_ptr->stat_cur[use_stat]) >= ((difficulty / 2) + randint(difficulty / 2)))
 		return TRUE;
 
 	msg_print("You've failed to concentrate hard enough.");
@@ -3622,7 +3664,6 @@ void do_cmd_racial_power(void)
 			choice = 'a';
 		}
 
-
 		/* Note verify */
 		ask = (isupper(choice));
 
@@ -3854,8 +3895,7 @@ void do_cmd_racial_power(void)
 			{
 				if (!get_aim_dir(&dir)) break;
 				msg_format("You breathe %s.", Type_desc);
-				fire_ball(Type, dir, (p_ptr->lev)*2,
-						  -((p_ptr->lev)/15) + 1);
+				fire_ball(Type, dir, (p_ptr->lev)*2, ((p_ptr->lev)/15) + 1);
 			}
 			break;
 		case ABILITY_DETECT_DOOR_TRAPS:

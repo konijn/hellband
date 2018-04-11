@@ -367,7 +367,7 @@ static tv_describer_type tv_describers[] =
 
 static tv_describer_type read_tval_description( byte tval)
 {
-	int i;
+	u16b i;
 	for( i = 0 ; i < N_ELEMENTS( tv_describers ) ; i++ )
 	{
 		if( tv_describers[i].tval == tval )
@@ -5031,7 +5031,7 @@ void consider_squelch( object_type *o_ptr )
 	if (arg_fiddle)
 		msg_print("Sane & High Price?");
 	/*Check for sanity check on price*/
-	if( sanity_price && id && object_value(o_ptr) > 0 && object_value(o_ptr) > sane_price )
+	if( sanity_price && id && object_value(o_ptr) > 0 && object_value(o_ptr) > (s32b)sane_price )
 		return;
 	if (arg_fiddle)
 		msg_print("No.");
