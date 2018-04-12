@@ -23,7 +23,7 @@ byte *test;
 byte *best;
 s32b *b_home_power;
 
-char *borg_itoa(long i, char* s, int dummy_radix) 
+char *borg_itoa(long i, char* s, int dummy_radix)
 {
     sprintf(s, "%ld", i);
     return s;
@@ -1605,269 +1605,7 @@ static bool borg_think_home_sell_aux( bool save_best )
 }
 
 
-/*
- * Determine if an item can be sold in the given store
- *
- * XXX XXX XXX Consider use of "icky" test on items
- */
-extern bool borg_good_sell(borg_item *item, int who)
-{
-    /* Never sell worthless items */
-    if (item->value <= 0) return (FALSE);
 
-    /* Never sell cursed items */
-    if (item->cursed) return (FALSE);
-
-	/* Never sell valuable non-id'd items */
-	if (strstr(item->note, "good") ||
-		strstr(item->note, "excellent") ||
-		strstr(item->note, "Quest") ||
-		strstr(item->note, "special")) return (FALSE);
-
-	/* Worshipping gold or scumming will allow the sale */
-    if (item->value > 0 && ((borg_worships_gold || borg_skill[BI_MAXCLEVEL] < 10) ||
-        (borg_money_scum_amount < borg_gold && borg_money_scum_amount != 0) &&
-        !streq(item->note, "good") &&
-		!streq(item->note, "excellent")))
-	{
-		/* Borg is allowed to continue in this routine to sell non-ID items */
-	}
-	else /* Some items must be ID, or at least 'known' */
-	{
-		/* Analyze the type */
-	    switch (item->tval)
-	    {
-	        case TV_POTION:
-	        case TV_SCROLL:
-
-	        /* Never sell if not "known" and interesting */
-	        if (!item->aware && (borg_skill[BI_MAXDEPTH] > 10)) return (FALSE);
-
-	        break;
-
-	        case TV_FOOD:
-	        case TV_ROD:
-	        case TV_WAND:
-	        case TV_STAFF:
-	        case TV_RING:
-	        case TV_AMULET:
-	        case TV_LITE:
-
-	        /* Never sell if not "known" */
-	        if (!item->aware && (borg_skill[BI_MAXDEPTH] > 10)) return (FALSE);
-
-	        break;
-
-	        case TV_BOW:
-	        case TV_DIGGING:
-	        case TV_HAFTED:
-	        case TV_POLEARM:
-	        case TV_SWORD:
-	        case TV_BOOTS:
-	        case TV_GLOVES:
-	        case TV_HELM:
-	        case TV_CROWN:
-	        case TV_SHIELD:
-	        case TV_CLOAK:
-	        case TV_SOFT_ARMOR:
-	        case TV_HARD_ARMOR:
-	        case TV_DRAG_ARMOR:
-
-	        /* Only sell "known" items (unless "icky") */
-	        if (!item->aware && !borg_item_icky(item)) return (FALSE);
-
-	        break;
-	    }
-	}
-
-
-    /* Do not sell stuff that is not fully id'd and should be  */
-    if (!item->fully_identified && item->name1)
-    {
-              /* CHECK THE ARTIFACTS */
-                   /* For now check all artifacts */
-                      return (FALSE);
-    }
-    /* Do not sell stuff that is not fully id'd and should be  */
-    if (!item->fully_identified && item->name2)
-    {
-           switch (item->name2)
-           {
-                /* Weapon (Blessed) */
-                case EGO_BLESS_BLADE:
-                /* Armor of Permanence */
-                case EGO_PERMANENCE:
-                /* Armor of Elvenkind */
-                case EGO_ELVENKIND:
-                /* Crown of the Magi */
-                case EGO_MAGI:
-                /* Cloak of Aman */
-                case EGO_AMAN:
-                /* Weapon (Holy Avenger) */
-                case EGO_HA:
-                /* Weapon (Defender) */
-                case EGO_DF:
-				/* Trump weapons */
-				case EGO_TRUMP:
-				/* Chaotic weapon */
-				case EGO_CHAOTIC:
-				/* Resistance items */
-				case EGO_RESISTANCE:
-				/* of Might */
-				case EGO_MIGHT:
-				/* of Lordliness */
-				case EGO_LORDLINESS:
-                return (FALSE);
-				/* anything else */
-				default:
-                break;
-           }
-    }
-
-    /* do not sell the item (unless to Home) if I just bought it. */
-    if (bought_item_tval == item->tval && bought_item_sval == item->sval && bought_item_store != BORG_HOME)
-    {
-        return (FALSE);
-    }
-
-
-	/* if it looks half good, ID it first */
-	if (strstr(item->desc, "{good}") ||
-		strstr(item->desc, "{excellent}") ||
-		(strstr(item->desc, "Phial") && !item->ident)) return (FALSE);
-
-    /* Switch on the store */
-    switch (who + 1)
-    {
-        /* General Store */
-        case 1:
-
-            /* Analyze the type */
-            switch (item->tval)
-            {
-                case TV_DIGGING:
-                case TV_CLOAK:
-                case TV_FOOD:
-                case TV_FLASK:
-                case TV_LITE:
-                case TV_SPIKE:
-                return (TRUE);
-            }
-            break;
-
-        /* Armoury */
-        case 2:
-
-            /* Analyze the type */
-            switch (item->tval)
-            {
-                case TV_BOOTS:
-                case TV_GLOVES:
-                case TV_HELM:
-                case TV_CROWN:
-                case TV_SHIELD:
-                case TV_SOFT_ARMOR:
-                case TV_HARD_ARMOR:
-                case TV_DRAG_ARMOR:
-                return (TRUE);
-            }
-            break;
-
-        /* Weapon Shop */
-        case 3:
-
-            /* Analyze the type */
-            switch (item->tval)
-            {
-                case TV_SHOT:
-                case TV_BOLT:
-                case TV_ARROW:
-                case TV_BOW:
-                case TV_DIGGING:
-                case TV_HAFTED:
-                case TV_POLEARM:
-                case TV_SWORD:
-
-                return (TRUE);
-            }
-            break;
-
-        /* Temple */
-        case 4:
-
-            /* Analyze the type */
-            switch (item->tval)
-            {
-                case TV_HAFTED:
-                case TV_LIFE_BOOK:
-                case TV_SCROLL:
-                case TV_POTION:
-                return (TRUE);
-            }
-            break;
-
-        /* Alchemist */
-        case 5:
-
-            /* Analyze the type */
-            switch (item->tval)
-            {
-                case TV_SCROLL:
-                case TV_POTION:
-                return (TRUE);
-            }
-            break;
-
-        /* Magic Shop */
-        case 6:
-
-            /* Analyze the type */
-            switch (item->tval)
-            {
-                case TV_AMULET:
-                case TV_RING:
-                case TV_SCROLL:
-                case TV_POTION:
-                case TV_STAFF:
-                case TV_WAND:
-                case TV_ROD:
-                case TV_SORCERY_BOOK:
-                case TV_NATURE_BOOK:
-                case TV_CHAOS_BOOK:
-                case TV_DEATH_BOOK:
-                case TV_TRUMP_BOOK:
-                case TV_ARCANE_BOOK:
-                return (TRUE);
-            }
-            break;
-
-		/* Black Market */
-
-		/* Home */
-
-        /* Book Shop */
-        case 9:
-
-            /* Analyze the type */
-            switch (item->tval)
-            {
-                case TV_LIFE_BOOK:
-                case TV_SORCERY_BOOK:
-                case TV_NATURE_BOOK:
-                case TV_CHAOS_BOOK:
-                case TV_DEATH_BOOK:
-                case TV_TRUMP_BOOK:
-                case TV_ARCANE_BOOK:
-                return (TRUE);
-            }
-            break;
-
-
-    }
-
-    /* Assume not */
-    return (FALSE);
-}
 
 
 
@@ -1923,7 +1661,7 @@ static bool borg_think_shop_sell_aux(bool immediate)
                 borg_has[ROD_HEAL] <= ROD_HEAL_GOAL) continue;
 			
 			/* ok to sell this if i am broke */
-			if (borg_gold >= 2) 
+			if (borg_gold >= 2)
 			{
 	            if ((item->tval == my_ammo_tval) && (borg_skill[BI_AMISSILES] < 45)) continue;
 
@@ -1965,7 +1703,7 @@ static bool borg_think_shop_sell_aux(bool immediate)
 			{
 				/* compare my item to the shop's inventory to see if it blends.
 				 * But for now, just merge books.
-				 */	
+				 */
 				absorb = FALSE;
 				for (q = 0; q < icky; q++)
 				{
@@ -2280,7 +2018,7 @@ static bool borg_think_shop_buy_aux(void)
 			if (borg_skill[BI_FOOD] == 0)
 			{
 				if (item->tval == TV_FOOD && borg_skill[BI_NOEAT]) continue;
-				if (item->tval != TV_FOOD && 
+				if (item->tval != TV_FOOD &&
 					(item->tval != TV_SCROLL &&
 				     item->sval != SV_SCROLL_SATISFY_HUNGER)) continue;
 			}
@@ -2479,7 +2217,7 @@ static bool borg_think_home_buy_aux(void)
 		if (borg_skill[BI_ISWEAK] && borg_skill[BI_FOOD] == 0)
 		{
 			if ((item->tval == TV_FOOD && !borg_skill[BI_NOEAT]) ||
-			    (item->tval != TV_FOOD && 
+			    (item->tval != TV_FOOD &&
 				 (item->tval != TV_SCROLL &&
 			      item->sval != SV_SCROLL_SATISFY_HUNGER)))
 			{
@@ -2788,11 +2526,11 @@ static bool borg_think_shop_grab_aux(void)
 				item->tval <= TV_ARCANE_BOOK) continue;
 
 			/* A borg won't need to by weapons like this */
-			if (item->tval >= TV_BOW && 
+			if (item->tval >= TV_BOW &&
 				item->tval <= TV_SWORD) continue;
 			
 			/* Most purchases not required after a certain level */
-			if (borg_skill[BI_MAXCLEVEL] >= 50 && 
+			if (borg_skill[BI_MAXCLEVEL] >= 50 &&
 				item->tval != TV_POTION &&
 				item->tval != TV_SCROLL) continue;
 
@@ -3592,7 +3330,7 @@ static bool borg_think_shop_buy(void)
  * Deal with being in a store
  */
 bool borg_think_store(void)
-{ 
+{
     /* Hack -- prevent clock wrapping */
     if (borg_t >= 20000 && borg_t <=20010)
     {
@@ -4503,7 +4241,7 @@ bool borg_think_dungeon_lunal(void)
  * Eat food
  * Call light.  might be dangerous because monster get a chance to hit us.
  *
- * This function can also help a borg rise dungeon levels to a safe area.  
+ * This function can also help a borg rise dungeon levels to a safe area.
  */
 bool borg_think_dungeon_munchkin(bool prep_check)
 {
@@ -4618,7 +4356,7 @@ bool borg_think_dungeon_munchkin(bool prep_check)
 	/* If no down stair is known, act normal */
 	if (track_more_num == 0 && track_less_num == 0)
 	{
-		if (create_stair == FALSE) 
+		if (create_stair == FALSE)
 		{
 			borg_note("# Leaving Munchkin Mode. (No Stairs seen)");
 			borg_munchkin_mode = FALSE;
@@ -4930,7 +4668,7 @@ bool borg_think_dungeon_munchkin(bool prep_check)
 
     /* Too deep; trying to gradually move shallow.  Going up */
     if (prep_check &&
-		((track_less_num || create_stair) && ((cptr)NULL != borg_restock(borg_skill[BI_CDEPTH])) && 
+		((track_less_num || create_stair) && ((cptr)NULL != borg_restock(borg_skill[BI_CDEPTH])) &&
 		 (safe_place || ag->feat == FEAT_LESS)))
     {
 
@@ -5044,7 +4782,7 @@ bool borg_think_dungeon_munchkin(bool prep_check)
 	}
 
 	/* Going down */
-    if (((track_more_num || create_stair) && 
+    if (((track_more_num || create_stair) &&
 		  ((borg_skill[BI_MAXCLEVEL] >= borg_munchkin_level && borg_skill[BI_MAXDEPTH] > borg_skill[BI_CDEPTH]  &&
 		   (cptr)NULL == borg_prepared[borg_skill[BI_CDEPTH]]) ||(borg_skill[BI_CDEPTH] < borg_munchkin_depth  || (cptr)NULL == borg_prepared[borg_skill[BI_CDEPTH+1]] ) && safe_place)) ||
         ag->feat == FEAT_MORE)
@@ -5818,7 +5556,7 @@ bool borg_think_dungeon(void)
 
 	/* Quick check to see if borg needs to engage his lunal mode for munchkin_start */
     if (borg_munchkin_start &&
-		(borg_skill[BI_MAXCLEVEL] <= borg_munchkin_level || 
+		(borg_skill[BI_MAXCLEVEL] <= borg_munchkin_level ||
 		 (borg_skill[BI_FOOD] <= 2 && !borg_skill[BI_RECALL]) ||
 		 (borg_skill[BI_MAXCLEVEL] >= borg_munchkin_level && borg_skill[BI_MAXDEPTH] > borg_skill[BI_CDEPTH] + 5)))
 
@@ -5983,9 +5721,9 @@ bool borg_think_dungeon(void)
     if ((borg_position & POSITION_SUMM) && borg_recover()) return (TRUE);
 
 	/* Flee to a safe Sea of Runes / Morgoth grid if appropriate */
-	if (!borg_skill[BI_ISBLIND] && !borg_skill[BI_ISCONFUSED] && 
+	if (!borg_skill[BI_ISBLIND] && !borg_skill[BI_ISCONFUSED] &&
 		(goal == GOAL_MISC ||
-		((borg_depth & (DEPTH_BORER & DEPTH_SUMMONER)) && !(borg_position & POSITION_SEA)) || 
+		((borg_depth & (DEPTH_BORER & DEPTH_SUMMONER)) && !(borg_position & POSITION_SEA)) ||
 		((borg_depth & DEPTH_BORER) && !(borg_position & (POSITION_BORE | POSITION_SEA)))))
 	{
 		/* Continue flowing towards good morgoth grid */
@@ -5999,10 +5737,10 @@ bool borg_think_dungeon(void)
 	}
 
 	/* Attempt to continue some excavation while in the sea of runes */
-	if (((borg_depth & (DEPTH_SUMMONER & DEPTH_BORER)) && (borg_position & POSITION_SEA)) || 
+	if (((borg_depth & (DEPTH_SUMMONER & DEPTH_BORER)) && (borg_position & POSITION_SEA)) ||
 		((borg_depth & DEPTH_BORER) && (borg_position & (POSITION_BORE | POSITION_SEA))))
 	{
-		/* Have the borg excavate the dungeon with Stone to Mud 
+		/* Have the borg excavate the dungeon with Stone to Mud
 		 * This should be smaller than borg_wall_buffer
 		 */
 		if (borg_excavate_region(6)) return (TRUE);
@@ -6120,10 +5858,10 @@ bool borg_think_dungeon(void)
  	/* If in town and have no money, and nothing to sell,
  	 * then do not stay in town, its too dangerous.
  	 */
- 	if (borg_skill[BI_CDEPTH] == 0 && 
-		borg_gold < 25 && 
-		borg_count_sell() < 3 && 
-		goal != GOAL_BORE && goal != GOAL_FLEE && 
+ 	if (borg_skill[BI_CDEPTH] == 0 &&
+		borg_gold < 25 &&
+		borg_count_sell() < 3 &&
+		goal != GOAL_BORE && goal != GOAL_FLEE &&
 		borg_time_town < 250)
  	{
          goal_leaving = TRUE;

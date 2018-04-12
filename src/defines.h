@@ -1064,7 +1064,7 @@ ART_THOTH -> ART_KINSLAYER
 #define EGO_RESIST_ELEC         5
 #define EGO_RESIST_FIRE         6
 #define EGO_RESIST_COLD         7
-#define EGO_HEAVEN              8
+#define EGO_HEAVEN              8 /*EGO_RESISTANCE*/
 #define EGO_ELVENKIND           9
 /* xxx */
 #define EGO_PERMANENCE          11

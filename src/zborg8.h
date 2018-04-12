@@ -17,6 +17,7 @@
 #include "zborg2.h"
 #include "zborg3.h"
 #include "zborg6.h"
+#include "zborg7.h"
 
 
 /*
@@ -35,7 +36,6 @@ extern bool borg_think_shop_mutation(void);
 extern bool borg_think_shop_inn(void);
 extern bool borg_think_shop_trump(void);
 
-extern bool borg_good_sell(borg_item *item, int who);
 extern bool borg_caution_phase(int, int);
 extern bool borg_lite_beam(bool simulation);
 /*

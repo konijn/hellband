@@ -30,6 +30,7 @@ extern bool borg_use_things(void);
 extern bool borg_check_lite(void);
 extern bool borg_check_lite_only(void);
 
+extern bool borg_good_sell(borg_item *item, int who);
 extern bool borg_enchanting(void);
 extern bool borg_recharging(void);
 extern bool borg_crush_junk(void);
@@ -43,7 +44,7 @@ extern bool borg_wear_rings(void);
 extern bool borg_wear_stuff(void);
 extern bool borg_wear_swap(void);
 extern bool borg_best_stuff(void);
-extern bool borg_best_combo(bool shops_too);
+extern bool borg_best_combo(/*bool shops_too*/);
 extern bool borg_play_magic(bool bored);
 extern bool borg_remove_stuff(void);
 extern bool borg_wear_recharge(void);
@@ -66,4 +67,3 @@ extern void borg_init_7(void);
 #endif
 
 #endif
-
