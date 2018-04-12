@@ -3,6 +3,14 @@
   * Build support for the Nephilim powers which are based off the Amberite powers
   * Make sure the forked tongue mutation is properly implemented
   * Teach the borg how to work the cloak of Draebor
+  * Teach the borg about mushrooms of fright and third sight ( < SV_FOOD_MIN_OKAY from zborg6.h)
+  * Teach the borg about alchemy
+  * WATER is a mess of between deep and low water, I need to streamline this
+  * The healer is not on the hardcoded place of borg_flow_enqueue_grid(26, 83);
+  * Check all artefact powers, handling of ART_SAMAEL is known to be weak
+  * The borg needs to learn/fear Lilith instead of just Morgoth
+  * Validate the sign powers
+  * Validate that draco power always has a GF_ type
 
 * SHOULD
   * zborg1.h /*TODO: understand the difference between track_shop and track_building*/
@@ -11,18 +19,32 @@
   * Make RACE_LILITH and RACE_LUCIFER flexible
   * Should have a temp resist poison artefact, even a random res poison power
   * Verify that Handle "satisfy hunger" properly deals with Vampires
+  * The borg flows now to 'bad' potions to throw them.. We should probably only flow if we know they are part of a recipe
+  * Implement RF6_S_ANGEL, I am guessing that S_KIN solves this??
+  * Implement quest_number with Lilith and Lucifer and restore the quest logic
+    * is_borg_quest_monster is already done
+  * Consider adding half orcs back, they are the other side of the Elven coin
+  * Unhardcode the Mage Guild name and basement name, it should use the f_info.txt Entry
+  * Swappable artefact for genocide.. (Replacement for Celeborn)
+  * Check all the corruptions, BF_COR1_LASER_EYE seems to have changed quite a bit
+  * Put difficulties of powers in to the power array
 
 * NICE
   * move total_weight to p_ptr->total_weight
   * make cmd2.c use the corruption table..
   * Use zborg3.c diff calculation to cmd2.c to be used by Hellband and the borg
   * Some files still mention the Logrus..
+  * If we ever add the lava terrains, then the borg should like items that survive lava instead of avoiding them
+  *
 
 * Version 1.0.0
   * Add more races, Amberites are gone forever though
   * Add temporary brands
   * Add RBE_EXP_VAMP, poetic justice
   * Add Zombies in, but cool like, possibly turning denizens
+  * Add Cyclopses in
+  * Add blue, red, gray mages  in
+  * Add Virgil lore, how could we not??
 
 * UNLIKELY
 

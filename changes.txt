@@ -480,6 +480,9 @@
 * Icy Lantern Holder should hold a Icy Lantern
 * Do something with flasks
 * Dont auto kill wands of TO
+* Hallucination is bugged, very often there is no monster name
+* Rewrite Character screen for bigger screens
+* Fix the price of ring of elevation
 
 - MYTHICAL bugs:
 
