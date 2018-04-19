@@ -1,7 +1,7 @@
 **Prerequisites**
 
 * Make sure to install the `gdb` package
-* Make sure to compile with `-g -gdb3` and `O0`
+* Make sure to compile with `-g -gdb3` and `-O0`
 
 
 **Starting**
