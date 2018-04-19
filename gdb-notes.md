@@ -21,7 +21,7 @@ Load the binary with
 * `info variables` to list "All global and static variable names".
 * `info locals` to list "Local variables of current stack frame" (names and values)
 * `info args` to list "Arguments of the current stack frame" (names and values).
-* `p <variable>` to show a variable `variable`
+* `print <variable>` to show a variable `variable`
 * `explore <variable>` to inspect a variable `variable`
 
 **Call stack**
@@ -34,3 +34,11 @@ Load the binary with
 * `continue` to run the program till the end or the next breakpoint
 * `step` to execute the whole line at once
 * `next` to execute the next atomic part of the line
+
+**Getting fancy**
+
+* Consider installing https://github.com/cyrus-and/gdb-dashboard
+* Having 2 ssh sessions with one running in gdb `dashboard -output <tty>` can be gold
+* `c` is shorthand for `continue`
+* `frame` is shorthand for `select-frame`
+* `p` is shorthand for `print`
