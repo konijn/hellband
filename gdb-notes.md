@@ -9,9 +9,12 @@
 Load the binary with
 `gdb ./hellband`
 
-**Setting breakpoints**
+**Setting breakpoints and watches**
 
-`break filename:line`
+* `break <filename>:<line>`
+* `watch <variable>` (breaks on write access)
+* `rwatch <variable>` (breaks on read access)
+* `awatch <variable>` (breaks on read and write access)
 
 **Querying variables**
 
