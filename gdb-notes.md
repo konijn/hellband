@@ -42,3 +42,10 @@ Load the binary with
 * `c` is shorthand for `continue`
 * `frame` is shorthand for `select-frame`
 * `p` is shorthand for `print`
+
+**Debugging a stuck game**
+
+* Open two sessions
+* Get one session stuck within a gdb run
+* Find the hellband/gdb session with `ps -al`
+* Send from the other session a SIGSEGV with `kill -s SIGSEGV <pid>`
