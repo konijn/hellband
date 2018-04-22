@@ -1950,8 +1950,10 @@ void move_player(int dir, int do_pickup)
 				consider_squelch( o_ptr );
 			}
 		}
-
-		carry( 0 /* do_pickup != always_pickup */ );
+    
+	/*carry( 0 );*/
+	/*carry( do_pickup != always_pickup );*/
+	carry( do_pickup || always_pickup );
 
 #else /* ALLOW_EASY_DISARM -- TNB */
 
