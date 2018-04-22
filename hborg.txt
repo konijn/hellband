@@ -51,3 +51,7 @@
 *Documentation
 
 * There is no name3 in Hellband, because Hellband does not yet have temporary brands
+* zborg7.c:6839 bool borg_play_magic(bool bored) 
+* zborg5.c:3196 static void borg_update_map(void)
+* zborg6.c:23106 borg_flow_old
+* zborg6.c:25081 borg_flow_shop_visit

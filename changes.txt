@@ -484,6 +484,11 @@
 * Rewrite Character screen for bigger screens
 * Fix the price of ring of elevation
 
+- Todo
+* Chazaqiel is the *eight* of the fallen Grigori leaders.
+* Rings of combat lust are always +5,+5 ??
+* Upgrading Twilight armor should not remove the armor bonus, gaaah
+
 - MYTHICAL bugs:
 
 * MITZE Get allies, have them fight, dismiss them, walk around, see monsters that are there/not there
@@ -510,6 +515,7 @@
 - Do the major step of updating code to be doxygen compliant
 - When generating skeletons, generate 2/3 'bad' object, 1/3 good object
 - Introduce Zangband figurines
+- We need 1 single function for detection, which will receive a bit flag!!
 
 - Create a stores array :
   - Does store have inventory flux( no for town hall, house , chop shop, mages guild )
