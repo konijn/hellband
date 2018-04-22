@@ -1974,7 +1974,7 @@ static void process_command(void)
 
 #ifdef ALLOW_BORG
 	/* Special "borg" commands */
-	case KTRL('Z'):
+	case KTRL('B'):
 	{
 		/* Enter borg mode */
 		if (enter_borg_mode())
@@ -2048,7 +2048,7 @@ static void process_command(void)
 	/* Version info                */ case 'V' : { do_cmd_version();            break; }
 	/* Commit suicide              */ case 'Q' : { do_cmd_suicide();            break; }
 	/* Check knowledge             */ case '~' : { do_cmd_knowledge();          break; }
-    /* Check knowledge             */ case '|' : { do_cmd_knowledge();          break; }
+	/* Check knowledge             */ case '|' : { do_cmd_knowledge();          break; }
 	/* Load "screen dump"          */ case '(' : { do_cmd_screen_dump();        break; }
 	/* Save "screen dump"          */ case ')' : { do_cmd_save_screen();        break; }
 	/* Show visible monsters       */ case '[' : { do_cmd_monsters();           break; }
