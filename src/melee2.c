@@ -5740,6 +5740,18 @@ static void process_monster(int m_idx, bool is_friend)
 	bool            did_kill_wall;
 	bool            gets_angry = FALSE;
 
+	/* This.. has happened */
+	if(m_ptr->hp < 0){
+		/* Buffer for monster name */
+		char m_name[80];
+		/* Acquire the monster name */
+		monster_desc(m_name, m_ptr, 0);
+		/* Dump a message */
+		msg_format("PANIC. %s has negative hitpoints, removing now!", m_name);
+		/* Murder it */
+		delete_monster_idx(m_idx, TRUE);
+		return;
+	}
 
 	/* Handle "sleep" */
 	if (m_ptr->csleep)
@@ -5964,7 +5976,6 @@ static void process_monster(int m_idx, bool is_friend)
 	/* Get the origin */
 	oy = m_ptr->fy;
 	ox = m_ptr->fx;
-
 
 	/* Attempt to "multiply" if able and allowed */
 	if ((r_ptr->flags2 & (RF2_MULTIPLY)) && (num_repro < MAX_REPRO) &&
@@ -6634,7 +6645,6 @@ static void process_monster(int m_idx, bool is_friend)
 		p_ptr->update |= (PU_VIEW | PU_LITE | PU_FLOW | PU_MONSTERS);
 	}
 
-
 	/* Learn things from observable monster */
 	if (m_ptr->ml)
 	{
@@ -6782,13 +6792,11 @@ void process_monsters(void)
 	/* Hack -- calculate the "player noise" */
 	noise = (1L << (30 - p_ptr->skill_stl));
 
-
 	/* Process the monsters (backwards) */
 	for (i = m_max - 1; i >= 1; i--)
 	{
 		/* Access the monster */
 		m_ptr = &m_list[i];
-
 
 		/* Ignore "dead" monsters */
 		if (!m_ptr->r_idx) continue;
@@ -6799,7 +6807,6 @@ void process_monsters(void)
 			total_friends++;
 			total_friend_levels += r_info[m_ptr->r_idx].level;
 		}
-
 
 		/* Handle "fresh" monsters */
 		if (m_ptr->mflag & (MFLAG_BORN))
@@ -6822,10 +6829,8 @@ void process_monsters(void)
 		/* Use up "some" energy */
 		m_ptr->energy -= extract_energy[m_ptr->mspeed];
 
-
 		/* Hack -- Require proximity */
 		if (m_ptr->cdis >= 100) continue;
-
 
 		/* Access the race */
 		r_ptr = &r_info[m_ptr->r_idx];
@@ -6833,7 +6838,6 @@ void process_monsters(void)
 		/* Access the location */
 		fx = m_ptr->fx;
 		fy = m_ptr->fy;
-
 
 		/* Assume no move */
 		test = FALSE;
