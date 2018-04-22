@@ -809,7 +809,7 @@ and tables.c --TY */
 #define FEAT_BROKEN             0x05
 #define FEAT_LESS               0x06
 #define FEAT_MORE               0x07
-#define FEAT_PATH                0x08
+#define FEAT_PATH               0x08
 
 /* Traps */
 #define FEAT_TRAP_HEAD  0x10
@@ -864,8 +864,22 @@ and tables.c --TY */
 
 
 /* Shops */
-#define FEAT_SHOP_HEAD        0x4A
-#define FEAT_SHOP_TAIL        0x55
+#define FEAT_SHOP_HEAD     0x4A
+#define FEAT_SHOP_GENERAL  FEAT_SHOP_HEAD+0  /* 1 General Store */
+#define FEAT_SHOP_ARMOURY  FEAT_SHOP_HEAD+1  /* 2 Armoury */
+#define FEAT_SHOP_SMITH    FEAT_SHOP_HEAD+2  /* 3 Weapon Smith */
+#define FEAT_SHOP_TEMPLE   FEAT_SHOP_HEAD+3  /* 4 Temple */
+#define FEAT_SHOP_ALCHEMY  FEAT_SHOP_HEAD+4  /* 5 Alchemy Shop */
+#define FEAT_SHOP_MAGIC    FEAT_SHOP_HEAD+5  /* 6 Magic Shop */
+#define FEAT_SHOP_BLACK    FEAT_SHOP_HEAD+6  /* 7 Black Market */
+#define FEAT_SHOP_HOME     FEAT_SHOP_HEAD+7  /* 8 Home */
+#define FEAT_SHOP_BOOKS    FEAT_SHOP_HEAD+8  /* 9 Bookstore */
+#define FEAT_SHOP_INN      FEAT_SHOP_HEAD+9  /* + Inn */
+#define FEAT_SHOP_HALL     FEAT_SHOP_HEAD+10 /* + Hall */
+#define FEAT_SHOP_BROKERS  FEAT_SHOP_HEAD+11 /* + Pawnbrokers */
+#define FEAT_SHOP_MAGIC2   FEAT_SHOP_HEAD+12 /* < Mage guild second floor */
+#define FEAT_SHOP_ALCHEMY2 FEAT_SHOP_HEAD+13 /* < Mage guild second floor */
+#define FEAT_SHOP_TAIL     0x55
 
 /* Other Surface Stuff */
 #define FEAT_GATE   0x60
