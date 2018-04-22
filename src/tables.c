@@ -871,23 +871,23 @@ player_class class_info[MAX_CLASS] =
  */
 
 class_magic realms_info[MAX_CLASS] = {
-	/*Class Name		Book				Xtra    Stat,	Type,	Level,	Encumbrance,  MIRACLES	SORCERY NATURE	CHAOS	DEATH	TAROT	CHARMS	SOMATIC DEMONIC*/
-	/*Warrior      */{	0,					0,		A_STR,	0,		99,		0,			{ NO,		NO,		NO,		NO,		NO,		NO,		NO,		NO,		NO,		},},
-	/*Mage         */{	TV_SORCERY_BOOK,	0,		A_INT,	0,		1,		300,		{ SAME,		SAME,	SAME,	SAME,	SAME,	SAME,	SAME,	SAME,	SAME,	},},
-	/*Rogue        */{	TV_SORCERY_BOOK,	0,		A_INT,	0,		5,		350,		{ POOR,		SAME,	POOR,	SAME,	BETTER,	BETTER,	BETTER,	WORSE,	WORSE,	},},
-	/*Priest       */{	TV_MIRACLES_BOOK,	0,		A_WIS,	1,		1,		350,		{ SUPER,	WORSE,	SAME,	WORSE,	SUPER,	WORSE,	WORSE,	WORSE,	POOR,	},},
-	/*Ranger       */{	TV_MIRACLES_BOOK,	0,		A_INT,	0,		3,		400,		{ NO,		WORSE,	BETTER,	NO,		NO,		WORSE,	WORSE,	WORSE,	NO,		},},
-	/*Paladin      */{	TV_MIRACLES_BOOK,	0,		A_WIS,	1,		1,		400,		{ BETTER,	NO,		NO,		NO,		NO,		NO,		NO,		NO,		NO,		},},
-	/*Black Knight */{	TV_MIRACLES_BOOK,	0,		A_INT,	1,		2,		400,		{ NO,		NO,		NO,		NO,		NO,		NO,		NO,		NO,		BETTER, },},
-	/*Chaos Knight */{	TV_MIRACLES_BOOK,	0,		A_INT,	1,		2,		400,		{ NO,		NO,		NO,		NO,		NO,		NO,		NO,		NO,		BETTER, },},
-	/*Hell Knight  */{	TV_MIRACLES_BOOK,	0,		A_INT,	1,		2,		400,		{ NO,		NO,		NO,		NO,		NO,		NO,		NO,		NO,		BETTER, },},
-	/*Warrior-Mage */{	TV_SORCERY_BOOK,	0,		A_INT,	0,		1,		350,		{ WORSE,	WORSE,	WORSE,	WORSE,	WORSE,	WORSE,	SUPER,	WORSE,	WORSE,  },},
-	/*High Mage    */{	TV_SORCERY_BOOK,	0,		A_INT,	0,		1,		300,		{ BETTER,	BETTER,	BETTER,	BETTER,	BETTER,	BETTER,	BETTER,	BETTER,	BETTER, },},
-	/*Blood Mage   */{	TV_SORCERY_BOOK,	0,		A_INT,	0,		1,		300,		{ NO,	    NO,	    NO,	    BETTER,	BETTER,	NO,	    NO,	    NO,  	BETTER, },},
-	/*Warlock      */{	TV_SORCERY_BOOK,	0,		A_INT,	0,		1,		300,		{ WORSE,	WORSE,	WORSE,	BETTER,	WORSE,	WORSE,	WORSE,	WORSE,	BETTER, },},
-	/*Mystic       */{	TV_MIRACLES_BOOK,	0,		A_WIS,	0,		1,		300,		{ NO,		NO,		NO,		NO,		NO,		NO,		NO,		SUPER,	NO,		},},
-	/*Orphic       */{	TV_MIRACLES_BOOK,	0,		A_WIS,	0,		99,		300,		{ NO,		NO,		NO,		NO,		NO,		NO,		NO,		NO,		NO,		},},
-	/*Druid        */{	TV_MIRACLES_BOOK,	0,		A_WIS,	1,		1,		350,		{ NO,		NO,		SUPER,	NO,		NO,		NO,		NO,		NO,		NO,		},},
+	/*Class Name       Book             Xtra Stat,  Type,Level,Encmbce,  MRCLS	SORCERY NATURE	CHAOS	DEATH	TAROT	CHARMS	SOMATIC DEMONIC*/
+	/*Warrior      */{	0               , 0, A_STR, 0,   99,   0,      { NO,     NO,     NO,		NO,		NO,		NO,		NO,		NO,		NO,		},},
+	/*Mage         */{	TV_SORCERY_BOOK , 0, A_INT, 0,   1,    300,    { SAME,   SAME,   SAME,	SAME,	SAME,	SAME,	SAME,	SAME,	SAME,	},},
+	/*Rogue        */{	TV_SORCERY_BOOK , 0, A_INT, 0,   5,    350,    { POOR,   SAME,   POOR,	SAME,	BETTER,	BETTER,	BETTER,	WORSE,	WORSE,	},},
+	/*Priest       */{	TV_MIRACLES_BOOK, 0, A_WIS, 1,   1,    350,    { SUPER,  WORSE,  SAME,	WORSE,	SUPER,	WORSE,	WORSE,	WORSE,	POOR,	},},
+	/*Ranger       */{	TV_MIRACLES_BOOK, 0, A_INT, 0,   3,    400,    { NO,     WORSE,  BETTER,	NO,		NO,		WORSE,	WORSE,	WORSE,	NO,		},},
+	/*Paladin      */{	TV_MIRACLES_BOOK, 0, A_WIS, 1,   1,    400,    { BETTER, NO,     NO,		NO,		NO,		NO,		NO,		NO,		NO,		},},
+	/*Black Knight */{	TV_MIRACLES_BOOK, 0, A_INT, 1,   2,    400,    { NO,     NO,     NO,		NO,		NO,		NO,		NO,		NO,		BETTER, },},
+	/*Chaos Knight */{	TV_MIRACLES_BOOK, 0, A_INT, 1,   2,    400,    { NO,     NOl,    NO,		NO,		NO,		NO,		NO,		NO,		BETTER, },},
+	/*Hell Knight  */{	TV_MIRACLES_BOOK, 0, A_INT, 1,   2,    400,    { NO,     NO,     NO,		NO,		NO,		NO,		NO,		NO,		BETTER, },},
+	/*Warrior-Mage */{	TV_SORCERY_BOOK,  0, A_INT, 0,   1,    350,    { WORSE,  WORSE,  WORSE,	WORSE,	WORSE,	WORSE,	SUPER,	WORSE,	WORSE,  },},
+	/*High Mage    */{	TV_SORCERY_BOOK,  0, A_INT, 0,   1,    300,    { BETTER, BETTER, BETTER,	BETTER,	BETTER,	BETTER,	BETTER,	BETTER,	BETTER, },},
+	/*Blood Mage   */{	TV_SORCERY_BOOK,  0, A_INT, 0,   1,    300,    { NO,     NO,     NO,	    BETTER,	BETTER,	NO,	    NO,	    NO,  	BETTER, },},
+	/*Warlock      */{	TV_SORCERY_BOOK,  0, A_INT, 0,   1,    300,    { WORSE,  WORSE,  WORSE,	BETTER,	WORSE,	WORSE,	WORSE,	WORSE,	BETTER, },},
+	/*Mystic       */{	TV_MIRACLES_BOOK,	0, A_WIS, 0,   1,    300,    { NO,     NO,     NO,		NO,		NO,		NO,		NO,		SUPER,	NO,		},},
+	/*Orphic       */{	0               ,	0, A_WIS, 0,   99,   300,    { NO,     NO,     NO,		NO,		NO,		NO,		NO,		NO,		NO,		},},
+	/*Druid        */{	TV_MIRACLES_BOOK,	0, A_WIS, 1,   1,    350,    { NO,     NO,     SUPER,	NO,		NO,		NO,		NO,		NO,		NO,		},},
 };
 
 u16b realm_choices[MAX_CLASS][2]=
