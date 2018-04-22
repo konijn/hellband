@@ -33,6 +33,9 @@
 #define GOAL_RECOVER 10 /* Safe grid for me to rest on */
 #define GOAL_DIGGING 11 /* Anti-summon Corridor */
 #define GOAL_UNREACH 12 /* Move to a safer grid so monsters cant hit him */
+#define GOAL_LAST    13 /* All max goal checks should use this */
+
+extern cptr goal_descriptions[GOAL_LAST+1];
 
 /*
  * Minimum "harmless" food

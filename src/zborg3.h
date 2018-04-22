@@ -198,6 +198,11 @@ struct borg_mind
     s32b times;     /* Times this spell was cast */
 };
 
+/*
+ * String table manipulations
+ */
+extern bool ang_sort_comp_string_hook(vptr u, vptr v, int a, int b);
+extern void ang_sort_swap_string_hook(vptr u, vptr v, int a, int b);
 
 /*
  * Some variables
@@ -287,8 +292,8 @@ extern bool borg_use_staff(int sval);
 extern bool borg_use_staff_fail(int sval);
 extern bool borg_equips_staff_fail(int sval);
 extern bool borg_inscribe_food(void);
-extern bool borg_equips_trump(int fail_allowed);
-extern bool borg_activate_trump(int fail_allowed);
+extern bool borg_equips_planar(/*int fail_allowed*/);
+extern bool borg_activate_planar(/*int fail_allowed*/);
 extern bool borg_equips_item(int tval, int sval);
 extern bool borg_activate_item(int tval, int sval, bool target);
 extern bool borg_equips_activation(int activation, bool immediate);
