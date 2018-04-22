@@ -1283,7 +1283,7 @@ struct player_type
 
 	s16b pspeed;		/* Current speed */
 
-    s16b command_see;		/* See "cmd1.c" */
+	s16b command_see;		/* See "cmd1.c" */
 	s16b command_wrk;		/* See "cmd1.c" */
 };
 
@@ -1294,12 +1294,12 @@ typedef struct martial_arts martial_arts;
 
 struct martial_arts
 {
-	cptr    desc;    /* A verbose attack description */
-	int     min_level;  /* Minimum level to use */
-	int     chance;     /* Chance of 'success' */
-	int     dd;        /* Damage dice */
-	int     ds;        /* Damage sides */
-	int     effect;     /* Special effects */
+	cptr desc;      /* A verbose attack description */
+	int  min_level; /* Minimum level to use */
+	int  chance;    /* Chance of 'success' */
+	int  dd;        /* Damage dice */
+	int  ds;        /* Damage sides */
+	int  effect;    /* Special effects */
 };
 
 /* Orphics */
