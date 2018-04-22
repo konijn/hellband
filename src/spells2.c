@@ -981,8 +981,14 @@ bool detect_traps(void)
 	/* Scan the current panel */
 	for (y = panel_row_min; y <= panel_row_max; y++)
 	{
+		/*With the bigger screens, this can totally happen */
+		if(y >= MAX_HGT)
+			continue;
 		for (x = panel_col_min; x <= panel_col_max; x++)
 		{
+			/*With the bigger screens, this can totally happen */
+			if(x >= MAX_WID)
+				continue;
 			/* Access the grid */
 			c_ptr = &cave[y][x];
 
@@ -1036,8 +1042,14 @@ bool detect_doors(void)
 	/* Scan the panel */
 	for (y = panel_row_min; y <= panel_row_max; y++)
 	{
+		/*With the bigger screens, this can totally happen */
+		if(y >= MAX_HGT)
+			continue;
 		for (x = panel_col_min; x <= panel_col_max; x++)
 		{
+			/*With the bigger screens, this can totally happen */
+			if(x >= MAX_WID)
+				continue;
 			c_ptr = &cave[y][x];
 
 			/* Detect secret doors */
@@ -1091,8 +1103,15 @@ bool detect_stairs(void)
 	/* Scan the panel */
 	for (y = panel_row_min; y <= panel_row_max; y++)
 	{
+		/*With the bigger screens, this can totally happen */
+		if(y >= MAX_HGT)
+			continue;
 		for (x = panel_col_min; x <= panel_col_max; x++)
 		{
+			/*With the bigger screens, this can totally happen */
+			if(x >= MAX_WID)
+				continue;
+
 			c_ptr = &cave[y][x];
 
 			/* Detect stairs */
@@ -1134,11 +1153,18 @@ bool detect_treasure(void)
 	cave_type *c_ptr;
 
 
-	/* Scan the current panel */
+	/* Scan the panel */
 	for (y = panel_row_min; y <= panel_row_max; y++)
 	{
+		/*With the bigger screens, this can totally happen */
+		if(y >= MAX_HGT)
+			continue;
 		for (x = panel_col_min; x <= panel_col_max; x++)
 		{
+			/*With the bigger screens, this can totally happen */
+			if(x >= MAX_WID)
+				continue;
+				
 			c_ptr = &cave[y][x];
 
 			/* Notice embedded gold */
