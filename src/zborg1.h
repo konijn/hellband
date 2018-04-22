@@ -208,16 +208,20 @@ extern byte borg_depth;		/* Flags for special guys on the depth */
 #define ART_RANDART  127
 
 /* Magic Numbers are Evil */
-#define BORG_GSTORE      0
-#define BORG_TEMPLE      3
-#define BORG_ALCHEMIST   4
-#define BORG_BM          6
-#define BORG_HOME        7
-#define BORG_BOOKSTORE   8
-#define BORG_RESTORATION 9
-#define BORG_THIEVES_G   10
-#define BORG_RECALL_GUY  11
-
+#define BORG_GSTORE    0  /* 1 General Store */
+#define BORG_ARMOURY   1  /* 2 Armoury */
+#define BORG_SMITH     2  /* 3 Weapon Smith */
+#define BORG_TEMPLE    3  /* 4 Temple */
+#define BORG_ALCHEMIST 4  /* 5 Alchemist */
+#define MAGIC          5  /* 6 Magic Shop */
+#define BORG_BM        6  /* 7 Black Market */
+#define BORG_HOME      7  /* 8 Home */
+#define BORG_BOOKSTORE 8  /* 9 Bookstore */
+#define BORG_INN       9  /* + Inn */
+#define BORG_HALL      10 /* + Hall */
+#define BORG_BROKERS   11 /* + Pawnbrokers */
+#define BORG_MAGIC2    12 /* < Mage guild second floor */
+#define BORG_ALCHEMY2  13 /* > Alchemist basement */
 /*
  * Maximum size of the "view" array
  */
@@ -411,6 +415,9 @@ struct borg_data
    ((X) >= panel_col_min + 1) && ((X) <= panel_col_max - 1))
 
 /*** Some variables ***/
+
+/* This option is turned off in Hellband as a design decision, de Borg abides */
+/*extern bool cheat_live = FALSE; */
 
 /*
  * Some variables
@@ -980,10 +987,10 @@ extern int c_y;         /* Current location (Y) */
 extern int g_x;         /* Goal location (X) */
 extern int g_y;         /* Goal location (Y) */
 
-extern int town_x_wild[6];	/* Wilderness location of Towns */
-extern int town_y_wild[6];	/* Wilderness location of Towns */
-extern int borg_town_pref;  /* Where do I like to live? */
+extern int borg_town_pref;    /* Where do I like to live? */
 extern int when_waypoint[10]; /* Waypoints for moving in wilderness */
+extern int store_y[FEAT_SHOP_TAIL-FEAT_SHOP_HEAD]; /* Where are the stores, y */
+extern int store_x[FEAT_SHOP_TAIL-FEAT_SHOP_HEAD]; /* Where are the stores, x */
 
 /*
  * Some estimated state variables
@@ -1135,10 +1142,10 @@ extern s16b amt_cure_blind;
 
 extern s16b amt_cool_staff;  /* holiness-power staff */
 
-extern s16b amt_book[8][4]; /* [realm][sval] */
+extern s16b amt_book[MAX_REALM+1][4]; /* [realm][sval] */
 
-extern s16b amt_add_stat[6];
-extern s16b amt_fix_stat[7];
+extern s16b amt_add_stat[STAT_COUNT];
+extern s16b amt_fix_stat[STAT_COUNT+1];
 
 extern s16b amt_fix_exp;
 
