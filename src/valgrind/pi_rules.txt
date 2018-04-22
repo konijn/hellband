@@ -1,0 +1,26 @@
+#This is for the Raspberry Pi
+#Reduced and deduced from 
+#valgrind --log-file=valgrind.txt --gen-suppressions=all ./hellband
+#Further refining is best done within
+#valgrind --log-file=valgrind.txt --gen-suppressions=all --suppressions=pi_rules.txt ./hellband
+#
+{
+   pi_cond_jmp_no_init
+   Memcheck:Cond
+   obj:/lib/arm-linux-gnueabihf/ld-2.24.so
+   obj:/lib/arm-linux-gnueabihf/libc-2.24.so
+   obj:/lib/arm-linux-gnueabihf/libnss_compat-2.24.so
+   obj:/lib/arm-linux-gnueabihf/libnsl-2.24.so
+   obj:/lib/arm-linux-gnueabihf/libnss_nis-2.24.so
+   obj:/lib/arm-linux-gnueabihf/libnss_files-2.24.so
+}
+{
+   pi_used_not_inited
+   Memcheck:Value4
+   obj:/lib/arm-linux-gnueabihf/ld-2.24.so
+   obj:/lib/arm-linux-gnueabihf/libc-2.24.so
+   obj:/lib/arm-linux-gnueabihf/libnss_compat-2.24.so
+   obj:/lib/arm-linux-gnueabihf/libnsl-2.24.so
+   obj:/lib/arm-linux-gnueabihf/libnss_nis-2.24.so
+   obj:/lib/arm-linux-gnueabihf/libnss_files-2.24.so
+}
