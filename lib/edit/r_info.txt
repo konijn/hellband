@@ -5772,7 +5772,7 @@ D:She is known to teach about the moon when she in a better mood.
 D:She has an immense knowledge of magic, magical rituals, and magical power 
 D:and impressive warrior abilities 
 
-#He is escorted by the Se'irim
+#He is escorted by the Se'irim (513)
 N:422:Azazel, chief of the Se'irim
 G:D:o
 I:130:6:35d100:30:120:30
@@ -5780,7 +5780,7 @@ W:33:6:0:18000
 B:BUTT:POISON:12d13
 B:HIT:POISON:10d10
 F:UNIQUE | MALE | FALLEN_ANGEL
-F:FORCE_SLEEP | FORCE_MAXHP | ESCORT | ESCORTS | ESCORT_575
+F:FORCE_SLEEP | FORCE_MAXHP | ESCORT | ESCORTS | ESCORT_513
 F:ONLY_ITEM | DROP_1D2 | DROP_4D2 | DROP_GOOD | ATTR_MULTI
 F:BASH_DOOR | 
 F:EVIL | IM_FIRE | IM_POIS | NO_CONF | NO_SLEEP
@@ -8587,7 +8587,7 @@ D:He commands one of hell's armies - that of pestilence and locusts.
 
 ##### Level 86 #####
 
-N:579:Erebus 
+N:579:Erebus
 G:v:G
 I:130:6:75d100:90:90:90
 W:86:2:0:44000
@@ -8598,7 +8598,7 @@ B:CRUSH:UN_BONUS:2d33
 F:RAND_25 | KILL_ITEM | OPEN_DOOR | BASH_DOOR | RES_NETH |
 F:DROP_1D2 | DROP_2D2 | DROP_90 | ONLY_ITEM | FORCE_SLEEP | FORCE_MAXHP |
 F:EVIL | IM_POIS | IM_COLD | IM_ACID | IM_ELEC | RES_TELE | NONLIVING |
-F:POWERFUL | IM_FIRE | DEVIL
+F:POWERFUL | IM_FIRE | DEVIL | UNIQUE
 S:1_IN_3
 S:SCARE | CONF | S_DEVIL | S_UNDEAD | DRAIN_MANA | BR_CHAO |
 S:BR_FIRE | TPORT | S_MONSTERS | BRAIN_SMASH | BR_NETH |
@@ -8961,6 +8961,3 @@ S:BR_NETH | HASTE | BR_MANA | S_HI_UNDEAD | S_HI_DRAGON | S_UNIQUE |
 S:S_FALLEN | BR_SLIM | BR_POIS | BR_DISI | CAIN | S_DEVIL
 D:The lord of hell himself. Most beautiful of the angels, he is 
 D:devillishly handsome. His power is second only to God Himself. 
-
-
-
