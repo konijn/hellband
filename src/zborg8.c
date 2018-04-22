@@ -22,7 +22,7 @@ byte *test;
 byte *best;
 s32b *b_home_power;
 
-char *borg_itoa(long i, char *s/*, int dummy_radix*/) {
+char *borg_itoa(long i, char *s /*, int dummy_radix*/) {
 	sprintf(s, "%ld", i);
 	return s;
 }
@@ -838,7 +838,7 @@ bool borg_think_shop_trump(void) {
 	if (jump) {
 		borg_note(format("# Using Trump Tower to jump to depth %d", jump_depth));
 		borg_keypress('t');
-		borg_itoa(jump_depth, buf/*, 10*/);
+		borg_itoa(jump_depth, buf /*, 10*/);
 		borg_keypresses(buf);
 		borg_keypress('\n');
 		goal_recalling = TRUE;
@@ -1171,7 +1171,7 @@ bool borg_think_shop_bow(void) {
  * not check all possible combinations of items. but it is MUCH faster.
  */
 
-static void borg_think_home_sell_aux2_fast(int n/*, int start_i*/) {
+static void borg_think_home_sell_aux2_fast(int n /*, int start_i*/) {
 	borg_item *item;
 	borg_item *item2;
 	s32b home_power;
@@ -1433,7 +1433,7 @@ static bool borg_think_home_sell_aux(bool save_best) {
 	if (borg_slow_optimizehome) {
 		borg_think_home_sell_aux2_slow(0, 0);
 	} else {
-		borg_think_home_sell_aux2_fast(0/*, 0*/);
+		borg_think_home_sell_aux2_fast(0 /*, 0*/);
 	}
 
 	/* restore bonuses and such */
@@ -2136,7 +2136,7 @@ static bool borg_think_shop_buy_aux(void) {
 static bool borg_think_home_buy_aux(void) {
 	int hole = INVEN_PACK - 1;
 
-	int slot/*, i*/;
+	int slot /*, i*/;
 	int stack;
 	/*int qty = 1;*/
 	int n, b_n = -1;
@@ -3120,7 +3120,7 @@ static bool borg_think_shop_sell(void) {
 		borg_keypress(I2A(goal_item));
 
 		/* Hack -- Sell a qty of the item */
-		borg_itoa(goal_qty, buf/*, 10*/);
+		borg_itoa(goal_qty, buf /*, 10*/);
 		borg_keypresses(buf);
 		borg_keypress('\n');
 
@@ -3204,7 +3204,7 @@ static bool borg_think_shop_buy(void) {
 		borg_keypress(I2A(goal_ware % 12));
 
 		/* Quantity of the item */
-		borg_itoa(goal_qty, buf/*, 10*/);
+		borg_itoa(goal_qty, buf /*, 10*/);
 		borg_keypresses(buf);
 		borg_keypress('\n');
 
@@ -3853,18 +3853,22 @@ bool borg_think_dungeon_lunal(void) {
 	/** First deal with staying alive **/
 
 	/* Hack -- require light */
-	if ((borg_items[INVEN_LITE].tval == TV_LITE && borg_items[INVEN_LITE].sval == SV_LITE_TORCH) ||
-		 (borg_items[INVEN_LITE].tval == TV_LITE && borg_items[INVEN_LITE].sval == SV_LITE_LANTERN)) {
+	if ((borg_items[INVEN_LITE].tval == TV_LITE &&
+		  borg_items[INVEN_LITE].sval == SV_LITE_TORCH) ||
+		 (borg_items[INVEN_LITE].tval == TV_LITE &&
+		  borg_items[INVEN_LITE].sval == SV_LITE_LANTERN)) {
 
 		/* Must have light -- Refuel current torch */
-		if (borg_items[INVEN_LITE].tval == TV_LITE && borg_items[INVEN_LITE].sval == SV_LITE_TORCH) {
+		if (borg_items[INVEN_LITE].tval == TV_LITE &&
+			 borg_items[INVEN_LITE].sval == SV_LITE_TORCH) {
 			/* Try to refuel the torch */
 			if ((borg_items[INVEN_LITE].pval < 500) && borg_refuel_torch())
 				return (TRUE);
 		}
 
 		/* Must have light -- Refuel current lantern */
-		if (borg_items[INVEN_LITE].tval == TV_LITE && borg_items[INVEN_LITE].sval == SV_LITE_LANTERN) {
+		if (borg_items[INVEN_LITE].tval == TV_LITE &&
+			 borg_items[INVEN_LITE].sval == SV_LITE_LANTERN) {
 			/* Try to refill the lantern */
 			if ((borg_items[INVEN_LITE].pval < 1000) && borg_refuel_lantern())
 				return (TRUE);
@@ -4664,23 +4668,14 @@ bool borg_think_dungeon_munchkin(bool prep_check) {
 	}
 
 	/* Going down */
-	if (
-				(
-					(track_more_num || create_stair) &&
-		  		(
-						(
-							borg_skill[BI_MAXCLEVEL] >= borg_munchkin_level &&
-			 			 	borg_skill[BI_MAXDEPTH] > borg_skill[BI_CDEPTH] &&
-			 		 	 	(cptr)NULL == borg_prepared[borg_skill[BI_CDEPTH]]
-						) ||
-						(
-							borg_skill[BI_CDEPTH] < borg_munchkin_depth ||
-							(cptr)NULL == borg_prepared[borg_skill[BI_CDEPTH + 1]]
-						)
-					) && safe_place
-				) ||
-				ag->feat == FEAT_MORE
-			) {
+	if (((track_more_num || create_stair) &&
+		  ((borg_skill[BI_MAXCLEVEL] >= borg_munchkin_level &&
+			 borg_skill[BI_MAXDEPTH] > borg_skill[BI_CDEPTH] &&
+			 (cptr)NULL == borg_prepared[borg_skill[BI_CDEPTH]]) ||
+			(borg_skill[BI_CDEPTH] < borg_munchkin_depth ||
+			 (cptr)NULL == borg_prepared[borg_skill[BI_CDEPTH + 1]])) &&
+		  safe_place) ||
+		 ag->feat == FEAT_MORE) {
 		int closeness = 8 + borg_skill[BI_CLEVEL] / 5;
 
 		/* Reset */
@@ -5525,923 +5520,793 @@ bool borg_think_dungeon(void) {
 	/*** Important goals ***/
 
 	/* Continue flowing towards good anti-summon grid */
-	if (borg_flow_old(GOAL_DIGGING))
-		return (TRUE);
-
-	/* Continue flowing to a safe grid so monsters cant reach me */
-	if (borg_flow_old(GOAL_UNREACH))
-		return (TRUE);
-
-	/* Try not to die */
-	if (borg_caution())
-		return (TRUE);
-
-	/*** if returning from dungeon in bad shape...***/
-	if (borg_skill[BI_CUR_LITE] == 0 || borg_skill[BI_ISCUT] ||
-		 borg_skill[BI_ISPOISONED] || borg_skill[BI_ISWEAK]) {
-		/* First try to wear something */
-		if (borg_skill[BI_CUR_LITE] == 0) {
-			/* attempt to refuel */
-			if (borg_refuel_torch() || borg_refuel_lantern())
-				return (TRUE);
-
-			/* wear stuff and see if it glows */
-			if (borg_wear_stuff())
-				return (TRUE);
-		}
-
-		/* Recover from damage */
-		if (borg_recover())
-			return (TRUE);
-
-		/* Continue flowing (see below) */
-		if (borg_flow_old(GOAL_TOWN))
-			return (TRUE);
-
-		/* Try to get to town location when not moving towns (town gate for now)
-		 */
-		if (when_waypoint[0] == 0 && borg_flow_town_exit(GOAL_TOWN))
-			return (TRUE);
-
-		/* Vamps need to eat right away */
-		if ((borg_skill[BI_VAMPIRE] ||
-			  borg_spell_legal_fail(REALM_DEATH, 1, 3, 30)) &&
-			 borg_skill[BI_ISWEAK]) {
-			if (borg_attack(FALSE, TRUE, -1, FALSE) >= 1)
-				return (TRUE);
-			if (borg_flow_old(GOAL_KILL))
-				return (TRUE);
-			if (borg_flow_kill(FALSE, 50))
-				return (TRUE);
-		}
-
-		/* Try to get food from the Inn */
-		if (borg_flow_shop_inn())
-			return (TRUE);
-
-		/* shop for something that will help us */
-		if (borg_flow_shop_visit())
-			return (TRUE);
-		if (borg_choose_shop()) {
-			/* Try and visit a shop, if so desired */
-			if (borg_flow_shop_entry(goal_shop))
-				return (TRUE);
-		}
+	if (borg_flow_old(GOAL_DIGGING)) {
 	}
+	borg_note(format("# Current goal digging is at (%d,%d)", borg_goal_y,
+						  borg_goal_y));
+	return (TRUE);
+}
 
-	/* if I must go to town without delay */
-	if ((cptr)NULL != borg_restock(borg_skill[BI_CDEPTH])) {
-		/* Recover from damage */
-		if (borg_recover())
+/* Continue flowing to a safe grid so monsters cant reach me */
+if (borg_flow_old(GOAL_UNREACH)) {
+	borg_note(
+		 format("# Current goal fleeing to (%d,%d)", borg_goal_y, borg_goal_y));
+	return (TRUE);
+}
+
+/* Try not to die */
+if (borg_caution())
+	return (TRUE);
+
+/*** if returning from dungeon in bad shape...***/
+if (borg_skill[BI_CUR_LITE] == 0 || borg_skill[BI_ISCUT] ||
+	 borg_skill[BI_ISPOISONED] || borg_skill[BI_ISWEAK]) {
+	/* First try to wear something */
+	if (borg_skill[BI_CUR_LITE] == 0) {
+		/* attempt to refuel */
+		if (borg_refuel_torch() || borg_refuel_lantern())
 			return (TRUE);
 
-		/* Leave if able to */
-		if (borg_leave_level(FALSE))
+		/* wear stuff and see if it glows */
+		if (borg_wear_stuff())
 			return (TRUE);
 	}
-
-	/* Learn useful spells immediately */
-	if (borg_play_magic(FALSE))
-		return (TRUE);
-
-	/* If using a digger, Wear "useful" equipment before fighting monsters */
-	if (borg_items[INVEN_WIELD].tval == TV_DIGGING && borg_wear_stuff())
-		return (TRUE);
-
-	/* If fighting certain types of creatures, consider the swap gear for better
-	 * damage. */
-	if ((borg_fighting_summoner || borg_fighting_unique ||
-		  borg_fighting_questor || borg_fighting_dragon || borg_fighting_demon) &&
-		 borg_wear_swap())
-		return (TRUE);
-
-	/* Dig an anti-summon corridor */
-	if (borg_flow_kill_corridor_1(TRUE))
-		return (TRUE);
-
-	/* Move to a safe grid and beat monsters with ranged attacks (play
-	 * nanny-boo-boo) */
-	if (borg_flow_kill_unreachable(4))
-		return (TRUE);
-
-	/* Attack monsters */
-	if (borg_attack(FALSE, TRUE, -1, FALSE) >= 1)
-		return (TRUE);
-
-	/* Wear things that need to be worn, but try to avoid swap loops */
-	if (borg_wear_stuff())
-		return (TRUE);
-
-	/* Repair "backwards" rings */
-	if (borg_wear_rings())
-		return (TRUE);
-
-	/* Remove stuff that is useless or detrimental */
-	if (borg_remove_stuff())
-		return (TRUE);
-
-	/* Continue flowing towards really close objects */
-	if (borg_flow_old(GOAL_TAKE))
-		return (TRUE);
-
-	/* Recover from damage */
-	if ((borg_position & POSITION_SUMM) && borg_recover())
-		return (TRUE);
-
-	/* Flee to a safe Sea of Runes / Morgoth grid if appropriate */
-	if (!borg_skill[BI_ISBLIND] && !borg_skill[BI_ISCONFUSED] &&
-		 (goal == GOAL_MISC || ((borg_depth & (DEPTH_BORER & DEPTH_SUMMONER)) &&
-										!(borg_position & POSITION_SEA)) ||
-		  ((borg_depth & DEPTH_BORER) &&
-			!(borg_position & (POSITION_BORE | POSITION_SEA))))) {
-		/* Continue flowing towards good morgoth grid */
-		if (!(borg_position & (POSITION_SEA | POSITION_BORE)) &&
-			 borg_skill[BI_AGLYPH] >= 10 && borg_flow_old(GOAL_MISC))
-			return (TRUE);
-
-		/* Attempt to locate a good Glyphed grid */
-		if (!(borg_position & (POSITION_SEA | POSITION_BORE)) &&
-			 borg_skill[BI_AGLYPH] >= 10 && borg_flow_glyph(GOAL_MISC))
-			return (TRUE);
-
-		/* Have the borg excavate the dungeon with Stone to Mud.  Leave range at
-		 * 1, 2, or 3.  */
-		if (borg_excavate_region(3))
-			return (TRUE);
-	}
-
-	/* Attempt to continue some excavation while in the sea of runes */
-	if (((borg_depth & (DEPTH_SUMMONER & DEPTH_BORER)) &&
-		  (borg_position & POSITION_SEA)) ||
-		 ((borg_depth & DEPTH_BORER) &&
-		  (borg_position & (POSITION_BORE | POSITION_SEA)))) {
-		/* Have the borg excavate the dungeon with Stone to Mud
-		 * This should be smaller than borg_wall_buffer
-		 */
-		if (borg_excavate_region(6))
-			return (TRUE);
-
-		/* Test for resting on the grid one more time. */
-		if (borg_recover())
-			return (TRUE);
-		else {
-			borg_keypress(',');
-			borg_note(format("# Waiting for borer. Time since seen: %d",
-								  borg_t - borg_t_questor));
-			return (TRUE);
-		}
-	}
-
-	/* Find a really close object */
-	if (borg_flow_take(TRUE, 5))
-		return (TRUE);
-
-	/* Continue flowing to a safe grid on which I may recover */
-	if (borg_flow_old(GOAL_RECOVER))
-		return (TRUE);
-
-	/* Check the light */
-	if (borg_check_lite())
-		return (TRUE);
 
 	/* Recover from damage */
 	if (borg_recover())
-		return (TRUE);
-
-	/* Attempt to find a grid which is safe and I can recover on it.  This should
-	 * work closely with borg_recover. */
-	if (borg_flow_recover(/*FALSE, */50))
-		return (TRUE);
-
-	/* Stuck in a wall without Wraith Form */
-	if (!borg_skill[BI_PASSWALL] &&
-		 borg_grids[c_y][c_x].feat >= FEAT_DOOR_HEAD &&
-		 borg_grids[c_y][c_x].feat <= FEAT_PERM_SOLID) {
-		if (borg_flow_passwall())
-			return (TRUE);
-	}
-
-	/* Perform "cool" perma spells */
-	if (borg_perma_spell())
-		return (TRUE);
-
-	/* Destroy junk */
-	if (borg_crush_junk())
-		return (TRUE);
-
-	/* Destroy items to make space */
-	if (borg_crush_hole())
-		return (TRUE);
-
-	/* Destroy items if we are slow */
-	if (borg_crush_slow())
-		return (TRUE);
-
-	/* Try to stick close to stairs if weak */
-	if (borg_skill[BI_CLEVEL] < 10 && borg_skill[BI_MAXSP] >= 2 &&
-		 borg_skill[BI_CURSP] <= 1) {
-		if (borg_skill[BI_CDEPTH]) {
-			/* Check for an existing "up stairs" */
-			if (borg_grids[c_y][c_x].feat == FEAT_LESS) {
-				/* I am standing on a stair */
-
-				/* reset the goal_less flag */
-				goal_less = FALSE;
-
-				/* if not dangerous, wait here */
-				if (borg_danger(c_y, c_x, 1, TRUE) == 0) {
-					/* rest here a moment */
-					borg_note("# Resting on stair to gain Mana.");
-					borg_keypress('R');
-					borg_keypress('*');
-					borg_keypress('\n');
-					return (TRUE);
-				}
-			}
-		} else /* in town */
-		{
-			int i, y, x;
-
-			/* Check for an existing "dn stairs" */
-			for (i = 0; i < track_more_num; i++) {
-				x = track_more_x[i];
-				y = track_more_y[i];
-
-				/* Not on a stair */
-				if (c_y != y || c_x != x)
-					continue;
-
-				/* I am standing on a stair */
-
-				/* if not dangerous, wait here */
-				if (borg_danger(c_y, c_x, 1, TRUE) == 0) {
-					/* rest here a moment */
-					borg_note("# Resting on town stair to gain Mana.");
-					borg_keypress('R');
-					borg_keypress('*');
-					borg_keypress('\n');
-					return (TRUE);
-				}
-			}
-		}
-
-		/* Continue to find a stair on which to camp */
-		if (borg_flow_old(GOAL_FLEE))
-			return (TRUE);
-
-		/* Try to find some stairs up */
-		if (borg_flow_stair_less(GOAL_FLEE, TRUE)) {
-			borg_note("# Looking for stairs. Stair hugging.");
-			return (TRUE);
-		}
-	}
-
-	/* If in town and have no money, and nothing to sell,
-	 * then do not stay in town, its too dangerous.
-	 */
-	if (borg_skill[BI_CDEPTH] == 0 && borg_gold < 25 && borg_count_sell() < 3 &&
-		 goal != GOAL_BORE && goal != GOAL_FLEE && borg_time_town < 250) {
-		goal_leaving = TRUE;
-
-		/* Wait here if need be.  Do Vamps need to worry about waiting? */
-		if (goal_recalling) {
-			borg_keypresses("R10");
-			borg_keypress('\r');
-			return (TRUE);
-		}
-
-		/* Continue fleeing the level */
-		if (borg_flow_old(GOAL_FLEE))
-			return (TRUE);
-		if (borg_flow_old(GOAL_TOWN))
-			return (TRUE);
-
-		/* Note */
-		borg_note("# Nothing to sell in town (leaving).");
-
-		/* Flow back to the stairs, but don't take them yet. */
-		/* Use recall when appropriate */
-		if (borg_leave_level(TRUE))
-			return (TRUE);
-	}
-
-	/*** Flee the level XXX XXX XXX ***/
-
-	/* Return to Stairs, but not use them */
-	if (goal_less) {
-		/* Continue fleeing to stair */
-		if (borg_flow_old(GOAL_FLEE))
-			return (TRUE);
-
-		/* Try to find some stairs */
-		if ((borg_depth & DEPTH_SCARY) && !borg_skill[BI_CDEPTH] &&
-			 borg_flow_stair_both_dim(GOAL_FLEE))
-			return (TRUE);
-		if ((borg_depth & DEPTH_SCARY) && !borg_skill[BI_CDEPTH] &&
-			 borg_flow_stair_both(GOAL_FLEE, FALSE, TRUE))
-			return (TRUE);
-
-		/* Try to find some stairs up */
-		if (borg_flow_stair_less(GOAL_FLEE, TRUE))
-			return (TRUE);
-	}
-
-	/* Flee the level */
-	if (goal_fleeing && !goal_recalling) {
-		/* Hack -- Take the next stairs */
-		stair_less = stair_more = TRUE;
-
-		/* Continue fleeing the level */
-		if (borg_flow_old(GOAL_FLEE))
-			return (TRUE);
-
-		/* Give a short reason */
-		if (borg_verbose)
-			borg_note("# Fleeing level but not Recalling.");
-
-		/* Try to find some stairs */
-		if ((borg_depth & DEPTH_SCARY) && !borg_skill[BI_CDEPTH] &&
-			 borg_flow_stair_both_dim(GOAL_FLEE))
-			return (TRUE);
-		if ((borg_depth & DEPTH_SCARY) && !borg_skill[BI_CDEPTH] &&
-			 borg_flow_stair_both(GOAL_FLEE, FALSE, FALSE))
-			return (TRUE);
-
-		/* Try to find some stairs up */
-		if (borg_flow_stair_less(GOAL_FLEE, TRUE))
-			return (TRUE);
-
-		/* Try to find some stairs down */
-		if (borg_flow_stair_more(GOAL_FLEE, TRUE, TRUE))
-			return (TRUE);
-	}
-
-	/* Dig an anti-summon corridor */
-	if (borg_flow_kill_corridor_2(TRUE))
-		return (TRUE);
-
-	/* Continue flowing towards really close objects */
-	if (borg_flow_old(GOAL_TAKE))
-		return (TRUE);
-
-	/* Find a really close object */
-	if (borg_flow_take(TRUE, 5))
-		return (TRUE);
-
-	/*** Wait for recall ***/
-
-	/* Wait for recall, unless in danger */
-	if (goal_recalling && (borg_danger(c_y, c_x, 1, TRUE) <= 0) &&
-		 borg_check_rest(c_y, c_x)) {
-		/* Take note */
-		borg_note("# Waiting for Recall...");
-
-		if (borg_skill[BI_CDEPTH]) {
-			/* Rest until done */
-			borg_keypress('R');
-			borg_keypress('&');
-			borg_keypress('\n');
-		} else {
-			/* Rest one round-- we keep count of turns while in town */
-			borg_keypress('0');
-			borg_keypress('1');
-			borg_keypress('R');
-		}
-
-		/* Done */
-		return (TRUE);
-	}
-
-	/* Find a really close mineral vein */
-	if (borg_flow_vein(TRUE, 5))
-		return (TRUE);
-
-	/* Continue flowing towards monsters */
-	if (borg_flow_old(GOAL_KILL))
-		return (TRUE);
-
-	/* Find a close monster */
-	if (borg_flow_kill(TRUE, 20))
-		return (TRUE);
-
-	/* Continue flowing towards objects */
-	if (borg_flow_old(GOAL_TAKE))
-		return (TRUE);
-
-	/* Find a close object */
-	if (borg_flow_take(FALSE, 20))
-		return (TRUE);
-
-	/* Find a close mineral vein */
-	if (borg_flow_vein(TRUE, 20))
-		return (TRUE);
-
-	/* Find a mid-ranged monster */
-	if (borg_flow_kill(TRUE, 35))
-		return (TRUE);
-
-	/* Find an object */
-	if (borg_flow_take(FALSE, 150))
-		return (TRUE);
-
-	/* Find a mineral vein */
-	if (borg_flow_vein(TRUE, 150))
-		return (TRUE);
-
-	/* Find a viewable monster and line up a shot on him */
-	if (borg_flow_kill_aim(TRUE))
-		return (TRUE);
-
-	/* Dig an anti-summon corridor */
-	if (borg_flow_kill_corridor_2(TRUE))
-		return (TRUE);
-
-	/*** Deal with inventory objects ***/
-
-	/* check for anything that should be inscribed
-	   if (borg_inscribe_food()) return (TRUE);*/
-
-	/* Use things */
-	if (borg_use_things())
-		return (TRUE);
-
-	/* MindCrafters psuedoID unknown things */
-	if (borg_pseudoid_stuff())
-		return (TRUE);
-
-	/* Identify unknown things */
-	if (borg_test_stuff(FALSE))
-		return (TRUE);
-
-	/* *Id* unknown things */
-	if (borg_test_stuff(TRUE))
-		return (TRUE);
-
-	/* Enchant things */
-	if (borg_enchanting())
-		return (TRUE);
-
-	/* Recharge things */
-	if (borg_recharging())
-		return (TRUE);
-
-	/*** Flow towards objects ***/
-
-	/* Continue flowing towards objects */
-	if (borg_flow_old(GOAL_TAKE))
-		return (TRUE);
-
-	/* Find a (viewable) object */
-	if (borg_flow_take(FALSE, 250))
-		return (TRUE);
-	if (borg_flow_vein(FALSE, 250))
-		return (TRUE);
-
-	/*** Leave the level XXX XXX XXX ***/
-
-	/* Leave the level */
-	if ((goal_leaving && !goal_recalling && !unique_on_level &&
-		  !(borg_depth & DEPTH_QUEST)) ||
-		 (borg_skill[BI_CDEPTH] && borg_skill[BI_CLEVEL] < 25 &&
-		  borg_gold < 25000 && borg_count_sell() >= 12)) {
-		/* Hack -- Take the next stairs */
-		if (borg_ready_lucifer == 0)
-			stair_less = TRUE;
-
-		/* Continue leaving the level */
-		if (borg_flow_old(GOAL_FLEE))
-			return (TRUE);
-
-		/* Try to find some stairs up */
-		if (stair_less && !fearing_sunlight) {
-			if (borg_flow_stair_less(GOAL_FLEE, FALSE)) {
-				borg_note("# Looking to leave level to sell stuff.");
-				return (TRUE);
-			}
-		}
-
-		/* Only go down if fleeing or prepared. */
-		if ((cptr)NULL == borg_prepared[borg_skill[BI_CDEPTH] + 1])
-			stair_more = TRUE;
-
-		/* No down if needing to sell */
-		if (borg_skill[BI_CDEPTH] && borg_skill[BI_CLEVEL] < 25 &&
-			 borg_gold < 25000 && borg_count_sell() >= 12) {
-			stair_more = FALSE;
-		}
-
-		/* Try to find some stairs down */
-		if (stair_more) {
-			if (borg_flow_stair_more(GOAL_FLEE, FALSE, TRUE)) {
-				/* Give a short reason */
-				borg_note("# Leaving level but not Recalling or Fleeing.");
-				return (TRUE);
-			}
-		}
-	}
-
-	/* Power dive if I am playing too shallow
-	 * This is also seen in leave_level().  If
-	 * this formula is modified here, change it
-	 * in leave_level too.
-	 */
-	if (borg_skill[BI_CDEPTH] != 0 &&
-		 (cptr)NULL == borg_prepared[borg_skill[BI_CDEPTH] + 1] && !stair_less) {
-		if (borg_leave_level(FALSE))
-			return (TRUE);
-	}
-
-	/*** Exploration ***/
-
-	/* Continue flowing (see below) */
-	if (borg_flow_old(GOAL_MISC))
-		return (TRUE);
-
-	/* Continue flowing (see below) */
-	if (borg_flow_old(GOAL_DARK))
-		return (TRUE);
-
-	/* Continue flowing (see below) */
-	if (borg_flow_old(GOAL_XTRA))
-		return (TRUE);
-
-	/* Continue flowing (see below) */
-	if (borg_flow_old(GOAL_BORE))
 		return (TRUE);
 
 	/* Continue flowing (see below) */
 	if (borg_flow_old(GOAL_TOWN))
 		return (TRUE);
 
-	/*** Explore the dungeon ***/
-
-	if ((borg_depth & DEPTH_VAULT)) {
-		/* Chase close monsters */
-		if (borg_flow_kill(FALSE, MAX_RANGE + 1))
-			return (TRUE);
-
-		/* Chase close objects */
-		if (borg_flow_take(FALSE, 35))
-			return (TRUE);
-		if (borg_flow_vein(FALSE, 35))
-			return (TRUE);
-
-		/* Excavate a vault safely */
-		if (borg_excavate_vault(MAX_RANGE - 2))
-			return (TRUE);
-
-		/* Find a vault to excavate */
-		if (borg_flow_vault(35))
-			return (TRUE);
-
-		/* Explore close interesting grids */
-		if (borg_flow_dark(TRUE))
-			return (TRUE);
-	}
-
-	/* Chase old monsters */
-	if (borg_flow_kill(FALSE, 250))
-		return (TRUE);
-
-	/* Chase old objects */
-	if (borg_flow_take(FALSE, 250))
-		return (TRUE);
-	if (borg_flow_vein(FALSE, 250))
-		return (TRUE);
-
-	/* Explore interesting grids */
-	if (borg_flow_dark(TRUE))
-		return (TRUE);
-
-	/* Leave the level (if needed) */
-	if (borg_gold < borg_money_scum_amount && borg_money_scum_amount != 0 &&
-		 !borg_skill[BI_CDEPTH] && borg_skill[BI_LITE]) {
-		/* Stay in town and scum for money after shopping */
-	} else {
-		if (borg_leave_level(FALSE))
-			return (TRUE);
-	}
-
-	/* Explore interesting grids */
-	if (borg_flow_dark(FALSE))
-		return (TRUE);
-
-	/*** Deal with shops ***/
-
-	/* Flow to a different (favorite) town in order to take advantage of other
-	 * shops */
-	if (borg_skill[BI_ENCUMBERD] < 150 &&
-		 borg_flow_demenager(borg_town_pref, GOAL_TOWN))
-		return (TRUE);
-
-	/* Try to get to town location (town gate for now) */
+	/* Try to get to town location when not moving towns (town gate for now)
 	if (when_waypoint[0] == 0 && borg_flow_town_exit(GOAL_TOWN))
 		return (TRUE);
+	*/
 
-	/* Specialty shops (Restoration, ID, *ID*) */
-	if (borg_flow_shop_special(TRUE))
+	/* Vamps need to eat right away */
+	if ((borg_skill[BI_VAMPIRE] ||
+		  borg_spell_legal_fail(REALM_DEATH, 1, 3, 30)) &&
+		 borg_skill[BI_ISWEAK]) {
+		if (borg_attack(FALSE, TRUE, -1, FALSE) >= 1)
+			return (TRUE);
+		if (borg_flow_old(GOAL_KILL))
+			return (TRUE);
+		if (borg_flow_kill(FALSE, 50))
+			return (TRUE);
+	}
+
+	/* Try to get food from the Inn */
+	if (borg_flow_shop_inn())
 		return (TRUE);
 
-	/* Hack -- visit all the shops */
+	/* shop for something that will help us */
 	if (borg_flow_shop_visit())
 		return (TRUE);
-
-	/* Hack -- Visit the shops */
 	if (borg_choose_shop()) {
 		/* Try and visit a shop, if so desired */
 		if (borg_flow_shop_entry(goal_shop))
 			return (TRUE);
 	}
+}
 
-	/* Specialty shops (Recharge, Enchant weapon/armor/missiles) */
-	if (borg_flow_shop_special(FALSE))
+/* if I must go to town without delay */
+if ((cptr)NULL != borg_restock(borg_skill[BI_CDEPTH])) {
+	/* Recover from damage */
+	if (borg_recover())
 		return (TRUE);
 
-	/*** Leave the Level ***/
+	/* Leave if able to */
+	if (borg_leave_level(FALSE))
+		return (TRUE);
+}
 
-	/* Study/Test boring spells/prayers */
-	if (!goal_fleeing && borg_play_magic(TRUE))
+/* Learn useful spells immediately */
+if (borg_play_magic(FALSE))
+	return (TRUE);
+
+/* If using a digger, Wear "useful" equipment before fighting monsters */
+if (borg_items[INVEN_WIELD].tval == TV_DIGGING && borg_wear_stuff())
+	return (TRUE);
+
+/* If fighting certain types of creatures, consider the swap gear for better
+ * damage. */
+if ((borg_fighting_summoner || borg_fighting_unique || borg_fighting_questor ||
+	  borg_fighting_dragon || borg_fighting_demon) &&
+	 borg_wear_swap())
+	return (TRUE);
+
+/* Dig an anti-summon corridor */
+if (borg_flow_kill_corridor_1(TRUE))
+	return (TRUE);
+
+/* Move to a safe grid and beat monsters with ranged attacks (play
+ * nanny-boo-boo) */
+if (borg_flow_kill_unreachable(4))
+	return (TRUE);
+
+/* Attack monsters */
+if (borg_attack(FALSE, TRUE, -1, FALSE) >= 1)
+	return (TRUE);
+
+/* Wear things that need to be worn, but try to avoid swap loops */
+if (borg_wear_stuff())
+	return (TRUE);
+
+/* Repair "backwards" rings */
+if (borg_wear_rings())
+	return (TRUE);
+
+/* Remove stuff that is useless or detrimental */
+if (borg_remove_stuff())
+	return (TRUE);
+
+/* Continue flowing towards really close objects */
+if (borg_flow_old(GOAL_TAKE))
+	return (TRUE);
+
+/* Recover from damage */
+if ((borg_position & POSITION_SUMM) && borg_recover())
+	return (TRUE);
+
+/* Flee to a safe Sea of Runes / Morgoth grid if appropriate */
+if (!borg_skill[BI_ISBLIND] && !borg_skill[BI_ISCONFUSED] &&
+	 (goal == GOAL_MISC || ((borg_depth & (DEPTH_BORER & DEPTH_SUMMONER)) &&
+									!(borg_position & POSITION_SEA)) ||
+	  ((borg_depth & DEPTH_BORER) &&
+		!(borg_position & (POSITION_BORE | POSITION_SEA))))) {
+	/* Continue flowing towards good morgoth grid */
+	if (!(borg_position & (POSITION_SEA | POSITION_BORE)) &&
+		 borg_skill[BI_AGLYPH] >= 10 && borg_flow_old(GOAL_MISC))
 		return (TRUE);
 
-	/* Search for secret doors */
-	if (borg_flow_spastic(FALSE))
+	/* Attempt to locate a good Glyphed grid */
+	if (!(borg_position & (POSITION_SEA | POSITION_BORE)) &&
+		 borg_skill[BI_AGLYPH] >= 10 && borg_flow_glyph(GOAL_MISC))
 		return (TRUE);
 
-	/* Recharge items before leaving the level */
-	if (borg_wear_recharge())
+	/* Have the borg excavate the dungeon with Stone to Mud.  Leave range at
+	 * 1, 2, or 3.  */
+	if (borg_excavate_region(3))
 		return (TRUE);
+}
 
-	/* Leave the level (if possible) */
-	if (borg_gold < borg_money_scum_amount && borg_money_scum_amount != 0 &&
-		 !borg_skill[BI_CDEPTH] && borg_skill[BI_LITE]) {
-		/* Stay in town, scum for money now that shopping is done. */
-		borg_money_scum();
-
-		/* Done */
-		return (TRUE);
-	} else {
-		if (borg_leave_level(TRUE))
-			return (TRUE);
-	}
-
-	/* Search for secret doors */
-	if (borg_flow_spastic(TRUE))
-		return (TRUE);
-
-	/*** Nothing to do ***/
-
-	/* Twitching in town can be fatal.  Really he should not become twitchy
-	 * but sometimes he cant recall to the dungeon and that may induce the
-	 * twitchy behavior.  So we reset the level if this happens.  That will
-	 * force him to go shopping all over again.
+/* Attempt to continue some excavation while in the sea of runes */
+if (((borg_depth & (DEPTH_SUMMONER & DEPTH_BORER)) &&
+	  (borg_position & POSITION_SEA)) ||
+	 ((borg_depth & DEPTH_BORER) &&
+	  (borg_position & (POSITION_BORE | POSITION_SEA)))) {
+	/* Have the borg excavate the dungeon with Stone to Mud
+	 * This should be smaller than borg_wall_buffer
 	 */
-	if ((borg_skill[BI_CDEPTH] == 0 && borg_t - borg_began > 800 &&
-		  when_waypoint[1] == 0) ||
-		 borg_t > 28000)
-		old_depth = 126;
+	if (borg_excavate_region(6))
+		return (TRUE);
 
-	/* Set a flag that the borg is  not allowed to retreat for 5 rounds */
-	borg_no_retreat = 5;
-
-	/* Boost slightly */
-	if (avoidance < borg_skill[BI_CURHP] * 2) {
-		bool done = FALSE;
-
-		/* Note */
-		borg_note(format("# Boosting bravery (1) from %d to %d!", avoidance,
-							  borg_skill[BI_CURHP] * 2));
-
-		/* Hack -- ignore some danger */
-		avoidance = (borg_skill[BI_CURHP] * 2);
-
-		/* Forget the danger fields */
-		borg_danger_wipe = TRUE;
-
-		/* Try anything */
-		if (borg_think_dungeon_brave())
-			done = TRUE;
-
-		/* Reset "avoidance" */
-		avoidance = borg_skill[BI_CURHP];
-
-		/* Re-calculate danger */
-		borg_danger_wipe = TRUE;
-
-		/* Forget goals */
-		/*        goal = 0;*/
-
-		/* Done */
-		if (done)
-			return (TRUE);
+	/* Test for resting on the grid one more time. */
+	if (borg_recover())
+		return (TRUE);
+	else {
+		borg_keypress(',');
+		borg_note(format("# Waiting for borer. Time since seen: %d",
+							  borg_t - borg_t_questor));
+		return (TRUE);
 	}
+}
 
-	/* try phase before boosting bravery further and acting goofy */
-	borg_times_twitch++;
+/* Find a really close object */
+if (borg_flow_take(TRUE, 5))
+	return (TRUE);
 
-	/* Phase to get out of being twitchy up to 3 times per level. */
-	if (borg_times_twitch < 3) {
-		borg_note("# Considering Phase (twitchy)");
+/* Continue flowing to a safe grid on which I may recover */
+if (borg_flow_old(GOAL_RECOVER))
+	return (TRUE);
 
-		/* Phase */
-		if (amt_phase && borg_caution_phase(15, 2) &&
-			 (borg_spell(REALM_SORCERY, 0, 1) || borg_spell(REALM_TRUMP, 0, 0) ||
-			  borg_spell(REALM_ARCANE, 0, 4) ||
-			  borg_mindcr_fail(MIND_MAJOR_DISP, 7, 35) ||
-			  borg_mindcr_fail(MIND_MINOR_DISP, 3, 35) ||
-			  borg_activate_artifact(ART_DRAEBOR, FALSE) ||
-				borg_activate_artifact(ART_NYNAULD, FALSE) ||
-			  borg_read_scroll(SV_SCROLL_PHASE_DOOR))) {
-			/* Success */
-			return (TRUE);
-		}
-	}
+/* Check the light */
+if (borg_check_lite())
+	return (TRUE);
 
-	/* Set a flag that the borg is not allowed */
-	/*  to retreat for 10 rounds */
-	borg_no_retreat = 10;
+/* Recover from damage */
+if (borg_recover())
+	return (TRUE);
 
-	/* Boost some more */
-	if (avoidance < borg_skill[BI_MAXHP] * 4) {
-		bool done = FALSE;
+/* Attempt to find a grid which is safe and I can recover on it.  This should
+ * work closely with borg_recover. */
+if (borg_flow_recover(/*FALSE, */ 50))
+	return (TRUE);
 
-		/* Note */
-		borg_note(format("# Boosting bravery (2) from %d to %d!", avoidance,
-							  borg_skill[BI_MAXHP] * 4));
+/* Stuck in a wall without Wraith Form */
+if (!borg_skill[BI_PASSWALL] && borg_grids[c_y][c_x].feat >= FEAT_DOOR_HEAD &&
+	 borg_grids[c_y][c_x].feat <= FEAT_PERM_SOLID) {
+	if (borg_flow_passwall())
+		return (TRUE);
+}
 
-		/* Hack -- ignore some danger */
-		avoidance = (borg_skill[BI_MAXHP] * 4);
+/* Perform "cool" perma spells */
+if (borg_perma_spell())
+	return (TRUE);
 
-		/* Forget the danger fields */
-		borg_danger_wipe = TRUE;
+/* Destroy junk */
+if (borg_crush_junk())
+	return (TRUE);
 
-		/* Try anything */
-		if (borg_think_dungeon_brave())
-			done = TRUE;
+/* Destroy items to make space */
+if (borg_crush_hole())
+	return (TRUE);
 
-		/* Reset "avoidance" */
-		avoidance = borg_skill[BI_CURHP];
+/* Destroy items if we are slow */
+if (borg_crush_slow())
+	return (TRUE);
 
-		/* Re-calculate danger */
-		borg_danger_wipe = TRUE;
+/* Try to stick close to stairs if weak */
+if (borg_skill[BI_CLEVEL] < 10 && borg_skill[BI_MAXSP] >= 2 &&
+	 borg_skill[BI_CURSP] <= 1) {
+	if (borg_skill[BI_CDEPTH]) {
+		/* Check for an existing "up stairs" */
+		if (borg_grids[c_y][c_x].feat == FEAT_LESS) {
+			/* I am standing on a stair */
 
-		/* Forget goals */
-		/*        goal = 0;*/
+			/* reset the goal_less flag */
+			goal_less = FALSE;
 
-		/* Done */
-		if (done)
-			return (TRUE);
-	}
-
-	/* Boost a lot */
-	if (avoidance < 30000) {
-		bool done = FALSE;
-
-		/* Note */
-		borg_note(
-			 format("# Boosting bravery (3) from %d to %d!", avoidance, 30000));
-
-		/* Hack -- ignore some danger */
-		avoidance = 30000;
-
-		/* Forget the danger fields */
-		borg_danger_wipe = TRUE;
-
-		/* Reset the spastic searching counts */
-		for (y = 0; y < AUTO_MAX_Y; y++) {
-			for (x = 0; x < AUTO_MAX_X; x++) {
-				borg_grids[y][x].xtra = 0;
+			/* if not dangerous, wait here */
+			if (borg_danger(c_y, c_x, 1, TRUE) == 0) {
+				/* rest here a moment */
+				borg_note("# Resting on stair to gain Mana.");
+				borg_keypress('R');
+				borg_keypress('*');
+				borg_keypress('\n');
+				return (TRUE);
 			}
 		}
+	} else /* in town */
+	{
+		int i, y, x;
 
-		/* Reset multiple factors to jumpstart the borg */
-		unique_on_level = 0;
-		borg_depth &= ~DEPTH_SCARY;
+		/* Check for an existing "dn stairs" */
+		for (i = 0; i < track_more_num; i++) {
+			x = track_more_x[i];
+			y = track_more_y[i];
 
-		/* reset our breeder flag */
-		borg_depth &= ~DEPTH_BREEDER;
+			/* Not on a stair */
+			if (c_y != y || c_x != x)
+				continue;
 
-		/* Hack -- Clear "panel" flags */
-		for (y = 0; y < 6; y++) {
-			for (x = 0; x < 6; x++) {
-				borg_detect_wall[y][x] = FALSE;
-				borg_detect_trap[y][x] = FALSE;
-				borg_detect_door[y][x] = FALSE;
-				borg_detect_evil[y][x] = FALSE;
+			/* I am standing on a stair */
+
+			/* if not dangerous, wait here */
+			if (borg_danger(c_y, c_x, 1, TRUE) == 0) {
+				/* rest here a moment */
+				borg_note("# Resting on town stair to gain Mana.");
+				borg_keypress('R');
+				borg_keypress('*');
+				borg_keypress('\n');
+				return (TRUE);
 			}
-		}
-
-		/* Hack -- Clear "fear" */
-		for (y = 0; y < 6; y++) {
-			for (x = 0; x < 18; x++) {
-				borg_fear_region[y][x] = 0;
-			}
-		}
-
-		/* Remove regional fear from monsters, it gets added back in later. */
-		for (y = 0; y < AUTO_MAX_Y; y++) {
-			for (x = 0; x < AUTO_MAX_X; x++) {
-				borg_fear_monsters[y][x] = 0;
-			}
-		}
-
-		/* Forget goals */
-		goal = 0;
-
-		/* use any stairs */
-		borg_note("# Fleeing due to twitch.");
-		stair_less = stair_more = goal_fleeing = goal_leaving = TRUE;
-
-		/* Hack -- cannot rise past town */
-		if (!borg_skill[BI_CDEPTH])
-			goal_rising = FALSE;
-
-		/* Assume not fleeing the level */
-		goal_fleeing_lunal = FALSE;
-		goal_fleeing_munchkin = FALSE;
-
-		/* Assume not ignoring monsters */
-		goal_ignoring = FALSE;
-
-		/* No known glyph */
-		track_glyph_num = 0;
-
-		/* No known steps */
-		track_step_num = 0;
-
-		/* No known bad landing grids */
-		track_land_num = 0;
-
-		/* No known doors */
-		track_door_num = 0;
-
-		/* No known doors */
-		track_closed_num = 0;
-
-		/* No mineral veins */
-		track_vein_num = 0;
-
-		/* No objects here */
-		borg_takes_cnt = 0;
-		borg_takes_nxt = 1;
-
-		/* Forget old objects */
-		C_WIPE(borg_takes, 256, borg_take);
-
-		/* Try anything */
-		if (borg_think_dungeon_brave())
-			done = TRUE;
-
-		/* Reset "avoidance" */
-		avoidance = borg_skill[BI_CURHP];
-
-		/* Re-calculate danger */
-		borg_danger_wipe = TRUE;
-
-		/* Forget goals */
-		/* goal = 0;*/
-
-		/* Done */
-		if (done)
-			return (TRUE);
-	}
-
-	/* try teleporting before acting goofy */
-	borg_times_twitch++;
-
-	/* Teleport to get out of being twitchy up to 5 times per level. */
-	if (borg_times_twitch < 5) {
-		borg_note("# Teleport (twitchy)");
-
-		/* Teleport */
-		if (borg_spell_fail(REALM_ARCANE, 2, 3, 45) ||
-			 borg_spell_fail(REALM_TRUMP, 0, 4, 45) ||
-			 borg_spell_fail(REALM_CHAOS, 0, 7, 45) ||
-			 borg_spell_fail(REALM_SORCERY, 0, 5, 45) ||
-			 borg_mindcr_fail(MIND_MAJOR_DISP, 7, 35) ||
-			 borg_use_staff(SV_STAFF_TELEPORTATION) ||
-			 borg_read_scroll(SV_SCROLL_TELEPORT) ||
-			 borg_activate_activation(ACT_TELEPORT, FALSE)) {
-			/* Success */
-			return (TRUE);
 		}
 	}
 
-	/* Recall to town */
-	if (borg_skill[BI_CDEPTH] && (borg_recall())) {
-		/* Note */
-		borg_note("# Recalling (twitchy)");
+	/* Continue to find a stair on which to camp */
+	if (borg_flow_old(GOAL_FLEE))
+		return (TRUE);
 
+	/* Try to find some stairs up */
+	if (borg_flow_stair_less(GOAL_FLEE, TRUE)) {
+		borg_note("# Looking for stairs. Stair hugging.");
+		return (TRUE);
+	}
+}
+
+/* If in town and have no money, and nothing to sell,
+ * then do not stay in town, its too dangerous.
+ */
+if (borg_skill[BI_CDEPTH] == 0 && borg_gold < 25 && borg_count_sell() < 3 &&
+	 goal != GOAL_BORE && goal != GOAL_FLEE && borg_time_town < 250) {
+	goal_leaving = TRUE;
+
+	/* Wait here if need be.  Do Vamps need to worry about waiting? */
+	if (goal_recalling) {
+		borg_keypresses("R10");
+		borg_keypress('\r');
+		return (TRUE);
+	}
+
+	/* Continue fleeing the level */
+	if (borg_flow_old(GOAL_FLEE))
+		return (TRUE);
+	if (borg_flow_old(GOAL_TOWN))
+		return (TRUE);
+
+	/* Note */
+	borg_note("# Nothing to sell in town (leaving).");
+
+	/* Flow back to the stairs, but don't take them yet. */
+	/* Use recall when appropriate */
+	if (borg_leave_level(TRUE))
+		return (TRUE);
+}
+
+/*** Flee the level XXX XXX XXX ***/
+
+/* Return to Stairs, but not use them */
+if (goal_less) {
+	/* Continue fleeing to stair */
+	if (borg_flow_old(GOAL_FLEE))
+		return (TRUE);
+
+	/* Try to find some stairs */
+	if ((borg_depth & DEPTH_SCARY) && !borg_skill[BI_CDEPTH] &&
+		 borg_flow_stair_both_dim(GOAL_FLEE))
+		return (TRUE);
+	if ((borg_depth & DEPTH_SCARY) && !borg_skill[BI_CDEPTH] &&
+		 borg_flow_stair_both(GOAL_FLEE, FALSE, TRUE))
+		return (TRUE);
+
+	/* Try to find some stairs up */
+	if (borg_flow_stair_less(GOAL_FLEE, TRUE))
+		return (TRUE);
+}
+
+/* Flee the level */
+if (goal_fleeing && !goal_recalling) {
+	/* Hack -- Take the next stairs */
+	stair_less = stair_more = TRUE;
+
+	/* Continue fleeing the level */
+	if (borg_flow_old(GOAL_FLEE))
+		return (TRUE);
+
+	/* Give a short reason */
+	if (borg_verbose)
+		borg_note("# Fleeing level but not Recalling.");
+
+	/* Try to find some stairs */
+	if ((borg_depth & DEPTH_SCARY) && !borg_skill[BI_CDEPTH] &&
+		 borg_flow_stair_both_dim(GOAL_FLEE))
+		return (TRUE);
+	if ((borg_depth & DEPTH_SCARY) && !borg_skill[BI_CDEPTH] &&
+		 borg_flow_stair_both(GOAL_FLEE, FALSE, FALSE))
+		return (TRUE);
+
+	/* Try to find some stairs up */
+	if (borg_flow_stair_less(GOAL_FLEE, TRUE))
+		return (TRUE);
+
+	/* Try to find some stairs down */
+	if (borg_flow_stair_more(GOAL_FLEE, TRUE, TRUE))
+		return (TRUE);
+}
+
+/* Dig an anti-summon corridor */
+if (borg_flow_kill_corridor_2(TRUE))
+	return (TRUE);
+
+/* Continue flowing towards really close objects */
+if (borg_flow_old(GOAL_TAKE))
+	return (TRUE);
+
+/* Find a really close object */
+if (borg_flow_take(TRUE, 5))
+	return (TRUE);
+
+/*** Wait for recall ***/
+
+/* Wait for recall, unless in danger */
+if (goal_recalling && (borg_danger(c_y, c_x, 1, TRUE) <= 0) &&
+	 borg_check_rest(c_y, c_x)) {
+	/* Take note */
+	borg_note("# Waiting for Recall...");
+
+	if (borg_skill[BI_CDEPTH]) {
+		/* Rest until done */
+		borg_keypress('R');
+		borg_keypress('&');
+		borg_keypress('\n');
+	} else {
+		/* Rest one round-- we keep count of turns while in town */
+		borg_keypress('0');
+		borg_keypress('1');
+		borg_keypress('R');
+	}
+
+	/* Done */
+	return (TRUE);
+}
+
+/* Find a really close mineral vein */
+if (borg_flow_vein(TRUE, 5))
+	return (TRUE);
+
+/* Continue flowing towards monsters */
+if (borg_flow_old(GOAL_KILL))
+	return (TRUE);
+
+/* Find a close monster */
+if (borg_flow_kill(TRUE, 20))
+	return (TRUE);
+
+/* Continue flowing towards objects */
+if (borg_flow_old(GOAL_TAKE))
+	return (TRUE);
+
+/* Find a close object */
+if (borg_flow_take(FALSE, 20))
+	return (TRUE);
+
+/* Find a close mineral vein */
+if (borg_flow_vein(TRUE, 20))
+	return (TRUE);
+
+/* Find a mid-ranged monster */
+if (borg_flow_kill(TRUE, 35))
+	return (TRUE);
+
+/* Find an object */
+if (borg_flow_take(FALSE, 150))
+	return (TRUE);
+
+/* Find a mineral vein */
+if (borg_flow_vein(TRUE, 150))
+	return (TRUE);
+
+/* Find a viewable monster and line up a shot on him */
+if (borg_flow_kill_aim(TRUE))
+	return (TRUE);
+
+/* Dig an anti-summon corridor */
+if (borg_flow_kill_corridor_2(TRUE))
+	return (TRUE);
+
+/*** Deal with inventory objects ***/
+
+/* check for anything that should be inscribed
+	if (borg_inscribe_food()) return (TRUE);*/
+
+/* Use things */
+if (borg_use_things())
+	return (TRUE);
+
+/* MindCrafters psuedoID unknown things */
+if (borg_pseudoid_stuff())
+	return (TRUE);
+
+/* Identify unknown things */
+if (borg_test_stuff(FALSE))
+	return (TRUE);
+
+/* *Id* unknown things */
+if (borg_test_stuff(TRUE))
+	return (TRUE);
+
+/* Enchant things */
+if (borg_enchanting())
+	return (TRUE);
+
+/* Recharge things */
+if (borg_recharging())
+	return (TRUE);
+
+/*** Flow towards objects ***/
+
+/* Continue flowing towards objects */
+if (borg_flow_old(GOAL_TAKE))
+	return (TRUE);
+
+/* Find a (viewable) object */
+if (borg_flow_take(FALSE, 250))
+	return (TRUE);
+if (borg_flow_vein(FALSE, 250))
+	return (TRUE);
+
+/*** Leave the level XXX XXX XXX ***/
+
+/* Leave the level */
+if ((goal_leaving && !goal_recalling && !unique_on_level &&
+	  !(borg_depth & DEPTH_QUEST)) ||
+	 (borg_skill[BI_CDEPTH] && borg_skill[BI_CLEVEL] < 25 && borg_gold < 25000 &&
+	  borg_count_sell() >= 12)) {
+	/* Hack -- Take the next stairs */
+	if (borg_ready_lucifer == 0)
+		stair_less = TRUE;
+
+	/* Continue leaving the level */
+	if (borg_flow_old(GOAL_FLEE))
+		return (TRUE);
+
+	/* Try to find some stairs up */
+	if (stair_less && !fearing_sunlight) {
+		if (borg_flow_stair_less(GOAL_FLEE, FALSE)) {
+			borg_note("# Looking to leave level to sell stuff.");
+			return (TRUE);
+		}
+	}
+
+	/* Only go down if fleeing or prepared. */
+	if ((cptr)NULL == borg_prepared[borg_skill[BI_CDEPTH] + 1])
+		stair_more = TRUE;
+
+	/* No down if needing to sell */
+	if (borg_skill[BI_CDEPTH] && borg_skill[BI_CLEVEL] < 25 &&
+		 borg_gold < 25000 && borg_count_sell() >= 12) {
+		stair_more = FALSE;
+	}
+
+	/* Try to find some stairs down */
+	if (stair_more) {
+		if (borg_flow_stair_more(GOAL_FLEE, FALSE, TRUE)) {
+			/* Give a short reason */
+			borg_note("# Leaving level but not Recalling or Fleeing.");
+			return (TRUE);
+		}
+	}
+}
+
+/* Power dive if I am playing too shallow
+ * This is also seen in leave_level().  If
+ * this formula is modified here, change it
+ * in leave_level too.
+ */
+if (borg_skill[BI_CDEPTH] != 0 &&
+	 (cptr)NULL == borg_prepared[borg_skill[BI_CDEPTH] + 1] && !stair_less) {
+	if (borg_leave_level(FALSE))
+		return (TRUE);
+}
+
+/*** Exploration ***/
+
+/* Continue flowing (see below) */
+if (borg_flow_old(GOAL_MISC))
+	return (TRUE);
+
+/* Continue flowing (see below) */
+if (borg_flow_old(GOAL_DARK))
+	return (TRUE);
+
+/* Continue flowing (see below) */
+if (borg_flow_old(GOAL_XTRA))
+	return (TRUE);
+
+/* Continue flowing (see below) */
+if (borg_flow_old(GOAL_BORE))
+	return (TRUE);
+
+/* Continue flowing (see below) */
+if (borg_flow_old(GOAL_TOWN))
+	return (TRUE);
+
+/*** Explore the dungeon ***/
+
+if ((borg_depth & DEPTH_VAULT)) {
+	/* Chase close monsters */
+	if (borg_flow_kill(FALSE, MAX_RANGE + 1))
+		return (TRUE);
+
+	/* Chase close objects */
+	if (borg_flow_take(FALSE, 35))
+		return (TRUE);
+	if (borg_flow_vein(FALSE, 35))
+		return (TRUE);
+
+	/* Excavate a vault safely */
+	if (borg_excavate_vault(MAX_RANGE - 2))
+		return (TRUE);
+
+	/* Find a vault to excavate */
+	if (borg_flow_vault(35))
+		return (TRUE);
+
+	/* Explore close interesting grids */
+	if (borg_flow_dark(TRUE))
+		return (TRUE);
+}
+
+/* Chase old monsters */
+if (borg_flow_kill(FALSE, 250))
+	return (TRUE);
+
+/* Chase old objects */
+if (borg_flow_take(FALSE, 250))
+	return (TRUE);
+if (borg_flow_vein(FALSE, 250))
+	return (TRUE);
+
+/* Explore interesting grids */
+if (borg_flow_dark(TRUE))
+	return (TRUE);
+
+/* Leave the level (if needed) */
+if (borg_gold < borg_money_scum_amount && borg_money_scum_amount != 0 &&
+	 !borg_skill[BI_CDEPTH] && borg_skill[BI_LITE]) {
+	/* Stay in town and scum for money after shopping */
+} else {
+	if (borg_leave_level(FALSE))
+		return (TRUE);
+}
+
+/* Explore interesting grids */
+if (borg_flow_dark(FALSE))
+	return (TRUE);
+
+/*** Deal with shops ***/
+
+/* Flow to a different (favorite) town in order to take advantage of other
+ * shops
+if (borg_skill[BI_ENCUMBERD] < 150 &&
+	 borg_flow_demenager(borg_town_pref, GOAL_TOWN))
+	return (TRUE);
+*/
+
+/* Try to get to town location (town gate for now)
+if (when_waypoint[0] == 0 && borg_flow_town_exit(GOAL_TOWN))
+	return (TRUE);
+*/
+
+/* Specialty shops (Restoration, ID, *ID*) */
+if (borg_flow_shop_special(TRUE))
+	return (TRUE);
+
+/* Hack -- visit all the shops */
+if (borg_flow_shop_visit())
+	return (TRUE);
+
+/* Hack -- Visit the shops */
+if (borg_choose_shop()) {
+	/* Try and visit a shop, if so desired */
+	if (borg_flow_shop_entry(goal_shop))
+		return (TRUE);
+}
+
+/* Specialty shops (Recharge, Enchant weapon/armor/missiles) */
+if (borg_flow_shop_special(FALSE))
+	return (TRUE);
+
+/*** Leave the Level ***/
+
+/* Study/Test boring spells/prayers */
+if (!goal_fleeing && borg_play_magic(TRUE))
+	return (TRUE);
+
+/* Search for secret doors */
+if (borg_flow_spastic(FALSE))
+	return (TRUE);
+
+/* Recharge items before leaving the level */
+if (borg_wear_recharge())
+	return (TRUE);
+
+/* Leave the level (if possible) */
+if (borg_gold < borg_money_scum_amount && borg_money_scum_amount != 0 &&
+	 !borg_skill[BI_CDEPTH] && borg_skill[BI_LITE]) {
+	/* Stay in town, scum for money now that shopping is done. */
+	borg_money_scum();
+
+	/* Done */
+	return (TRUE);
+} else {
+	if (borg_leave_level(TRUE))
+		return (TRUE);
+}
+
+/* Search for secret doors */
+if (borg_flow_spastic(TRUE))
+	return (TRUE);
+
+/*** Nothing to do ***/
+
+/* Twitching in town can be fatal.  Really he should not become twitchy
+ * but sometimes he cant recall to the dungeon and that may induce the
+ * twitchy behavior.  So we reset the level if this happens.  That will
+ * force him to go shopping all over again.
+ */
+if ((borg_skill[BI_CDEPTH] == 0 && borg_t - borg_began > 800 &&
+	  when_waypoint[1] == 0) ||
+	 borg_t > 28000)
+	old_depth = 126;
+
+/* Set a flag that the borg is  not allowed to retreat for 5 rounds */
+borg_no_retreat = 5;
+
+/* Boost slightly */
+if (avoidance < borg_skill[BI_CURHP] * 2) {
+	bool done = FALSE;
+
+	/* Note */
+	borg_note(format("# Boosting bravery (1) from %d to %d!", avoidance,
+						  borg_skill[BI_CURHP] * 2));
+
+	/* Hack -- ignore some danger */
+	avoidance = (borg_skill[BI_CURHP] * 2);
+
+	/* Forget the danger fields */
+	borg_danger_wipe = TRUE;
+
+	/* Try anything */
+	if (borg_think_dungeon_brave())
+		done = TRUE;
+
+	/* Reset "avoidance" */
+	avoidance = borg_skill[BI_CURHP];
+
+	/* Re-calculate danger */
+	borg_danger_wipe = TRUE;
+
+	/* Forget goals */
+	/*        goal = 0;*/
+
+	/* Done */
+	if (done)
+		return (TRUE);
+}
+
+/* try phase before boosting bravery further and acting goofy */
+borg_times_twitch++;
+
+/* Phase to get out of being twitchy up to 3 times per level. */
+if (borg_times_twitch < 3) {
+	borg_note("# Considering Phase (twitchy)");
+
+	/* Phase */
+	if (amt_phase && borg_caution_phase(15, 2) &&
+		 (borg_spell(REALM_SORCERY, 0, 1) || borg_spell(REALM_TRUMP, 0, 0) ||
+		  borg_spell(REALM_ARCANE, 0, 4) ||
+		  borg_mindcr_fail(MIND_MAJOR_DISP, 7, 35) ||
+		  borg_mindcr_fail(MIND_MINOR_DISP, 3, 35) ||
+		  borg_activate_artifact(ART_DRAEBOR, FALSE) ||
+		  borg_activate_artifact(ART_NYNAULD, FALSE) ||
+		  borg_read_scroll(SV_SCROLL_PHASE_DOOR))) {
 		/* Success */
 		return (TRUE);
 	}
-	/* Recall to town */
-	if (borg_skill[BI_CDEPTH] && (borg_recall())) {
-		/* Note */
-		borg_note("# Recalling (twitchy)");
+}
 
-		/* Success */
+/* Set a flag that the borg is not allowed */
+/*  to retreat for 10 rounds */
+borg_no_retreat = 10;
+
+/* Boost some more */
+if (avoidance < borg_skill[BI_MAXHP] * 4) {
+	bool done = FALSE;
+
+	/* Note */
+	borg_note(format("# Boosting bravery (2) from %d to %d!", avoidance,
+						  borg_skill[BI_MAXHP] * 4));
+
+	/* Hack -- ignore some danger */
+	avoidance = (borg_skill[BI_MAXHP] * 4);
+
+	/* Forget the danger fields */
+	borg_danger_wipe = TRUE;
+
+	/* Try anything */
+	if (borg_think_dungeon_brave())
+		done = TRUE;
+
+	/* Reset "avoidance" */
+	avoidance = borg_skill[BI_CURHP];
+
+	/* Re-calculate danger */
+	borg_danger_wipe = TRUE;
+
+	/* Forget goals */
+	/*        goal = 0;*/
+
+	/* Done */
+	if (done)
 		return (TRUE);
-	}
+}
+
+/* Boost a lot */
+if (avoidance < 30000) {
+	bool done = FALSE;
+
+	/* Note */
+	borg_note(format("# Boosting bravery (3) from %d to %d!", avoidance, 30000));
+
+	/* Hack -- ignore some danger */
+	avoidance = 30000;
+
+	/* Forget the danger fields */
+	borg_danger_wipe = TRUE;
 
 	/* Reset the spastic searching counts */
 	for (y = 0; y < AUTO_MAX_Y; y++) {
@@ -6481,10 +6346,40 @@ bool borg_think_dungeon(void) {
 		}
 	}
 
+	/* Forget goals */
+	goal = 0;
+
+	/* use any stairs */
+	borg_note("# Fleeing due to twitch.");
+	stair_less = stair_more = goal_fleeing = goal_leaving = TRUE;
+
+	/* Hack -- cannot rise past town */
+	if (!borg_skill[BI_CDEPTH])
+		goal_rising = FALSE;
+
+	/* Assume not fleeing the level */
+	goal_fleeing_lunal = FALSE;
+	goal_fleeing_munchkin = FALSE;
+
+	/* Assume not ignoring monsters */
+	goal_ignoring = FALSE;
+
+	/* No known glyph */
+	track_glyph_num = 0;
+
+	/* No known steps */
+	track_step_num = 0;
+
+	/* No known bad landing grids */
+	track_land_num = 0;
+
+	/* No known doors */
+	track_door_num = 0;
+
 	/* No known doors */
 	track_closed_num = 0;
 
-	/* No known veins */
+	/* No mineral veins */
 	track_vein_num = 0;
 
 	/* No objects here */
@@ -6494,51 +6389,159 @@ bool borg_think_dungeon(void) {
 	/* Forget old objects */
 	C_WIPE(borg_takes, 256, borg_take);
 
-	/* No monsters here */
-	borg_kills_cnt = 0;
-	borg_kills_nxt = 1;
+	/* Try anything */
+	if (borg_think_dungeon_brave())
+		done = TRUE;
 
-	/* Forget old monsters */
-	C_WIPE(borg_kills, 256, borg_kill);
+	/* Reset "avoidance" */
+	avoidance = borg_skill[BI_CURHP];
 
-	/* Hack -- Forget race counters */
-	C_WIPE(borg_race_count, max_r_idx, s16b);
-	borg_note("# Wiping monster (2)");
+	/* Re-calculate danger */
+	borg_danger_wipe = TRUE;
 
-	/* Attempt to dig to the center of the dungeon */
-	if (borg_flow_kill_direct(TRUE))
+	/* Forget goals */
+	/* goal = 0;*/
+
+	/* Done */
+	if (done)
 		return (TRUE);
+}
 
-	/* Teleport to get out of being twitchy */
-	if (borg_times_twitch < 500) {
-		borg_note("# Teleport (twitchy)");
+/* try teleporting before acting goofy */
+borg_times_twitch++;
 
-		/* Teleport */
-		if (borg_spell_fail(REALM_ARCANE, 2, 3, 45) ||
-			 borg_spell_fail(REALM_TRUMP, 0, 4, 45) ||
-			 borg_spell_fail(REALM_CHAOS, 0, 7, 45) ||
-			 borg_spell_fail(REALM_SORCERY, 0, 5, 45) ||
-			 borg_activate_activation(ACT_TELEPORT, FALSE) ||
-			 borg_mindcr_fail(MIND_MAJOR_DISP, 7, 35) ||
-			 borg_use_staff(SV_STAFF_TELEPORTATION) ||
-			 borg_read_scroll(SV_SCROLL_TELEPORT)) {
-			/* Success */
-			return (TRUE);
-		}
+/* Teleport to get out of being twitchy up to 5 times per level. */
+if (borg_times_twitch < 5) {
+	borg_note("# Teleport (twitchy)");
+
+	/* Teleport */
+	if (borg_spell_fail(REALM_ARCANE, 2, 3, 45) ||
+		 borg_spell_fail(REALM_TRUMP, 0, 4, 45) ||
+		 borg_spell_fail(REALM_CHAOS, 0, 7, 45) ||
+		 borg_spell_fail(REALM_SORCERY, 0, 5, 45) ||
+		 borg_mindcr_fail(MIND_MAJOR_DISP, 7, 35) ||
+		 borg_use_staff(SV_STAFF_TELEPORTATION) ||
+		 borg_read_scroll(SV_SCROLL_TELEPORT) ||
+		 borg_activate_activation(ACT_TELEPORT, FALSE)) {
+		/* Success */
+		return (TRUE);
 	}
+}
 
-	/* Twitch around */
-	if (borg_twitchy())
+/* Recall to town */
+if (borg_skill[BI_CDEPTH] && (borg_recall())) {
+	/* Note */
+	borg_note("# Recalling (twitchy)");
+
+	/* Success */
+	return (TRUE);
+}
+/* Recall to town */
+if (borg_skill[BI_CDEPTH] && (borg_recall())) {
+	/* Note */
+	borg_note("# Recalling (twitchy)");
+
+	/* Success */
+	return (TRUE);
+}
+
+/* Reset the spastic searching counts */
+for (y = 0; y < AUTO_MAX_Y; y++) {
+	for (x = 0; x < AUTO_MAX_X; x++) {
+		borg_grids[y][x].xtra = 0;
+	}
+}
+
+/* Reset multiple factors to jumpstart the borg */
+unique_on_level = 0;
+borg_depth &= ~DEPTH_SCARY;
+
+/* reset our breeder flag */
+borg_depth &= ~DEPTH_BREEDER;
+
+/* Hack -- Clear "panel" flags */
+for (y = 0; y < 6; y++) {
+	for (x = 0; x < 6; x++) {
+		borg_detect_wall[y][x] = FALSE;
+		borg_detect_trap[y][x] = FALSE;
+		borg_detect_door[y][x] = FALSE;
+		borg_detect_evil[y][x] = FALSE;
+	}
+}
+
+/* Hack -- Clear "fear" */
+for (y = 0; y < 6; y++) {
+	for (x = 0; x < 18; x++) {
+		borg_fear_region[y][x] = 0;
+	}
+}
+
+/* Remove regional fear from monsters, it gets added back in later. */
+for (y = 0; y < AUTO_MAX_Y; y++) {
+	for (x = 0; x < AUTO_MAX_X; x++) {
+		borg_fear_monsters[y][x] = 0;
+	}
+}
+
+/* No known doors */
+track_closed_num = 0;
+
+/* No known veins */
+track_vein_num = 0;
+
+/* No objects here */
+borg_takes_cnt = 0;
+borg_takes_nxt = 1;
+
+/* Forget old objects */
+C_WIPE(borg_takes, 256, borg_take);
+
+/* No monsters here */
+borg_kills_cnt = 0;
+borg_kills_nxt = 1;
+
+/* Forget old monsters */
+C_WIPE(borg_kills, 256, borg_kill);
+
+/* Hack -- Forget race counters */
+C_WIPE(borg_race_count, max_r_idx, s16b);
+borg_note("# Wiping monster (2)");
+
+/* Attempt to dig to the center of the dungeon */
+if (borg_flow_kill_direct(TRUE))
+	return (TRUE);
+
+/* Teleport to get out of being twitchy */
+if (borg_times_twitch < 500) {
+	borg_note("# Teleport (twitchy)");
+
+	/* Teleport */
+	if (borg_spell_fail(REALM_ARCANE, 2, 3, 45) ||
+		 borg_spell_fail(REALM_TRUMP, 0, 4, 45) ||
+		 borg_spell_fail(REALM_CHAOS, 0, 7, 45) ||
+		 borg_spell_fail(REALM_SORCERY, 0, 5, 45) ||
+		 borg_activate_activation(ACT_TELEPORT, FALSE) ||
+		 borg_mindcr_fail(MIND_MAJOR_DISP, 7, 35) ||
+		 borg_use_staff(SV_STAFF_TELEPORTATION) ||
+		 borg_read_scroll(SV_SCROLL_TELEPORT)) {
+		/* Success */
 		return (TRUE);
+	}
+}
 
-	/* Oops */
-	return (FALSE);
+/* Twitch around */
+if (borg_twitchy())
+	return (TRUE);
+
+/* Oops */
+return (FALSE);
 }
 
 /*
  * Initialize this file
  */
-void borg_init_8(void) { /* Nothing */ }
+void borg_init_8(void) { /* Nothing */
+}
 
 #else
 

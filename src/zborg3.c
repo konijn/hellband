@@ -582,9 +582,9 @@ static cptr *borg_sv_plural_text; /* Save Textual prefixes for "plurals" (in
 static int borg_artego_size;	/* Number of "artegos" */
 static s16b *borg_artego_what; /* Indexes for "artegos" */
 static cptr *borg_artego_text; /* Textual prefixes for "artegos" */
-static cptr *
-	 borg_sv_art_text; /* Save textual prefixes for "artifacts" (in kind order)
-								 */
+static cptr
+	 *borg_sv_art_text; /* Save textual prefixes for "artifacts" (in kind order)
+								  */
 
 /*
  * Return the slot that items of the given type are wielded into
@@ -3730,7 +3730,7 @@ static void prepare_book_info(int realm, int book) {
 		magic_type s_val;
 		magic_type *s_ptr = &s_val;
 		/* The spells table does not have a NULL entry at the start, so -1 */
-		get_extended_spell_info(realm-1, what, s_ptr);
+		get_extended_spell_info(realm - 1, what, s_ptr);
 
 		/* Skip "illegible" spells */
 		if (s_ptr->slevel == 99)

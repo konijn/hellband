@@ -473,8 +473,9 @@ bool borg_check_lite(void) {
 	/* Do not do these if monsters near.  Save mana */
 	if (!borg_check_rest(c_y, c_x) &&
 		 (!borg_skill[BI_PASSWALL] ||
-		  (borg_skill[BI_PASSWALL] && (borg_grids[c_y][c_x].feat < FEAT_MAGMA ||
-			borg_grids[c_y][c_x].feat > FEAT_WALL_SOLID)))) {
+		  (borg_skill[BI_PASSWALL] &&
+			(borg_grids[c_y][c_x].feat < FEAT_MAGMA ||
+			 borg_grids[c_y][c_x].feat > FEAT_WALL_SOLID)))) {
 		do_trap = FALSE;
 		do_door = FALSE;
 		do_wall = FALSE;
@@ -1443,8 +1444,7 @@ static bool borg_brand_weapon(void) {
 		return (FALSE);
 
 	/* Enchant it */
-	if (borg_spell(b_realm, b_book, b_spell))
-	{
+	if (borg_spell(b_realm, b_book, b_spell)) {
 		/* choose the weapon */
 		/*borg_keypress('/');
 		  borg_keypress(I2A(b_i - INVEN_WIELD)); */
@@ -1756,11 +1756,10 @@ bool borg_recharging(void) {
 
 		/* recharge rods that are 'charging' if we have the big recharge spell */
 		if (item->tval == TV_ROD && item->pval < item->iqty &&
-			 !borg_munchkin_mode &&
-			 (borg_spell_okay(REALM_SORCERY, 0, 7) ||
-			  borg_spell_okay(REALM_CHAOS, 2, 2) ||
-			  borg_spell_okay(REALM_ARCANE, 3, 0) ||
-			  borg_equips_artifact(ART_BARD))) {
+			 !borg_munchkin_mode && (borg_spell_okay(REALM_SORCERY, 0, 7) ||
+											 borg_spell_okay(REALM_CHAOS, 2, 2) ||
+											 borg_spell_okay(REALM_ARCANE, 3, 0) ||
+											 borg_equips_artifact(ART_BARD))) {
 			charge = TRUE;
 		}
 
@@ -1772,7 +1771,7 @@ bool borg_recharging(void) {
 			  item->sval == SV_WAND_MAGIC_MISSILE ||
 			  item->sval == SV_WAND_ANNIHILATION ||
 			  item->sval == SV_WAND_STONE_TO_MUD
-			/*item->sval == SV_WAND_ROCKETS*/)) {
+			  /*item->sval == SV_WAND_ROCKETS*/)) {
 			charge = TRUE;
 		}
 
@@ -2158,9 +2157,13 @@ bool borg_crush_junk(void) {
 				 * except {cursed} is junk
 				 */
 			if (item->value > 0 && /*Worth something*/
-				 ((borg_worships_gold || borg_skill[BI_MAXCLEVEL] < 10) || /*We are low on gold and low level */
-				  (borg_money_scum_amount < borg_gold && borg_money_scum_amount != 0 &&	borg_skill[BI_MAXCLEVEL] <= 20)) &&
-						!(strstr(item->note, "cursed")))
+				 ((borg_worships_gold ||
+					borg_skill[BI_MAXCLEVEL] <
+						 10) || /*We are low on gold and low level */
+				  (borg_money_scum_amount < borg_gold &&
+					borg_money_scum_amount != 0 &&
+					borg_skill[BI_MAXCLEVEL] <= 20)) &&
+				 !(strstr(item->note, "cursed")))
 				continue;
 
 			/* up to level 5, keep anything of any value */
@@ -6664,7 +6667,7 @@ bool borg_best_stuff(void) {
 	/*char purchase_target[1];*/
 	/*byte t_a;*/
 	/*char buf[1024];*/
-	int /*p, */track;
+	int /*p, */ track;
 
 	/* Hack -- Anti-loop */
 	if (time_this_panel >= 300)
@@ -7046,7 +7049,7 @@ extern bool borg_good_sell(borg_item *item, int who) {
 	if (item->value > 0 &&
 		 ((borg_worships_gold || borg_skill[BI_MAXCLEVEL] < 10) ||
 		  (borg_money_scum_amount < borg_gold && borg_money_scum_amount != 0)) &&
-			!streq(item->note, "good") && !streq(item->note, "excellent")) {
+		 !streq(item->note, "good") && !streq(item->note, "excellent")) {
 		/* Borg is allowed to continue in this routine to sell non-ID items */
 	} else /* Some items must be ID, or at least 'known' */
 	{
@@ -7541,17 +7544,17 @@ bool borg_leave_level(bool bored) {
 		if (!bored)
 			return (FALSE);
 
-		/* If rich, or not prepped for depth, use the trump tower. */
+		/* If rich, or not prepped for depth, use the trump tower.
 		if (borg_gold > 1000 &&
 			 ((borg_skill[BI_RECALL] <= 2) ||
 			  ((cptr)NULL == borg_prepared[borg_skill[BI_MAXDEPTH] + 10]) ||
 			  (borg_skill[BI_MAXDEPTH] == 100 &&
 				borg_skill[BI_ATELEPORTLVL] == 0) ||
 			  ((cptr)NULL != borg_prepared[borg_skill[BI_MAXDEPTH] * 6 / 10]))) {
-			/* Flow to Trump Tower */
+			// Flow to Trump Tower
 			if (borg_flow_shop_trump())
 				return (TRUE);
-		}
+		}*/
 
 		/* Case for those who cannot Teleport Level */
 		if (borg_skill[BI_MAXDEPTH] == 100 && !borg_plays_risky) {
@@ -7625,9 +7628,10 @@ bool borg_leave_level(bool bored) {
 
 		stair_more = TRUE;
 
-		/* Try to get to town location (town gate for now) */
+		/* Try to get to town location (town gate for now)
 		if (borg_flow_town_exit(GOAL_TOWN))
 			return (TRUE);
+		*/
 
 		/* Attempt to use those stairs */
 		if (borg_flow_stair_more(GOAL_BORE, FALSE, FALSE))

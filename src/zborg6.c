@@ -854,7 +854,8 @@ static void borg_flow_spread(int depth, bool optimize, bool avoid,
 					/* Make sure no monster is on this grid, which is
 					 * adjacent to the grid on which I am thinking about stepping.
 					 */
-					if (borg_grids[yy][xx].kill && !borg_kills[borg_grids[yy][xx].kill].ally) {
+					if (borg_grids[yy][xx].kill &&
+						 !borg_kills[borg_grids[yy][xx].kill].ally) {
 						bad_sneak = TRUE;
 						break;
 					}
@@ -893,7 +894,7 @@ static void borg_flow_spread(int depth, bool optimize, bool avoid,
 
 					if (borg_skill[BI_CURHP] <= 0) {
 						/* If the grid onto which I will move has an adjacent monster
-						   Allowed to flow through walls */
+							Allowed to flow through walls */
 					}
 				} else {
 					if (borg_skill[BI_CLEVEL] < 10 && ag->feat >= FEAT_SECRET &&
@@ -958,7 +959,7 @@ static void borg_flow_spread(int depth, bool optimize, bool avoid,
 				continue;
 
 			/* Avoid Monsters if Desperate, lunal */
-			if ((ag->kill && !borg_kills[ag->kill].ally ) &&
+			if ((ag->kill && !borg_kills[ag->kill].ally) &&
 				 (borg_desperate || borg_lunal_mode || borg_munchkin_mode))
 				continue;
 
@@ -978,7 +979,8 @@ static void borg_flow_spread(int depth, bool optimize, bool avoid,
 
 			/* Avoid Monsters if requested */
 			if ((ag->kill && !borg_kills[ag->kill].ally &&
-				  !borg_kills[ag->kill].neutral) && avoid)
+				  !borg_kills[ag->kill].neutral) &&
+				 avoid)
 				continue;
 
 			/* Avoid Traps if low level-- unless brave or scaryguy. */
@@ -1261,7 +1263,7 @@ static bool borg_get_moves_m(int m_idx) {
 		*/
 		/*if (!monster_can_cross_terrain(ag->feat, r_ptr))
 			continue;*/
-		if(!can_go_monster(y, x, kill->r_idx))
+		if (!can_go_monster(y, x, kill->r_idx))
 			continue;
 		if ((ag->feat >= FEAT_DOOR_HEAD && ag->feat <= FEAT_DOOR_TAIL) &&
 			 !(r_ptr->flags2 & RF2_OPEN_DOOR) && !(r_ptr->flags2 & RF2_BASH_DOOR))
@@ -1326,7 +1328,7 @@ static void borg_flow_spread_m(int depth, int i, s16b race) {
 	int x, y;
 	/*int origin_x, origin_y;*/
 
-	int ii/*, yy, xx*/;
+	int ii /*, yy, xx*/;
 	/*int fear = 0;*/
 	bool flow_short = TRUE;
 	bool flow_long = FALSE;
@@ -1334,8 +1336,8 @@ static void borg_flow_spread_m(int depth, int i, s16b race) {
 	borg_kill *kill = &borg_kills[i];
 	monster_race *r_ptr = &r_info[race];
 
-	/*origin_x = borg_kills[i].x;
-	origin_y = borg_kills[i].y;*/
+/*origin_x = borg_kills[i].x;
+origin_y = borg_kills[i].y;*/
 
 /* is the game doing short or long flow? */
 
@@ -1428,7 +1430,7 @@ static void borg_flow_spread_m(int depth, int i, s16b race) {
 				continue;
 			/*if (!monster_can_cross_terrain(ag->feat, r_ptr))
 				continue;*/
-			if(!can_go_monster(y, x, kill->r_idx))
+			if (!can_go_monster(y, x, kill->r_idx))
 				continue;
 			if ((ag->feat >= FEAT_DOOR_HEAD && ag->feat <= FEAT_DOOR_TAIL) &&
 				 !(r_ptr->flags2 & RF2_OPEN_DOOR) &&
@@ -1672,6 +1674,7 @@ static bool borg_flow_commit(cptr who, int why, bool kill) {
 	/* Success */
 	return (TRUE);
 }
+
 static bool borg_flow_commit_m(int y, int x) {
 	int cost;
 
@@ -2478,8 +2481,7 @@ extern bool borg_eat_vamp(void) {
 
 	/* Sufficient mana to activate the ability and a resonable target */
 	borg_simulate = FALSE;
-	success = (borg_attack_aux_racial_thrust(2, dam, fail, FALSE, -1,
-														  cost));
+	success = (borg_attack_aux_racial_thrust(2, dam, fail, FALSE, -1, cost));
 	borg_simulate = TRUE;
 
 	/* Try to create a living thing to consume next round */
@@ -2851,7 +2853,8 @@ bool borg_surrounded_breeder(void) {
 		}
 
 		/* Floor'ish grids */
-		if (ag->feat == FEAT_WATER && borg_skill[BI_ENCUMBERD] && !borg_skill[BI_FEATH])
+		if (ag->feat == FEAT_WATER && borg_skill[BI_ENCUMBERD] &&
+			 !borg_skill[BI_FEATH])
 			non_safe_grids++;
 		/*
 		if (ag->feat == FEAT_SHAL_LAVA && !borg_skill[BI_IFIRE] &&
@@ -3729,8 +3732,8 @@ bool borg_dim_door(int emergency, int p1) {
 
 			/* Certain ground types are acceptable */
 			if (ag->feat != FEAT_FLOOR && /* ag->feat != FEAT_SHAL_LAVA && */
-				 ag->feat != FEAT_WATER  /* ag->feat != FEAT_GRASS && */
-			 /*ag->feat != FEAT_DIRT*/)
+				 ag->feat != FEAT_WATER		/* ag->feat != FEAT_GRASS && */
+				 /*ag->feat != FEAT_DIRT*/)
 				continue;
 
 			/* Skip monsters */
@@ -3847,8 +3850,7 @@ bool borg_shoot_scoot_safe(int emergency, int turns, int b_p) {
 		 !borg_spell_okay_fail(REALM_TRUMP, 0, 0, allow_fail) &&
 		 !borg_mindcr_okay_fail(MIND_MINOR_DISP, 3, allow_fail) &&
 		 !borg_mutation(COR1_BLINK, TRUE, allow_fail, FALSE) &&
-		 !borg_equips_artifact(ART_DRAEBOR) &&
-		 !borg_equips_artifact(ART_NYNAULD))
+		 !borg_equips_artifact(ART_DRAEBOR) && !borg_equips_artifact(ART_NYNAULD))
 		return (FALSE);
 	/* And not have Dim Door spell */
 	if (borg_skill[BI_ADIMDOOR])
@@ -4079,8 +4081,7 @@ bool borg_shoot_scoot_dim(int p1) {
 			continue;
 
 		/* If a qualifying monster is adjacent to me. */
-		if ((kill->awake && kill->killer) &&
-			 !(r_ptr->flags1 & RF1_NEVER_MOVE) &&
+		if ((kill->awake && kill->killer) && !(r_ptr->flags1 & RF1_NEVER_MOVE) &&
 			 !(r_ptr->flags2 & RF2_PASS_WALL) &&
 			 !(r_ptr->flags2 & RF2_KILL_WALL) /* &&
 		     (kill->power >= borg_skill[BI_CLEVEL]) */) {
@@ -4169,8 +4170,8 @@ bool borg_shoot_scoot_dim(int p1) {
 
 			/* Certain ground types are not acceptable */
 			if (ag->feat != FEAT_FLOOR && /* ag->feat != FEAT_SHAL_LAVA && */
-				 ag->feat != FEAT_WATER  /*ag->feat != FEAT_GRASS && */
-			 /*ag->feat != FEAT_DIRT*/)
+				 ag->feat != FEAT_WATER		/*ag->feat != FEAT_GRASS && */
+				 /*ag->feat != FEAT_DIRT*/)
 				continue;
 
 			/* Skip monsters */
@@ -4221,7 +4222,7 @@ bool borg_shoot_scoot_dim(int p1) {
  * Help determine if mutation "Swap Position" seems like a good idea.
  */
 bool borg_swap_position(int p1) {
-	int /*x, y, */p;
+	int /*x, y, */ p;
 
 	int i;
 	/*int b_i = -1;*/
@@ -4436,8 +4437,8 @@ static bool borg_jump_into_pit(void) {
 
 			/* Certain ground types are unacceptable */
 			if (ag->feat != FEAT_FLOOR && /*ag->feat != FEAT_SHAL_LAVA && */
-				 ag->feat != FEAT_WATER  /* ag->feat != FEAT_GRASS && */
-			 /*ag->feat != FEAT_DIRT*/)
+				 ag->feat != FEAT_WATER		/* ag->feat != FEAT_GRASS && */
+				 /*ag->feat != FEAT_DIRT*/)
 				continue;
 
 			/* Skip monsters */
@@ -4671,8 +4672,8 @@ static bool borg_jump_into_hall(void) {
 
 			/* Certain ground types are unacceptable */
 			if (ag->feat != FEAT_FLOOR && /* ag->feat != FEAT_SHAL_LAVA && */
-				 ag->feat != FEAT_WATER  /* ag->feat != FEAT_GRASS && */
-			 /*ag->feat != FEAT_DIRT*/)
+				 ag->feat != FEAT_WATER		/* ag->feat != FEAT_GRASS && */
+				 /*ag->feat != FEAT_DIRT*/)
 				continue;
 
 			/* Skip monsters */
@@ -4893,7 +4894,7 @@ bool borg_escape(int b_q) {
 			 borg_activate_artifact(ART_NYNAULD, FALSE) ||
 			 borg_activate_artifact(ART_DRAEBOR, FALSE) ||
 			 borg_activate_activation(ACT_TELEPORT, FALSE) ||
-			 borg_activate_trump(allow_fail) ||
+			 borg_activate_planar(allow_fail) ||
 			 /* revisit spells, increased fail rate */
 			 borg_spell_fail(REALM_ARCANE, 2, 3, allow_fail + 9) ||
 			 borg_spell_fail(REALM_TRUMP, 0, 4, allow_fail + 9) ||
@@ -4909,7 +4910,7 @@ bool borg_escape(int b_q) {
 			 borg_read_scroll(SV_SCROLL_TELEPORT_LEVEL) ||
 			 borg_racial(NEPHILIM, 1) ||
 			 borg_activate_artifact(ART_ANDROMALIUS, FALSE) ||
-			 borg_activate_trump(allow_fail + 9) ||
+			 borg_activate_planar(allow_fail + 9) ||
 			 /* revisit teleport, increased fail rate */
 			 borg_use_staff(SV_STAFF_TELEPORTATION) ||
 			 /* try phase -- except if the fear is due to regional */
@@ -5015,7 +5016,7 @@ bool borg_escape(int b_q) {
 			 borg_activate_activation(ACT_TELEPORT, FALSE) ||
 			 borg_activate_artifact(ART_ANDROMALIUS, FALSE) ||
 			 borg_read_scroll(SV_SCROLL_TELEPORT) ||
-			 borg_activate_trump(allow_fail) ||
+			 borg_activate_planar(allow_fail) ||
 			 borg_spell_fail(REALM_ARCANE, 2, 3, allow_fail) ||
 			 borg_spell_fail(REALM_TRUMP, 0, 4, allow_fail) ||
 			 borg_spell_fail(REALM_SORCERY, 0, 5, allow_fail) ||
@@ -5099,7 +5100,7 @@ bool borg_escape(int b_q) {
 			 borg_activate_activation(ACT_TELEPORT, FALSE) ||
 			 borg_racial(RACE_GNOME, 1) ||
 			 borg_mutation(COR1_VTELEPORT, FALSE, allow_fail, FALSE) ||
-			 borg_swap_position(b_q) || borg_activate_trump(allow_fail) ||
+			 borg_swap_position(b_q) || borg_activate_planar(allow_fail) ||
 			 borg_use_staff_fail(SV_STAFF_TELEPORTATION) ||
 			 borg_read_scroll(SV_SCROLL_TELEPORT)) {
 			/* Flee! */
@@ -5207,7 +5208,7 @@ bool borg_escape(int b_q) {
 			 borg_activate_activation(ACT_TELEPORT, FALSE) ||
 			 borg_read_scroll(SV_SCROLL_TELEPORT) || borg_swap_position(b_q) ||
 			 borg_use_staff_fail(SV_STAFF_TELEPORTATION) ||
-			 borg_racial(RACE_GNOME, 1) || borg_activate_trump(allow_fail)) {
+			 borg_racial(RACE_GNOME, 1) || borg_activate_planar(allow_fail)) {
 			/* Flee! */
 			borg_note("# Danger Level 4.2");
 
@@ -5300,7 +5301,7 @@ bool borg_escape(int b_q) {
 			 borg_activate_artifact(ART_DRAEBOR, FALSE) ||
 			 borg_activate_activation(ACT_TELEPORT, FALSE) ||
 			 borg_swap_position(b_q) || borg_racial(RACE_GNOME, 1) ||
-			 borg_activate_trump(allow_fail) ||
+			 borg_activate_planar(allow_fail) ||
 			 borg_read_scroll(SV_SCROLL_TELEPORT) ||
 			 borg_use_staff_fail(SV_STAFF_TELEPORTATION)) {
 			/* Flee! */
@@ -5394,7 +5395,7 @@ bool borg_escape(int b_q) {
 			 borg_activate_artifact(ART_DRAEBOR, FALSE) ||
 			 borg_activate_activation(ACT_TELEPORT, FALSE) ||
 			 borg_swap_position(b_q) || borg_racial(RACE_GNOME, 1) ||
-			 borg_activate_trump(allow_fail) ||
+			 borg_activate_planar(allow_fail) ||
 			 borg_read_scroll(SV_SCROLL_TELEPORT) ||
 			 borg_use_staff_fail(SV_STAFF_TELEPORTATION)) {
 			/* Flee! */
@@ -5444,7 +5445,7 @@ bool borg_escape(int b_q) {
 			 borg_activate_activation(ACT_TELEPORT, FALSE) ||
 			 borg_mutation(COR1_VTELEPORT, FALSE, allow_fail + 25, FALSE) ||
 			 borg_swap_position(b_q) || borg_racial(RACE_GNOME, 1) ||
-			 borg_activate_trump(allow_fail) ||
+			 borg_activate_planar(allow_fail) ||
 			 borg_read_scroll(SV_SCROLL_TELEPORT) ||
 			 borg_use_staff_fail(SV_STAFF_TELEPORTATION)) {
 			/* Flee! */
@@ -5513,7 +5514,7 @@ bool borg_escape(int b_q) {
 			 borg_activate_artifact(ART_DRAEBOR, FALSE) ||
 			 borg_activate_activation(ACT_TELEPORT, FALSE) ||
 			 borg_swap_position(b_q) || borg_racial(RACE_GNOME, 1) ||
-			 borg_activate_trump(allow_fail) ||
+			 borg_activate_planar(allow_fail) ||
 			 borg_read_scroll(SV_SCROLL_TELEPORT) ||
 			 borg_use_staff_fail(SV_STAFF_TELEPORTATION)) {
 			/* Flee! */
@@ -5550,7 +5551,7 @@ bool borg_escape(int b_q) {
 			  borg_spell_fail(REALM_ARCANE, 3, 1, allow_fail + 9) ||
 			  borg_racial(NEPHILIM, 1) ||
 			  borg_read_scroll(SV_SCROLL_TELEPORT_LEVEL) ||
-			  borg_activate_trump(allow_fail + 9) ||
+			  borg_activate_planar(allow_fail + 9) ||
 			  borg_activate_artifact(ART_ANDROMALIUS, FALSE))) {
 			/* Reset timer if borg was in a anti-summon corridor */
 			if (borg_t - borg_t_position < 50)
@@ -5581,7 +5582,8 @@ bool borg_heal(int danger) {
 
 	hp_down = borg_skill[BI_MAXHP] - borg_skill[BI_CURHP];
 
-	/* when fighting Lucifer and Lilith, we want the borg to use Life potion to fix his
+	/* when fighting Lucifer and Lilith, we want the borg to use Life potion to
+	 * fix his
 	 * stats.  So we need to add up the ones that are dropped.
 	 */
 	if (borg_skill[BI_ISFIXSTR])
@@ -5687,8 +5689,7 @@ bool borg_heal(int danger) {
 				 borg_quaff_potion(SV_POTION_CURE_SERIOUS) ||
 				 borg_quaff_crit(TRUE) || borg_quaff_potion(SV_POTION_HEALING) ||
 				 borg_use_staff_fail(SV_STAFF_HEALING) ||
-				 borg_use_staff_fail(SV_STAFF_CURING) ||
-				 borg_racial(NEPHILIM, 2)) {
+				 borg_use_staff_fail(SV_STAFF_CURING) || borg_racial(NEPHILIM, 2)) {
 				borg_note("# Fixing Blindness.");
 				return (TRUE);
 			}
@@ -5765,7 +5766,8 @@ bool borg_heal(int danger) {
 #endif
 
 	/* Healing and fighting Lilith and Lucifer. */
-	if (borg_fighting_unique == RACE_LUCIFER || borg_fighting_unique == RACE_LILITH) {
+	if (borg_fighting_unique == RACE_LUCIFER ||
+		 borg_fighting_unique == RACE_LILITH) {
 		if (borg_skill[BI_CURHP] <= 625 &&
 			 ((borg_skill[BI_CURHP] > 250 &&
 				borg_spell_fail(REALM_LIFE, 2, 6, 14)) || /* Holy Word */
@@ -5827,17 +5829,18 @@ bool borg_heal(int danger) {
 		return (FALSE);
 
 	/* Restoring while fighting the last 2 chars */
-	if ((stats_needing_fix >= 5 &&
-			(borg_fighting_unique == RACE_LUCIFER || borg_fighting_unique == RACE_LILITH) &&
-			borg_skill[BI_CURHP] > 650) &&
-			(borg_eat_food(SV_FOOD_RESTORING) ||
-			 borg_activate_activation(ACT_REST_ALL, FALSE))) {
+	if ((stats_needing_fix >= 5 && (borg_fighting_unique == RACE_LUCIFER ||
+											  borg_fighting_unique == RACE_LILITH) &&
+		  borg_skill[BI_CURHP] > 650) &&
+		 (borg_eat_food(SV_FOOD_RESTORING) ||
+		  borg_activate_activation(ACT_REST_ALL, FALSE))) {
 		borg_note("# Trying to fix stats in combat.");
 		return (TRUE);
 	}
 
 	/* No further Healing considerations if fighting Questors */
-	if (borg_fighting_unique == RACE_LUCIFER || borg_fighting_unique == RACE_LILITH) {
+	if (borg_fighting_unique == RACE_LUCIFER ||
+		 borg_fighting_unique == RACE_LILITH) {
 		/* No further healing considerations right now */
 		return (FALSE);
 	}
@@ -5951,12 +5954,10 @@ bool borg_heal(int danger) {
 	}
 
 	/* Heal step one (200hp) */
-	if ((hp_down > 200 &&
-			danger < 200 &&
-			borg_skill[BI_CURHP] < borg_skill[BI_MAXHP] / 2) &&
-			(borg_use_staff_fail(SV_STAFF_HEALING) ||
-			 borg_zap_rod(SV_ROD_HEALING) ||
-			 borg_spell_fail(REALM_LIFE, 1, 6, allow_fail))) {
+	if ((hp_down > 200 && danger < 200 &&
+		  borg_skill[BI_CURHP] < borg_skill[BI_MAXHP] / 2) &&
+		 (borg_use_staff_fail(SV_STAFF_HEALING) || borg_zap_rod(SV_ROD_HEALING) ||
+		  borg_spell_fail(REALM_LIFE, 1, 6, allow_fail))) {
 		borg_note("# Healing Level 6.");
 		return (TRUE);
 	}
@@ -5978,13 +5979,13 @@ bool borg_heal(int danger) {
 	/* Heal step three (500hp) */
 	if (hp_down > 450 && danger < 500 &&
 		 (borg_zap_rod(SV_ROD_HEALING) ||
-		 borg_activate_artifact(ART_RING_RAPHAEL, FALSE) ||
-		 borg_activate_artifact(ART_EMMANUEL, FALSE) ||
-		 borg_activate_artifact(ART_ROBE_MICHAEL, FALSE) ||
-		 borg_activate_artifact(ART_CORSON, FALSE) ||
-		 borg_activate_artifact(ART_SUN, FALSE) ||
-		 borg_activate_activation(ACT_CURE_700, FALSE) ||
-		 borg_activate_activation(ACT_CURE_1000, FALSE))) {
+		  borg_activate_artifact(ART_RING_RAPHAEL, FALSE) ||
+		  borg_activate_artifact(ART_EMMANUEL, FALSE) ||
+		  borg_activate_artifact(ART_ROBE_MICHAEL, FALSE) ||
+		  borg_activate_artifact(ART_CORSON, FALSE) ||
+		  borg_activate_artifact(ART_SUN, FALSE) ||
+		  borg_activate_activation(ACT_CURE_700, FALSE) ||
+		  borg_activate_activation(ACT_CURE_1000, FALSE))) {
 		borg_note("# Healing Level 7.1");
 		return (TRUE);
 	}
@@ -6025,9 +6026,9 @@ bool borg_heal(int danger) {
 		  borg_use_staff_fail(SV_STAFF_HEALING) ||
 		  (borg_zap_rod(SV_ROD_HEALING) || borg_quaff_potion(SV_POTION_HEALING) ||
 			borg_activate_artifact(ART_RING_RAPHAEL, FALSE) ||
- 		  borg_activate_artifact(ART_EMMANUEL, FALSE) ||
- 		  borg_activate_artifact(ART_ROBE_MICHAEL, FALSE) ||
- 		  borg_activate_artifact(ART_CORSON, FALSE) ||
+			borg_activate_artifact(ART_EMMANUEL, FALSE) ||
+			borg_activate_artifact(ART_ROBE_MICHAEL, FALSE) ||
+			borg_activate_artifact(ART_CORSON, FALSE) ||
 			borg_activate_activation(ACT_CURE_700, FALSE) ||
 			borg_activate_activation(ACT_CURE_1000, FALSE) ||
 			(borg_fighting_unique && (borg_quaff_potion(SV_POTION_STAR_HEALING) ||
@@ -7079,8 +7080,8 @@ bool borg_caution(void) {
 					continue;
 
 				/* skip neutrals */
-					if (borg_kills[borg_grids[y][x].kill].neutral)
-						continue;
+				if (borg_kills[borg_grids[y][x].kill].neutral)
+					continue;
 
 				/* Access the monster and check it's speed */
 				if (borg_kills[borg_grids[y][x].kill].speed > borg_skill[BI_SPEED])
@@ -7141,7 +7142,7 @@ bool borg_caution(void) {
 	if (ok_to_retreat) {
 		int d, b_d = -1;
 		int r, b_r = -1;
-		int /*b_p, */p1 = -1;
+		int /*b_p, */ p1 = -1;
 		int b_x = c_x;
 		int b_y = c_y;
 		int ii;
@@ -7164,11 +7165,12 @@ bool borg_caution(void) {
 
 			/* Try to avoid pillar dancing if at good health */
 			if (borg_skill[BI_CURHP] >= borg_skill[BI_MAXHP] * 7 / 10 &&
-				 ((track_step_y[track_step_num - 2] == y2 &&
-					track_step_x[track_step_num - 2] == x2 &&
-					track_step_y[track_step_num - 3] == c_y &&
-					track_step_x[track_step_num - 3] == c_x) ||
-				  time_this_panel >= 300))
+				 /*Make sure we actually do have that many pas steps..*/
+				 track_step_num > 2 && ((track_step_y[track_step_num - 2] == y2 &&
+												 track_step_x[track_step_num - 2] == x2 &&
+												 track_step_y[track_step_num - 3] == c_y &&
+												 track_step_x[track_step_num - 3] == c_x) ||
+												time_this_panel >= 300))
 				continue;
 
 			/* XXX -- Borgs in an unexplored hall (& with only a torch)
@@ -7231,6 +7233,7 @@ bool borg_caution(void) {
 
 				/* Lets make one more check that we are not bouncing */
 				if (borg_skill[BI_CURHP] >= borg_skill[BI_MAXHP] * 7 / 10 &&
+					 track_step_num > 2 &&
 					 ((track_step_y[track_step_num - 2] == y1 &&
 						track_step_x[track_step_num - 2] == x1 &&
 						track_step_y[track_step_num - 3] == c_y &&
@@ -7390,12 +7393,12 @@ bool borg_caution(void) {
 		 (p > avoidance / 3 ||
 		  (borg_class == CLASS_HIGH_MAGE &&
 			borg_skill[BI_CURSP] < borg_skill[BI_MAXSP] / 10))) {
-		int /*d, */b_d = -1;
+		int /*d, */ b_d = -1;
 		/*int r, b_r = -1;*/
 		/*int b_p, p1 = -1;*/
 		int b_x = c_x;
 		int b_y = c_y;
-		int /*ii, */i;
+		int /*ii, */ i;
 		int walls = 0;
 		int locked = 0;
 
@@ -7631,11 +7634,11 @@ bool borg_caution(void) {
 
 			/* If i was here last round and 3 rounds ago, suggesting a "bounce" */
 			if (borg_skill[BI_CURHP] >= borg_skill[BI_MAXHP] * 7 / 10 &&
-				 ((track_step_y[track_step_num - 2] == y &&
-					track_step_x[track_step_num - 2] == x &&
-					track_step_y[track_step_num - 3] == c_y &&
-					track_step_x[track_step_num - 3] == c_x) ||
-				  time_this_panel >= 300))
+				 track_step_num > 2 && ((track_step_y[track_step_num - 2] == y &&
+												 track_step_x[track_step_num - 2] == x &&
+												 track_step_y[track_step_num - 3] == c_y &&
+												 track_step_x[track_step_num - 3] == c_x) ||
+												time_this_panel >= 300))
 				continue;
 
 			/*
@@ -7826,13 +7829,16 @@ bool borg_caution(void) {
 				continue;
 
 			/* If i was here recently, suggesting a "bounce" */
-			if ((track_step_y[track_step_num - 2] == y &&
-				  track_step_x[track_step_num - 2] == x) ||
-				 (track_step_y[track_step_num - 3] == y &&
-				  track_step_x[track_step_num - 3] == x) ||
-				 (track_step_y[track_step_num - 4] == y &&
-				  track_step_x[track_step_num - 4] == x))
-				continue;
+			if (track_step_num > 3) {
+				if ((track_step_y[track_step_num - 2] == y &&
+					  track_step_x[track_step_num - 2] == x) ||
+					 (track_step_y[track_step_num - 3] == y &&
+					  track_step_x[track_step_num - 3] == x) ||
+					 (track_step_y[track_step_num - 4] == y &&
+					  track_step_x[track_step_num - 4] == x)) {
+					continue;
+				}
+			}
 
 			/* Extract the danger there */
 			k = borg_danger(y, x, 1, TRUE);
@@ -7930,7 +7936,8 @@ bool borg_caution(void) {
 			 borg_quaff_potion(SV_POTION_BESERK_STRENGTH) ||
 			 borg_activate_artifact(ART_DANCING, FALSE) ||
 			 borg_activate_activation(ACT_CURE_POISON, FALSE) ||
-			 /*borg_racial(RACE_HALF_ORC, 1) || */ borg_racial(RACE_HALF_TROLL, 1)) {
+			 /*borg_racial(RACE_HALF_ORC, 1) || */ borg_racial(RACE_HALF_TROLL,
+																				1)) {
 			return (TRUE);
 		}
 	}
@@ -8091,7 +8098,7 @@ bool borg_caution(void) {
 
 				/* Heal step one (200hp) */
 				if (hp_down >= 60 &&
-					  (borg_zap_rod(SV_ROD_HEALING) ||
+					 (borg_zap_rod(SV_ROD_HEALING) ||
 					  borg_spell_fail(REALM_LIFE, 1, 6, allow_fail) ||
 					  borg_spell_fail(REALM_LIFE, 1, 2, allow_fail) ||
 					  borg_spell_fail(REALM_LIFE, 0, 6, allow_fail) ||
@@ -8339,7 +8346,8 @@ extern int borg_thrust_damage_one(int i, bool inflate) {
 	}
 	*/
 	/* Monsters in water are vulnerable. -LM- */
-	else if (borg_grids[kill->y][kill->x].feat == FEAT_WATER && !water_ok( kill->r_idx )) {
+	else if (borg_grids[kill->y][kill->x].feat == FEAT_WATER &&
+				!water_ok(kill->r_idx)) {
 		/*TODO make this true ;)*/
 		terrain_bonus -= r_ptr->ac / 5;
 	}
@@ -8979,7 +8987,8 @@ int borg_launch_damage_one(int i, int dam, int typ, bool inflate,
 		sleeping_bonus = 5 + borg_skill[BI_CLEVEL] / 5;
 	if (borg_grids[kill->y][kill->x].feat == FEAT_RUBBLE)
 		terrain_bonus = r_ptr->ac / 5 + 5;
-	/*if (borg_grids[kill->y][kill->x].feat == FEAT_TREES && borg_class != CLASS_RANGER)
+	/*if (borg_grids[kill->y][kill->x].feat == FEAT_TREES && borg_class !=
+		CLASS_RANGER)
 		terrain_bonus = r_ptr->ac / 5 + 5;*/
 	if (borg_grids[kill->y][kill->x].feat == FEAT_RUBBLE)
 		terrain_bonus = r_ptr->ac / 5 + 5;
@@ -9654,9 +9663,9 @@ int borg_launch_damage_one(int i, int dam, int typ, bool inflate,
 
 			/* If the borg is not in a good position, do it */
 			if (((borg_depth & (DEPTH_SUMMONER & DEPTH_BORER)) &&
-					  !(borg_position & POSITION_SEA)) ||
+				  !(borg_position & POSITION_SEA)) ||
 				 ((borg_depth & (DEPTH_BORER)) &&
-					  !(borg_position & (POSITION_BORE | POSITION_SEA)))) {
+				  !(borg_position & (POSITION_BORE | POSITION_SEA)))) {
 				/* get rid of this one by storing his info */
 				borg_tp_other_index[borg_tp_other_n] = i;
 				borg_tp_other_y[borg_tp_other_n] = kill->y;
@@ -11242,7 +11251,7 @@ static int borg_attack_aux_object(bool inflate, int specific) {
 			continue;
 
 		/* Skip stuff that is valuable */
-		if (item->value >= 25/* && item->kind != K_FIGURINE*/)
+		if (item->value >= 25 /* && item->kind != K_FIGURINE*/)
 			continue;
 
 		/* Dont throw wands or rods */
@@ -11927,7 +11936,7 @@ static int borg_attack_aux_mind_dispel(int spell, int level, int rad, int dam,
  */
 static int borg_attack_aux_staff_dispel(int sval, /*int rad,*/ int dam, int typ,
 													 bool inflate, int specific) {
-	int /*i, */b_n;
+	int /*i, */ b_n;
 
 	/* No firing while blind, confused, or hallucinating */
 	if (borg_skill[BI_ISBLIND] || borg_skill[BI_ISCONFUSED] ||
@@ -11975,27 +11984,27 @@ static int borg_draco_type(void) {
 		return (Type);
 
 	switch (p_ptr->pclass) {
-		case CLASS_WARRIOR:
-		case CLASS_RANGER:
-			Type = GF_SHARDS;
-			break;
-		case CLASS_MAGE:
-		case CLASS_WARRIOR_MAGE:
-		case CLASS_HIGH_MAGE:
-			Type = GF_DISENCHANT;
-			break;
-		case CLASS_CHAOS_WARRIOR:
-		case CLASS_MONK:
-		case CLASS_ORPHIC:
-			Type = GF_CONFUSION;
-			break;
-		case CLASS_PRIEST:
-		case CLASS_PALADIN:
-			Type = GF_HOLY_FIRE;
-			break;
-		case CLASS_ROGUE:
-			Type = GF_POIS;
-			break;
+	case CLASS_WARRIOR:
+	case CLASS_RANGER:
+		Type = GF_SHARDS;
+		break;
+	case CLASS_MAGE:
+	case CLASS_WARRIOR_MAGE:
+	case CLASS_HIGH_MAGE:
+		Type = GF_DISENCHANT;
+		break;
+	case CLASS_CHAOS_WARRIOR:
+	case CLASS_MONK:
+	case CLASS_ORPHIC:
+		Type = GF_CONFUSION;
+		break;
+	case CLASS_PRIEST:
+	case CLASS_PALADIN:
+		Type = GF_HOLY_FIRE;
+		break;
+	case CLASS_ROGUE:
+		Type = GF_POIS;
+		break;
 	}
 	return (Type);
 }
@@ -12249,8 +12258,8 @@ static int borg_attack_aux_wand_bolt_unknown(int dam, int typ, bool inflate,
  * Simulate/Apply the optimal result of ACTIVATING an attack artifact
  *
  */
-static int borg_attack_aux_artifact(int art_name, int rad, int dam,
-												int typ, bool inflate, int specific) {
+static int borg_attack_aux_artifact(int art_name, int rad, int dam, int typ,
+												bool inflate, int specific) {
 	int b_n;
 
 	/* No firing while blind, confused, or hallucinating */
@@ -12278,9 +12287,8 @@ static int borg_attack_aux_artifact(int art_name, int rad, int dam,
 	(void)borg_activate_artifact(art_name, FALSE);
 
 	/* Use target, unless we dont need a target */
-	if (art_name != ART_AMULET_RAPHAEL &&
-		  art_name != ART_BAPHOMET &&
-		  art_name == ART_ASMODAI) {
+	if (art_name != ART_AMULET_RAPHAEL && art_name != ART_BAPHOMET &&
+		 art_name == ART_ASMODAI) {
 		borg_keypress('5');
 
 		/* Set our shooting flag */
@@ -12378,7 +12386,7 @@ static int borg_attack_aux_equip(int tval, int sval, int rad, int dam, int typ,
 /* Whirlwind--
  * Attacks adjacent monsters
  */
-static int borg_attack_aux_nature_whirlwind(bool inflate/*, int specific*/) {
+static int borg_attack_aux_nature_whirlwind(bool inflate /*, int specific*/) {
 	int y = 0, x = 0;
 	int dir;
 
@@ -12452,8 +12460,10 @@ static int borg_attack_aux_spell_callvoid(bool inflate) {
 											-1, TRUE, FALSE);
 			dam += borg_launch_bolt(10 + 2, 175, GF_MANA, MAX_RANGE, inflate, 0,
 											-1, TRUE, FALSE);
-			/* TODO SHOULD make sure call the void does not have a third new damage type*/
-			/*dam += borg_launch_bolt(10 + 4, 175, GF_NUKE, MAX_RANGE, inflate, 0, -1, TRUE, FALSE);*/
+			/* TODO SHOULD make sure call the void does not have a third new damage
+			 * type*/
+			/*dam += borg_launch_bolt(10 + 4, 175, GF_NUKE, MAX_RANGE, inflate, 0,
+			 * -1, TRUE, FALSE);*/
 		}
 	}
 
@@ -12509,8 +12519,6 @@ static int borg_attack_aux_artifact_holcolleth(/*bool inflate*/) {
 	return (0);
 }
 
-
-
 /*
  * Simulate/Apply the optimal result of making a racial attack.
  */
@@ -12530,7 +12538,8 @@ static int borg_attack_aux_racial_bolt(int race, int rad, int dam, int typ,
 		return (FALSE);
 
 	/* Choose optimal location */
-	b_n = borg_launch_bolt(rad, dam, typ, MAX_RANGE, inflate, 0, specific, TRUE, FALSE);
+	b_n = borg_launch_bolt(rad, dam, typ, MAX_RANGE, inflate, 0, specific, TRUE,
+								  FALSE);
 
 	/* Reduce the damage by the Activation Failure % */
 	b_n = b_n * (100 - fail) / 100;
@@ -12767,7 +12776,7 @@ static int borg_attack_aux_act_bolt(int activation, int rad, int dam, int typ,
  */
 extern int borg_attack_aux_act_vamp(int activation, int dam, bool inflate,
 												int specific) {
-	int p/*, dir*/;
+	int p /*, dir*/;
 
 	int i, b_i = -1;
 	int d, b_d = -1;
@@ -13219,7 +13228,7 @@ static int borg_attack_aux(int what, bool inflate, int specific) {
 
 	/* Whirlwind */
 	case BF_NATURE_WHIRLWIND:
-		return (borg_attack_aux_nature_whirlwind(inflate/*, specific*/));
+		return (borg_attack_aux_nature_whirlwind(inflate /*, specific*/));
 
 	/* Blizzard */
 	case BF_NATURE_BLIZZARD:
@@ -13482,11 +13491,12 @@ static int borg_attack_aux(int what, bool inflate, int specific) {
 	/* Vampirism True, this one is very nice since it gives us 300 HP */
 	case BF_DEATH_VAMPIRISM:
 		dam = 300;
-		if ((borg_class == CLASS_PALADIN ||
-				borg_class == CLASS_RANGER ||
-			 	borg_class == CLASS_ROGUE) &&
-				(borg_skill[BI_CURHP] > borg_skill[BI_MAXHP] - 100)) dam = 0;
-		if (borg_skill[BI_CURHP] < borg_skill[BI_MAXHP] - 200) dam *= 2;
+		if ((borg_class == CLASS_PALADIN || borg_class == CLASS_RANGER ||
+			  borg_class == CLASS_ROGUE) &&
+			 (borg_skill[BI_CURHP] > borg_skill[BI_MAXHP] - 100))
+			dam = 0;
+		if (borg_skill[BI_CURHP] < borg_skill[BI_MAXHP] - 200)
+			dam *= 2;
 		return (borg_attack_aux_spell_bolt(REALM_DEATH, 2, 4, rad, dam,
 													  GF_OLD_DRAIN, inflate, specific));
 
@@ -13830,8 +13840,9 @@ static int borg_attack_aux(int what, bool inflate, int specific) {
 	case BF_STAFF_SLEEP_MONSTERS:
 		dam = 60;
 		rad = MAX_SIGHT;
-		return (borg_attack_aux_staff_dispel(SV_STAFF_SLEEP_MONSTERS, /*rad,*/ dam,
-														 GF_OLD_SLEEP, inflate, specific));
+		return (borg_attack_aux_staff_dispel(SV_STAFF_SLEEP_MONSTERS,
+														 /*rad,*/ dam, GF_OLD_SLEEP, inflate,
+														 specific));
 
 	/* Staff -- Slow Monsters */
 	case BF_STAFF_SLOW_MONSTERS:
@@ -13868,36 +13879,36 @@ static int borg_attack_aux(int what, bool inflate, int specific) {
 	case BF_ART_DAGGER_INFERNO:
 		rad = 0;
 		dam = (9 * (8 + 1) / 2);
-		return (borg_attack_aux_artifact(ART_DAGGER_INFERNO, rad, dam,
-													GF_FIRE, inflate, specific));
+		return (borg_attack_aux_artifact(ART_DAGGER_INFERNO, rad, dam, GF_FIRE,
+													inflate, specific));
 
 	/* Artifact -- Nimthanc- frost bolt 6d8*/
 	case BF_ART_COCYTUS:
 		rad = 0;
 		dam = (6 * (8 + 1) / 2);
-		return (borg_attack_aux_artifact(ART_COCYTUS, rad, dam,
-													GF_COLD, inflate, specific));
+		return (borg_attack_aux_artifact(ART_COCYTUS, rad, dam, GF_COLD, inflate,
+													specific));
 
 	/* Artifact -- Dethanc- electric bolt 4d8*/
 	case BF_ART_DAGGER_FURCIFER:
 		rad = 0;
 		dam = (4 * (8 + 1) / 2);
-		return (borg_attack_aux_artifact(ART_DAGGER_FURCIFER, rad, dam,
-													GF_ELEC, inflate, specific));
+		return (borg_attack_aux_artifact(ART_DAGGER_FURCIFER, rad, dam, GF_ELEC,
+													inflate, specific));
 
 	/* Artifact -- Rilia- poison gas 12*/
 	case BF_ART_KINSLAYER:
 		rad = 2;
 		dam = 12;
-		return (borg_attack_aux_artifact(ART_KINSLAYER, rad, dam,
-													GF_POIS, inflate, specific));
+		return (borg_attack_aux_artifact(ART_KINSLAYER, rad, dam, GF_POIS,
+													inflate, specific));
 
 	/* Artifact -- Belangil- frost ball 48*/
 	case BF_ART_FROST:
 		rad = 2;
 		dam = 48;
-		return (borg_attack_aux_artifact(ART_FROST, rad, dam,
-													GF_COLD, inflate, specific));
+		return (borg_attack_aux_artifact(ART_FROST, rad, dam, GF_COLD, inflate,
+													specific));
 
 	/* Artifact -- Arunruth- frost bolt 12d8*/
 
@@ -13905,22 +13916,22 @@ static int borg_attack_aux(int what, bool inflate, int specific) {
 	case BF_ART_MICHAEL:
 		rad = 2;
 		dam = 100;
-		return (borg_attack_aux_artifact(ART_MICHAEL, rad, dam,
-													GF_COLD, inflate, specific));
+		return (borg_attack_aux_artifact(ART_MICHAEL, rad, dam, GF_COLD, inflate,
+													specific));
 
 	/* Artifact -- Anduril- fire ball 72*/
 	case BF_ART_RASHAVERAK:
 		rad = 2;
 		dam = 72;
-		return (borg_attack_aux_artifact(ART_RASHAVERAK, rad, dam,
-													GF_FIRE, inflate, specific));
+		return (borg_attack_aux_artifact(ART_RASHAVERAK, rad, dam, GF_FIRE,
+													inflate, specific));
 
 	/* Artifact -- Theoden- drain Life 120*/
 	case BF_ART_ELIGOR:
 		rad = 0;
 		dam = 120;
-		return (borg_attack_aux_artifact(ART_ELIGOR, rad, dam,
-													GF_OLD_DRAIN, inflate, specific));
+		return (borg_attack_aux_artifact(ART_ELIGOR, rad, dam, GF_OLD_DRAIN,
+													inflate, specific));
 
 	/* Artifact -- Aeglos- frost ball 100
 	case BF_ART_AEGLOS:
@@ -13933,8 +13944,8 @@ static int borg_attack_aux(int what, bool inflate, int specific) {
 	case BF_ART_PHENEX:
 		rad = 0;
 		dam = 10;
-		return (borg_attack_aux_artifact(ART_PHENEX, rad, dam,
-													GF_OLD_CONF, inflate, specific));
+		return (borg_attack_aux_artifact(ART_PHENEX, rad, dam, GF_OLD_CONF,
+													inflate, specific));
 
 	/* Artifact -- Holcolleth -- sleep ii and sanctuary */
 	case BF_ART_SIMPLE:
@@ -13945,64 +13956,64 @@ static int borg_attack_aux(int what, bool inflate, int specific) {
 	case BF_ART_MORNINGSTAR:
 		rad = 2;
 		dam = 72;
-		return (borg_attack_aux_artifact(ART_MORNINGSTAR, rad, dam,
-													GF_FIRE, inflate, specific));
+		return (borg_attack_aux_artifact(ART_MORNINGSTAR, rad, dam, GF_FIRE,
+													inflate, specific));
 
 	/* Artifact -- TURMIL- drain life 90 */
 	case BF_ART_JUSTICE:
 		rad = 0;
 		dam = 90;
-		return (borg_attack_aux_artifact(ART_JUSTICE, rad, dam,
-													GF_OLD_DRAIN, inflate, specific));
+		return (borg_attack_aux_artifact(ART_JUSTICE, rad, dam, GF_OLD_DRAIN,
+													inflate, specific));
 
 	/* Artifact -- Razorback- spikes 150 */
 	case BF_ART_BAPHOMET:
 		rad = 2;
 		dam = 150;
-		return (borg_attack_aux_artifact(ART_BAPHOMET, rad, dam,
-													GF_MISSILE, inflate, specific));
+		return (borg_attack_aux_artifact(ART_BAPHOMET, rad, dam, GF_MISSILE,
+													inflate, specific));
 
 	/* Artifact -- Razorback- spikes 150 */
 	case BF_ART_ASMODAI:
-	  rad = 2;
+		rad = 2;
 		dam = 150;
-		return (borg_attack_aux_artifact(ART_ASMODAI, rad, dam,
-													GF_MISSILE, inflate, specific));
+		return (borg_attack_aux_artifact(ART_ASMODAI, rad, dam, GF_MISSILE,
+													inflate, specific));
 
 	/* Artifact -- Cammithrim- Magic Missile 2d6 */
 	case BF_ART_LIGHT:
 		rad = 0;
 		dam = (2 * (6 + 1) / 2);
-		return (borg_attack_aux_artifact(ART_LIGHT, rad, dam,
-													GF_MISSILE, inflate, specific));
+		return (borg_attack_aux_artifact(ART_LIGHT, rad, dam, GF_MISSILE, inflate,
+													specific));
 
 	/* Artifact -- Paurhach- fire bolt 9d8 */
 	case BF_ART_IRONFIST:
 		rad = 0;
 		dam = (9 * (8 + 1) / 2);
-		return (borg_attack_aux_artifact(ART_IRONFIST, rad, dam,
-													GF_FIRE, inflate, specific));
+		return (borg_attack_aux_artifact(ART_IRONFIST, rad, dam, GF_FIRE, inflate,
+													specific));
 
 	/* Artifact -- Paurnimmen- frost bolt 6d8 */
 	case BF_ART_GHOULS:
 		rad = 0;
 		dam = (4 * (8 + 1) / 2);
-		return (borg_attack_aux_artifact(ART_GHOULS, rad, dam,
-													GF_ELEC, inflate, specific));
+		return (borg_attack_aux_artifact(ART_GHOULS, rad, dam, GF_ELEC, inflate,
+													specific));
 
 	/* Artifact -- Pauraegen- lightning bolt 4d8 */
 	case BF_ART_FURFICER:
 		rad = 0;
 		dam = (4 * (8 + 1) / 2);
-		return (borg_attack_aux_artifact(ART_FURFICER, rad, dam,
-													GF_ELEC, inflate, specific));
+		return (borg_attack_aux_artifact(ART_FURFICER, rad, dam, GF_ELEC, inflate,
+													specific));
 
 	/* Artifact -- PaurNEN- ACID bolt 5d8 */
 	case BF_ART_DEAD:
 		rad = 0;
 		dam = (5 * (8 + 1) / 2);
-		return (borg_attack_aux_artifact(ART_DEAD, rad, dam,
-													GF_ACID, inflate, specific));
+		return (borg_attack_aux_artifact(ART_DEAD, rad, dam, GF_ACID, inflate,
+													specific));
 
 	/* Artifact -- FINGOLFIN- MISSILE 150
 	case BF_ART_FINGOLFIN:
@@ -14030,22 +14041,22 @@ static int borg_attack_aux(int what, bool inflate, int specific) {
 	case BF_ART_RING_RAPHAEL:
 		rad = 2;
 		dam = 120;
-		return (borg_attack_aux_artifact(ART_RING_RAPHAEL, rad, dam,
-													GF_FIRE, inflate, specific));
+		return (borg_attack_aux_artifact(ART_RING_RAPHAEL, rad, dam, GF_FIRE,
+													inflate, specific));
 
 	/* Artifact -- NENYA- COLD BALL 200 */
 	case BF_ART_RING_MICHAEL:
 		rad = 2;
 		dam = 200;
-		return (borg_attack_aux_artifact(ART_RING_MICHAEL, rad, dam,
-													GF_COLD, inflate, specific));
+		return (borg_attack_aux_artifact(ART_RING_MICHAEL, rad, dam, GF_COLD,
+													inflate, specific));
 
 	/* Artifact -- VILYA- ELEC BALL 250 */
 	case BF_ART_EMMANUEL:
 		rad = 2;
 		dam = 250;
-		return (borg_attack_aux_artifact(ART_EMMANUEL, rad, dam,
-													GF_ELEC, inflate, specific));
+		return (borg_attack_aux_artifact(ART_EMMANUEL, rad, dam, GF_ELEC, inflate,
+													specific));
 
 	/* Hack -- Dragon Scale Mail can be activated as well */
 	case BF_DRAGON_BLUE:
@@ -14156,8 +14167,8 @@ static int borg_attack_aux(int what, bool inflate, int specific) {
 				 MAX(1, borg_skill[BI_CLEVEL] / 10)); /* Dmg */
 		fail = 100 - racial_chance(2, A_CON, 9);
 		cost = 1 + (borg_skill[BI_CLEVEL] / 3);
-		return (borg_attack_aux_racial_thrust(2, dam, fail, inflate,
-														  specific, cost));
+		return (
+			 borg_attack_aux_racial_thrust(2, dam, fail, inflate, specific, cost));
 
 	/* Throw Boulder
 	case BF_RACIAL_CYCLOPS:
@@ -14182,8 +14193,9 @@ static int borg_attack_aux(int what, bool inflate, int specific) {
 		fail = 100 - racial_chance(1, A_CON, 12);
 		cost = borg_skill[BI_CLEVEL];
 		int damage_type = borg_draco_type();
-		return (borg_attack_aux_racial_bolt(SIGN_HEAD + SIGN_DRACO, rad, dam, damage_type,
-														fail, inflate, specific, cost));
+		return (borg_attack_aux_racial_bolt(SIGN_HEAD + SIGN_DRACO, rad, dam,
+														damage_type, fail, inflate, specific,
+														cost));
 
 	/* Fireball */
 	case BF_RACIAL_IMP:
@@ -14200,8 +14212,9 @@ static int borg_attack_aux(int what, bool inflate, int specific) {
 		rad = (borg_skill[BI_CLEVEL] >= 25) ? 2 : 0;
 		fail = 100 - racial_chance(9, A_DEX, 14);
 		cost = 9;
-		return (borg_attack_aux_racial_bolt(SIGN_HEAD + SIGN_MORUI, rad, dam, GF_ACID, fail,
-														inflate, specific, cost));
+		return (borg_attack_aux_racial_bolt(SIGN_HEAD + SIGN_MORUI, rad, dam,
+														GF_ACID, fail, inflate, specific,
+														cost));
 
 	/* Poison bolt */
 	case BF_RACIAL_KOBOLD:
@@ -14273,22 +14286,23 @@ static int borg_attack_aux(int what, bool inflate, int specific) {
 		cost = 3;
 		return (borg_attack_aux_mutation_bolt(COR1_MIND_BLST, rad, dam, GF_PSI,
 														  inflate, FALSE, specific, cost));
-/*
-	case BF_COR1_RADIATION:
-		dam = (borg_skill[BI_CLEVEL] * 2);
-		rad = 3 + (borg_skill[BI_CLEVEL] / 20);
-		cost = 15;
-		return (borg_attack_aux_mutation_bolt(COR1_RADIATION, rad, dam, GF_NUKE,
-														  inflate, TRUE, specific, cost));
-*/
+	/*
+		case BF_COR1_RADIATION:
+			dam = (borg_skill[BI_CLEVEL] * 2);
+			rad = 3 + (borg_skill[BI_CLEVEL] / 20);
+			cost = 15;
+			return (borg_attack_aux_mutation_bolt(COR1_RADIATION, rad, dam,
+		GF_NUKE,
+															  inflate, TRUE, specific, cost));
+	*/
 	case BF_COR1_VAMPIRISM:
 		dam = borg_skill[BI_CLEVEL] +
 				((borg_skill[BI_CLEVEL] / 2) *
 				 MAX(1, borg_skill[BI_CLEVEL] / 10)); /* Dmg */
 		fail = 100 - racial_chance(2, A_CON, 9);
 		cost = (1 + (borg_skill[BI_CLEVEL] / 3));
-		return (borg_attack_aux_racial_thrust(2, dam, fail, inflate,
-														  specific, cost));
+		return (
+			 borg_attack_aux_racial_thrust(2, dam, fail, inflate, specific, cost));
 
 	case BF_COR1_SHRIEK:
 		dam = (borg_skill[BI_CLEVEL] * 2);
@@ -14314,14 +14328,15 @@ static int borg_attack_aux(int what, bool inflate, int specific) {
 			 COR1_DAZZLE, 10, borg_skill[BI_CLEVEL] * 4, GF_TURN_ALL, inflate,
 			 TRUE, specific, cost));
 		return (dam);
-/*
-	case BF_COR1_LASER_EYE:
-		dam = (borg_skill[BI_CLEVEL] * 2);
-		rad = -1;
-		cost = 15;
-		return (borg_attack_aux_mutation_bolt(COR1_LASER_EYE, rad, dam, GF_LITE,
-														  inflate, FALSE, specific, cost));
-*/
+	/*
+		case BF_COR1_LASER_EYE:
+			dam = (borg_skill[BI_CLEVEL] * 2);
+			rad = -1;
+			cost = 15;
+			return (borg_attack_aux_mutation_bolt(COR1_LASER_EYE, rad, dam,
+		GF_LITE,
+															  inflate, FALSE, specific, cost));
+	*/
 	case BF_COR1_BANISH:
 		cost = 25;
 		return (borg_attack_aux_mutation_thrust(BF_COR1_BANISH, inflate, specific,
@@ -14457,7 +14472,7 @@ static int borg_attack_aux(int what, bool inflate, int specific) {
 													inflate, specific));
 
 	case BF_ACT_WHIRLWIND:
-		return (borg_attack_aux_nature_whirlwind(inflate/*, specific*/));
+		return (borg_attack_aux_nature_whirlwind(inflate /*, specific*/));
 
 	case BF_ACT_VAMPIRE_2:
 		dam = 300;
@@ -14469,13 +14484,14 @@ static int borg_attack_aux(int what, bool inflate, int specific) {
 	 * return (borg_attack_aux_act_dispel(ACT_CALL_CHAOS, rad, dam, GF_MISSILE,
 	 * inflate, specific));
 	 */
-/*
-	case BF_ACT_ROCKET:
-		rad = 2;
-		dam = 120 + borg_skill[BI_CLEVEL];
-		return (borg_attack_aux_act_bolt(ACT_ROCKET, rad, dam, GF_ROCKET, inflate,
-															specific));
-*/
+	/*
+		case BF_ACT_ROCKET:
+			rad = 2;
+			dam = 120 + borg_skill[BI_CLEVEL];
+			return (borg_attack_aux_act_bolt(ACT_ROCKET, rad, dam, GF_ROCKET,
+		inflate,
+																specific));
+	*/
 	case BF_ACT_DISP_EVIL:
 		dam = (borg_skill[BI_CLEVEL] * 5);
 		rad = MAX_SIGHT;
@@ -15344,10 +15360,10 @@ static int borg_defend_aux_speed(int p1) {
 	/* if we have an infinite/large suppy of speed we can */
 	/* be generious with our use */
 	if (speed_rod || speed_spell || speed_staff ||
-		borg_equips_artifact(ART_BOOTS_FURCIFER) ||
-		borg_equips_artifact(ART_BOOTS_GABRIEL) ||
-		borg_equips_artifact(ART_BELETH) ||
-		borg_equips_artifact(ART_RING_GABRIEL))
+		 borg_equips_artifact(ART_BOOTS_FURCIFER) ||
+		 borg_equips_artifact(ART_BOOTS_GABRIEL) ||
+		 borg_equips_artifact(ART_BELETH) ||
+		 borg_equips_artifact(ART_RING_GABRIEL))
 		good_speed = TRUE;
 
 	/* pretend we are protected and look again */
@@ -15376,7 +15392,8 @@ static int borg_defend_aux_speed(int p1) {
 	}
 
 	/* if the unique is Lucifer cast it */
-	if (borg_skill[BI_CDEPTH] == LUCIFER_DEPTH && borg_fighting_unique == RACE_LUCIFER) {
+	if (borg_skill[BI_CDEPTH] == LUCIFER_DEPTH &&
+		 borg_fighting_unique == RACE_LUCIFER) {
 		p2 = p2 * 5 / 10;
 	}
 
@@ -15476,7 +15493,8 @@ static int borg_defend_aux_goi(int p1) {
 	}
 
 	/* if the unique is Sauron cast it */
-	if (borg_skill[BI_CDEPTH] == LILITH_DEPTH && borg_fighting_unique == RACE_LILITH) {
+	if (borg_skill[BI_CDEPTH] == LILITH_DEPTH &&
+		 borg_fighting_unique == RACE_LILITH) {
 		p2 = p2 * 4 / 10;
 	}
 
@@ -15536,7 +15554,8 @@ static int borg_defend_aux_goi_pot(int p1) {
 	p2 = p2 / 2;
 
 	/* if the unique is Sauron cast it */
-	if (borg_skill[BI_CDEPTH] == LILITH_DEPTH && borg_fighting_unique == RACE_LILITH) {
+	if (borg_skill[BI_CDEPTH] == LILITH_DEPTH &&
+		 borg_fighting_unique == RACE_LILITH) {
 		p2 = p2 * 4 / 10;
 	}
 
@@ -15600,11 +15619,13 @@ static int borg_defend_aux_wraith(int p1) {
 		fail_allowed = 25;
 
 	/* If fighting Questor boost the fail rate */
-	if (borg_fighting_unique == RACE_LUCIFER && borg_skill[BI_CDEPTH] == LUCIFER_DEPTH)
+	if (borg_fighting_unique == RACE_LUCIFER &&
+		 borg_skill[BI_CDEPTH] == LUCIFER_DEPTH)
 		fail_allowed = 33;
 
 	/* If fighting Questor boost the fail rate */
-	if (borg_fighting_unique == RACE_LILITH && borg_skill[BI_CDEPTH] == LILITH_DEPTH)
+	if (borg_fighting_unique == RACE_LILITH &&
+		 borg_skill[BI_CDEPTH] == LILITH_DEPTH)
 		fail_allowed = 33;
 
 	if (!borg_spell_okay_fail(REALM_DEATH, 3, 7, fail_allowed) &&
@@ -15622,7 +15643,8 @@ static int borg_defend_aux_wraith(int p1) {
 	}
 
 	/* if the unique is Sauron cast it */
-	if (borg_skill[BI_CDEPTH] == LILITH_DEPTH && borg_fighting_unique == RACE_LILITH) {
+	if (borg_skill[BI_CDEPTH] == LILITH_DEPTH &&
+		 borg_fighting_unique == RACE_LILITH) {
 		p2 = p2 * 4 / 10;
 	}
 
@@ -15809,7 +15831,6 @@ static int borg_defend_aux_resist_fecap(int p1) {
 	if (borg_fighting_unique && (unique_on_level == RACE_TARRASQUE))
 		p2 = p2 * 8 / 10;
 	*/
-
 
 	/* Hack -
 	 * If borg is high enough level, he does not need to worry
@@ -16263,8 +16284,7 @@ static int borg_defend_aux_rest(void) {
 		if (kill->ranged_attack || kill->unique || kill->questor) {
 			/* Do I have a good offset attack? XXX XXX */
 			if (borg_mindcr_okay_fail(MIND_PULVERISE, 11, 25) ||
-				 borg_spell_okay_fail(REALM_LIFE, 1, 4,
-											 25) || /* Orb of Draining */
+				 borg_spell_okay_fail(REALM_LIFE, 1, 4, 25) || /* Orb of Draining */
 				 borg_spell_okay_fail(
 					  REALM_ARCANE, 2, 6,
 					  25) || /* Elemental Ball --Lets make sure it is targetable. */
@@ -16396,8 +16416,8 @@ static int borg_defend_aux_prot_evil(int p1) {
 		pfe_spell = FALSE;
 
 	if (borg_equips_artifact(ART_AMULET_RAPHAEL) ||
-			borg_equips_artifact(ART_AMULET_MICHAEL) ||
-		 	borg_equips_activation(ACT_PROT_EVIL, TRUE))
+		 borg_equips_artifact(ART_AMULET_MICHAEL) ||
+		 borg_equips_activation(ACT_PROT_EVIL, TRUE))
 		pfe_spell = TRUE;
 
 	if (!pfe_spell)
@@ -16498,7 +16518,7 @@ static int borg_defend_aux_shield(int p1) {
 		/* do it! */
 		if (borg_spell_fail(REALM_NATURE, 2, 2, fail_allowed) ||
 			 borg_mindcr_fail(MIND_CHAR_ARMOUR, 13, fail_allowed) ||
-			 borg_racial(RACE_GOLEM,1))
+			 borg_racial(RACE_GOLEM, 1))
 			return (p1 - p2);
 	}
 
@@ -16918,7 +16938,7 @@ static int borg_defend_aux_banishment_lucifer(void) {
 	 * in the process of building one
 	 */
 	if (!(borg_position & POSITION_SEA) &&
-	    !(borg_depth & (DEPTH_BORER)) /* && glyphs < 3 */){
+		 !(borg_depth & (DEPTH_BORER)) /* && glyphs < 3 */) {
 		return (0);
 	}
 
@@ -17355,7 +17375,7 @@ static int borg_defend_aux_hero(int p1) {
 		if (borg_activate_activation(ACT_BERSERK, FALSE) ||
 			 borg_spell(REALM_LIFE, 3, 0) || borg_spell(REALM_DEATH, 2, 3) ||
 			 borg_spell(REALM_DEATH, 2, 0) || borg_mindcr(MIND_ADRENALINE, 23) ||
-			 borg_racial(RACE_HALF_TROLL,1) || borg_racial(RACE_BARBARIAN,1) ||
+			 borg_racial(RACE_HALF_TROLL, 1) || borg_racial(RACE_BARBARIAN, 1) ||
 			 borg_mutation(COR1_BERSERK, FALSE, 50, FALSE) ||
 			 borg_quaff_potion(SV_POTION_HEROISM))
 			return 1;
@@ -17393,7 +17413,7 @@ static int borg_defend_aux_berserk(int p1) {
 
 		/* do it! */
 		if (borg_mutation(COR1_BERSERK, FALSE, 31, FALSE) ||
-			 borg_racial(RACE_BARBARIAN,1) || borg_racial(RACE_HALF_TROLL,1) ||
+			 borg_racial(RACE_BARBARIAN, 1) || borg_racial(RACE_HALF_TROLL, 1) ||
 			 borg_quaff_potion(SV_POTION_BESERK_STRENGTH))
 			return 2;
 	}
@@ -17846,7 +17866,8 @@ static int borg_defend_aux_day_dove(int p1) {
 		p2 = 0;
 
 	/* Be more likely to use this if fighting Lucifer */
-	if (borg_fighting_unique == RACE_LUCIFER || borg_fighting_unique == RACE_LILITH) {
+	if (borg_fighting_unique == RACE_LUCIFER ||
+		 borg_fighting_unique == RACE_LILITH) {
 		p2 = p2 * 6 / 10;
 	}
 
@@ -17966,7 +17987,9 @@ static int borg_defend_aux_mass_genocide(void) {
 	p2 = p2 + hit;
 
 	/* Be more likely to use this if fighting the final two */
-	if ((borg_fighting_unique == RACE_LUCIFER || borg_fighting_unique == RACE_LILITH) && (hit / 3 > 8)) {
+	if ((borg_fighting_unique == RACE_LUCIFER ||
+		  borg_fighting_unique == RACE_LILITH) &&
+		 (hit / 3 > 8)) {
 		p2 = p2 * 6 / 10;
 	}
 
@@ -18988,10 +19011,10 @@ static int borg_defend_aux_panel_shift(void) {
 
 	screen_hgt = SCREEN_HGT;
 	screen_wid = SCREEN_WID;
-/*
-	panel_wid = screen_wid / 2;
-	panel_hgt = screen_hgt / 2;
-*/
+	/*
+		panel_wid = screen_wid / 2;
+		panel_hgt = screen_hgt / 2;
+	*/
 	/* no need */
 	if (!need_shift_panel && borg_skill[BI_CDEPTH] < 70)
 		return (0);
@@ -19073,7 +19096,8 @@ static int borg_defend_aux_panel_shift(void) {
 			/* do nothing */
 		} else
 			 /* shift up? only if a north corridor */
-			 if (dir >= 7 && track_step_y[track_step_num - 1] != c_y - 1) {
+			 if (dir >= 7 && track_step_num > 0 &&
+				  track_step_y[track_step_num - 1] != c_y - 1) {
 			if ((borg_projectable_pure(c_y, c_x, c_y - 2, c_x)) ||
 				 ((borg_projectable_pure(c_y, c_x, c_y - 2, c_x) &&
 					borg_projectable_pure(c_y, c_x, c_y, c_x - 2)) ||
@@ -19092,7 +19116,8 @@ static int borg_defend_aux_panel_shift(void) {
 				borg_keypress(ESCAPE);
 			}
 		} else /* shift down? only if a south corridor */
-			 if (dir <= 3 && track_step_y[track_step_num - 1] != c_y + 1) {
+			 if (dir <= 3 && track_step_num > 0 &&
+				  track_step_y[track_step_num - 1] != c_y + 1) {
 			if ((borg_projectable_pure(c_y, c_x, c_y + 2, c_x)) ||
 				 ((borg_projectable_pure(c_y, c_x, c_y + 2, c_x) &&
 					borg_projectable_pure(c_y, c_x, c_y, c_x - 2)) ||
@@ -19110,7 +19135,7 @@ static int borg_defend_aux_panel_shift(void) {
 				borg_keypress(ESCAPE);
 			}
 		} else /* shift Left? only if a west corridor */
-			 if ((dir == 4 || dir == 1 || dir == 7) &&
+			 if ((dir == 4 || dir == 1 || dir == 7) && track_step_num > 0 &&
 				  track_step_x[track_step_num - 1] != c_x - 1) {
 			if ((borg_projectable_pure(c_y, c_x, c_y, c_x - 2)) ||
 				 ((borg_projectable_pure(c_y, c_x, c_y + 2, c_x) &&
@@ -19130,7 +19155,7 @@ static int borg_defend_aux_panel_shift(void) {
 				borg_keypress(ESCAPE);
 			}
 		} else /* shift Right? only if a east corridor */
-			 if ((dir == 6 || dir == 9 || dir == 3) &&
+			 if ((dir == 6 || dir == 9 || dir == 3) && track_step_num > 0 &&
 				  track_step_x[track_step_num - 1] != c_x + 1) {
 			if ((borg_projectable_pure(c_y, c_x, c_y, c_x + 2)) ||
 				 ((borg_projectable_pure(c_y, c_x, c_y + 2, c_x) &&
@@ -20276,8 +20301,7 @@ static bool borg_defend_aux_brand(/*int p1*/) {
 		return (value);
 
 	/* Enchant it */
-	if (borg_spell(b_realm, b_book, b_spell))
-	{
+	if (borg_spell(b_realm, b_book, b_spell)) {
 		/* choose the weapon */
 		/*borg_keypress('/');
 		  borg_keypress(I2A(b_i - INVEN_WIELD)); */
@@ -21743,8 +21767,7 @@ bool borg_check_rest(int y, int x) {
 						 kill->x + ddx[mon_scan] == my_x) {
 						/* Terrain Types and Restrictions of Movement */
 						if (can_go_monster(kill->y + ddy[mon_scan],
-																kill->x + ddx[mon_scan],
-																kill->r_idx)) {
+												 kill->x + ddx[mon_scan], kill->r_idx)) {
 							/* Monster can cross the distance. Be concerned. */
 							return (FALSE);
 						}
@@ -21976,8 +21999,7 @@ bool borg_recover(void) {
 	/* Hack -- heal damage */
 	if ((borg_skill[BI_CURHP] < borg_skill[BI_MAXHP] / 2) && (q < 75) &&
 		 p == 0 && (borg_skill[BI_CURSP] > borg_skill[BI_MAXSP] / 4)) {
-		if (borg_spell(REALM_LIFE, 1, 6) ||
-		borg_spell(REALM_NATURE, 1, 7) ||
+		if (borg_spell(REALM_LIFE, 1, 6) || borg_spell(REALM_NATURE, 1, 7) ||
 			 borg_activate_activation(ACT_CURE_700, FALSE)) {
 			/* Take note */
 			borg_note(format("# heal damage (recovering)"));
@@ -22011,8 +22033,7 @@ bool borg_recover(void) {
 	/* Hack -- cure stun */
 	if (borg_skill[BI_ISSTUN] && (q < 25)) {
 		if (borg_use_staff_fail(SV_STAFF_CURING) || borg_zap_rod(SV_ROD_CURING) ||
-			 borg_zap_rod(SV_ROD_HEALING) ||
-			 borg_quaff_crit(FALSE) ||
+			 borg_zap_rod(SV_ROD_HEALING) || borg_quaff_crit(FALSE) ||
 			 borg_quaff_potion(SV_POTION_CURING)) {
 			return (TRUE);
 		}
@@ -22087,8 +22108,7 @@ bool borg_recover(void) {
 			 borg_quaff_potion(SV_POTION_BESERK_STRENGTH) ||
 			 borg_activate_artifact(ART_DANCING, FALSE) ||
 			 borg_activate_activation(ACT_CURE_POISON, FALSE) ||
-			 borg_racial(RACE_HALF_TROLL, 1) ||
-			 borg_racial(NEPHILIM, 2)) {
+			 borg_racial(RACE_HALF_TROLL, 1) || borg_racial(NEPHILIM, 2)) {
 			return (TRUE);
 		}
 	}
@@ -22452,9 +22472,8 @@ static bool borg_play_step(int y2, int x2) {
 			return (FALSE);
 
 		/* Avoid walking into pets sometimes */
-		if ((!kill->killer) &&
-			 (borg_skill[BI_ISSTUN] || borg_skill[BI_ISIMAGE] ||
-			  borg_skill[BI_ISCONFUSED] || borg_berserk))
+		if ((!kill->killer) && (borg_skill[BI_ISSTUN] || borg_skill[BI_ISIMAGE] ||
+										borg_skill[BI_ISCONFUSED] || borg_berserk))
 			return (FALSE);
 
 		/* Message */
@@ -23056,6 +23075,13 @@ bool borg_twitchy(void) {
 	return (TRUE);
 }
 
+cptr goal_descriptions[GOAL_LAST + 1] = {
+	 "Danger Robinson, 0", "Monsters, 1",			"Objects, 2",
+	 "Stores, 3",			  "Exploring, 4",			"Searching, 5",
+	 "Leaving, 6",			  "Fleeing, 7",			"Town, 8",
+	 "Vault, 9",			  "Recover, 10",			"Digging, 11",
+	 "Get to safety, 12",  "Danger Robinson, 13"};
+
 /*
  * Attempt to take an optimal step towards the current goal location
  *
@@ -23165,7 +23191,8 @@ bool borg_flow_old(int why) {
 					use_dim = FALSE;
 
 				/* Avoid Water if dangerous */
-				if (ag->feat == FEAT_WATER) use_dim = FALSE;
+				if (ag->feat == FEAT_WATER)
+					use_dim = FALSE;
 
 				/* Unused feats
 				// Avoid Mountains, dark pits, lava, and some water
@@ -23923,7 +23950,7 @@ bool borg_flow_stair_more(int why, bool sneak, bool prep_check) {
 	/* Clear the flow codes */
 	borg_flow_clear();
 
-	/* make sure we can move in town */
+	/* Make sure we can move in town */
 	if (borg_skill[BI_CDEPTH] >= 1 && avoidance <= borg_skill[BI_MAXHP])
 		leash = borg_skill[BI_CLEVEL] * 3 + 9;
 
@@ -23932,7 +23959,8 @@ bool borg_flow_stair_more(int why, bool sneak, bool prep_check) {
 		/* Must skip stairs on which a monster sits */
 		if (borg_grids[track_more_y[i]][track_more_x[i]].kill &&
 			 borg_skill[BI_CLEVEL] != 0) {
-			borg_note("# Monster camped on my stairs!");
+			borg_note(format("# # Monster camped on my stairs at (%d,%d)!",
+								  track_more_y[i], track_more_x[i]));
 			continue;
 		}
 
@@ -24462,7 +24490,7 @@ bool borg_flow_shop_inn(void) {
 }
 
 /* There is no Trump Tower in Hellband
-   bool borg_flow_shop_trump(void)
+	bool borg_flow_shop_planar(void)
 */
 
 /*
@@ -24540,7 +24568,7 @@ static bool borg_flow_shop_thieves(void) {
 	*/
 
 	/* Guild Members get a discount
-	   TODO Should, is this true ? Leverage the cost function */
+		TODO Should, is this true ? Leverage the cost function */
 	if (borg_class == CLASS_ROGUE)
 		cost = 100;
 
@@ -24549,10 +24577,11 @@ static bool borg_flow_shop_thieves(void) {
 		return (FALSE);
 
 	/* No need if I can do it with Racial abilities */
-  /*TODO SHOULD*/
+	/*TODO SHOULD*/
 
 	/* I need enough money */
-	if (borg_gold < cost && !rewards) return (FALSE);
+	if (borg_gold < cost && !rewards)
+		return (FALSE);
 
 	/* Count the number of Non-ID'd items. */
 	for (i = 0; i < INVEN_TOTAL; i++) {
@@ -24763,8 +24792,7 @@ static bool borg_flow_shop_fighter(void) {
 
 		/* Paladin's only pimp their weapons here.  They can do their armor at the
 		 * Pally guild cheaper */
-		if (item->to_a < max_pimp &&
-			 borg_items[armour_swap].tval != TV_RING &&
+		if (item->to_a < max_pimp && borg_items[armour_swap].tval != TV_RING &&
 			 borg_items[armour_swap].tval != TV_AMULET) {
 			/* I should have my swap weapon enchanted */
 			enchant = TRUE;
@@ -24802,7 +24830,6 @@ static bool borg_flow_shop_fighter(void) {
  * static bool borg_flow_shop_paladin(void) {
  */
 
-
 /*
  * Consider seeing the Ranger Guild for Enchanting my Arrows/Bolts
  * There is no range guild, yet
@@ -24818,61 +24845,111 @@ int borg_net_mutations(void) {
 	/*int i;*/
 	int v = 0;
 	if (p_ptr->muta1) {
-		if (p_ptr->muta1 & COR1_SPIT_ACID)  v = v + 2;
-		if (p_ptr->muta1 & COR1_BR_FIRE)    v = v + 2;
-		if (p_ptr->muta1 & COR1_HYPN_GAZE)  v = v + 1;
-		if (p_ptr->muta1 & COR1_TELEKINES)  v = v + 1;
-		if (p_ptr->muta1 & COR1_VTELEPORT)  v = v + 5;
-		if (p_ptr->muta1 & COR1_MIND_BLST)  v = v + 2;
-		if (p_ptr->muta1 & COR1_SLIME)      v = v + 2;
-		if (p_ptr->muta1 & COR1_VAMPIRISM)  v = v + 5;
-		if (p_ptr->muta1 & COR1_SMELL_MET)  v = v + 0;
-		if (p_ptr->muta1 & COR1_SMELL_MON)  v = v + 1;
-		if (p_ptr->muta1 & COR1_BLINK)      v = v + 5;
-		if (p_ptr->muta1 & COR1_EAT_ROCK)   v = v + 3;
-		if (p_ptr->muta1 & COR1_SWAP_POS)   v = v + 4;
-		if (p_ptr->muta1 & COR1_SHRIEK)     v = v + 0;
-		if (p_ptr->muta1 & COR1_ILLUMINE)   v = v + 1;
-		if (p_ptr->muta1 & COR1_DET_CURSE)  v = v + 0;
-		if (p_ptr->muta1 & COR1_BERSERK)    v = v + 1;
-		if (p_ptr->muta1 & COR1_POLYMORPH)  v = v + 0;
-		if (p_ptr->muta1 & COR1_MIDAS_TCH)  v = v + 0;
-		if (p_ptr->muta1 & COR1_GROW_MOLD)  v = v + 0;
-		if (p_ptr->muta1 & COR1_RESIST)     v = v + 3;
-		if (p_ptr->muta1 & COR1_EARTHQUAKE) v = v + 2;
-		if (p_ptr->muta1 & COR1_EAT_MAGIC)  v = v + 2;
-		if (p_ptr->muta1 & COR1_WEIGH_MAG)  v = v + 0;
-		if (p_ptr->muta1 & COR1_STERILITY)  v = v + 1;
-		if (p_ptr->muta1 & COR1_PANIC_HIT)  v = v + 1;
-		if (p_ptr->muta1 & COR1_DAZZLE)     v = v + 2;
-		if (p_ptr->muta1 & COR1_EYE_BEAM)   v = v + 2;
-		if (p_ptr->muta1 & COR1_RECALL)     v = v + 4;
-		if (p_ptr->muta1 & COR1_BANISH)     v = v + 4;
-		if (p_ptr->muta1 & COR1_COLD_TOUCH) v = v + 2;
-		if (p_ptr->muta1 & COR1_LAUNCHER)   v = v + 2;
+		if (p_ptr->muta1 & COR1_SPIT_ACID)
+			v = v + 2;
+		if (p_ptr->muta1 & COR1_BR_FIRE)
+			v = v + 2;
+		if (p_ptr->muta1 & COR1_HYPN_GAZE)
+			v = v + 1;
+		if (p_ptr->muta1 & COR1_TELEKINES)
+			v = v + 1;
+		if (p_ptr->muta1 & COR1_VTELEPORT)
+			v = v + 5;
+		if (p_ptr->muta1 & COR1_MIND_BLST)
+			v = v + 2;
+		if (p_ptr->muta1 & COR1_SLIME)
+			v = v + 2;
+		if (p_ptr->muta1 & COR1_VAMPIRISM)
+			v = v + 5;
+		if (p_ptr->muta1 & COR1_SMELL_MET)
+			v = v + 0;
+		if (p_ptr->muta1 & COR1_SMELL_MON)
+			v = v + 1;
+		if (p_ptr->muta1 & COR1_BLINK)
+			v = v + 5;
+		if (p_ptr->muta1 & COR1_EAT_ROCK)
+			v = v + 3;
+		if (p_ptr->muta1 & COR1_SWAP_POS)
+			v = v + 4;
+		if (p_ptr->muta1 & COR1_SHRIEK)
+			v = v + 0;
+		if (p_ptr->muta1 & COR1_ILLUMINE)
+			v = v + 1;
+		if (p_ptr->muta1 & COR1_DET_CURSE)
+			v = v + 0;
+		if (p_ptr->muta1 & COR1_BERSERK)
+			v = v + 1;
+		if (p_ptr->muta1 & COR1_POLYMORPH)
+			v = v + 0;
+		if (p_ptr->muta1 & COR1_MIDAS_TCH)
+			v = v + 0;
+		if (p_ptr->muta1 & COR1_GROW_MOLD)
+			v = v + 0;
+		if (p_ptr->muta1 & COR1_RESIST)
+			v = v + 3;
+		if (p_ptr->muta1 & COR1_EARTHQUAKE)
+			v = v + 2;
+		if (p_ptr->muta1 & COR1_EAT_MAGIC)
+			v = v + 2;
+		if (p_ptr->muta1 & COR1_WEIGH_MAG)
+			v = v + 0;
+		if (p_ptr->muta1 & COR1_STERILITY)
+			v = v + 1;
+		if (p_ptr->muta1 & COR1_PANIC_HIT)
+			v = v + 1;
+		if (p_ptr->muta1 & COR1_DAZZLE)
+			v = v + 2;
+		if (p_ptr->muta1 & COR1_EYE_BEAM)
+			v = v + 2;
+		if (p_ptr->muta1 & COR1_RECALL)
+			v = v + 4;
+		if (p_ptr->muta1 & COR1_BANISH)
+			v = v + 4;
+		if (p_ptr->muta1 & COR1_COLD_TOUCH)
+			v = v + 2;
+		if (p_ptr->muta1 & COR1_LAUNCHER)
+			v = v + 2;
 	}
 
 	if (p_ptr->muta2) {
-		if (p_ptr->muta2 & COR2_BERS_RAGE)			v = v + 2;
-		if (p_ptr->muta2 & COR2_COWARDICE)			v = v - 7;
-		if (p_ptr->muta2 & COR2_RTELEPORT)			v = v - 2;
-		if (p_ptr->muta2 & COR2_HALLU)					v = v - 12;
-		if (p_ptr->muta2 & COR2_PROD_MANA)			v = v + 1;
-		if (p_ptr->muta2 & COR2_ATT_DEMON)			v = v + 2;
+		if (p_ptr->muta2 & COR2_BERS_RAGE)
+			v = v + 2;
+		if (p_ptr->muta2 & COR2_COWARDICE)
+			v = v - 7;
+		if (p_ptr->muta2 & COR2_RTELEPORT)
+			v = v - 2;
+		if (p_ptr->muta2 & COR2_HALLU)
+			v = v - 12;
+		if (p_ptr->muta2 & COR2_PROD_MANA)
+			v = v + 1;
+		if (p_ptr->muta2 & COR2_ATT_DEMON)
+			v = v + 2;
 
-		if (p_ptr->muta2 & COR2_SPEED_FLUX)			v = v + 0;
-		if (p_ptr->muta2 & COR2_BANISH_ALL)			v = v + 2;
-		if (p_ptr->muta2 & COR2_EAT_LIGHT)			v = v + 1;
+		if (p_ptr->muta2 & COR2_SPEED_FLUX)
+			v = v + 0;
+		if (p_ptr->muta2 & COR2_BANISH_ALL)
+			v = v + 2;
+		if (p_ptr->muta2 & COR2_EAT_LIGHT)
+			v = v + 1;
 
-		if (p_ptr->muta2 & COR2_ATT_ANIMAL)			v = v + 1;
-		if (p_ptr->muta2 & COR2_RAW_CHAOS)			v = v - 1;
-		if (p_ptr->muta2 & COR2_NORMALITY)			v = v + 0;
-		if (p_ptr->muta2 & COR2_WRAITH)					v = v + 2;
-		if (p_ptr->muta2 & COR2_POLY_WOUND)			v = v - 2;
-		if (p_ptr->muta2 & COR2_WASTING)				v = v - 3;
-		if (p_ptr->muta2 & COR2_ATT_DRAGON)			v = v + 1;
-		if (p_ptr->muta2 & COR2_WEIRD_MIND)			v = v + 1;
-		if (p_ptr->muta2 & COR2_NAUSEA)					v = v - 2;
+		if (p_ptr->muta2 & COR2_ATT_ANIMAL)
+			v = v + 1;
+		if (p_ptr->muta2 & COR2_RAW_CHAOS)
+			v = v - 1;
+		if (p_ptr->muta2 & COR2_NORMALITY)
+			v = v + 0;
+		if (p_ptr->muta2 & COR2_WRAITH)
+			v = v + 2;
+		if (p_ptr->muta2 & COR2_POLY_WOUND)
+			v = v - 2;
+		if (p_ptr->muta2 & COR2_WASTING)
+			v = v - 3;
+		if (p_ptr->muta2 & COR2_ATT_DRAGON)
+			v = v + 1;
+		if (p_ptr->muta2 & COR2_WEIRD_MIND)
+			v = v + 1;
+		if (p_ptr->muta2 & COR2_NAUSEA)
+			v = v - 2;
 		/*
 		 TODO SHOULD this should be part of the table in tables.c
 		if (p_ptr->muta2 & COR2_ALCOHOL)				v = v - 2;
@@ -24885,58 +24962,92 @@ int borg_net_mutations(void) {
 		if (p_ptr->muta2 & COR2_CHAOS_GIFT)			v = v + 1;
 		if (p_ptr->muta2 & COR2_WALK_SHAD)			v = v + 1;
 		*/
-		if (p_ptr->muta2 & COR2_WARNING)				v = v + 1;
-		if (p_ptr->muta2 & COR2_INVULN)					v = v + 3;
-		if (p_ptr->muta2 & COR2_SP_TO_HP)				v = v + 1;
-		if (p_ptr->muta2 & COR2_HP_TO_SP)				v = v + 1;
-		if (p_ptr->muta2 & COR2_DISARM)					v = v - 3;
+		if (p_ptr->muta2 & COR2_WARNING)
+			v = v + 1;
+		if (p_ptr->muta2 & COR2_INVULN)
+			v = v + 3;
+		if (p_ptr->muta2 & COR2_SP_TO_HP)
+			v = v + 1;
+		if (p_ptr->muta2 & COR2_HP_TO_SP)
+			v = v + 1;
+		if (p_ptr->muta2 & COR2_DISARM)
+			v = v - 3;
 	}
 
 	if (p_ptr->muta3) {
-		if (p_ptr->muta3 & COR3_HYPER_STR)			v = v + 4;
-		if (p_ptr->muta3 & COR3_PUNY)
-		{
+		if (p_ptr->muta3 & COR3_HYPER_STR)
+			v = v + 4;
+		if (p_ptr->muta3 & COR3_PUNY) {
 			v = v - 4;
 			/*TODO SHOULD this should be a function or a table*/
-			if (borg_class == CLASS_WARRIOR || borg_class == CLASS_ROGUE || borg_class == CLASS_PALADIN || borg_class == CLASS_MONK)
+			if (borg_class == CLASS_WARRIOR || borg_class == CLASS_ROGUE ||
+				 borg_class == CLASS_PALADIN || borg_class == CLASS_MONK)
 				v = v - 4;
 		}
 		if (p_ptr->muta3 & COR3_HYPER_INT)
 			v = v + 4;
-		if (p_ptr->muta3 & COR3_IDIOTIC)
-		{
+		if (p_ptr->muta3 & COR3_IDIOTIC) {
 			v = v - 4;
-			if (borg_class == CLASS_MAGE || borg_class == CLASS_PRIEST || borg_class == CLASS_ORPHIC || borg_class == CLASS_HIGH_MAGE)
+			if (borg_class == CLASS_MAGE || borg_class == CLASS_PRIEST ||
+				 borg_class == CLASS_ORPHIC || borg_class == CLASS_HIGH_MAGE)
 				v = v - 4;
 		}
-		if (p_ptr->muta3 & COR3_RESILIENT)	v = v + 3;
-		if (p_ptr->muta3 & COR3_XTRA_FAT)		v = v - 3;
-		if (p_ptr->muta3 & COR3_ALBINO)			v = v + 3;
-		if (p_ptr->muta3 & COR3_FLESH_ROT)	v = v - 3;
-		if (p_ptr->muta3 & COR3_SILLY_VOI)	v = v - 1;
-		if (p_ptr->muta3 & COR3_FORKED_TONGUE)	v = v - 0;
-		if (p_ptr->muta3 & COR3_ILL_NORM)		v = v + 0;
-		if (p_ptr->muta3 & COR3_GLOW_EYES)	v = v + 1;
-		if (p_ptr->muta3 & COR3_MAGIC_RES)	v = v + 2;
-		if (p_ptr->muta3 & COR3_STENCH)			v = v - 1;
-		if (p_ptr->muta3 & COR3_INFRAVIS)		v = v + 1;
-		if (p_ptr->muta3 & COR3_GOAT_LEGS)	v = v + 3;
-		if (p_ptr->muta3 & COR3_SHORT_LEG)	v = v - 3;
-		if (p_ptr->muta3 & COR3_ELEC_TOUC)	v = v + 2;
-		if (p_ptr->muta3 & COR3_FIRE_BODY)	v = v + 2;
-		if (p_ptr->muta3 & COR3_WART_SKIN)	v = v + 1;
-		if (p_ptr->muta3 & COR3_SCALES)			v = v + 1;
-		if (p_ptr->muta3 & COR3_IRON_SKIN)	v = v + 1;
-		if (p_ptr->muta3 & COR3_WINGS)			v = v + 3;
-		if (p_ptr->muta3 & COR3_FEARLESS)		v = v + 2;
-		if (p_ptr->muta3 & COR3_REGEN)			v = v + 3;
-		if (p_ptr->muta3 & COR3_ESP)				v = v + 5;
-		if (p_ptr->muta3 & COR3_LIMBER)			v = v + 3;
-		if (p_ptr->muta3 & COR3_ARTHRITIS)	v = v - 2;
-		if (p_ptr->muta3 & COR3_RES_TIME)		v = v + 2;
-		if (p_ptr->muta3 & COR3_VULN_ELEM)	v = v - 3;
-		if (p_ptr->muta3 & COR3_MOTION)			v = v + 1;
-		if (p_ptr->muta3 & COR3_SUS_STATS)	v = v + 2;
+		if (p_ptr->muta3 & COR3_RESILIENT)
+			v = v + 3;
+		if (p_ptr->muta3 & COR3_XTRA_FAT)
+			v = v - 3;
+		if (p_ptr->muta3 & COR3_ALBINO)
+			v = v + 3;
+		if (p_ptr->muta3 & COR3_FLESH_ROT)
+			v = v - 3;
+		if (p_ptr->muta3 & COR3_SILLY_VOI)
+			v = v - 1;
+		if (p_ptr->muta3 & COR3_FORKED_TONGUE)
+			v = v - 0;
+		if (p_ptr->muta3 & COR3_ILL_NORM)
+			v = v + 0;
+		if (p_ptr->muta3 & COR3_GLOW_EYES)
+			v = v + 1;
+		if (p_ptr->muta3 & COR3_MAGIC_RES)
+			v = v + 2;
+		if (p_ptr->muta3 & COR3_STENCH)
+			v = v - 1;
+		if (p_ptr->muta3 & COR3_INFRAVIS)
+			v = v + 1;
+		if (p_ptr->muta3 & COR3_GOAT_LEGS)
+			v = v + 3;
+		if (p_ptr->muta3 & COR3_SHORT_LEG)
+			v = v - 3;
+		if (p_ptr->muta3 & COR3_ELEC_TOUC)
+			v = v + 2;
+		if (p_ptr->muta3 & COR3_FIRE_BODY)
+			v = v + 2;
+		if (p_ptr->muta3 & COR3_WART_SKIN)
+			v = v + 1;
+		if (p_ptr->muta3 & COR3_SCALES)
+			v = v + 1;
+		if (p_ptr->muta3 & COR3_IRON_SKIN)
+			v = v + 1;
+		if (p_ptr->muta3 & COR3_WINGS)
+			v = v + 3;
+		if (p_ptr->muta3 & COR3_FEARLESS)
+			v = v + 2;
+		if (p_ptr->muta3 & COR3_REGEN)
+			v = v + 3;
+		if (p_ptr->muta3 & COR3_ESP)
+			v = v + 5;
+		if (p_ptr->muta3 & COR3_LIMBER)
+			v = v + 3;
+		if (p_ptr->muta3 & COR3_ARTHRITIS)
+			v = v - 2;
+		if (p_ptr->muta3 & COR3_RES_TIME)
+			v = v + 2;
+		if (p_ptr->muta3 & COR3_VULN_ELEM)
+			v = v - 3;
+		if (p_ptr->muta3 & COR3_MOTION)
+			v = v + 1;
+		if (p_ptr->muta3 & COR3_SUS_STATS)
+			v = v + 2;
 		/*
 		if (p_ptr->muta3 & COR3_GOOD_LUCK)	v = v + 2;
 		if (p_ptr->muta3 & COR3_BAD_LUCK)		v = v - 2;
@@ -25068,24 +25179,26 @@ bool borg_flow_shop_visit(void) {
 
 	/* Visit the shops */
 	for (i = 0; i < MAX_STORES; i++) {
-		/* if Low Level, no need to visit BM
-		Konijn: This is odd, this makes no sense in Hellband..
-		if (borg_skill[BI_CLEVEL] < 25 && i == BORG_BM)
-			borg_shops[i].when = borg_t;
-		*/
 
 		/* No need to visit bookstore if not a spell caster */
-		/* TODO SHOULD this should be a function */
-		if ((borg_class == CLASS_WARRIOR || borg_class == CLASS_ORPHIC) &&
-			 i == BORG_BOOKSTORE)
-			borg_shops[i].when = borg_t;
+		if (realms_info[borg_class].book == NULL)
+			if (i == BORG_BOOKSTORE || i == BORG_MAGIC2)
+				borg_shops[i].when = borg_t;
 
-		/* No need to visit Home in the Outpost, Borg does not store anything
-		 * there. */
+		/* No need to visit Home if we did not buy it yet*/
 		if (i == BORG_HOME && !store[i].bought)
 			borg_shops[i].when = borg_t;
 
-		/* Must not be visited */
+		/* No need to visit Mage Guild if we did not buy it yet */
+		/*TODO MUST .. unless we have a 4th book ;) */
+		if (i == BORG_MAGIC2 && !store[i].bought && borg_gold < 50000)
+			borg_shops[i].when = borg_t;
+
+		/* No need to visit Home if we did not buy it yet,and we are too poor*/
+		if (i == BORG_ALCHEMY2 && !store[i].bought && borg_gold < 50000)
+			borg_shops[i].when = borg_t;
+
+		/* If when is set, then stop */
 		if (borg_shops[i].when)
 			continue;
 
@@ -25104,6 +25217,10 @@ bool borg_flow_shop_visit(void) {
 			} else if (i != BORG_GSTORE && i != BORG_HOME)
 				continue;
 		}
+
+		/* The borg only visits the inn if he really needs to */
+		if (i == BORG_INN && (!borg_skill[BI_ISWEAK] || borg_skill[BI_NOEAT])
+			continue;
 
 		/* if dark--skip non food places */
 		if (borg_skill[BI_CUR_LITE] == 0 && (i != 0) &&
@@ -26590,7 +26707,6 @@ bool borg_flow_kill(bool viewable, int nearness) {
 			/* Don't chase down town monsters when you are high level */
 			if (borg_skill[BI_CLEVEL] > 25 && kill->level < 5)
 				skip_monster = TRUE;
-
 		}
 
 		/* Hack -- Avoid getting surrounded */
@@ -27943,7 +28059,8 @@ extern void borg_flow_direct(int y, int x) {
 		*/
 
 		/* Ignore certain "non-wall" grids */
-		if ((ag->feat == FEAT_WATER && (borg_skill[BI_ENCUMBERD] && !borg_skill[BI_FEATH])))
+		if ((ag->feat == FEAT_WATER &&
+			  (borg_skill[BI_ENCUMBERD] && !borg_skill[BI_FEATH])))
 			return;
 		/*
 		if (ag->feat == FEAT_DEEP_LAVA && !borg_skill[BI_IFIRE])
@@ -28457,7 +28574,7 @@ extern void borg_flow_direct_dig(int y, int x) {
 
 	int shift;
 
-	/*borg_grid *ag;*/
+/*borg_grid *ag;*/
 
 #if 0
     /* Avoid icky grids */
@@ -28699,7 +28816,7 @@ bool borg_flow_passwall(void) {
 		 borg_use_staff_fail(SV_STAFF_TELEPORTATION) ||
 		 borg_activate_artifact(ART_NYNAULD, FALSE) ||
 		 borg_activate_activation(ACT_TELEPORT, FALSE) ||
-		 borg_read_scroll(SV_SCROLL_TELEPORT) || borg_activate_trump(100) ||
+		 borg_read_scroll(SV_SCROLL_TELEPORT) || borg_activate_planar(100) ||
 		 borg_racial(RACE_GNOME, 1) || borg_spell(REALM_ARCANE, 0, 4) ||
 		 borg_spell(REALM_SORCERY, 0, 1) || borg_spell(REALM_TRUMP, 0, 0) ||
 		 borg_mindcr(MIND_MINOR_DISP, 3) ||
@@ -29481,163 +29598,158 @@ bool borg_flow_spastic(bool bored) {
 			if (!bored && (ag->xtra > 5))
 				continue;
 
-				/* Avoid searching detected sectors */
-					 if (borg_detect_door[y/11][x/33]) continue;
+			/* Avoid searching detected sectors */
+			if (borg_detect_door[y / 11][x / 33])
+				continue;
 
-					 /* Skip ones that make me wander too far (Leash) */
-					 if (b_stair != -1 && borg_skill[BI_CLEVEL] < 15)
-					 {
-							 /* Check the distance of this grid to the stair */
-							 j = distance (track_less_y[b_stair], track_less_x[b_stair],
-														 y, x);
-							 /* Distance of me to the stairs */
-							 b_j = distance (c_y, c_x, track_less_y[b_stair], track_less_x[b_stair]);
+			/* Skip ones that make me wander too far (Leash) */
+			if (b_stair != -1 && borg_skill[BI_CLEVEL] < 15) {
+				/* Check the distance of this grid to the stair */
+				j = distance(track_less_y[b_stair], track_less_x[b_stair], y, x);
+				/* Distance of me to the stairs */
+				b_j = distance(c_y, c_x, track_less_y[b_stair],
+									track_less_x[b_stair]);
 
-							 /* skip far away grids while I am close to stair*/
-							 if (b_j <= borg_skill[BI_CLEVEL] * 3 + 9 &&
-										 j >= borg_skill[BI_CLEVEL] * 3 + 9 ) continue;
+				/* skip far away grids while I am close to stair*/
+				if (b_j <= borg_skill[BI_CLEVEL] * 3 + 9 &&
+					 j >= borg_skill[BI_CLEVEL] * 3 + 9)
+					continue;
 
-			 /* If really low level don't do this much */
-							 if (borg_skill[BI_CLEVEL] <= 3 &&
-								 b_j <= borg_skill[BI_CLEVEL] + 9 &&
-										 j >= borg_skill[BI_CLEVEL] + 9 ) continue;
+				/* If really low level don't do this much */
+				if (borg_skill[BI_CLEVEL] <= 3 &&
+					 b_j <= borg_skill[BI_CLEVEL] + 9 &&
+					 j >= borg_skill[BI_CLEVEL] + 9)
+					continue;
 
-			 /* Do not Venture too far from stair */
-							 if (borg_skill[BI_CLEVEL] <= 3 &&
-										 j >= borg_skill[BI_CLEVEL] + 5 ) continue;
+				/* Do not Venture too far from stair */
+				if (borg_skill[BI_CLEVEL] <= 3 && j >= borg_skill[BI_CLEVEL] + 5)
+					continue;
 
-			 /* Do not Venture too far from stair */
-							 if (borg_skill[BI_CLEVEL] <= 10 &&
-										 j >= borg_skill[BI_CLEVEL] + 9 ) continue;
-					 }
+				/* Do not Venture too far from stair */
+				if (borg_skill[BI_CLEVEL] <= 10 && j >= borg_skill[BI_CLEVEL] + 9)
+					continue;
+			}
 
+			/* Extract adjacent locations */
+			for (i = 0; i < 8; i++) {
+				/* Extract the location */
+				int xx = x + ddx_ddd[i];
+				int yy = y + ddy_ddd[i];
 
+				/* Get the grid contents */
+				ag_ptr[i] = &borg_grids[yy][xx];
+			}
 
-					 /* Extract adjacent locations */
-					 for (i = 0; i < 8; i++)
-					 {
-							 /* Extract the location */
-							 int xx = x + ddx_ddd[i];
-							 int yy = y + ddy_ddd[i];
+			/* Count possible door locations */
+			for (i = 0; i < 4; i++) {
+				ag = ag_ptr[i];
+				if (ag->feat >= FEAT_WALL_EXTRA)
+					wall++;
+			}
 
-							 /* Get the grid contents */
-							 ag_ptr[i] = &borg_grids[yy][xx];
-					 }
+			/* No possible secret doors */
+			if (wall < 1)
+				continue;
 
+			/* Count supporting evidence for secret doors */
+			for (i = 0; i < 4; i++) {
+				ag = ag_ptr[i];
 
-					 /* Count possible door locations */
-					 for (i = 0; i < 4; i++)
-					 {
-							 ag = ag_ptr[i];
-							 if (ag->feat >= FEAT_WALL_EXTRA) wall++;
-					 }
+				/* Rubble */
+				if (ag->feat == FEAT_RUBBLE)
+					continue;
 
-					 /* No possible secret doors */
-					 if (wall < 1) continue;
+				/* Walls, Doors */
+				if (((ag->feat >= FEAT_SECRET) && (ag->feat <= FEAT_PERM_SOLID)) ||
+					 ((ag->feat == FEAT_OPEN) || (ag->feat == FEAT_BROKEN)) ||
+					 ((ag->feat >= FEAT_DOOR_HEAD) &&
+					  (ag->feat <= FEAT_DOOR_TAIL))) {
+					supp++;
+				}
+			}
 
+			/* Count supporting evidence for secret doors */
+			for (i = 4; i < 8; i++) {
+				ag = ag_ptr[i];
 
-					 /* Count supporting evidence for secret doors */
-					 for (i = 0; i < 4; i++)
-					 {
-							 ag = ag_ptr[i];
+				/* Rubble */
+				if (ag->feat == FEAT_RUBBLE)
+					continue;
 
-							 /* Rubble */
-							 if (ag->feat == FEAT_RUBBLE) continue;
+				/* Walls */
+				if (ag->feat >= FEAT_SECRET) {
+					diag++;
+				}
+			}
 
-							 /* Walls, Doors */
-							 if (((ag->feat >= FEAT_SECRET) && (ag->feat <= FEAT_PERM_SOLID)) ||
-									 ((ag->feat == FEAT_OPEN) || (ag->feat == FEAT_BROKEN)) ||
-									 ((ag->feat >= FEAT_DOOR_HEAD) && (ag->feat <= FEAT_DOOR_TAIL)))
-							 {
-									 supp++;
-							 }
-					 }
+			/* No possible secret doors */
+			if (diag < 2)
+				continue;
 
-					 /* Count supporting evidence for secret doors */
-					 for (i = 4; i < 8; i++)
-					 {
-							 ag = ag_ptr[i];
+			/* Tweak -- Reward walls, punish visitation, distance, time on level */
+			v = (supp * 500) + (diag * 100) - (ag->xtra * 40) - (cost * 2) -
+				 (borg_t - borg_began);
 
-							 /* Rubble */
-							 if (ag->feat == FEAT_RUBBLE) continue;
+			/* Punish low level and searching too much */
+			v -= (50 - borg_skill[BI_CLEVEL]) * 5;
 
-							 /* Walls */
-							 if (ag->feat >= FEAT_SECRET)
-							 {
-									 diag++;
-							 }
-					 }
+			/* The grid is not searchable */
+			if (v <= 0)
+				continue;
 
-					 /* No possible secret doors */
-					 if (diag < 2) continue;
+			/* Tweak -- Minimal interest until bored */
+			if (!bored && (v < 1500))
+				continue;
 
+			/* Track "best" grid */
+			if ((b_v >= 0) && (v < b_v))
+				continue;
 
-					 /* Tweak -- Reward walls, punish visitation, distance, time on level */
-					 v = (supp * 500) + (diag * 100) - (ag->xtra * 40) - (cost * 2) - (borg_t - borg_began);
+			/* Save the data */
+			b_v = v;
+			b_x = x;
+			b_y = y;
+		}
+	}
 
-		 /* Punish low level and searching too much */
-		 v -= (50 - borg_skill[BI_CLEVEL]) * 5;
+	/* Clear the flow codes */
+	borg_flow_clear();
 
-					 /* The grid is not searchable */
-					 if (v <= 0) continue;
+	/* Hack -- Nothing found */
+	if (b_v < 0)
+		return (FALSE);
 
+	/* Access grid */
+	ag = &borg_grids[b_y][b_x];
 
-					 /* Tweak -- Minimal interest until bored */
-					 if (!bored && (v < 1500)) continue;
+	/* Memorize */
+	spastic_x = b_x;
+	spastic_y = b_y;
 
+	/* Enqueue the grid */
+	borg_flow_enqueue_grid(b_y, b_x);
 
-					 /* Track "best" grid */
-					 if ((b_v >= 0) && (v < b_v)) continue;
+	/* Spread the flow */
+	borg_flow_spread(250, FALSE, FALSE, FALSE, -1, FALSE);
 
-					 /* Save the data */
-					 b_v = v; b_x = x; b_y = y;
-			 }
-	 }
+	/* Attempt to Commit the flow */
+	if (bored && !borg_flow_commit("bored spastic", GOAL_XTRA, FALSE))
+		return (FALSE);
+	if (!bored && !borg_flow_commit("spastic", GOAL_XTRA, FALSE))
+		return (FALSE);
 
-	 /* Clear the flow codes */
-	 borg_flow_clear();
+	/* Take one step */
+	if (!borg_flow_old(GOAL_XTRA))
+		return (FALSE);
 
-	 /* Hack -- Nothing found */
-	 if (b_v < 0) return (FALSE);
-
-
-	 /* Access grid */
-	 ag = &borg_grids[b_y][b_x];
-
-	 /* Memorize */
-	 spastic_x = b_x;
-	 spastic_y = b_y;
-
-
-	 /* Enqueue the grid */
-	 borg_flow_enqueue_grid(b_y, b_x);
-
-	 /* Spread the flow */
-	 borg_flow_spread(250, FALSE, FALSE, FALSE, -1, FALSE);
-
- /* Attempt to Commit the flow */
- if (bored && !borg_flow_commit("bored spastic", GOAL_XTRA, FALSE)) return (FALSE);
- if (!bored && !borg_flow_commit("spastic", GOAL_XTRA, FALSE)) return (FALSE);
-
-	 /* Take one step */
-	 if (!borg_flow_old(GOAL_XTRA)) return (FALSE);
-
-	 /* Success */
-	 return (TRUE);
+	/* Success */
+	return (TRUE);
 }
-
-
-
 
 /*
 * Initialize this file
 */
-void borg_init_6(void)
-{
-	 /* Nothing */
-}
-
-
+void borg_init_6(void) { /* Nothing */ }
 
 #else
 

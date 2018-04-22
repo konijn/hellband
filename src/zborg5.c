@@ -164,7 +164,7 @@ static void borg_delete_take(int i) {
 /*
  * Determine if an object should be "viewable"
  */
-static bool borg_follow_take_aux(int y, int x) {
+static bool borg_is_object_visible(int y, int x) {
 	borg_grid *ag;
 
 	/* Access the grid */
@@ -204,7 +204,7 @@ static void borg_follow_take(int i) {
 	oy = take->y;
 
 	/* Out of sight */
-	if (!borg_follow_take_aux(oy, ox))
+	if (!borg_is_object_visible(oy, ox))
 		return;
 
 	/* Some monsters won't pick up or crush an item under them */
@@ -672,7 +672,8 @@ static int borg_guess_race_name(cptr who) {
  *	 #54433333333333445#
  *	 ###################
  */
-static void borg_fear_grid(/*cptr who*/ int y, int x, int k) /* 8-8, this was uint */
+static void borg_fear_grid(/*cptr who*/ int y, int x,
+									int k) /* 8-8, this was uint */
 {
 	int x1 = 0, y1 = 0;
 	borg_kill *kill;
@@ -757,7 +758,9 @@ static void borg_fear_grid(/*cptr who*/ int y, int x, int k) /* 8-8, this was ui
  * An invisible
  * guy can cause us to fear the area.
  */
-static void borg_fear_regional(cptr who, int y, int x, int k /*bool seen_guy*/) /* 8-8 , had been uint */
+static void
+borg_fear_regional(cptr who, int y, int x,
+						 int k /*bool seen_guy*/) /* 8-8 , had been uint */
 {
 	int x0, y0, x1, x2, y1, y2;
 
@@ -1156,7 +1159,7 @@ static void borg_update_kill_old(int i) {
 		 (r_info[kill->r_idx].flags6 & RF6_S_SPIDER) ||
 		 (r_info[kill->r_idx].flags6 & RF6_S_HOUND) ||
 		 (r_info[kill->r_idx].flags6 & RF6_S_HYDRA) ||
-		/* (r_info[kill->r_idx].flags6 & RF6_S_ANGEL) || */
+		 /* (r_info[kill->r_idx].flags6 & RF6_S_ANGEL) || */
 		 (r_info[kill->r_idx].flags6 & RF6_S_DEMON) ||
 		 (r_info[kill->r_idx].flags6 & RF6_S_UNDEAD) ||
 		 (r_info[kill->r_idx].flags6 & RF6_S_DRAGON) ||
@@ -1734,7 +1737,7 @@ static int borg_new_kill(int r_idx, int y, int x) {
 		 (r_info[kill->r_idx].flags6 & RF6_S_SPIDER) ||
 		 (r_info[kill->r_idx].flags6 & RF6_S_HOUND) ||
 		 (r_info[kill->r_idx].flags6 & RF6_S_HYDRA) ||
-		/* (r_info[kill->r_idx].flags6 & RF6_S_ANGEL) ||*/
+		 /* (r_info[kill->r_idx].flags6 & RF6_S_ANGEL) ||*/
 		 (r_info[kill->r_idx].flags6 & RF6_S_DEMON) ||
 		 (r_info[kill->r_idx].flags6 & RF6_S_UNDEAD) ||
 		 (r_info[kill->r_idx].flags6 & RF6_S_DRAGON) ||
@@ -2444,11 +2447,11 @@ static int borg_fear_spell(int i) {
 	case 85: /* RF6_S_HYDRA */
 		p += 70;
 		break;
-/*
-	case 86: // RF6_S_ANGEL
-		p += 80;
-		break;
-*/
+	/*
+		case 86: // RF6_S_ANGEL
+			p += 80;
+			break;
+	*/
 	case 87: /* RF6_S_DEMON */
 		p += 80;
 		break;
@@ -3199,27 +3202,21 @@ static void borg_update_map(void) {
 	borg_grid *ag;
 
 	cave_type *c_ptr;
+	feature_type *f_ptr;
 
 	byte t_a;
 	byte t_c;
 
 	/* Analyze the current map panel */
-	for (dy = 0; dy < SCREEN_HGT; dy++) {
-#ifndef BORG_TK
-
-		/* Direct access XXX XXX XXX */
-		byte *aa = &(Term->scr->a[dy + 1][13]);
-		char *cc = &(Term->scr->c[dy + 1][13]);
+	for (dy = 0; dy < SCREEN_HGT && dy < MAX_HGT; dy++) {
 
 #ifdef ALLOW_BORG_GRAPHICS
 		byte a_trans;
 		char c_trans;
 #endif /* ALLOW_BORG_GRAPHICS */
 
-#endif /* not BORG_TK */
-
 		/* Scan the row */
-		for (dx = 0; dx < SCREEN_WID; dx++) {
+		for (dx = 0; dx < SCREEN_WID && dx < MAX_WID; dx++) {
 			bool old_wall;
 			bool new_wall;
 
@@ -3227,15 +3224,13 @@ static void borg_update_map(void) {
 			x = w_x + dx;
 			y = w_y + dy;
 
+			if (!in_bounds(y, x))
+				continue;
+
 #ifdef BORG_TK
 
 			map_info(y, x, &t_a, &t_c);
 
-#else /* not BORG_TK */
-
-			/* Save contents */
-			t_a = *aa++;
-			t_c = *cc++;
 #ifdef ALLOW_BORG_GRAPHICS
 
 			/* Translate the glyph into an ASCII char */
@@ -3253,9 +3248,9 @@ static void borg_update_map(void) {
 
 			/* Get the borg_grid */
 			ag = &borg_grids[y][x];
-
 			/* Get the Game Grid */
 			c_ptr = &cave[y][x];
+			f_ptr = &f_info[c_ptr->feat];
 
 			/* Notice "on-screen" */
 			ag->info |= BORG_OKAY;
@@ -3264,8 +3259,18 @@ static void borg_update_map(void) {
 			ag->info &= ~BORG_DARK;
 
 			/* Define the attributes -- used by wanks */
-			ag->t_a = t_a;
-			ag->t_c = t_c;
+			ag->t_a = f_ptr->z_attr;
+			ag->t_c = f_ptr->z_char;
+
+			/*I lied, we also read from the screen */
+			/* Direct access XXX XXX XXX */
+			ag->t_a = t_a = (Term->scr->a[dy + 1][dx]);
+			ag->t_c = t_c = (Term->scr->c[dy + 1][dx]);
+
+			/* Super hack and break point */
+			if (y == py && x == px) {
+				ag->t_c = '@';
+			}
 
 			/* Notice "knowledge" */
 			if (t_c != ' ')
@@ -3460,6 +3465,8 @@ static void borg_update_map(void) {
 			case FEAT_SHOP_HEAD + 9:
 			case FEAT_SHOP_HEAD + 10:
 			case FEAT_SHOP_TAIL: {
+				store_y[c_ptr->feat - FEAT_SHOP_HEAD] = y;
+				store_x[c_ptr->feat - FEAT_SHOP_HEAD] = x;
 				ag->feat = FEAT_FLOOR;
 				break;
 			}
@@ -3504,6 +3511,8 @@ static void borg_update_map(void) {
 					track_more_x[i] = x;
 					track_more_y[i] = y;
 					track_more_num++;
+					borg_note(format("# Down stairs(%d) found at (%d,%d)!", i,
+										  track_more_y[i], track_more_x[i]));
 				}
 
 				/* Done */
@@ -4935,6 +4944,10 @@ void borg_update(void) {
 					x = o_w_x + dx;
 					y = o_w_y + dy;
 
+					/*Prevent crashes*/
+					if (!in_bounds(y, x))
+						continue;
+
 					/* Get the borg_grid */
 					ag = &borg_grids[y][x];
 
@@ -5246,6 +5259,10 @@ void borg_update(void) {
 		/* Get location */
 		x = borg_temp_x[i];
 		y = borg_temp_y[i];
+
+		/* This masks big bugs */
+		if (!in_bounds(x, y))
+			continue;
 
 		/* Get the borg_grid */
 		ag = &borg_grids[y][x];
@@ -5581,8 +5598,7 @@ void borg_update(void) {
 		borg_wank *wank = &borg_wanks[i];
 
 		/* Track new objects */
-		if (wank->is_take &&
-			 observe_take_diff(wank->y, wank->x)) {
+		if (wank->is_take && observe_take_diff(wank->y, wank->x)) {
 			/* Hack -- excise the entry */
 			borg_wanks[i] = borg_wanks[--borg_wank_num];
 		}
@@ -5729,6 +5745,7 @@ void borg_update(void) {
 			}
 		}
 	}
+
 	/* Process messages */
 	for (i = 0; i < borg_msg_num; i++) {
 		/* Skip parsed messages */
@@ -5743,13 +5760,15 @@ void borg_update(void) {
 
 		/* Handle "xxx hits you." */
 		if (prefix(msg, "HIT_BY:")) {
-			borg_fear_regional(what, c_y, c_x, 4 * ((borg_skill[BI_CDEPTH] / 5) + 1));
+			borg_fear_regional(what, c_y, c_x,
+									 4 * ((borg_skill[BI_CDEPTH] / 5) + 1));
 			borg_msg_use[i] = 5;
 		}
 
 		/* Handle "xxx misses you." */
 		else if (prefix(msg, "MISS_BY:")) {
-			borg_fear_regional(what, c_y, c_x, 2 * ((borg_skill[BI_CDEPTH] / 5) + 1));
+			borg_fear_regional(what, c_y, c_x,
+									 2 * ((borg_skill[BI_CDEPTH] / 5) + 1));
 			borg_msg_use[i] = 5;
 		}
 
@@ -5855,7 +5874,8 @@ void borg_update(void) {
 
 		/* Apply the Fear to the area around the monster */
 		if (!kill->ally)
-			borg_fear_grid(/*r_name + r_info[kill->r_idx].name,*/ kill->y, kill->x, p);
+			borg_fear_grid(/*r_name + r_info[kill->r_idx].name,*/ kill->y, kill->x,
+								p);
 	}
 
 	/*** Notice missing objects ***/
@@ -6103,8 +6123,8 @@ void borg_init_5(void) {
 	}
 
 	/* Set the sort hooks */
-	ang_sort_comp = ang_sort_comp_hook;
-	ang_sort_swap = ang_sort_swap_hook;
+	ang_sort_comp = ang_sort_comp_string_hook;
+	ang_sort_swap = ang_sort_swap_string_hook;
 
 	/* Sort */
 	ang_sort(text, what, size);
@@ -6146,8 +6166,8 @@ void borg_init_5(void) {
 	}
 
 	/* Set the sort hooks */
-	ang_sort_comp = ang_sort_comp_hook;
-	ang_sort_swap = ang_sort_swap_hook;
+	ang_sort_comp = ang_sort_comp_string_hook;
+	ang_sort_swap = ang_sort_swap_string_hook;
 
 	/* Sort */
 	ang_sort(text, what, size);
