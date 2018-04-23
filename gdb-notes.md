@@ -34,6 +34,7 @@ Load the binary with
 * `continue` to run the program till the end or the next breakpoint
 * `step` to execute the whole line at once
 * `next` to execute the next atomic part of the line
+* `finish` to return to previous frame
 
 **Getting fancy**
 
